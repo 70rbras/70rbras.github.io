@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>70ª RBras 2026 — Dados que revelam Vida</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ────────────────────────────────── */
+    :root {
+      --blue:        #1B4E79;
+      --blue-mid:    #2B6EA8;
+      --teal:        #2D8A7A;
+      --teal-light:  #3AAFA0;
+      --gold:        #C9A227;
+      --gold-light:  #E6C547;
+      --olive:       #6B8E23;
+      --green-dark:  #2D5A27;
+      --off-white:   #F4F7FA;
+      --white:       #FFFFFF;
+      --text-dark:   #0D2135;
+      --text-mid:    #3A5068;
+      --radius:      14px;
+      --transition:  0.35s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── RESET ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    section { position: relative; }
+
+    /* ── TYPOGRAPHY ────────────────────────────── */
+    .display { font-family: 'Playfair Display', serif; font-weight: 900; line-height: 1.1; }
+    .serif   { font-family: 'Playfair Display', serif; }
+
+    /* ── UTILITIES ─────────────────────────────── */
+    .container { width: min(1160px, 92vw); margin-inline: auto; }
+    .tag {
+      display: inline-block;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: .3em .85em; border-radius: 999px;
+    }
+    .tag--gold  { background: var(--gold);        color: var(--blue);  }
+    .tag--teal  { background: var(--teal-light);  color: var(--white); }
+    .tag--blue  { background: var(--blue);         color: var(--white); }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5em;
+      padding: .85em 2em; border-radius: 999px;
+      font-weight: 600; font-size: .95rem;
+      cursor: pointer; border: 2px solid transparent;
+      transition: var(--transition);
+    }
+    .btn--primary { background: var(--gold); color: var(--blue); }
+    .btn--primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,162,39,.35); }
+    .btn--outline { border-color: rgba(255,255,255,.5); color: var(--white); }
+    .btn--outline:hover { background: rgba(255,255,255,.12); border-color: var(--white); transform: translateY(-2px); }
+
+    /* ── SCROLL REVEAL ─────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ── SECTION COMMONS ───────────────────────── */
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-header .tag { margin-bottom: 1rem; }
+    .section-header .section-title { margin-bottom: .5rem; }
+    .section-header .section-body { max-width: 56ch; margin-inline: auto; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700; color: var(--text-dark);
+      margin-bottom: 1.25rem; line-height: 1.2;
+    }
+    .section-title span { color: var(--teal); }
+    .section-body { color: var(--text-mid); line-height: 1.8; font-size: 1.02rem; }
+    .section-body p + p { margin-top: 1em; }
+    .accent-bar { width: 52px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--gold), var(--teal)); margin-bottom: 1.5rem; }
+
+    /* ──────────────────────────────────────────── */
+    /* NAVBAR                                       */
+    /* ──────────────────────────────────────────── */
+    #navbar {
+      position: fixed; inset: 0 0 auto; z-index: 999;
+      padding: 1rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+    #navbar.scrolled {
+      background: rgba(27,78,121,.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 24px rgba(0,0,0,.25);
+      padding: .65rem 0;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.45rem; color: var(--white); letter-spacing: -.01em; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; list-style: none; gap: 2rem; }
+    .nav-links a { color: rgba(255,255,255,.8); font-size: .88rem; font-weight: 500; letter-spacing: .02em; transition: color var(--transition); position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width var(--transition); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { background: var(--gold); color: var(--blue) !important; padding: .45em 1.2em; border-radius: 999px; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--gold-light); }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .5rem; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+
+    /* ──────────────────────────────────────────── */
+    /* HERO                                         */
+    /* ──────────────────────────────────────────── */
+    #hero {
+      min-height: 100svh; display: flex; align-items: center;
+      background: linear-gradient(135deg, #0D2135 0%, var(--blue) 45%, var(--teal) 100%);
+      overflow: hidden;
+    }
+    #particleCanvas { position: absolute; inset: 0; pointer-events: none; }
+    .hero-botanical {
+      position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+      width: clamp(280px, 38vw, 560px); opacity: .12; pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 2; padding: 8rem 0 5rem;
+      display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+    }
+    .hero-text .tag { margin-bottom: 1.5rem; }
+    .hero-title { font-size: clamp(2.8rem, 6vw, 5.2rem); color: var(--white); margin-bottom: .5rem; }
+    .hero-title .edition { font-size: .52em; display: block; color: var(--gold); letter-spacing: .04em; font-family: 'Inter', sans-serif; font-weight: 300; margin-bottom: .15em; }
+    .hero-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.1rem, 2.2vw, 1.6rem); color: rgba(255,255,255,.75); margin-bottom: 2rem; }
+    .hero-tagline strong { color: var(--gold-light); font-style: normal; }
+    .hero-info { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .hero-info-item { display: flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.9); font-size: .95rem; }
+    .hero-info-item .icon { width: 36px; height: 36px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 50%; display: grid; place-items: center; font-size: 1rem; flex-shrink: 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .hero-countdown { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: var(--radius); padding: 1.8rem 2rem; display: flex; gap: 1.5rem; backdrop-filter: blur(8px); flex-shrink: 0; }
+    .cd-unit { text-align: center; min-width: 52px; }
+    .cd-num { font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; font-variant-numeric: tabular-nums; }
+    .cd-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.55); margin-top: .3rem; }
+    .cd-sep { color: var(--gold); font-size: 2rem; font-weight: 300; align-self: flex-start; padding-top: .1rem; }
+    .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; pointer-events: none; }
+
+    /* ──────────────────────────────────────────── */
+    /* SOBRE                                        */
+    /* ──────────────────────────────────────────── */
+    #sobre { padding: 7rem 0 6rem; background: var(--white); }
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .sobre-card { background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%); border-radius: 24px; padding: 2.5rem; color: var(--white); position: relative; overflow: hidden; }
+    .sobre-card::before { content: '70'; position: absolute; right: -20px; bottom: -30px; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 9rem; opacity: .07; line-height: 1; color: var(--white); }
+    .sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .sobre-stat { background: rgba(255,255,255,.1); border-radius: 12px; padding: 1rem; text-align: center; border: 1px solid rgba(255,255,255,.12); }
+    .sobre-stat .num { font-size: 1.9rem; font-weight: 700; color: var(--gold-light); display: block; }
+    .sobre-stat .lbl { font-size: .78rem; opacity: .75; margin-top: .15rem; }
+    .sobre-text .tag { margin-bottom: 1rem; }
+
+    /* ──────────────────────────────────────────── */
+    /* DATAS IMPORTANTES                            */
+    /* ──────────────────────────────────────────── */
+    #datas { padding: 6rem 0; background: var(--off-white); }
+    .dates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .date-card { background: var(--white); border-radius: var(--radius); padding: 1.8rem; border-top: 4px solid var(--blue); box-shadow: 0 2px 16px rgba(0,0,0,.07); transition: transform var(--transition), box-shadow var(--transition); }
+    .date-card[data-cor="teal"]  { border-color: var(--teal); }
+    .date-card[data-cor="gold"]  { border-color: var(--gold); }
+    .date-card[data-cor="olive"] { border-color: var(--olive); }
+    .date-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+    .date-icon { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-size: 1.3rem; margin-bottom: 1rem; }
+    .date-icon--blue  { background: rgba(27,78,121,.1); }
+    .date-icon--teal  { background: rgba(45,138,122,.1); }
+    .date-icon--gold  { background: rgba(201,162,39,.1); }
+    .date-icon--olive { background: rgba(107,142,35,.1); }
+    .date-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .4rem; }
+    .date-card .date-val { font-size: 1.4rem; font-weight: 700; color: var(--blue); font-variant-numeric: tabular-nums; }
+    .date-card .date-note { font-size: .82rem; color: var(--text-mid); margin-top: .35rem; }
+
+    /* ──────────────────────────────────────────── */
+    /* PALESTRANTES                                 */
+    /* ──────────────────────────────────────────── */
+    #palestrantes { padding: 7rem 0; background: var(--white); }
+    .speakers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+    .speaker-card { text-align: center; transition: transform var(--transition); cursor: pointer; }
+    .speaker-card:hover { transform: translateY(-5px); }
+    .speaker-photo { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, var(--off-white), #dde6f0); margin: 0 auto 1.2rem; border: 4px solid var(--white); box-shadow: 0 4px 20px rgba(0,0,0,.12); display: grid; place-items: center; color: var(--blue); font-size: 3rem; overflow: hidden; }
+    .speaker-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .speaker-name { font-family: 'Playfair Display', serif; font-size: 1.12rem; font-weight: 700; margin-bottom: .3rem; }
+    .speaker-role { font-size: .84rem; color: var(--teal); font-weight: 600; margin-bottom: .2rem; }
+    .speaker-org  { font-size: .8rem; color: var(--text-mid); }
+    .speaker-topic { margin-top: .6rem; font-size: .82rem; font-style: italic; color: var(--text-mid); background: var(--off-white); border-radius: 8px; padding: .5em .8em; }
+    .speaker-hint { margin-top: .6rem; font-size: .75rem; color: var(--teal); font-weight: 600; opacity: 0; transition: opacity var(--transition); }
+    .speaker-card:hover .speaker-hint { opacity: 1; }
+
+    /* ── MODAL ─────────────────────────────────── */
+    #speaker-modal {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      align-items: center; justify-content: center;
+      padding: 1.5rem;
+    }
+    #speaker-modal.open { display: flex; }
+    .modal-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(13,33,53,.75);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+    }
+    .modal-box {
+      position: relative; z-index: 1;
+      background: var(--white);
+      border-radius: 24px;
+      max-width: 620px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,.3);
+      animation: modalIn .3s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes modalIn { from { opacity:0; transform:scale(.94) translateY(16px); } }
+    .modal-header {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%);
+      padding: 2rem 2rem 1.5rem;
+      border-radius: 24px 24px 0 0;
+      display: flex; gap: 1.5rem; align-items: flex-start;
+    }
+    .modal-photo {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: 3px solid rgba(255,255,255,.3);
+      display: grid; place-items: center;
+      font-size: 2.2rem; flex-shrink: 0; overflow: hidden;
+    }
+    .modal-photo img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+    .modal-speaker-info { flex: 1; }
+    .modal-speaker-info h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); margin-bottom: .3rem; }
+    .modal-speaker-info .role { color: var(--gold-light); font-size: .88rem; font-weight: 600; }
+    .modal-speaker-info .org  { color: rgba(255,255,255,.7); font-size: .83rem; margin-top: .15rem; }
+    .modal-close {
+      background: rgba(255,255,255,.15); border: none; color: var(--white);
+      width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+      font-size: 1.1rem; display: grid; place-items: center;
+      transition: background var(--transition); flex-shrink: 0;
+    }
+    .modal-close:hover { background: rgba(255,255,255,.3); }
+    .modal-body { padding: 2rem; }
+    .modal-body h3 { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin-bottom: .5rem; }
+    .modal-topic {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem;
+      color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.4;
+    }
+    .modal-abstract { color: var(--text-mid); line-height: 1.8; font-size: .97rem; }
+
+    /* ──────────────────────────────────────────── */
+    /* PROGRAMAÇÃO                                  */
+    /* ──────────────────────────────────────────── */
+    #programacao { padding: 6rem 0; background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%); }
+    .sched-tabs { display: flex; gap: .5rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap; }
+    .sched-tab { padding: .6em 1.6em; border-radius: 999px; border: 2px solid var(--blue); color: var(--blue); font-weight: 600; font-size: .9rem; cursor: pointer; transition: var(--transition); background: transparent; }
+    .sched-tab.active, .sched-tab:hover { background: var(--blue); color: var(--white); }
+    .sched-day { display: none; }
+    .sched-day.active { display: block; }
+    .sched-timeline { display: flex; flex-direction: column; }
+    .sched-item { display: grid; grid-template-columns: 110px 1fr; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(0,0,0,.07); position: relative; }
+    .sched-item::before { content: ''; position: absolute; left: 110px; top: 0; bottom: 0; width: 3px; background: var(--off-white); }
+    .sched-time { font-weight: 700; color: var(--blue); font-size: .9rem; padding-top: .15rem; text-align: right; padding-right: 1.5rem; }
+    .sched-body { padding-left: 1.5rem; }
+    .sched-body h4 { font-size: 1rem; font-weight: 600; margin-bottom: .2rem; }
+    .sched-body p  { font-size: .88rem; color: var(--text-mid); }
+    .sched-type { display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .2em .65em; border-radius: 999px; margin-bottom: .4rem; }
+    .type-keynote { background: rgba(201,162,39,.15); color: #8a6b00; }
+    .type-mini    { background: rgba(45,138,122,.15);  color: var(--teal); }
+    .type-session { background: rgba(27,78,121,.12);   color: var(--blue); }
+    .type-social  { background: rgba(107,142,35,.12);  color: var(--olive); }
+    .type-break   { background: rgba(0,0,0,.06);       color: #777; }
+
+    /* ──────────────────────────────────────────── */
+    /* LOCAL                                        */
+    /* ──────────────────────────────────────────── */
+    #local { padding: 7rem 0; background: var(--white); }
+    .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .venue-map { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,.14); background: var(--off-white); aspect-ratio: 4/3; position: relative; }
+    .venue-map iframe { width: 100%; height: 100%; border: none; display: block; }
+    .venue-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: var(--text-mid); font-size: 3rem; }
+    .venue-placeholder p { font-size: .9rem; color: var(--text-mid); text-align: center; }
+    .venue-details .tag { margin-bottom: 1rem; }
+    .venue-facts { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .venue-fact { display: flex; gap: 1rem; align-items: flex-start; }
+    .venue-fact-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--blue), var(--teal)); color: var(--white); display: grid; place-items: center; font-size: 1.1rem; flex-shrink: 0; }
+    .venue-fact-body h4 { font-weight: 600; font-size: .95rem; margin-bottom: .15rem; }
+    .venue-fact-body p  { font-size: .88rem; color: var(--text-mid); }
+
+    /* ──────────────────────────────────────────── */
+    /* COMISSÃO                                     */
+    /* ──────────────────────────────────────────── */
+    #comissao { padding: 6rem 0; background: var(--off-white); }
+    .comissao-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .comissao-group { background: var(--white); border-radius: var(--radius); padding: 2rem; box-shadow: 0 2px 16px rgba(0,0,0,.06); }
+    .comissao-group h3 { font-size: 1rem; font-weight: 700; color: var(--blue); margin-bottom: 1.2rem; padding-bottom: .75rem; border-bottom: 2px solid var(--off-white); }
+    .comissao-list { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .comissao-list li { display: flex; align-items: flex-start; gap: .7rem; font-size: .9rem; }
+    .comissao-list li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: .35rem; }
+    .comissao-list .affil { font-size: .77rem; color: var(--text-mid); display: block; margin-top: .05rem; }
+
+    /* ──────────────────────────────────────────── */
+    /* PATROCINADORES                               */
+    /* ──────────────────────────────────────────── */
+    #patrocinadores { padding: 5rem 0; background: var(--white); }
+    .sponsors-tiers { display: flex; flex-direction: column; gap: 3rem; }
+    .sponsor-tier h3 { text-align: center; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 1.5rem; }
+    .sponsor-logos { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: center; }
+    .sponsor-logo { background: var(--off-white); border-radius: 12px; display: grid; place-items: center; transition: filter var(--transition), transform var(--transition); filter: grayscale(30%); cursor: pointer; }
+    .sponsor-logo:hover { filter: none; transform: scale(1.04); }
+    .sponsor-logo--gold   { width: 180px; height: 80px; }
+    .sponsor-logo--silver { width: 150px; height: 64px; }
+    .sponsor-logo--bronze { width: 120px; height: 52px; }
+    .sponsor-logo span { font-size: .85rem; font-weight: 600; color: var(--text-mid); }
+    .sponsor-logo img { max-width: 80%; max-height: 70%; object-fit: contain; }
+
+    /* ──────────────────────────────────────────── */
+    /* CTA INSCRIÇÕES                               */
+    /* ──────────────────────────────────────────── */
+    #inscricoes { padding: 6rem 0; background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%); text-align: center; }
+    .cta-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: var(--white); margin-bottom: 1rem; }
+    .cta-sub { color: rgba(255,255,255,.75); font-size: 1.05rem; margin-bottom: 2.5rem; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ──────────────────────────────────────────── */
+    /* FOOTER                                       */
+    /* ──────────────────────────────────────────── */
+    #footer { background: var(--text-dark); color: rgba(255,255,255,.65); padding: 4rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .footer-brand .nav-logo { font-size: 1.3rem; margin-bottom: 1rem; }
+    .footer-brand p { font-size: .88rem; line-height: 1.7; }
+    .footer-col h4 { color: var(--white); font-size: .88rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.2rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .footer-col ul a { font-size: .88rem; transition: color var(--transition); }
+    .footer-col ul a:hover { color: var(--gold); }
+    .footer-bottom { padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: .82rem; }
+    .social-links { display: flex; gap: .75rem; }
+    .social-link { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.08); display: grid; place-items: center; font-size: .9rem; transition: background var(--transition); }
+    .social-link:hover { background: var(--gold); color: var(--blue); }
+
+    /* ──────────────────────────────────────────── */
+    /* RESPONSIVE                                   */
+    /* ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-countdown { justify-content: center; }
+      .sobre-grid, .venue-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-countdown { flex-wrap: wrap; gap: 1rem; }
+      .sched-item { grid-template-columns: 80px 1fr; gap: 1rem; }
+      .sched-time { padding-right: .75rem; font-size: .8rem; }
+      .modal-header { flex-wrap: wrap; }
+    }
+    body.nav-open .nav-links {
+      display: flex; flex-direction: column; position: fixed; inset: 0;
+      background: rgba(13,33,53,.97); align-items: center; justify-content: center;
+      gap: 2.5rem; z-index: 998;
+    }
+    body.nav-open .nav-links a { font-size: 1.4rem; }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ──────────────────────────────────── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo" id="nav-logo-text">RB<span>ras</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#datas">Datas</a></li>
+      <li><a href="#palestrantes">Palestrantes</a></li>
+      <li><a href="#programacao">Programação</a></li>
+      <li><a href="#local">Local</a></li>
+      <li><a href="#comissao">Comissão</a></li>
+      <li><a href="#inscricoes" class="nav-cta" id="nav-cta-link">Inscreva-se</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────── -->
+<section id="hero">
+  <canvas id="particleCanvas"></canvas>
+  <svg class="hero-botanical" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M200 580 Q200 400 200 200" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M200 480 Q260 420 320 400" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 420 Q140 360 80 340" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 360 Q270 300 340 280" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <path d="M200 300 Q130 250 60 240" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="320" cy="400" r="8" fill="white"/><circle cx="340" cy="390" r="5" fill="white"/>
+    <circle cx="335" cy="412" r="6" fill="white"/><circle cx="355" cy="398" r="4" fill="white"/>
+    <circle cx="80"  cy="340" r="8" fill="white"/><circle cx="62"  cy="330" r="5" fill="white"/>
+    <circle cx="68"  cy="352" r="6" fill="white"/><circle cx="45"  cy="338" r="4" fill="white"/>
+    <circle cx="340" cy="280" r="8" fill="white"/><circle cx="358" cy="268" r="6" fill="white"/>
+    <circle cx="352" cy="292" r="5" fill="white"/><circle cx="370" cy="276" r="4" fill="white"/>
+    <circle cx="60"  cy="240" r="8" fill="white"/><circle cx="42"  cy="228" r="5" fill="white"/>
+    <circle cx="48"  cy="254" r="6" fill="white"/><circle cx="26"  cy="238" r="4" fill="white"/>
+  </svg>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="tag tag--gold reveal" id="hero-tag">70ª Edição · 2026</span>
+        <h1 class="hero-title display reveal reveal-delay-1">
+          <span class="edition" id="hero-subtitle">Reunião Brasileira de</span>
+          RBras
+        </h1>
+        <p class="hero-tagline reveal reveal-delay-2" id="hero-tagline">
+          Dados que revelam <strong>Vida</strong>
+        </p>
+        <div class="hero-info reveal reveal-delay-2">
+          <div class="hero-info-item">
+            <div class="icon">📅</div>
+            <div>
+              <strong style="color:white;display:block" id="hero-datas">23–25 de Novembro de 2026</strong>
+              <span style="color:rgba(255,255,255,.6);font-size:.85rem">3 dias de congresso</span>
+            </div>
+          </div>
+          <div class="hero-info-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong style="color:white;display:block" id="hero-cidade">Campinas, SP</strong>
+              <span style="color:rgba(255,255,255,.6);font-size:.85rem" id="hero-local-nome">Local a confirmar</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#" class="btn btn--primary" id="hero-btn-inscricoes">Inscreva-se ↗</a>
+          <a href="#programacao" class="btn btn--outline">Ver Programação</a>
+        </div>
+      </div>
+      <div class="hero-countdown reveal reveal-delay-4" id="countdown">
+        <div class="cd-unit"><div class="cd-num" id="cd-days">000</div><div class="cd-label">dias</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-hours">00</div><div class="cd-label">horas</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-mins">00</div><div class="cd-label">min</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">seg</div></div>
+      </div>
+    </div>
+  </div>
+  <svg class="wave-bottom" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+  </svg>
+</section>
+
+<!-- ─── SOBRE ─────────────────────────────────────── -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-visual reveal">
+        <div class="sobre-card">
+          <h3 style="color:var(--gold-light);font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.5rem">Uma edição histórica</h3>
+          <p style="color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.7">
+            A 70ª RBras celebra sete décadas de contribuições à estatística e biometria no Brasil — reunindo pesquisadores, estudantes e profissionais de todo o país.
+          </p>
+          <div class="sobre-stats">
+            <div class="sobre-stat"><span class="num">70</span><span class="lbl">anos de história</span></div>
+            <div class="sobre-stat"><span class="num">500+</span><span class="lbl">participantes esperados</span></div>
+            <div class="sobre-stat"><span class="num">3</span><span class="lbl">dias de evento</span></div>
+            <div class="sobre-stat"><span class="num">10+</span><span class="lbl">minicursos</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sobre-text reveal reveal-delay-1">
+        <span class="tag tag--teal">Sobre o Evento</span>
+        <div class="accent-bar" style="margin-top:1rem"></div>
+        <h2 class="section-title">A maior reunião de <span>biometria e estatística</span> do Brasil</h2>
+        <div class="section-body">
+          <p>A Reunião Brasileira de Biometria e Estatística Aplicada (RBras) é o principal fórum nacional para a troca de conhecimentos e avanços nas áreas de estatística, biometria e disciplinas relacionadas.</p>
+          <p>Em sua 70ª edição, o tema <em>"Dados que revelam Vida"</em> convida pesquisadores e profissionais a explorar como métodos estatísticos e biométricos estão transformando ciências da vida, saúde, agricultura e meio ambiente.</p>
+          <p>Promovida pela <strong>Região Brasileira da Sociedade Internacional de Biometria (RBras)</strong>, a edição de 2026 acontece em Campinas, SP, reconhecida como um dos maiores polos científicos e tecnológicos do Brasil.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DATAS IMPORTANTES ────────────────────────── -->
+<section id="datas">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--blue">Calendário</span>
+      <h2 class="section-title" style="margin-top:1rem">Datas <span>Importantes</span></h2>
+      <p class="section-body">Fique atento aos prazos para submissão de trabalhos e inscrições.</p>
+    </div>
+    <div class="dates-grid" id="dates-grid">
+      <!-- preenchido via dates.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── PALESTRANTES ─────────────────────────────── -->
+<section id="palestrantes">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--gold">Keynotes</span>
+      <h2 class="section-title" style="margin-top:1rem">Palestrantes <span>Convidados</span></h2>
+      <p class="section-body">Clique em um palestrante para ver o resumo da palestra.</p>
+    </div>
+    <div class="speakers-grid" id="speakers-grid">
+      <!-- preenchido via speakers.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── MODAL PALESTRANTE ─────────────────────────── -->
+<div id="speaker-modal" role="dialog" aria-modal="true" aria-labelledby="modal-speaker-name">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-photo" id="modal-photo">👤</div>
+      <div class="modal-speaker-info">
+        <h2 id="modal-speaker-name">Nome</h2>
+        <div class="role" id="modal-role"></div>
+        <div class="org"  id="modal-org"></div>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Palestra</h3>
+      <div class="modal-topic" id="modal-topic"></div>
+      <h3>Resumo</h3>
+      <div class="modal-abstract" id="modal-abstract"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PROGRAMAÇÃO ──────────────────────────────── -->
+<section id="programacao">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--teal">Agenda</span>
+      <h2 class="section-title" style="margin-top:1rem">Programação <span>Científica</span></h2>
+      <p class="section-body">Programação preliminar — sujeita a alterações.</p>
+    </div>
+    <div class="sched-tabs reveal" id="sched-tabs">
+      <!-- gerado via schedule.json -->
+    </div>
+    <div id="sched-days-container">
+      <!-- gerado via schedule.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── LOCAL ─────────────────────────────────────── -->
+<section id="local">
+  <div class="container">
+    <div class="venue-grid">
+      <div class="venue-map reveal">
+        <iframe
+          src="https://maps.google.com/maps?q=IMECC+Unicamp+Rua+Sergio+Buarque+de+Holanda+651+Campinas+SP&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa — IMECC/Unicamp, Campinas SP">
+        </iframe>
+      </div>
+      <div class="venue-details reveal reveal-delay-1">
+        <span class="tag tag--blue">Local do Evento</span>
+        <div class="accent-bar" style="margin-top:1rem"></div>
+        <h2 class="section-title">IMECC · <span>Unicamp</span></h2>
+        <p class="section-body">O Instituto de Matemática, Estatística e Computação Científica da Unicamp é um dos mais destacados centros de pesquisa em estatística e matemática do país — um palco especialmente simbólico para a edição comemorativa de 70 anos da RBras.</p>
+        <div class="venue-facts">
+          <div class="venue-fact">
+            <div class="venue-fact-icon">🏛️</div>
+            <div class="venue-fact-body">
+              <h4 id="venue-local-nome">IMECC — Unicamp</h4>
+              <p id="venue-local-end">Rua Sérgio Buarque de Holanda, 651<br>Cidade Universitária Zeferino Vaz<br>Campinas, SP · CEP 13083-859</p>
+            </div>
+          </div>
+          <div class="venue-fact">
+            <div class="venue-fact-icon">✈️</div>
+            <div class="venue-fact-body"><h4>Acesso aéreo</h4><p>Aeroporto de Viracopos (VCP) · a ~20 km · Aeroporto de Congonhas (CGH) · a ~100 km</p></div>
+          </div>
+          <div class="venue-fact">
+            <div class="venue-fact-icon">🏨</div>
+            <div class="venue-fact-body"><h4>Hospedagem</h4><p>Lista de hotéis parceiros será divulgada em breve</p></div>
+          </div>
+          <div class="venue-fact">
+            <div class="venue-fact-icon">🌡️</div>
+            <div class="venue-fact-body"><h4>Clima em Novembro</h4><p>Verão · 20–30 °C · temporada de chuvas</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMISSÃO ──────────────────────────────────── -->
+<section id="comissao">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--teal">Organização</span>
+      <h2 class="section-title" style="margin-top:1rem">Comissão <span>Organizadora</span></h2>
+      <p class="section-body">A equipe responsável pela realização da 70ª RBras.</p>
+    </div>
+    <div class="comissao-groups" id="comissao-groups">
+      <!-- preenchido via committee.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── PATROCINADORES ───────────────────────────── -->
+<section id="patrocinadores">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:3rem">
+      <span class="tag tag--gold">Apoio</span>
+      <h2 class="section-title" style="margin-top:1rem">Patrocinadores &amp; <span>Apoiadores</span></h2>
+    </div>
+    <div class="sponsors-tiers reveal" id="sponsors-tiers">
+      <!-- preenchido via sponsors.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA INSCRIÇÕES ───────────────────────────── -->
+<section id="inscricoes">
+  <div class="container reveal">
+    <p class="cta-title">Pronto para fazer parte da história?</p>
+    <p class="cta-sub">Garanta sua vaga na maior reunião de biometria e estatística do Brasil.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn--primary" style="font-size:1.05rem;padding:1em 2.4em" id="cta-inscricoes">Inscreva-se agora ↗</a>
+      <a href="#" class="btn btn--outline" style="font-size:1.05rem;padding:1em 2.4em" id="cta-submissao">Submeter trabalho</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">RB<span>ras</span></div>
+        <p id="footer-desc">Reunião Brasileira de Biometria e Estatística Aplicada · 70ª Edição · Campinas, SP · 23–25 de Novembro de 2026</p>
+        <p style="margin-top:.75rem;font-size:.82rem">Dados que revelam <span style="color:var(--gold)">Vida</span></p>
+      </div>
+      <div class="footer-col">
+        <h4>Evento</h4>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#datas">Datas Importantes</a></li>
+          <li><a href="#programacao">Programação</a></li>
+          <li><a href="#local">Local</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Participação</h4>
+        <ul>
+          <li><a href="#inscricoes">Inscrições</a></li>
+          <li><a href="#inscricoes">Submissão de Trabalhos</a></li>
+          <li><a href="#palestrantes">Palestrantes</a></li>
+          <li><a href="#patrocinadores">Patrocinadores</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#" id="footer-email">contato@rbras2026.com.br</a></li>
+          <li><a href="#comissao">Comissão Organizadora</a></li>
+          <li><a href="#" id="footer-site-rbras">RBras.org.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p id="footer-copy">© 2026 70ª RBras · Região Brasileira da Sociedade Internacional de Biometria</p>
+      <div class="social-links" id="social-links">
+        <a href="#" class="social-link" id="social-instagram" aria-label="Instagram">📸</a>
+        <a href="#" class="social-link" id="social-twitter"   aria-label="Twitter/X">𝕏</a>
+        <a href="#" class="social-link" id="social-linkedin"  aria-label="LinkedIn">in</a>
+        <a href="#" class="social-link" id="social-youtube"   aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── DATA FILES (edite os arquivos em data/) ───── -->
+<script src="data/config.js"></script>
+<script src="data/speakers.js"></script>
+<script src="data/dates.js"></script>
+<script src="data/schedule.js"></script>
+<script src="data/committee.js"></script>
+<script src="data/sponsors.js"></script>
+
+<!-- ─── SCRIPTS ───────────────────────────────────── -->
+<script>
+/* ═══════════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════════ */
+function revealAll() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+
+/* ═══════════════════════════════════════════════
+   CONFIG
+═══════════════════════════════════════════════ */
+async function applyConfig() {
+  const { evento, redes_sociais } = CONFIG;
+
+  // hero
+  document.getElementById('hero-datas').textContent     = evento.datas_exibicao;
+  document.getElementById('hero-cidade').textContent    = evento.cidade;
+  document.getElementById('hero-local-nome').textContent= evento.local_nome;
+  document.getElementById('hero-btn-inscricoes').href   = evento.link_inscricoes;
+  // cta
+  document.getElementById('cta-inscricoes').href  = evento.link_inscricoes;
+  document.getElementById('cta-submissao').href   = evento.link_submissao;
+  document.getElementById('nav-cta-link').href    = evento.link_inscricoes;
+  // venue (o HTML já traz o conteúdo real; config.js serve de fonte de verdade)
+  if (evento.local_nome)     document.getElementById('venue-local-nome').textContent = evento.local_instituicao
+    ? evento.local_nome
+    : evento.local_nome;
+  // footer
+  document.getElementById('footer-desc').textContent =
+    `${evento.nome} · ${evento.cidade} · ${evento.datas_exibicao}`;
+  document.getElementById('footer-copy').textContent =
+    `© 2026 ${evento.edicao} · Região Brasileira da Sociedade Internacional de Biometria`;
+  const mailEl = document.getElementById('footer-email');
+  mailEl.href = 'mailto:' + evento.email_contato;
+  mailEl.textContent = evento.email_contato;
+  document.getElementById('footer-site-rbras').href = evento.site_rbras;
+  // social
+  document.getElementById('social-instagram').href = redes_sociais.instagram;
+  document.getElementById('social-twitter').href   = redes_sociais.twitter;
+  document.getElementById('social-linkedin').href  = redes_sociais.linkedin;
+  document.getElementById('social-youtube').href   = redes_sociais.youtube;
+
+  // countdown target
+  startCountdown(new Date(evento.inicio + 'T09:00:00'));
+}
+
+/* ═══════════════════════════════════════════════
+   COUNTDOWN
+═══════════════════════════════════════════════ */
+function startCountdown(target) {
+  function pad(n, l=2) { return String(n).padStart(l,'0'); }
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<p style="color:var(--gold-light);font-weight:700;font-size:1.2rem">O evento começou! 🎉</p>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000)  / 60000);
+    const s = Math.floor((diff % 60000)    / 1000);
+    document.getElementById('cd-days').textContent  = pad(d,3);
+    document.getElementById('cd-hours').textContent = pad(h);
+    document.getElementById('cd-mins').textContent  = pad(m);
+    document.getElementById('cd-secs').textContent  = pad(s);
+  }
+  tick(); setInterval(tick, 1000);
+}
+
+/* ═══════════════════════════════════════════════
+   DATAS IMPORTANTES
+═══════════════════════════════════════════════ */
+async function renderDates() {
+  const dates = DATES;
+  const grid  = document.getElementById('dates-grid');
+  grid.innerHTML = dates.map((d, i) => `
+    <div class="date-card reveal${i>0?' reveal-delay-'+i:''}" data-cor="${d.cor}">
+      <div class="date-icon date-icon--${d.cor}">${d.icone}</div>
+      <h3>${d.titulo}</h3>
+      <div class="date-val">${d.data}</div>
+      <p class="date-note">${d.descricao}</p>
+    </div>`).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   PALESTRANTES + MODAL
+═══════════════════════════════════════════════ */
+async function renderSpeakers() {
+  const speakers = SPEAKERS;
+  const grid     = document.getElementById('speakers-grid');
+
+  grid.innerHTML = speakers.map((s, i) => {
+    const delay = i > 0 && i < 4 ? ` reveal-delay-${i}` : '';
+    const foto  = s.foto
+      ? `<img src="${s.foto}" alt="${s.nome}" loading="lazy">`
+      : '👤';
+    return `
+      <div class="speaker-card reveal${delay}" data-index="${i}" role="button" tabindex="0" aria-label="Ver resumo de ${s.nome}">
+        <div class="speaker-photo">${foto}</div>
+        <div class="speaker-name">${s.nome}</div>
+        <div class="speaker-role">${s.tipo}</div>
+        <div class="speaker-org">${s.instituicao}</div>
+        <div class="speaker-topic">${s.tema}</div>
+        <div class="speaker-hint">↗ clique para ver o resumo</div>
+      </div>`;
+  }).join('');
+
+  // modal open
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.speaker-card');
+    if (!card) return;
+    openModal(speakers[+card.dataset.index]);
+  });
+  grid.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const card = e.target.closest('.speaker-card');
+      if (card) openModal(speakers[+card.dataset.index]);
+    }
+  });
+}
+
+function openModal(s) {
+  const modal = document.getElementById('speaker-modal');
+  const foto  = s.foto
+    ? `<img src="${s.foto}" alt="${s.nome}" loading="lazy">`
+    : '👤';
+  document.getElementById('modal-photo').innerHTML        = foto;
+  document.getElementById('modal-speaker-name').textContent = s.nome;
+  document.getElementById('modal-role').textContent       = s.tipo;
+  document.getElementById('modal-org').textContent        = s.instituicao;
+  document.getElementById('modal-topic').textContent      = s.tema;
+  document.getElementById('modal-abstract').textContent   = s.resumo;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('speaker-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ═══════════════════════════════════════════════
+   PROGRAMAÇÃO
+═══════════════════════════════════════════════ */
+async function renderSchedule() {
+  const days = SCHEDULE;
+  const tabs      = document.getElementById('sched-tabs');
+  const container = document.getElementById('sched-days-container');
+
+  tabs.innerHTML = days.map((d, i) => `
+    <button class="sched-tab${i===0?' active':''}"
+            onclick="showDay('sched-day-${i}', this)">${d.dia}</button>`).join('');
+
+  container.innerHTML = days.map((d, i) => `
+    <div class="sched-day${i===0?' active':''}" id="sched-day-${i}">
+      <div class="sched-timeline">
+        ${d.atividades.map(a => `
+          <div class="sched-item">
+            <div class="sched-time">${a.horario}</div>
+            <div class="sched-body">
+              <span class="sched-type type-${a.tipo}">${TYPE_LABELS[a.tipo]||a.tipo}</span>
+              <h4>${a.titulo}</h4>
+              ${a.descricao ? `<p>${a.descricao}</p>` : ''}
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+const TYPE_LABELS = {
+  keynote: 'Keynote',
+  mini:    'Minicurso',
+  session: 'Sessão Temática',
+  social:  'Social',
+  break:   'Intervalo'
+};
+
+function showDay(id, btn) {
+  document.querySelectorAll('.sched-day').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.sched-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ═══════════════════════════════════════════════
+   COMISSÃO
+═══════════════════════════════════════════════ */
+async function renderCommittee() {
+  const groups = COMMITTEE;
+  document.getElementById('comissao-groups').innerHTML = groups.map((g, i) => `
+    <div class="comissao-group reveal${i>0?' reveal-delay-'+i:''}">
+      <h3>${g.grupo}</h3>
+      <ul class="comissao-list">
+        ${g.membros.map(m => `
+          <li><div>${m.nome}<span class="affil">${m.instituicao}</span></div></li>`).join('')}
+      </ul>
+    </div>`).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   PATROCINADORES
+═══════════════════════════════════════════════ */
+async function renderSponsors() {
+  const tiers = SPONSORS;
+  document.getElementById('sponsors-tiers').innerHTML = tiers.map(t => `
+    <div class="sponsor-tier">
+      <h3>${t.tier}</h3>
+      <div class="sponsor-logos">
+        ${t.patrocinadores.map(p => `
+          <a href="${p.url}" class="sponsor-logo sponsor-logo--${t.nivel}" target="_blank" rel="noopener" title="${p.nome}">
+            ${p.logo ? `<img src="${p.logo}" alt="${p.nome}">` : `<span>${p.nome}</span>`}
+          </a>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   PARTICLES
+═══════════════════════════════════════════════ */
+(function() {
+  const canvas = document.getElementById('particleCanvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H, particles = [];
+  const COLORS = ['rgba(201,162,39,','rgba(58,175,160,','rgba(255,255,255,'];
+  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  resize(); window.addEventListener('resize', resize);
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x = Math.random()*W; this.y = init ? Math.random()*H : H+10;
+      this.r = Math.random()*4+1.5; this.vx = (Math.random()-.5)*.3; this.vy = -(Math.random()*.4+.15);
+      this.color = COLORS[Math.floor(Math.random()*COLORS.length)]; this.a = Math.random()*.5+.1;
+      this.pulse = Math.random()*Math.PI*2;
+    }
+    update() { this.x+=this.vx; this.y+=this.vy; this.pulse+=.02; if(this.y<-20) this.reset(false); }
+    draw() {
+      const op = this.a*(.7+.3*Math.sin(this.pulse));
+      ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fillStyle = this.color+op+')'; ctx.fill();
+    }
+  }
+  for(let i=0;i<90;i++) particles.push(new Particle());
+  function loop() { ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(loop); }
+  loop();
+})();
+
+/* ═══════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════ */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY>60));
+document.getElementById('hamburger').addEventListener('click', () => document.body.classList.toggle('nav-open'));
+document.getElementById('navLinks').addEventListener('click', e => { if(e.target.tagName==='A') document.body.classList.remove('nav-open'); });
+
+/* ═══════════════════════════════════════════════
+   BOOT
+═══════════════════════════════════════════════ */
+Promise.all([
+  applyConfig(),
+  renderDates(),
+  renderSpeakers(),
+  renderSchedule(),
+  renderCommittee(),
+  renderSponsors()
+]).then(() => {
+  revealAll();
+}).catch(err => {
+  console.error('Erro ao carregar dados:', err);
+  revealAll(); // exibe o que já foi renderizado
+});
+</script>
+</body>
+</html>
