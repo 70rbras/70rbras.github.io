@@ -9,37 +9,51 @@
 
 const DATES = [
   {
-    titulo:    "Submissão de Resumos",
-    data:      "31 ago 2026",
-    descricao: "Prazo para envio de resumos expandidos (até 2 páginas)",
+    titulo:    "Trabalhos Orais e Pôsteres",
+    data:      "4 mai 2026 -- 15 ago 2026",
+    descricao: "Prazo de submissão de trabalhos e pôsteres",
     icone:     "📝",
     cor:       "blue"
   },
   {
     titulo:    "Notificação de Aceite",
-    data:      "30 set 2026",
+    data:      "14 set 2026",
     descricao: "Retorno sobre aprovação e modalidade de apresentação",
     icone:     "✉️",
     cor:       "teal"
   },
   {
-    titulo:    "Inscrição com Desconto",
-    data:      "15 out 2026",
-    descricao: "Prazo para tarifa de inscrição antecipada",
-    icone:     "🎓",
+    titulo:    "Divulgação de Aceite",
+    data:      "15 set 2026",
+    descricao: "Divulgação de trabalhos aceitos",
+    icone:     "✉️",
+    cor:       "teal"
+  },
+  {
+    titulo:    "Propostas de Sessões Temáticas, Mesas Rendondas e Minicursos",
+    data:      "4 mai 2026 -- 5 jun 2026",
+    descricao: "Prazo de submissão de propostas para sessões temáticas, mesas redondas e minicursos",
+    icone:     "📝",
+    cor:       "blue"
+  },
+  {
+    titulo:    "Início das Inscrições",
+    data:      "5 mai 2026",
+    descricao: "Início das inscrições no evento",
+    icone:     "🖊",
     cor:       "gold"
   },
   {
-    titulo:    "Envio da Versão Final",
-    data:      "31 out 2026",
-    descricao: "Prazo para submissão do trabalho completo revisado",
-    icone:     "📄",
-    cor:       "olive"
+    titulo:    "Fim das Inscrições com Desconto",
+    data:      "30 set 2026",
+    descricao: "Final do prazo de inscrição no evento com desconto",
+    icone:     "🖊",
+    cor:       "gold"
   },
   {
     titulo:    "Inscrição Regular",
-    data:      "10 nov 2026",
-    descricao: "Prazo final para inscrições (valor cheio)",
+    data:      "1 out 2026",
+    descricao: "Início de inscrições regulares (valor cheio)",
     icone:     "🖊️",
     cor:       "blue"
   },

@@ -17,20 +17,20 @@ const SPONSORS = [
     tier:  "🥈 Prata",
     nivel: "silver",
     patrocinadores: [
-      { nome: "Embrapa", logo: "", url: "https://embrapa.br"   },
-      { nome: "Unicamp", logo: "", url: "https://unicamp.br"   },
-      { nome: "CAPES",   logo: "", url: "https://capes.gov.br" }
+      { nome: "X", logo: "", url: "https://site"   },
+      { nome: "Y", logo: "", url: "https://site"   },
+      { nome: "Z",   logo: "", url: "https://site" }
     ]
   },
   {
     tier:  "🥉 Bronze & Apoio",
     nivel: "bronze",
     patrocinadores: [
-      { nome: "ABE",           logo: "", url: "#"                               },
-      { nome: "ISI",           logo: "", url: "https://isi-web.org"             },
-      { nome: "IBS",           logo: "", url: "https://biometricsociety.org"    },
-      { nome: "SAS Institute", logo: "", url: "https://sas.com"                },
-      { nome: "R Consortium",  logo: "", url: "https://r-consortium.org"        }
+      { nome: "A",           logo: "", url: "#"                               },
+      { nome: "B",           logo: "", url: "https://b"             },
+      { nome: "C",           logo: "", url: "https://c"    },
+      { nome: "D", logo: "", url: "https://d"                },
+      { nome: "E",  logo: "", url: "https://e"        }
     ]
   }
 ];
