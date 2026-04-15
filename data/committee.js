@@ -26,13 +26,13 @@ const COMMITTEE = [
     {
     grupo: "⚙️ Comissão Científica",
     membros: [
-      { nome: "Prof. Dr. Agatha Sacramento Rodrigues",  instituicao: "UFES"},
+      { nome: "Profa. Dra. Agatha Sacramento Rodrigues",  instituicao: "UFES"},
       { nome: "Prof. Dr. Anderson Luiz Ara",   instituicao: "UFPR"},
-      { nome: "Prof. Dr. Daiane Aparecida Zuanetti",     instituicao: "UFSCar"},
+      { nome: "Profa. Dra. Daiane Aparecida Zuanetti",     instituicao: "UFSCar"},
       { nome: "Profa. Dra. Fernanda Lang Schumacher",  instituicao: "The Ohio State University"},
-      { nome: "Profa. Dra. Idemauro Antonio Rodrigues de Lara", instituicao: "ESALQ (USP)"},
-      { nome: "Prof. Dr. Nancy Lopes Garcia", instituicao: "UNICAMP"},
-      { nome: "Profa. Dra. Rafael de Andrade Moral", instituicao: "Maynooth University"},
+      { nome: "Prof. Dr. Idemauro Antonio Rodrigues de Lara", instituicao: "ESALQ (USP)"},
+      { nome: "Profa. Dra. Nancy Lopes Garcia", instituicao: "UNICAMP"},
+      { nome: "Prof. Dr. Rafael de Andrade Moral", instituicao: "Maynooth University"},
       { nome: "Profa. Dra. Vera Lucia Damasceno Tomazella", instituicao: "UFSCar e UFPB"},
       { nome: "Prof. Dr. Victor Hugo Lachos", instituicao: " University of Connecticut"}
 
