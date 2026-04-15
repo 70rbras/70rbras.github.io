@@ -26,7 +26,6 @@ const COMMITTEE = [
     {
     grupo: "⚙️ Comissão Científica",
     membros: [
-      { nome:, instituicao: },
       { nome: "Prof. Dr. Agatha Sacramento Rodrigues",  instituicao: "UFES"},
       { nome: "Prof. Dr. Anderson Luiz Ara",   instituicao: "UFPR"},
       { nome: "Prof. Dr. Daiane Aparecida Zuanetti",     instituicao: "UFSCar"},
