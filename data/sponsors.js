@@ -17,20 +17,14 @@ const SPONSORS = [
     tier:  "🥈 Prata",
     nivel: "silver",
     patrocinadores: [
-      { nome: "X", logo: "", url: "https://site"   },
-      { nome: "Y", logo: "", url: "https://site"   },
-      { nome: "Z",   logo: "", url: "https://site" }
+      // Adicione patrocinadores Prata aqui: { nome: "Nome", logo: "assets/logos/nome.png", url: "https://..." }
     ]
   },
   {
     tier:  "🥉 Bronze & Apoio",
     nivel: "bronze",
     patrocinadores: [
-      { nome: "A",           logo: "", url: "#"                               },
-      { nome: "B",           logo: "", url: "https://b"             },
-      { nome: "C",           logo: "", url: "https://c"    },
-      { nome: "D", logo: "", url: "https://d"                },
-      { nome: "E",  logo: "", url: "https://e"        }
+      // Adicione patrocinadores Bronze/Apoio aqui: { nome: "Nome", logo: "assets/logos/nome.png", url: "https://..." }
     ]
   }
 ];
