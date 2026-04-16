@@ -316,42 +316,49 @@
     .comissao-card-header h3 { font-size: 1rem; font-weight: 700; letter-spacing: .01em; }
     /* Mini-cards dos membros */
     .comissao-member-grid {
-      display: flex; flex-wrap: wrap; gap: .85rem;
+      display: flex; flex-wrap: wrap; gap: 1rem;
       padding: 1.5rem 2rem;
+      justify-content: center;
     }
     .comissao-member-card {
-      background: var(--off-white); border-radius: 12px; padding: .8rem 1rem;
-      display: flex; align-items: center; gap: .85rem;
-      flex: 1 1 240px; min-width: 210px;
+      background: var(--off-white); border-radius: 14px;
+      padding: 1.3rem .9rem 1rem;
+      display: flex; flex-direction: column; align-items: center; gap: .6rem;
+      flex: 0 1 260px; min-width: 220px; text-align: center;
       transition: box-shadow var(--transition), transform var(--transition);
     }
     .comissao-member-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.1); transform: translateY(-2px); }
     .comissao-member-card.is-coord { outline: 2px solid var(--gold); outline-offset: -2px; }
     .comissao-member-photo {
-      width: 52px; height: 52px; border-radius: 50%;
+      width: 120px; height: 120px; border-radius: 50%;
       background: linear-gradient(135deg, var(--blue), var(--teal));
       overflow: hidden; flex-shrink: 0;
       display: grid; place-items: center;
-      border: 2px solid var(--white);
-      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+      border: 3px solid var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,.18);
     }
     .comissao-member-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .comissao-member-initials { color: #fff; font-weight: 700; font-size: .95rem; letter-spacing: .04em; user-select: none; }
-    .comissao-member-info .name { font-size: .87rem; font-weight: 600; color: var(--text-dark); line-height: 1.3; }
-    .comissao-member-info .affil { font-size: .75rem; color: var(--text-mid); margin-top: .1rem; }
+    .comissao-member-initials { color: #fff; font-weight: 700; font-size: 1.25rem; letter-spacing: .04em; user-select: none; }
+    .comissao-member-info { display: flex; flex-direction: column; align-items: center; gap: .15rem; }
+    .comissao-member-info .name { font-size: .8rem; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+    .comissao-member-info .affil { font-size: .68rem; color: var(--text-mid); }
     .coord-badge {
       display: inline-block;
-      font-size: .62rem; font-weight: 700; letter-spacing: .07em;
+      font-size: .6rem; font-weight: 700; letter-spacing: .07em;
       text-transform: uppercase; padding: .12em .55em;
       border-radius: 999px; background: var(--gold);
-      color: var(--blue); margin-left: .4rem;
-      vertical-align: middle; white-space: nowrap;
+      color: var(--blue); white-space: nowrap;
+    }
+    .comissao-member-grid--coord { justify-content: center; padding-bottom: 0; }
+    .comissao-coord-divider {
+      margin: 0 2rem;
+      border: none; border-top: 1px solid rgba(0,0,0,.07);
     }
     /* Links Lattes / Website */
-    .member-links { display: inline-flex; gap: .3rem; margin-top: .3rem; flex-wrap: wrap; }
+    .member-links { display: inline-flex; gap: .3rem; margin-top: .2rem; flex-wrap: wrap; justify-content: center; }
     .member-link {
       display: inline-flex; align-items: center; gap: .25em;
-      font-size: .65rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      font-size: .62rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
       padding: .18em .6em; border-radius: 999px;
       text-decoration: none; transition: var(--transition);
     }
@@ -956,34 +963,47 @@ function getInitials(nome) {
 
 function renderCommittee() {
   document.getElementById('comissoes-grid').innerHTML =
-    COMMITTEE.map((c, i) => `
-      <div class="comissao-card reveal${i > 0 ? ' reveal-delay-1' : ''}">
-        <div class="comissao-card-header">
-          <span class="card-icon">${c.icone}</span>
-          <h3>${c.titulo}</h3>
-        </div>
-        <div class="comissao-member-grid">
-          ${c.membros.map(m => {
-            const initials = getInitials(m.nome);
-            const photoHTML = m.foto
-              ? `<img src="${m.foto}" alt="${m.nome}" loading="lazy">`
-              : `<span class="comissao-member-initials">${initials}</span>`;
-            const links = [
-              m.lattes  ? `<a class="member-link member-link--lattes"  href="${m.lattes}"  target="_blank" rel="noopener">Lattes</a>`  : '',
-              m.website ? `<a class="member-link member-link--website" href="${m.website}" target="_blank" rel="noopener">↗ Site</a>` : ''
-            ].filter(Boolean).join('');
-            return `
-              <div class="comissao-member-card${m.coordenador ? ' is-coord' : ''}">
-                <div class="comissao-member-photo">${photoHTML}</div>
-                <div class="comissao-member-info">
-                  <div class="name">${m.nome}${m.coordenador ? '<span class="coord-badge">Coord.</span>' : ''}</div>
-                  <div class="affil">${m.instituicao}</div>
-                  ${links ? `<span class="member-links">${links}</span>` : ''}
-                </div>
-              </div>`;
-          }).join('')}
-        </div>
-      </div>`).join('');
+    COMMITTEE.map((c, i) => {
+      const coords  = c.membros.filter(m =>  m.coordenador);
+      const members = c.membros.filter(m => !m.coordenador);
+
+      function memberCard(m) {
+        const initials = getInitials(m.nome);
+        const photoHTML = m.foto
+          ? `<img src="${m.foto}" alt="${m.nome}" loading="lazy">`
+          : `<span class="comissao-member-initials">${initials}</span>`;
+        const links = [
+          m.lattes  ? `<a class="member-link member-link--lattes"  href="${m.lattes}"  target="_blank" rel="noopener">Lattes</a>`  : '',
+          m.website ? `<a class="member-link member-link--website" href="${m.website}" target="_blank" rel="noopener">↗ Site</a>` : ''
+        ].filter(Boolean).join('');
+        return `
+          <div class="comissao-member-card${m.coordenador ? ' is-coord' : ''}">
+            <div class="comissao-member-photo">${photoHTML}</div>
+            <div class="comissao-member-info">
+              <div class="name">${m.nome}</div>
+              ${m.coordenador ? '<span class="coord-badge">Coordenadora</span>' : ''}
+              <div class="affil">${m.instituicao}</div>
+              ${links ? `<span class="member-links">${links}</span>` : ''}
+            </div>
+          </div>`;
+      }
+
+      return `
+        <div class="comissao-card reveal${i > 0 ? ' reveal-delay-1' : ''}">
+          <div class="comissao-card-header">
+            <span class="card-icon">${c.icone}</span>
+            <h3>${c.titulo}</h3>
+          </div>
+          ${coords.length ? `
+          <div class="comissao-member-grid comissao-member-grid--coord">
+            ${coords.map(memberCard).join('')}
+          </div>
+          <div class="comissao-coord-divider"></div>` : ''}
+          <div class="comissao-member-grid">
+            ${members.map(memberCard).join('')}
+          </div>
+        </div>`;
+    }).join('');
 }
 
 /* ═══════════════════════════════════════════════
