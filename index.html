@@ -297,12 +297,10 @@
     /* COMISSÕES                                    */
     /* ──────────────────────────────────────────── */
     #comissao { padding: 6rem 0; background: var(--off-white); }
-    /* Grid lado a lado */
+    /* Cards empilhados verticalmente */
     .comissoes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2rem;
-      align-items: start;
+      display: flex; flex-direction: column;
+      gap: 2rem; max-width: 900px; margin-inline: auto;
     }
     .comissao-card {
       background: var(--white); border-radius: var(--radius);
@@ -316,40 +314,45 @@
     }
     .comissao-card-header .card-icon { font-size: 1.1rem; }
     .comissao-card-header h3 { font-size: 1rem; font-weight: 700; letter-spacing: .01em; }
-    .comissao-list {
-      list-style: none;
-      display: flex; flex-direction: column;
-      padding: 1.25rem 2rem; gap: 0;
+    /* Mini-cards dos membros */
+    .comissao-member-grid {
+      display: flex; flex-wrap: wrap; gap: .85rem;
+      padding: 1.5rem 2rem;
     }
-    .comissao-list li {
-      display: flex; align-items: flex-start; gap: .7rem;
-      font-size: .9rem; padding: .65rem 0;
-      border-bottom: 1px solid var(--off-white);
+    .comissao-member-card {
+      background: var(--off-white); border-radius: 12px; padding: .8rem 1rem;
+      display: flex; align-items: center; gap: .85rem;
+      flex: 1 1 240px; min-width: 210px;
+      transition: box-shadow var(--transition), transform var(--transition);
     }
-    .comissao-list li:last-child { border-bottom: none; }
-    /* Bullet padrão vs. coordenador */
-    .comissao-list li::before {
-      content: ''; width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold); flex-shrink: 0; margin-top: .38rem;
+    .comissao-member-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.1); transform: translateY(-2px); }
+    .comissao-member-card.is-coord { outline: 2px solid var(--gold); outline-offset: -2px; }
+    .comissao-member-photo {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      overflow: hidden; flex-shrink: 0;
+      display: grid; place-items: center;
+      border: 2px solid var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
     }
-    .comissao-list li.is-coord::before {
-      background: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,39,.25);
-    }
+    .comissao-member-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .comissao-member-initials { color: #fff; font-weight: 700; font-size: .95rem; letter-spacing: .04em; user-select: none; }
+    .comissao-member-info .name { font-size: .87rem; font-weight: 600; color: var(--text-dark); line-height: 1.3; }
+    .comissao-member-info .affil { font-size: .75rem; color: var(--text-mid); margin-top: .1rem; }
     .coord-badge {
       display: inline-block;
-      font-size: .65rem; font-weight: 700; letter-spacing: .07em;
-      text-transform: uppercase; padding: .15em .6em;
+      font-size: .62rem; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; padding: .12em .55em;
       border-radius: 999px; background: var(--gold);
-      color: var(--blue); margin-left: .45rem;
+      color: var(--blue); margin-left: .4rem;
       vertical-align: middle; white-space: nowrap;
     }
-    .comissao-list .affil { font-size: .77rem; color: var(--text-mid); display: block; margin-top: .05rem; }
     /* Links Lattes / Website */
-    .member-links { display: inline-flex; gap: .3rem; margin-top: .35rem; flex-wrap: wrap; }
+    .member-links { display: inline-flex; gap: .3rem; margin-top: .3rem; flex-wrap: wrap; }
     .member-link {
       display: inline-flex; align-items: center; gap: .25em;
-      font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-      padding: .2em .65em; border-radius: 999px;
+      font-size: .65rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      padding: .18em .6em; border-radius: 999px;
       text-decoration: none; transition: var(--transition);
     }
     .member-link--lattes  { background: #1B5E8B; color: #fff; }
@@ -943,6 +946,14 @@ function showDay(id, btn) {
 /* ═══════════════════════════════════════════════
    COMISSÕES
 ═══════════════════════════════════════════════ */
+function getInitials(nome) {
+  const TITLES = ['Prof.','Dr.','Profa.','Dra.','Me.','Ms.','Msa.','MSc.','PhD.'];
+  const parts = nome.split(' ').filter(w => !TITLES.includes(w) && w.length > 1 && /^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/.test(w));
+  if (parts.length === 0) return nome[0];
+  if (parts.length === 1) return parts[0][0];
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
 function renderCommittee() {
   document.getElementById('comissoes-grid').innerHTML =
     COMMITTEE.map((c, i) => `
@@ -951,21 +962,27 @@ function renderCommittee() {
           <span class="card-icon">${c.icone}</span>
           <h3>${c.titulo}</h3>
         </div>
-        <ul class="comissao-list">
+        <div class="comissao-member-grid">
           ${c.membros.map(m => {
+            const initials = getInitials(m.nome);
+            const photoHTML = m.foto
+              ? `<img src="${m.foto}" alt="${m.nome}" loading="lazy">`
+              : `<span class="comissao-member-initials">${initials}</span>`;
             const links = [
               m.lattes  ? `<a class="member-link member-link--lattes"  href="${m.lattes}"  target="_blank" rel="noopener">Lattes</a>`  : '',
               m.website ? `<a class="member-link member-link--website" href="${m.website}" target="_blank" rel="noopener">↗ Site</a>` : ''
             ].filter(Boolean).join('');
-            return `<li${m.coordenador ? ' class="is-coord"' : ''}>
-              <div>
-                ${m.nome}${m.coordenador ? '<span class="coord-badge">Coordenação</span>' : ''}
-                <span class="affil">${m.instituicao}</span>
-                ${links ? `<span class="member-links">${links}</span>` : ''}
-              </div>
-            </li>`;
+            return `
+              <div class="comissao-member-card${m.coordenador ? ' is-coord' : ''}">
+                <div class="comissao-member-photo">${photoHTML}</div>
+                <div class="comissao-member-info">
+                  <div class="name">${m.nome}${m.coordenador ? '<span class="coord-badge">Coord.</span>' : ''}</div>
+                  <div class="affil">${m.instituicao}</div>
+                  ${links ? `<span class="member-links">${links}</span>` : ''}
+                </div>
+              </div>`;
           }).join('')}
-        </ul>
+        </div>
       </div>`).join('');
 }
 
