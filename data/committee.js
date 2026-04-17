@@ -22,13 +22,13 @@ const COMMITTEE = [
     membros: [
       { nome: "Mariana Rodrigues Motta",          instituicao: "UNICAMP", foto: null, coordenador: true, lattes: "http://lattes.cnpq.br/6624470698679448", website: "" },
       { nome: "Alex Rodrigo dos Santos Sousa",    instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/6521094728394053", website: "" },
-      { nome: "Benilton de Sá Carvalho",          instituicao: "UNICAMP", foto: "assets/fotos/benilton-400.png",                    lattes: "http://lattes.cnpq.br/0897291971174045", website: "" },
+      { nome: "Benilton Carvalho",          instituicao: "UNICAMP", foto: "assets/fotos/benilton-400.png",                    lattes: "http://lattes.cnpq.br/0897291971174045", website: "" },
       { nome: "Carlos Cesar Trucios Maza",        instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/9315014843913122", website: "" },
       { nome: "Larissa Ávila Matos",              instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/6330766834005870", website: "" },
       { nome: "Nancy Lopes Garcia",               instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/5717731375008770", website: "" },
       { nome: "Rafael Pimentel Maia",             instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/9151825716259032", website: "" },
       { nome: "Samara Flamini Kiihl",             instituicao: "UNICAMP", foto: "assets/fotos/samara-360.png",                    lattes: "http://lattes.cnpq.br/3841950980858699", website: "" },
-      { nome: "Tatiana Andrea Benaglia Carvalho", instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/1292097563479677", website: "" },
+      { nome: "Tatiana Benaglia", instituicao: "UNICAMP", foto: "assets/fotos/tatiana-400.png",                    lattes: "http://lattes.cnpq.br/1292097563479677", website: "" },
       { nome: "Victor Freguglia Souza",           instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/6306080581906246", website: "" }
     ]
   },
