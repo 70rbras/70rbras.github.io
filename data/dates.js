@@ -10,57 +10,43 @@
 const DATES = [
   {
     titulo:    "Trabalhos Orais e Pôsteres",
-    data:      "4 mai 2026 -- 15 ago 2026",
-    descricao: "Prazo de submissão de trabalhos e pôsteres",
+    data:      "4/mai a 15/ago",
+    descricao: "Submissão de trabalhos orais e pôsteres",
     icone:     "📝",
     cor:       "blue"
   },
   {
-    titulo:    "Notificação de Aceite",
-    data:      "14 set 2026",
-    descricao: "Retorno sobre aprovação e modalidade de apresentação",
-    icone:     "✉️",
-    cor:       "teal"
-  },
-  {
-    titulo:    "Divulgação de Aceite",
-    data:      "15 set 2026",
-    descricao: "Divulgação de trabalhos aceitos",
-    icone:     "✉️",
-    cor:       "teal"
-  },
-  {
-    titulo:    "Propostas de Sessões Temáticas, Mesas Rendondas e Minicursos",
-    data:      "4 mai 2026 -- 5 jun 2026",
-    descricao: "Prazo de submissão de propostas para sessões temáticas, mesas redondas e minicursos",
+    titulo:    "Sessões Temáticas, Mesas Rendondas e Minicursos",
+    data:      "4/mai a 5/jun",
+    descricao: "Submissão de propostas para sessões temáticas, mesas redondas e minicursos",
     icone:     "📝",
     cor:       "blue"
   },
   {
-    titulo:    "Início das Inscrições",
-    data:      "5 mai 2026",
-    descricao: "Início das inscrições no evento",
+    titulo:    "Inscrições com Desconto",
+    data:      "5/mai a 30/set",
+    descricao: "Inscrições com desconto no evento",
     icone:     "🖊",
     cor:       "gold"
   },
   {
-    titulo:    "Fim das Inscrições com Desconto",
-    data:      "30 set 2026",
-    descricao: "Final do prazo de inscrição no evento com desconto",
-    icone:     "🖊",
-    cor:       "gold"
+    titulo:    "Aceites",
+    data:      "14/set a 15/set",
+    descricao: "Notificação e divulgação sobre aprovação de apresentações e trabalhos",
+    icone:     "✉️",
+    cor:       "teal"
   },
   {
-    titulo:    "Inscrição Regular",
-    data:      "1 out 2026",
-    descricao: "Início de inscrições regulares (valor cheio)",
+    titulo:    "Inscrições sem Desconto",
+    data:      "1/out a 23/nov",
+    descricao: "Inscrições regulares (valor cheio)",
     icone:     "🖊️",
     cor:       "blue"
   },
   {
-    titulo:    "Realização do Evento",
-    data:      "23–25 Nov 2026",
-    descricao: "Campinas, São Paulo, Brasil",
+    titulo:    "70a RBras",
+    data:      "23/nov a 25/nov",
+    descricao: "Evento acontece na UNICAMP em Campinas, São Paulo, Brasil",
     icone:     "📅",
     cor:       "teal"
   }
