@@ -167,20 +167,217 @@
     /* DATAS IMPORTANTES                            */
     /* ──────────────────────────────────────────── */
     #datas { padding: 6rem 0; background: var(--off-white); }
-    .dates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
-    .date-card { background: var(--white); border-radius: var(--radius); padding: 1.8rem; border-top: 4px solid var(--blue); box-shadow: 0 2px 16px rgba(0,0,0,.07); transition: transform var(--transition), box-shadow var(--transition); }
-    .date-card[data-cor="teal"]  { border-color: var(--teal); }
-    .date-card[data-cor="gold"]  { border-color: var(--gold); }
-    .date-card[data-cor="olive"] { border-color: var(--olive); }
+    /* Layout assumido: 5 cards regulares + 1 card destacado (evento).
+       → Linha 1: 3 cards (span 2 em grid de 6 colunas)
+       → Linha 2: 2 cards (span 3)
+       → Linha 3: card destacado (full-width) */
+    .dates-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .date-card                                      { grid-column: span 2; }
+    .date-card:not(.date-card--featured):nth-child(4),
+    .date-card:not(.date-card--featured):nth-child(5) { grid-column: span 3; }
+    .date-card--featured                            { grid-column: 1 / -1; }
+
+    @media (max-width: 900px) {
+      .dates-grid { grid-template-columns: repeat(2, 1fr); }
+      .date-card,
+      .date-card:not(.date-card--featured):nth-child(4),
+      .date-card:not(.date-card--featured):nth-child(5) { grid-column: span 1; }
+      .date-card--featured { grid-column: 1 / -1; }
+    }
+    @media (max-width: 560px) {
+      .dates-grid { grid-template-columns: 1fr; }
+    }
+
+    .date-card {
+      position: relative;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.4rem 1.4rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+      border-top: 4px solid var(--blue-mid);
+    }
     .date-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
-    .date-icon { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-size: 1.3rem; margin-bottom: 1rem; }
-    .date-icon--blue  { background: rgba(27,78,121,.1); }
-    .date-icon--teal  { background: rgba(45,138,122,.1); }
-    .date-icon--gold  { background: rgba(201,162,39,.1); }
-    .date-icon--olive { background: rgba(107,142,35,.1); }
-    .date-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .4rem; }
-    .date-card .date-val { font-size: 1.4rem; font-weight: 700; color: var(--blue); font-variant-numeric: tabular-nums; }
-    .date-card .date-note { font-size: .82rem; color: var(--text-mid); margin-top: .35rem; }
+
+    .date-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: grid; place-items: center;
+      font-size: 1.3rem;
+      background: rgba(43,110,168,.1);
+    }
+
+    .date-card h3 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text-dark);
+      margin-top: .25rem;
+    }
+
+    .date-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--blue);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.01em;
+      line-height: 1.15;
+    }
+
+    .date-countdown {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+      margin-top: -.15rem;
+      letter-spacing: .01em;
+    }
+
+    .date-note {
+      font-size: .82rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+      margin-top: auto;
+      padding-top: .6rem;
+      border-top: 1px solid rgba(0,0,0,.05);
+    }
+
+    /* Badge de status — canto superior direito */
+    .date-status {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .3em .7em;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: .4em;
+      background: rgba(43,110,168,.12);
+      color: var(--blue);
+      white-space: nowrap;
+    }
+    .date-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--blue-mid);
+    }
+
+    /* ── STATUS: EM BREVE (upcoming) ───────────── */
+    .date-card[data-status="upcoming"] { border-top-color: var(--blue-mid); }
+    .date-card[data-status="upcoming"] .date-icon { background: rgba(43,110,168,.12); }
+    .date-card[data-status="upcoming"] .date-val { color: var(--blue); }
+    .date-card[data-status="upcoming"] .date-countdown { color: var(--blue-mid); }
+    .date-card[data-status="upcoming"] .date-status { background: rgba(43,110,168,.12); color: var(--blue); }
+    .date-card[data-status="upcoming"] .date-status::before { background: var(--blue-mid); }
+
+    /* ── STATUS: ABERTO AGORA (active) ─────────── */
+    .date-card[data-status="active"] {
+      border-top-color: var(--gold);
+      box-shadow: 0 4px 24px rgba(201,162,39,.22);
+    }
+    .date-card[data-status="active"] .date-icon { background: rgba(201,162,39,.15); }
+    .date-card[data-status="active"] .date-val { color: #8a6b00; }
+    .date-card[data-status="active"] .date-countdown { color: #8a6b00; }
+    .date-card[data-status="active"] .date-status { background: rgba(201,162,39,.18); color: #7a5f00; }
+    .date-card[data-status="active"] .date-status::before {
+      background: var(--gold);
+      animation: dateStatusPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes dateStatusPulse {
+      0%, 100% { opacity: 1;   transform: scale(1);   }
+      50%      { opacity: .35; transform: scale(1.4); }
+    }
+
+    /* ── STATUS: ENCERRADO (past) ──────────────── */
+    .date-card[data-status="past"] {
+      border-top-color: #cbd2da;
+      background: #f7f9fb;
+    }
+    .date-card[data-status="past"] .date-icon { background: rgba(95,107,120,.08); filter: grayscale(.5); }
+    .date-card[data-status="past"] h3         { color: #7a8694; }
+    .date-card[data-status="past"] .date-val  { color: #8a96a4; text-decoration: line-through; text-decoration-color: rgba(138,150,164,.5); }
+    .date-card[data-status="past"] .date-countdown { color: #8a96a4; }
+    .date-card[data-status="past"] .date-note { color: #8a96a4; }
+    .date-card[data-status="past"] .date-status { background: #e3e7ec; color: #5f6b78; }
+    .date-card[data-status="past"] .date-status::before { background: #9aa5b1; }
+
+    /* ── CARD DESTACADO (evento principal) ─────── */
+    /* Gradiente navy→blue (escuro em toda a extensão) garante contraste
+       consistente (~10:1) entre o dourado do valor/contagem e o fundo,
+       ao contrário do antigo blue→teal onde o teal é claro demais.
+       Usamos `.date-card--featured[data-status]` para empatar a
+       especificidade das regras `.date-card[data-status="…"] .xxx`
+       (ambas 0,3,0) — sem isso, o azul de "upcoming" derrotaria o
+       dourado do destacado no cálculo do CSS. */
+    .date-card--featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--text-dark) 0%, var(--blue) 100%);
+      border-top: none;
+      padding: 2.4rem 2.6rem;
+      color: var(--white);
+      box-shadow: 0 14px 44px rgba(13,33,53,.38);
+      gap: .55rem;
+      overflow: hidden;
+    }
+    .date-card--featured::before {
+      content: '70';
+      position: absolute;
+      right: -14px; bottom: -44px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; font-size: 11rem;
+      opacity: .14; line-height: 1;
+      color: var(--gold-light);
+      pointer-events: none;
+    }
+    .date-card--featured[data-status] .date-icon {
+      width: 64px; height: 64px;
+      background: rgba(255,255,255,.22);
+      font-size: 1.9rem;
+      filter: none;
+    }
+    .date-card--featured[data-status] h3 {
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.95rem;
+      margin-top: .4rem;
+    }
+    .date-card--featured[data-status] .date-val {
+      color: var(--gold-light);
+      font-size: 2.15rem;
+      text-decoration: none;
+    }
+    .date-card--featured[data-status] .date-countdown {
+      color: rgba(255,255,255,.95);
+      font-size: 1.02rem;
+    }
+    .date-card--featured[data-status] .date-note {
+      color: rgba(255,255,255,.82);
+      border-top: 1px solid rgba(255,255,255,.18);
+      padding-top: .95rem;
+      font-size: .95rem;
+    }
+    .date-card--featured[data-status] .date-status {
+      top: 1.3rem; right: 1.5rem;
+      background: var(--gold);
+      color: var(--text-dark);
+    }
+    .date-card--featured[data-status] .date-status::before {
+      background: var(--text-dark);
+    }
+    .date-card--featured:hover { transform: none; }
 
     /* ──────────────────────────────────────────── */
     /* PALESTRANTES                                 */
@@ -292,6 +489,10 @@
     .venue-fact-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--blue), var(--teal)); color: var(--white); display: grid; place-items: center; font-size: 1.1rem; flex-shrink: 0; }
     .venue-fact-body h4 { font-weight: 600; font-size: .95rem; margin-bottom: .15rem; }
     .venue-fact-body p  { font-size: .88rem; color: var(--text-mid); }
+    .airport-list { list-style: none; padding: 0; margin: .25rem 0 0 0; display: flex; flex-direction: column; gap: .35rem; }
+    .airport-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; color: var(--blue); text-decoration: none; transition: color .2s; }
+    .airport-link::before { content: "↗"; font-size: .75rem; opacity: .7; }
+    .airport-link:hover { color: var(--teal); text-decoration: underline; }
 
     /* ──────────────────────────────────────────── */
     /* COMISSÕES                                    */
@@ -646,7 +847,39 @@
           </div>
           <div class="venue-fact">
             <div class="venue-fact-icon">✈️</div>
-            <div class="venue-fact-body"><h4>Acesso aéreo</h4><p>Aeroporto de Viracopos (VCP) · a ~20 km · Aeroporto de Congonhas (CGH) · a ~100 km</p></div>
+            <div class="venue-fact-body">
+              <h4>Acesso aéreo</h4>
+              <ul class="airport-list">
+                <li>
+                  <a href="https://www.google.com/maps/dir/Aeroporto+Internacional+de+Viracopos,+Campinas,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link">
+                    <strong>VCP</strong> — Viracopos · Campinas · ~20 km
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.google.com/maps/dir/Aeroporto+de+Congonhas,+S%C3%A3o+Paulo,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link">
+                    <strong>CGH</strong> — Congonhas · São Paulo · ~100 km
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.google.com/maps/dir/Aeroporto+Internacional+de+Guarulhos,+Guarulhos,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link">
+                    <strong>GRU</strong> — Guarulhos · São Paulo · ~90 km
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="venue-fact">
+            <div class="venue-fact-icon">🚌</div>
+            <div class="venue-fact-body">
+              <h4>Acesso rodoviário</h4>
+              <ul class="airport-list">
+                <li>
+                  <a href="https://www.google.com/maps/dir/Rodoviária+de+Campinas,+Rua+Dr.+Pessôa+de+Melo,+Campinas,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link">
+                    <strong>Rodoviária de Campinas</strong> — Terminal Rodoviário · ~8 km
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="venue-fact">
             <div class="venue-fact-icon">🏨</div>
@@ -834,16 +1067,91 @@ function startCountdown(target) {
 /* ═══════════════════════════════════════════════
    DATAS IMPORTANTES
 ═══════════════════════════════════════════════ */
+const DATE_MONTHS_PT = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+
+function parseISODate(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+function formatDateRange(ini, fim) {
+  const pad = n => String(n).padStart(2, '0');
+  const di = ini.getDate(), mi = DATE_MONTHS_PT[ini.getMonth()], yi = ini.getFullYear();
+  const df = fim.getDate(), mf = DATE_MONTHS_PT[fim.getMonth()], yf = fim.getFullYear();
+  const sameDay   = ini.getTime() === fim.getTime();
+  const sameMonth = mi === mf && yi === yf;
+  if (sameDay)   return `${pad(di)} ${mi}`;
+  if (sameMonth) return `${pad(di)} – ${pad(df)} ${mf}`;
+  return `${pad(di)} ${mi} – ${pad(df)} ${mf}`;
+}
+
+function dateStatus(ini, fim, today) {
+  if (today < ini) return 'upcoming';
+  if (today > fim) return 'past';
+  return 'active';
+}
+
+function daysBetween(a, b) {
+  return Math.round((b - a) / 86400000);
+}
+
+function countdownLabel(ini, fim, status, today) {
+  if (status === 'past') return 'Encerrado';
+  if (status === 'upcoming') {
+    const n = daysBetween(today, ini);
+    if (n === 0) return 'Começa hoje';
+    if (n === 1) return 'Começa amanhã';
+    if (n <= 30) return `Começa em ${n} dias`;
+    return `Começa em ${n} dias`;
+  }
+  // active
+  const n = daysBetween(today, fim);
+  if (n === 0) return 'Último dia';
+  if (n === 1) return 'Termina amanhã';
+  return `${n} dias restantes`;
+}
+
+const DATE_STATUS_LABEL = {
+  past:     'Encerrado',
+  active:   'Aberto agora',
+  upcoming: 'Em breve'
+};
+
 async function renderDates() {
-  const dates = DATES;
-  const grid  = document.getElementById('dates-grid');
-  grid.innerHTML = dates.map((d, i) => `
-    <div class="date-card reveal${i>0?' reveal-delay-'+i:''}" data-cor="${d.cor}">
-      <div class="date-icon date-icon--${d.cor}">${d.icone}</div>
-      <h3>${d.titulo}</h3>
-      <div class="date-val">${d.data}</div>
-      <p class="date-note">${d.descricao}</p>
-    </div>`).join('');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const dates = DATES
+    .map(d => ({
+      ...d,
+      _ini: parseISODate(d.inicio),
+      _fim: parseISODate(d.fim)
+    }))
+    .sort((a, b) => {
+      // destaque (evento principal) vai para o final
+      if (a.destaque && !b.destaque) return  1;
+      if (!a.destaque && b.destaque) return -1;
+      return a._ini - b._ini;
+    });
+
+  const grid = document.getElementById('dates-grid');
+  grid.innerHTML = dates.map((d, i) => {
+    const status    = dateStatus(d._ini, d._fim, today);
+    const range     = formatDateRange(d._ini, d._fim);
+    const countdown = countdownLabel(d._ini, d._fim, status, today);
+    const delay     = i > 0 && i < 4 ? ' reveal-delay-' + i : '';
+    const featured  = d.destaque ? ' date-card--featured' : '';
+
+    return `
+      <div class="date-card reveal${delay}${featured}" data-status="${status}">
+        <span class="date-status">${DATE_STATUS_LABEL[status]}</span>
+        <div class="date-icon">${d.icone}</div>
+        <h3>${d.titulo}</h3>
+        <div class="date-val">${range}</div>
+        <div class="date-countdown">${countdown}</div>
+        <p class="date-note">${d.descricao}</p>
+      </div>`;
+  }).join('');
 }
 
 /* ═══════════════════════════════════════════════
