@@ -37,15 +37,15 @@ const COMMITTEE = [
     titulo: "Comissão Científica",
     icone: "🔬",
     membros: [
-      { nome: "Daiane Aparecida Zuanetti",          instituicao: "UFSCar",                    foto: null, coordenador: true , lattes: "http://lattes.cnpq.br/8352484284929824", website: "" },
-      { nome: "Agatha Sacramento Rodrigues",        instituicao: "UFES",                      foto: null,                    lattes: "http://lattes.cnpq.br/3445977720574534", website: "" },
-      { nome: "Anderson Luiz Ara",                  instituicao: "UFPR",                      foto: null,                    lattes: "http://lattes.cnpq.br/8916772290938469", website: "" },
-      { nome: "Fernanda Lang Schumacher",           instituicao: "The Ohio State University", foto: null,                    lattes: "http://lattes.cnpq.br/8132149083320545", website: "https://cph.osu.edu/doc/cv-resume/schumacher-fernanda-cv-0/view" },
+      { nome: "Daiane Aparecida Zuanetti",          instituicao: "UFSCar",                    foto: "assets/fotos/daiane-150.png", coordenador: true , lattes: "http://lattes.cnpq.br/8352484284929824", website: "" },
+      { nome: "Agatha Sacramento Rodrigues",        instituicao: "UFES",                      foto: "assets/fotos/agatha-400.png",                    lattes: "http://lattes.cnpq.br/3445977720574534", website: "" },
+      { nome: "Anderson Luiz Ara",                  instituicao: "UFPR",                      foto: "assets/fotos/anderson-400.png",                    lattes: "http://lattes.cnpq.br/8916772290938469", website: "" },
+      { nome: "Fernanda Lang Schumacher",           instituicao: "The Ohio State University", foto: "assets/fotos/fernanda-200.png",                    lattes: "http://lattes.cnpq.br/8132149083320545", website: "https://cph.osu.edu/doc/cv-resume/schumacher-fernanda-cv-0/view" },
       { nome: "Idemauro Antonio Rodrigues de Lara", instituicao: "ESALQ (USP)",               foto: null,                    lattes: "http://lattes.cnpq.br/2458007865506934", website: "" },
       { nome: "Nancy Lopes Garcia",                 instituicao: "UNICAMP",                   foto: null,                    lattes: "http://lattes.cnpq.br/5717731375008770", website: "" },
-      { nome: "Rafael de Andrade Moral",            instituicao: "Maynooth University",        foto: null,                    lattes: "http://lattes.cnpq.br/8041441890541410", website: "https://rafamoral.github.io/index.html" },
-      { nome: "Vera Lucia Damasceno Tomazella",     instituicao: "UFSCar e UFPB",             foto: null,                    lattes: "http://lattes.cnpq.br/8870556978317000", website: "" },
-      { nome: "Victor Hugo Lachos",                 instituicao: "University of Connecticut",  foto: null,                    lattes: "http://lattes.cnpq.br/5456626204155096", website: "" }
+      { nome: "Rafael de Andrade Moral",            instituicao: "Maynooth University",        foto: "assets/fotos/rafaelmoral-400.png",                    lattes: "http://lattes.cnpq.br/8041441890541410", website: "https://rafamoral.github.io/index.html" },
+      { nome: "Vera Lucia Damasceno Tomazella",     instituicao: "UFSCar e UFPB",             foto: "assets/fotos/vera-400.png",                    lattes: "http://lattes.cnpq.br/8870556978317000", website: "" },
+      { nome: "Victor Hugo Lachos",                 instituicao: "University of Connecticut",  foto: "assets/fotos/victorhugo-400.png",                    lattes: "http://lattes.cnpq.br/5456626204155096", website: "" }
     ]
   }
 ];
