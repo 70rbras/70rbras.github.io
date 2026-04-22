@@ -20,10 +20,10 @@ const COMMITTEE = [
     titulo: "Comissão Organizadora",
     icone: "⚙️",
     membros: [
-      { nome: "Mariana Rodrigues Motta",          instituicao: "UNICAMP", foto: null, coordenador: true, lattes: "http://lattes.cnpq.br/6624470698679448", website: "" },
+      { nome: "Mariana Rodrigues Motta",          instituicao: "UNICAMP", foto: "assets/fotos/mariana-300.png", coordenador: true, lattes: "http://lattes.cnpq.br/6624470698679448", website: "" },
       { nome: "Alex Rodrigo dos Santos Sousa",    instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/6521094728394053", website: "" },
       { nome: "Benilton Carvalho",          instituicao: "UNICAMP", foto: "assets/fotos/benilton-400.png",                    lattes: "http://lattes.cnpq.br/0897291971174045", website: "" },
-      { nome: "Carlos Cesar Trucios Maza",        instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/9315014843913122", website: "" },
+      { nome: "Carlos Cesar Trucios Maza",        instituicao: "UNICAMP", foto: "assets/fotos/trucios-300.png",                    lattes: "http://lattes.cnpq.br/9315014843913122", website: "" },
       { nome: "Larissa Ávila Matos",              instituicao: "UNICAMP", foto: "assets/fotos/larissa-400.png",                    lattes: "http://lattes.cnpq.br/6330766834005870", website: "" },
       { nome: "Nancy Lopes Garcia",               instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/5717731375008770", website: "" },
       { nome: "Rafael Pimentel Maia",             instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/9151825716259032", website: "" },
