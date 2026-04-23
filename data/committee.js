@@ -43,7 +43,7 @@ const COMMITTEE = [
       { nome: "Fernanda Lang Schumacher",           instituicao: "The Ohio State University", foto: "assets/fotos/fernanda-200.png",                   lattes: "http://lattes.cnpq.br/8132149083320545", website: "https://cph.osu.edu/doc/cv-resume/schumacher-fernanda-cv-0/view" },
       { nome: "Idemauro Antonio Rodrigues de Lara", instituicao: "ESALQ (USP)",               foto: "assets/fotos/idemauro-400.png",                   lattes: "http://lattes.cnpq.br/2458007865506934", website: "" },
       { nome: "Nancy Lopes Garcia",                 instituicao: "UNICAMP",                   foto: "assets/fotos/nancy-400.png",                      lattes: "http://lattes.cnpq.br/5717731375008770", website: "" },
-      { nome: "Rafael de Andrade Moral",            instituicao: "Maynooth University",       foto: "assets/fotos/rafaelmoral-400.png",                lattes: "http://lattes.cnpq.br/8041441890541410", website: "https://rafamoral.github.io/index.html" },
+      { nome: "Rafael de Andrade Moral",            instituicao: "Maynooth University",       foto: "assets/fotos/rafaelmoral-400.png",                lattes: "http://lattes.cnpq.br/8041441890541410", website:  "https://rafamoral.github.io/index.html" },
       { nome: "Vera Lucia Damasceno Tomazella",     instituicao: "UFSCar e UFPB",             foto: "assets/fotos/vera-400.png",                       lattes: "http://lattes.cnpq.br/8870556978317000", website: "" },
       { nome: "Victor Hugo Lachos",                 instituicao: "University of Connecticut", foto: "assets/fotos/victorhugo-400.png",                 lattes: "http://lattes.cnpq.br/5456626204155096", website: "" }
     ]
