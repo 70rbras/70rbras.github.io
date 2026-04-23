@@ -29,7 +29,7 @@ const COMMITTEE = [
       { nome: "Rafael Pimentel Maia",             instituicao: "UNICAMP", foto: "assets/fotos/rafael-400.png",                    lattes: "http://lattes.cnpq.br/9151825716259032", website: "" },
       { nome: "Samara Flamini Kiihl",             instituicao: "UNICAMP", foto: "assets/fotos/samara-360.png",                    lattes: "http://lattes.cnpq.br/3841950980858699", website: "" },
       { nome: "Tatiana Benaglia", instituicao: "UNICAMP", foto: "assets/fotos/tatiana-400.png",                    lattes: "http://lattes.cnpq.br/1292097563479677", website: "" },
-      { nome: "Victor Freguglia Souza",           instituicao: "UNICAMP", foto: null,                    lattes: "http://lattes.cnpq.br/6306080581906246", website: "" }
+      { nome: "Victor Freguglia Souza",           instituicao: "UNICAMP", foto: "assets/fotos/victor-200.png",                    lattes: "http://lattes.cnpq.br/6306080581906246", website: "" }
     ]
   },
   {
