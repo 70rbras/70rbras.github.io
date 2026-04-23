@@ -1,6 +1,6 @@
 // ─── PALESTRANTES CONVIDADOS ─────────────────────────────────────────────────
 // Adicione ou edite palestrantes nesta lista.
-// Campos:
+// Campos para registro:
 //   nome        → nome completo do palestrante
 //   instituicao → instituição e país
 //   tipo        → ex: "Keynote Speaker" ou "Palestrante Convidado(a)"
