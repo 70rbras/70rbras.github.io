@@ -4,22 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>70ª RBras 2026 — Dados que revelam Vida</title>
+  <link rel="icon" type="image/png" href="assets/logos/logo-escuro.png">
+  <meta property="og:title" content="70ª RBras 2026 — Dados que revelam Vida">
+  <meta property="og:description" content="Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 23–25 Nov 2026 · Campinas, SP">
+  <meta property="og:image" content="assets/logos/logo-claro.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="assets/logos/logo-claro.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ── TOKENS ────────────────────────────────── */
+    /* ── TOKENS — paleta extraída do logo 70ª RBras ─ */
     :root {
-      --blue:        #1B4E79;
-      --blue-mid:    #2B6EA8;
-      --teal:        #2D8A7A;
-      --teal-light:  #3AAFA0;
-      --gold:        #C9A227;
-      --gold-light:  #E6C547;
-      --olive:       #6B8E23;
-      --green-dark:  #2D5A27;
-      --off-white:   #F4F7FA;
+      --blue:        #1A3870;   /* navy escuro do logo (fundo Logo B)       */
+      --blue-mid:    #2560AC;   /* azul médio das barras de gráfico do logo  */
+      --teal:        #2A9080;   /* teal do texto "RBras" e "Dados"           */
+      --teal-light:  #38AAAA;   /* teal claro (pontos acácia teal do logo)   */
+      --gold:        #D6A818;   /* dourado dos pontos/flores do logo         */
+      --gold-light:  #EAC830;   /* dourado brilhante (hover/destaque)        */
+      --olive:       #5A9C28;   /* verde das folhas do galho do logo         */
+      --green-dark:  #2D5820;   /* verde escuro complementar                 */
+      --off-white:   #F2F6FA;
       --white:       #FFFFFF;
-      --text-dark:   #0D2135;
+      --text-dark:   #0C1C3A;   /* navy mais profundo (tom mais escuro logo) */
       --text-mid:    #3A5068;
       --radius:      14px;
       --transition:  0.35s cubic-bezier(.4,0,.2,1);
@@ -104,8 +111,14 @@
       padding: .65rem 0;
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .nav-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.45rem; color: var(--white); letter-spacing: -.01em; }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo-img {
+      height: 46px; width: auto; object-fit: contain;
+      /* sem border-radius: fundo transparente */
+      transition: opacity var(--transition), transform var(--transition);
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.3));
+    }
+    .nav-logo-img:hover { opacity: .88; transform: scale(1.04); }
     .nav-links { display: flex; list-style: none; gap: 2rem; }
     .nav-links a { color: rgba(255,255,255,.8); font-size: .88rem; font-weight: 500; letter-spacing: .02em; transition: color var(--transition); position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width var(--transition); }
@@ -122,28 +135,77 @@
     /* ──────────────────────────────────────────── */
     #hero {
       min-height: 100svh; display: flex; align-items: center;
-      background: linear-gradient(135deg, #0D2135 0%, var(--blue) 45%, var(--teal) 100%);
+      background: linear-gradient(135deg, #09152E 0%, var(--blue) 50%, var(--teal) 100%);
       overflow: hidden;
     }
     #particleCanvas { position: absolute; inset: 0; pointer-events: none; }
     .hero-botanical {
       position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
-      width: clamp(280px, 38vw, 560px); opacity: .12; pointer-events: none;
+      width: clamp(280px, 38vw, 560px); opacity: .06; pointer-events: none;
     }
+    /* Grade principal: logo (esq) | conteúdo (dir) */
     .hero-content {
       position: relative; z-index: 2; padding: 8rem 0 5rem;
-      display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+      display: grid; grid-template-columns: auto 1fr; gap: 5rem; align-items: center;
     }
-    .hero-text .tag { margin-bottom: 1.5rem; }
-    .hero-title { font-size: clamp(2.8rem, 6vw, 5.2rem); color: var(--white); margin-bottom: .5rem; }
-    .hero-title .edition { font-size: .52em; display: block; color: var(--gold); letter-spacing: .04em; font-family: 'Inter', sans-serif; font-weight: 300; margin-bottom: .15em; }
-    .hero-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.1rem, 2.2vw, 1.6rem); color: rgba(255,255,255,.75); margin-bottom: 2rem; }
+    /* ── COLUNA ESQUERDA: logo ───────────────────── */
+    .hero-logo-col {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-logo-img {
+      width: clamp(280px, 42vw, 520px);
+      height: auto;
+      filter: drop-shadow(0 16px 48px rgba(0,0,0,.55))
+              drop-shadow(0  4px 20px rgba(42,144,128,.20));
+      animation: heroLogoReveal 1.1s cubic-bezier(.4,0,.2,1) both;
+    }
+    @keyframes heroLogoReveal {
+      from { opacity: 0; transform: translateX(-20px) scale(.96); }
+      to   { opacity: 1; transform: none; }
+    }
+    /* ── COLUNA DIREITA: texto ───────────────────── */
+    .hero-text-col {
+      display: flex; flex-direction: column; align-items: flex-start;
+    }
+    .hero-text-col .tag { margin-bottom: 1.25rem; }
+    /* Nome do evento — grande, dourado */
+    .hero-display {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(3.8rem, 6.5vw, 7.5rem);
+      color: var(--gold); line-height: 1;
+      letter-spacing: -.025em; margin-bottom: .4rem;
+    }
+    /* Nome completo — discreto, abaixo do display */
+    .hero-fullname {
+      font-size: clamp(.8rem, 1.25vw, .95rem);
+      color: rgba(255,255,255,.5);
+      line-height: 1.6; margin-bottom: 1rem; max-width: 42ch;
+    }
+    /* Tema — itálico, destaque dourado em "Vida" */
+    .hero-tagline {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.1rem, 1.9vw, 1.55rem);
+      color: rgba(255,255,255,.82); margin-bottom: 1.75rem;
+    }
     .hero-tagline strong { color: var(--gold-light); font-style: normal; }
-    .hero-info { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+    /* ── LOGO NO FOOTER ─────────────────────────── */
+    .footer-logo-img {
+      height: 72px; width: auto; object-fit: contain;
+      /* sem border-radius: fundo transparente */
+      margin-bottom: 1rem;
+      display: block;
+      filter: drop-shadow(0 2px 12px rgba(0,0,0,.4));
+    }
+    .hero-info { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 1.75rem; }
     .hero-info-item { display: flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.9); font-size: .95rem; }
     .hero-info-item .icon { width: 36px; height: 36px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 50%; display: grid; place-items: center; font-size: 1rem; flex-shrink: 0; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .hero-countdown { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: var(--radius); padding: 1.8rem 2rem; display: flex; gap: 1.5rem; backdrop-filter: blur(8px); flex-shrink: 0; }
+    .hero-countdown {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius); padding: 1.4rem 1.8rem;
+      display: flex; gap: 1.5rem; backdrop-filter: blur(8px);
+      align-self: flex-start; margin-bottom: 1.75rem;
+    }
     .cd-unit { text-align: center; min-width: 52px; }
     .cd-num { font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; font-variant-numeric: tabular-nums; }
     .cd-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.55); margin-top: .3rem; }
@@ -596,7 +658,7 @@
     /* ──────────────────────────────────────────── */
     #footer { background: var(--text-dark); color: rgba(255,255,255,.65); padding: 4rem 0 2rem; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.1); }
-    .footer-brand .nav-logo { font-size: 1.3rem; margin-bottom: 1rem; }
+    .footer-brand .footer-logo-img { margin-bottom: 1rem; }
     .footer-brand p { font-size: .88rem; line-height: 1.7; }
     .footer-col h4 { color: var(--white); font-size: .88rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.2rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
@@ -610,13 +672,20 @@
     /* ──────────────────────────────────────────── */
     /* RESPONSIVE                                   */
     /* ──────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .hero-content { grid-template-columns: 1fr; }
-      .hero-countdown { justify-content: center; }
+    @media (max-width: 960px) {
+      .hero-content { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+      .hero-logo-col { justify-content: center; }
+      .hero-logo-img { width: clamp(220px, 60vw, 380px); }
+      .hero-text-col { align-items: center; }
+      .hero-fullname { text-align: center; }
+      .hero-countdown { align-self: center; justify-content: center; }
+      .hero-info { justify-content: center; }
+      .hero-actions { justify-content: center; }
       .sobre-grid, .venue-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .nav-logo-img { height: 38px; }
     }
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
@@ -624,6 +693,8 @@
       .sched-item { grid-template-columns: 80px 1fr; gap: 1rem; }
       .sched-time { padding-right: .75rem; font-size: .8rem; }
       .modal-header { flex-wrap: wrap; }
+      .hero-logo-img { width: clamp(180px, 65vw, 260px); }
+      .hero-display { font-size: clamp(3rem, 14vw, 4.5rem); }
     }
     body.nav-open .nav-links {
       display: flex; flex-direction: column; position: fixed; inset: 0;
@@ -638,7 +709,9 @@
 <!-- ─── NAVBAR ──────────────────────────────────── -->
 <nav id="navbar">
   <div class="container nav-inner">
-    <a href="#hero" class="nav-logo" id="nav-logo-text">RB<span>ras</span></a>
+    <a href="#hero" class="nav-logo" id="nav-logo-text">
+      <img class="nav-logo-img" src="assets/logos/logo-transparente.png" alt="70ª RBras 2026">
+    </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#palestrantes">Palestrantes</a></li>
@@ -674,15 +747,34 @@
   </svg>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-text">
-        <span class="tag tag--gold reveal" id="hero-tag">70ª Edição · 2026</span>
-        <h1 class="hero-title display reveal reveal-delay-1">
-          <span class="edition" id="hero-subtitle">Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria</span>
-          RBras
-        </h1>
-        <p class="hero-tagline reveal reveal-delay-2" id="hero-tagline">
+
+      <!-- ── COLUNA ESQUERDA: logo grande ─────────── -->
+      <div class="hero-logo-col">
+        <img
+          class="hero-logo-img"
+          src="assets/logos/logo-transparente.png"
+          alt="70ª RBras 2026 — Dados que revelam Vida"
+          id="hero-logo"
+        >
+      </div>
+
+      <!-- ── COLUNA DIREITA: nome + info + countdown ─ -->
+      <div class="hero-text-col">
+
+        <span class="tag tag--gold reveal">70ª Edição · 2026</span>
+
+        <!-- Nome do evento em destaque dourado -->
+        <h1 class="hero-display reveal reveal-delay-1">RBras</h1>
+        <p class="hero-fullname reveal reveal-delay-1" id="hero-subtitle">
+          Reunião Anual da Região Brasileira da<br>Sociedade Internacional de Biometria
+        </p>
+
+        <!-- Tema do evento -->
+        <p class="hero-tagline reveal reveal-delay-2">
           Dados que revelam <strong>Vida</strong>
         </p>
+
+        <!-- Data e local -->
         <div class="hero-info reveal reveal-delay-2">
           <div class="hero-info-item">
             <div class="icon">📅</div>
@@ -699,19 +791,24 @@
             </div>
           </div>
         </div>
-        <div class="hero-actions reveal reveal-delay-3">
+
+        <!-- Contagem regressiva -->
+        <div class="hero-countdown reveal reveal-delay-3" id="countdown">
+          <div class="cd-unit"><div class="cd-num" id="cd-days">000</div><div class="cd-label">dias</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><div class="cd-num" id="cd-hours">00</div><div class="cd-label">horas</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><div class="cd-num" id="cd-mins">00</div><div class="cd-label">min</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">seg</div></div>
+        </div>
+
+        <!-- Botões de ação -->
+        <div class="hero-actions reveal reveal-delay-4">
           <a href="#" class="btn btn--primary" id="hero-btn-inscricoes">Inscreva-se ↗</a>
           <a href="#programacao" class="btn btn--outline">Ver Programação</a>
         </div>
-      </div>
-      <div class="hero-countdown reveal reveal-delay-4" id="countdown">
-        <div class="cd-unit"><div class="cd-num" id="cd-days">000</div><div class="cd-label">dias</div></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-num" id="cd-hours">00</div><div class="cd-label">horas</div></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-num" id="cd-mins">00</div><div class="cd-label">min</div></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">seg</div></div>
+
       </div>
     </div>
   </div>
@@ -939,9 +1036,8 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="nav-logo">RB<span>ras</span></div>
+        <img class="footer-logo-img" src="assets/logos/logo-transparente.png" alt="70ª RBras 2026">
         <p id="footer-desc">Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 70ª Edição · Campinas, SP · 23–25 de Novembro de 2026</p>
-        <p style="margin-top:.75rem;font-size:.82rem">Dados que revelam <span style="color:var(--gold)">Vida</span></p>
       </div>
       <div class="footer-col">
         <h4>Evento</h4>
