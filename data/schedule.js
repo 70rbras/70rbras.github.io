@@ -2,7 +2,9 @@
 // Estrutura: cada dia possui "blocos" de horário.
 // Cada bloco tem um "horario" e um array de "itens" (eventos simultâneos).
 // Tipos: "keynote" | "mini" | "session" | "social" | "break"
-// Campos do item: tipo, titulo, fim (opcional), descricao (opcional), local (opcional), maps_url (opcional)
+// Campos do item: tipo, titulo, fim (opcional), inicio (opcional), descricao (opcional), local (opcional), maps_url (opcional)
+// Nota: "inicio" no item sobrescreve o "horario" do bloco no card — útil quando atividades dentro de um
+// mesmo bloco têm horários de início diferentes (ex.: bloco 08:00 com item que começa às 08:30).
 
 const SCHEDULE = [
   {
@@ -12,7 +14,7 @@ const SCHEDULE = [
       {
         horario: "08:00",
         itens: [
-          { tipo: "social", titulo: "Inscrições e Credenciamento", fim: "10:00", descricao: "Início às 9h",  local: "A ser determinado", maps_url: "" },
+          { tipo: "social", titulo: "Inscrições e Credenciamento", inicio: "09:00", fim: "16:00", descricao: "Início às 9h",  local: "A ser determinado", maps_url: "" },
           { tipo: "mini",   titulo: "Minicurso M-1",               fim: "10:00", descricao: "",              local: "Sala A" },
           { tipo: "mini",   titulo: "Minicurso M-2",               fim: "10:00", descricao: "",              local: "Sala B" }
         ]

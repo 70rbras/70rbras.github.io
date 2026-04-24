@@ -1537,9 +1537,10 @@ const MAPS_ICON  = `<svg width="11" height="11" viewBox="0 0 12 12" fill="none" 
 function renderCard(item, inicio) {
   const isBreak = item.tipo === 'break';
 
-  // Faixa de horário
-  const tempoHTML = (inicio || item.fim)
-    ? `<span class="sched-card-time">${CLOCK_ICON}${inicio}${item.fim ? `<span class="sched-time-sep">–</span>${item.fim}` : ''}</span>`
+  // Faixa de horário — item.inicio sobrescreve o horário do bloco, se definido
+  const inicioCard = item.inicio || inicio;
+  const tempoHTML = (inicioCard || item.fim)
+    ? `<span class="sched-card-time">${CLOCK_ICON}${inicioCard}${item.fim ? `<span class="sched-time-sep">–</span>${item.fim}` : ''}</span>`
     : '';
 
   // Local + link Maps
