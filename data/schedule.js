@@ -1,48 +1,183 @@
 // ─── PROGRAMAÇÃO CIENTÍFICA ───────────────────────────────────────────────────
-// Cada item do array representa um dia do evento.
-// Tipos de atividade: "keynote" | "mini" | "session" | "social" | "break"
+// Estrutura: cada dia possui "blocos" de horário.
+// Cada bloco tem um "horario" e um array de "itens" (eventos simultâneos).
+// Tipos: "keynote" | "mini" | "session" | "social" | "break"
+// Campos do item: tipo, titulo, fim (opcional), descricao (opcional), local (opcional), maps_url (opcional)
 
 const SCHEDULE = [
   {
     dia:           "23 nov · Seg",
     data_completa: "23 de novembro de 2026",
-    atividades: [
-      { horario: "08:00", tipo: "mini",    titulo: "Minicursos M-1 e M-2 (simultâneos)",                         descricao: "Inscrições abertas a partir das 9h no saguão principal" },
-      { horario: "10:00", tipo: "break",   titulo: "Café",                                                        descricao: "" },
-      { horario: "10:30", tipo: "social",  titulo: "Cerimônia de Abertura",                                       descricao: "" },
-      { horario: "11:30", tipo: "keynote", titulo: "C-1",                                                         descricao: "Conferência convidada" },
-      { horario: "12:30", tipo: "break",   titulo: "Almoço",                                                      descricao: "" },
-      { horario: "14:00", tipo: "session", titulo: "Sessões Temáticas e Comunicações Orais (simultâneas)",        descricao: "ST-1 · ST-2 · ST-3 · CO-1 · IC-M-D" },
-      { horario: "15:30", tipo: "keynote", titulo: "C-2",                                                         descricao: "Conferência convidada" },
-      { horario: "16:30", tipo: "break",   titulo: "Café",                                                        descricao: "" },
-      { horario: "17:30", tipo: "session", titulo: "Sessão de Pôsteres 1",                                        descricao: "Apresentação e discussão de trabalhos no formato painel" }
+    blocos: [
+      {
+        horario: "08:00",
+        itens: [
+          { tipo: "social", titulo: "Inscrições e Credenciamento", fim: "10:00", descricao: "Início às 9h",  local: "A ser determinado", maps_url: "" },
+          { tipo: "mini",   titulo: "Minicurso M-1",               fim: "10:00", descricao: "",              local: "Sala A" },
+          { tipo: "mini",   titulo: "Minicurso M-2",               fim: "10:00", descricao: "",              local: "Sala B" }
+        ]
+      },
+      {
+        horario: "10:00",
+        itens: [
+          { tipo: "break",  titulo: "Coffee-Break",                fim: "10:30", descricao: "",              local: "Saguão Principal" }
+        ]
+      },
+      {
+        horario: "10:30",
+        itens: [
+          { tipo: "social", titulo: "Cerimônia de Abertura",       fim: "11:30", descricao: "",              local: "Auditório" }
+        ]
+      },
+      {
+        horario: "11:30",
+        itens: [
+          { tipo: "keynote", titulo: "C-1",                        fim: "12:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+        ]
+      },
+      {
+        horario: "12:30",
+        itens: [
+          { tipo: "break",  titulo: "Almoço",                      fim: "14:00", descricao: "",              local: "" }
+        ]
+      },
+      {
+        horario: "14:00",
+        itens: [
+          { tipo: "session", titulo: "ST-1",   fim: "15:30", descricao: "Sessão Temática 1",  local: "Sala 101" },
+          { tipo: "session", titulo: "ST-2",   fim: "15:30", descricao: "Sessão Temática 2",  local: "Sala 102" },
+          { tipo: "session", titulo: "ST-3",   fim: "15:30", descricao: "Sessão Temática 3",  local: "Sala 103" },
+          { tipo: "session", titulo: "CO-1",   fim: "15:30", descricao: "Comunicações Orais", local: "Sala 104" },
+          { tipo: "session", titulo: "IC-M-D", fim: "15:30", descricao: "Iniciação Científica", local: "Sala 105" }
+        ]
+      },
+      {
+        horario: "15:30",
+        itens: [
+          { tipo: "keynote", titulo: "C-2",                        fim: "16:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+        ]
+      },
+      {
+        horario: "16:30",
+        itens: [
+          { tipo: "break",  titulo: "Café",                        fim: "17:30", descricao: "",              local: "Saguão Principal" }
+        ]
+      },
+      {
+        horario: "17:30",
+        itens: [
+          { tipo: "session", titulo: "Sessão de Pôsteres 1",       fim: "19:00", descricao: "Apresentação e discussão de trabalhos no formato painel", local: "Área de Pôsteres" }
+        ]
+      }
     ]
   },
   {
     dia:           "24 nov · Ter",
     data_completa: "24 de novembro de 2026",
-    atividades: [
-      { horario: "08:00", tipo: "mini",    titulo: "Minicursos M-1 e M-2 (simultâneos)",                         descricao: "Continuação dos minicursos do dia anterior" },
-      { horario: "10:00", tipo: "break",   titulo: "Café",                                                        descricao: "" },
-      { horario: "10:30", tipo: "keynote", titulo: "C-3",                                                         descricao: "Conferência convidada" },
-      { horario: "11:30", tipo: "session", titulo: "Sessão de Pôsteres 2",                                        descricao: "Apresentação e discussão de trabalhos no formato painel" },
-      { horario: "12:30", tipo: "break",   titulo: "Almoço",                                                      descricao: "" },
-      { horario: "14:00", tipo: "social",  titulo: "CNPEM",                                                       descricao: "Atividade especial — Centro Nacional de Pesquisa em Energia e Materiais" },
-      { horario: "17:30", tipo: "social",  titulo: "Reunião RBras / Prêmio RBras",                                descricao: "Assembleia e entrega de premiações da Região Brasileira da IBS" }
+    blocos: [
+      {
+        horario: "08:00",
+        itens: [
+          { tipo: "mini",   titulo: "Minicurso M-1",               fim: "10:00", descricao: "Continuação do dia anterior", local: "Sala A" },
+          { tipo: "mini",   titulo: "Minicurso M-2",               fim: "10:00", descricao: "Continuação do dia anterior", local: "Sala B" }
+        ]
+      },
+      {
+        horario: "10:00",
+        itens: [
+          { tipo: "break",  titulo: "Café",                        fim: "10:30", descricao: "",              local: "Saguão Principal" }
+        ]
+      },
+      {
+        horario: "10:30",
+        itens: [
+          { tipo: "keynote", titulo: "C-3",                        fim: "11:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+        ]
+      },
+      {
+        horario: "11:30",
+        itens: [
+          { tipo: "session", titulo: "Sessão de Pôsteres 2",       fim: "12:30", descricao: "Apresentação e discussão de trabalhos no formato painel", local: "Área de Pôsteres" }
+        ]
+      },
+      {
+        horario: "12:30",
+        itens: [
+          { tipo: "break",  titulo: "Almoço",                      fim: "14:00", descricao: "",              local: "" }
+        ]
+      },
+      {
+        horario: "14:00",
+        itens: [
+          { tipo: "social", titulo: "CNPEM",                       fim: "17:30", descricao: "Centro Nacional de Pesquisa em Energia e Materiais", local: "CNPEM — Campinas", maps_url: "https://maps.google.com/?q=CNPEM+Campinas" }
+        ]
+      },
+      {
+        horario: "17:30",
+        itens: [
+          { tipo: "social", titulo: "Reunião RBras / Prêmio RBras", fim: "19:00", descricao: "Assembleia e entrega de premiações da Região Brasileira da IBS", local: "Auditório Principal" }
+        ]
+      }
     ]
   },
   {
     dia:           "25 nov · Qua",
     data_completa: "25 de novembro de 2026",
-    atividades: [
-      { horario: "08:00", tipo: "mini",    titulo: "Minicursos MC-1 e MC-2 (simultâneos)",                       descricao: "" },
-      { horario: "09:00", tipo: "session", titulo: "Comunicações Orais (simultâneas)",                           descricao: "CO-2 · CO-3 · CO-4" },
-      { horario: "10:00", tipo: "break",   titulo: "Café",                                                        descricao: "" },
-      { horario: "10:30", tipo: "keynote", titulo: "C-4",                                                         descricao: "Conferência convidada" },
-      { horario: "11:30", tipo: "keynote", titulo: "C-5",                                                         descricao: "Conferência convidada" },
-      { horario: "12:30", tipo: "break",   titulo: "Almoço",                                                      descricao: "" },
-      { horario: "14:00", tipo: "session", titulo: "Sessões Temáticas e Comunicações Orais (simultâneas)",       descricao: "ST-4 · ST-5 · ST-6 · CO-5" },
-      { horario: "15:30", tipo: "social",  titulo: "Premiações e Encerramento",                                   descricao: "Cerimônia de encerramento da 70ª RBras" }
+    blocos: [
+      {
+        horario: "08:00",
+        itens: [
+          { tipo: "mini",   titulo: "Minicurso MC-1",              fim: "09:00", descricao: "",              local: "Sala A" },
+          { tipo: "mini",   titulo: "Minicurso MC-2",              fim: "09:00", descricao: "",              local: "Sala B" }
+        ]
+      },
+      {
+        horario: "09:00",
+        itens: [
+          { tipo: "session", titulo: "CO-2",                       fim: "10:00", descricao: "Comunicações Orais", local: "Sala 101" },
+          { tipo: "session", titulo: "CO-3",                       fim: "10:00", descricao: "Comunicações Orais", local: "Sala 102" },
+          { tipo: "session", titulo: "CO-4",                       fim: "10:00", descricao: "Comunicações Orais", local: "Sala 103" }
+        ]
+      },
+      {
+        horario: "10:00",
+        itens: [
+          { tipo: "break",  titulo: "Café",                        fim: "10:30", descricao: "",              local: "Saguão Principal" }
+        ]
+      },
+      {
+        horario: "10:30",
+        itens: [
+          { tipo: "keynote", titulo: "C-4",                        fim: "11:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+        ]
+      },
+      {
+        horario: "11:30",
+        itens: [
+          { tipo: "keynote", titulo: "C-5",                        fim: "12:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+        ]
+      },
+      {
+        horario: "12:30",
+        itens: [
+          { tipo: "break",  titulo: "Almoço",                      fim: "14:00", descricao: "",              local: "" }
+        ]
+      },
+      {
+        horario: "14:00",
+        itens: [
+          { tipo: "session", titulo: "ST-4",  fim: "15:30", descricao: "Sessão Temática 4",  local: "Sala 101" },
+          { tipo: "session", titulo: "ST-5",  fim: "15:30", descricao: "Sessão Temática 5",  local: "Sala 102" },
+          { tipo: "session", titulo: "ST-6",  fim: "15:30", descricao: "Sessão Temática 6",  local: "Sala 103" },
+          { tipo: "session", titulo: "CO-5",  fim: "15:30", descricao: "Comunicações Orais", local: "Sala 104" }
+        ]
+      },
+      {
+        horario: "15:30",
+        itens: [
+          { tipo: "social", titulo: "Premiações e Encerramento",   fim: "17:00", descricao: "Cerimônia de encerramento da 70ª RBras", local: "Auditório Principal" }
+        ]
+      }
     ]
   }
 ];

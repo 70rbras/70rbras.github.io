@@ -72,6 +72,81 @@
     .btn--outline { border-color: rgba(255,255,255,.5); color: var(--white); }
     .btn--outline:hover { background: rgba(255,255,255,.12); border-color: var(--white); transform: translateY(-2px); }
 
+    /* ── MODAL EM BREVE ─────────────────────────── */
+    #modal-em-breve {
+      display: none;
+      position: fixed; inset: 0; z-index: 2000;
+      align-items: center; justify-content: center;
+      background: rgba(10, 20, 50, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 1.5rem;
+    }
+    #modal-em-breve.ativo { display: flex; }
+    .modal-card {
+      background: var(--white);
+      border-radius: 22px;
+      max-width: 460px; width: 100%;
+      padding: 3rem 2.8rem 2.6rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 32px 80px rgba(10,20,50,.32), 0 0 0 1px rgba(214,168,24,.18);
+      animation: modalIn .38s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(.88) translateY(24px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-icone {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.6rem;
+      font-size: 1.8rem;
+    }
+    .modal-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem; font-weight: 700;
+      color: var(--blue);
+      line-height: 1.25;
+      margin-bottom: .75rem;
+    }
+    .modal-texto {
+      font-size: .97rem; line-height: 1.65;
+      color: var(--text-mid);
+      margin-bottom: 2rem;
+    }
+    .modal-texto strong { color: var(--blue); font-weight: 600; }
+    .modal-linha {
+      display: block;
+      height: 2px;
+      width: 48px;
+      background: linear-gradient(90deg, var(--gold), var(--teal-light));
+      border-radius: 99px;
+      margin: 0 auto 1.6rem;
+    }
+    .modal-fechar {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: .75em 2.2em;
+      border-radius: 999px;
+      font-size: .95rem; font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: .02em;
+    }
+    .modal-fechar:hover { background: var(--blue-mid); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,56,112,.28); }
+    .modal-close-x {
+      position: absolute; top: 1rem; right: 1.2rem;
+      background: none; border: none;
+      font-size: 1.35rem; color: var(--text-mid);
+      cursor: pointer; line-height: 1;
+      opacity: .55; transition: opacity .2s;
+    }
+    .modal-close-x:hover { opacity: 1; }
+
     /* ── SCROLL REVEAL ─────────────────────────── */
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -157,11 +232,11 @@
       height: auto;
       filter: drop-shadow(0 16px 48px rgba(0,0,0,.55))
               drop-shadow(0  4px 20px rgba(42,144,128,.20));
-      animation: heroLogoReveal 1.1s cubic-bezier(.4,0,.2,1) both;
+      animation: heroLogoReveal 0.9s cubic-bezier(.25,.46,.45,.94) both;
     }
     @keyframes heroLogoReveal {
-      from { opacity: 0; transform: translateX(-20px) scale(.96); }
-      to   { opacity: 1; transform: none; }
+      from { opacity: 0; transform: translateX(-120px); }
+      to   { opacity: 1; transform: translateX(0); }
     }
     /* ── COLUNA DIREITA: texto ───────────────────── */
     .hero-text-col {
@@ -522,19 +597,107 @@
     .sched-tab.active, .sched-tab:hover { background: var(--blue); color: var(--white); }
     .sched-day { display: none; }
     .sched-day.active { display: block; }
-    .sched-timeline { display: flex; flex-direction: column; }
-    .sched-item { display: grid; grid-template-columns: 110px 1fr; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(0,0,0,.07); position: relative; }
-    .sched-item::before { content: ''; position: absolute; left: 110px; top: 0; bottom: 0; width: 3px; background: var(--off-white); }
-    .sched-time { font-weight: 700; color: var(--blue); font-size: .9rem; padding-top: .15rem; text-align: right; padding-right: 1.5rem; }
-    .sched-body { padding-left: 1.5rem; }
-    .sched-body h4 { font-size: 1rem; font-weight: 600; margin-bottom: .2rem; }
-    .sched-body p  { font-size: .88rem; color: var(--text-mid); }
-    .sched-type { display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .2em .65em; border-radius: 999px; margin-bottom: .4rem; }
+
+    /* Blocos de horário */
+    .sched-blocks { display: flex; flex-direction: column; gap: 0; }
+    .sched-block { display: grid; grid-template-columns: 88px 1fr; gap: 0; position: relative; }
+    .sched-block + .sched-block { margin-top: 1.75rem; }
+
+    /* Coluna de horário */
+    .sched-block-time {
+      display: flex; flex-direction: column; align-items: flex-end;
+      padding-right: 1.4rem; padding-top: .9rem;
+      position: relative;
+    }
+    .sched-block-time::after {
+      content: '';
+      position: absolute; right: 0; top: 1.15rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 3px var(--off-white), 0 0 0 5px var(--blue);
+      transform: translateX(50%);
+      z-index: 1;
+    }
+    .sched-block-time .time-hhmm {
+      font-weight: 800; font-size: 1rem; color: var(--blue); line-height: 1;
+    }
+    .sched-block + .sched-block .sched-block-time::before {
+      content: '';
+      position: absolute; right: 0; top: -1.75rem; bottom: 1.15rem;
+      width: 2px; background: rgba(26,56,112,.13);
+      transform: translateX(50%);
+    }
+
+    /* Área de cards */
+    .sched-block-cards {
+      padding-left: 1.6rem;
+      display: grid;
+      grid-template-columns: repeat(var(--sched-cols, 3), 1fr);
+      gap: .75rem;
+    }
+
+    /* Card individual de evento */
+    .sched-card {
+      background: var(--white);
+      border: 1.5px solid rgba(26,56,112,.10);
+      border-radius: 14px;
+      padding: 1rem 1.15rem 1rem;
+      display: flex; flex-direction: column; gap: .45rem;
+      box-shadow: 0 2px 10px rgba(26,56,112,.06);
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    }
+    .sched-card:hover { box-shadow: 0 6px 22px rgba(26,56,112,.13); transform: translateY(-2px); border-color: rgba(26,56,112,.22); }
+
+    /* Variações por tipo */
+    .sched-card.type-bg-keynote { border-left: 4px solid var(--gold); }
+    .sched-card.type-bg-mini    { border-left: 4px solid var(--teal); }
+    .sched-card.type-bg-session { border-left: 4px solid var(--blue-mid); }
+    .sched-card.type-bg-social  { border-left: 4px solid var(--olive); }
+    .sched-card.type-bg-break   { border-left: 4px solid #bbb; background: var(--off-white); box-shadow: none; }
+    .sched-card.type-bg-break:hover { transform: none; }
+
+    /* Card de break ocupa largura total */
+    .sched-card.is-break { grid-column: 1 / -1; }
+
+    .sched-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; }
+    .sched-card h4 { font-size: .97rem; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+    .sched-card p  { font-size: .84rem; color: var(--text-mid); line-height: 1.5; flex-grow: 1; }
+    /* Rodapé do card: horário + local */
+    .sched-card-footer {
+      display: flex; align-items: center; flex-wrap: wrap; gap: .4rem;
+      margin-top: .3rem;
+    }
+    .sched-card-time {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .78rem; font-weight: 600; color: var(--blue);
+      background: rgba(26,56,112,.07);
+      border-radius: 6px;
+      padding: .22em .6em;
+      white-space: nowrap;
+    }
+    .sched-card-time svg { flex-shrink: 0; opacity: .7; }
+    .sched-time-sep { opacity: .5; margin: 0 .1em; }
+    .sched-card-local {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .78rem; color: var(--text-mid);
+      background: rgba(26,56,112,.05);
+      border-radius: 6px;
+      padding: .22em .6em;
+    }
+    .sched-card-local svg { flex-shrink: 0; opacity: .65; }
+    .sched-card-local--link {
+      color: var(--teal);
+      text-decoration: none;
+      transition: background var(--transition), color var(--transition);
+    }
+    .sched-card-local--link:hover { background: rgba(42,144,128,.12); color: var(--teal); }
+
+    .sched-type { display: inline-block; font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .2em .65em; border-radius: 999px; white-space: nowrap; }
     .type-keynote { background: rgba(201,162,39,.15); color: #8a6b00; }
     .type-mini    { background: rgba(45,138,122,.15);  color: var(--teal); }
     .type-session { background: rgba(27,78,121,.12);   color: var(--blue); }
     .type-social  { background: rgba(107,142,35,.12);  color: var(--olive); }
-    .type-break   { background: rgba(0,0,0,.06);       color: #777; }
+    .type-break   { background: rgba(0,0,0,.06);       color: #888; }
 
     /* ──────────────────────────────────────────── */
     /* LOCAL                                        */
@@ -690,8 +853,9 @@
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
       .hero-countdown { flex-wrap: wrap; gap: 1rem; }
-      .sched-item { grid-template-columns: 80px 1fr; gap: 1rem; }
-      .sched-time { padding-right: .75rem; font-size: .8rem; }
+      .sched-block { grid-template-columns: 68px 1fr; }
+      .sched-block-time .time-hhmm { font-size: .88rem; }
+      .sched-block-cards { grid-template-columns: 1fr !important; }
       .modal-header { flex-wrap: wrap; }
       .hero-logo-img { width: clamp(180px, 65vw, 260px); }
       .hero-display { font-size: clamp(3rem, 14vw, 4.5rem); }
@@ -1087,6 +1251,21 @@
 <script src="data/sponsors.js"></script>
 
 <!-- ─── SCRIPTS ───────────────────────────────────── -->
+<!-- ─── MODAL EM BREVE ──────────────────────────── -->
+<div id="modal-em-breve" role="dialog" aria-modal="true" aria-labelledby="modal-titulo-txt">
+  <div class="modal-card">
+    <button class="modal-close-x" id="modal-close-x" aria-label="Fechar">&#x2715;</button>
+    <div class="modal-icone" aria-hidden="true">🗓️</div>
+    <h2 class="modal-titulo" id="modal-titulo-txt">Inscrições em breve</h2>
+    <span class="modal-linha"></span>
+    <p class="modal-texto">
+      As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>
+      Volte a visitar esta página em breve para mais informações sobre prazos, valores e categorias de inscrição.
+    </p>
+    <button class="modal-fechar" id="modal-fechar-btn">Entendido</button>
+  </div>
+</div>
+
 <script>
 /* ═══════════════════════════════════════════════
    HELPERS
@@ -1108,11 +1287,22 @@ async function applyConfig() {
   document.getElementById('hero-datas').textContent     = evento.datas_exibicao;
   document.getElementById('hero-cidade').textContent    = evento.cidade;
   document.getElementById('hero-local-nome').textContent= evento.local_nome;
-  document.getElementById('hero-btn-inscricoes').href   = evento.link_inscricoes;
+  // Se link de inscrições ainda não estiver disponível, exibe modal "em breve"
+  const linkInscricoes = evento.link_inscricoes;
+  const isEmBreve = !linkInscricoes || linkInscricoes === '#';
+  const btnIds = ['hero-btn-inscricoes', 'cta-inscricoes', 'nav-cta-link'];
+  btnIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (isEmBreve) {
+      el.href = '#';
+      el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve(); });
+    } else {
+      el.href = linkInscricoes;
+    }
+  });
   // cta
-  document.getElementById('cta-inscricoes').href  = evento.link_inscricoes;
   document.getElementById('cta-submissao').href   = evento.link_submissao;
-  document.getElementById('nav-cta-link').href    = evento.link_inscricoes;
   // venue (o HTML já traz o conteúdo real; config.js serve de fonte de verdade)
   if (evento.local_nome)     document.getElementById('venue-local-nome').textContent = evento.local_instituicao
     ? evento.local_nome
@@ -1314,6 +1504,67 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 /* ═══════════════════════════════════════════════
    PROGRAMAÇÃO
 ═══════════════════════════════════════════════ */
+const TYPE_LABELS = {
+  keynote: 'Keynote',
+  mini:    'Minicurso',
+  session: 'Sessão',
+  social:  'Social',
+  break:   'Intervalo'
+};
+
+/**
+ * Calcula o número ideal de colunas para N cards,
+ * evitando que o último item fique solitário (resto == 1).
+ *
+ * Exemplos:  1→1  2→2  3→3  4→2(2+2)  5→3(3+2)
+ *            6→3(3+3)  7→4(4+3)  8→4(4+4)  9→3(3+3+3)
+ */
+function bestCols(n) {
+  if (n <= 3) return n;
+  // Testa preferências de coluna em ordem: 3, 2, 4, 5 …
+  const prefs = [3, 2, 4, 5];
+  for (const c of prefs) {
+    if (c > n) continue;
+    if (n % c !== 1) return c;
+  }
+  return 3; // fallback
+}
+
+const PIN_ICON  = `<svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 0C3.01 0 1 2.01 1 4.5c0 3.37 4.5 9.5 4.5 9.5S10 7.87 10 4.5C10 2.01 7.99 0 5.5 0zm0 6.5A2 2 0 1 1 5.5 2.5a2 2 0 0 1 0 4z" fill="currentColor"/></svg>`;
+const CLOCK_ICON = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 3.5V6.2l1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const MAPS_ICON  = `<svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h8v8H2z" stroke="currentColor" stroke-width="1.3"/><path d="M2 4.5h8M4.5 2v8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><path d="M6 6l1.5-2.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>`;
+
+function renderCard(item, inicio) {
+  const isBreak = item.tipo === 'break';
+
+  // Faixa de horário
+  const tempoHTML = (inicio || item.fim)
+    ? `<span class="sched-card-time">${CLOCK_ICON}${inicio}${item.fim ? `<span class="sched-time-sep">–</span>${item.fim}` : ''}</span>`
+    : '';
+
+  // Local + link Maps
+  let localHTML = '';
+  if (item.local) {
+    const conteudo = item.maps_url
+      ? `<a class="sched-card-local sched-card-local--link" href="${item.maps_url}" target="_blank" rel="noopener">${PIN_ICON}${item.local} ${MAPS_ICON}</a>`
+      : `<span class="sched-card-local">${PIN_ICON}${item.local}</span>`;
+    localHTML = conteudo;
+  }
+
+  return `
+    <div class="sched-card type-bg-${item.tipo}${isBreak ? ' is-break' : ''}">
+      <div class="sched-card-header">
+        <h4>${item.titulo}</h4>
+        <span class="sched-type type-${item.tipo}">${TYPE_LABELS[item.tipo] || item.tipo}</span>
+      </div>
+      ${item.descricao ? `<p>${item.descricao}</p>` : ''}
+      <div class="sched-card-footer">
+        ${tempoHTML}
+        ${localHTML}
+      </div>
+    </div>`;
+}
+
 async function renderSchedule() {
   const days = SCHEDULE;
   const tabs      = document.getElementById('sched-tabs');
@@ -1325,27 +1576,19 @@ async function renderSchedule() {
 
   container.innerHTML = days.map((d, i) => `
     <div class="sched-day${i===0?' active':''}" id="sched-day-${i}">
-      <div class="sched-timeline">
-        ${d.atividades.map(a => `
-          <div class="sched-item">
-            <div class="sched-time">${a.horario}</div>
-            <div class="sched-body">
-              <span class="sched-type type-${a.tipo}">${TYPE_LABELS[a.tipo]||a.tipo}</span>
-              <h4>${a.titulo}</h4>
-              ${a.descricao ? `<p>${a.descricao}</p>` : ''}
+      <div class="sched-blocks">
+        ${d.blocos.map(b => `
+          <div class="sched-block">
+            <div class="sched-block-time">
+              <span class="time-hhmm">${b.horario}</span>
+            </div>
+            <div class="sched-block-cards" style="--sched-cols:${bestCols(b.itens.length)}">
+              ${b.itens.map(item => renderCard(item, b.horario)).join('')}
             </div>
           </div>`).join('')}
       </div>
     </div>`).join('');
 }
-
-const TYPE_LABELS = {
-  keynote: 'Keynote',
-  mini:    'Minicurso',
-  session: 'Sessão Temática',
-  social:  'Social',
-  break:   'Intervalo'
-};
 
 function showDay(id, btn) {
   document.querySelectorAll('.sched-day').forEach(d => d.classList.remove('active'));
@@ -1456,6 +1699,28 @@ async function renderSponsors() {
   function loop() { ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(loop); }
   loop();
 })();
+
+/* ═══════════════════════════════════════════════
+   MODAL EM BREVE
+═══════════════════════════════════════════════ */
+function abrirModalEmBreve() {
+  const modal = document.getElementById('modal-em-breve');
+  modal.classList.add('ativo');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal-fechar-btn').focus();
+}
+function fecharModalEmBreve() {
+  document.getElementById('modal-em-breve').classList.remove('ativo');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal-fechar-btn').addEventListener('click', fecharModalEmBreve);
+document.getElementById('modal-close-x').addEventListener('click', fecharModalEmBreve);
+document.getElementById('modal-em-breve').addEventListener('click', e => {
+  if (e.target === e.currentTarget) fecharModalEmBreve();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') fecharModalEmBreve();
+});
 
 /* ═══════════════════════════════════════════════
    NAVBAR
