@@ -649,7 +649,7 @@
     .sched-card:hover { box-shadow: 0 6px 22px rgba(26,56,112,.13); transform: translateY(-2px); border-color: rgba(26,56,112,.22); }
 
     /* Variações por tipo */
-    .sched-card.type-bg-keynote { border-left: 4px solid var(--gold); }
+    .sched-card.type-bg-conf    { border-left: 4px solid var(--gold); }
     .sched-card.type-bg-mini    { border-left: 4px solid var(--teal); }
     .sched-card.type-bg-session { border-left: 4px solid var(--blue-mid); }
     .sched-card.type-bg-social  { border-left: 4px solid var(--olive); }
@@ -693,7 +693,7 @@
     .sched-card-local--link:hover { background: rgba(42,144,128,.12); color: var(--teal); }
 
     .sched-type { display: inline-block; font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .2em .65em; border-radius: 999px; white-space: nowrap; }
-    .type-keynote { background: rgba(201,162,39,.15); color: #8a6b00; }
+    .type-conf    { background: rgba(201,162,39,.15); color: #8a6b00; }
     .type-mini    { background: rgba(45,138,122,.15);  color: var(--teal); }
     .type-session { background: rgba(27,78,121,.12);   color: var(--blue); }
     .type-social  { background: rgba(107,142,35,.12);  color: var(--olive); }
@@ -1505,7 +1505,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
    PROGRAMAÇÃO
 ═══════════════════════════════════════════════ */
 const TYPE_LABELS = {
-  keynote: 'Keynote',
+  conf:    'Conferência',
   mini:    'Minicurso',
   session: 'Sessão',
   social:  'Social',

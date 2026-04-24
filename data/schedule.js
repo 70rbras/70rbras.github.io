@@ -1,7 +1,7 @@
 // ─── PROGRAMAÇÃO CIENTÍFICA ───────────────────────────────────────────────────
 // Estrutura: cada dia possui "blocos" de horário.
 // Cada bloco tem um "horario" e um array de "itens" (eventos simultâneos).
-// Tipos: "keynote" | "mini" | "session" | "social" | "break"
+// Tipos: "conf" | "mini" | "session" | "social" | "break"
 // Campos do item: tipo, titulo, fim (opcional), inicio (opcional), descricao (opcional), local (opcional), maps_url (opcional)
 // Nota: "inicio" no item sobrescreve o "horario" do bloco no card — útil quando atividades dentro de um
 // mesmo bloco têm horários de início diferentes (ex.: bloco 08:00 com item que começa às 08:30).
@@ -34,7 +34,7 @@ const SCHEDULE = [
       {
         horario: "11:30",
         itens: [
-          { tipo: "keynote", titulo: "C-1",                        fim: "12:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+          { tipo: "conf",    titulo: "C-1",                        fim: "12:30", descricao: "Conferência convidada", local: "Auditório Principal" }
         ]
       },
       {
@@ -56,7 +56,7 @@ const SCHEDULE = [
       {
         horario: "15:30",
         itens: [
-          { tipo: "keynote", titulo: "C-2",                        fim: "16:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+          { tipo: "conf",    titulo: "C-2",                        fim: "16:30", descricao: "Conferência convidada", local: "Auditório Principal" }
         ]
       },
       {
@@ -93,7 +93,7 @@ const SCHEDULE = [
       {
         horario: "10:30",
         itens: [
-          { tipo: "keynote", titulo: "C-3",                        fim: "11:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+          { tipo: "conf",    titulo: "C-3",                        fim: "11:30", descricao: "Conferência convidada", local: "Auditório Principal" }
         ]
       },
       {
@@ -150,13 +150,13 @@ const SCHEDULE = [
       {
         horario: "10:30",
         itens: [
-          { tipo: "keynote", titulo: "C-4",                        fim: "11:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+          { tipo: "conf",    titulo: "C-4",                        fim: "11:30", descricao: "Conferência convidada", local: "Auditório Principal" }
         ]
       },
       {
         horario: "11:30",
         itens: [
-          { tipo: "keynote", titulo: "C-5",                        fim: "12:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+          { tipo: "conf",    titulo: "C-5",                        fim: "12:30", descricao: "Conferência convidada", local: "Auditório Principal" }
         ]
       },
       {
