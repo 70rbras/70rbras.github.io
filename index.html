@@ -150,6 +150,8 @@
     /* ── SCROLL REVEAL ─────────────────────────── */
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+    .reveal-from-right { opacity: 0; transform: translateX(60px); transition: opacity 1.4s ease, transform 1.4s ease; }
+    .reveal-from-right.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: .1s; }
     .reveal-delay-2 { transition-delay: .2s; }
     .reveal-delay-3 { transition-delay: .3s; }
@@ -300,8 +302,8 @@
     .sobre-logo-wrap {
       overflow: hidden;
       border-radius: 16px;
-      background: var(--white);
-      box-shadow: 0 4px 24px rgba(26,56,112,.10);
+      background: transparent;
+      box-shadow: none;
       line-height: 0;
       width: 100%;
     }
@@ -948,11 +950,6 @@
 <section id="sobre">
   <div class="container">
     <div class="sobre-grid">
-      <div class="sobre-visual reveal">
-        <div class="sobre-logo-wrap">
-          <img class="sobre-logo-img" src="assets/logos/70rbras_logo_positivo_cor.png" alt="Logo 70ª RBras 2026">
-        </div>
-      </div>
       <div class="sobre-text reveal reveal-delay-1">
         <span class="tag tag--teal">Sobre o Evento</span>
         <div class="accent-bar" style="margin-top:1rem"></div>
@@ -961,6 +958,11 @@
           <p>A Reunião Anual da RBras é o principal fórum nacional para a troca de conhecimentos e avanços nas áreas de estatística, biometria e disciplinas relacionadas.</p>
           <p>Em sua 70ª edição, o tema <em>"Dados que revelam Vida"</em> convida pesquisadores e profissionais a explorar como métodos estatísticos e biométricos estão transformando ciências da vida, saúde, agricultura e meio ambiente.</p>
           <p>Promovida pela <strong>Região Brasileira da Sociedade Internacional de Biometria (RBras)</strong>, a edição de 2026 acontece na Unicamp, Campinas/SP, reconhecida como uma das maiores universidades da América Latina e localizada em um dos maiores pólos científicos e tecnológicos do Brasil.</p>
+        </div>
+      </div>
+      <div class="sobre-visual reveal-from-right">
+        <div class="sobre-logo-wrap">
+          <img class="sobre-logo-img" src="assets/logos/70rbras_logo_positivo_cor.png" alt="Logo 70ª RBras 2026">
         </div>
       </div>
     </div>
@@ -1225,7 +1227,7 @@ function revealAll() {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
   }, { threshold: .12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal, .reveal-from-right').forEach(el => io.observe(el));
 }
 
 /* ═══════════════════════════════════════════════
