@@ -12,7 +12,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="assets/logos/logo-claro.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ── TOKENS — paleta extraída do logo 70ª RBras ─ */
     :root {
@@ -46,7 +46,7 @@
     section { position: relative; }
 
     /* ── TYPOGRAPHY ────────────────────────────── */
-    .display { font-family: 'Playfair Display', serif; font-weight: 900; line-height: 1.1; }
+    .display { font-family: 'Montserrat', sans-serif; font-weight: 800; line-height: 1.1; }
     .serif   { font-family: 'Playfair Display', serif; }
 
     /* ── UTILITIES ─────────────────────────────── */
@@ -161,9 +161,9 @@
     .section-header .section-title { margin-bottom: .5rem; }
     .section-header .section-body { max-width: 56ch; margin-inline: auto; }
     .section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-      font-weight: 700; color: var(--text-dark);
+      font-weight: 600; color: var(--text-dark);
       margin-bottom: 1.25rem; line-height: 1.2;
     }
     .section-title span { color: var(--teal); }
@@ -243,12 +243,12 @@
       display: flex; flex-direction: column; align-items: flex-start;
     }
     .hero-text-col .tag { margin-bottom: 1.25rem; }
-    /* Nome do evento — grande, dourado */
+    /* Nome do evento — ExtraBold (800), igual ao "RBras" do logo */
     .hero-display {
-      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
       font-size: clamp(3.8rem, 6.5vw, 7.5rem);
       color: var(--gold); line-height: 1;
-      letter-spacing: -.025em; margin-bottom: .4rem;
+      letter-spacing: -.02em; margin-bottom: .4rem;
     }
     /* Nome completo — discreto, abaixo do display */
     .hero-fullname {
@@ -256,13 +256,15 @@
       color: rgba(255,255,255,.5);
       line-height: 1.6; margin-bottom: 1rem; max-width: 42ch;
     }
-    /* Tema — itálico, destaque dourado em "Vida" */
+    /* Tema — ExtraBold sem itálico para "Dados que revelam";
+       "Vida" mantém o mesmo peso mas em dourado */
     .hero-tagline {
-      font-family: 'Playfair Display', serif; font-style: italic;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-style: normal;
       font-size: clamp(1.1rem, 1.9vw, 1.55rem);
       color: rgba(255,255,255,.82); margin-bottom: 1.75rem;
+      letter-spacing: .01em;
     }
-    .hero-tagline strong { color: var(--gold-light); font-style: normal; }
+    .hero-tagline strong { color: var(--gold-light); font-weight: 800; font-style: italic; }
     /* ── LOGO NO FOOTER ─────────────────────────── */
     .footer-logo-img {
       height: 72px; width: auto; object-fit: contain;
@@ -292,229 +294,190 @@
     /* ──────────────────────────────────────────── */
     #sobre { padding: 7rem 0 6rem; background: var(--white); }
     .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .sobre-card { background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%); border-radius: 24px; padding: 2.5rem; color: var(--white); position: relative; overflow: hidden; }
-    .sobre-card::before { content: '70'; position: absolute; right: -20px; bottom: -30px; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 9rem; opacity: .07; line-height: 1; color: var(--white); }
-    .sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
-    .sobre-stat { background: rgba(255,255,255,.1); border-radius: 12px; padding: 1rem; text-align: center; border: 1px solid rgba(255,255,255,.12); }
-    .sobre-stat .num { font-size: 1.9rem; font-weight: 700; color: var(--gold-light); display: block; }
-    .sobre-stat .lbl { font-size: .78rem; opacity: .75; margin-top: .15rem; }
+    /* Coluna visual: apenas o logo */
+    .sobre-visual { display: flex; align-items: center; justify-content: center; }
+    /* Logo com fundo branco — crop do espaço em branco via overflow */
+    .sobre-logo-wrap {
+      overflow: hidden;
+      border-radius: 16px;
+      background: var(--white);
+      box-shadow: 0 4px 24px rgba(26,56,112,.10);
+      line-height: 0;
+      width: 100%;
+    }
+    .sobre-logo-img {
+      display: block;
+      width: 130%;
+      margin: -8% -15%;
+      max-width: none;
+    }
     .sobre-text .tag { margin-bottom: 1rem; }
 
     /* ──────────────────────────────────────────── */
-    /* DATAS IMPORTANTES                            */
+    /* DATAS IMPORTANTES — TIMELINE VERTICAL        */
     /* ──────────────────────────────────────────── */
     #datas { padding: 6rem 0; background: var(--off-white); }
-    /* Layout assumido: 5 cards regulares + 1 card destacado (evento).
-       → Linha 1: 3 cards (span 2 em grid de 6 colunas)
-       → Linha 2: 2 cards (span 3)
-       → Linha 3: card destacado (full-width) */
-    .dates-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 1.5rem;
-      align-items: stretch;
-    }
-    .date-card                                      { grid-column: span 2; }
-    .date-card:not(.date-card--featured):nth-child(4),
-    .date-card:not(.date-card--featured):nth-child(5) { grid-column: span 3; }
-    .date-card--featured                            { grid-column: 1 / -1; }
 
-    @media (max-width: 900px) {
-      .dates-grid { grid-template-columns: repeat(2, 1fr); }
-      .date-card,
-      .date-card:not(.date-card--featured):nth-child(4),
-      .date-card:not(.date-card--featured):nth-child(5) { grid-column: span 1; }
-      .date-card--featured { grid-column: 1 / -1; }
-    }
-    @media (max-width: 560px) {
-      .dates-grid { grid-template-columns: 1fr; }
-    }
-
-    .date-card {
+    /* Container da timeline */
+    .dates-timeline {
       position: relative;
+      max-width: 860px;
+      margin: 3rem auto 0;
+      padding-bottom: 2rem;
+    }
+    /* Linha vertical central */
+    .dates-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--blue-mid) 0%, var(--teal) 65%, var(--gold) 100%);
+      transform: translateX(-50%);
+      border-radius: 99px;
+    }
+
+    /* Item da timeline: grid de 3 colunas [conteúdo | nó | conteúdo] */
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 64px 1fr;
+      align-items: center;
+      margin-bottom: 1.75rem;
+      position: relative;
+    }
+
+    /* Conteúdo (card) */
+    .tl-content {
       background: var(--white);
       border-radius: var(--radius);
-      padding: 1.5rem 1.4rem 1.4rem;
-      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 3px 18px rgba(0,0,0,.07);
+      border-top: 3px solid var(--blue-mid);
+      display: flex; flex-direction: column; gap: .35rem;
       transition: transform var(--transition), box-shadow var(--transition);
-      display: flex;
-      flex-direction: column;
-      gap: .45rem;
-      border-top: 4px solid var(--blue-mid);
     }
-    .date-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+    .tl-content:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.12); }
 
-    .date-icon {
-      width: 44px; height: 44px;
-      border-radius: 10px;
-      display: grid; place-items: center;
-      font-size: 1.3rem;
-      background: rgba(43,110,168,.1);
-    }
+    /* Item à esquerda: card col-1, nó col-2, espaço col-3 */
+    .tl-left .tl-content { grid-column: 1; margin-right: 2rem; }
+    .tl-left .tl-node    { grid-column: 2; }
+    .tl-left .tl-space   { grid-column: 3; }
+    /* Item à direita: espaço col-1, nó col-2, card col-3 */
+    .tl-right .tl-space   { grid-column: 1; }
+    .tl-right .tl-node    { grid-column: 2; }
+    .tl-right .tl-content { grid-column: 3; margin-left: 2rem; }
 
-    .date-card h3 {
-      font-size: 1.02rem;
-      font-weight: 700;
-      line-height: 1.3;
-      color: var(--text-dark);
-      margin-top: .25rem;
+    /* Nó (dot) na linha central */
+    .tl-node {
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1; position: relative;
     }
-
-    .date-val {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--blue);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: -.01em;
-      line-height: 1.15;
-    }
-
-    .date-countdown {
-      font-size: .82rem;
-      font-weight: 700;
-      color: var(--blue-mid);
-      margin-top: -.15rem;
-      letter-spacing: .01em;
-    }
-
-    .date-note {
-      font-size: .82rem;
-      color: var(--text-mid);
-      line-height: 1.55;
-      margin-top: auto;
-      padding-top: .6rem;
-      border-top: 1px solid rgba(0,0,0,.05);
-    }
-
-    /* Badge de status — canto superior direito */
-    .date-status {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: .62rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: .3em .7em;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: .4em;
-      background: rgba(43,110,168,.12);
-      color: var(--blue);
-      white-space: nowrap;
-    }
-    .date-status::before {
-      content: '';
-      width: 6px; height: 6px;
+    .tl-dot {
+      width: 48px; height: 48px;
       border-radius: 50%;
-      background: var(--blue-mid);
+      background: var(--white);
+      border: 3px solid var(--blue-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.14);
     }
 
-    /* ── STATUS: EM BREVE (upcoming) ───────────── */
-    .date-card[data-status="upcoming"] { border-top-color: var(--blue-mid); }
-    .date-card[data-status="upcoming"] .date-icon { background: rgba(43,110,168,.12); }
-    .date-card[data-status="upcoming"] .date-val { color: var(--blue); }
-    .date-card[data-status="upcoming"] .date-countdown { color: var(--blue-mid); }
-    .date-card[data-status="upcoming"] .date-status { background: rgba(43,110,168,.12); color: var(--blue); }
-    .date-card[data-status="upcoming"] .date-status::before { background: var(--blue-mid); }
+    /* Badge de status */
+    .tl-status-badge {
+      display: inline-flex; align-items: center; gap: .35em;
+      font-size: .62rem; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: .25em .7em; border-radius: 999px;
+      background: rgba(43,110,168,.12); color: var(--blue);
+      width: fit-content; white-space: nowrap;
+      margin-bottom: .1rem;
+    }
+    .tl-status-badge::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--blue-mid);
+    }
 
-    /* ── STATUS: ABERTO AGORA (active) ─────────── */
-    .date-card[data-status="active"] {
-      border-top-color: var(--gold);
-      box-shadow: 0 4px 24px rgba(201,162,39,.22);
+    /* Elementos internos do card */
+    .tl-title    { font-size: 1rem; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+    .tl-date     { font-size: 1.3rem; font-weight: 800; color: var(--blue); letter-spacing: -.01em; }
+    .tl-countdown { font-size: .8rem; font-weight: 700; color: var(--blue-mid); }
+    .tl-note     { font-size: .82rem; color: var(--text-mid); line-height: 1.5;
+                   margin-top: .3rem; padding-top: .5rem; border-top: 1px solid rgba(0,0,0,.06); }
+
+    /* ── STATUS: ENCERRADO ───── */
+    .tl-content[data-status="past"] { border-top-color: #cbd2da; background: #f7f9fb; }
+    .tl-content[data-status="past"] .tl-title    { color: #7a8694; }
+    .tl-content[data-status="past"] .tl-date     { color: #8a96a4; text-decoration: line-through; text-decoration-color: rgba(138,150,164,.5); }
+    .tl-content[data-status="past"] .tl-countdown { color: #8a96a4; }
+    .tl-content[data-status="past"] .tl-note     { color: #8a96a4; border-top-color: rgba(0,0,0,.04); }
+    .tl-content[data-status="past"] .tl-status-badge { background: #e3e7ec; color: #5f6b78; }
+    .tl-content[data-status="past"] .tl-status-badge::before { background: #9aa5b1; }
+    .tl-dot[data-status="past"]     { border-color: #cbd2da; filter: grayscale(.5); }
+
+    /* ── STATUS: ABERTO AGORA ─── */
+    .tl-content[data-status="active"] { border-top-color: var(--gold); box-shadow: 0 4px 22px rgba(201,162,39,.2); }
+    .tl-content[data-status="active"] .tl-date     { color: #8a6b00; }
+    .tl-content[data-status="active"] .tl-countdown { color: #8a6b00; }
+    .tl-content[data-status="active"] .tl-status-badge { background: rgba(201,162,39,.18); color: #7a5f00; }
+    .tl-content[data-status="active"] .tl-status-badge::before {
+      background: var(--gold); animation: dateStatusPulse 1.8s ease-in-out infinite;
     }
-    .date-card[data-status="active"] .date-icon { background: rgba(201,162,39,.15); }
-    .date-card[data-status="active"] .date-val { color: #8a6b00; }
-    .date-card[data-status="active"] .date-countdown { color: #8a6b00; }
-    .date-card[data-status="active"] .date-status { background: rgba(201,162,39,.18); color: #7a5f00; }
-    .date-card[data-status="active"] .date-status::before {
-      background: var(--gold);
-      animation: dateStatusPulse 1.8s ease-in-out infinite;
-    }
+    .tl-dot[data-status="active"] { border-color: var(--gold); background: rgba(201,162,39,.1); }
+
     @keyframes dateStatusPulse {
-      0%, 100% { opacity: 1;   transform: scale(1);   }
+      0%, 100% { opacity: 1; transform: scale(1); }
       50%      { opacity: .35; transform: scale(1.4); }
     }
 
-    /* ── STATUS: ENCERRADO (past) ──────────────── */
-    .date-card[data-status="past"] {
-      border-top-color: #cbd2da;
-      background: #f7f9fb;
-    }
-    .date-card[data-status="past"] .date-icon { background: rgba(95,107,120,.08); filter: grayscale(.5); }
-    .date-card[data-status="past"] h3         { color: #7a8694; }
-    .date-card[data-status="past"] .date-val  { color: #8a96a4; text-decoration: line-through; text-decoration-color: rgba(138,150,164,.5); }
-    .date-card[data-status="past"] .date-countdown { color: #8a96a4; }
-    .date-card[data-status="past"] .date-note { color: #8a96a4; }
-    .date-card[data-status="past"] .date-status { background: #e3e7ec; color: #5f6b78; }
-    .date-card[data-status="past"] .date-status::before { background: #9aa5b1; }
+    /* ── STATUS: EM BREVE ─────── */
+    .tl-content[data-status="upcoming"] { border-top-color: var(--blue-mid); }
+    .tl-content[data-status="upcoming"] .tl-date { color: var(--blue); }
+    .tl-content[data-status="upcoming"] .tl-countdown { color: var(--blue-mid); }
+    .tl-dot[data-status="upcoming"] { border-color: var(--blue-mid); }
 
-    /* ── CARD DESTACADO (evento principal) ─────── */
-    /* Gradiente navy→blue (escuro em toda a extensão) garante contraste
-       consistente (~10:1) entre o dourado do valor/contagem e o fundo,
-       ao contrário do antigo blue→teal onde o teal é claro demais.
-       Usamos `.date-card--featured[data-status]` para empatar a
-       especificidade das regras `.date-card[data-status="…"] .xxx`
-       (ambas 0,3,0) — sem isso, o azul de "upcoming" derrotaria o
-       dourado do destacado no cálculo do CSS. */
-    .date-card--featured {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, var(--text-dark) 0%, var(--blue) 100%);
+    /* ── ITEM DESTACADO (evento principal) ──── */
+    .tl-featured { grid-template-columns: 1fr; margin-top: 1rem; }
+    .tl-featured .tl-content {
+      background: linear-gradient(135deg, var(--text-dark) 0%, var(--blue) 60%, var(--teal) 100%);
       border-top: none;
-      padding: 2.4rem 2.6rem;
+      padding: 2.2rem 2.5rem;
       color: var(--white);
-      box-shadow: 0 14px 44px rgba(13,33,53,.38);
-      gap: .55rem;
-      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(13,33,53,.35);
+      overflow: hidden; position: relative;
     }
-    .date-card--featured::before {
+    .tl-featured .tl-content::before {
       content: '70';
-      position: absolute;
-      right: -14px; bottom: -44px;
-      font-family: 'Playfair Display', serif;
-      font-weight: 900; font-size: 11rem;
-      opacity: .14; line-height: 1;
-      color: var(--gold-light);
-      pointer-events: none;
+      position: absolute; right: -10px; bottom: -38px;
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 10rem; opacity: .12; line-height: 1;
+      color: var(--gold-light); pointer-events: none;
     }
-    .date-card--featured[data-status] .date-icon {
-      width: 64px; height: 64px;
-      background: rgba(255,255,255,.22);
-      font-size: 1.9rem;
-      filter: none;
+    .tl-featured .tl-content:hover { transform: none; }
+    .tl-featured .tl-title    { font-size: 1.7rem; font-weight: 900; color: var(--gold-light); }
+    .tl-featured .tl-date     { color: var(--white); font-size: 1.25rem; text-decoration: none !important; }
+    .tl-featured .tl-countdown { color: rgba(255,255,255,.85); font-size: .95rem; }
+    .tl-featured .tl-note     { color: rgba(255,255,255,.75); border-top-color: rgba(255,255,255,.2); }
+    .tl-featured .tl-status-badge {
+      margin: 0 auto .4rem;
+      background: rgba(255,255,255,.15); color: var(--white);
     }
-    .date-card--featured[data-status] h3 {
-      color: var(--white);
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.95rem;
-      margin-top: .4rem;
+    .tl-featured .tl-status-badge::before { background: var(--gold-light); }
+
+    /* ── RESPONSIVO ──────────── */
+    @media (max-width: 680px) {
+      .dates-timeline::before { left: 24px; }
+      .tl-item { grid-template-columns: 56px 1fr; gap: 0; margin-bottom: 1.25rem; }
+      .tl-left .tl-content, .tl-right .tl-content {
+        grid-column: 2; grid-row: 1;
+        margin-left: 1rem; margin-right: 0;
+      }
+      .tl-left .tl-node, .tl-right .tl-node { grid-column: 1; grid-row: 1; }
+      .tl-left .tl-space, .tl-right .tl-space { display: none; }
+      .tl-featured { grid-template-columns: 1fr; }
+      .tl-featured .tl-content { padding: 1.5rem 1.4rem; text-align: left; }
+      .tl-featured .tl-status-badge { margin: 0 0 .4rem; }
     }
-    .date-card--featured[data-status] .date-val {
-      color: var(--gold-light);
-      font-size: 2.15rem;
-      text-decoration: none;
-    }
-    .date-card--featured[data-status] .date-countdown {
-      color: rgba(255,255,255,.95);
-      font-size: 1.02rem;
-    }
-    .date-card--featured[data-status] .date-note {
-      color: rgba(255,255,255,.82);
-      border-top: 1px solid rgba(255,255,255,.18);
-      padding-top: .95rem;
-      font-size: .95rem;
-    }
-    .date-card--featured[data-status] .date-status {
-      top: 1.3rem; right: 1.5rem;
-      background: var(--gold);
-      color: var(--text-dark);
-    }
-    .date-card--featured[data-status] .date-status::before {
-      background: var(--text-dark);
-    }
-    .date-card--featured:hover { transform: none; }
 
     /* ──────────────────────────────────────────── */
     /* PALESTRANTES                                 */
@@ -874,7 +837,7 @@
 <nav id="navbar">
   <div class="container nav-inner">
     <a href="#hero" class="nav-logo" id="nav-logo-text">
-      <img class="nav-logo-img" src="assets/logos/logo-transparente.png" alt="70ª RBras 2026">
+      <img class="nav-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#sobre">Sobre</a></li>
@@ -916,7 +879,7 @@
       <div class="hero-logo-col">
         <img
           class="hero-logo-img"
-          src="assets/logos/logo-transparente.png"
+          src="assets/logos/70rbras_logo_negativo_cor.png"
           alt="70ª RBras 2026 — Dados que revelam Vida"
           id="hero-logo"
         >
@@ -986,17 +949,8 @@
   <div class="container">
     <div class="sobre-grid">
       <div class="sobre-visual reveal">
-        <div class="sobre-card">
-          <h3 style="color:var(--gold-light);font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.5rem">Uma edição histórica</h3>
-          <p style="color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.7">
-            A 70ª RBras celebra sete décadas de contribuições à estatística e biometria no Brasil — reunindo pesquisadores, estudantes e profissionais de todo o país.
-          </p>
-          <div class="sobre-stats">
-            <div class="sobre-stat"><span class="num">70</span><span class="lbl">anos de história</span></div>
-            <div class="sobre-stat"><span class="num">500+</span><span class="lbl">participantes esperados</span></div>
-            <div class="sobre-stat"><span class="num">3</span><span class="lbl">dias de evento</span></div>
-            <div class="sobre-stat"><span class="num">10+</span><span class="lbl">minicursos</span></div>
-          </div>
+        <div class="sobre-logo-wrap">
+          <img class="sobre-logo-img" src="assets/logos/70rbras_logo_positivo_cor.png" alt="Logo 70ª RBras 2026">
         </div>
       </div>
       <div class="sobre-text reveal reveal-delay-1">
@@ -1006,7 +960,7 @@
         <div class="section-body">
           <p>A Reunião Anual da RBras é o principal fórum nacional para a troca de conhecimentos e avanços nas áreas de estatística, biometria e disciplinas relacionadas.</p>
           <p>Em sua 70ª edição, o tema <em>"Dados que revelam Vida"</em> convida pesquisadores e profissionais a explorar como métodos estatísticos e biométricos estão transformando ciências da vida, saúde, agricultura e meio ambiente.</p>
-          <p>Promovida pela <strong>Região Brasileira da Sociedade Internacional de Biometria (RBras)</strong>, a edição de 2026 acontece em Campinas, SP, reconhecida como um dos maiores polos científicos e tecnológicos do Brasil.</p>
+          <p>Promovida pela <strong>Região Brasileira da Sociedade Internacional de Biometria (RBras)</strong>, a edição de 2026 acontece na Unicamp, Campinas/SP, reconhecida como uma das maiores universidades da América Latina e localizada em um dos maiores pólos científicos e tecnológicos do Brasil.</p>
         </div>
       </div>
     </div>
@@ -1074,8 +1028,8 @@
       <h2 class="section-title" style="margin-top:1rem">Datas <span>Importantes</span></h2>
       <p class="section-body">Fique atento aos prazos para submissão de trabalhos e inscrições.</p>
     </div>
-    <div class="dates-grid" id="dates-grid">
-      <!-- preenchido via dates.json -->
+    <div class="dates-timeline" id="dates-grid">
+      <!-- preenchido via dates.js -->
     </div>
   </div>
 </section>
@@ -1200,7 +1154,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img class="footer-logo-img" src="assets/logos/logo-transparente.png" alt="70ª RBras 2026">
+        <img class="footer-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
         <p id="footer-desc">Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 70ª Edição · Campinas, SP · 23–25 de Novembro de 2026</p>
       </div>
       <div class="footer-col">
@@ -1234,9 +1188,6 @@
       <p id="footer-copy">© 2026 70ª RBras · Região Brasileira da Sociedade Internacional de Biometria</p>
       <div class="social-links" id="social-links">
         <a href="#" class="social-link" id="social-instagram" aria-label="Instagram">📸</a>
-        <a href="#" class="social-link" id="social-twitter"   aria-label="Twitter/X">𝕏</a>
-        <a href="#" class="social-link" id="social-linkedin"  aria-label="LinkedIn">in</a>
-        <a href="#" class="social-link" id="social-youtube"   aria-label="YouTube">▶</a>
       </div>
     </div>
   </div>
@@ -1318,9 +1269,6 @@ async function applyConfig() {
   document.getElementById('footer-site-rbras').href = evento.site_rbras;
   // social
   document.getElementById('social-instagram').href = redes_sociais.instagram;
-  document.getElementById('social-twitter').href   = redes_sociais.twitter;
-  document.getElementById('social-linkedin').href  = redes_sociais.linkedin;
-  document.getElementById('social-youtube').href   = redes_sociais.youtube;
 
   // countdown target
   startCountdown(new Date(evento.inicio + 'T09:00:00'));
@@ -1420,24 +1368,43 @@ async function renderDates() {
       return a._ini - b._ini;
     });
 
-  const grid = document.getElementById('dates-grid');
-  grid.innerHTML = dates.map((d, i) => {
-    const status    = dateStatus(d._ini, d._fim, today);
+  const nonFeatured = dates.filter(d => !d.destaque);
+  const featured    = dates.filter(d =>  d.destaque);
+  const container   = document.getElementById('dates-grid');
+
+  function renderCard(d, status) {
     const range     = formatDateRange(d._ini, d._fim);
     const countdown = countdownLabel(d._ini, d._fim, status, today);
-    const delay     = i > 0 && i < 4 ? ' reveal-delay-' + i : '';
-    const featured  = d.destaque ? ' date-card--featured' : '';
-
     return `
-      <div class="date-card reveal${delay}${featured}" data-status="${status}">
-        <span class="date-status">${DATE_STATUS_LABEL[status]}</span>
-        <div class="date-icon">${d.icone}</div>
-        <h3>${d.titulo}</h3>
-        <div class="date-val">${range}</div>
-        <div class="date-countdown">${countdown}</div>
-        <p class="date-note">${d.descricao}</p>
+      <div class="tl-content reveal" data-status="${status}">
+        <span class="tl-status-badge">${DATE_STATUS_LABEL[status]}</span>
+        <div class="tl-title">${d.titulo}</div>
+        <div class="tl-date">${range}</div>
+        <div class="tl-countdown">${countdown}</div>
+        <p class="tl-note">${d.descricao}</p>
       </div>`;
-  }).join('');
+  }
+
+  function renderRegular(d, idx) {
+    const status = dateStatus(d._ini, d._fim, today);
+    const side   = idx % 2 === 0 ? 'tl-left' : 'tl-right';
+    const card   = renderCard(d, status);
+    const dot    = `<div class="tl-node"><div class="tl-dot" data-status="${status}">${d.icone}</div></div>`;
+    const space  = `<div class="tl-space"></div>`;
+    const inner  = side === 'tl-left'
+      ? `${card}${dot}${space}`
+      : `${space}${dot}${card}`;
+    return `<div class="tl-item ${side}">${inner}</div>`;
+  }
+
+  function renderFeatured(d) {
+    const status = dateStatus(d._ini, d._fim, today);
+    return `<div class="tl-item tl-featured">${renderCard(d, status)}</div>`;
+  }
+
+  container.innerHTML =
+    nonFeatured.map((d, i) => renderRegular(d, i)).join('') +
+    featured.map(d => renderFeatured(d)).join('');
 }
 
 /* ═══════════════════════════════════════════════

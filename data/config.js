@@ -13,15 +13,12 @@ const CONFIG = {
     local_nome:     "IMECC - Instituto de Matemática, Estatística e Computação Científica",
     local_endereco: "Rua Sérgio Buarque de Holanda, 651 — Cidade Universitária Zeferino Vaz, Campinas, SP · CEP 13083-859",
     local_instituicao: "Unicamp",
-    email_contato:  "contato@70rbras.org",
+    email_contato:  "70rbras@unicamp.br",
     site_rbras:     "https://www.70rbras.org",
     link_inscricoes:"#",
     link_submissao: "#"
   },
   redes_sociais: {
-    instagram: "@rbras2026",
-    twitter:   "#",
-    linkedin:  "#",
-    youtube:   "#"
+    instagram: "https://www.instagram.com/70rbras"
   }
 };
