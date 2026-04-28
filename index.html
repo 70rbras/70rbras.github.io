@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>70ª RBras 2026 — Dados que revelam Vida</title>
-  <link rel="icon" type="image/png" href="assets/logos/logo-escuro.png">
+  <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
   <meta property="og:title" content="70ª RBras 2026 — Dados que revelam Vida">
   <meta property="og:description" content="Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 23–25 Nov 2026 · Campinas, SP">
-  <meta property="og:image" content="assets/logos/logo-claro.png">
+  <meta property="og:image" content="assets/logos/70rbras_logo_positivo_cor.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="assets/logos/logo-claro.png">
+  <meta name="twitter:image" content="assets/logos/70rbras_logo_positivo_cor.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -552,6 +552,8 @@
       color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.4;
     }
     .modal-abstract { color: var(--text-mid); line-height: 1.8; font-size: .97rem; }
+    .modal-abstract p { text-align: justify; margin-bottom: 1rem; }
+    .modal-abstract p:last-child { margin-bottom: 0; }
 
     /* ──────────────────────────────────────────── */
     /* PROGRAMAÇÃO                                  */
@@ -915,7 +917,7 @@
           <div class="hero-info-item">
             <div class="icon">📍</div>
             <div>
-              <strong style="color:white;display:block" id="hero-cidade">Campinas, SP</strong>
+              <strong style="color:white;display:block" id="hero-cidade">Unicamp, Campinas, SP</strong>
               <span style="color:rgba(255,255,255,.6);font-size:.85rem" id="hero-local-nome">Local a confirmar</span>
             </div>
           </div>
@@ -1257,9 +1259,7 @@ async function applyConfig() {
   // cta
   document.getElementById('cta-submissao').href   = evento.link_submissao;
   // venue (o HTML já traz o conteúdo real; config.js serve de fonte de verdade)
-  if (evento.local_nome)     document.getElementById('venue-local-nome').textContent = evento.local_instituicao
-    ? evento.local_nome
-    : evento.local_nome;
+  if (evento.local_nome)     document.getElementById('venue-local-nome').innerHTML = evento.local_nome;
   // footer
   document.getElementById('footer-desc').textContent =
     `${evento.nome} · ${evento.cidade} · ${evento.datas_exibicao}`;
@@ -1456,7 +1456,10 @@ function openModal(s) {
   document.getElementById('modal-role').textContent       = s.tipo;
   document.getElementById('modal-org').textContent        = s.instituicao;
   document.getElementById('modal-topic').textContent      = s.tema;
-  document.getElementById('modal-abstract').textContent   = s.resumo;
+  document.getElementById('modal-abstract').innerHTML = s.resumo
+    .split(/\n\s*\n/)
+    .map(p => `<p>${p.trim().replace(/\n/g, ' ')}</p>`)
+    .join('');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
