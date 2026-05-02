@@ -16,28 +16,28 @@
 const DATES = [
   {
     titulo:    "Submissão de Trabalhos",
-    inicio:    "2026-05-04",
-    fim:       "2026-08-15",
+    inicio:    "2026-05-06",
+    fim:       "2026-09-15",
     descricao: "Envio de trabalhos orais e pôsteres",
     icone:     "📝"
   },
   {
     titulo:    "Propostas de Sessões, Mesas e Minicursos",
-    inicio:    "2026-05-04",
+    inicio:    "2026-05-06",
     fim:       "2026-06-05",
     descricao: "Submissão de sessões temáticas, mesas redondas e minicursos",
     icone:     "🎤"
   },
   {
     titulo:    "Inscrições com Desconto",
-    inicio:    "2026-05-05",
+    inicio:    "2026-05-06",
     fim:       "2026-09-30",
     descricao: "Inscrições com valor promocional",
     icone:     "💳"
   },
   {
     titulo:    "Divulgação de Aceites",
-    inicio:    "2026-09-14",
+    inicio:    "2026-09-15",
     fim:       "2026-09-15",
     descricao: "Notificação sobre aprovação de apresentações e trabalhos",
     icone:     "✉️"

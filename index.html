@@ -314,6 +314,38 @@
       max-width: none;
     }
     .sobre-text .tag { margin-bottom: 1rem; }
+    /* Cards de tópicos */
+    .sobre-cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
+      margin: 1.25rem 0 1rem;
+    }
+    .sobre-card {
+      display: flex; align-items: flex-start; gap: .65rem;
+      background: var(--off-white); border-radius: 10px;
+      padding: .75rem .9rem; border-left: 3px solid var(--teal);
+    }
+    .sobre-card-icon { font-size: 1.25rem; line-height: 1; flex-shrink: 0; margin-top: .05rem; }
+    .sobre-card-body { display: flex; flex-direction: column; gap: .1rem; }
+    .sobre-card-title { font-size: .8rem; font-weight: 700; color: var(--navy); letter-spacing: .02em; text-transform: uppercase; }
+    .sobre-card-desc  { font-size: .8rem; color: var(--text-dark); opacity: .75; line-height: 1.4; }
+    /* Leia mais */
+    .sobre-leia-mais-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--teal); font-size: .85rem; font-weight: 600;
+      padding: 0; display: inline-flex; align-items: center; gap: .35rem;
+      transition: color var(--transition); margin-bottom: .5rem;
+    }
+    .sobre-leia-mais-btn:hover { color: var(--navy); }
+    .sobre-leia-mais-btn svg { transition: transform var(--transition); }
+    .sobre-leia-mais-btn.open svg { transform: rotate(180deg); }
+    .sobre-expandido {
+      display: none; font-size: .9rem; color: var(--text-dark);
+      line-height: 1.75; background: var(--off-white);
+      border-left: 3px solid var(--teal-light);
+      padding: .9rem 1rem; border-radius: 0 8px 8px 0;
+      margin-bottom: .5rem;
+    }
+    .sobre-expandido.open { display: block; }
 
     /* ──────────────────────────────────────────── */
     /* DATAS IMPORTANTES — TIMELINE VERTICAL        */
@@ -457,7 +489,7 @@
     }
     .tl-featured .tl-content:hover { transform: none; }
     .tl-featured .tl-title    { font-size: 1.7rem; font-weight: 900; color: var(--gold-light); }
-    .tl-featured .tl-date     { color: var(--white); font-size: 1.25rem; text-decoration: none !important; }
+    .tl-featured .tl-content .tl-date { color: var(--gold-light); font-size: 1.25rem; text-decoration: none !important; }
     .tl-featured .tl-countdown { color: rgba(255,255,255,.85); font-size: .95rem; }
     .tl-featured .tl-note     { color: rgba(255,255,255,.75); border-top-color: rgba(255,255,255,.2); }
     .tl-featured .tl-status-badge {
@@ -812,6 +844,8 @@
       .hero-info { justify-content: center; }
       .hero-actions { justify-content: center; }
       .sobre-grid, .venue-grid { grid-template-columns: 1fr; }
+      .sobre-visual { order: -1; }
+      .sobre-cards { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -827,14 +861,15 @@
       .hero-logo-img { width: clamp(180px, 65vw, 260px); }
       .hero-display { font-size: clamp(3rem, 14vw, 4.5rem); }
     }
+    /* Remove backdrop-filter when menu is open — evita containing block no Safari/iOS */
+    body.nav-open #navbar { backdrop-filter: none; -webkit-backdrop-filter: none; }
     body.nav-open .nav-links {
-      display: flex; flex-direction: column; position: fixed; inset: 0;
+      display: flex; flex-direction: column;
+      position: fixed; top: 0; right: 0; bottom: 0; left: 0;
       background: rgba(13,33,53,.97); align-items: center; justify-content: center;
-      gap: 2.5rem; z-index: 998;
+      gap: 2.5rem; z-index: 1000;
     }
     body.nav-open .nav-links a { font-size: 1.4rem; }
-    /* Navbar always opaque when menu is open */
-    body.nav-open #navbar { background: rgba(13,33,53,.97); }
     /* Hamburger darker pill when menu is open */
     body.nav-open .hamburger { background: rgba(255,255,255,.12); }
     /* Animate ☰ → × */
@@ -966,7 +1001,49 @@
         <h2 class="section-title">A maior reunião de <span>biometria e estatística</span> do Brasil</h2>
         <div class="section-body">
           <p>A Reunião Anual da RBras é o principal fórum nacional para a troca de conhecimentos e avanços nas áreas de estatística, biometria e disciplinas relacionadas.</p>
-          <p>Em sua 70ª edição, o tema <em>"Dados que revelam Vida"</em> convida pesquisadores e profissionais a explorar como métodos estatísticos e biométricos estão transformando ciências da vida, saúde, agricultura e meio ambiente.</p>
+          <p>Em sua 70ª edição, o tema <em>"Dados que revelam Vida"</em> convida estudantes, pesquisadores e profissionais a explorar como métodos estatísticos e biométricos estão transformando ciências da vida, saúde, agricultura e meio ambiente.</p>
+
+          <div class="sobre-cards">
+            <div class="sobre-card">
+              <span class="sobre-card-icon">🏥</span>
+              <div class="sobre-card-body">
+                <span class="sobre-card-title">Saúde &amp; Medicina</span>
+                <span class="sobre-card-desc">Modelos preditivos e vigilância epidemiológica baseados em dados</span>
+              </div>
+            </div>
+            <div class="sobre-card">
+              <span class="sobre-card-icon">🌱</span>
+              <div class="sobre-card-body">
+                <span class="sobre-card-title">Agricultura</span>
+                <span class="sobre-card-desc">Biometria aplicada à genética, melhoramento e produção agrícola</span>
+              </div>
+            </div>
+            <div class="sobre-card">
+              <span class="sobre-card-icon">🌍</span>
+              <div class="sobre-card-body">
+                <span class="sobre-card-title">Meio Ambiente</span>
+                <span class="sobre-card-desc">Estatística espacial, biodiversidade e mudanças climáticas</span>
+              </div>
+            </div>
+            <div class="sobre-card">
+              <span class="sobre-card-icon">📊</span>
+              <div class="sobre-card-body">
+                <span class="sobre-card-title">Políticas Públicas</span>
+                <span class="sobre-card-desc">Agenda 2030 e ODS apoiados por evidências quantitativas</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="sobre-leia-mais-btn" id="sobre-leia-mais-btn" aria-expanded="false">
+            Leia mais sobre o tema
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="sobre-expandido" id="sobre-expandido" aria-hidden="true">
+            O tema <em>"Dados que revelam Vida"</em> destaca como a integração de ferramentas analíticas com os objetivos da Agenda 2030 da ONU, especialmente nas áreas relacionadas à Biometria, transformando dados em conhecimento acionável para melhorar a qualidade de vida. Estatística e Ciência de Dados são fundamentais para monitorar e avaliar o progresso dos Objetivos de Desenvolvimento Sustentável (ODS): identificam padrões, detectam desigualdades, prevêem tendências e suportam decisões baseadas em evidências para enfrentar desafios complexos como erradicação da pobreza, mitigação das mudanças climáticas, promoção da saúde e bem-estar (humano e animal), garantia de educação de qualidade e avanço da igualdade de gênero. Ao transformar dados brutos em indicadores robustos, modelos preditivos e visualizações claras, a estatística e a ciência de dados possibilitam intervenções mais eficazes, políticas públicas mais direcionadas e uma governança mais transparente e responsiva, alinhada aos princípios e metas da Agenda 2030.
+          </div>
+
           <p>Promovida pela <strong>Região Brasileira da Sociedade Internacional de Biometria (RBras)</strong>, a edição de 2026 acontece na Unicamp, Campinas/SP, reconhecida como uma das maiores universidades da América Latina e localizada em um dos maiores pólos científicos e tecnológicos do Brasil.</p>
         </div>
       </div>
@@ -1325,7 +1402,7 @@ function formatDateRange(ini, fim) {
   const sameDay   = ini.getTime() === fim.getTime();
   const sameMonth = mi === mf && yi === yf;
   if (sameDay)   return `${pad(di)} ${mi}`;
-  if (sameMonth) return `${pad(di)} – ${pad(df)} ${mf}`;
+  if (sameMonth) return `${pad(di)} ${mi} – ${pad(df)} ${mf}`;
   return `${pad(di)} ${mi} – ${pad(df)} ${mf}`;
 }
 
@@ -1713,6 +1790,22 @@ document.getElementById('navLinks').addEventListener('click', e => {
   if(e.target.tagName==='A') document.body.classList.remove('nav-open');
   if(e.target === e.currentTarget) document.body.classList.remove('nav-open'); // tap no fundo escuro fecha o menu
 });
+
+/* ═══════════════════════════════════════════════
+   SOBRE — LEIA MAIS
+═══════════════════════════════════════════════ */
+(function() {
+  const btn = document.getElementById('sobre-leia-mais-btn');
+  const box = document.getElementById('sobre-expandido');
+  if (!btn || !box) return;
+  btn.addEventListener('click', () => {
+    const open = box.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+    box.setAttribute('aria-hidden', !open);
+    btn.childNodes[0].textContent = open ? 'Recolher ' : 'Leia mais sobre o tema ';
+  });
+})();
 
 /* ═══════════════════════════════════════════════
    BOOT
