@@ -9,8 +9,8 @@ const SPONSORS = [
     tier:  "🥇 Ouro",
     nivel: "gold",
     patrocinadores: [
-      { nome: "FAPESP", logo: "", url: "https://fapesp.br"  },
-      { nome: "CNPq",   logo: "", url: "https://cnpq.br"   }
+      { nome: "FAPESP", logo: "assets/logos/logo-fapesp.png", url: "https://fapesp.br"  },
+      { nome: "CNPq",   logo: "assets/logos/logo-cnpq.png",   url: "https://cnpq.br"   }
     ]
   },
   {
