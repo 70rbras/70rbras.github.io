@@ -204,8 +204,8 @@
     .nav-cta { background: var(--gold); color: var(--blue) !important; padding: .45em 1.2em; border-radius: 999px; font-weight: 700 !important; }
     .nav-cta:hover { background: var(--gold-light); }
     .nav-cta::after { display: none !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .5rem; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .6rem .7rem; border-radius: 8px; background: rgba(0,0,0,.28); transition: background var(--transition); }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: opacity var(--transition), transform var(--transition); }
 
     /* ──────────────────────────────────────────── */
     /* HERO                                         */
@@ -833,6 +833,14 @@
       gap: 2.5rem; z-index: 998;
     }
     body.nav-open .nav-links a { font-size: 1.4rem; }
+    /* Navbar always opaque when menu is open */
+    body.nav-open #navbar { background: rgba(13,33,53,.97); }
+    /* Hamburger darker pill when menu is open */
+    body.nav-open .hamburger { background: rgba(255,255,255,.12); }
+    /* Animate ☰ → × */
+    body.nav-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.nav-open .hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    body.nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   </style>
 </head>
 <body>
@@ -1701,7 +1709,10 @@ document.addEventListener('keydown', e => {
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY>60));
 document.getElementById('hamburger').addEventListener('click', () => document.body.classList.toggle('nav-open'));
-document.getElementById('navLinks').addEventListener('click', e => { if(e.target.tagName==='A') document.body.classList.remove('nav-open'); });
+document.getElementById('navLinks').addEventListener('click', e => {
+  if(e.target.tagName==='A') document.body.classList.remove('nav-open');
+  if(e.target === e.currentTarget) document.body.classList.remove('nav-open'); // tap no fundo escuro fecha o menu
+});
 
 /* ═══════════════════════════════════════════════
    BOOT
