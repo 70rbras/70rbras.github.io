@@ -32,7 +32,7 @@ const DATES = [
     titulo:    "Inscrições com Desconto",
     inicio:    "2026-05-06",
     fim:       "2026-09-30",
-    descricao: "Inscrições com valor promocional",
+    descricao: "1º Lote",
     icone:     "💳"
   },
   {
@@ -45,8 +45,15 @@ const DATES = [
   {
     titulo:    "Inscrições sem Desconto",
     inicio:    "2026-10-01",
+    fim:       "2026-10-31",
+    descricao: "2º Lote",
+    icone:     "🖊️"
+  },
+  {
+    titulo:    "Inscrições Tardias",
+    inicio:    "2026-11-01",
     fim:       "2026-11-23",
-    descricao: "Inscrições regulares (valor cheio)",
+    descricao: "3º Lote",
     icone:     "🖊️"
   },
   {
