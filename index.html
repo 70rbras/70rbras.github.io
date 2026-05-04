@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>70ª RBras 2026 — Dados que revelam Vida</title>
   <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
+  <meta name="description" content="70ª Reunião Anual da RBras — Dados que revelam Vida. Estatística e Biometria aplicadas à saúde, agricultura e meio ambiente. 23–25 de novembro de 2026, IMECC/Unicamp, Campinas, SP.">
   <meta property="og:title" content="70ª RBras 2026 — Dados que revelam Vida">
   <meta property="og:description" content="Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 23–25 Nov 2026 · Campinas, SP">
-  <meta property="og:image" content="assets/logos/70rbras_logo_positivo_cor.png">
+  <meta property="og:url" content="https://70rbras.org">
+  <meta property="og:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="assets/logos/70rbras_logo_positivo_cor.png">
+  <meta name="twitter:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -808,6 +810,23 @@
     .sponsor-logo img { max-width: 80%; max-height: 70%; object-fit: contain; }
 
     /* ──────────────────────────────────────────── */
+    /* BOTÃO VOLTAR AO TOPO                         */
+    /* ──────────────────────────────────────────── */
+    #btn-topo {
+      position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 990;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy, #1A3870); color: var(--white);
+      border: none; cursor: pointer; font-size: 1.1rem;
+      display: grid; place-items: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,.22);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .3s ease, transform .3s ease, background .2s;
+      pointer-events: none;
+    }
+    #btn-topo.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    #btn-topo:hover { background: var(--blue-mid); }
+
+    /* ──────────────────────────────────────────── */
     /* CTA INSCRIÇÕES                               */
     /* ──────────────────────────────────────────── */
     #inscricoes { padding: 6rem 0; background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%); text-align: center; }
@@ -893,11 +912,12 @@
       <li><a href="#datas">Datas</a></li>
       <li><a href="#local">Local</a></li>
       <li><a href="#comissao">Comissões</a></li>
+      <li><a href="#patrocinadores">Apoio</a></li>
       <li><a href="#inscricoes" class="nav-cta" id="nav-cta-link">Inscreva-se</a></li>
     </ul>
-    <div class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
@@ -1282,6 +1302,8 @@
   </div>
 </footer>
 
+<button id="btn-topo" aria-label="Voltar ao topo">&#8679;</button>
+
 <!-- ─── DATA FILES (edite os arquivos em data/) ───── -->
 <script src="data/config.js"></script>
 <script src="data/speakers.js"></script>
@@ -1326,7 +1348,7 @@ async function applyConfig() {
   // hero
   document.getElementById('hero-datas').textContent     = evento.datas_exibicao;
   document.getElementById('hero-cidade').textContent    = evento.cidade;
-  document.getElementById('hero-local-nome').textContent= evento.local_nome;
+  document.getElementById('hero-local-nome').innerHTML = evento.local_nome;
   // Se link de inscrições ainda não estiver disponível, exibe modal "em breve"
   const linkInscricoes = evento.link_inscricoes;
   const isEmBreve = !linkInscricoes || linkInscricoes === '#';
@@ -1336,15 +1358,25 @@ async function applyConfig() {
     if (!el) return;
     if (isEmBreve) {
       el.href = '#';
-      el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve(); });
+      el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('inscricao'); });
     } else {
       el.href = linkInscricoes;
     }
   });
-  // cta
-  document.getElementById('cta-submissao').href   = evento.link_submissao;
+  // cta — submissão com modal "em breve" se link ainda não disponível
+  const linkSubmissao = evento.link_submissao;
+  const submissaoEmBreve = !linkSubmissao || linkSubmissao === '#';
+  const ctaSubmissao = document.getElementById('cta-submissao');
+  if (submissaoEmBreve) {
+    ctaSubmissao.href = '#';
+    ctaSubmissao.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('submissao'); });
+  } else {
+    ctaSubmissao.href = linkSubmissao;
+  }
   // venue (o HTML já traz o conteúdo real; config.js serve de fonte de verdade)
-  if (evento.local_nome)     document.getElementById('venue-local-nome').innerHTML = evento.local_nome;
+  if (evento.local_nome)     document.getElementById('venue-local-nome').innerHTML  = evento.local_nome;
+  const heroLocalEl = document.getElementById('hero-local-nome');
+  if (heroLocalEl) heroLocalEl.innerHTML = evento.local_nome;
   // footer
   document.getElementById('footer-desc').textContent =
     `${evento.nome} · ${evento.cidade} · ${evento.datas_exibicao}`;
@@ -1628,12 +1660,22 @@ async function renderSchedule() {
   const tabs      = document.getElementById('sched-tabs');
   const container = document.getElementById('sched-days-container');
 
+  // Detectar qual dia exibir: durante o evento, abre automaticamente no dia corrente
+  const hoje      = new Date(); hoje.setHours(0,0,0,0);
+  const eventoIni = parseISODate(CONFIG.evento.inicio);
+  const eventoFim = parseISODate(CONFIG.evento.fim);
+  let activeIdx = 0;
+  if (hoje >= eventoIni && hoje <= eventoFim) {
+    const offset = Math.floor((hoje - eventoIni) / 86400000);
+    activeIdx = Math.min(offset, days.length - 1);
+  }
+
   tabs.innerHTML = days.map((d, i) => `
-    <button class="sched-tab${i===0?' active':''}"
+    <button class="sched-tab${i===activeIdx?' active':''}"
             onclick="showDay('sched-day-${i}', this)">${d.dia}</button>`).join('');
 
   container.innerHTML = days.map((d, i) => `
-    <div class="sched-day${i===0?' active':''}" id="sched-day-${i}">
+    <div class="sched-day${i===activeIdx?' active':''}" id="sched-day-${i}">
       <div class="sched-blocks">
         ${d.blocos.map(b => `
           <div class="sched-block">
@@ -1761,7 +1803,23 @@ async function renderSponsors() {
 /* ═══════════════════════════════════════════════
    MODAL EM BREVE
 ═══════════════════════════════════════════════ */
-function abrirModalEmBreve() {
+const MODAL_CONTEUDO = {
+  inscricao: {
+    titulo: 'Inscrições em breve',
+    icone:  '🗓️',
+    texto:  'As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>Volte a visitar esta página em breve para mais informações sobre prazos, valores e categorias de inscrição.'
+  },
+  submissao: {
+    titulo: 'Submissão em breve',
+    icone:  '📝',
+    texto:  'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>06 mai – 15 set de 2026</strong>.'
+  }
+};
+function abrirModalEmBreve(tipo) {
+  const cfg = MODAL_CONTEUDO[tipo] || MODAL_CONTEUDO.inscricao;
+  document.querySelector('#modal-em-breve .modal-icone').textContent = cfg.icone;
+  document.getElementById('modal-titulo-txt').textContent = cfg.titulo;
+  document.querySelector('#modal-em-breve .modal-texto').innerHTML = cfg.texto;
   const modal = document.getElementById('modal-em-breve');
   modal.classList.add('ativo');
   document.body.style.overflow = 'hidden';
@@ -1784,11 +1842,22 @@ document.addEventListener('keydown', e => {
    NAVBAR
 ═══════════════════════════════════════════════ */
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY>60));
-document.getElementById('hamburger').addEventListener('click', () => document.body.classList.toggle('nav-open'));
+const btnTopo = document.getElementById('btn-topo');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  btnTopo.classList.toggle('visible', window.scrollY > 400);
+});
+btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+document.getElementById('hamburger').addEventListener('click', () => {
+  const isOpen = document.body.classList.toggle('nav-open');
+  document.getElementById('hamburger').setAttribute('aria-expanded', isOpen);
+});
 document.getElementById('navLinks').addEventListener('click', e => {
-  if(e.target.tagName==='A') document.body.classList.remove('nav-open');
-  if(e.target === e.currentTarget) document.body.classList.remove('nav-open'); // tap no fundo escuro fecha o menu
+  const shouldClose = e.target.tagName==='A' || e.target === e.currentTarget;
+  if (shouldClose) {
+    document.body.classList.remove('nav-open');
+    document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  }
 });
 
 /* ═══════════════════════════════════════════════
