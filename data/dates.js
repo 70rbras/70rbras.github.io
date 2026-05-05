@@ -16,21 +16,21 @@
 const DATES = [
   {
     titulo:    "Submissão de Trabalhos",
-    inicio:    "2026-05-06",
+    inicio:    "2026-05-11",
     fim:       "2026-09-15",
     descricao: "Envio de trabalhos orais e pôsteres",
     icone:     "📝"
   },
   {
     titulo:    "Propostas de Sessões Temáticas e Minicursos",
-    inicio:    "2026-05-06",
+    inicio:    "2026-05-11",
     fim:       "2026-06-05",
     descricao: "Submissão de propostas de sessões temáticas e minicursos",
     icone:     "🎤"
   },
   {
     titulo:    "Inscrições com Desconto",
-    inicio:    "2026-05-06",
+    inicio:    "2026-05-11",
     fim:       "2026-09-30",
     descricao: "1º Lote",
     icone:     "💳"

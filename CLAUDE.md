@@ -89,9 +89,9 @@ site-rbras-claude/
 
 | Evento | Período |
 |--------|---------|
-| Submissão de Trabalhos | 4 mai – 15 ago 2026 |
-| Propostas de Sessões, Mesas e Minicursos | 4 mai – 5 jun 2026 |
-| Inscrições com Desconto (Early Bird) | 5 mai – 30 set 2026 |
+| Submissão de Trabalhos | 11 mai – 15 ago 2026 |
+| Propostas de Sessões, Mesas e Minicursos | 11 mai – 5 jun 2026 |
+| Inscrições com Desconto (Early Bird) | 11 mai – 30 set 2026 |
 | Divulgação de Aceites | 14–15 set 2026 |
 | Inscrições sem Desconto (Regular) | 1 out – 23 nov 2026 |
 | **70ª RBras (Evento Principal)** | **23–25 nov 2026** |
