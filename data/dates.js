@@ -22,10 +22,10 @@ const DATES = [
     icone:     "📝"
   },
   {
-    titulo:    "Propostas de Sessões, Mesas e Minicursos",
+    titulo:    "Propostas de Sessões Temáticas e Minicursos",
     inicio:    "2026-05-06",
     fim:       "2026-06-05",
-    descricao: "Submissão de sessões temáticas, mesas redondas e minicursos",
+    descricao: "Submissão de propostas de sessões temáticas e minicursos",
     icone:     "🎤"
   },
   {
