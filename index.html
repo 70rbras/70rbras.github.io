@@ -1044,6 +1044,14 @@
     body.nav-open .hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     body.nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   </style>
+  <!-- Google Analytics 4 — G-X7Z8S78NNX -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7Z8S78NNX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X7Z8S78NNX');
+  </script>
 </head>
 <body>
 
@@ -1610,7 +1618,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p id="footer-copy">© 2026 70ª RBras · Região Brasileira da Sociedade Internacional de Biometria</p>
+      <p id="footer-copy">© 2026 70ª RBras · Região Brasileira da Sociedade Internacional de Biometria · <span style="opacity:.6;font-size:.78rem;">Este site utiliza cookies analíticos para medir o alcance do evento (Google Analytics 4).</span></p>
       <div class="social-links" id="social-links">
         <a href="#" class="social-link" id="social-instagram" aria-label="Instagram">📸</a>
       </div>
@@ -1668,10 +1676,16 @@ async function applyConfig() {
   // Se link de inscrições ainda não estiver disponível, exibe modal "em breve"
   const linkInscricoes = evento.link_inscricoes;
   const isEmBreve = !linkInscricoes || linkInscricoes === '#';
-  const btnIds = ['hero-btn-inscricoes', 'cta-inscricoes', 'nav-cta-link'];
+  const btnIds = ['hero-btn-inscricoes', 'cta-inscricoes', 'nav-cta-link', 'inscricoes-inscrevase-btn'];
   btnIds.forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
+    // GA4 — rastreia clique em botão de inscrição
+    el.addEventListener('click', () => {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'registration_click', { button_id: id });
+      }
+    });
     if (isEmBreve) {
       el.href = '#';
       el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('inscricao'); });
@@ -1685,6 +1699,12 @@ async function applyConfig() {
   ['cta-submissao', 'sub-trabalhos-btn'].forEach(id => {
     const btn = document.getElementById(id);
     if (!btn) return;
+    // GA4 — rastreia clique em botão de submissão
+    btn.addEventListener('click', () => {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'submission_click', { button_id: id });
+      }
+    });
     if (submissaoEmBreve) {
       btn.href = '#';
       btn.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('submissao'); });
@@ -1883,6 +1903,13 @@ async function renderSpeakers() {
 }
 
 function openModal(s) {
+  // GA4 — rastreia qual palestrante foi visualizado
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'speaker_view', {
+      speaker_name: s.nome,
+      speaker_type: s.tipo
+    });
+  }
   const modal = document.getElementById('speaker-modal');
   const foto  = s.foto
     ? `<img src="${s.foto}" alt="${s.nome}" loading="lazy">`
