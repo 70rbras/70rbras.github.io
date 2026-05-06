@@ -11,7 +11,7 @@ const CONFIG = {
     datas_exibicao: "23 a 25 de Novembro de 2026",
     cidade:         "Unicamp, Campinas, SP",
     local_nome:     "IMECC / UNICAMP<br>Instituto de Matemática, Estatística e Computação Científica",
-    local_endereco: "Rua Sérgio Buarque de Holanda, 651 — Cidade Universitária 'Zeferino Vaz', Campinas, SP · CEP 13083-859",
+    local_endereco: "Rua Sérgio Buarque de Holanda, 651 - Cidade Universitária 'Zeferino Vaz', Campinas, SP · CEP 13083-859",
     local_instituicao: "Unicamp",
     email_contato:  "70rbras@unicamp.br",
     site_rbras:     "https://www.70rbras.org",

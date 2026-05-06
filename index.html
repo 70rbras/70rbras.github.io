@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>70ª RBras 2026 — Dados que revelam Vida</title>
+  <title>70ª RBras 2026 - Dados que revelam Vida</title>
   <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
-  <meta name="description" content="70ª Reunião Anual da RBras — Dados que revelam Vida. Estatística e Biometria aplicadas à saúde, agricultura e meio ambiente. 23–25 de novembro de 2026, IMECC/Unicamp, Campinas, SP.">
-  <meta property="og:title" content="70ª RBras 2026 — Dados que revelam Vida">
+  <meta name="description" content="70ª Reunião Anual da RBras - Dados que revelam Vida. Estatística e Biometria aplicadas à saúde, agricultura e meio ambiente. 23–25 de novembro de 2026, IMECC/Unicamp, Campinas, SP.">
+  <meta property="og:title" content="70ª RBras 2026 - Dados que revelam Vida">
   <meta property="og:description" content="Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 23–25 Nov 2026 · Campinas, SP">
   <meta property="og:url" content="https://70rbras.org">
   <meta property="og:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
@@ -15,1036 +15,8 @@
   <meta name="twitter:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* ── TOKENS — paleta extraída do logo 70ª RBras ─ */
-    :root {
-      --blue:        #1A3870;   /* navy escuro do logo (fundo Logo B)       */
-      --blue-mid:    #2560AC;   /* azul médio das barras de gráfico do logo  */
-      --teal:        #2A9080;   /* teal do texto "RBras" e "Dados"           */
-      --teal-light:  #38AAAA;   /* teal claro (pontos acácia teal do logo)   */
-      --gold:        #D6A818;   /* dourado dos pontos/flores do logo         */
-      --gold-light:  #EAC830;   /* dourado brilhante (hover/destaque)        */
-      --olive:       #5A9C28;   /* verde das folhas do galho do logo         */
-      --green-dark:  #2D5820;   /* verde escuro complementar                 */
-      --off-white:   #F2F6FA;
-      --white:       #FFFFFF;
-      --text-dark:   #0C1C3A;   /* navy mais profundo (tom mais escuro logo) */
-      --text-mid:    #3A5068;
-      --radius:      14px;
-      --transition:  0.35s cubic-bezier(.4,0,.2,1);
-    }
-
-    /* ── RESET ─────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-dark);
-      background: var(--white);
-      overflow-x: hidden;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    section { position: relative; }
-
-    /* ── TYPOGRAPHY ────────────────────────────── */
-    .display { font-family: 'Montserrat', sans-serif; font-weight: 800; line-height: 1.1; }
-    .serif   { font-family: 'Playfair Display', serif; }
-
-    /* ── UTILITIES ─────────────────────────────── */
-    .container { width: min(1160px, 92vw); margin-inline: auto; }
-    .tag {
-      display: inline-block;
-      font-size: .72rem; font-weight: 700;
-      letter-spacing: .12em; text-transform: uppercase;
-      padding: .3em .85em; border-radius: 999px;
-    }
-    .tag--gold  { background: var(--gold);        color: var(--blue);  }
-    .tag--teal  { background: var(--teal-light);  color: var(--white); }
-    .tag--blue  { background: var(--blue);         color: var(--white); }
-    .btn {
-      display: inline-flex; align-items: center; gap: .5em;
-      padding: .85em 2em; border-radius: 999px;
-      font-weight: 600; font-size: .95rem;
-      cursor: pointer; border: 2px solid transparent;
-      transition: var(--transition);
-    }
-    .btn--primary { background: var(--gold); color: var(--blue); }
-    .btn--primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,162,39,.35); }
-    .btn--outline { border-color: rgba(255,255,255,.5); color: var(--white); }
-    .btn--outline:hover { background: rgba(255,255,255,.12); border-color: var(--white); transform: translateY(-2px); }
-
-    /* ── MODAL EM BREVE ─────────────────────────── */
-    #modal-em-breve {
-      display: none;
-      position: fixed; inset: 0; z-index: 2000;
-      align-items: center; justify-content: center;
-      background: rgba(10, 20, 50, 0.72);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      padding: 1.5rem;
-    }
-    #modal-em-breve.ativo { display: flex; }
-    .modal-card {
-      background: var(--white);
-      border-radius: 22px;
-      max-width: 460px; width: 100%;
-      padding: 3rem 2.8rem 2.6rem;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 32px 80px rgba(10,20,50,.32), 0 0 0 1px rgba(214,168,24,.18);
-      animation: modalIn .38s cubic-bezier(.34,1.56,.64,1) both;
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(.88) translateY(24px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    .modal-icone {
-      width: 64px; height: 64px;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.6rem;
-      font-size: 1.8rem;
-    }
-    .modal-titulo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.55rem; font-weight: 700;
-      color: var(--blue);
-      line-height: 1.25;
-      margin-bottom: .75rem;
-    }
-    .modal-texto {
-      font-size: .97rem; line-height: 1.65;
-      color: var(--text-mid);
-      margin-bottom: 2rem;
-    }
-    .modal-texto strong { color: var(--blue); font-weight: 600; }
-    .modal-linha {
-      display: block;
-      height: 2px;
-      width: 48px;
-      background: linear-gradient(90deg, var(--gold), var(--teal-light));
-      border-radius: 99px;
-      margin: 0 auto 1.6rem;
-    }
-    .modal-fechar {
-      background: var(--blue);
-      color: var(--white);
-      border: none;
-      padding: .75em 2.2em;
-      border-radius: 999px;
-      font-size: .95rem; font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      letter-spacing: .02em;
-    }
-    .modal-fechar:hover { background: var(--blue-mid); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,56,112,.28); }
-    .modal-close-x {
-      position: absolute; top: 1rem; right: 1.2rem;
-      background: none; border: none;
-      font-size: 1.35rem; color: var(--text-mid);
-      cursor: pointer; line-height: 1;
-      opacity: .55; transition: opacity .2s;
-    }
-    .modal-close-x:hover { opacity: 1; }
-
-    /* ── SCROLL REVEAL ─────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-from-right { opacity: 0; transform: translateX(60px); transition: opacity 1.4s ease, transform 1.4s ease; }
-    .reveal-from-right.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: .1s; }
-    .reveal-delay-2 { transition-delay: .2s; }
-    .reveal-delay-3 { transition-delay: .3s; }
-    .reveal-delay-4 { transition-delay: .4s; }
-
-    /* ── SECTION COMMONS ───────────────────────── */
-    .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-header .tag { margin-bottom: 1rem; }
-    .section-header .section-title { margin-bottom: .5rem; }
-    .section-header .section-body { max-width: 56ch; margin-inline: auto; }
-    .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-      font-weight: 600; color: var(--text-dark);
-      margin-bottom: 1.25rem; line-height: 1.2;
-    }
-    .section-title span { color: var(--teal); }
-    .section-body { color: var(--text-mid); line-height: 1.8; font-size: 1.02rem; }
-    .section-body p + p { margin-top: 1em; }
-    .accent-bar { width: 52px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--gold), var(--teal)); margin-bottom: 1.5rem; }
-
-    /* ──────────────────────────────────────────── */
-    /* NAVBAR                                       */
-    /* ──────────────────────────────────────────── */
-    #navbar {
-      position: fixed; inset: 0 0 auto; z-index: 999;
-      padding: 1rem 0;
-      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
-    }
-    #navbar.scrolled {
-      background: rgba(27,78,121,.96);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 24px rgba(0,0,0,.25);
-      padding: .65rem 0;
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .nav-logo { display: flex; align-items: center; }
-    .nav-logo-img {
-      height: 46px; width: auto; object-fit: contain;
-      /* sem border-radius: fundo transparente */
-      transition: opacity var(--transition), transform var(--transition);
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,.3));
-    }
-    .nav-logo-img:hover { opacity: .88; transform: scale(1.04); }
-    .nav-links { display: flex; list-style: none; gap: 2rem; }
-    .nav-links a { color: rgba(255,255,255,.8); font-size: .88rem; font-weight: 500; letter-spacing: .02em; transition: color var(--transition); position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width var(--transition); }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-cta { background: var(--gold); color: var(--blue) !important; padding: .45em 1.2em; border-radius: 999px; font-weight: 700 !important; }
-    .nav-cta:hover { background: var(--gold-light); }
-    .nav-cta::after { display: none !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .6rem .7rem; border-radius: 8px; background: rgba(0,0,0,.28); transition: background var(--transition); }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: opacity var(--transition), transform var(--transition); }
-
-    /* ── DROPDOWN ───────────────────────────────── */
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-toggle {
-      display: inline-flex; align-items: center; gap: .3em; cursor: default;
-    }
-    .nav-dropdown-toggle::after { display: none !important; }
-    .nav-dropdown-toggle .chev {
-      display: inline-block; transition: transform var(--transition);
-      opacity: .7;
-    }
-    .nav-dropdown:hover .nav-dropdown-toggle .chev,
-    .nav-dropdown:focus-within .nav-dropdown-toggle .chev { transform: rotate(180deg); }
-    .nav-dropdown-toggle:hover { color: var(--gold) !important; }
-
-    .nav-dropdown-menu {
-      position: absolute; top: calc(100% + .5rem); left: 50%;
-      transform: translateX(-50%) translateY(-6px);
-      background: rgba(12, 35, 72, 0.97);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      border-radius: 12px; padding: .4rem;
-      min-width: 190px; list-style: none;
-      box-shadow: 0 20px 48px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
-      opacity: 0; pointer-events: none;
-      transition: opacity .2s ease, transform .2s ease;
-      z-index: 100;
-    }
-    .nav-dropdown:hover .nav-dropdown-menu,
-    .nav-dropdown:focus-within .nav-dropdown-menu {
-      opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0);
-    }
-    .nav-dropdown-menu li a {
-      display: block; padding: .58rem 1rem;
-      color: rgba(255,255,255,.78); font-size: .85rem; font-weight: 500;
-      border-radius: 8px; white-space: nowrap;
-      transition: background var(--transition), color var(--transition);
-    }
-    .nav-dropdown-menu li a::after { display: none !important; }
-    .nav-dropdown-menu li a:hover { background: rgba(255,255,255,.1); color: var(--gold); }
-    /* Ponte invisível que cobre o espaço entre o link e o painel */
-    .nav-dropdown-menu::before {
-      content: ''; position: absolute;
-      bottom: 100%; left: 0; right: 0; height: .8rem;
-    }
-
-    /* ──────────────────────────────────────────── */
-    /* HERO                                         */
-    /* ──────────────────────────────────────────── */
-    #hero {
-      min-height: 100svh; display: flex; align-items: center;
-      background: linear-gradient(135deg, #09152E 0%, var(--blue) 50%, var(--teal) 100%);
-      overflow: hidden;
-    }
-    #particleCanvas { position: absolute; inset: 0; pointer-events: none; }
-    .hero-botanical {
-      position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
-      width: clamp(280px, 38vw, 560px); opacity: .06; pointer-events: none;
-    }
-    /* Grade principal: logo (esq) | conteúdo (dir) */
-    .hero-content {
-      position: relative; z-index: 2; padding: 8rem 0 5rem;
-      display: grid; grid-template-columns: auto 1fr; gap: 5rem; align-items: center;
-    }
-    /* ── COLUNA ESQUERDA: logo ───────────────────── */
-    .hero-logo-col {
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hero-logo-img {
-      width: clamp(280px, 42vw, 520px);
-      height: auto;
-      filter: drop-shadow(0 16px 48px rgba(0,0,0,.55))
-              drop-shadow(0  4px 20px rgba(42,144,128,.20));
-      animation: heroLogoReveal 0.9s cubic-bezier(.25,.46,.45,.94) both;
-    }
-    @keyframes heroLogoReveal {
-      from { opacity: 0; transform: translateX(-120px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    /* ── COLUNA DIREITA: texto ───────────────────── */
-    .hero-text-col {
-      display: flex; flex-direction: column; align-items: flex-start;
-    }
-    .hero-text-col .tag { margin-bottom: 1.25rem; }
-    /* Nome do evento — ExtraBold (800), igual ao "RBras" do logo */
-    .hero-display {
-      font-family: 'Montserrat', sans-serif; font-weight: 800;
-      font-size: clamp(3.8rem, 6.5vw, 7.5rem);
-      color: var(--gold); line-height: 1;
-      letter-spacing: -.02em; margin-bottom: .4rem;
-    }
-    /* Nome completo — discreto, abaixo do display */
-    .hero-fullname {
-      font-size: clamp(.8rem, 1.25vw, .95rem);
-      color: rgba(255,255,255,.5);
-      line-height: 1.6; margin-bottom: 1rem; max-width: 42ch;
-    }
-    /* Tema — ExtraBold sem itálico para "Dados que revelam";
-       "Vida" mantém o mesmo peso mas em dourado */
-    .hero-tagline {
-      font-family: 'Montserrat', sans-serif; font-weight: 800; font-style: normal;
-      font-size: clamp(1.1rem, 1.9vw, 1.55rem);
-      color: rgba(255,255,255,.82); margin-bottom: 1.75rem;
-      letter-spacing: .01em;
-    }
-    .hero-tagline strong { color: var(--gold-light); font-weight: 800; font-style: italic; }
-    /* ── LOGO NO FOOTER ─────────────────────────── */
-    .footer-logo-img {
-      height: 72px; width: auto; object-fit: contain;
-      /* sem border-radius: fundo transparente */
-      margin-bottom: 1rem;
-      display: block;
-      filter: drop-shadow(0 2px 12px rgba(0,0,0,.4));
-    }
-    .hero-info { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 1.75rem; }
-    .hero-info-item { display: flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.9); font-size: .95rem; }
-    .hero-info-item .icon { width: 36px; height: 36px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 50%; display: grid; place-items: center; font-size: 1rem; flex-shrink: 0; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .hero-countdown {
-      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
-      border-radius: var(--radius); padding: 1.4rem 1.8rem;
-      display: flex; gap: 1.5rem; backdrop-filter: blur(8px);
-      align-self: flex-start; margin-bottom: 1.75rem;
-    }
-    .cd-unit { text-align: center; min-width: 52px; }
-    .cd-num { font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; font-variant-numeric: tabular-nums; }
-    .cd-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.55); margin-top: .3rem; }
-    .cd-sep { color: var(--gold); font-size: 2rem; font-weight: 300; align-self: flex-start; padding-top: .1rem; }
-    .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; pointer-events: none; }
-
-    /* ──────────────────────────────────────────── */
-    /* SOBRE                                        */
-    /* ──────────────────────────────────────────── */
-    #sobre { padding: 7rem 0 6rem; background: var(--white); }
-    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    /* Coluna visual: apenas o logo */
-    .sobre-visual { display: flex; align-items: center; justify-content: center; }
-    /* Logo com fundo branco — crop do espaço em branco via overflow */
-    .sobre-logo-wrap {
-      overflow: hidden;
-      border-radius: 16px;
-      background: transparent;
-      box-shadow: none;
-      line-height: 0;
-      width: 100%;
-    }
-    .sobre-logo-img {
-      display: block;
-      width: 130%;
-      margin: -8% -15%;
-      max-width: none;
-    }
-    .sobre-text .tag { margin-bottom: 1rem; }
-    /* Cards de tópicos */
-    .sobre-cards {
-      display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
-      margin: 1.25rem 0 1rem;
-    }
-    .sobre-card {
-      display: flex; align-items: flex-start; gap: .65rem;
-      background: var(--off-white); border-radius: 10px;
-      padding: .75rem .9rem; border-left: 3px solid var(--teal);
-    }
-    .sobre-card-icon { font-size: 1.25rem; line-height: 1; flex-shrink: 0; margin-top: .05rem; }
-    .sobre-card-body { display: flex; flex-direction: column; gap: .1rem; }
-    .sobre-card-title { font-size: .8rem; font-weight: 700; color: var(--navy); letter-spacing: .02em; text-transform: uppercase; }
-    .sobre-card-desc  { font-size: .8rem; color: var(--text-dark); opacity: .75; line-height: 1.4; }
-    /* Leia mais */
-    .sobre-leia-mais-btn {
-      background: none; border: none; cursor: pointer;
-      color: var(--teal); font-size: .85rem; font-weight: 600;
-      padding: 0; display: inline-flex; align-items: center; gap: .35rem;
-      transition: color var(--transition); margin-bottom: .5rem;
-    }
-    .sobre-leia-mais-btn:hover { color: var(--navy); }
-    .sobre-leia-mais-btn svg { transition: transform var(--transition); }
-    .sobre-leia-mais-btn.open svg { transform: rotate(180deg); }
-    .sobre-expandido {
-      display: none; font-size: .9rem; color: var(--text-dark);
-      line-height: 1.75; background: var(--off-white);
-      border-left: 3px solid var(--teal-light);
-      padding: .9rem 1rem; border-radius: 0 8px 8px 0;
-      margin-bottom: .5rem;
-    }
-    .sobre-expandido.open { display: block; }
-
-    /* ──────────────────────────────────────────── */
-    /* DATAS IMPORTANTES — TIMELINE VERTICAL        */
-    /* ──────────────────────────────────────────── */
-    #datas { padding: 6rem 0; background: var(--off-white); }
-
-    /* Container da timeline */
-    .dates-timeline {
-      position: relative;
-      max-width: 860px;
-      margin: 3rem auto 0;
-      padding-bottom: 2rem;
-    }
-    /* Linha vertical central */
-    .dates-timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--blue-mid) 0%, var(--teal) 65%, var(--gold) 100%);
-      transform: translateX(-50%);
-      border-radius: 99px;
-    }
-
-    /* Item da timeline: grid de 3 colunas [conteúdo | nó | conteúdo] */
-    .tl-item {
-      display: grid;
-      grid-template-columns: 1fr 64px 1fr;
-      align-items: center;
-      margin-bottom: 1.75rem;
-      position: relative;
-    }
-
-    /* Conteúdo (card) */
-    .tl-content {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 1.3rem 1.4rem;
-      box-shadow: 0 3px 18px rgba(0,0,0,.07);
-      border-top: 3px solid var(--blue-mid);
-      display: flex; flex-direction: column; gap: .35rem;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .tl-content:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.12); }
-
-    /* Item à esquerda: card col-1, nó col-2, espaço col-3 */
-    .tl-left .tl-content { grid-column: 1; margin-right: 2rem; }
-    .tl-left .tl-node    { grid-column: 2; }
-    .tl-left .tl-space   { grid-column: 3; }
-    /* Item à direita: espaço col-1, nó col-2, card col-3 */
-    .tl-right .tl-space   { grid-column: 1; }
-    .tl-right .tl-node    { grid-column: 2; }
-    .tl-right .tl-content { grid-column: 3; margin-left: 2rem; }
-
-    /* Nó (dot) na linha central */
-    .tl-node {
-      display: flex; align-items: center; justify-content: center;
-      z-index: 1; position: relative;
-    }
-    .tl-dot {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 3px solid var(--blue-mid);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,.14);
-    }
-
-    /* Badge de status */
-    .tl-status-badge {
-      display: inline-flex; align-items: center; gap: .35em;
-      font-size: .62rem; font-weight: 800;
-      letter-spacing: .08em; text-transform: uppercase;
-      padding: .25em .7em; border-radius: 999px;
-      background: rgba(43,110,168,.12); color: var(--blue);
-      width: fit-content; white-space: nowrap;
-      margin-bottom: .1rem;
-    }
-    .tl-status-badge::before {
-      content: ''; width: 6px; height: 6px;
-      border-radius: 50%; background: var(--blue-mid);
-    }
-
-    /* Elementos internos do card */
-    .tl-title    { font-size: 1rem; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
-    .tl-date     { font-size: 1.3rem; font-weight: 800; color: var(--blue); letter-spacing: -.01em; }
-    .tl-countdown { font-size: .8rem; font-weight: 700; color: var(--blue-mid); }
-    .tl-note     { font-size: .82rem; color: var(--text-mid); line-height: 1.5;
-                   margin-top: .3rem; padding-top: .5rem; border-top: 1px solid rgba(0,0,0,.06); }
-
-    /* ── STATUS: ENCERRADO ───── */
-    .tl-content[data-status="past"] { border-top-color: #cbd2da; background: #f7f9fb; }
-    .tl-content[data-status="past"] .tl-title    { color: #7a8694; }
-    .tl-content[data-status="past"] .tl-date     { color: #8a96a4; text-decoration: line-through; text-decoration-color: rgba(138,150,164,.5); }
-    .tl-content[data-status="past"] .tl-countdown { color: #8a96a4; }
-    .tl-content[data-status="past"] .tl-note     { color: #8a96a4; border-top-color: rgba(0,0,0,.04); }
-    .tl-content[data-status="past"] .tl-status-badge { background: #e3e7ec; color: #5f6b78; }
-    .tl-content[data-status="past"] .tl-status-badge::before { background: #9aa5b1; }
-    .tl-dot[data-status="past"]     { border-color: #cbd2da; filter: grayscale(.5); }
-
-    /* ── STATUS: ABERTO AGORA ─── */
-    .tl-content[data-status="active"] { border-top-color: var(--gold); box-shadow: 0 4px 22px rgba(201,162,39,.2); }
-    .tl-content[data-status="active"] .tl-date     { color: #8a6b00; }
-    .tl-content[data-status="active"] .tl-countdown { color: #8a6b00; }
-    .tl-content[data-status="active"] .tl-status-badge { background: rgba(201,162,39,.18); color: #7a5f00; }
-    .tl-content[data-status="active"] .tl-status-badge::before {
-      background: var(--gold); animation: dateStatusPulse 1.8s ease-in-out infinite;
-    }
-    .tl-dot[data-status="active"] { border-color: var(--gold); background: rgba(201,162,39,.1); }
-
-    @keyframes dateStatusPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: .35; transform: scale(1.4); }
-    }
-
-    /* ── STATUS: EM BREVE ─────── */
-    .tl-content[data-status="upcoming"] { border-top-color: var(--blue-mid); }
-    .tl-content[data-status="upcoming"] .tl-date { color: var(--blue); }
-    .tl-content[data-status="upcoming"] .tl-countdown { color: var(--blue-mid); }
-    .tl-dot[data-status="upcoming"] { border-color: var(--blue-mid); }
-
-    /* ── ITEM DESTACADO (evento principal) ──── */
-    .tl-featured { grid-template-columns: 1fr; margin-top: 1rem; }
-    .tl-featured .tl-content {
-      background: linear-gradient(135deg, var(--text-dark) 0%, var(--blue) 60%, var(--teal) 100%);
-      border-top: none;
-      padding: 2.2rem 2.5rem;
-      color: var(--white);
-      text-align: center;
-      box-shadow: 0 12px 40px rgba(13,33,53,.35);
-      overflow: hidden; position: relative;
-    }
-    .tl-featured .tl-content::before {
-      content: '70';
-      position: absolute; right: -10px; bottom: -38px;
-      font-family: 'Montserrat', sans-serif; font-weight: 900;
-      font-size: 10rem; opacity: .12; line-height: 1;
-      color: var(--gold-light); pointer-events: none;
-    }
-    .tl-featured .tl-content:hover { transform: none; }
-    .tl-featured .tl-title    { font-size: 1.7rem; font-weight: 900; color: var(--gold-light); }
-    .tl-featured .tl-content .tl-date { color: var(--gold-light); font-size: 1.25rem; text-decoration: none !important; }
-    .tl-featured .tl-countdown { color: rgba(255,255,255,.85); font-size: .95rem; }
-    .tl-featured .tl-note     { color: rgba(255,255,255,.75); border-top-color: rgba(255,255,255,.2); }
-    .tl-featured .tl-status-badge {
-      margin: 0 auto .4rem;
-      background: rgba(255,255,255,.15); color: var(--white);
-    }
-    .tl-featured .tl-status-badge::before { background: var(--gold-light); }
-
-    /* ── RESPONSIVO ──────────── */
-    @media (max-width: 680px) {
-      .dates-timeline::before { left: 24px; }
-      .tl-item { grid-template-columns: 56px 1fr; gap: 0; margin-bottom: 1.25rem; }
-      .tl-left .tl-content, .tl-right .tl-content {
-        grid-column: 2; grid-row: 1;
-        margin-left: 1rem; margin-right: 0;
-      }
-      .tl-left .tl-node, .tl-right .tl-node { grid-column: 1; grid-row: 1; }
-      .tl-left .tl-space, .tl-right .tl-space { display: none; }
-      .tl-featured { grid-template-columns: 1fr; }
-      .tl-featured .tl-content { padding: 1.5rem 1.4rem; text-align: left; }
-      .tl-featured .tl-status-badge { margin: 0 0 .4rem; }
-    }
-
-    /* ──────────────────────────────────────────── */
-    /* PALESTRANTES                                 */
-    /* ──────────────────────────────────────────── */
-    #palestrantes { padding: 7rem 0; background: var(--white); }
-    .speakers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
-    .speaker-card { text-align: center; transition: transform var(--transition); cursor: pointer; }
-    .speaker-card:hover { transform: translateY(-5px); }
-    .speaker-photo { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, var(--off-white), #dde6f0); margin: 0 auto 1.2rem; border: 4px solid var(--white); box-shadow: 0 4px 20px rgba(0,0,0,.12); display: grid; place-items: center; color: var(--blue); font-size: 3rem; overflow: hidden; }
-    .speaker-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .speaker-name { font-family: 'Playfair Display', serif; font-size: 1.12rem; font-weight: 700; margin-bottom: .3rem; }
-    .speaker-role { font-size: .84rem; color: var(--teal); font-weight: 600; margin-bottom: .2rem; }
-    .speaker-org  { font-size: .8rem; color: var(--text-mid); }
-    .speaker-topic { margin-top: .6rem; font-size: .82rem; font-style: italic; color: var(--text-mid); background: var(--off-white); border-radius: 8px; padding: .5em .8em; }
-    .speaker-hint { margin-top: .6rem; font-size: .75rem; color: var(--teal); font-weight: 600; opacity: 0; transition: opacity var(--transition); }
-    .speaker-card:hover .speaker-hint { opacity: 1; }
-
-    /* ── MODAL ─────────────────────────────────── */
-    #speaker-modal {
-      display: none; position: fixed; inset: 0; z-index: 2000;
-      align-items: center; justify-content: center;
-      padding: 1.5rem;
-    }
-    #speaker-modal.open { display: flex; }
-    .modal-backdrop {
-      position: absolute; inset: 0;
-      background: rgba(13,33,53,.75);
-      backdrop-filter: blur(4px);
-      cursor: pointer;
-    }
-    .modal-box {
-      position: relative; z-index: 1;
-      background: var(--white);
-      border-radius: 24px;
-      max-width: 620px; width: 100%;
-      max-height: 90vh; overflow-y: auto;
-      box-shadow: 0 24px 80px rgba(0,0,0,.3);
-      animation: modalIn .3s cubic-bezier(.4,0,.2,1);
-    }
-    @keyframes modalIn { from { opacity:0; transform:scale(.94) translateY(16px); } }
-    .modal-header {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%);
-      padding: 2rem 2rem 1.5rem;
-      border-radius: 24px 24px 0 0;
-      display: flex; gap: 1.5rem; align-items: flex-start;
-    }
-    .modal-photo {
-      width: 80px; height: 80px; border-radius: 50%;
-      background: rgba(255,255,255,.15);
-      border: 3px solid rgba(255,255,255,.3);
-      display: grid; place-items: center;
-      font-size: 2.2rem; flex-shrink: 0; overflow: hidden;
-    }
-    .modal-photo img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
-    .modal-speaker-info { flex: 1; }
-    .modal-speaker-info h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); margin-bottom: .3rem; }
-    .modal-speaker-info .role { color: var(--gold-light); font-size: .88rem; font-weight: 600; }
-    .modal-speaker-info .org  { color: rgba(255,255,255,.7); font-size: .83rem; margin-top: .15rem; }
-    .modal-close {
-      background: rgba(255,255,255,.15); border: none; color: var(--white);
-      width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
-      font-size: 1.1rem; display: grid; place-items: center;
-      transition: background var(--transition); flex-shrink: 0;
-    }
-    .modal-close:hover { background: rgba(255,255,255,.3); }
-    .modal-body { padding: 2rem; }
-    .modal-body h3 { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin-bottom: .5rem; }
-    .modal-topic {
-      font-family: 'Playfair Display', serif; font-size: 1.15rem;
-      color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.4;
-    }
-    .modal-abstract { color: var(--text-mid); line-height: 1.8; font-size: .97rem; }
-    .modal-abstract p { text-align: justify; margin-bottom: 1rem; }
-    .modal-abstract p:last-child { margin-bottom: 0; }
-
-    /* ──────────────────────────────────────────── */
-    /* PROGRAMAÇÃO                                  */
-    /* ──────────────────────────────────────────── */
-    #programacao { padding: 6rem 0; background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%); }
-    .sched-tabs { display: flex; gap: .5rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap; }
-    .sched-tab { padding: .6em 1.6em; border-radius: 999px; border: 2px solid var(--blue); color: var(--blue); font-weight: 600; font-size: .9rem; cursor: pointer; transition: var(--transition); background: transparent; }
-    .sched-tab.active, .sched-tab:hover { background: var(--blue); color: var(--white); }
-    .sched-day { display: none; }
-    .sched-day.active { display: block; }
-
-    /* Blocos de horário */
-    .sched-blocks { display: flex; flex-direction: column; gap: 0; }
-    .sched-block { display: grid; grid-template-columns: 88px 1fr; gap: 0; position: relative; }
-    .sched-block + .sched-block { margin-top: 1.75rem; }
-
-    /* Coluna de horário */
-    .sched-block-time {
-      display: flex; flex-direction: column; align-items: flex-end;
-      padding-right: 1.4rem; padding-top: .9rem;
-      position: relative;
-    }
-    .sched-block-time::after {
-      content: '';
-      position: absolute; right: 0; top: 1.15rem;
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--blue);
-      box-shadow: 0 0 0 3px var(--off-white), 0 0 0 5px var(--blue);
-      transform: translateX(50%);
-      z-index: 1;
-    }
-    .sched-block-time .time-hhmm {
-      font-weight: 800; font-size: 1rem; color: var(--blue); line-height: 1;
-    }
-    .sched-block + .sched-block .sched-block-time::before {
-      content: '';
-      position: absolute; right: 0; top: -1.75rem; bottom: 1.15rem;
-      width: 2px; background: rgba(26,56,112,.13);
-      transform: translateX(50%);
-    }
-
-    /* Área de cards */
-    .sched-block-cards {
-      padding-left: 1.6rem;
-      display: grid;
-      grid-template-columns: repeat(var(--sched-cols, 3), 1fr);
-      gap: .75rem;
-    }
-
-    /* Card individual de evento */
-    .sched-card {
-      background: var(--white);
-      border: 1.5px solid rgba(26,56,112,.10);
-      border-radius: 14px;
-      padding: 1rem 1.15rem 1rem;
-      display: flex; flex-direction: column; gap: .45rem;
-      box-shadow: 0 2px 10px rgba(26,56,112,.06);
-      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
-    }
-    .sched-card:hover { box-shadow: 0 6px 22px rgba(26,56,112,.13); transform: translateY(-2px); border-color: rgba(26,56,112,.22); }
-
-    /* Variações por tipo */
-    .sched-card.type-bg-conf    { border-left: 4px solid var(--gold); }
-    .sched-card.type-bg-mini    { border-left: 4px solid var(--teal); }
-    .sched-card.type-bg-session { border-left: 4px solid var(--blue-mid); }
-    .sched-card.type-bg-social  { border-left: 4px solid var(--olive); }
-    .sched-card.type-bg-break   { border-left: 4px solid #bbb; background: var(--off-white); box-shadow: none; }
-    .sched-card.type-bg-break:hover { transform: none; }
-
-    /* Card de break ocupa largura total */
-    .sched-card.is-break { grid-column: 1 / -1; }
-
-    .sched-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; }
-    .sched-card h4 { font-size: .97rem; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
-    .sched-card p  { font-size: .84rem; color: var(--text-mid); line-height: 1.5; flex-grow: 1; }
-    /* Rodapé do card: horário + local */
-    .sched-card-footer {
-      display: flex; align-items: center; flex-wrap: wrap; gap: .4rem;
-      margin-top: .3rem;
-    }
-    .sched-card-time {
-      display: inline-flex; align-items: center; gap: .3rem;
-      font-size: .78rem; font-weight: 600; color: var(--blue);
-      background: rgba(26,56,112,.07);
-      border-radius: 6px;
-      padding: .22em .6em;
-      white-space: nowrap;
-    }
-    .sched-card-time svg { flex-shrink: 0; opacity: .7; }
-    .sched-time-sep { opacity: .5; margin: 0 .1em; }
-    .sched-card-local {
-      display: inline-flex; align-items: center; gap: .3rem;
-      font-size: .78rem; color: var(--text-mid);
-      background: rgba(26,56,112,.05);
-      border-radius: 6px;
-      padding: .22em .6em;
-    }
-    .sched-card-local svg { flex-shrink: 0; opacity: .65; }
-    .sched-card-local--link {
-      color: var(--teal);
-      text-decoration: none;
-      transition: background var(--transition), color var(--transition);
-    }
-    .sched-card-local--link:hover { background: rgba(42,144,128,.12); color: var(--teal); }
-
-    .sched-type { display: inline-block; font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .2em .65em; border-radius: 999px; white-space: nowrap; }
-    .type-conf    { background: rgba(201,162,39,.15); color: #8a6b00; }
-    .type-mini    { background: rgba(45,138,122,.15);  color: var(--teal); }
-    .type-session { background: rgba(27,78,121,.12);   color: var(--blue); }
-    .type-social  { background: rgba(107,142,35,.12);  color: var(--olive); }
-    .type-break   { background: rgba(0,0,0,.06);       color: #888; }
-
-    /* ──────────────────────────────────────────── */
-    /* LOCAL                                        */
-    /* ──────────────────────────────────────────── */
-    #local { padding: 7rem 0; background: var(--white); }
-    .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .venue-map { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,.14); background: var(--off-white); aspect-ratio: 4/3; position: relative; }
-    .venue-map iframe { width: 100%; height: 100%; border: none; display: block; }
-    .venue-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: var(--text-mid); font-size: 3rem; }
-    .venue-placeholder p { font-size: .9rem; color: var(--text-mid); text-align: center; }
-    .venue-details .tag { margin-bottom: 1rem; }
-    .venue-facts { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-    .venue-fact { display: flex; gap: 1rem; align-items: flex-start; }
-    .venue-fact-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--blue), var(--teal)); color: var(--white); display: grid; place-items: center; font-size: 1.1rem; flex-shrink: 0; }
-    .venue-fact-body h4 { font-weight: 600; font-size: .95rem; margin-bottom: .15rem; }
-    .venue-fact-body p  { font-size: .88rem; color: var(--text-mid); }
-    .airport-list { list-style: none; padding: 0; margin: .25rem 0 0 0; display: flex; flex-direction: column; gap: .35rem; }
-    .airport-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; color: var(--blue); text-decoration: none; transition: color .2s; }
-    .airport-link::before { content: "↗"; font-size: .75rem; opacity: .7; }
-    .airport-link:hover { color: var(--teal); text-decoration: underline; }
-
-    /* ──────────────────────────────────────────── */
-    /* COMISSÕES                                    */
-    /* ──────────────────────────────────────────── */
-    #comissao { padding: 6rem 0; background: var(--off-white); }
-    /* Cards empilhados verticalmente */
-    .comissoes-grid {
-      display: flex; flex-direction: column;
-      gap: 2rem; max-width: 900px; margin-inline: auto;
-    }
-    .comissao-card {
-      background: var(--white); border-radius: var(--radius);
-      box-shadow: 0 2px 16px rgba(0,0,0,.06);
-      overflow: hidden;
-    }
-    .comissao-card-header {
-      background: var(--blue); color: var(--white);
-      padding: 1.25rem 2rem;
-      display: flex; align-items: center; gap: .6rem;
-    }
-    .comissao-card-header .card-icon { font-size: 1.1rem; }
-    .comissao-card-header h3 { font-size: 1rem; font-weight: 700; letter-spacing: .01em; }
-    /* Mini-cards dos membros */
-    .comissao-member-grid {
-      display: flex; flex-wrap: wrap; gap: 1rem;
-      padding: 1.5rem 2rem;
-      justify-content: center;
-    }
-    .comissao-member-card {
-      background: var(--off-white); border-radius: 14px;
-      padding: 1.3rem .9rem 1rem;
-      display: flex; flex-direction: column; align-items: center; gap: .6rem;
-      flex: 0 1 260px; min-width: 220px; text-align: center;
-      transition: box-shadow var(--transition), transform var(--transition);
-    }
-    .comissao-member-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.1); transform: translateY(-2px); }
-    .comissao-member-card.is-coord { outline: 2px solid var(--gold); outline-offset: -2px; }
-    .comissao-member-photo {
-      width: 120px; height: 120px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--teal));
-      overflow: hidden; flex-shrink: 0;
-      display: grid; place-items: center;
-      border: 3px solid var(--white);
-      box-shadow: 0 2px 12px rgba(0,0,0,.18);
-    }
-    .comissao-member-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .comissao-member-initials { color: #fff; font-weight: 700; font-size: 1.25rem; letter-spacing: .04em; user-select: none; }
-    .comissao-member-info { display: flex; flex-direction: column; align-items: center; gap: .15rem; }
-    .comissao-member-info .name { font-size: .8rem; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
-    .comissao-member-info .affil { font-size: .68rem; color: var(--text-mid); }
-    .coord-badge {
-      display: inline-block;
-      font-size: .6rem; font-weight: 700; letter-spacing: .07em;
-      text-transform: uppercase; padding: .12em .55em;
-      border-radius: 999px; background: var(--gold);
-      color: var(--blue); white-space: nowrap;
-    }
-    .comissao-member-grid--coord { justify-content: center; padding-bottom: 0; }
-    .comissao-coord-divider {
-      margin: 0 2rem;
-      border: none; border-top: 1px solid rgba(0,0,0,.07);
-    }
-    /* Links Lattes / Website */
-    .member-links { display: inline-flex; gap: .3rem; margin-top: .2rem; flex-wrap: wrap; justify-content: center; }
-    .member-link {
-      display: inline-flex; align-items: center; gap: .25em;
-      font-size: .62rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-      padding: .18em .6em; border-radius: 999px;
-      text-decoration: none; transition: var(--transition);
-    }
-    .member-link--lattes  { background: #1B5E8B; color: #fff; }
-    .member-link--lattes:hover  { background: #134469; transform: translateY(-1px); }
-    .member-link--website { background: var(--teal); color: #fff; }
-    .member-link--website:hover { background: var(--teal-light); transform: translateY(-1px); }
-
-    /* ──────────────────────────────────────────── */
-    /* PATROCINADORES                               */
-    /* ──────────────────────────────────────────── */
-    #patrocinadores { padding: 5rem 0; background: var(--white); }
-    .sponsors-tiers { display: flex; flex-direction: column; gap: 3rem; }
-    .sponsor-tier h3 { text-align: center; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 1.5rem; }
-    .sponsor-logos { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: center; }
-    .sponsor-logo { background: var(--off-white); border-radius: 12px; display: grid; place-items: center; transition: filter var(--transition), transform var(--transition); filter: grayscale(30%); cursor: pointer; }
-    .sponsor-logo:hover { filter: none; transform: scale(1.04); }
-    .sponsor-logo--gold   { width: 180px; height: 80px; }
-    .sponsor-logo--silver { width: 150px; height: 64px; }
-    .sponsor-logo--bronze { width: 120px; height: 52px; }
-    .sponsor-logo span { font-size: .85rem; font-weight: 600; color: var(--text-mid); }
-    .sponsor-logo img { max-width: 80%; max-height: 70%; object-fit: contain; }
-
-    /* ──────────────────────────────────────────── */
-    /* BOTÃO VOLTAR AO TOPO                         */
-    /* ──────────────────────────────────────────── */
-    #btn-topo {
-      position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 990;
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--navy, #1A3870); color: var(--white);
-      border: none; cursor: pointer; font-size: 1.1rem;
-      display: grid; place-items: center;
-      box-shadow: 0 4px 16px rgba(0,0,0,.22);
-      opacity: 0; transform: translateY(12px);
-      transition: opacity .3s ease, transform .3s ease, background .2s;
-      pointer-events: none;
-    }
-    #btn-topo.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    #btn-topo:hover { background: var(--blue-mid); }
-
-    /* ──────────────────────────────────────────── */
-    /* INSCRIÇÕES                                   */
-    /* ──────────────────────────────────────────── */
-    #inscricoes { padding: 6rem 0; background: var(--white); }
-    .inscricoes-lotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-    .lote-card {
-      background: var(--white); border-radius: var(--radius);
-      padding: 2rem 1.6rem; display: flex; flex-direction: column; align-items: center;
-      text-align: center; gap: .65rem;
-      box-shadow: 0 2px 18px rgba(26,56,112,.08);
-      border-top: 4px solid transparent;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .lote-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(26,56,112,.14); }
-    .lote-early   { border-top-color: var(--gold); }
-    .lote-regular { border-top-color: var(--blue-mid); }
-    .lote-tardio  { border-top-color: var(--teal); }
-    .lote-badge { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .22em .8em; border-radius: 999px; background: rgba(26,56,112,.08); color: var(--text-mid); }
-    .lote-icon { font-size: 2rem; }
-    .lote-periodo { font-size: .82rem; color: var(--text-mid); }
-    .lote-desc { font-size: .88rem; color: var(--text-mid); line-height: 1.65; flex-grow: 1; }
-    .lote-preco { font-size: .9rem; font-weight: 700; color: var(--blue); letter-spacing: .03em; padding: .5em 1.4em; border-radius: 999px; background: rgba(26,56,112,.07); margin-top: .3rem; white-space: nowrap; }
-
-    .inscricoes-categorias { margin-top: 3.5rem; }
-    .categorias-titulo { font-size: .95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1.2rem; text-align: center; letter-spacing: .01em; }
-    .categorias-grid { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
-    .categoria-card { display: flex; align-items: center; gap: .5rem; background: var(--white); border-radius: 999px; padding: .6em 1.3em; font-size: .88rem; font-weight: 500; color: var(--text-dark); box-shadow: 0 2px 8px rgba(26,56,112,.07); border: 1px solid rgba(26,56,112,.09); }
-    .categoria-icon { font-size: 1rem; }
-
-    .inscricoes-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
-    .inscricoes-info-box { background: var(--white); border-radius: var(--radius); padding: 1.8rem; box-shadow: 0 2px 14px rgba(26,56,112,.07); display: flex; flex-direction: column; }
-    .info-box-icon { font-size: 1.8rem; margin-bottom: .6rem; }
-    .inscricoes-info-box h4 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: .6rem; }
-    .inscricoes-info-box p { font-size: .88rem; color: var(--text-mid); line-height: 1.65; flex-grow: 1; }
-
-    .inscricoes-aviso { margin-top: 2.5rem; background: rgba(214,168,24,.10); border: 1px solid rgba(214,168,24,.30); border-radius: var(--radius); padding: 1.2rem 1.8rem; font-size: .9rem; color: var(--text-dark); line-height: 1.65; text-align: center; }
-
-    /* ──────────────────────────────────────────── */
-    /* SUBMISSÕES                                   */
-    /* ──────────────────────────────────────────── */
-    #submissoes { padding: 6rem 0; background: var(--white); }
-    .sub-prazos { margin-top: 3rem; background: var(--off-white); border-radius: var(--radius); padding: 1.8rem 2.2rem; }
-    .sub-prazos-titulo { font-size: .88rem; font-weight: 700; color: var(--text-mid); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1.2rem; }
-    .sub-prazos-grid { display: flex; flex-wrap: wrap; gap: .85rem; }
-    .sub-prazo-item { display: flex; align-items: center; gap: .75rem; flex: 1 1 200px; background: var(--white); border-radius: 10px; padding: .9rem 1.1rem; box-shadow: 0 2px 8px rgba(26,56,112,.06); }
-    .sub-prazo-icon { font-size: 1.35rem; flex-shrink: 0; }
-    .sub-prazo-item div { display: flex; flex-direction: column; gap: .15rem; }
-    .sub-prazo-item strong { font-size: .85rem; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
-    .sub-prazo-item span { font-size: .78rem; color: var(--text-mid); }
-
-    /* Tabela de preços */
-    .inscricoes-tabela { margin-top: 3.5rem; }
-    .tabela-intro { text-align: center; margin-bottom: 1.5rem; }
-    .tabela-intro h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin-bottom: .35rem; }
-    .tabela-intro p  { font-size: .88rem; color: var(--text-mid); }
-    .tabela-wrapper  { overflow-x: auto; border-radius: var(--radius); box-shadow: 0 4px 28px rgba(26,56,112,.12); }
-    table.tabela-precos { width: 100%; border-collapse: collapse; background: var(--white); font-size: .9rem; min-width: 560px; }
-    .tabela-precos thead th {
-      padding: 1rem 1.25rem; font-weight: 700; text-align: center;
-      background: var(--blue); color: var(--white);
-    }
-    .tabela-precos thead .th-cat { text-align: left; width: 42%; }
-    .tabela-precos thead .th-l1  { background: rgba(214,168,24,.22); color: var(--text-dark); }
-    .th-lote-num    { display: block; font-size: .82rem; font-weight: 700; }
-    .th-lote-periodo{ display: block; font-size: .72rem; font-weight: 400; opacity: .75; margin-top: .15rem; }
-    .tabela-precos .grupo-row td {
-      padding: .55rem 1.25rem;
-      background: var(--off-white);
-      font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--text-mid); border-top: 2px solid rgba(26,56,112,.10);
-      column-span: all;
-    }
-    .tabela-precos tbody tr { border-bottom: 1px solid rgba(26,56,112,.07); transition: background .18s; }
-    .tabela-precos tbody tr:hover { background: rgba(26,56,112,.03); }
-    .tabela-precos td { padding: .85rem 1.25rem; vertical-align: middle; }
-    .tabela-precos td.preco { text-align: center; font-weight: 600; color: var(--text-dark); white-space: nowrap; }
-    .tabela-precos td.preco.l1 { background: rgba(214,168,24,.09); font-weight: 700; color: var(--blue); }
-    .td-cat { display: flex; align-items: center; gap: .55rem; }
-    .inscricoes-cta-btn { margin-top: 3rem; text-align: center; }
-    .socio-tag {
-      flex-shrink: 0; font-size: .6rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-      padding: .18em .6em; border-radius: 999px;
-      background: rgba(42,144,128,.13); color: var(--teal);
-    }
-
-    /* ──────────────────────────────────────────── */
-    /* CTA INSCRIÇÕES                               */
-    /* ──────────────────────────────────────────── */
-    #inscricoes-cta { padding: 6rem 0; background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%); text-align: center; }
-    .cta-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: var(--white); margin-bottom: 1rem; }
-    .cta-sub { color: rgba(255,255,255,.75); font-size: 1.05rem; margin-bottom: 2.5rem; }
-    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    /* ──────────────────────────────────────────── */
-    /* FOOTER                                       */
-    /* ──────────────────────────────────────────── */
-    #footer { background: var(--text-dark); color: rgba(255,255,255,.65); padding: 4rem 0 2rem; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.1); }
-    .footer-brand .footer-logo-img { margin-bottom: 1rem; }
-    .footer-brand p { font-size: .88rem; line-height: 1.7; }
-    .footer-col h4 { color: var(--white); font-size: .88rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.2rem; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
-    .footer-col ul a { font-size: .88rem; transition: color var(--transition); }
-    .footer-col ul a:hover { color: var(--gold); }
-    .footer-bottom { padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: .82rem; }
-    .social-links { display: flex; gap: .75rem; }
-    .social-link { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.08); display: grid; place-items: center; font-size: .9rem; transition: background var(--transition); }
-    .social-link:hover { background: var(--gold); color: var(--blue); }
-
-    /* ──────────────────────────────────────────── */
-    /* RESPONSIVE                                   */
-    /* ──────────────────────────────────────────── */
-    @media (max-width: 960px) {
-      .hero-content { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
-      .hero-logo-col { justify-content: center; }
-      .hero-logo-img { width: clamp(220px, 60vw, 380px); }
-      .hero-text-col { align-items: center; }
-      .hero-fullname { text-align: center; }
-      .hero-countdown { align-self: center; justify-content: center; }
-      .hero-info { justify-content: center; }
-      .hero-actions { justify-content: center; }
-      .sobre-grid, .venue-grid { grid-template-columns: 1fr; }
-      .sobre-visual { order: -1; }
-      .sobre-cards { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .nav-logo-img { height: 38px; }
-    }
-    @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; }
-      .hero-countdown { flex-wrap: wrap; gap: 1rem; }
-      .sched-block { grid-template-columns: 68px 1fr; }
-      .sched-block-time .time-hhmm { font-size: .88rem; }
-      .sched-block-cards { grid-template-columns: 1fr !important; }
-      .modal-header { flex-wrap: wrap; }
-      .hero-logo-img { width: clamp(180px, 65vw, 260px); }
-      .hero-display { font-size: clamp(3rem, 14vw, 4.5rem); }
-      .inscricoes-lotes, .inscricoes-info-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 960px) and (min-width: 601px) {
-      .inscricoes-lotes { grid-template-columns: 1fr 1fr; }
-      .inscricoes-info-grid { grid-template-columns: 1fr 1fr; }
-    }
-    /* Remove backdrop-filter when menu is open — evita containing block no Safari/iOS */
-    body.nav-open #navbar { backdrop-filter: none; -webkit-backdrop-filter: none; }
-    body.nav-open .nav-links {
-      display: flex; flex-direction: column;
-      position: fixed; top: 0; right: 0; bottom: 0; left: 0;
-      background: rgba(13,33,53,.97); align-items: center; justify-content: center;
-      gap: 2.5rem; z-index: 1000;
-    }
-    body.nav-open .nav-links > li > a { font-size: 1.4rem; }
-    body.nav-open .nav-dropdown-menu {
-      position: static;
-      opacity: 1; pointer-events: auto;
-      transform: none;
-      background: rgba(255,255,255,.07);
-      backdrop-filter: none; -webkit-backdrop-filter: none;
-      box-shadow: none;
-      border-radius: 10px;
-      padding: .35rem .6rem;
-      margin-top: .6rem;
-      min-width: unset;
-    }
-    body.nav-open .nav-dropdown-menu li a { font-size: 1rem; color: rgba(255,255,255,.7); padding: .5rem .85rem; }
-    body.nav-open .nav-dropdown-toggle .chev { display: none; }
-    /* Hamburger darker pill when menu is open */
-    body.nav-open .hamburger { background: rgba(255,255,255,.12); }
-    /* Animate ☰ → × */
-    body.nav-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    body.nav-open .hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    body.nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  </style>
-  <!-- Google Analytics 4 — G-X7Z8S78NNX -->
+  <link rel="stylesheet" href="assets/style.css">
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7Z8S78NNX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -1055,39 +27,7 @@
 </head>
 <body>
 
-<!-- ─── NAVBAR ──────────────────────────────────── -->
-<nav id="navbar">
-  <div class="container nav-inner">
-    <a href="#hero" class="nav-logo" id="nav-logo-text">
-      <img class="nav-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li class="nav-dropdown">
-        <a href="#sobre" class="nav-dropdown-toggle">Evento <svg class="chev" width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#palestrantes">Convidados</a></li>
-          <li><a href="#programacao">Programação</a></li>
-          <li><a href="#local">Local</a></li>
-        </ul>
-      </li>
-      <li class="nav-dropdown">
-        <a href="#submissoes" class="nav-dropdown-toggle">Científico <svg class="chev" width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="#datas">Datas Importantes</a></li>
-          <li><a href="#submissoes">Submissões</a></li>
-          <li><a href="#comissao">Comissões</a></li>
-        </ul>
-      </li>
-      <li><a href="#inscricoes">Inscrições</a></li>
-      <li><a href="#patrocinadores">Apoio</a></li>
-      <li><a href="#" class="nav-cta" id="nav-cta-link">Área do Inscrito</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+<!-- Navbar injetada por assets/nav.js -->
 
 <!-- ─── HERO ─────────────────────────────────────── -->
 <section id="hero">
@@ -1109,34 +49,18 @@
   </svg>
   <div class="container">
     <div class="hero-content">
-
-      <!-- ── COLUNA ESQUERDA: logo grande ─────────── -->
       <div class="hero-logo-col">
-        <img
-          class="hero-logo-img"
-          src="assets/logos/70rbras_logo_negativo_cor.png"
-          alt="70ª RBras 2026 — Dados que revelam Vida"
-          id="hero-logo"
-        >
+        <img class="hero-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026 - Dados que revelam Vida" id="hero-logo">
       </div>
-
-      <!-- ── COLUNA DIREITA: nome + info + countdown ─ -->
       <div class="hero-text-col">
-
         <span class="tag tag--gold reveal">70ª Edição · 2026</span>
-
-        <!-- Nome do evento em destaque dourado -->
         <h1 class="hero-display reveal reveal-delay-1">RBras</h1>
         <p class="hero-fullname reveal reveal-delay-1" id="hero-subtitle">
           Reunião Anual da Região Brasileira da<br>Sociedade Internacional de Biometria
         </p>
-
-        <!-- Tema do evento -->
         <p class="hero-tagline reveal reveal-delay-2">
           Dados que revelam <strong>Vida</strong>
         </p>
-
-        <!-- Data e local -->
         <div class="hero-info reveal reveal-delay-2">
           <div class="hero-info-item">
             <div class="icon">📅</div>
@@ -1149,12 +73,10 @@
             <div class="icon">📍</div>
             <div>
               <strong style="color:white;display:block" id="hero-cidade">Unicamp, Campinas, SP</strong>
-              <span style="color:rgba(255,255,255,.6);font-size:.85rem" id="hero-local-nome">Local a confirmar</span>
+              <span style="color:rgba(255,255,255,.6);font-size:.85rem" id="hero-local-nome">IMECC - Unicamp</span>
             </div>
           </div>
         </div>
-
-        <!-- Contagem regressiva -->
         <div class="hero-countdown reveal reveal-delay-3" id="countdown">
           <div class="cd-unit"><div class="cd-num" id="cd-days">000</div><div class="cd-label">dias</div></div>
           <div class="cd-sep">:</div>
@@ -1164,13 +86,10 @@
           <div class="cd-sep">:</div>
           <div class="cd-unit"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">seg</div></div>
         </div>
-
-        <!-- Botões de ação -->
         <div class="hero-actions reveal reveal-delay-4">
-          <a href="#" class="btn btn--primary" id="hero-btn-inscricoes">Inscreva-se ↗</a>
-          <a href="#programacao" class="btn btn--outline">Ver Programação</a>
+          <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer" id="hero-btn-inscricoes">Inscreva-se ↗</a>
+          <a href="programacao.html" class="btn btn--outline" target="_blank" rel="noopener noreferrer">Ver Programação</a>
         </div>
-
       </div>
     </div>
   </div>
@@ -1190,7 +109,6 @@
         <div class="section-body">
           <p>A Reunião Anual da RBras é o principal fórum nacional para a troca de conhecimentos e avanços nas áreas de estatística, biometria e disciplinas relacionadas.</p>
           <p>Em sua 70ª edição, o tema <em>"Dados que revelam Vida"</em> convida estudantes, pesquisadores e profissionais a explorar como métodos estatísticos e biométricos estão transformando ciências da vida, saúde, agricultura e meio ambiente.</p>
-
           <div class="sobre-cards">
             <div class="sobre-card">
               <span class="sobre-card-icon">🏥</span>
@@ -1221,7 +139,6 @@
               </div>
             </div>
           </div>
-
           <button class="sobre-leia-mais-btn" id="sobre-leia-mais-btn" aria-expanded="false">
             Leia mais sobre o tema
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -1229,331 +146,44 @@
             </svg>
           </button>
           <div class="sobre-expandido" id="sobre-expandido" aria-hidden="true">
-            O tema <em>"Dados que revelam Vida"</em> destaca como a integração de ferramentas analíticas com os objetivos da Agenda 2030 da ONU, especialmente nas áreas relacionadas à Biometria, transformando dados em conhecimento acionável para melhorar a qualidade de vida. Estatística e Ciência de Dados são fundamentais para monitorar e avaliar o progresso dos Objetivos de Desenvolvimento Sustentável (ODS): identificam padrões, detectam desigualdades, prevêem tendências e suportam decisões baseadas em evidências para enfrentar desafios complexos como erradicação da pobreza, mitigação das mudanças climáticas, promoção da saúde e bem-estar (humano e animal), garantia de educação de qualidade e avanço da igualdade de gênero. Ao transformar dados brutos em indicadores robustos, modelos preditivos e visualizações claras, a estatística e a ciência de dados possibilitam intervenções mais eficazes, políticas públicas mais direcionadas e uma governança mais transparente e responsiva, alinhada aos princípios e metas da Agenda 2030.
+            O tema <em>"Dados que revelam Vida"</em> destaca como a integração de ferramentas analíticas com os objetivos da Agenda 2030 da ONU, especialmente nas áreas relacionadas à Biometria, transforma dados em conhecimento acionável para melhorar a qualidade de vida. Estatística e Ciência de Dados são fundamentais para monitorar e avaliar o progresso dos ODS: identificam padrões, detectam desigualdades, prevêem tendências e suportam decisões baseadas em evidências para enfrentar desafios como erradicação da pobreza, mitigação das mudanças climáticas, promoção da saúde e bem-estar, e garantia de educação de qualidade.
           </div>
+          <p>Promovida pela <strong>Região Brasileira da Sociedade Internacional de Biometria (RBras)</strong>, a edição de 2026 acontece na Unicamp, Campinas/SP, um dos maiores polos científicos e tecnológicos do Brasil.</p>
 
-          <p>Promovida pela <strong>Região Brasileira da Sociedade Internacional de Biometria (RBras)</strong>, a edição de 2026 acontece na Unicamp, Campinas/SP, reconhecida como uma das maiores universidades da América Latina e localizada em um dos maiores pólos científicos e tecnológicos do Brasil.</p>
+          <!-- CTAs para páginas internas -->
+          <div class="sobre-ctas" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
+            <a href="palestrantes.html" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Conheça os Convidados →</a>
+            <a href="programacao.html" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Ver Programação →</a>
+          </div>
         </div>
       </div>
       <div class="sobre-visual reveal-from-right">
         <div class="sobre-logo-wrap">
           <img class="sobre-logo-img" src="assets/logos/70rbras_logo_positivo_cor.png" alt="Logo 70ª RBras 2026">
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PALESTRANTES ─────────────────────────────── -->
-<section id="palestrantes">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="tag tag--gold">Keynotes</span>
-      <h2 class="section-title" style="margin-top:1rem">Convidados</h2>
-      <p class="section-body">Clique em um convidado para ver o resumo da palestra.</p>
-    </div>
-    <div class="speakers-grid" id="speakers-grid">
-      <!-- preenchido via speakers.json -->
-    </div>
-  </div>
-</section>
-
-<!-- ─── MODAL PALESTRANTE ─────────────────────────── -->
-<div id="speaker-modal" role="dialog" aria-modal="true" aria-labelledby="modal-speaker-name">
-  <div class="modal-backdrop" id="modal-backdrop"></div>
-  <div class="modal-box">
-    <div class="modal-header">
-      <div class="modal-photo" id="modal-photo">👤</div>
-      <div class="modal-speaker-info">
-        <h2 id="modal-speaker-name">Nome</h2>
-        <div class="role" id="modal-role"></div>
-        <div class="org"  id="modal-org"></div>
-      </div>
-      <button class="modal-close" id="modal-close" aria-label="Fechar">✕</button>
-    </div>
-    <div class="modal-body">
-      <h3>Palestra</h3>
-      <div class="modal-topic" id="modal-topic"></div>
-      <h3>Resumo</h3>
-      <div class="modal-abstract" id="modal-abstract"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── PROGRAMAÇÃO ──────────────────────────────── -->
-<section id="programacao">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="tag tag--teal">Agenda</span>
-      <h2 class="section-title" style="margin-top:1rem">Programação <span>Científica</span></h2>
-      <p class="section-body">Programação preliminar — sujeita a alterações.</p>
-    </div>
-    <div class="sched-tabs reveal" id="sched-tabs">
-      <!-- gerado via schedule.json -->
-    </div>
-    <div id="sched-days-container">
-      <!-- gerado via schedule.json -->
-    </div>
-  </div>
-</section>
-
-<!-- ─── LOCAL ─────────────────────────────────────── -->
-<section id="local">
-  <div class="container">
-    <div class="venue-grid">
-      <div class="venue-map reveal">
-        <iframe
-          src="https://maps.google.com/maps?q=IMECC+Unicamp+Rua+Sergio+Buarque+de+Holanda+651+Campinas+SP&t=&z=15&ie=UTF8&iwloc=&output=embed"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Mapa — IMECC/Unicamp, Campinas SP">
-        </iframe>
-      </div>
-      <div class="venue-details reveal reveal-delay-1">
-        <span class="tag tag--blue">Local do Evento</span>
-        <div class="accent-bar" style="margin-top:1rem"></div>
-        <h2 class="section-title">IMECC · <span>Unicamp</span></h2>
-        <p class="section-body">O Instituto de Matemática, Estatística e Computação Científica da Unicamp é um dos mais destacados centros de pesquisa em estatística e matemática do país — um palco especialmente simbólico para a edição comemorativa de 70 anos da RBras.</p>
-        <div class="venue-facts">
-          <div class="venue-fact">
-            <div class="venue-fact-icon">🏛️</div>
-            <div class="venue-fact-body">
-              <h4 id="venue-local-nome">IMECC — Unicamp</h4>
-              <p id="venue-local-end">Rua Sérgio Buarque de Holanda, 651<br>Cidade Universitária Zeferino Vaz<br>Campinas, SP · CEP 13083-859</p>
-            </div>
+        <!-- Destaques de convidados -->
+        <div class="sobre-speakers-hint" style="margin-top:2rem;padding:1.5rem;background:var(--off-white);border-radius:var(--radius);border-left:4px solid var(--teal)">
+          <p style="font-size:.85rem;color:var(--text-mid);margin:0 0 .6rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em">Convidados confirmados</p>
+          <div id="sobre-speakers-names" style="font-size:.95rem;color:var(--text-dark);line-height:1.7">
+            <!-- preenchido via JS -->
           </div>
-          <div class="venue-fact">
-            <div class="venue-fact-icon">✈️</div>
-            <div class="venue-fact-body">
-              <h4>Acesso aéreo</h4>
-              <ul class="airport-list">
-                <li>
-                  <a href="https://www.google.com/maps/dir/Aeroporto+Internacional+de+Viracopos,+Campinas,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link">
-                    <strong>VCP</strong> — Viracopos · Campinas · ~20 km
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.google.com/maps/dir/Aeroporto+de+Congonhas,+S%C3%A3o+Paulo,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link">
-                    <strong>CGH</strong> — Congonhas · São Paulo · ~100 km
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.google.com/maps/dir/Aeroporto+Internacional+de+Guarulhos,+Guarulhos,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link">
-                    <strong>GRU</strong> — Guarulhos · São Paulo · ~90 km
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="venue-fact">
-            <div class="venue-fact-icon">🚌</div>
-            <div class="venue-fact-body">
-              <h4>Acesso rodoviário</h4>
-              <ul class="airport-list">
-                <li>
-                  <a href="https://www.google.com/maps/dir/Rodoviária+de+Campinas,+Rua+Dr.+Pessôa+de+Melo,+Campinas,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link">
-                    <strong>Rodoviária de Campinas</strong> — Terminal Rodoviário · ~8 km
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="venue-fact">
-            <div class="venue-fact-icon">🏨</div>
-            <div class="venue-fact-body"><h4>Hospedagem</h4><p>Lista de hotéis parceiros será divulgada em breve</p></div>
-          </div>
-          <div class="venue-fact">
-            <div class="venue-fact-icon">🌡️</div>
-            <div class="venue-fact-body"><h4>Clima em Novembro</h4><p>Verão · 20–30 °C · temporada de chuvas</p></div>
-          </div>
+          <a href="palestrantes.html" style="display:inline-block;margin-top:.8rem;font-size:.82rem;color:var(--teal);font-weight:600;text-decoration:none">Ver resumos das palestras →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── DATAS IMPORTANTES ────────────────────────── -->
-<section id="datas">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="tag tag--blue">Calendário</span>
-      <h2 class="section-title" style="margin-top:1rem">Datas <span>Importantes</span></h2>
-      <p class="section-body">Fique atento aos prazos para submissão de trabalhos e inscrições.</p>
+<!-- ─── CTA INSCRIÇÕES ───────────────────────────── -->
+<section id="inscricoes-cta">
+  <div class="container reveal">
+    <p class="cta-title">Pronto para fazer parte dessa história?</p>
+    <p class="cta-sub">Garanta sua vaga na maior reunião de biometria e estatística do Brasil.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem;padding:1em 2.4em" id="cta-inscricoes">Inscreva-se agora ↗</a>
+      <a href="inscricoes.html" class="btn btn--outline" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem;padding:1em 2.4em">Ver valores e categorias</a>
+      <a href="#" class="btn btn--outline" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem;padding:1em 2.4em" id="cta-submissao">Submeter trabalho</a>
     </div>
-    <div class="dates-timeline" id="dates-grid">
-      <!-- preenchido via dates.js -->
-    </div>
-  </div>
-</section>
-
-<!-- ─── SUBMISSÕES ───────────────────────────────── -->
-<section id="submissoes">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="tag tag--teal">Submissões</span>
-      <h2 class="section-title" style="margin-top:1rem">Compartilhe sua <span>Pesquisa</span></h2>
-      <p class="section-body">A 70ª RBras recebe contribuições científicas em diferentes formatos. Submeta seu trabalho e faça parte da programação do evento.</p>
-    </div>
-
-    <div class="inscricoes-info-grid reveal">
-      <div class="inscricoes-info-box">
-        <div class="info-box-icon">📄</div>
-        <h4>Trabalhos Orais e Pôsteres</h4>
-        <p>Apresente seus resultados em formato de comunicação oral ou pôster. Aceitamos contribuições em biometria, estatística aplicada, epidemiologia, bioinformática e áreas afins. <strong>Prazo: até 15 de setembro de 2026.</strong></p>
-        <a href="#" class="btn btn--primary" id="sub-trabalhos-btn" style="margin-top:1.2rem;font-size:.85rem;padding:.65em 1.5em;align-self:flex-start;">Submeter trabalho ↗</a>
-      </div>
-      <div class="inscricoes-info-box">
-        <div class="info-box-icon">🎤</div>
-        <h4>Sessões Temáticas e Minicursos</h4>
-        <p>Proponha uma sessão temática ou minicurso para integrar a programação oficial. As propostas devem reunir ao menos três apresentações coesas em torno de um tema em comum. <strong>Prazo: até 5 de junho de 2026.</strong></p>
-      </div>
-      <div class="inscricoes-info-box">
-        <div class="info-box-icon">🏅</div>
-        <h4>Concursos</h4>
-        <p>O evento contempla prêmios para os melhores trabalhos de Iniciação Científica e de Pós-Graduação, avaliados por comissão científica independente. O regulamento e os critérios de avaliação serão divulgados em breve.</p>
-      </div>
-    </div>
-
-    <div class="sub-prazos reveal">
-      <p class="sub-prazos-titulo">Prazos</p>
-      <div class="sub-prazos-grid">
-        <div class="sub-prazo-item">
-          <span class="sub-prazo-icon">📝</span>
-          <div>
-            <strong>Submissão de Trabalhos</strong>
-            <span>11 mai – 15 set 2026</span>
-          </div>
-        </div>
-        <div class="sub-prazo-item">
-          <span class="sub-prazo-icon">🎤</span>
-          <div>
-            <strong>Propostas de Sessões e Minicursos</strong>
-            <span>11 mai – 5 jun 2026</span>
-          </div>
-        </div>
-        <div class="sub-prazo-item">
-          <span class="sub-prazo-icon">✉️</span>
-          <div>
-            <strong>Divulgação de Aceites</strong>
-            <span>15 de setembro de 2026</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── COMISSÕES ─────────────────────────────────── -->
-<section id="comissao">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="tag tag--teal">Organização</span>
-      <h2 class="section-title" style="margin-top:1rem"><span>Comissões</span></h2>
-      <p class="section-body">As equipes responsáveis pela realização da 70ª RBras.</p>
-    </div>
-    <div class="comissoes-grid" id="comissoes-grid">
-      <!-- preenchido via committee.js -->
-    </div>
-  </div>
-</section>
-
-<!-- ─── INSCRIÇÕES ─────────────────────────────── -->
-<section id="inscricoes">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="tag tag--gold">Inscrições</span>
-      <h2 class="section-title" style="margin-top:1rem">Participe da <span>70ª RBras</span></h2>
-      <p class="section-body">Garanta sua vaga no maior encontro de biometria e estatística do Brasil. As inscrições estão abertas em três lotes — quanto antes você se inscrever, menor o valor.</p>
-    </div>
-
-    <div class="inscricoes-tabela reveal">
-      <div class="tabela-intro">
-        <h3>Valores por Categoria e Lote</h3>
-        <p>Sócios da RBras, ABE ou IBS têm desconto especial em todas as categorias.</p>
-      </div>
-      <div class="tabela-wrapper">
-        <table class="tabela-precos">
-          <thead>
-            <tr>
-              <th class="th-cat">Categoria</th>
-              <th class="th-l1">
-                <span class="th-lote-num">1º Lote</span>
-                <span class="th-lote-periodo">11 mai – 30 set</span>
-              </th>
-              <th>
-                <span class="th-lote-num">2º Lote</span>
-                <span class="th-lote-periodo">1 out – 31 out</span>
-              </th>
-              <th>
-                <span class="th-lote-num">3º Lote</span>
-                <span class="th-lote-periodo">a partir de 1 nov</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="grupo-row"><td colspan="4">🎓 Estudante de Graduação</td></tr>
-            <tr>
-              <td><div class="td-cat">Sócio RBras / ABE / IBS</div></td>
-              <td class="preco l1">R$ 140</td>
-              <td class="preco">R$ 155</td>
-              <td class="preco">R$ 185</td>
-            </tr>
-            <tr>
-              <td><div class="td-cat">Não-sócio</div></td>
-              <td class="preco l1">R$ 240</td>
-              <td class="preco">R$ 265</td>
-              <td class="preco">R$ 315</td>
-            </tr>
-            <tr class="grupo-row"><td colspan="4">📚 Estudante de Pós-Graduação</td></tr>
-            <tr>
-              <td><div class="td-cat">Sócio RBras / ABE / IBS</div></td>
-              <td class="preco l1">R$ 220</td>
-              <td class="preco">R$ 245</td>
-              <td class="preco">R$ 290</td>
-            </tr>
-            <tr>
-              <td><div class="td-cat">Não-sócio</div></td>
-              <td class="preco l1">R$ 330</td>
-              <td class="preco">R$ 365</td>
-              <td class="preco">R$ 430</td>
-            </tr>
-            <tr class="grupo-row"><td colspan="4">👤 Pesquisador / Profissional</td></tr>
-            <tr>
-              <td><div class="td-cat">Sócio RBras / ABE / IBS</div></td>
-              <td class="preco l1">R$ 390</td>
-              <td class="preco">R$ 430</td>
-              <td class="preco">R$ 510</td>
-            </tr>
-            <tr>
-              <td><div class="td-cat">Não-sócio</div></td>
-              <td class="preco l1">R$ 660</td>
-              <td class="preco">R$ 730</td>
-              <td class="preco">R$ 860</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="inscricoes-info-grid reveal" style="grid-template-columns:repeat(2,1fr);max-width:820px;margin-inline:auto;">
-      <div class="inscricoes-info-box">
-        <div class="info-box-icon">💳</div>
-        <h4>Formas de Pagamento</h4>
-        <p>As inscrições serão processadas por plataforma online. Serão aceitos boleto bancário e cartão de crédito. Para inscrições institucionais ou em grupo, entre em contato com a organização pelo e-mail <strong id="inscricoes-email">70rbras@unicamp.br</strong>.</p>
-      </div>
-      <div class="inscricoes-info-box">
-        <div class="info-box-icon">🤝</div>
-        <h4>Associe-se à RBras</h4>
-        <p>Sócios da RBras, ABE ou IBS têm desconto em todas as categorias de inscrição. Se ainda não é sócio, associar-se antes de se inscrever pode representar uma economia significativa. Acesse o site da RBras para mais informações.</p>
-      </div>
-    </div>
-
-    <div class="inscricoes-cta-btn reveal">
-      <a href="#" class="btn btn--primary" id="inscricoes-inscrevase-btn" style="font-size:1rem;padding:.9em 2.4em;">Inscreva-se agora ↗</a>
-    </div>
-
   </div>
 </section>
 
@@ -1565,19 +195,31 @@
       <h2 class="section-title" style="margin-top:1rem">Patrocinadores &amp; <span>Apoiadores</span></h2>
     </div>
     <div class="sponsors-tiers reveal" id="sponsors-tiers">
-      <!-- preenchido via sponsors.json -->
+      <!-- preenchido via sponsors.js -->
     </div>
   </div>
 </section>
 
-<!-- ─── CTA INSCRIÇÕES ───────────────────────────── -->
-<section id="inscricoes-cta">
-  <div class="container reveal">
-    <p class="cta-title">Pronto para fazer parte dessa história?</p>
-    <p class="cta-sub">Garanta sua vaga na maior reunião de biometria e estatística do Brasil.</p>
-    <div class="cta-actions">
-      <a href="#" class="btn btn--primary" style="font-size:1.05rem;padding:1em 2.4em" id="cta-inscricoes">Inscreva-se agora ↗</a>
-      <a href="#" class="btn btn--outline" style="font-size:1.05rem;padding:1em 2.4em" id="cta-submissao">Submeter trabalho</a>
+<!-- ─── INSTAGRAM STRIP ──────────────────────────── -->
+<section id="social-strip" style="padding:5rem 0;background:linear-gradient(135deg,var(--navy) 0%,var(--blue-mid) 60%,var(--teal) 100%)">
+  <div class="container">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.5rem">
+      <span style="font-size:3rem" aria-hidden="true">📸</span>
+      <div>
+        <h2 style="color:white;font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);margin:0 0 .5rem">Siga a 70ª RBras no Instagram</h2>
+        <p style="color:rgba(255,255,255,.75);font-size:1rem;max-width:480px;margin:0 auto">Acompanhe novidades, bastidores e informações sobre o evento. Compartilhe com seus colegas!</p>
+      </div>
+      <a href="https://www.instagram.com/70rbras" target="_blank" rel="noopener noreferrer" id="instagram-strip-link"
+         style="display:inline-flex;align-items:center;gap:.6rem;background:white;color:var(--navy);font-weight:700;font-size:1rem;padding:.85em 2em;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,0,0,.2)"
+         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,.3)'"
+         onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(0,0,0,.2)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+        </svg>
+        @70rbras
+      </a>
     </div>
   </div>
 </section>
@@ -1594,25 +236,25 @@
         <h4>Evento</h4>
         <ul>
           <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#datas">Datas Importantes (2026)</a></li>
-          <li><a href="#programacao">Programação</a></li>
-          <li><a href="#local">Local</a></li>
+          <li><a href="palestrantes.html">Convidados</a></li>
+          <li><a href="programacao.html">Programação</a></li>
+          <li><a href="local.html">Local</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Participação</h4>
+        <h4>Científico</h4>
         <ul>
-          <li><a href="#inscricoes">Inscrições</a></li>
-          <li><a href="#submissoes">Submissão de Trabalhos</a></li>
-          <li><a href="#palestrantes">Convidados</a></li>
-          <li><a href="#patrocinadores">Patrocinadores</a></li>
+          <li><a href="cientifico.html#datas">Datas Importantes</a></li>
+          <li><a href="cientifico.html#submissoes">Submissões</a></li>
+          <li><a href="cientifico.html#comissao">Comissões</a></li>
+          <li><a href="inscricoes.html">Inscrições</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
-          <li><a href="#" id="footer-email">contato@rbras2026.com.br</a></li>
-          <li><a href="#comissao">Comissão Organizadora</a></li>
+          <li><a href="#" id="footer-email">contato@70rbras.org</a></li>
+          <li><a href="cientifico.html#comissao">Comissão Organizadora</a></li>
           <li><a href="#" id="footer-site-rbras">RBras.org.br</a></li>
         </ul>
       </div>
@@ -1628,15 +270,6 @@
 
 <button id="btn-topo" aria-label="Voltar ao topo">&#8679;</button>
 
-<!-- ─── DATA FILES (edite os arquivos em data/) ───── -->
-<script src="data/config.js"></script>
-<script src="data/speakers.js"></script>
-<script src="data/dates.js"></script>
-<script src="data/schedule.js"></script>
-<script src="data/committee.js"></script>
-<script src="data/sponsors.js"></script>
-
-<!-- ─── SCRIPTS ───────────────────────────────────── -->
 <!-- ─── MODAL EM BREVE ──────────────────────────── -->
 <div id="modal-em-breve" role="dialog" aria-modal="true" aria-labelledby="modal-titulo-txt">
   <div class="modal-card">
@@ -1646,16 +279,22 @@
     <span class="modal-linha"></span>
     <p class="modal-texto">
       As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>
-      Volte a visitar esta página em breve para mais informações sobre prazos, valores e categorias de inscrição.
+      Volte a visitar esta página para mais informações sobre prazos, valores e categorias.
     </p>
     <button class="modal-fechar" id="modal-fechar-btn">Entendido</button>
   </div>
 </div>
 
+<!-- ─── DATA FILES ─────────────────────────────────── -->
+<script src="assets/nav.js"></script>
+<script src="data/config.js"></script>
+<script src="data/speakers.js"></script>
+<script src="data/sponsors.js"></script>
+
 <script>
 /* ═══════════════════════════════════════════════
    HELPERS
-═══════════════════════════════════════════════ */
+════════════════════════════════════════════════ */
 function revealAll() {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
@@ -1663,87 +302,68 @@ function revealAll() {
   document.querySelectorAll('.reveal, .reveal-from-right').forEach(el => io.observe(el));
 }
 
+/* ── btn-topo ─────────────────────────────────── */
+(function() {
+  const btn = document.getElementById('btn-topo');
+  if (!btn) return;
+  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
 /* ═══════════════════════════════════════════════
    CONFIG
-═══════════════════════════════════════════════ */
-async function applyConfig() {
+════════════════════════════════════════════════ */
+function applyConfig() {
   const { evento, redes_sociais } = CONFIG;
+  const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
 
-  // hero
-  document.getElementById('hero-datas').textContent     = evento.datas_exibicao;
-  document.getElementById('hero-cidade').textContent    = evento.cidade;
-  document.getElementById('hero-local-nome').innerHTML = evento.local_nome;
-  // Se link de inscrições ainda não estiver disponível, exibe modal "em breve"
+  safe('hero-datas',     el => el.textContent = evento.datas_exibicao);
+  safe('hero-cidade',    el => el.textContent = evento.cidade);
+  safe('hero-local-nome',el => el.innerHTML   = evento.local_nome);
+
+  // Botões de inscrição
   const linkInscricoes = evento.link_inscricoes;
   const isEmBreve = !linkInscricoes || linkInscricoes === '#';
-  const btnIds = ['hero-btn-inscricoes', 'cta-inscricoes', 'nav-cta-link', 'inscricoes-inscrevase-btn'];
-  btnIds.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    // GA4 — rastreia clique em botão de inscrição
-    el.addEventListener('click', () => {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'registration_click', { button_id: id });
-      }
+  ['hero-btn-inscricoes', 'cta-inscricoes', 'nav-cta-link'].forEach(id => {
+    safe(id, el => {
+      el.addEventListener('click', () => { if (typeof gtag !== 'undefined') gtag('event', 'registration_click', { button_id: id }); });
+      if (isEmBreve) { el.href = '#'; el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('inscricao'); }); }
+      else el.href = linkInscricoes;
     });
-    if (isEmBreve) {
-      el.href = '#';
-      el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('inscricao'); });
-    } else {
-      el.href = linkInscricoes;
-    }
   });
-  // cta — submissão com modal "em breve" se link ainda não disponível
-  const linkSubmissao = evento.link_submissao;
-  const submissaoEmBreve = !linkSubmissao || linkSubmissao === '#';
-  ['cta-submissao', 'sub-trabalhos-btn'].forEach(id => {
-    const btn = document.getElementById(id);
-    if (!btn) return;
-    // GA4 — rastreia clique em botão de submissão
-    btn.addEventListener('click', () => {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'submission_click', { button_id: id });
-      }
-    });
-    if (submissaoEmBreve) {
-      btn.href = '#';
-      btn.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('submissao'); });
-    } else {
-      btn.href = linkSubmissao;
-    }
-  });
-  // venue (o HTML já traz o conteúdo real; config.js serve de fonte de verdade)
-  if (evento.local_nome)     document.getElementById('venue-local-nome').innerHTML  = evento.local_nome;
-  const heroLocalEl = document.getElementById('hero-local-nome');
-  if (heroLocalEl) heroLocalEl.innerHTML = evento.local_nome;
-  // footer
-  document.getElementById('footer-desc').textContent =
-    `${evento.nome} · ${evento.cidade} · ${evento.datas_exibicao}`;
-  document.getElementById('footer-copy').textContent =
-    `© 2026 ${evento.edicao} · Região Brasileira da Sociedade Internacional de Biometria`;
-  const mailEl = document.getElementById('footer-email');
-  mailEl.href = 'mailto:' + evento.email_contato;
-  mailEl.textContent = evento.email_contato;
-  document.getElementById('footer-site-rbras').href = evento.site_rbras;
-  // social
-  document.getElementById('social-instagram').href = redes_sociais.instagram;
 
-  // countdown target
+  // Botões de submissão
+  const linkSubmissao = evento.link_submissao;
+  const subEmBreve = !linkSubmissao || linkSubmissao === '#';
+  ['cta-submissao'].forEach(id => {
+    safe(id, el => {
+      el.addEventListener('click', () => { if (typeof gtag !== 'undefined') gtag('event', 'submission_click', { button_id: id }); });
+      if (subEmBreve) { el.href = '#'; el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('submissao'); }); }
+      else el.href = linkSubmissao;
+    });
+  });
+
+  // Footer
+  safe('footer-desc', el => el.textContent = `${evento.nome} · ${evento.cidade} · ${evento.datas_exibicao}`);
+  safe('footer-copy', el => el.textContent = `© 2026 ${evento.edicao} · Região Brasileira da Sociedade Internacional de Biometria`);
+  safe('footer-email', el => { el.href = 'mailto:' + evento.email_contato; el.textContent = evento.email_contato; });
+  safe('footer-site-rbras', el => el.href = evento.site_rbras);
+  safe('social-instagram', el => el.href = redes_sociais.instagram);
+  safe('instagram-strip-link', el => el.href = redes_sociais.instagram);
+
   startCountdown(new Date(evento.inicio + 'T09:00:00'));
 }
 
 /* ═══════════════════════════════════════════════
    COUNTDOWN
-═══════════════════════════════════════════════ */
+════════════════════════════════════════════════ */
 function startCountdown(target) {
+  const cd = document.getElementById('countdown');
+  if (!cd) return;
   function pad(n, l=2) { return String(n).padStart(l,'0'); }
   function tick() {
     const diff = target - Date.now();
-    if (diff <= 0) {
-      document.getElementById('countdown').innerHTML =
-        '<p style="color:var(--gold-light);font-weight:700;font-size:1.2rem">O evento começou! 🎉</p>';
-      return;
-    }
+    if (diff <= 0) { cd.innerHTML = '<p style="color:var(--gold-light);font-weight:700;font-size:1.2rem">O evento começou! 🎉</p>'; return; }
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000)  / 60000);
@@ -1757,487 +377,91 @@ function startCountdown(target) {
 }
 
 /* ═══════════════════════════════════════════════
-   DATAS IMPORTANTES
-═══════════════════════════════════════════════ */
-const DATE_MONTHS_PT = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-
-function parseISODate(iso) {
-  const [y, m, d] = iso.split('-').map(Number);
-  return new Date(y, m - 1, d);
-}
-
-function formatDateRange(ini, fim) {
-  const pad = n => String(n).padStart(2, '0');
-  const di = ini.getDate(), mi = DATE_MONTHS_PT[ini.getMonth()], yi = ini.getFullYear();
-  const df = fim.getDate(), mf = DATE_MONTHS_PT[fim.getMonth()], yf = fim.getFullYear();
-  const sameDay   = ini.getTime() === fim.getTime();
-  const sameMonth = mi === mf && yi === yf;
-  if (sameDay)   return `${pad(di)} ${mi}`;
-  if (sameMonth) return `${pad(di)} ${mi} – ${pad(df)} ${mf}`;
-  return `${pad(di)} ${mi} – ${pad(df)} ${mf}`;
-}
-
-function dateStatus(ini, fim, today) {
-  if (today < ini) return 'upcoming';
-  if (today > fim) return 'past';
-  return 'active';
-}
-
-function daysBetween(a, b) {
-  return Math.round((b - a) / 86400000);
-}
-
-function countdownLabel(ini, fim, status, today) {
-  if (status === 'past') return 'Encerrado';
-  if (status === 'upcoming') {
-    const n = daysBetween(today, ini);
-    if (n === 0) return 'Começa hoje';
-    if (n === 1) return 'Começa amanhã';
-    if (n <= 30) return `Começa em ${n} dias`;
-    return `Começa em ${n} dias`;
-  }
-  // active
-  const n = daysBetween(today, fim);
-  if (n === 0) return 'Último dia';
-  if (n === 1) return 'Termina amanhã';
-  return `${n} dias restantes`;
-}
-
-const DATE_STATUS_LABEL = {
-  past:     'Encerrado',
-  active:   'Aberto agora',
-  upcoming: 'Em breve'
-};
-
-async function renderDates() {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const dates = DATES
-    .map(d => ({
-      ...d,
-      _ini: parseISODate(d.inicio),
-      _fim: parseISODate(d.fim)
-    }))
-    .sort((a, b) => {
-      // destaque (evento principal) vai para o final
-      if (a.destaque && !b.destaque) return  1;
-      if (!a.destaque && b.destaque) return -1;
-      return a._ini - b._ini;
-    });
-
-  const nonFeatured = dates.filter(d => !d.destaque);
-  const featured    = dates.filter(d =>  d.destaque);
-  const container   = document.getElementById('dates-grid');
-
-  function renderCard(d, status) {
-    const range     = formatDateRange(d._ini, d._fim);
-    const countdown = countdownLabel(d._ini, d._fim, status, today);
-    return `
-      <div class="tl-content reveal" data-status="${status}">
-        <span class="tl-status-badge">${DATE_STATUS_LABEL[status]}</span>
-        <div class="tl-title">${d.titulo}</div>
-        <div class="tl-date">${range}</div>
-        <div class="tl-countdown">${countdown}</div>
-        <p class="tl-note">${d.descricao}</p>
-      </div>`;
-  }
-
-  function renderRegular(d, idx) {
-    const status = dateStatus(d._ini, d._fim, today);
-    const side   = idx % 2 === 0 ? 'tl-left' : 'tl-right';
-    const card   = renderCard(d, status);
-    const dot    = `<div class="tl-node"><div class="tl-dot" data-status="${status}">${d.icone}</div></div>`;
-    const space  = `<div class="tl-space"></div>`;
-    const inner  = side === 'tl-left'
-      ? `${card}${dot}${space}`
-      : `${space}${dot}${card}`;
-    return `<div class="tl-item ${side}">${inner}</div>`;
-  }
-
-  function renderFeatured(d) {
-    const status = dateStatus(d._ini, d._fim, today);
-    return `<div class="tl-item tl-featured">${renderCard(d, status)}</div>`;
-  }
-
-  container.innerHTML =
-    nonFeatured.map((d, i) => renderRegular(d, i)).join('') +
-    featured.map(d => renderFeatured(d)).join('');
-}
-
-/* ═══════════════════════════════════════════════
-   PALESTRANTES + MODAL
-═══════════════════════════════════════════════ */
-async function renderSpeakers() {
-  const speakers = SPEAKERS;
-  const grid     = document.getElementById('speakers-grid');
-
-  grid.innerHTML = speakers.map((s, i) => {
-    const delay = i > 0 && i < 4 ? ` reveal-delay-${i}` : '';
-    const foto  = s.foto
-      ? `<img src="${s.foto}" alt="${s.nome}" loading="lazy">`
-      : '👤';
-    return `
-      <div class="speaker-card reveal${delay}" data-index="${i}" role="button" tabindex="0" aria-label="Ver resumo de ${s.nome}">
-        <div class="speaker-photo">${foto}</div>
-        <div class="speaker-name">${s.nome}</div>
-        <div class="speaker-role">${s.tipo}</div>
-        <div class="speaker-org">${s.instituicao}</div>
-        <div class="speaker-topic">${s.tema}</div>
-        <div class="speaker-hint">↗ clique para ver o resumo</div>
-      </div>`;
-  }).join('');
-
-  // modal open
-  grid.addEventListener('click', e => {
-    const card = e.target.closest('.speaker-card');
-    if (!card) return;
-    openModal(speakers[+card.dataset.index]);
-  });
-  grid.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      const card = e.target.closest('.speaker-card');
-      if (card) openModal(speakers[+card.dataset.index]);
-    }
-  });
-}
-
-function openModal(s) {
-  // GA4 — rastreia qual palestrante foi visualizado
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'speaker_view', {
-      speaker_name: s.nome,
-      speaker_type: s.tipo
-    });
-  }
-  const modal = document.getElementById('speaker-modal');
-  const foto  = s.foto
-    ? `<img src="${s.foto}" alt="${s.nome}" loading="lazy">`
-    : '👤';
-  document.getElementById('modal-photo').innerHTML        = foto;
-  document.getElementById('modal-speaker-name').textContent = s.nome;
-  document.getElementById('modal-role').textContent       = s.tipo;
-  document.getElementById('modal-org').textContent        = s.instituicao;
-  document.getElementById('modal-topic').textContent      = s.tema;
-  document.getElementById('modal-abstract').innerHTML = s.resumo
-    .split(/\n\s*\n/)
-    .map(p => `<p>${p.trim().replace(/\n/g, ' ')}</p>`)
-    .join('');
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  document.getElementById('speaker-modal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.getElementById('modal-close').addEventListener('click', closeModal);
-document.getElementById('modal-backdrop').addEventListener('click', closeModal);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-/* ═══════════════════════════════════════════════
-   PROGRAMAÇÃO
-═══════════════════════════════════════════════ */
-const TYPE_LABELS = {
-  conf:    'Conferência',
-  mini:    'Minicurso',
-  session: 'Sessão',
-  social:  'Social',
-  break:   'Intervalo'
-};
-
-/**
- * Calcula o número ideal de colunas para N cards,
- * evitando que o último item fique solitário (resto == 1).
- *
- * Exemplos:  1→1  2→2  3→3  4→2(2+2)  5→3(3+2)
- *            6→3(3+3)  7→4(4+3)  8→4(4+4)  9→3(3+3+3)
- */
-function bestCols(n) {
-  if (n <= 3) return n;
-  // Testa preferências de coluna em ordem: 3, 2, 4, 5 …
-  const prefs = [3, 2, 4, 5];
-  for (const c of prefs) {
-    if (c > n) continue;
-    if (n % c !== 1) return c;
-  }
-  return 3; // fallback
-}
-
-const PIN_ICON  = `<svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 0C3.01 0 1 2.01 1 4.5c0 3.37 4.5 9.5 4.5 9.5S10 7.87 10 4.5C10 2.01 7.99 0 5.5 0zm0 6.5A2 2 0 1 1 5.5 2.5a2 2 0 0 1 0 4z" fill="currentColor"/></svg>`;
-const CLOCK_ICON = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 3.5V6.2l1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-const MAPS_ICON  = `<svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h8v8H2z" stroke="currentColor" stroke-width="1.3"/><path d="M2 4.5h8M4.5 2v8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><path d="M6 6l1.5-2.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>`;
-
-function renderCard(item, inicio) {
-  const isBreak = item.tipo === 'break';
-
-  // Faixa de horário — item.inicio sobrescreve o horário do bloco, se definido
-  const inicioCard = item.inicio || inicio;
-  const tempoHTML = (inicioCard || item.fim)
-    ? `<span class="sched-card-time">${CLOCK_ICON}${inicioCard}${item.fim ? `<span class="sched-time-sep">–</span>${item.fim}` : ''}</span>`
-    : '';
-
-  // Local + link Maps
-  let localHTML = '';
-  if (item.local) {
-    const conteudo = item.maps_url
-      ? `<a class="sched-card-local sched-card-local--link" href="${item.maps_url}" target="_blank" rel="noopener">${PIN_ICON}${item.local} ${MAPS_ICON}</a>`
-      : `<span class="sched-card-local">${PIN_ICON}${item.local}</span>`;
-    localHTML = conteudo;
-  }
-
-  return `
-    <div class="sched-card type-bg-${item.tipo}${isBreak ? ' is-break' : ''}">
-      <div class="sched-card-header">
-        <h4>${item.titulo}</h4>
-        <span class="sched-type type-${item.tipo}">${TYPE_LABELS[item.tipo] || item.tipo}</span>
-      </div>
-      ${item.descricao ? `<p>${item.descricao}</p>` : ''}
-      <div class="sched-card-footer">
-        ${tempoHTML}
-        ${localHTML}
-      </div>
-    </div>`;
-}
-
-async function renderSchedule() {
-  const days = SCHEDULE;
-  const tabs      = document.getElementById('sched-tabs');
-  const container = document.getElementById('sched-days-container');
-
-  // Detectar qual dia exibir: durante o evento, abre automaticamente no dia corrente
-  const hoje      = new Date(); hoje.setHours(0,0,0,0);
-  const eventoIni = parseISODate(CONFIG.evento.inicio);
-  const eventoFim = parseISODate(CONFIG.evento.fim);
-  let activeIdx = 0;
-  if (hoje >= eventoIni && hoje <= eventoFim) {
-    const offset = Math.floor((hoje - eventoIni) / 86400000);
-    activeIdx = Math.min(offset, days.length - 1);
-  }
-
-  tabs.innerHTML = days.map((d, i) => `
-    <button class="sched-tab${i===activeIdx?' active':''}"
-            onclick="showDay('sched-day-${i}', this)">${d.dia}</button>`).join('');
-
-  container.innerHTML = days.map((d, i) => `
-    <div class="sched-day${i===activeIdx?' active':''}" id="sched-day-${i}">
-      <div class="sched-blocks">
-        ${d.blocos.map(b => `
-          <div class="sched-block">
-            <div class="sched-block-time">
-              <span class="time-hhmm">${b.horario}</span>
-            </div>
-            <div class="sched-block-cards" style="--sched-cols:${bestCols(b.itens.length)}">
-              ${b.itens.map(item => renderCard(item, b.horario)).join('')}
-            </div>
-          </div>`).join('')}
-      </div>
-    </div>`).join('');
-}
-
-function showDay(id, btn) {
-  document.querySelectorAll('.sched-day').forEach(d => d.classList.remove('active'));
-  document.querySelectorAll('.sched-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-}
-
-/* ═══════════════════════════════════════════════
-   COMISSÕES
-═══════════════════════════════════════════════ */
-function getInitials(nome) {
-  const TITLES = ['Prof.','Dr.','Profa.','Dra.','Me.','Ms.','Msa.','MSc.','PhD.'];
-  const parts = nome.split(' ').filter(w => !TITLES.includes(w) && w.length > 1 && /^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/.test(w));
-  if (parts.length === 0) return nome[0];
-  if (parts.length === 1) return parts[0][0];
-  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-}
-
-function renderCommittee() {
-  document.getElementById('comissoes-grid').innerHTML =
-    COMMITTEE.map((c, i) => {
-      const coords  = c.membros.filter(m =>  m.coordenador);
-      const members = c.membros.filter(m => !m.coordenador);
-
-      function memberCard(m) {
-        const initials = getInitials(m.nome);
-        const photoHTML = m.foto
-          ? `<img src="${m.foto}" alt="${m.nome}" loading="lazy">`
-          : `<span class="comissao-member-initials">${initials}</span>`;
-        const links = [
-          m.lattes  ? `<a class="member-link member-link--lattes"  href="${m.lattes}"  target="_blank" rel="noopener">Lattes</a>`  : '',
-          m.website ? `<a class="member-link member-link--website" href="${m.website}" target="_blank" rel="noopener">↗ Site</a>` : ''
-        ].filter(Boolean).join('');
-        return `
-          <div class="comissao-member-card${m.coordenador ? ' is-coord' : ''}">
-            <div class="comissao-member-photo">${photoHTML}</div>
-            <div class="comissao-member-info">
-              <div class="name">${m.nome}</div>
-              ${m.coordenador ? '<span class="coord-badge">Coordenadora</span>' : ''}
-              <div class="affil">${m.instituicao}</div>
-              ${links ? `<span class="member-links">${links}</span>` : ''}
-            </div>
-          </div>`;
-      }
-
-      return `
-        <div class="comissao-card reveal${i > 0 ? ' reveal-delay-1' : ''}">
-          <div class="comissao-card-header">
-            <span class="card-icon">${c.icone}</span>
-            <h3>${c.titulo}</h3>
-          </div>
-          ${coords.length ? `
-          <div class="comissao-member-grid comissao-member-grid--coord">
-            ${coords.map(memberCard).join('')}
-          </div>
-          <div class="comissao-coord-divider"></div>` : ''}
-          <div class="comissao-member-grid">
-            ${members.map(memberCard).join('')}
-          </div>
-        </div>`;
-    }).join('');
+   SOBRE - lista de nomes dos convidados
+════════════════════════════════════════════════ */
+function renderSpeakersNames() {
+  const el = document.getElementById('sobre-speakers-names');
+  if (!el || typeof SPEAKERS === 'undefined') return;
+  el.innerHTML = SPEAKERS.map(s =>
+    `<span style="display:block"><strong>${s.nome}</strong> <span style="color:var(--text-mid);font-size:.85rem">· ${s.instituicao}</span></span>`
+  ).join('');
 }
 
 /* ═══════════════════════════════════════════════
    PATROCINADORES
-═══════════════════════════════════════════════ */
-async function renderSponsors() {
-  const tiers = SPONSORS;
-  document.getElementById('sponsors-tiers').innerHTML = tiers.map(t => `
-    <div class="sponsor-tier">
-      <h3>${t.tier}</h3>
-      <div class="sponsor-logos">
-        ${t.patrocinadores.map(p => `
-          <a href="${p.url}" class="sponsor-logo sponsor-logo--${t.nivel}" target="_blank" rel="noopener" title="${p.nome}">
-            ${p.logo ? `<img src="${p.logo}" alt="${p.nome}">` : `<span>${p.nome}</span>`}
-          </a>`).join('')}
-      </div>
-    </div>`).join('');
+════════════════════════════════════════════════ */
+function renderSponsors() {
+  const el = document.getElementById('sponsors-tiers');
+  if (!el) return;
+  el.innerHTML = SPONSORS.map(t=>`<div class="sponsor-tier"><h3>${t.tier}</h3><div class="sponsor-logos">${t.patrocinadores.map(p=>`<a href="${p.url}" class="sponsor-logo sponsor-logo--${t.nivel}" target="_blank" rel="noopener" title="${p.nome}">${p.logo?`<img src="${p.logo}" alt="${p.nome}">`:`<span>${p.nome}</span>`}</a>`).join('')}</div></div>`).join('');
 }
 
 /* ═══════════════════════════════════════════════
    PARTICLES
-═══════════════════════════════════════════════ */
+════════════════════════════════════════════════ */
 (function() {
-  const canvas = document.getElementById('particleCanvas');
-  const ctx    = canvas.getContext('2d');
-  let W, H, particles = [];
-  const COLORS = ['rgba(201,162,39,','rgba(58,175,160,','rgba(255,255,255,'];
-  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
-  resize(); window.addEventListener('resize', resize);
-  class Particle {
-    constructor() { this.reset(true); }
-    reset(init) {
-      this.x = Math.random()*W; this.y = init ? Math.random()*H : H+10;
-      this.r = Math.random()*4+1.5; this.vx = (Math.random()-.5)*.3; this.vy = -(Math.random()*.4+.15);
-      this.color = COLORS[Math.floor(Math.random()*COLORS.length)]; this.a = Math.random()*.5+.1;
-      this.pulse = Math.random()*Math.PI*2;
-    }
-    update() { this.x+=this.vx; this.y+=this.vy; this.pulse+=.02; if(this.y<-20) this.reset(false); }
-    draw() {
-      const op = this.a*(.7+.3*Math.sin(this.pulse));
-      ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-      ctx.fillStyle = this.color+op+')'; ctx.fill();
-    }
-  }
-  for(let i=0;i<90;i++) particles.push(new Particle());
-  function loop() { ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(loop); }
+  const canvas=document.getElementById('particleCanvas');
+  if (!canvas) return;
+  const ctx=canvas.getContext('2d');
+  let W,H,particles=[];
+  const COLORS=['rgba(201,162,39,','rgba(58,175,160,','rgba(255,255,255,'];
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  resize();window.addEventListener('resize',resize);
+  class Particle{constructor(){this.reset(true);}reset(init){this.x=Math.random()*W;this.y=init?Math.random()*H:H+10;this.r=Math.random()*4+1.5;this.vx=(Math.random()-.5)*.3;this.vy=-(Math.random()*.4+.15);this.color=COLORS[Math.floor(Math.random()*COLORS.length)];this.a=Math.random()*.5+.1;this.pulse=Math.random()*Math.PI*2;}update(){this.x+=this.vx;this.y+=this.vy;this.pulse+=.02;if(this.y<-20)this.reset(false);}draw(){const op=this.a*(.7+.3*Math.sin(this.pulse));ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.color+op+')';ctx.fill();}}
+  for(let i=0;i<90;i++)particles.push(new Particle());
+  function loop(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
   loop();
 })();
 
 /* ═══════════════════════════════════════════════
    MODAL EM BREVE
-═══════════════════════════════════════════════ */
+════════════════════════════════════════════════ */
 const MODAL_CONTEUDO = {
-  inscricao: {
-    titulo: 'Inscrições em breve',
-    icone:  '🗓️',
-    texto:  'As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>Volte a visitar esta página em breve para mais informações sobre prazos, valores e categorias de inscrição.'
-  },
-  submissao: {
-    titulo: 'Submissão em breve',
-    icone:  '📝',
-    texto:  'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai – 15 set de 2026</strong>.'
-  }
+  inscricao: { titulo:'Inscrições em breve', icone:'🗓️', texto:'As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>Volte a visitar esta página para mais informações sobre prazos, valores e categorias de inscrição.' },
+  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai – 15 set de 2026</strong>.' }
 };
 function abrirModalEmBreve(tipo) {
-  const cfg = MODAL_CONTEUDO[tipo] || MODAL_CONTEUDO.inscricao;
-  document.querySelector('#modal-em-breve .modal-icone').textContent = cfg.icone;
-  document.getElementById('modal-titulo-txt').textContent = cfg.titulo;
-  document.querySelector('#modal-em-breve .modal-texto').innerHTML = cfg.texto;
-  const modal = document.getElementById('modal-em-breve');
+  const cfg=MODAL_CONTEUDO[tipo]||MODAL_CONTEUDO.inscricao;
+  document.querySelector('#modal-em-breve .modal-icone').textContent=cfg.icone;
+  document.getElementById('modal-titulo-txt').textContent=cfg.titulo;
+  document.querySelector('#modal-em-breve .modal-texto').innerHTML=cfg.texto;
+  const modal=document.getElementById('modal-em-breve');
   modal.classList.add('ativo');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
   document.getElementById('modal-fechar-btn').focus();
 }
 function fecharModalEmBreve() {
   document.getElementById('modal-em-breve').classList.remove('ativo');
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
 }
 document.getElementById('modal-fechar-btn').addEventListener('click', fecharModalEmBreve);
 document.getElementById('modal-close-x').addEventListener('click', fecharModalEmBreve);
-document.getElementById('modal-em-breve').addEventListener('click', e => {
-  if (e.target === e.currentTarget) fecharModalEmBreve();
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') fecharModalEmBreve();
-});
+document.getElementById('modal-em-breve').addEventListener('click', e => { if(e.target===e.currentTarget) fecharModalEmBreve(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') fecharModalEmBreve(); });
 
 /* ═══════════════════════════════════════════════
-   NAVBAR
-═══════════════════════════════════════════════ */
-const navbar = document.getElementById('navbar');
-const btnTopo = document.getElementById('btn-topo');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-  btnTopo.classList.toggle('visible', window.scrollY > 400);
-});
-btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-document.getElementById('hamburger').addEventListener('click', () => {
-  const isOpen = document.body.classList.toggle('nav-open');
-  document.getElementById('hamburger').setAttribute('aria-expanded', isOpen);
-});
-document.getElementById('navLinks').addEventListener('click', e => {
-  const shouldClose = e.target.tagName==='A' || e.target === e.currentTarget;
-  if (shouldClose) {
-    document.body.classList.remove('nav-open');
-    document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
-  }
-});
-
-/* ═══════════════════════════════════════════════
-   SOBRE — LEIA MAIS
-═══════════════════════════════════════════════ */
+   SOBRE - LEIA MAIS
+════════════════════════════════════════════════ */
 (function() {
-  const btn = document.getElementById('sobre-leia-mais-btn');
-  const box = document.getElementById('sobre-expandido');
-  if (!btn || !box) return;
-  btn.addEventListener('click', () => {
-    const open = box.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open);
-    box.setAttribute('aria-hidden', !open);
-    btn.childNodes[0].textContent = open ? 'Recolher ' : 'Leia mais sobre o tema ';
+  const btn=document.getElementById('sobre-leia-mais-btn');
+  const box=document.getElementById('sobre-expandido');
+  if(!btn||!box)return;
+  btn.addEventListener('click',()=>{
+    const open=box.classList.toggle('open');
+    btn.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open);
+    box.setAttribute('aria-hidden',!open);
+    btn.childNodes[0].textContent=open?'Recolher ':'Leia mais sobre o tema ';
   });
 })();
 
 /* ═══════════════════════════════════════════════
    BOOT
-═══════════════════════════════════════════════ */
-Promise.all([
-  applyConfig(),
-  renderDates(),
-  renderSpeakers(),
-  renderSchedule(),
-  renderCommittee(),
-  renderSponsors()
-]).then(() => {
-  revealAll();
-}).catch(err => {
-  console.error('Erro ao carregar dados:', err);
-  revealAll(); // exibe o que já foi renderizado
-});
+════════════════════════════════════════════════ */
+applyConfig();
+renderSpeakersNames();
+renderSponsors();
+revealAll();
 </script>
 </body>
 </html>

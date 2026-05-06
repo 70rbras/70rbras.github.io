@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convidados - 70ª RBras 2026</title>
+  <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
+  <meta name="description" content="Conheça os palestrantes convidados da 70ª RBras 2026 - pesquisadores de referência em biometria e estatística.">
+  <meta property="og:title" content="Convidados - 70ª RBras 2026">
+  <meta property="og:url" content="https://70rbras.org/palestrantes.html">
+  <meta property="og:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7Z8S78NNX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-X7Z8S78NNX');
+  </script>
+</head>
+<body>
+
+<!-- Navbar injetada por assets/nav.js -->
+
+<!-- ─── CABEÇALHO DA PÁGINA ───────────────────────── -->
+<section class="page-header">
+  <svg class="page-header-decor" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M200 580 Q200 400 200 200" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M200 480 Q260 420 320 400" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 360 Q270 300 340 280" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="320" cy="400" r="8" fill="white"/><circle cx="340" cy="390" r="5" fill="white"/>
+    <circle cx="340" cy="280" r="8" fill="white"/><circle cx="358" cy="268" r="6" fill="white"/>
+  </svg>
+  <div class="container">
+    <span class="tag tag--gold">Keynotes</span>
+    <h1 class="page-header-title">Convidados</h1>
+    <p class="page-header-sub">Pesquisadores de referência nacional e internacional em biometria, estatística e ciências da vida. Clique em um convidado para ver o resumo da palestra.</p>
+  </div>
+  <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+  </svg>
+</section>
+
+<!-- ─── PALESTRANTES ──────────────────────────────── -->
+<section id="palestrantes" style="padding:5rem 0 7rem;background:var(--white)">
+  <div class="container">
+    <div class="speakers-grid" id="speakers-grid">
+      <!-- preenchido via JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── MODAL PALESTRANTE ─────────────────────────── -->
+<div id="speaker-modal" role="dialog" aria-modal="true" aria-labelledby="modal-speaker-name">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-photo" id="modal-photo">👤</div>
+      <div class="modal-speaker-info">
+        <h2 id="modal-speaker-name">Nome</h2>
+        <div class="role" id="modal-role"></div>
+        <div class="org"  id="modal-org"></div>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3>Palestra</h3>
+      <div class="modal-topic" id="modal-topic"></div>
+      <h3>Resumo</h3>
+      <div class="modal-abstract" id="modal-abstract"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CTA ──────────────────────────────────────── -->
+<section id="inscricoes-cta">
+  <div class="container reveal">
+    <p class="cta-title">Faça parte desse encontro</p>
+    <p class="cta-sub">Inscreva-se e assista às palestras ao vivo em Campinas, SP.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem;padding:1em 2.4em" id="cta-inscricoes">Inscreva-se agora ↗</a>
+      <a href="index.html" class="btn btn--outline" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem;padding:1em 2.4em">← Voltar à página inicial</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
+        <p id="footer-desc">Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 70ª Edição · Campinas, SP</p>
+      </div>
+      <div class="footer-col">
+        <h4>Evento</h4>
+        <ul>
+          <li><a href="index.html#sobre">Sobre</a></li>
+          <li><a href="palestrantes.html">Convidados</a></li>
+          <li><a href="programacao.html">Programação</a></li>
+          <li><a href="local.html">Local</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Científico</h4>
+        <ul>
+          <li><a href="cientifico.html#datas">Datas Importantes</a></li>
+          <li><a href="cientifico.html#submissoes">Submissões</a></li>
+          <li><a href="cientifico.html#comissao">Comissões</a></li>
+          <li><a href="inscricoes.html">Inscrições</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#" id="footer-email">contato@70rbras.org</a></li>
+          <li><a href="cientifico.html#comissao">Comissão Organizadora</a></li>
+          <li><a href="#" id="footer-site-rbras">RBras.org.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p id="footer-copy">© 2026 70ª RBras · Região Brasileira da Sociedade Internacional de Biometria</p>
+      <div class="social-links">
+        <a href="#" class="social-link" id="social-instagram" aria-label="Instagram">📸</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="btn-topo" aria-label="Voltar ao topo">&#8679;</button>
+
+<!-- ─── MODAL EM BREVE ──────────────────────────── -->
+<div id="modal-em-breve" role="dialog" aria-modal="true" aria-labelledby="modal-titulo-txt">
+  <div class="modal-card">
+    <button class="modal-close-x" id="modal-close-x" aria-label="Fechar">&#x2715;</button>
+    <div class="modal-icone" aria-hidden="true">🗓️</div>
+    <h2 class="modal-titulo" id="modal-titulo-txt">Inscrições em breve</h2>
+    <span class="modal-linha"></span>
+    <p class="modal-texto">As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.</p>
+    <button class="modal-fechar" id="modal-fechar-btn">Entendido</button>
+  </div>
+</div>
+
+<!-- ─── DATA FILES ─────────────────────────────────── -->
+<script src="assets/nav.js"></script>
+<script src="data/config.js"></script>
+<script src="data/speakers.js"></script>
+
+<script>
+/* ── HELPERS ────────────────────────────── */
+function revealAll() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal,.reveal-from-right').forEach(el=>io.observe(el));
+}
+(function() {
+  const btn = document.getElementById('btn-topo');
+  if (!btn) return;
+  window.addEventListener('scroll',()=>btn.classList.toggle('visible',window.scrollY>400));
+  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
+
+/* ── CONFIG (footer + nav-cta) ─────────── */
+function applyConfig() {
+  const {evento, redes_sociais} = CONFIG;
+  const safe = (id,fn) => { const el=document.getElementById(id); if(el)fn(el); };
+  safe('footer-desc', el=>el.textContent=`${evento.nome} · ${evento.cidade} · ${evento.datas_exibicao}`);
+  safe('footer-copy', el=>el.textContent=`© 2026 ${evento.edicao} · Região Brasileira da Sociedade Internacional de Biometria`);
+  safe('footer-email', el=>{el.href='mailto:'+evento.email_contato;el.textContent=evento.email_contato;});
+  safe('footer-site-rbras', el=>el.href=evento.site_rbras);
+  safe('social-instagram', el=>el.href=redes_sociais.instagram);
+  // CTA inscrições
+  const link=evento.link_inscricoes, emBreve=!link||link==='#';
+  ['cta-inscricoes','nav-cta-link'].forEach(id => {
+    safe(id, el => {
+      if(emBreve){ el.href='#'; el.addEventListener('click',e=>{e.preventDefault();abrirModalEmBreve();}); }
+      else el.href=link;
+    });
+  });
+}
+
+/* ── PALESTRANTES + MODAL ──────────────── */
+function renderSpeakers() {
+  const grid = document.getElementById('speakers-grid');
+  if (!grid) return;
+  grid.innerHTML = SPEAKERS.map((s,i) => {
+    const delay = i>0&&i<4?` reveal-delay-${i}`:'';
+    const foto  = s.foto?`<img src="${s.foto}" alt="${s.nome}" loading="lazy">`:'👤';
+    return `<div class="speaker-card reveal${delay}" data-index="${i}" role="button" tabindex="0" aria-label="Ver resumo de ${s.nome}">
+      <div class="speaker-photo">${foto}</div>
+      <div class="speaker-name">${s.nome}</div>
+      <div class="speaker-role">${s.tipo}</div>
+      <div class="speaker-org">${s.instituicao}</div>
+      <div class="speaker-topic">${s.tema}</div>
+      <div class="speaker-hint">↗ clique para ver o resumo</div>
+    </div>`;
+  }).join('');
+
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.speaker-card');
+    if(card) openModal(SPEAKERS[+card.dataset.index]);
+  });
+  grid.addEventListener('keydown', e => {
+    if(e.key==='Enter'||e.key===' '){const card=e.target.closest('.speaker-card');if(card)openModal(SPEAKERS[+card.dataset.index]);}
+  });
+}
+
+function openModal(s) {
+  if(typeof gtag!=='undefined') gtag('event','speaker_view',{speaker_name:s.nome,speaker_type:s.tipo});
+  const modal=document.getElementById('speaker-modal');
+  const foto=s.foto?`<img src="${s.foto}" alt="${s.nome}" loading="lazy">`:'👤';
+  document.getElementById('modal-photo').innerHTML=foto;
+  document.getElementById('modal-speaker-name').textContent=s.nome;
+  document.getElementById('modal-role').textContent=s.tipo;
+  document.getElementById('modal-org').textContent=s.instituicao;
+  document.getElementById('modal-topic').textContent=s.tema;
+  document.getElementById('modal-abstract').innerHTML=s.resumo.split(/\n\s*\n/).map(p=>`<p>${p.trim().replace(/\n/g,' ')}</p>`).join('');
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal() {
+  document.getElementById('speaker-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modal-close').addEventListener('click',closeModal);
+document.getElementById('modal-backdrop').addEventListener('click',closeModal);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();fecharModalEmBreve();}});
+
+/* ── MODAL EM BREVE ────────────────────── */
+function abrirModalEmBreve() {
+  document.getElementById('modal-em-breve').classList.add('ativo');
+  document.body.style.overflow='hidden';
+  document.getElementById('modal-fechar-btn').focus();
+}
+function fecharModalEmBreve() {
+  const m=document.getElementById('modal-em-breve');
+  if(m){m.classList.remove('ativo');document.body.style.overflow='';}
+}
+document.getElementById('modal-fechar-btn').addEventListener('click',fecharModalEmBreve);
+document.getElementById('modal-close-x').addEventListener('click',fecharModalEmBreve);
+document.getElementById('modal-em-breve').addEventListener('click',e=>{if(e.target===e.currentTarget)fecharModalEmBreve();});
+
+/* ── BOOT ──────────────────────────────── */
+applyConfig();
+renderSpeakers();
+revealAll();
+</script>
+</body>
+</html>

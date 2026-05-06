@@ -60,7 +60,7 @@ const DATES = [
     titulo:    "70ª RBras",
     inicio:    "2026-11-23",
     fim:       "2026-11-25",
-    descricao: "O congresso acontece na UNICAMP — Campinas, SP",
+    descricao: "O congresso acontece na UNICAMP - Campinas, SP",
     icone:     "📅",
     destaque:  true
   }

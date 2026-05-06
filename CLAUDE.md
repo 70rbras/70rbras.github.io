@@ -22,32 +22,45 @@ Site oficial da **70ª Reunião Anual da Região Brasileira da Sociedade Interna
 
 ```
 site-rbras-claude/
-├── index.html          # Toda a aplicação: HTML, CSS e JS em um único arquivo
-├── LEIAME.md           # Guia de manutenção em português
-├── CNAME               # Configuração de domínio (70rbras.org)
-├── CLAUDE.md           # Este arquivo de memória
-├── padroniza_fotos.py  # Script Python para normalizar fotos de palestrantes
+├── index.html            # Home: Hero, Sobre, teasers, Local, Datas, Submissões, Comissões, Patrocinadores, CTA
+├── palestrantes.html     # Página dedicada: cards completos + modal de bios
+├── programacao.html      # Página dedicada: grade completa dos 3 dias
+├── inscricoes.html       # Página dedicada: tabela de valores, lotes, benefícios
+├── LEIAME.md             # Guia de manutenção em português
+├── CNAME                 # Configuração de domínio (70rbras.org)
+├── CLAUDE.md             # Este arquivo de memória
+├── padroniza_fotos.py    # Script Python para normalizar fotos de palestrantes
 ├── data/
-│   ├── config.js       # Configurações gerais do evento
-│   ├── dates.js        # Datas importantes e prazos
-│   ├── speakers.js     # Palestrantes e resumos das palestras
-│   ├── schedule.js     # Programação dos 3 dias
-│   ├── committee.js    # Comissões organizadora e científica
-│   └── sponsors.js     # Patrocinadores por tier
+│   ├── config.js         # Configurações gerais do evento
+│   ├── dates.js          # Datas importantes e prazos
+│   ├── speakers.js       # Palestrantes e resumos das palestras
+│   ├── schedule.js       # Programação dos 3 dias
+│   ├── committee.js      # Comissões organizadora e científica
+│   └── sponsors.js       # Patrocinadores por tier
 └── assets/
-    ├── logos/          # Arquivos de logo
-    └── fotos/          # Fotos dos palestrantes (400×400 px, JPG)
+    ├── style.css         # CSS compartilhado por TODAS as páginas
+    ├── nav.js            # Navbar injetável (carregada por todas as páginas)
+    ├── logos/            # Arquivos de logo
+    └── fotos/            # Fotos dos palestrantes (400×400 px, JPG)
 ```
 
-**Regra de ouro:** Todo conteúdo do site é controlado pelos arquivos em `data/`. O `index.html` não deve ser editado para mudanças de conteúdo — apenas para mudanças estruturais de layout ou estilo.
+**Regra de ouro:** Todo conteúdo do site é controlado pelos arquivos em `data/`. As páginas HTML não devem ser editadas para mudanças de conteúdo — apenas para mudanças estruturais de layout ou estilo.
+
+**Arquitetura multi-página (desde mai/2026):**
+- `assets/style.css` — único arquivo CSS, carregado por todas as páginas
+- `assets/nav.js` — injeta a navbar no início do `<body>`; detecta a página ativa via `window.location.pathname` e marca o link com classe `.active`
+- Cada página carrega apenas os `data/*.js` de que precisa (ex.: `programacao.html` só precisa de `schedule.js`)
+- Navbar usa links reais entre páginas; seções que permanecem na Home são referenciadas como `index.html#ancora`
 
 ---
 
 ## 3. Stack tecnológica
 
 - **Frontend:** HTML5 + CSS3 + JavaScript ES6+ vanilla (sem frameworks)
-- **Fontes:** Playfair Display (display) + Inter (corpo), via Google Fonts CDN
-- **Dados:** Objetos/arrays JavaScript carregados via `<script>` no `index.html`
+- **Fontes:** Montserrat + Playfair Display + Inter, via Google Fonts CDN
+- **Estilos:** `assets/style.css` (arquivo único externo, compartilhado por todas as páginas)
+- **Navbar:** `assets/nav.js` (script injetável que detecta página ativa automaticamente)
+- **Dados:** Objetos/arrays JavaScript em `data/*.js`, carregados via `<script>` em cada página
 - **Build:** Nenhum processo de build — arquivos estáticos servidos diretamente
 - **Deploy:** GitHub Pages (compatível) ou qualquer servidor estático
 - **Teste local:** `npx serve .` na raiz do projeto
@@ -140,7 +153,7 @@ site-rbras-claude/
 - 10:30 — Conferência C-3
 - 11:30 — Sessão de Pôsteres 2
 - 12:30 — Almoço
-- 14:00 — Visita ao CNPEM (Centro Nacional de Pesquisa em Energia e Materiais)
+- 14:00 — Atividade especial (a ser divulgada — não mencionar o CNPEM publicamente antes do evento)
 - 17:30 — Assembleia RBras + Entrega de Prêmios
 
 ### Dia 3 — 25 nov (quarta)

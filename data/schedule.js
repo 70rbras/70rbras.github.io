@@ -3,7 +3,7 @@
 // Cada bloco tem um "horario" e um array de "itens" (eventos simultâneos).
 // Tipos: "conf" | "mini" | "session" | "social" | "break"
 // Campos do item: tipo, titulo, fim (opcional), inicio (opcional), descricao (opcional), local (opcional), maps_url (opcional)
-// Nota: "inicio" no item sobrescreve o "horario" do bloco no card — útil quando atividades dentro de um
+// Nota: "inicio" no item sobrescreve o "horario" do bloco no card - útil quando atividades dentro de um
 // mesmo bloco têm horários de início diferentes (ex.: bloco 08:00 com item que começa às 08:30).
 
 const SCHEDULE = [
@@ -111,7 +111,7 @@ const SCHEDULE = [
       {
         horario: "14:00",
         itens: [
-          { tipo: "social", titulo: "CNPEM",                       fim: "17:30", descricao: "Centro Nacional de Pesquisa em Energia e Materiais", local: "CNPEM — Campinas", maps_url: "https://maps.google.com/?q=CNPEM+Campinas" }
+          { tipo: "social", titulo: "Atividade a ser determinada",  fim: "17:30", descricao: "", local: "" }
         ]
       },
       {
