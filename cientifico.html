@@ -64,48 +64,104 @@
 </section>
 
 <!-- ─── SUBMISSÕES ───────────────────────────────── -->
-<section id="submissoes" style="padding:4rem 0;background:var(--off-white)">
+<section id="submissoes" style="padding:4rem 0 5rem;background:var(--off-white)">
   <div class="container">
+
+    <!-- Cabeçalho -->
     <div class="section-header reveal">
       <span class="tag tag--teal">Submissões</span>
       <h2 class="section-title" style="margin-top:1rem">Compartilhe sua <span>Pesquisa</span></h2>
-      <p class="section-body">A 70ª RBras recebe contribuições científicas em diferentes formatos. Submeta seu trabalho e faça parte da programação do evento.</p>
+      <p class="section-body">A 70ª RBras recebe contribuições científicas em quatro modalidades. Leia as regras gerais e as instruções da sua categoria antes de submeter.</p>
     </div>
-    <div class="inscricoes-info-grid reveal">
-      <div class="inscricoes-info-box">
-        <div class="info-box-icon">📄</div>
-        <h4>Trabalhos Orais e Pôsteres</h4>
-        <p>Apresente seus resultados em formato de comunicação oral ou pôster. Aceitamos contribuições em biometria, estatística aplicada, epidemiologia, bioinformática e áreas afins. <strong>Prazo: até 15 de setembro de 2026.</strong></p>
-        <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer" id="sub-trabalhos-btn" style="margin-top:1.2rem;font-size:.85rem;padding:.65em 1.5em;align-self:flex-start;">Submeter trabalho ↗</a>
-      </div>
-      <div class="inscricoes-info-box">
-        <div class="info-box-icon">🎤</div>
-        <h4>Sessões Temáticas e Minicursos</h4>
-        <p>Proponha uma sessão temática ou minicurso para integrar a programação oficial. As propostas devem reunir ao menos três apresentações coesas em torno de um tema em comum. <strong>Prazo: até 5 de junho de 2026.</strong></p>
-      </div>
-      <div class="inscricoes-info-box">
-        <div class="info-box-icon">🏅</div>
-        <h4>Concursos</h4>
-        <p>O evento contempla prêmios para os melhores trabalhos de Iniciação Científica e de Pós-Graduação, avaliados por comissão científica independente. O regulamento e os critérios de avaliação serão divulgados em breve.</p>
-      </div>
+
+    <!-- Botão Submeter (placeholder) -->
+    <div style="display:flex;justify-content:center;margin-bottom:2.5rem">
+      <a href="#" class="btn btn--primary" id="sub-trabalhos-btn" style="font-size:1rem;padding:.9em 2.4em">Acessar sistema de submissão ↗</a>
     </div>
-    <div class="sub-prazos reveal">
-      <p class="sub-prazos-titulo">Prazos</p>
-      <div class="sub-prazos-grid">
-        <div class="sub-prazo-item">
-          <span class="sub-prazo-icon">📝</span>
-          <div><strong>Submissão de Trabalhos</strong><span>11 mai – 15 set 2026</span></div>
-        </div>
-        <div class="sub-prazo-item">
-          <span class="sub-prazo-icon">🎤</span>
-          <div><strong>Propostas de Sessões e Minicursos</strong><span>11 mai – 5 jun 2026</span></div>
-        </div>
-        <div class="sub-prazo-item">
-          <span class="sub-prazo-icon">✉️</span>
-          <div><strong>Divulgação de Aceites</strong><span>15 de setembro de 2026</span></div>
-        </div>
+
+    <!-- ── Regras Gerais ── -->
+    <div class="sub-rules-callout reveal">
+      <div class="sub-rules-header">
+        <span class="sub-rules-icon">📋</span>
+        <h3>Regras Gerais — valem para todas as modalidades</h3>
+      </div>
+      <ol class="sub-rules-list" id="sub-rules-list">
+        <!-- preenchido via submissions.js -->
+      </ol>
+    </div>
+
+    <!-- ── Abas por Modalidade ── -->
+    <div class="sub-tabs-wrap reveal" style="margin-top:2.5rem">
+      <div class="sub-tabs-nav" id="sub-tabs-nav" role="tablist" aria-label="Modalidades de submissão">
+        <!-- preenchido via submissions.js -->
+      </div>
+      <div class="sub-tabs-panels" id="sub-tabs-panels">
+        <!-- preenchido via submissions.js -->
       </div>
     </div>
+
+    <!-- ── Áreas Temáticas ── -->
+    <div class="sub-areas-wrap reveal" style="margin-top:2.5rem">
+      <button class="sub-areas-toggle" id="sub-areas-toggle" aria-expanded="false" aria-controls="sub-areas-grid">
+        <span>📚 Áreas Temáticas — Comunicações Orais e Pôsteres</span>
+        <svg class="sub-areas-chev" width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+          <path d="M1 1.5l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="sub-areas-grid" id="sub-areas-grid" hidden>
+        <!-- preenchido via submissions.js -->
+      </div>
+    </div>
+
+    <!-- ── Tabela-Resumo ── -->
+    <div class="sub-summary-wrap reveal" style="margin-top:2.5rem">
+      <h3 class="sub-summary-title">Resumo: o que cada modalidade exige</h3>
+      <div class="sub-summary-scroll">
+        <table class="sub-summary-table">
+          <thead>
+            <tr>
+              <th>Modalidade</th>
+              <th>Prazo</th>
+              <th>Resumo na plataforma</th>
+              <th>Documento PDF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="sub-mod-badge">📄</span> Comunicação Oral</td>
+              <td>até 15 ago</td>
+              <td class="check">✔</td>
+              <td class="dash">—</td>
+            </tr>
+            <tr>
+              <td><span class="sub-mod-badge">📄</span> Pôster</td>
+              <td>até 15 ago</td>
+              <td class="check">✔</td>
+              <td class="dash">—</td>
+            </tr>
+            <tr>
+              <td><span class="sub-mod-badge">🎤</span> Sessão Temática</td>
+              <td>até 5 jun</td>
+              <td class="check">✔</td>
+              <td class="check">✔ proposta completa</td>
+            </tr>
+            <tr>
+              <td><span class="sub-mod-badge">🎓</span> Minicurso</td>
+              <td>até 5 jun</td>
+              <td class="check">✔</td>
+              <td class="check">✔ proposta (até 2 pág.)</td>
+            </tr>
+            <tr>
+              <td><span class="sub-mod-badge">🏅</span> Concurso</td>
+              <td>até 15 ago</td>
+              <td class="check">✔</td>
+              <td class="check">✔ tese/diss. + docs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -199,6 +255,7 @@
 <script src="data/config.js"></script>
 <script src="data/dates.js"></script>
 <script src="data/committee.js"></script>
+<script src="data/submissions.js"></script>
 
 <script>
 /* ─── HELPERS ──────────────────────────────────────── */
@@ -336,10 +393,96 @@ document.getElementById('modal-close-x').addEventListener('click', fecharModalEm
 document.getElementById('modal-em-breve').addEventListener('click', e => { if(e.target===e.currentTarget) fecharModalEmBreve(); });
 document.addEventListener('keydown', e => { if(e.key==='Escape') fecharModalEmBreve(); });
 
+/* ─── SUBMISSÕES ────────────────────────────────────── */
+function renderSubmissions() {
+  /* Regras gerais */
+  const rulesList = document.getElementById('sub-rules-list');
+  if (rulesList && typeof SUBMISSION_RULES !== 'undefined') {
+    rulesList.innerHTML = SUBMISSION_RULES.map(r => `<li>${r}</li>`).join('');
+  }
+
+  /* Áreas temáticas */
+  const areasGrid = document.getElementById('sub-areas-grid');
+  if (areasGrid && typeof THEMATIC_AREAS !== 'undefined') {
+    areasGrid.innerHTML = THEMATIC_AREAS.map((a, i) =>
+      `<div class="sub-area-item"><span class="sub-area-num">${String(i + 1).padStart(2, '0')}</span>${a}</div>`
+    ).join('');
+  }
+
+  /* Toggle áreas */
+  const areasToggle = document.getElementById('sub-areas-toggle');
+  if (areasToggle && areasGrid) {
+    areasToggle.addEventListener('click', () => {
+      const expanded = areasToggle.getAttribute('aria-expanded') === 'true';
+      areasToggle.setAttribute('aria-expanded', !expanded);
+      areasToggle.classList.toggle('open', !expanded);
+      if (expanded) { areasGrid.hidden = true; } else { areasGrid.hidden = false; }
+    });
+  }
+
+  /* Abas por modalidade */
+  const tabsNav    = document.getElementById('sub-tabs-nav');
+  const tabsPanels = document.getElementById('sub-tabs-panels');
+  if (!tabsNav || !tabsPanels || typeof SUBMISSION_MODALITIES === 'undefined') return;
+
+  function buildPanel(m) {
+    const duracaoHtml = m.duracao
+      ? `<div class="tab-meta"><span class="tab-meta-icon">⏱</span><strong>Duração:</strong> ${m.duracao}</div>`
+      : '';
+    const elegibilidadeHtml = m.elegibilidade
+      ? `<div class="tab-meta tab-meta--highlight"><span class="tab-meta-icon">ℹ️</span><strong>Elegibilidade:</strong> ${m.elegibilidade}</div>`
+      : '';
+    const camposHtml = m.campos.length
+      ? `<div class="tab-section"><h4 class="tab-section-title">Campos do formulário</h4><ol class="tab-list">${m.campos.map(c => `<li>${c}</li>`).join('')}</ol></div>`
+      : '';
+    const notasHtml = m.notas.length
+      ? `<div class="tab-section"><h4 class="tab-section-title">Observações</h4><ul class="tab-list tab-list--bullet">${m.notas.map(n => `<li>${n}</li>`).join('')}</ul></div>`
+      : '';
+    const pdfTitulo = m.pdf ? (m.pdf.titulo || 'Arquivo PDF obrigatório') : '';
+    const pdfHtml = m.pdf
+      ? `<div class="tab-section tab-section--pdf"><h4 class="tab-section-title">📎 ${pdfTitulo}</h4><ul class="tab-list tab-list--bullet">${m.pdf.itens.map(i => `<li>${i}</li>`).join('')}</ul></div>`
+      : '';
+    const areasTpl = m.areas_tematicas
+      ? `<div class="tab-areas-note">📚 Selecione a <strong>área temática</strong> no formulário — veja a lista completa abaixo.</div>`
+      : '';
+
+    return `
+      <div class="tab-panel" id="tab-panel-${m.id}" role="tabpanel" aria-labelledby="tab-btn-${m.id}" hidden>
+        <div class="tab-prazo-badge"><span class="tab-prazo-icon">📅</span> Prazo: <strong>${m.prazo}</strong></div>
+        ${duracaoHtml}${elegibilidadeHtml}${camposHtml}${notasHtml}${pdfHtml}${areasTpl}
+      </div>`;
+  }
+
+  tabsNav.innerHTML = SUBMISSION_MODALITIES.map((m, i) =>
+    `<button class="sub-tab-btn${i === 0 ? ' active' : ''}" id="tab-btn-${m.id}"
+      role="tab" aria-selected="${i === 0}" aria-controls="tab-panel-${m.id}">
+      <span class="sub-tab-icon">${m.icone}</span>
+      <span class="sub-tab-label">${m.titulo}</span>
+    </button>`
+  ).join('');
+
+  tabsPanels.innerHTML = SUBMISSION_MODALITIES.map((m, i) => buildPanel(m)).join('');
+  tabsPanels.querySelector('.tab-panel').hidden = false;
+
+  tabsNav.addEventListener('click', e => {
+    const btn = e.target.closest('.sub-tab-btn');
+    if (!btn) return;
+    tabsNav.querySelectorAll('.sub-tab-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    tabsPanels.querySelectorAll('.tab-panel').forEach(p => { p.hidden = true; });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById(btn.getAttribute('aria-controls')).hidden = false;
+  });
+}
+
 /* ─── BOOT ─────────────────────────────────────────── */
 applyConfig();
 renderDates();
 renderCommittee();
+renderSubmissions();
 revealAll();
 </script>
 </body>
