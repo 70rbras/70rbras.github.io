@@ -71,7 +71,7 @@ const SUBMISSION_MODALITIES = [
     campos: [
       "Título do Minicurso",
       "Nome completo do proponente",
-      "Co-ministrantes (se houver — nomes e instituições)",
+      "Co-ministrantes (se houver - nomes e instituições)",
       "Afiliação institucional do(a) apresentador(a)",
       "Resumo de até <strong>2000 caracteres</strong>, somente em texto (sem fórmulas)",
       "Até <strong>5 palavras-chave</strong>"

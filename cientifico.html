@@ -83,7 +83,7 @@
     <div class="sub-rules-callout reveal">
       <div class="sub-rules-header">
         <span class="sub-rules-icon">📋</span>
-        <h3>Regras Gerais — valem para todas as modalidades</h3>
+        <h3>Regras Gerais - valem para todas as modalidades</h3>
       </div>
       <ol class="sub-rules-list" id="sub-rules-list">
         <!-- preenchido via submissions.js -->
@@ -103,7 +103,7 @@
     <!-- ── Áreas Temáticas ── -->
     <div class="sub-areas-wrap reveal" style="margin-top:2.5rem">
       <button class="sub-areas-toggle" id="sub-areas-toggle" aria-expanded="false" aria-controls="sub-areas-grid">
-        <span>📚 Áreas Temáticas — Comunicações Orais e Pôsteres</span>
+        <span>📚 Tópicos - Comunicações Orais e Pôsteres</span>
         <svg class="sub-areas-chev" width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
           <path d="M1 1.5l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -131,13 +131,13 @@
               <td><span class="sub-mod-badge">📄</span> Comunicação Oral</td>
               <td>até 15 ago</td>
               <td class="check">✔</td>
-              <td class="dash">—</td>
+              <td class="dash">-</td>
             </tr>
             <tr>
               <td><span class="sub-mod-badge">📄</span> Pôster</td>
               <td>até 15 ago</td>
               <td class="check">✔</td>
-              <td class="dash">—</td>
+              <td class="dash">-</td>
             </tr>
             <tr>
               <td><span class="sub-mod-badge">🎤</span> Sessão Temática</td>
@@ -443,7 +443,7 @@ function renderSubmissions() {
       ? `<div class="tab-section tab-section--pdf"><h4 class="tab-section-title">📎 ${pdfTitulo}</h4><ul class="tab-list tab-list--bullet">${m.pdf.itens.map(i => `<li>${i}</li>`).join('')}</ul></div>`
       : '';
     const areasTpl = m.areas_tematicas
-      ? `<div class="tab-areas-note">📚 Selecione a <strong>área temática</strong> no formulário — veja a lista completa abaixo.</div>`
+      ? `<div class="tab-areas-note">📚 No formulário, selecione o <strong>tópico</strong> do seu trabalho, conforme apropriado.</div>`
       : '';
 
     return `
