@@ -100,20 +100,8 @@
       </div>
     </div>
 
-    <!-- ── Áreas Temáticas ── -->
-    <div class="sub-areas-wrap reveal" style="margin-top:2.5rem">
-      <button class="sub-areas-toggle" id="sub-areas-toggle" aria-expanded="false" aria-controls="sub-areas-grid">
-        <span>📚 Tópicos - Comunicações Orais e Pôsteres</span>
-        <svg class="sub-areas-chev" width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
-          <path d="M1 1.5l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <div class="sub-areas-grid" id="sub-areas-grid" hidden>
-        <!-- preenchido via submissions.js -->
-      </div>
-    </div>
 
-    <!-- ── Tabela-Resumo ── -->
+<!-- ── Tabela-Resumo ── -->
     <div class="sub-summary-wrap reveal" style="margin-top:2.5rem">
       <h3 class="sub-summary-title">Resumo: o que cada modalidade exige</h3>
       <div class="sub-summary-scroll">
@@ -141,13 +129,13 @@
             </tr>
             <tr>
               <td><span class="sub-mod-badge">🎤</span> Sessão Temática</td>
-              <td>até 5 jun</td>
+              <td>até 11 jun</td>
               <td class="check">✔</td>
               <td class="check">✔ proposta completa</td>
             </tr>
             <tr>
               <td><span class="sub-mod-badge">🎓</span> Minicurso</td>
-              <td>até 5 jun</td>
+              <td>até 11 jun</td>
               <td class="check">✔</td>
               <td class="check">✔ proposta (até 2 pág.)</td>
             </tr>
@@ -402,25 +390,6 @@ function renderSubmissions() {
     rulesList.innerHTML = SUBMISSION_RULES.map(r => `<li>${r}</li>`).join('');
   }
 
-  /* Áreas temáticas */
-  const areasGrid = document.getElementById('sub-areas-grid');
-  if (areasGrid && typeof THEMATIC_AREAS !== 'undefined') {
-    areasGrid.innerHTML = THEMATIC_AREAS.map((a, i) =>
-      `<div class="sub-area-item"><span class="sub-area-num">${String(i + 1).padStart(2, '0')}</span>${a}</div>`
-    ).join('');
-  }
-
-  /* Toggle áreas */
-  const areasToggle = document.getElementById('sub-areas-toggle');
-  if (areasToggle && areasGrid) {
-    areasToggle.addEventListener('click', () => {
-      const expanded = areasToggle.getAttribute('aria-expanded') === 'true';
-      areasToggle.setAttribute('aria-expanded', !expanded);
-      areasToggle.classList.toggle('open', !expanded);
-      if (expanded) { areasGrid.hidden = true; } else { areasGrid.hidden = false; }
-    });
-  }
-
   /* Abas por modalidade */
   const tabsNav    = document.getElementById('sub-tabs-nav');
   const tabsPanels = document.getElementById('sub-tabs-panels');
@@ -443,8 +412,14 @@ function renderSubmissions() {
     const pdfHtml = m.pdf
       ? `<div class="tab-section tab-section--pdf"><h4 class="tab-section-title">📎 ${pdfTitulo}</h4><ul class="tab-list tab-list--bullet">${m.pdf.itens.map(i => `<li>${i}</li>`).join('')}</ul></div>`
       : '';
-    const areasTpl = m.areas_tematicas
-      ? `<div class="tab-areas-note">📚 No formulário, selecione o <strong>tópico</strong> do seu trabalho, conforme apropriado.</div>`
+    const areasTpl = (m.areas_tematicas && typeof THEMATIC_AREAS !== 'undefined')
+      ? `<div class="tab-section">
+          <h4 class="tab-section-title">Tópicos</h4>
+          <p style="font-size:.87rem;color:var(--text-mid);margin-bottom:.85rem">No formulário, selecione o tópico do seu trabalho, conforme apropriado.</p>
+          <div class="tab-areas-cols">
+            ${THEMATIC_AREAS.map(a => `<div class="tab-area-col-item">${a}</div>`).join('')}
+          </div>
+        </div>`
       : '';
 
     return `
