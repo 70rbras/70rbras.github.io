@@ -17,7 +17,7 @@ const DATES = [
   {
     titulo:    "Submissão de Trabalhos",
     inicio:    "2026-05-11",
-    fim:       "2026-09-15",
+    fim:       "2026-08-15",
     descricao: "Envio de trabalhos orais e pôsteres",
     icone:     "📝"
   },

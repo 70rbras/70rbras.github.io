@@ -203,10 +203,11 @@ function applyConfig() {
   safe('footer-site-rbras',el => el.href = evento.site_rbras);
 
   // CTA inscrições
+  safe('nav-cta-link', el => { el.href = evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; });
   const linkInscricoes = evento.link_inscricoes;
   const isEmBreve = !linkInscricoes || linkInscricoes === '#';
   safe('cta-inscricoes', el => {
-    if (!isEmBreve) el.href = linkInscricoes;
+    if (!isEmBreve) { el.href = linkInscricoes; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
     else { el.href = '#'; el.addEventListener('click', e => { e.preventDefault(); alert('Inscrições em breve!'); }); }
   });
 }

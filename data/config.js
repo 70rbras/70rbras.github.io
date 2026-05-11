@@ -15,8 +15,9 @@ const CONFIG = {
     local_instituicao: "Unicamp",
     email_contato:  "70rbras@unicamp.br",
     site_rbras:     "https://www.70rbras.org",
-    link_inscricoes:"#",
-    link_submissao: "#"
+    link_inscricoes:    "#",  // LIBERAR: "https://app.ciente.studio/70-rbras/subscription"
+    link_submissao:     "#",  // LIBERAR: "https://app.ciente.studio/70-rbras/submissions"
+    link_area_inscrito: "#"   // LIBERAR: "https://app.ciente.studio/"
   },
   redes_sociais: {
     instagram: "https://www.instagram.com/70rbras"

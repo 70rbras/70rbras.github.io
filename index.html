@@ -324,11 +324,12 @@ function applyConfig() {
   // Botões de inscrição
   const linkInscricoes = evento.link_inscricoes;
   const isEmBreve = !linkInscricoes || linkInscricoes === '#';
-  ['hero-btn-inscricoes', 'cta-inscricoes', 'nav-cta-link'].forEach(id => {
+  safe('nav-cta-link', el => { el.href = evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; });
+  ['hero-btn-inscricoes', 'cta-inscricoes'].forEach(id => {
     safe(id, el => {
       el.addEventListener('click', () => { if (typeof gtag !== 'undefined') gtag('event', 'registration_click', { button_id: id }); });
       if (isEmBreve) { el.href = '#'; el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('inscricao'); }); }
-      else el.href = linkInscricoes;
+      else { el.href = linkInscricoes; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
     });
   });
 
@@ -339,7 +340,7 @@ function applyConfig() {
     safe(id, el => {
       el.addEventListener('click', () => { if (typeof gtag !== 'undefined') gtag('event', 'submission_click', { button_id: id }); });
       if (subEmBreve) { el.href = '#'; el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('submissao'); }); }
-      else el.href = linkSubmissao;
+      else { el.href = linkSubmissao; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
     });
   });
 
@@ -418,7 +419,7 @@ function renderSponsors() {
 ════════════════════════════════════════════════ */
 const MODAL_CONTEUDO = {
   inscricao: { titulo:'Inscrições em breve', icone:'🗓️', texto:'As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>Volte a visitar esta página para mais informações sobre prazos, valores e categorias de inscrição.' },
-  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai – 15 set de 2026</strong>.' }
+  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai – 15 ago de 2026</strong>.' }
 };
 function abrirModalEmBreve(tipo) {
   const cfg=MODAL_CONTEUDO[tipo]||MODAL_CONTEUDO.inscricao;

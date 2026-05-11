@@ -257,11 +257,12 @@ function applyConfig() {
   safe('footer-site-rbras',el=>el.href=evento.site_rbras);
   safe('social-instagram',el=>el.href=redes_sociais.instagram);
   const link=evento.link_inscricoes, emBreve=!link||link==='#';
-  ['inscricoes-inscrevase-btn','cta-inscricoes','nav-cta-link'].forEach(id=>{
+  safe('nav-cta-link',el=>{el.href=evento.link_area_inscrito;el.target='_blank';el.rel='noopener noreferrer';});
+  ['inscricoes-inscrevase-btn','cta-inscricoes'].forEach(id=>{
     safe(id,el=>{
       el.addEventListener('click',()=>{if(typeof gtag!=='undefined')gtag('event','registration_click',{button_id:id});});
       if(emBreve){el.href='#';el.addEventListener('click',e=>{e.preventDefault();abrirModalEmBreve();});}
-      else el.href=link;
+      else{el.href=link;el.target='_blank';el.rel='noopener noreferrer';}
     });
   });
 }

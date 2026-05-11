@@ -175,10 +175,11 @@ function applyConfig() {
   safe('social-instagram', el=>el.href=redes_sociais.instagram);
   // CTA inscrições
   const link=evento.link_inscricoes, emBreve=!link||link==='#';
-  ['cta-inscricoes','nav-cta-link'].forEach(id => {
+  safe('nav-cta-link', el => { el.href = evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; });
+  ['cta-inscricoes'].forEach(id => {
     safe(id, el => {
       if(emBreve){ el.href='#'; el.addEventListener('click',e=>{e.preventDefault();abrirModalEmBreve();}); }
-      else el.href=link;
+      else { el.href=link; el.target='_blank'; el.rel='noopener noreferrer'; }
     });
   });
 }

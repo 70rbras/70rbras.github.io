@@ -245,7 +245,7 @@
     <div class="modal-icone" aria-hidden="true">📝</div>
     <h2 class="modal-titulo" id="modal-titulo-txt">Submissão em breve</h2>
     <span class="modal-linha"></span>
-    <p class="modal-texto">O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai – 15 set de 2026</strong>.</p>
+    <p class="modal-texto">O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai – 15 ago de 2026</strong>.</p>
     <button class="modal-fechar" id="modal-fechar-btn">Entendido</button>
   </div>
 </div>
@@ -280,12 +280,13 @@ function applyConfig() {
 
   safe('footer-email',      el => { el.href = 'mailto:' + evento.email_contato; el.textContent = evento.email_contato; });
   safe('footer-site-rbras', el => el.href = evento.site_rbras);
+  safe('nav-cta-link',      el => { el.href = evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; });
 
   const linkInscricoes = evento.link_inscricoes;
   const isEmBreve = !linkInscricoes || linkInscricoes === '#';
   ['cta-inscricoes'].forEach(id => {
     safe(id, el => {
-      if (!isEmBreve) el.href = linkInscricoes;
+      if (!isEmBreve) { el.href = linkInscricoes; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
       else { el.href = '#'; el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('inscricao'); }); }
     });
   });
@@ -294,7 +295,7 @@ function applyConfig() {
   const subEmBreve = !linkSubmissao || linkSubmissao === '#';
   ['cta-submissao', 'sub-trabalhos-btn'].forEach(id => {
     safe(id, el => {
-      if (!subEmBreve) el.href = linkSubmissao;
+      if (!subEmBreve) { el.href = linkSubmissao; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
       else { el.href = '#'; el.addEventListener('click', e => { e.preventDefault(); abrirModalEmBreve('submissao'); }); }
     });
   });
@@ -372,7 +373,7 @@ function renderCommittee() {
 /* ─── MODAL EM BREVE ───────────────────────────────── */
 const MODAL_CONTEUDO = {
   inscricao: { titulo:'Inscrições em breve', icone:'🗓️', texto:'As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>Volte a visitar esta página para mais informações sobre prazos, valores e categorias de inscrição.' },
-  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai – 15 set de 2026</strong>.' }
+  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai – 15 ago de 2026</strong>.' }
 };
 function abrirModalEmBreve(tipo) {
   const cfg=MODAL_CONTEUDO[tipo]||MODAL_CONTEUDO.inscricao;
