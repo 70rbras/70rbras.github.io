@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prêmio Destaque RBras - 70ª RBras 2026</title>
+  <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
+  <meta name="description" content="Prêmio Destaque RBras: reconhecimento a pesquisadoras e pesquisadores brasileiros com contribuições marcantes ao ensino, pesquisa e orientação em Estatística e Biometria.">
+  <meta property="og:title" content="Prêmio Destaque RBras - 70ª RBras 2026">
+  <meta property="og:description" content="Indique alguém que merece ser reconhecida(o) por suas contribuições à Estatística e Biometria no Brasil.">
+  <meta property="og:url" content="https://70rbras.org/premio.html">
+  <meta property="og:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7Z8S78NNX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X7Z8S78NNX');
+  </script>
+
+  <style>
+    /* ── Estilos específicos da página premio.html ── */
+
+    /* Ornamento dourado do header */
+    .premio-header-orb {
+      position: absolute;
+      top: 50%; right: 6%;
+      transform: translateY(-50%);
+      width: clamp(160px, 22vw, 300px);
+      height: clamp(160px, 22vw, 300px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(234,200,48,.22) 0%, rgba(214,168,24,.08) 60%, transparent 100%);
+      border: 1px solid rgba(214,168,24,.18);
+      pointer-events: none;
+    }
+    .premio-header-orb::before {
+      content: '🏆';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      filter: drop-shadow(0 8px 24px rgba(214,168,24,.5));
+    }
+
+    /* ── Seção "O Prêmio" ── */
+    .premio-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+    }
+    .premio-intro-text p {
+      color: var(--text-mid);
+      line-height: 1.85;
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+    }
+    .premio-intro-text p:last-child { margin-bottom: 0; }
+    .premio-intro-text p strong { color: var(--text-dark); font-weight: 600; }
+    .premio-card-destaque {
+      background: linear-gradient(145deg, var(--blue) 0%, #0d2654 100%);
+      border-radius: 22px;
+      padding: 2.8rem 2.4rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(26,56,112,.35), 0 0 0 1px rgba(214,168,24,.2);
+    }
+    .premio-card-destaque::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(214,168,24,.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .premio-card-destaque .card-trophy {
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+      display: block;
+      filter: drop-shadow(0 4px 16px rgba(214,168,24,.6));
+    }
+    .premio-card-destaque h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: .9rem;
+      line-height: 1.25;
+    }
+    .premio-card-destaque p {
+      color: rgba(255,255,255,.78);
+      font-size: .96rem;
+      line-height: 1.7;
+    }
+    .premio-card-destaque .card-linha {
+      display: block;
+      height: 2px;
+      width: 48px;
+      background: linear-gradient(90deg, var(--gold), var(--teal-light));
+      border-radius: 99px;
+      margin: 1.2rem 0;
+    }
+    .premio-card-destaque .card-stat {
+      display: flex; align-items: center; gap: .75rem;
+      margin-top: 1.4rem;
+      background: rgba(255,255,255,.07);
+      border-radius: 12px;
+      padding: .85rem 1.1rem;
+      border: 1px solid rgba(214,168,24,.15);
+    }
+    .premio-card-destaque .card-stat .stat-icon { font-size: 1.4rem; }
+    .premio-card-destaque .card-stat .stat-text { font-size: .87rem; color: rgba(255,255,255,.7); line-height: 1.4; }
+    .premio-card-destaque .card-stat .stat-text strong { color: var(--gold-light); display: block; font-size: .95rem; }
+
+    /* ── Seção "Quem pode indicar" ── */
+    .quem-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .quem-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 2rem 1.75rem;
+      border: 1px solid rgba(26,56,112,.1);
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .quem-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .quem-card:hover { box-shadow: 0 12px 36px rgba(26,56,112,.14); transform: translateY(-4px); }
+    .quem-card:hover::after { transform: scaleX(1); }
+    .quem-card .qc-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .quem-card .qc-icon--gold  { background: rgba(214,168,24,.12); }
+    .quem-card .qc-icon--teal  { background: rgba(42,144,128,.12); }
+    .quem-card .qc-icon--blue  { background: rgba(26,56,112,.1); }
+    .quem-card h4 {
+      font-size: 1rem; font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: .55rem;
+    }
+    .quem-card p {
+      font-size: .92rem; line-height: 1.65;
+      color: var(--text-mid);
+    }
+
+    /* Badge de status */
+    .premio-status-banner {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: linear-gradient(135deg, rgba(214,168,24,.12) 0%, rgba(42,144,128,.08) 100%);
+      border: 1.5px solid rgba(214,168,24,.35);
+      border-radius: 16px;
+      padding: 1.4rem 2rem;
+      margin-top: 2rem;
+    }
+    .status-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(34,197,94,.2);
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(34,197,94,.2); }
+      50%       { box-shadow: 0 0 0 8px rgba(34,197,94,.08); }
+    }
+    .status-dot.encerrado { background: #94a3b8; animation: none; box-shadow: 0 0 0 4px rgba(148,163,184,.2); }
+    .status-text { font-size: .97rem; color: var(--text-dark); line-height: 1.45; }
+    .status-text strong { color: var(--blue); }
+    .status-text .prazo { color: var(--teal); font-weight: 700; }
+
+    /* ── Seção "Como indicar" ── */
+    .como-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* Timeline do processo */
+    .processo-timeline { position: relative; padding-left: 2rem; }
+    .processo-timeline::before {
+      content: '';
+      position: absolute; left: .65rem; top: 1.2rem; bottom: 1.2rem;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--teal) 100%);
+      border-radius: 2px;
+    }
+    .processo-step {
+      position: relative;
+      padding: 0 0 2.2rem 1.5rem;
+    }
+    .processo-step:last-child { padding-bottom: 0; }
+    .processo-step::before {
+      content: '';
+      position: absolute; left: -1.35rem; top: .35rem;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2.5px solid var(--gold);
+      box-shadow: 0 0 0 3px rgba(214,168,24,.15);
+    }
+    .processo-step.step-teal::before { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,144,128,.15); }
+    .processo-step.step-olive::before { border-color: var(--olive); box-shadow: 0 0 0 3px rgba(90,156,40,.15); }
+    .processo-step.step-blue::before { border-color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(37,96,172,.15); }
+    .processo-step h4 {
+      font-size: .95rem; font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: .3rem;
+    }
+    .processo-step p {
+      font-size: .875rem; line-height: 1.6;
+      color: var(--text-mid);
+    }
+    .processo-step .step-badge {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .2em .7em; border-radius: 999px;
+      background: rgba(214,168,24,.12); color: var(--gold);
+      margin-bottom: .45rem;
+    }
+    .processo-step.step-teal .step-badge { background: rgba(42,144,128,.12); color: var(--teal); }
+    .processo-step.step-olive .step-badge { background: rgba(90,156,40,.1); color: var(--olive); }
+    .processo-step.step-blue .step-badge { background: rgba(37,96,172,.1); color: var(--blue-mid); }
+
+    /* Checklist de documentos */
+    .docs-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2.4rem 2.2rem;
+      border: 1px solid rgba(26,56,112,.1);
+      box-shadow: 0 8px 32px rgba(26,56,112,.08);
+    }
+    .docs-card h3 {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .docs-card h3 span { font-size: 1.25rem; }
+    .doc-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(26,56,112,.07);
+    }
+    .doc-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .doc-item:first-of-type { padding-top: 0; }
+    .doc-check {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+    .doc-check--obrig { background: rgba(214,168,24,.15); color: var(--gold); }
+    .doc-check--supl  { background: rgba(42,144,128,.12); color: var(--teal); }
+    .doc-body {}
+    .doc-body .doc-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: .2rem;
+    }
+    .doc-label--obrig { color: var(--gold); }
+    .doc-label--supl  { color: var(--teal); }
+    .doc-body h4 {
+      font-size: .95rem; font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: .3rem;
+    }
+    .doc-body p {
+      font-size: .86rem; line-height: 1.55;
+      color: var(--text-mid);
+    }
+    .doc-body ul {
+      list-style: none;
+      margin-top: .4rem;
+    }
+    .doc-body ul li {
+      font-size: .84rem; color: var(--text-mid);
+      padding: .18rem 0;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .doc-body ul li::before {
+      content: '–';
+      position: absolute; left: 0;
+      color: var(--gold); font-weight: 700;
+    }
+
+    /* ── CTA Final ── */
+    #premio-cta {
+      background: linear-gradient(135deg, #09152E 0%, var(--blue) 55%, #1a5f5a 100%);
+      padding: 6rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #premio-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(214,168,24,.12) 0%, transparent 55%),
+                  radial-gradient(ellipse at 80% 50%, rgba(42,144,128,.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    #premio-cta .cta-trophy {
+      font-size: 3.5rem;
+      margin-bottom: 1.4rem;
+      display: block;
+      filter: drop-shadow(0 8px 24px rgba(214,168,24,.5));
+    }
+    #premio-cta .cta-eyebrow {
+      font-size: .78rem; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem; display: block;
+    }
+    #premio-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    #premio-cta p {
+      color: rgba(255,255,255,.72);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 52ch;
+      margin: 0 auto 2.4rem;
+    }
+    #premio-cta .cta-btn-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: .8rem;
+    }
+    #premio-cta .prazo-pill {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      padding: .45em 1.2em;
+      font-size: .85rem; color: rgba(255,255,255,.75);
+    }
+    #premio-cta .prazo-pill strong { color: var(--gold-light); }
+
+    /* ── Responsivo ── */
+    @media (max-width: 900px) {
+      .premio-intro-grid { grid-template-columns: 1fr; }
+      .quem-cards-grid { grid-template-columns: 1fr; }
+      .como-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 600px) {
+      .premio-status-banner { flex-direction: column; align-items: flex-start; gap: .75rem; }
+      .premio-card-destaque { padding: 2rem 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar injetada por assets/nav.js -->
+
+<!-- ─── CABEÇALHO DA PÁGINA ───────────────────────── -->
+<section class="page-header" style="padding-bottom:5rem">
+  <!-- Ornamento botânico padrão das subpáginas -->
+  <svg class="page-header-decor" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M200 580 Q200 400 200 200" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M200 480 Q260 420 320 400" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 420 Q140 360 80 340" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 360 Q270 300 340 280" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="320" cy="400" r="8" fill="white"/><circle cx="340" cy="390" r="5" fill="white"/>
+    <circle cx="340" cy="280" r="8" fill="white"/><circle cx="358" cy="268" r="6" fill="white"/>
+    <circle cx="80"  cy="340" r="8" fill="white"/><circle cx="62"  cy="330" r="5" fill="white"/>
+  </svg>
+  <!-- Ornamento circular dourado -->
+  <div class="premio-header-orb" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <span class="tag tag--gold">Reconhecimento</span>
+    <h1 class="page-header-title" style="font-family:'Playfair Display',serif;font-weight:700;margin-top:.75rem">
+      Prêmio Destaque<br><span style="color:var(--gold-light)">RBras</span>
+    </h1>
+    <p class="page-header-sub" style="max-width:54ch">
+      Uma homenagem a quem dedicou sua carreira ao avanço da Estatística e Biometria no Brasil. Você conhece alguém que merece ser reconhecida(o)?
+    </p>
+    <!-- Âncoras internas -->
+    <nav aria-label="Seções desta página" style="margin-top:1.75rem;display:flex;gap:.85rem;flex-wrap:wrap;justify-content:center">
+      <a href="#o-premio"    class="btn btn--outline" style="font-size:.83rem;padding:.5em 1.3em">🏆 O Prêmio</a>
+      <a href="#quem-indica" class="btn btn--outline" style="font-size:.83rem;padding:.5em 1.3em">👤 Quem pode indicar</a>
+      <a href="#como-indicar" class="btn btn--outline" style="font-size:.83rem;padding:.5em 1.3em">📋 Como indicar</a>
+      <a href="#indicar-agora" class="btn btn--gold"   style="font-size:.83rem;padding:.5em 1.3em">Fazer indicação ↗</a>
+    </nav>
+  </div>
+  <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+  </svg>
+</section>
+
+
+<!-- ─── O QUE É O PRÊMIO ────────────────────────── -->
+<section id="o-premio" style="padding:5rem 0 5.5rem;background:var(--white)">
+  <div class="container">
+    <div class="premio-intro-grid reveal">
+
+      <!-- Coluna de texto -->
+      <div class="premio-intro-text">
+        <span class="tag tag--gold" style="margin-bottom:1.1rem">Sobre o Prêmio</span>
+        <h2 class="section-title" style="margin-bottom:1.5rem">
+          Reconhecendo quem<br><span>fez a diferença</span>
+        </h2>
+        <div class="accent-bar"></div>
+        <p>
+          O <strong>Prêmio Destaque RBras</strong> é uma das mais importantes formas de reconhecimento da Região Brasileira da Sociedade Internacional de Biometria. Ele homenageia pesquisadoras e pesquisadores brasileiros que, ao longo de suas carreiras no Brasil, dedicaram-se com excelência ao <strong>ensino, à pesquisa e à orientação</strong> no campo da Estatística e da Biometria.
+        </p>
+        <p>
+          Mais do que um prêmio, é um gesto coletivo de gratidão — um reconhecimento, pela comunidade científica, de contribuições que moldaram gerações e fortaleceram essas disciplinas no país.
+        </p>
+        <p>
+          O prêmio será entregue durante a cerimônia de encerramento da <strong>70ª RBras</strong>, em novembro de 2026, no IMECC/Unicamp.
+        </p>
+        <div class="premio-status-banner">
+          <span class="status-dot" id="premio-status-dot"></span>
+          <span class="status-text" id="premio-status-text">
+            <strong>Indicações abertas</strong><br>
+            Período: <span class="prazo">11 de maio</span> a <span class="prazo">15 de setembro de 2026</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Card de destaque -->
+      <div class="premio-card-destaque reveal reveal-delay-2">
+        <span class="card-trophy">🏆</span>
+        <h3>Uma carreira. Uma comunidade. Um legado.</h3>
+        <span class="card-linha"></span>
+        <p>
+          O Prêmio Destaque RBras reconhece contribuições significativas para o desenvolvimento da Estatística e Biometria no Brasil e para as atividades da RBras — um legado construído dia após dia, em sala de aula, laboratório e orientação.
+        </p>
+        <div class="card-stat">
+          <span class="stat-icon">📅</span>
+          <span class="stat-text">
+            <strong>Entrega do Prêmio</strong>
+            Cerimônia de Encerramento · 25 nov 2026
+          </span>
+        </div>
+        <div class="card-stat" style="margin-top:.6rem">
+          <span class="stat-icon">🗓️</span>
+          <span class="stat-text">
+            <strong>Prazo para indicações</strong>
+            Até 15 de setembro de 2026
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── QUEM PODE INDICAR ───────────────────────── -->
+<section id="quem-indica" style="padding:5rem 0 5.5rem;background:var(--off-white)">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="tag tag--blue">Elegibilidade</span>
+      <h2 class="section-title" style="margin-top:1rem">Quem pode <span>indicar</span>?</h2>
+      <p class="section-body">
+        A indicação é um ato simples e poderoso. Qualquer membro da comunidade estatística pode reconhecer quem merece.
+      </p>
+    </div>
+
+    <div class="quem-cards-grid">
+
+      <div class="quem-card reveal">
+        <div class="qc-icon qc-icon--gold">👤</div>
+        <h4>Associados da RBras</h4>
+        <p>Qualquer associado da RBras pode fazer uma indicação — individualmente ou em grupo. Se você ainda não é associado, considere <a href="https://www.rbras.org.br/associado/" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">filiar-se</a> antes de submeter.</p>
+      </div>
+
+      <div class="quem-card reveal reveal-delay-1">
+        <div class="qc-icon qc-icon--teal">🏛️</div>
+        <h4>Entidades profissionais e científicas</h4>
+        <p>Sociedades, associações e entidades que atuem no âmbito da Estatística ou áreas correlatas também estão habilitadas a submeter indicações.</p>
+      </div>
+
+      <div class="quem-card reveal reveal-delay-2">
+        <div class="qc-icon qc-icon--blue">🎓</div>
+        <h4>Quem pode ser indicado(a)?</h4>
+        <p>Pesquisadora ou pesquisador <strong>brasileiro(a)</strong> com trajetória de destaque no Brasil, dedicada ao ensino, pesquisa e orientação em Estatística e/ou Biometria.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─── COMO INDICAR ────────────────────────────── -->
+<section id="como-indicar" style="padding:5rem 0 5.5rem;background:var(--white)">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="tag tag--teal">Processo</span>
+      <h2 class="section-title" style="margin-top:1rem">Como fazer a <span>indicação</span>?</h2>
+      <p class="section-body">
+        O processo é simples e leva menos de 30 minutos. Prepare os documentos e preencha o formulário online.
+      </p>
+    </div>
+
+    <div class="como-grid">
+
+      <!-- Coluna esquerda: Timeline do processo -->
+      <div class="reveal">
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:2rem">
+          Como funciona o processo
+        </h3>
+        <div class="processo-timeline">
+
+          <div class="processo-step">
+            <span class="step-badge">Passo 1</span>
+            <h4>Prepare os documentos</h4>
+            <p>Reúna as informações sobre a trajetória acadêmica e profissional da pessoa indicada, e redija o documento obrigatório (PDF, até 2 páginas).</p>
+          </div>
+
+          <div class="processo-step step-teal">
+            <span class="step-badge">Passo 2</span>
+            <h4>Preencha o formulário de indicação</h4>
+            <p>Acesse o formulário online, informe os dados da pessoa indicada e faça o upload do PDF obrigatório e, se desejar, do material suplementar.</p>
+          </div>
+
+          <div class="processo-step step-olive">
+            <span class="step-badge">Passo 3</span>
+            <h4>Avaliação pela Comissão</h4>
+            <p>Ao término do período de submissão (15 set), o Conselho Diretor da RBras formará uma Comissão para avaliar todas as candidaturas recebidas.</p>
+          </div>
+
+          <div class="processo-step step-blue">
+            <span class="step-badge">Passo 4</span>
+            <h4>Cerimônia de entrega</h4>
+            <p>A pessoa premiada será anunciada e o prêmio entregue na cerimônia de encerramento da 70ª RBras, em 25 de novembro de 2026.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Coluna direita: Checklist de documentos -->
+      <div class="docs-card reveal reveal-delay-1">
+        <h3><span>📎</span> Documentos para a submissão</h3>
+
+        <!-- Documento obrigatório -->
+        <div class="doc-item">
+          <div class="doc-check doc-check--obrig">★</div>
+          <div class="doc-body">
+            <div class="doc-label doc-label--obrig">Obrigatório</div>
+            <h4>Documento de indicação (PDF, até 2 páginas)</h4>
+            <p>O arquivo deve conter obrigatoriamente:</p>
+            <ul>
+              <li>Nome da pessoa indicada</li>
+              <li>Resumo da trajetória acadêmica e profissional</li>
+              <li>Principais contribuições ao ensino, pesquisa e desenvolvimento da Estatística e Biometria no Brasil</li>
+              <li>Assinatura de quem está submetendo a indicação</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Material suplementar -->
+        <div class="doc-item">
+          <div class="doc-check doc-check--supl">+</div>
+          <div class="doc-body">
+            <div class="doc-label doc-label--supl">Opcional</div>
+            <h4>Material suplementar (PDF)</h4>
+            <p>Um segundo arquivo PDF pode ser submetido como complemento à indicação — cartas de apoio, currículo expandido, publicações selecionadas, etc.</p>
+          </div>
+        </div>
+
+        <!-- Dica -->
+        <div style="margin-top:1.4rem;background:rgba(42,144,128,.07);border-radius:12px;padding:1rem 1.2rem;border-left:3px solid var(--teal)">
+          <p style="font-size:.86rem;color:var(--text-mid);line-height:1.6">
+            <strong style="color:var(--teal)">💡 Dica:</strong> Uma indicação bem elaborada faz diferença. Dedique atenção especial às contribuições concretas — publicações, alunos formados, projetos liderados e atividades na RBras.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── CTA FINAL ──────────────────────────────── -->
+<section id="indicar-agora">
+  <div id="premio-cta">
+    <div class="container reveal" style="position:relative;z-index:2">
+      <span class="cta-trophy">🏆</span>
+      <span class="cta-eyebrow">Indicações abertas · 11 mai – 15 set 2026</span>
+      <h2>
+        Alguém merece<br>ser reconhecida(o).
+      </h2>
+      <p>
+        Pense nas pessoas que inspiraram você, seus colegas ou toda uma geração de estatísticos e biometristas no Brasil. Esse reconhecimento parte da própria comunidade — e começa com uma indicação.
+      </p>
+      <div class="cta-btn-wrap">
+        <a href="https://forms.gle/fxTwTrf5uLMpugvf7"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn--primary"
+           style="font-size:1.1rem;padding:1em 2.8em">
+          Fazer minha indicação ↗
+        </a>
+        <span class="prazo-pill">
+          📅 Prazo: até <strong>15 de setembro de 2026</strong>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ────────────────────────────────── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
+        <p id="footer-desc">Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 70ª Edição · Campinas, SP · 23–25 de Novembro de 2026</p>
+      </div>
+      <div class="footer-col">
+        <h4>Evento</h4>
+        <ul>
+          <li><a href="index.html#sobre">Sobre</a></li>
+          <li><a href="palestrantes.html">Convidados</a></li>
+          <li><a href="programacao.html">Programação</a></li>
+          <li><a href="local.html">Local</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Científico</h4>
+        <ul>
+          <li><a href="cientifico.html#datas">Datas Importantes</a></li>
+          <li><a href="cientifico.html#submissoes">Submissões</a></li>
+          <li><a href="cientifico.html#comissao">Comissões</a></li>
+          <li><a href="premio.html" style="color:var(--gold-light)">Prêmio Destaque RBras</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:contato@70rbras.org">contato@70rbras.org</a></li>
+          <li><a href="cientifico.html#comissao">Comissão Organizadora</a></li>
+          <li><a href="https://www.rbras.org.br" target="_blank" rel="noopener noreferrer">RBras.org.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 70ª RBras · Região Brasileira da Sociedade Internacional de Biometria</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/70rbras" class="social-link" aria-label="Instagram 70ª RBras">📸</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="btn-topo" aria-label="Voltar ao topo">&#8679;</button>
+
+<!-- ─── SCRIPTS ─────────────────────────────────── -->
+<script src="assets/nav.js"></script>
+<script src="data/config.js"></script>
+
+<script>
+/* ── Scroll Reveal ──────────────────────────────── */
+const revealEls = document.querySelectorAll('.reveal, .reveal-from-right');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ── Botão "voltar ao topo" ─────────────────────── */
+const btnTopo = document.getElementById('btn-topo');
+if (btnTopo) {
+  window.addEventListener('scroll', () => {
+    btnTopo.classList.toggle('visible', window.scrollY > 400);
+  });
+  btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ── Status dinâmico das indicações ──────────────── */
+(function() {
+  const inicio = new Date('2026-05-11');
+  const fim    = new Date('2026-09-15T23:59:59');
+  const hoje   = new Date();
+  const dot    = document.getElementById('premio-status-dot');
+  const txt    = document.getElementById('premio-status-text');
+  if (!dot || !txt) return;
+
+  if (hoje < inicio) {
+    dot.className = 'status-dot encerrado';
+    txt.innerHTML = '<strong>Indicações em breve</strong><br>Abertura em <span class="prazo">11 de maio de 2026</span>';
+  } else if (hoje <= fim) {
+    // Já está aberto — padrão (dot verde, animado)
+    const diasRestantes = Math.ceil((fim - hoje) / (1000 * 60 * 60 * 24));
+    txt.innerHTML = `<strong>Indicações abertas</strong><br>Encerram em <span class="prazo">15 de setembro de 2026</span> — faltam <strong>${diasRestantes} dia${diasRestantes !== 1 ? 's' : ''}</strong>`;
+  } else {
+    dot.className = 'status-dot encerrado';
+    txt.innerHTML = '<strong>Período de indicações encerrado</strong><br>O Prêmio Destaque RBras 2026 está em avaliação.';
+  }
+})();
+</script>
+
+</body>
+</html>

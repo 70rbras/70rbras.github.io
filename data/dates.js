@@ -15,6 +15,13 @@
 
 const DATES = [
   {
+    titulo:    "Indicações ao Prêmio Destaque RBras",
+    inicio:    "2026-05-11",
+    fim:       "2026-09-15",
+    descricao: "Período de indicação ao Prêmio Destaque RBras",
+    icone:     "🏆"
+  },
+  {
     titulo:    "Submissão de Trabalhos",
     inicio:    "2026-05-11",
     fim:       "2026-08-15",

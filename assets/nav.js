@@ -50,11 +50,12 @@
 
       <!-- Científico (dropdown) -->
       <li class="nav-dropdown">
-        <a href="${root}cientifico.html" class="nav-dropdown-toggle"${dropdownActiveClass('cientifico.html')}>Científico ${chev}</a>
+        <a href="${root}cientifico.html" class="nav-dropdown-toggle"${dropdownActiveClass('cientifico.html', 'premio.html')}>Científico ${chev}</a>
         <ul class="nav-dropdown-menu">
           <li><a href="${root}cientifico.html#datas">Datas Importantes</a></li>
           <li><a href="${root}cientifico.html#submissoes">Submissões</a></li>
           <li><a href="${root}cientifico.html#comissao">Comissões</a></li>
+          <li><a href="${root}premio.html"${activeClass('premio.html')} style="color:var(--gold-light)">🏆 Prêmio Destaque</a></li>
         </ul>
       </li>
 
