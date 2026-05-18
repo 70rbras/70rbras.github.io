@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Programação - 70ª RBras 2026</title>
   <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
-  <meta name="description" content="Programação científica da 70ª RBras 2026 - conferências, sessões temáticas, minicursos e pôsteres. 23–25 de novembro de 2026, IMECC/Unicamp.">
+  <meta name="description" content="Programação científica da 70ª RBras 2026 - conferências, sessões temáticas, minicursos e pôsteres. 23-25 de novembro de 2026, IMECC/Unicamp.">
   <meta property="og:title" content="Programação - 70ª RBras 2026">
   <meta property="og:url" content="https://70rbras.org/programacao.html">
   <meta property="og:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
@@ -193,7 +193,7 @@ function bestCols(n){if(n<=3)return n;const prefs=[3,2,4,5];for(const c of prefs
 function renderCard(item,inicio){
   const isBreak=item.tipo==='break';
   const inicioCard=item.inicio||inicio;
-  const tempoHTML=(inicioCard||item.fim)?`<span class="sched-card-time">${CLOCK_ICON}${inicioCard}${item.fim?`<span class="sched-time-sep">–</span>${item.fim}`:''}</span>`:'';
+  const tempoHTML=(inicioCard||item.fim)?`<span class="sched-card-time">${CLOCK_ICON}${inicioCard}${item.fim?`<span class="sched-time-sep">-</span>${item.fim}`:''}</span>`:'';
   let localHTML='';
   if(item.local){
     localHTML=item.maps_url

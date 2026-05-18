@@ -44,7 +44,7 @@ const SUBMISSION_MODALITIES = [
     id: "oral-poster",
     icone: "📄",
     titulo: "Comunicações Orais e Pôsteres",
-    prazo: "11 mai – 15 ago 2026",
+    prazo: "11 mai - 15 ago 2026",
     prazo_iso_fim: "2026-08-15",
     campos: [
       "Título",
@@ -65,7 +65,7 @@ const SUBMISSION_MODALITIES = [
     id: "minicurso",
     icone: "🎓",
     titulo: "Minicurso",
-    prazo: "11 mai – 11 jun 2026",
+    prazo: "11 mai - 11 jun 2026",
     prazo_iso_fim: "2026-06-11",
     duracao: "4h total · 2h/dia",
     campos: [
@@ -97,7 +97,7 @@ const SUBMISSION_MODALITIES = [
     id: "sessao-tematica",
     icone: "🎤",
     titulo: "Sessão Temática",
-    prazo: "11 mai – 11 jun 2026",
+    prazo: "11 mai - 11 jun 2026",
     prazo_iso_fim: "2026-06-11",
     duracao: "1h30",
     campos: [
@@ -126,7 +126,7 @@ const SUBMISSION_MODALITIES = [
     id: "concurso",
     icone: "🏅",
     titulo: "Concurso Tese/Dissertação/IC",
-    prazo: "11 mai – 15 ago 2026",
+    prazo: "11 mai - 15 ago 2026",
     prazo_iso_fim: "2026-08-15",
     elegibilidade: "Títulos obtidos em universidades brasileiras entre <strong>jan/2024 e jul/2026</strong>.",
     campos: [
