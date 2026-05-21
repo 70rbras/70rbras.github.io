@@ -3,7 +3,7 @@
 // Campos para registro:
 //   nome        → nome completo do palestrante
 //   instituicao → instituição e país
-//   tipo        → ex: "Keynote Speaker" ou "Palestrante Convidado(a)"
+//   tipo        → ex: "Keynote Speaker" ou "Palestrante Convidado(a)" 
 //   tema        → título da palestra
 //   foto        → caminho para a foto (ex: "assets/fotos/nome.jpg") ou "" para ícone padrão
 //   resumo      → texto completo do resumo (aparece no modal ao clicar no card)
