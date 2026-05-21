@@ -62,6 +62,9 @@
       <!-- Inscrições -->
       <li><a href="${root}inscricoes.html"${activeClass('inscricoes.html')}>Inscrições</a></li>
 
+      <!-- WASA (evento satélite) -->
+      <li><a href="${root}wasa.html"${activeClass('wasa.html')}>WASA</a></li>
+
       <!-- Apoio -->
       <li><a href="${root}index.html#patrocinadores">Apoio</a></li>
 

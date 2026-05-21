@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WASA - VIII Workshop em Análise de Sobrevivência e Aplicações · 70ª RBras 2026</title>
+  <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
+  <meta name="description" content="VIII Workshop em Análise de Sobrevivência e Aplicações. 26 de novembro de 2026, IMECC - Unicamp, Campinas, SP.">
+  <meta property="og:title" content="WASA - VIII Workshop em Análise de Sobrevivência e Aplicações">
+  <meta property="og:description" content="Workshop satélite da 70ª RBras. 26 de novembro de 2026. Unicamp, Campinas, SP.">
+  <meta property="og:url" content="https://70rbras.org/wasa.html">
+  <meta property="og:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7Z8S78NNX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-X7Z8S78NNX');
+  </script>
+  <style>
+    /* Estilos específicos do WASA */
+    .wasa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 999px;
+      padding: .35em 1em;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .wasa-badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      flex-shrink: 0;
+    }
+
+    /* Seção de homenagem */
+    .homenagem-section {
+      background: linear-gradient(135deg, #09152E 0%, var(--blue) 60%, var(--teal) 100%);
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .homenagem-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .homenagem-inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+    .homenagem-photo-wrap { flex-shrink: 0; }
+    .homenagem-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 4px solid var(--teal-light);
+      box-shadow: 0 0 0 8px rgba(56,170,170,.2);
+      display: block;
+    }
+    .homenagem-texto { color: #fff !important; }
+    .homenagem-pretitulo {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #38AAAA !important;
+      margin-bottom: .5rem;
+    }
+    .homenagem-nome {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      color: #ffffff !important;
+    }
+    .homenagem-bio { max-width: 680px; }
+    .homenagem-bio p {
+      font-size: clamp(.88rem, 1.4vw, .98rem);
+      line-height: 1.8;
+      color: rgba(255,255,255,.85) !important;
+      margin-bottom: 1rem;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    .homenagem-bio p:last-child { margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .homenagem-inner { grid-template-columns: 1fr; text-align: center; }
+      .homenagem-photo-wrap { margin: 0 auto; }
+    }
+
+    /* Cards de info do evento */
+    .wasa-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+    .wasa-info-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.5rem;
+      box-shadow: 0 2px 14px rgba(26,56,112,.07);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .wasa-info-icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; margin-top: .1rem; }
+    .wasa-info-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: .3rem;
+    }
+    .wasa-info-value { font-size: .95rem; font-weight: 600; color: var(--text-dark); line-height: 1.3; }
+
+    /* Seção Local */
+    .wasa-local-endereco {
+      font-size: .95rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .wasa-local-nota {
+      font-size: .88rem;
+      color: var(--text-mid);
+      background: rgba(42,144,128,.08);
+      border-left: 3px solid var(--teal);
+      padding: .7rem 1rem;
+      border-radius: 0 6px 6px 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar injetada por assets/nav.js -->
+
+<!-- CABECALHO DA PAGINA -->
+<section class="page-header">
+  <svg class="page-header-decor" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M200 580 Q200 400 200 200" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M200 480 Q260 420 320 400" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 360 Q130 290 60 270" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <path d="M200 280 Q270 220 340 200" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="320" cy="400" r="8" fill="white"/><circle cx="340" cy="390" r="5" fill="white"/>
+    <circle cx="60"  cy="270" r="8" fill="white"/><circle cx="42"  cy="258" r="5" fill="white"/>
+    <circle cx="340" cy="200" r="8" fill="white"/><circle cx="358" cy="188" r="6" fill="white"/>
+  </svg>
+  <div class="container">
+    <div class="wasa-badge"><span class="wasa-badge-dot"></span>26 de novembro de 2026</div>
+    <h1 class="page-header-title">WASA</h1>
+    <p class="page-header-sub" style="max-width:600px">VIII Workshop em Análise de Sobrevivência e Aplicações</p>
+  </div>
+  <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="var(--off-white)"/>
+  </svg>
+</section>
+
+<!-- SOBRE O WASA -->
+<section id="sobre-wasa" style="padding:4rem 0 5rem;background:var(--off-white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--teal">Sobre</span>
+      <h2 class="section-title">VIII Workshop em<br>Análise de Sobrevivência e Aplicações</h2>
+      <p class="section-body">O WASA reúne pesquisadores da área de Estatística para discutir avanços em análise de sobrevivência, confiabilidade e aplicações. O evento também presta uma homenagem especial ao Professor Francisco Louzada Neto, por sua destacada trajetória e contribuição à Estatística e à Análise de Sobrevivência, marcada por liderança, dedicação e excelência.</p>
+    </div>
+    <div class="wasa-info-grid reveal">
+      <div class="wasa-info-card">
+        <span class="wasa-info-icon">📅</span>
+        <div>
+          <div class="wasa-info-label">Data</div>
+          <div class="wasa-info-value">Quinta-feira<br>26 de novembro de 2026</div>
+        </div>
+      </div>
+      <div class="wasa-info-card">
+        <span class="wasa-info-icon">📍</span>
+        <div>
+          <div class="wasa-info-label">Local</div>
+          <div class="wasa-info-value">IMECC - Unicamp<br>Campinas, SP</div>
+        </div>
+      </div>
+      <div class="wasa-info-card">
+        <span class="wasa-info-icon">🏛️</span>
+        <div>
+          <div class="wasa-info-label">Organização</div>
+          <div class="wasa-info-value">ICMC - USP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOMENAGEM -->
+<section id="homenagem" class="homenagem-section">
+  <div class="container">
+    <div class="homenagem-inner">
+      <div class="homenagem-photo-wrap">
+        <img class="homenagem-photo"
+             src="assets/fotos/louzada-400.jpg"
+             alt="Prof. Dr. Francisco Louzada Neto">
+      </div>
+      <div class="homenagem-texto">
+        <p class="homenagem-pretitulo">Homenagem</p>
+        <h2 class="homenagem-nome">Prof. Dr. Francisco Louzada Neto</h2>
+        <div class="homenagem-bio">
+          <p>Francisco Louzada Neto é Professor Titular da Universidade de São Paulo (USP), vinculado ao Instituto de Ciências Matemáticas e de Computação (ICMC) de São Carlos. Sua formação acadêmica inclui o bacharelado em Estatística pela Universidade Federal de São Carlos (UFSCar, 1988), o mestrado em Ciências da Computação e Matemática Computacional pela USP (1991) e o doutorado (PhD) em Estatística pela Universidade de Oxford, Inglaterra (1998). Iniciou sua carreira docente em 1989 como Professor Auxiliar na UFSCar, onde atuou por mais de duas décadas, chegando ao posto de Professor Associado, antes de sua migração para a USP em 2011.</p>
+          <p>Na esfera institucional, Louzada-Neto exerceu cargos de destaque, presidindo a Associação Brasileira de Estatística (ABE) em dois mandatos (2012-2014 e 2016-2018). Atualmente, é Diretor do Centro de Ciências Matemáticas Aplicadas à Indústria (CeMEAI), um Centro de Pesquisa, Inovação e Difusão (CEPID) financiado pela FAPESP, além de coordenar o Laboratório de Estudos do Risco (CER-USP) e o MBA em Ciência de Dados do CeMEAI. Também é membro eleito do International Statistical Institute (ISI) e atuou como representante da América Latina no comitê do Prêmio Internacional Mahalanobis em 2021.</p>
+          <p>Sua atuação científica concentra-se em Ciência de Dados e Estatística, com ênfase em Análise de Sobrevivência e Confiabilidade, Aprendizado de Máquina, Inferência e Modelos de Risco. É editor do periódico Sankhya A e de séries de livros de estatística da Springer e da Blucher, tendo também integrado o corpo editorial de diversas revistas nacionais e internacionais. Ao longo da carreira, recebeu reconhecimentos como o Arnold Prize da Royal Statistical Society (1998) e a Medalha de Honra da UFSCar, consolidando-se como uma das principais referências da estatística brasileira.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMACAO -->
+<section id="programacao-wasa" style="padding:5rem 0 6rem;background:var(--off-white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--gold">26 nov 2026</span>
+      <h2 class="section-title">Programação</h2>
+      <p class="section-body">Programação preliminar, sujeita a alterações. Os títulos das palestras serão divulgados em breve.</p>
+    </div>
+
+    <div class="reveal" id="wasa-sched-container">
+      <!-- preenchido via JS -->
+    </div>
+
+    <!-- Legenda -->
+    <div class="reveal" style="max-width:760px;margin:2.5rem auto 0;background:var(--white);border-radius:var(--radius);padding:1.5rem 2rem;box-shadow:0 2px 14px rgba(26,56,112,.07)">
+      <p style="font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid);margin-bottom:.9rem">Legenda</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--gold);flex-shrink:0"></span>Palestra</span>
+        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--blue-mid);flex-shrink:0"></span>Homenagem</span>
+        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--olive);flex-shrink:0"></span>Abertura / Encerramento</span>
+        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:#bbb;flex-shrink:0"></span>Intervalo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL -->
+<section id="local-wasa" style="padding:5rem 0;background:var(--white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--blue">Local</span>
+      <h2 class="section-title">IMECC - Unicamp</h2>
+      <p class="section-body">Instituto de Matemática, Estatística e Computação Científica</p>
+    </div>
+    <div class="venue-banner reveal">
+      <img src="assets/imagens/banner-imecc-externo.png"
+           alt="IMECC - Instituto de Matemática, Estatística e Computação Científica, Unicamp">
+    </div>
+    <div class="reveal" style="max-width:640px;margin:0 auto;text-align:center">
+      <p class="wasa-local-endereco">
+        <strong>Instituto de Matemática, Estatística e Computação Científica (IMECC)</strong><br>
+        Universidade Estadual de Campinas<br>
+        Rua Sérgio Buarque de Holanda, 651 · Cidade Universitária Zeferino Vaz<br>
+        Campinas, SP · CEP 13083-859
+      </p>
+      <p class="wasa-local-nota" style="text-align:left">
+        O WASA acontece no dia seguinte ao encerramento da 70ª RBras, no mesmo campus e prédio do evento principal.
+      </p>
+      <a href="local.html" class="btn btn--outline" style="margin-top:1.5rem;font-size:.9rem;padding:.75em 1.8em">Como chegar ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSCRICOES CTA -->
+<section id="inscricoes-cta" style="background:linear-gradient(135deg,var(--blue) 0%,var(--teal) 100%);padding:5rem 0;text-align:center">
+  <div class="container reveal">
+    <span class="tag tag--teal" style="margin-bottom:1.2rem">Inscrições</span>
+    <p style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);color:#fff;margin-bottom:.8rem;line-height:1.2">Participe do WASA</p>
+    <p style="font-size:1rem;color:rgba(255,255,255,.8);margin-bottom:2rem;max-width:500px;margin-inline:auto">As informações sobre inscrição para o workshop serão divulgadas em breve. Fique atento!</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn btn--primary" style="font-size:1rem;padding:.9em 2.2em" id="btn-inscricao-wasa">Inscreva-se no WASA ↗</a>
+      <a href="index.html" class="btn btn--outline" style="font-size:1rem;padding:.9em 2.2em;color:#fff;border-color:rgba(255,255,255,.5)">Pagina inicial</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
+        <p>Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 70ª Edição · Campinas, SP</p>
+      </div>
+      <div class="footer-col">
+        <h4>Evento</h4>
+        <ul>
+          <li><a href="index.html#sobre">Sobre a RBras</a></li>
+          <li><a href="palestrantes.html">Convidados</a></li>
+          <li><a href="programacao.html">Programação</a></li>
+          <li><a href="local.html">Local</a></li>
+          <li><a href="wasa.html">WASA</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Científico</h4>
+        <ul>
+          <li><a href="cientifico.html#datas">Datas Importantes</a></li>
+          <li><a href="cientifico.html#submissoes">Submissões</a></li>
+          <li><a href="cientifico.html#comissao">Comissões</a></li>
+          <li><a href="inscricoes.html">Inscrições</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:contato@70rbras.org">contato@70rbras.org</a></li>
+          <li><a href="cientifico.html#comissao">Comissão Organizadora</a></li>
+          <li><a href="#" id="footer-site-rbras">RBras.org.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 70ª RBras · Região Brasileira da Sociedade Internacional de Biometria</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Instagram">📸</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="btn-topo" aria-label="Voltar ao topo">&#8679;</button>
+
+<!-- SCRIPTS -->
+<script src="assets/nav.js"></script>
+<script src="data/wasa.js"></script>
+<script>
+(function () {
+  /* ── Renderiza a programação WASA no padrão sched-block/sched-card ── */
+  const container = document.getElementById('wasa-sched-container');
+  if (!container) return;
+
+  const CLOCK_ICON = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 3.5V6.2l1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  const TYPE_CSS = {
+    palestra:     'conf',
+    homenagem:    'session',
+    abertura:     'social',
+    encerramento: 'social',
+    intervalo:    'break',
+  };
+  const TYPE_LABEL = {
+    palestra:     'Palestra',
+    homenagem:    'Homenagem',
+    abertura:     'Abertura',
+    encerramento: 'Encerramento',
+    intervalo:    'Intervalo',
+  };
+
+  let blocksHTML = '<div class="sched-blocks">';
+
+  wasaProgramacao.forEach(periodo => {
+    periodo.slots.forEach(slot => {
+      const parts  = slot.horario.split(' - ');
+      const inicio = parts[0] || slot.horario;
+      const fim    = parts[1] || '';
+      const css    = TYPE_CSS[slot.tipo] || 'break';
+      const label  = TYPE_LABEL[slot.tipo] || slot.tipo;
+      const isBreak = slot.tipo === 'intervalo';
+
+      let descHTML = '';
+      if (slot.palestrante) {
+        descHTML += `<p>${slot.palestrante}</p>`;
+      }
+      if (slot.tituloTalks) {
+        const italico = slot.tituloTalks === 'A definir'
+          ? `<p style="font-style:italic;color:var(--text-mid)">${slot.tituloTalks}</p>`
+          : `<p>${slot.tituloTalks}</p>`;
+        descHTML += italico;
+      }
+
+      const tempoHTML = `<span class="sched-card-time">${CLOCK_ICON}${inicio}${fim ? `<span class="sched-time-sep">-</span>${fim}` : ''}</span>`;
+
+      blocksHTML += `
+      <div class="sched-block">
+        <div class="sched-block-time"><span class="time-hhmm">${inicio}</span></div>
+        <div class="sched-block-cards" style="--sched-cols:1">
+          <div class="sched-card type-bg-${css}${isBreak ? ' is-break' : ''}">
+            <div class="sched-card-header">
+              <h4>${slot.titulo}</h4>
+              <span class="sched-type type-${css}">${label}</span>
+            </div>
+            ${descHTML}
+            <div class="sched-card-footer">${tempoHTML}</div>
+          </div>
+        </div>
+      </div>`;
+    });
+  });
+
+  blocksHTML += '</div>';
+  container.innerHTML = blocksHTML;
+
+  /* Botao voltar ao topo */
+  const btnTopo = document.getElementById('btn-topo');
+  if (btnTopo) {
+    window.addEventListener('scroll', () => {
+      btnTopo.classList.toggle('visible', window.scrollY > 400);
+    });
+    btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  /* Animacoes reveal */
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => obs.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+})();
+</script>
+
+</body>
+</html>
