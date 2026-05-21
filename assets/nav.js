@@ -62,14 +62,23 @@
       <!-- Inscrições -->
       <li><a href="${root}inscricoes.html"${activeClass('inscricoes.html')}>Inscrições</a></li>
 
-      <!-- WASA (evento satélite) -->
-      <li><a href="${root}wasa.html"${activeClass('wasa.html')}>WASA</a></li>
-
       <!-- Apoio -->
       <li><a href="${root}index.html#patrocinadores">Apoio</a></li>
 
       <!-- CTA -->
       <li><a href="#" class="nav-cta" id="nav-cta-link">Área do Inscrito</a></li>
+
+      <!-- WASA (evento satélite, dropdown) -->
+      <li class="nav-dropdown">
+        <a href="${root}wasa.html" class="nav-dropdown-toggle"${activeClass('wasa.html')}>WASA ${chev}</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="${root}wasa.html#sobre-wasa">Sobre</a></li>
+          <li><a href="${root}wasa.html#homenagem">Homenagem</a></li>
+          <li><a href="${root}wasa.html#programacao-wasa">Programação</a></li>
+          <li><a href="${root}wasa.html#local-wasa">Local</a></li>
+          <li><a href="${root}wasa.html#inscricoes-cta">Inscrições</a></li>
+        </ul>
+      </li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
