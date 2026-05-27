@@ -262,21 +262,118 @@
       text-align: center;
       margin-bottom: 1.2rem;
     }
+    .wasa-org-inst {
+      font-size: .8rem;
+      color: var(--text-mid);
+      text-align: center;
+      margin-bottom: 1.2rem;
+      letter-spacing: .02em;
+    }
     .wasa-org-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: .8rem;
+      gap: .6rem;
       justify-content: center;
     }
     .wasa-org-card {
       background: var(--white);
-      border-radius: var(--radius);
-      padding: .85rem 1.6rem;
-      box-shadow: 0 2px 10px rgba(26,56,112,.07);
+      border-radius: 999px;
+      padding: .6rem 1.4rem;
+      box-shadow: 0 2px 8px rgba(26,56,112,.07);
+      border: 1.5px solid rgba(42,144,128,.22);
       font-weight: 600;
-      font-size: .9rem;
+      font-size: .88rem;
       color: var(--text-dark);
-      border-top: 3px solid var(--teal);
+    }
+
+    /* Programação em duas colunas */
+    .wasa-sched-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0 1.5rem;
+      align-items: start;
+    }
+    .wasa-sched-periodo { display: flex; flex-direction: column; gap: .5rem; }
+    .wasa-sched-periodo-header {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      padding-bottom: .65rem;
+      margin-bottom: .3rem;
+      border-bottom: 2px solid rgba(42,144,128,.2);
+    }
+    .wasa-sched-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .45rem;
+      padding-top: 2.8rem;
+      color: var(--text-mid);
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .wasa-sched-divider::before,
+    .wasa-sched-divider::after {
+      content: '';
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, transparent, rgba(26,56,112,.18), transparent);
+    }
+    /* Card */
+    .wasa-sc {
+      background: var(--white);
+      border-radius: 9px;
+      padding: .7rem .95rem;
+      box-shadow: 0 1px 8px rgba(26,56,112,.07);
+      display: grid;
+      grid-template-columns: 2.8rem 1fr;
+      gap: 0 .65rem;
+      align-items: start;
+      border-left: 3px solid transparent;
+    }
+    .wasa-sc.t-palestra     { border-left-color: var(--gold); }
+    .wasa-sc.t-homenagem    { border-left-color: var(--blue-mid); }
+    .wasa-sc.t-abertura,
+    .wasa-sc.t-encerramento { border-left-color: var(--olive); }
+    .wasa-sc.t-intervalo    { background: rgba(26,56,112,.03); box-shadow: none; border-left-color: #ddd; }
+    .wasa-sc-time {
+      font-size: .7rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      padding-top: .15rem;
+      line-height: 1.2;
+    }
+    .wasa-sc-badge {
+      display: inline-block;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .17em .55em;
+      border-radius: 4px;
+      margin-bottom: .22rem;
+    }
+    .wasa-sc-titulo {
+      font-size: .87rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+    .wasa-sc.t-intervalo .wasa-sc-titulo { font-weight: 500; color: var(--text-mid); font-size: .82rem; }
+    .wasa-sc-palestrante { font-size: .77rem; color: var(--text-mid); margin-top: .2rem; font-style: italic; }
+    @media (max-width: 640px) {
+      .wasa-sched-wrap { grid-template-columns: 1fr; gap: 0; }
+      .wasa-sched-divider { flex-direction: row; padding: .8rem 0; gap: .7rem; }
+      .wasa-sched-divider::before,
+      .wasa-sched-divider::after { width: auto; height: 1px; flex: 1; background: rgba(26,56,112,.12); }
     }
 
     .wasa-local-nota {
@@ -352,24 +449,23 @@
         </div>
       </div>
     </div>
-    <div class="wasa-inscricoes-callout reveal">
-      <span class="wasa-inscricoes-callout-icon">🎟️</span>
-      <div>
-        <p class="wasa-inscricoes-callout-titulo">Inscrições em breve — valores confirmados</p>
-        <p class="wasa-inscricoes-callout-texto">Profissionais: <strong>R$ 50</strong> &nbsp;·&nbsp; Estudantes de graduação e pós-graduação: <strong>R$ 25</strong>. O formulário de inscrição será disponibilizado em breve.</p>
-      </div>
-      <span class="wasa-inscricoes-callout-badge">Em breve</span>
-    </div>
+  </div>
+</section>
 
-    <div class="reveal" style="margin-top:3rem">
-      <p class="wasa-org-label">Organização Local</p>
-      <div class="wasa-org-grid">
-        <div class="wasa-org-card">Daiane de Souza</div>
-        <div class="wasa-org-card">Oilson</div>
-        <div class="wasa-org-card">Jardel</div>
-        <div class="wasa-org-card">Katiane</div>
-        <div class="wasa-org-card">Reiko</div>
-      </div>
+<!-- ORGANIZACAO -->
+<section id="organizacao-wasa" style="padding:4rem 0 5rem;background:var(--white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--teal">Organização</span>
+      <h2 class="section-title">Comissão Organizadora</h2>
+      <p class="section-body">Instituto de Ciências Matemáticas e de Computação<br>Universidade de São Paulo</p>
+    </div>
+    <div class="wasa-org-grid reveal">
+      <div class="wasa-org-card">Daiane de Souza Santos</div>
+      <div class="wasa-org-card">Katiane Silva Conceição</div>
+      <div class="wasa-org-card">Marcos Jardel Henriques</div>
+      <div class="wasa-org-card">Oilson Alberto Gonzatto Junior</div>
+      <div class="wasa-org-card">Reiko Aoki</div>
     </div>
   </div>
 </section>
@@ -462,28 +558,40 @@
   <div class="container reveal">
     <span class="tag tag--gold" style="margin-bottom:1.5rem">Inscrições</span>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;margin-bottom:2.5rem;line-height:1.2;font-weight:700">Participe do WASA</h2>
-    <div style="max-width:500px;margin:0 auto;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:var(--radius);padding:2.5rem 2rem">
-      <div style="font-size:3rem;margin-bottom:1.2rem">🎟️</div>
-      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.5vw,1.7rem);color:#fff;font-weight:700;margin-bottom:1.5rem;line-height:1.25">Inscrições em breve</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
-        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:1rem 1.6rem;min-width:150px">
-          <p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.4rem">Profissionais</p>
-          <p style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1">R$ 50</p>
-        </div>
-        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:1rem 1.6rem;min-width:150px">
-          <p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.4rem">Estudantes</p>
-          <p style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1">R$ 25</p>
-          <p style="font-size:.72rem;color:rgba(255,255,255,.45);margin-top:.3rem">graduação e pós-graduação</p>
-        </div>
+
+    <!-- Taxas -->
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem">
+      <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:1rem 1.8rem;min-width:150px">
+        <p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.4rem">Profissionais</p>
+        <p style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1">R$ 50</p>
       </div>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.6);margin-bottom:1.5rem">O formulário de inscrição será disponibilizado em breve.</p>
-      <span style="display:inline-flex;align-items:center;gap:.6rem;background:rgba(214,168,24,.18);border:1.5px solid var(--gold);border-radius:999px;padding:.6em 1.6em;font-size:.85rem;font-weight:700;color:var(--gold-light);letter-spacing:.08em;text-transform:uppercase">
-        <span class="wasa-pulse-dot"></span>Em breve
-      </span>
+      <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:1rem 1.8rem;min-width:150px">
+        <p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.4rem">Estudantes</p>
+        <p style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1">R$ 25</p>
+        <p style="font-size:.72rem;color:rgba(255,255,255,.45);margin-top:.3rem">graduação e pós-graduação</p>
+      </div>
     </div>
-    <div style="margin-top:2rem">
-      <a href="index.html" class="btn btn--outline" style="font-size:.9rem;padding:.8em 2em;color:rgba(255,255,255,.65);border-color:rgba(255,255,255,.25)">Pagina inicial</a>
+
+    <!-- Formas de pagamento -->
+    <div style="margin-bottom:2rem">
+      <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.9rem">Formas de pagamento</p>
+      <div style="display:flex;gap:.75rem;justify-content:center">
+        <div style="background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;padding:.75rem 2rem;font-size:.95rem;font-weight:700;color:#fff;letter-spacing:.04em">PIX</div>
+        <div style="background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;padding:.75rem 2rem;font-size:.95rem;font-weight:700;color:#fff;letter-spacing:.04em">TED</div>
+      </div>
     </div>
+
+    <!-- Botão principal -->
+    <div style="margin-bottom:1.8rem">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQgHnC0pJpahJINn92FfRN__BsyhGkVI3ao1ORp6hVQe81IA/viewform"
+         target="_blank" rel="noopener"
+         class="btn btn--primary"
+         style="font-size:1rem;padding:.9em 2.4em">Ficha de Inscrição ↗</a>
+    </div>
+
+    <!-- Notas -->
+    <p style="font-size:.85rem;color:rgba(255,255,255,.55);max-width:460px;margin:0 auto .5rem;line-height:1.6">A inscrição será confirmada somente após a comprovação do pagamento.</p>
+    <p style="font-size:.85rem;color:rgba(255,255,255,.45)">Dúvidas: <a href="mailto:wasasurvival@gmail.com" style="color:rgba(255,255,255,.65);text-decoration:underline;text-underline-offset:.2em">wasasurvival@gmail.com</a></p>
   </div>
 </section>
 
@@ -549,16 +657,14 @@
   const container = document.getElementById('wasa-sched-container');
   if (!container) return;
 
-  const CLOCK_ICON = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 3.5V6.2l1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
-  const TYPE_CSS = {
-    palestra:     'conf',
-    homenagem:    'session',
-    abertura:     'social',
-    encerramento: 'social',
-    intervalo:    'break',
+  const BADGE_STYLE = {
+    palestra:     'background:rgba(214,168,24,.15);color:#a07c00',
+    homenagem:    'background:rgba(37,96,172,.12);color:var(--blue-mid)',
+    abertura:     'background:rgba(90,156,40,.12);color:var(--olive)',
+    encerramento: 'background:rgba(90,156,40,.12);color:var(--olive)',
+    intervalo:    '',
   };
-  const TYPE_LABEL = {
+  const LABEL = {
     palestra:     'Palestra',
     homenagem:    'Homenagem',
     abertura:     'Abertura',
@@ -566,49 +672,40 @@
     intervalo:    'Intervalo',
   };
 
-  let blocksHTML = '<div class="sched-blocks">';
+  function cardHTML(slot) {
+    const inicio = slot.horario.split(' - ')[0];
+    const badge = BADGE_STYLE[slot.tipo] || '';
+    const label = LABEL[slot.tipo] || slot.tipo;
+    const showBadge = slot.tipo !== 'intervalo';
+    return `
+    <div class="wasa-sc t-${slot.tipo}">
+      <span class="wasa-sc-time">${inicio}</span>
+      <div>
+        ${showBadge ? `<span class="wasa-sc-badge" style="${badge}">${label}</span>` : ''}
+        <p class="wasa-sc-titulo">${slot.titulo}</p>
+        ${slot.palestrante ? `<p class="wasa-sc-palestrante">${slot.palestrante}</p>` : ''}
+      </div>
+    </div>`;
+  }
 
-  wasaProgramacao.forEach(periodo => {
-    periodo.slots.forEach(slot => {
-      const parts  = slot.horario.split(' - ');
-      const inicio = parts[0] || slot.horario;
-      const fim    = parts[1] || '';
-      const css    = TYPE_CSS[slot.tipo] || 'break';
-      const label  = TYPE_LABEL[slot.tipo] || slot.tipo;
-      const isBreak = slot.tipo === 'intervalo';
+  const manha = wasaProgramacao[0].slots;
+  const almoco = wasaProgramacao[1].slots[0];
+  const tarde  = wasaProgramacao[2].slots;
 
-      let descHTML = '';
-      if (slot.palestrante) {
-        descHTML += `<p>${slot.palestrante}</p>`;
-      }
-      if (slot.tituloTalks) {
-        const italico = slot.tituloTalks === 'A definir'
-          ? `<p style="font-style:italic;color:var(--text-mid)">${slot.tituloTalks}</p>`
-          : `<p>${slot.tituloTalks}</p>`;
-        descHTML += italico;
-      }
-
-      const tempoHTML = `<span class="sched-card-time">${CLOCK_ICON}${inicio}${fim ? `<span class="sched-time-sep">-</span>${fim}` : ''}</span>`;
-
-      blocksHTML += `
-      <div class="sched-block">
-        <div class="sched-block-time"><span class="time-hhmm">${inicio}</span></div>
-        <div class="sched-block-cards" style="--sched-cols:1">
-          <div class="sched-card type-bg-${css}${isBreak ? ' is-break' : ''}">
-            <div class="sched-card-header">
-              <h4>${slot.titulo}</h4>
-              <span class="sched-type type-${css}">${label}</span>
-            </div>
-            ${descHTML}
-            <div class="sched-card-footer">${tempoHTML}</div>
-          </div>
-        </div>
-      </div>`;
-    });
-  });
-
-  blocksHTML += '</div>';
-  container.innerHTML = blocksHTML;
+  container.innerHTML = `
+  <div class="wasa-sched-wrap">
+    <div class="wasa-sched-periodo">
+      <div class="wasa-sched-periodo-header">&#9728; Manhã</div>
+      ${manha.map(cardHTML).join('')}
+    </div>
+    <div class="wasa-sched-divider">
+      <span>&#127860;</span><span>Almoço</span><span>${almoco.horario}</span>
+    </div>
+    <div class="wasa-sched-periodo">
+      <div class="wasa-sched-periodo-header">&#9729; Tarde</div>
+      ${tarde.map(cardHTML).join('')}
+    </div>
+  </div>`;
 
   /* Botao voltar ao topo */
   const btnTopo = document.getElementById('btn-topo');
