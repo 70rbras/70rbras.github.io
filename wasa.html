@@ -193,6 +193,92 @@
       line-height: 1.7;
       margin-bottom: 1.2rem;
     }
+    /* Cartaz do evento */
+    .wasa-cartaz { text-align: center; margin-top: 3.5rem; position: relative; z-index: 1; }
+    .wasa-cartaz-link {
+      display: inline-block;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,.5);
+      transition: transform .25s ease, box-shadow .25s ease;
+      cursor: zoom-in;
+    }
+    .wasa-cartaz-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 56px rgba(0,0,0,.65);
+    }
+    .wasa-cartaz-link img {
+      display: block;
+      width: 340px;
+      max-width: 88vw;
+      height: auto;
+    }
+    .wasa-cartaz-hint {
+      font-size: .78rem;
+      color: rgba(255,255,255,.35);
+      margin-top: .8rem;
+    }
+    /* Lightbox */
+    .wasa-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.92);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    .wasa-lightbox:target { display: flex; }
+    .wasa-lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.6);
+    }
+    .wasa-lightbox-close {
+      position: absolute;
+      top: 1.2rem; right: 1.4rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff;
+      font-size: 1.4rem;
+      line-height: 1;
+      width: 2.4rem; height: 2.4rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .wasa-lightbox-close:hover { background: rgba(255,255,255,.22); }
+
+    /* Grade de organizadores */
+    .wasa-org-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .wasa-org-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      justify-content: center;
+    }
+    .wasa-org-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: .85rem 1.6rem;
+      box-shadow: 0 2px 10px rgba(26,56,112,.07);
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--text-dark);
+      border-top: 3px solid var(--teal);
+    }
+
     .wasa-local-nota {
       font-size: .88rem;
       color: var(--text-mid);
@@ -258,14 +344,32 @@
           <div class="wasa-info-value">ICMC - USP</div>
         </div>
       </div>
+      <div class="wasa-info-card">
+        <span class="wasa-info-icon">✉️</span>
+        <div>
+          <div class="wasa-info-label">Contato</div>
+          <div class="wasa-info-value">Daiane de Souza<br><a href="mailto:wasasurvival@gmail.com" style="color:var(--teal);font-weight:400;font-size:.85rem">wasasurvival@gmail.com</a></div>
+        </div>
+      </div>
     </div>
     <div class="wasa-inscricoes-callout reveal">
       <span class="wasa-inscricoes-callout-icon">🎟️</span>
       <div>
-        <p class="wasa-inscricoes-callout-titulo">Inscrições abertas em breve</p>
-        <p class="wasa-inscricoes-callout-texto">Os valores, categorias e o processo de inscrição para o WASA serão divulgados em breve. Acompanhe este site para mais informações.</p>
+        <p class="wasa-inscricoes-callout-titulo">Inscrições em breve — valores confirmados</p>
+        <p class="wasa-inscricoes-callout-texto">Profissionais: <strong>R$ 50</strong> &nbsp;·&nbsp; Estudantes de graduação e pós-graduação: <strong>R$ 25</strong>. O formulário de inscrição será disponibilizado em breve.</p>
       </div>
       <span class="wasa-inscricoes-callout-badge">Em breve</span>
+    </div>
+
+    <div class="reveal" style="margin-top:3rem">
+      <p class="wasa-org-label">Organização Local</p>
+      <div class="wasa-org-grid">
+        <div class="wasa-org-card">Daiane de Souza</div>
+        <div class="wasa-org-card">Oilson</div>
+        <div class="wasa-org-card">Jardel</div>
+        <div class="wasa-org-card">Katiane</div>
+        <div class="wasa-org-card">Reiko</div>
+      </div>
     </div>
   </div>
 </section>
@@ -288,6 +392,14 @@
           <p>Sua atuação científica concentra-se em Ciência de Dados e Estatística, com ênfase em Análise de Sobrevivência e Confiabilidade, Aprendizado de Máquina, Inferência e Modelos de Risco. É editor do periódico Sankhya A e de séries de livros de estatística da Springer e da Blucher, tendo também integrado o corpo editorial de diversas revistas nacionais e internacionais. Ao longo da carreira, recebeu reconhecimentos como o Arnold Prize da Royal Statistical Society (1998) e a Medalha de Honra da UFSCar, consolidando-se como uma das principais referências da estatística brasileira.</p>
         </div>
       </div>
+    </div>
+
+    <div class="wasa-cartaz reveal">
+      <a class="wasa-cartaz-link" href="#wasa-lightbox" aria-label="Ampliar cartaz do WASA">
+        <img src="assets/imagens/cartaz-wasa.png"
+             alt="Cartaz do VIII WASA - Homenagem ao Prof. Dr. Francisco Louzada Neto">
+      </a>
+      <p class="wasa-cartaz-hint">Clique para ampliar</p>
     </div>
   </div>
 </section>
@@ -352,8 +464,19 @@
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;margin-bottom:2.5rem;line-height:1.2;font-weight:700">Participe do WASA</h2>
     <div style="max-width:500px;margin:0 auto;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.2);border-radius:var(--radius);padding:2.5rem 2rem">
       <div style="font-size:3rem;margin-bottom:1.2rem">🎟️</div>
-      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.5vw,1.7rem);color:#fff;font-weight:700;margin-bottom:.8rem;line-height:1.25">Inscrições em breve</p>
-      <p style="font-size:.95rem;color:rgba(255,255,255,.8);line-height:1.75;margin-bottom:1.8rem">Os valores, categorias e o processo de inscrição para o WASA serão divulgados em breve. Acompanhe este site para mais informações.</p>
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.5vw,1.7rem);color:#fff;font-weight:700;margin-bottom:1.5rem;line-height:1.25">Inscrições em breve</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:1rem 1.6rem;min-width:150px">
+          <p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.4rem">Profissionais</p>
+          <p style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1">R$ 50</p>
+        </div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:1rem 1.6rem;min-width:150px">
+          <p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.4rem">Estudantes</p>
+          <p style="font-size:1.8rem;font-weight:800;color:#fff;line-height:1">R$ 25</p>
+          <p style="font-size:.72rem;color:rgba(255,255,255,.45);margin-top:.3rem">graduação e pós-graduação</p>
+        </div>
+      </div>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.6);margin-bottom:1.5rem">O formulário de inscrição será disponibilizado em breve.</p>
       <span style="display:inline-flex;align-items:center;gap:.6rem;background:rgba(214,168,24,.18);border:1.5px solid var(--gold);border-radius:999px;padding:.6em 1.6em;font-size:.85rem;font-weight:700;color:var(--gold-light);letter-spacing:.08em;text-transform:uppercase">
         <span class="wasa-pulse-dot"></span>Em breve
       </span>
@@ -363,6 +486,12 @@
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX DO CARTAZ -->
+<div id="wasa-lightbox" class="wasa-lightbox" role="dialog" aria-modal="true" aria-label="Cartaz do WASA ampliado">
+  <a href="#" class="wasa-lightbox-close" aria-label="Fechar">×</a>
+  <img src="assets/imagens/cartaz-wasa.png" alt="Cartaz do VIII WASA - Homenagem ao Prof. Dr. Francisco Louzada Neto">
+</div>
 
 <!-- FOOTER -->
 <footer id="footer">
@@ -506,6 +635,14 @@
     revealEls.forEach(el => el.classList.add('visible'));
   }
 })();
+</script>
+<script>
+  /* Fechar lightbox do cartaz com Escape */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && location.hash === '#wasa-lightbox') {
+      location.href = '#';
+    }
+  });
 </script>
 
 </body>
