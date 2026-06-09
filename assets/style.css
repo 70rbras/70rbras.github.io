@@ -495,15 +495,47 @@ section { position: relative; }
                color: var(--teal); text-decoration: none; letter-spacing: .01em;
                transition: color var(--transition); }
 .tl-link:hover { color: var(--teal-light); text-decoration: underline; }
-/* status: passado */
-.tl-content[data-status="past"] { border-top-color: #cbd2da; background: #f7f9fb; }
-.tl-content[data-status="past"] .tl-title    { color: #7a8694; }
+/* status: passado - etapa vencida */
+.tl-content[data-status="past"] { border-top-color: #cbd2da; background: #f7f9fb; opacity: .82; }
+.tl-content[data-status="past"] .tl-title    { color: #7a8694; text-decoration: line-through; text-decoration-color: rgba(122,134,148,.4); }
 .tl-content[data-status="past"] .tl-date     { color: #8a96a4; text-decoration: line-through; text-decoration-color: rgba(138,150,164,.5); }
 .tl-content[data-status="past"] .tl-countdown { color: #8a96a4; }
 .tl-content[data-status="past"] .tl-note     { color: #8a96a4; border-top-color: rgba(0,0,0,.04); }
-.tl-content[data-status="past"] .tl-status-badge { background: #e3e7ec; color: #5f6b78; }
-.tl-content[data-status="past"] .tl-status-badge::before { background: #9aa5b1; }
-.tl-dot[data-status="past"]     { border-color: #cbd2da; filter: grayscale(.5); }
+.tl-content[data-status="past"] .tl-status-badge { background: rgba(90,156,40,.12); color: var(--olive); }
+.tl-content[data-status="past"] .tl-status-badge::before { background: var(--olive); }
+.tl-dot[data-status="past"]     { border-color: var(--olive); background: rgba(90,156,40,.1);
+                                   color: var(--olive); font-size: 1.25rem; filter: none; }
+/* urgencia: menos de 7 dias */
+.tl-urgent-badge {
+  display: inline-block; margin-bottom: .55rem;
+  font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  color: #fff; background: #c0392b;
+  padding: .28em .85em; border-radius: 999px;
+  border: none;
+  animation: urgentBadgePulse 1.4s ease-in-out infinite;
+}
+@keyframes urgentBadgePulse {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(192,57,43,.5); }
+  50%       { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(192,57,43,.0); }
+}
+.tl-content[data-urgent="true"] {
+  border-top: 3px solid #c0392b;
+  box-shadow: 0 4px 28px rgba(192,57,43,.25), 0 0 0 2px rgba(192,57,43,.3);
+  animation: cardUrgentGlow 1.4s ease-in-out infinite;
+}
+@keyframes cardUrgentGlow {
+  0%, 100% { box-shadow: 0 4px 28px rgba(192,57,43,.25), 0 0 0 2px rgba(192,57,43,.3); }
+  50%       { box-shadow: 0 8px 48px rgba(192,57,43,.5),  0 0 0 3px rgba(192,57,43,.55); }
+}
+.tl-content[data-urgent="true"] .tl-countdown { color: #c0392b; font-weight: 800; }
+.tl-dot[data-urgent="true"] {
+  border-color: #c0392b; border-width: 3px;
+  animation: dotUrgentRing 1.4s ease-in-out infinite;
+}
+@keyframes dotUrgentRing {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(192,57,43,.6); }
+  50%       { box-shadow: 0 0 0 12px rgba(192,57,43,.0); }
+}
 /* status: ativo */
 .tl-content[data-status="active"] { border-top-color: var(--gold); box-shadow: 0 4px 22px rgba(201,162,39,.2); }
 .tl-content[data-status="active"] .tl-date     { color: #8a6b00; }

@@ -313,27 +313,61 @@ function countdownLabel(ini,fim,status,today) {
   if (status==='upcoming') { const n=daysBetween(today,ini); return n===0?'Começa hoje':n===1?'Começa amanhã':`Começa em ${n} dias`; }
   const n=daysBetween(today,fim); return n===0?'Último dia':n===1?'Termina amanhã':`${n} dias restantes`;
 }
-const DATE_STATUS_LABEL = { past:'Encerrado', active:'Aberto agora', upcoming:'Em breve' };
+const DATE_STATUS_LABEL = { past:'Concluído', active:'Aberto agora', upcoming:'Em breve' };
+
+function sortKey(d, status, today) {
+  if (status === 'active')   return daysBetween(today, d._fim);
+  if (status === 'upcoming') return 10000 + daysBetween(today, d._ini);
+  /* past */ return 20000 + daysBetween(d._fim, today);
+}
 
 function renderDates() {
   const today = new Date(); today.setHours(0,0,0,0);
-  const dates = DATES.map(d=>({...d,_ini:parseISODate(d.inicio),_fim:parseISODate(d.fim)}))
-    .sort((a,b)=>{ if(a.destaque&&!b.destaque)return 1; if(!a.destaque&&b.destaque)return -1; return a._ini-b._ini; });
-  const nonFeatured=dates.filter(d=>!d.destaque), featured=dates.filter(d=>d.destaque);
-  const container=document.getElementById('dates-grid');
-  function renderCard(d,status) {
-    const range=formatDateRange(d._ini,d._fim), countdown=countdownLabel(d._ini,d._fim,status,today);
-    const linkHtml=d.link?`<a href="${d.link}" class="tl-link">Saiba mais &rarr;</a>`:'';
-    return `<div class="tl-content reveal" data-status="${status}"><span class="tl-status-badge">${DATE_STATUS_LABEL[status]}</span><div class="tl-title">${d.titulo}</div><div class="tl-date">${range}</div><div class="tl-countdown">${countdown}</div><p class="tl-note">${d.descricao}</p>${linkHtml}</div>`;
+  const allDates = DATES.map(d=>({...d,_ini:parseISODate(d.inicio),_fim:parseISODate(d.fim)}));
+  const nonFeatured = allDates.filter(d=>!d.destaque)
+    .map(d=>({...d,_status:dateStatus(d._ini,d._fim,today)}))
+    .sort((a,b)=>sortKey(a,a._status,today)-sortKey(b,b._status,today));
+  const featured = allDates.filter(d=>d.destaque);
+  const container = document.getElementById('dates-grid');
+
+  function daysRemaining(d, status) {
+    if (status === 'active')   return daysBetween(today, d._fim);
+    if (status === 'upcoming') return daysBetween(today, d._ini);
+    return -1;
   }
-  function renderRegular(d,idx) {
-    const status=dateStatus(d._ini,d._fim,today), side=idx%2===0?'tl-left':'tl-right';
-    const card=renderCard(d,status), dot=`<div class="tl-node"><div class="tl-dot" data-status="${status}">${d.icone}</div></div>`, space=`<div class="tl-space"></div>`;
-    const inner=side==='tl-left'?`${card}${dot}${space}`:`${space}${dot}${card}`;
+
+  function renderCard(d, status) {
+    const range = formatDateRange(d._ini,d._fim);
+    const countdown = countdownLabel(d._ini,d._fim,status,today);
+    const remaining = daysRemaining(d, status);
+    const urgent = (status !== 'past') && remaining >= 0 && remaining <= 7;
+    const urgentAttr = urgent ? ' data-urgent="true"' : '';
+    const urgentBadge = urgent ? `<span class="tl-urgent-badge">Encerra em breve</span>` : '';
+    const checkBadge = status === 'past' ? '&#10003; ' : '';
+    const linkHtml = d.link ? `<a href="${d.link}" class="tl-link">Saiba mais &rarr;</a>` : '';
+    return `<div class="tl-content reveal" data-status="${status}"${urgentAttr}>${urgentBadge}<span class="tl-status-badge">${checkBadge}${DATE_STATUS_LABEL[status]}</span><div class="tl-title">${d.titulo}</div><div class="tl-date">${range}</div><div class="tl-countdown">${countdown}</div><p class="tl-note">${d.descricao}</p>${linkHtml}</div>`;
+  }
+
+  function renderRegular(d, idx) {
+    const status = d._status;
+    const side = idx % 2 === 0 ? 'tl-left' : 'tl-right';
+    const remaining = daysRemaining(d, status);
+    const urgent = (status !== 'past') && remaining >= 0 && remaining <= 7;
+    const urgentAttr = urgent ? ' data-urgent="true"' : '';
+    const dotIcon = status === 'past' ? '&#10003;' : d.icone;
+    const card = renderCard(d, status);
+    const dot = `<div class="tl-node"><div class="tl-dot" data-status="${status}"${urgentAttr}>${dotIcon}</div></div>`;
+    const space = `<div class="tl-space"></div>`;
+    const inner = side === 'tl-left' ? `${card}${dot}${space}` : `${space}${dot}${card}`;
     return `<div class="tl-item ${side}">${inner}</div>`;
   }
-  function renderFeatured(d) { const status=dateStatus(d._ini,d._fim,today); return `<div class="tl-item tl-featured">${renderCard(d,status)}</div>`; }
-  container.innerHTML=nonFeatured.map((d,i)=>renderRegular(d,i)).join('')+featured.map(d=>renderFeatured(d)).join('');
+
+  function renderFeatured(d) {
+    const status = dateStatus(d._ini,d._fim,today);
+    return `<div class="tl-item tl-featured">${renderCard(d,status)}</div>`;
+  }
+
+  container.innerHTML = nonFeatured.map((d,i)=>renderRegular(d,i)).join('') + featured.map(d=>renderFeatured(d)).join('');
 }
 
 /* ─── COMISSÕES ────────────────────────────────────── */
