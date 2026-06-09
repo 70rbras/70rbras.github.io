@@ -323,7 +323,8 @@ function renderDates() {
   const container=document.getElementById('dates-grid');
   function renderCard(d,status) {
     const range=formatDateRange(d._ini,d._fim), countdown=countdownLabel(d._ini,d._fim,status,today);
-    return `<div class="tl-content reveal" data-status="${status}"><span class="tl-status-badge">${DATE_STATUS_LABEL[status]}</span><div class="tl-title">${d.titulo}</div><div class="tl-date">${range}</div><div class="tl-countdown">${countdown}</div><p class="tl-note">${d.descricao}</p></div>`;
+    const linkHtml=d.link?`<a href="${d.link}" class="tl-link">Saiba mais &rarr;</a>`:'';
+    return `<div class="tl-content reveal" data-status="${status}"><span class="tl-status-badge">${DATE_STATUS_LABEL[status]}</span><div class="tl-title">${d.titulo}</div><div class="tl-date">${range}</div><div class="tl-countdown">${countdown}</div><p class="tl-note">${d.descricao}</p>${linkHtml}</div>`;
   }
   function renderRegular(d,idx) {
     const status=dateStatus(d._ini,d._fim,today), side=idx%2===0?'tl-left':'tl-right';

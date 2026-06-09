@@ -19,28 +19,40 @@ const DATES = [
     inicio:    "2026-05-11",
     fim:       "2026-09-15",
     descricao: "Período de indicação ao Prêmio Destaque RBras",
-    icone:     "🏆"
+    icone:     "🏆",
+    link:      "premio.html"
   },
   {
     titulo:    "Submissão de Trabalhos",
     inicio:    "2026-05-11",
     fim:       "2026-08-15",
     descricao: "Envio de trabalhos orais e pôsteres",
-    icone:     "📝"
+    icone:     "📝",
+    link:      "cientifico.html#submissoes"
+  },
+  {
+    titulo:    "Concurso Tese/Dissertação/IC",
+    inicio:    "2026-05-11",
+    fim:       "2026-08-15",
+    descricao: "Submissão de teses, dissertações e trabalhos de IC para avaliação e premiação",
+    icone:     "🏅",
+    link:      "cientifico.html#submissoes"
   },
   {
     titulo:    "Propostas de Sessões Temáticas e Minicursos",
     inicio:    "2026-05-11",
     fim:       "2026-06-11",
     descricao: "Submissão de propostas de sessões temáticas e minicursos",
-    icone:     "🎤"
+    icone:     "🎤",
+    link:      "cientifico.html#submissoes"
   },
   {
     titulo:    "Inscrições com Desconto",
     inicio:    "2026-05-11",
     fim:       "2026-09-30",
     descricao: "1º Lote",
-    icone:     "💳"
+    icone:     "💳",
+    link:      "inscricoes.html"
   },
   {
     titulo:    "Divulgação de Aceites",
@@ -54,14 +66,16 @@ const DATES = [
     inicio:    "2026-10-01",
     fim:       "2026-10-31",
     descricao: "2º Lote",
-    icone:     "🖊️"
+    icone:     "🖊️",
+    link:      "inscricoes.html"
   },
   {
     titulo:    "Inscrições Tardias",
     inicio:    "2026-11-01",
     fim:       "2026-11-23",
     descricao: "3º Lote",
-    icone:     "🖊️"
+    icone:     "🖊️",
+    link:      "inscricoes.html"
   },
   {
     titulo:    "70ª RBras",
@@ -69,6 +83,7 @@ const DATES = [
     fim:       "2026-11-25",
     descricao: "O congresso acontece na UNICAMP - Campinas, SP",
     icone:     "📅",
-    destaque:  true
+    destaque:  true,
+    link:      "programacao.html"
   }
 ];

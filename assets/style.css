@@ -491,6 +491,10 @@ section { position: relative; }
 .tl-countdown { font-size: .8rem; font-weight: 700; color: var(--blue-mid); }
 .tl-note     { font-size: .82rem; color: var(--text-mid); line-height: 1.5;
                margin-top: .3rem; padding-top: .5rem; border-top: 1px solid rgba(0,0,0,.06); }
+.tl-link     { display: inline-block; margin-top: .6rem; font-size: .8rem; font-weight: 700;
+               color: var(--teal); text-decoration: none; letter-spacing: .01em;
+               transition: color var(--transition); }
+.tl-link:hover { color: var(--teal-light); text-decoration: underline; }
 /* status: passado */
 .tl-content[data-status="past"] { border-top-color: #cbd2da; background: #f7f9fb; }
 .tl-content[data-status="past"] .tl-title    { color: #7a8694; }
@@ -541,6 +545,8 @@ section { position: relative; }
 .tl-featured .tl-content .tl-date { color: var(--gold-light); font-size: 1.25rem; text-decoration: none !important; }
 .tl-featured .tl-countdown { color: rgba(255,255,255,.85); font-size: .95rem; }
 .tl-featured .tl-note     { color: rgba(255,255,255,.75); border-top-color: rgba(255,255,255,.2); }
+.tl-featured .tl-link     { color: var(--gold-light); }
+.tl-featured .tl-link:hover { color: var(--white); }
 .tl-featured .tl-status-badge {
   margin: 0 auto .4rem;
   background: rgba(255,255,255,.15); color: var(--white);
