@@ -8,7 +8,7 @@ Este arquivo documenta tudo que Claude precisa saber sobre este projeto para tra
 
 Site oficial da **70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria (RBras)**.
 
-- **Tema:** "Dados que revelam Vida"
+- **Tema:** "Dados que revelam vida: Estatística e Ciência de Dados na Biometria"
 - **Data do evento:** 23–25 de novembro de 2026 (segunda a quarta)
 - **Local:** IMECC — Instituto de Matemática, Estatística e Computação Científica, Unicamp, Campinas, SP
   - Endereço: Rua Sérgio Buarque de Holanda, 651 — Cidade Universitária Zeferino Vaz, Campinas, SP · CEP 13083-859

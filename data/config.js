@@ -5,7 +5,7 @@ const CONFIG = {
   evento: {
     nome:           "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
     edicao:         "70ª RBras",
-    tema:           "Dados que revelam Vida",
+    tema:           "Dados que revelam vida: Estatística e Ciência de Dados na Biometria",
     inicio:         "2026-11-23",          // formato AAAA-MM-DD (usado no contador)
     fim:            "2026-11-25",
     datas_exibicao: "23 a 25 de Novembro de 2026",
