@@ -41,7 +41,7 @@ const DATES = [
   {
     titulo:    "Propostas de Sessões Temáticas e Minicursos",
     inicio:    "2026-05-11",
-    fim:       "2026-06-11",
+    fim:       "2026-07-15",
     descricao: "Submissão de propostas de sessões temáticas e minicursos",
     icone:     "🎤",
     link:      "cientifico.html#submissoes"

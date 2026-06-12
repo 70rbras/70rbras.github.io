@@ -103,7 +103,7 @@ site-rbras-claude/
 | Evento | Período |
 |--------|---------|
 | Submissão de Trabalhos | 11 mai – 15 ago 2026 |
-| Propostas de Sessões, Mesas e Minicursos | 11 mai – 5 jun 2026 |
+| Propostas de Sessões, Mesas e Minicursos | 11 mai – 15 jul 2026 |
 | Inscrições com Desconto (Early Bird) | 11 mai – 30 set 2026 |
 | Divulgação de Aceites | 14–15 set 2026 |
 | Inscrições sem Desconto (Regular) | 1 out – 23 nov 2026 |
