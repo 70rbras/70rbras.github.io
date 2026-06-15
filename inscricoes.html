@@ -175,7 +175,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img class="footer-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
-        <p id="footer-desc">Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 70ª Edição · Campinas, SP</p>
+        <p id="footer-desc">70ª Reunião da Região Brasileira da<br>Sociedade Internacional de Biometria<br>UNICAMP, Campinas, SP</p>
       </div>
       <div class="footer-col">
         <h4>Evento</h4>
@@ -198,7 +198,7 @@
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
-          <li><a href="#" id="footer-email">contato@70rbras.org</a></li>
+          <li><a href="#" id="footer-email">70rbras@unicamp.br</a></li>
           <li><a href="cientifico.html#comissao">Comissão Organizadora</a></li>
           <li><a href="#" id="footer-site-rbras">RBras.org.br</a></li>
         </ul>
@@ -254,7 +254,7 @@ function applyConfig() {
   safe('footer-copy',el=>el.textContent=`© 2026 ${evento.edicao} · Região Brasileira da Sociedade Internacional de Biometria`);
   safe('footer-email',el=>{el.href='mailto:'+evento.email_contato;el.textContent=evento.email_contato;});
   safe('inscricoes-email',el=>el.textContent=evento.email_contato);
-  safe('footer-site-rbras',el=>el.href=evento.site_rbras);
+  safe('footer-site-rbras',el=>{el.href=evento.site_rbras;el.target='_blank';el.rel='noopener noreferrer';});
   safe('social-instagram',el=>el.href=redes_sociais.instagram);
   const link=evento.link_inscricoes, emBreve=!link||link==='#';
   safe('nav-cta-link',el=>{el.href=evento.link_area_inscrito;el.target='_blank';el.rel='noopener noreferrer';});

@@ -384,6 +384,33 @@
       padding: .7rem 1rem;
       border-radius: 0 6px 6px 0;
     }
+    /* Hero WASA: mais alto que os outros page-headers */
+    .wasa-page-header { padding: 11rem 0 6.5rem; }
+    /* Hero grid: logo à esquerda, texto à direita */
+    .wasa-hero-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .wasa-hero-text { text-align: center; }
+    /* Animação de entrada do logo (disparada no load, da esquerda) */
+    @keyframes wasa-logo-enter {
+      from { opacity: 0; transform: translateX(-50px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .wasa-hero-logo img {
+      height: 200px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 4px 24px rgba(0,0,0,.5));
+      animation: wasa-logo-enter 1.1s cubic-bezier(.22,1,.36,1) .1s both;
+    }
+    @media (max-width: 640px) {
+      .wasa-hero-grid { grid-template-columns: 1fr; }
+      .wasa-hero-logo { display: none; }
+      .wasa-page-header { padding: 8rem 0 5rem; }
+    }
   </style>
 </head>
 <body>
@@ -391,7 +418,7 @@
 <!-- Navbar injetada por assets/nav.js -->
 
 <!-- CABECALHO DA PAGINA -->
-<section class="page-header">
+<section class="page-header wasa-page-header">
   <svg class="page-header-decor" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M200 580 Q200 400 200 200" stroke="white" stroke-width="3" stroke-linecap="round"/>
     <path d="M200 480 Q260 420 320 400" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
@@ -402,9 +429,16 @@
     <circle cx="340" cy="200" r="8" fill="white"/><circle cx="358" cy="188" r="6" fill="white"/>
   </svg>
   <div class="container">
-    <div class="wasa-badge"><span class="wasa-badge-dot"></span>26 de novembro de 2026</div>
-    <h1 class="page-header-title">WASA</h1>
-    <p class="page-header-sub" style="max-width:600px">VIII Workshop em Análise de Sobrevivência e Aplicações</p>
+    <div class="wasa-hero-grid">
+      <div class="wasa-hero-logo">
+        <img src="assets/logos/wasa_logo.png" alt="Logo VIII WASA">
+      </div>
+      <div class="wasa-hero-text">
+        <div class="wasa-badge"><span class="wasa-badge-dot"></span>26 de novembro de 2026</div>
+        <h1 class="page-header-title">WASA</h1>
+        <p class="page-header-sub">VIII Workshop em Análise de Sobrevivência e Aplicações</p>
+      </div>
+    </div>
   </div>
   <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="var(--off-white)"/>
@@ -523,6 +557,17 @@
         <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:#bbb;flex-shrink:0"></span>Intervalo</span>
       </div>
     </div>
+
+    <!-- Banner da programação -->
+    <div class="wasa-cartaz reveal" style="margin-top:3rem">
+      <a class="wasa-cartaz-link" href="#wasa-lightbox-prog" aria-label="Ampliar programação do WASA"
+         style="box-shadow:0 8px 32px rgba(26,56,112,.15)">
+        <img src="assets/imagens/banner-programacao-wasa.png"
+             alt="Programação do VIII WASA"
+             style="width:520px;max-width:92vw">
+      </a>
+      <p class="wasa-cartaz-hint" style="color:var(--text-mid)">Clique para ampliar</p>
+    </div>
   </div>
 </section>
 
@@ -595,10 +640,16 @@
   </div>
 </section>
 
-<!-- LIGHTBOX DO CARTAZ -->
+<!-- LIGHTBOX DO CARTAZ (homenagem) -->
 <div id="wasa-lightbox" class="wasa-lightbox" role="dialog" aria-modal="true" aria-label="Cartaz do WASA ampliado">
   <a href="#" class="wasa-lightbox-close" aria-label="Fechar">×</a>
   <img src="assets/imagens/cartaz-wasa.png" alt="Cartaz do VIII WASA - Homenagem ao Prof. Dr. Francisco Louzada Neto">
+</div>
+
+<!-- LIGHTBOX DA PROGRAMAÇÃO -->
+<div id="wasa-lightbox-prog" class="wasa-lightbox" role="dialog" aria-modal="true" aria-label="Programação do WASA ampliada">
+  <a href="#" class="wasa-lightbox-close" aria-label="Fechar">×</a>
+  <img src="assets/imagens/banner-programacao-wasa.png" alt="Programação do VIII WASA - Workshop em Análise de Sobrevivência e Aplicações">
 </div>
 
 <!-- FOOTER -->
@@ -607,7 +658,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img class="footer-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
-        <p>Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 70ª Edição · Campinas, SP</p>
+        <p>70ª Reunião da Região Brasileira da<br>Sociedade Internacional de Biometria<br>UNICAMP, Campinas, SP</p>
       </div>
       <div class="footer-col">
         <h4>Evento</h4>
@@ -631,9 +682,9 @@
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
-          <li><a href="mailto:contato@70rbras.org">contato@70rbras.org</a></li>
+          <li><a href="mailto:70rbras@unicamp.br">70rbras@unicamp.br</a></li>
           <li><a href="cientifico.html#comissao">Comissão Organizadora</a></li>
-          <li><a href="#" id="footer-site-rbras">RBras.org.br</a></li>
+          <li><a href="https://www.rbras.org.br" id="footer-site-rbras" target="_blank" rel="noopener noreferrer">RBras.org.br</a></li>
         </ul>
       </div>
     </div>
@@ -717,7 +768,7 @@
   }
 
   /* Animacoes reveal */
-  const revealEls = document.querySelectorAll('.reveal');
+  const revealEls = document.querySelectorAll('.reveal, .reveal-from-left, .reveal-from-right');
   if ('IntersectionObserver' in window) {
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -734,9 +785,9 @@
 })();
 </script>
 <script>
-  /* Fechar lightbox do cartaz com Escape */
+  /* Fechar lightboxes com Escape */
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && location.hash === '#wasa-lightbox') {
+    if (e.key === 'Escape' && (location.hash === '#wasa-lightbox' || location.hash === '#wasa-lightbox-prog')) {
       location.href = '#';
     }
   });

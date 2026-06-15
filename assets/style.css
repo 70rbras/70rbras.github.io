@@ -150,6 +150,8 @@ section { position: relative; }
 .reveal.visible { opacity: 1; transform: none; }
 .reveal-from-right { opacity: 0; transform: translateX(60px); transition: opacity 1.4s ease, transform 1.4s ease; }
 .reveal-from-right.visible { opacity: 1; transform: none; }
+.reveal-from-left { opacity: 0; transform: translateX(-60px); transition: opacity 1.4s ease, transform 1.4s ease; }
+.reveal-from-left.visible { opacity: 1; transform: none; }
 .reveal-delay-1 { transition-delay: .1s; }
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }
@@ -1042,7 +1044,8 @@ table.tabela-precos { width: 100%; border-collapse: collapse; background: var(--
 /* ──────────────────────────────────────────── */
 #footer { background: var(--text-dark); color: rgba(255,255,255,.65); padding: 4rem 0 2rem; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.1); }
-.footer-brand .footer-logo-img { margin-bottom: 1rem; }
+.footer-brand { display: flex; align-items: center; gap: 1.25rem; }
+.footer-brand .footer-logo-img { margin-bottom: 0; flex-shrink: 0; }
 .footer-brand p { font-size: .88rem; line-height: 1.7; }
 .footer-col h4 { color: var(--white); font-size: .88rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.2rem; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
@@ -1379,4 +1382,71 @@ body.nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(
   .sub-rules-callout { padding: 1.25rem; }
   .sub-summary-wrap { padding: 1.25rem; }
   .tab-areas-cols { columns: 1; }
+}
+
+/* ── WASA HOME (seção satélite na home) ──────── */
+#wasa-home { background: var(--off-white); padding: 5rem 0; }
+.wasa-home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.wasa-home-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  font-style: italic;
+  margin: .5rem 0 0;
+  line-height: 1.5;
+}
+.wasa-home-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin: 1.5rem 0;
+}
+.wasa-home-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: var(--white);
+  border: 1px solid rgba(42,144,128,.2);
+  border-radius: 999px;
+  padding: .35rem .85rem;
+  font-size: .82rem;
+  color: var(--text-mid);
+}
+.wasa-home-chip strong { color: var(--text-dark); font-weight: 600; }
+.wasa-home-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.wasa-home-visual img {
+  max-width: 340px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 768px) {
+  .wasa-home-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .wasa-home-visual { order: -1; padding: 0; }
+  .wasa-home-visual img { max-width: 200px; margin: 0 auto; }
+}
+
+/* ── Navbar: badge Satélite (item WASA) ──────── */
+.nav-satellite-badge {
+  display: inline-block;
+  font-size: .5rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  background: rgba(56,170,170,.25);
+  color: var(--teal-light);
+  border-radius: 3px;
+  padding: .12em .4em;
+  margin-left: .35rem;
+  vertical-align: middle;
+  line-height: 1.5;
 }

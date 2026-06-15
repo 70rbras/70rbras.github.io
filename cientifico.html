@@ -186,7 +186,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img class="footer-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
-        <p id="footer-desc">Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 70ª Edição · Campinas, SP · 23-25 de Novembro de 2026</p>
+        <p id="footer-desc">70ª Reunião da Região Brasileira da<br>Sociedade Internacional de Biometria<br>UNICAMP, Campinas, SP</p>
       </div>
       <div class="footer-col">
         <h4>Evento</h4>
@@ -267,7 +267,7 @@ function applyConfig() {
   const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
 
   safe('footer-email',      el => { el.href = 'mailto:' + evento.email_contato; el.textContent = evento.email_contato; });
-  safe('footer-site-rbras', el => el.href = evento.site_rbras);
+  safe('footer-site-rbras', el => { el.href = evento.site_rbras; el.target = '_blank'; el.rel = 'noopener noreferrer'; });
   safe('nav-cta-link',      el => { el.href = evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; });
 
   const linkInscricoes = evento.link_inscricoes;

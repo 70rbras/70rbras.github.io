@@ -13,7 +13,7 @@ Site oficial da **70ª Reunião Anual da Região Brasileira da Sociedade Interna
 - **Local:** IMECC — Instituto de Matemática, Estatística e Computação Científica, Unicamp, Campinas, SP
   - Endereço: Rua Sérgio Buarque de Holanda, 651 — Cidade Universitária Zeferino Vaz, Campinas, SP · CEP 13083-859
 - **Domínio:** 70rbras.org
-- **Contato:** contato@70rbras.org
+- **Contato:** 70rbras@unicamp.br
 - **Repositório GitHub:** site-rbras-claude
 
 ---

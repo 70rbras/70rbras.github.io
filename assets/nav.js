@@ -70,7 +70,7 @@
 
       <!-- WASA (evento satélite, dropdown) -->
       <li class="nav-dropdown">
-        <a href="${root}wasa.html" class="nav-dropdown-toggle"${activeClass('wasa.html')}>WASA ${chev}</a>
+        <a href="${root}wasa.html" class="nav-dropdown-toggle"${activeClass('wasa.html')}>WASA <span class="nav-satellite-badge">Sat&#233;lite</span> ${chev}</a>
         <ul class="nav-dropdown-menu">
           <li><a href="${root}wasa.html#sobre-wasa">Sobre</a></li>
           <li><a href="${root}wasa.html#organizacao-wasa">Organização</a></li>
