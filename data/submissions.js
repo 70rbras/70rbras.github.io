@@ -65,8 +65,8 @@ const SUBMISSION_MODALITIES = [
     id: "minicurso",
     icone: "🎓",
     titulo: "Minicurso",
-    prazo: "11 mai - 11 jun 2026",
-    prazo_iso_fim: "2026-06-11",
+    prazo: "11 mai - 15 jul 2026",
+    prazo_iso_fim: "2026-07-15",
     duracao: "4h total · 2h/dia",
     campos: [
       "Título do Minicurso",
@@ -97,8 +97,8 @@ const SUBMISSION_MODALITIES = [
     id: "sessao-tematica",
     icone: "🎤",
     titulo: "Sessão Temática",
-    prazo: "11 mai - 11 jun 2026",
-    prazo_iso_fim: "2026-06-11",
+    prazo: "11 mai - 15 jul 2026",
+    prazo_iso_fim: "2026-07-15",
     duracao: "1h30",
     campos: [
       "Título da Sessão Temática",

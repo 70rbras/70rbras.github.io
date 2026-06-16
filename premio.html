@@ -629,55 +629,12 @@
 </section>
 
 
-<!-- ─── FOOTER ────────────────────────────────── -->
-<footer id="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img class="footer-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
-        <p id="footer-desc">70ª Reunião da Região Brasileira da<br>Sociedade Internacional de Biometria<br>UNICAMP, Campinas, SP</p>
-      </div>
-      <div class="footer-col">
-        <h4>Evento</h4>
-        <ul>
-          <li><a href="index.html#sobre">Sobre</a></li>
-          <li><a href="palestrantes.html">Convidados</a></li>
-          <li><a href="programacao.html">Programação</a></li>
-          <li><a href="local.html">Local</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Científico</h4>
-        <ul>
-          <li><a href="cientifico.html#datas">Datas Importantes</a></li>
-          <li><a href="cientifico.html#submissoes">Submissões</a></li>
-          <li><a href="cientifico.html#comissao">Comissões</a></li>
-          <li><a href="premio.html" style="color:var(--gold-light)">Prêmio Destaque RBras</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="mailto:70rbras@unicamp.br">70rbras@unicamp.br</a></li>
-          <li><a href="cientifico.html#comissao">Comissão Organizadora</a></li>
-          <li><a href="https://www.rbras.org.br" target="_blank" rel="noopener noreferrer">RBras.org.br</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 70ª RBras · Região Brasileira da Sociedade Internacional de Biometria</p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/70rbras" class="social-link" aria-label="Instagram 70ª RBras">📸</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<button id="btn-topo" aria-label="Voltar ao topo">&#8679;</button>
+<!-- Footer injetado por assets/footer.js -->
 
 <!-- ─── SCRIPTS ─────────────────────────────────── -->
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
+<script src="assets/footer.js"></script>
 
 <script>
 /* ── Scroll Reveal ──────────────────────────────── */
@@ -687,14 +644,7 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 revealEls.forEach(el => revealObs.observe(el));
 
-/* ── Botão "voltar ao topo" ─────────────────────── */
-const btnTopo = document.getElementById('btn-topo');
-if (btnTopo) {
-  window.addEventListener('scroll', () => {
-    btnTopo.classList.toggle('visible', window.scrollY > 400);
-  });
-  btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-}
+
 
 /* ── Status dinâmico das indicações ──────────────── */
 (function() {

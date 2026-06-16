@@ -83,51 +83,7 @@
   </div>
 </section>
 
-<!-- ─── FOOTER ────────────────────────────────────── -->
-<footer id="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img class="footer-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
-        <p id="footer-desc">70ª Reunião da Região Brasileira da<br>Sociedade Internacional de Biometria<br>UNICAMP, Campinas, SP</p>
-      </div>
-      <div class="footer-col">
-        <h4>Evento</h4>
-        <ul>
-          <li><a href="index.html#sobre">Sobre</a></li>
-          <li><a href="palestrantes.html">Convidados</a></li>
-          <li><a href="programacao.html">Programação</a></li>
-          <li><a href="local.html">Local</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Científico</h4>
-        <ul>
-          <li><a href="cientifico.html#datas">Datas Importantes</a></li>
-          <li><a href="cientifico.html#submissoes">Submissões</a></li>
-          <li><a href="cientifico.html#comissao">Comissões</a></li>
-          <li><a href="inscricoes.html">Inscrições</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="#" id="footer-email">70rbras@unicamp.br</a></li>
-          <li><a href="cientifico.html#comissao">Comissão Organizadora</a></li>
-          <li><a href="#" id="footer-site-rbras">RBras.org.br</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p id="footer-copy">© 2026 70ª RBras · Região Brasileira da Sociedade Internacional de Biometria</p>
-      <div class="social-links">
-        <a href="#" class="social-link" id="social-instagram" aria-label="Instagram">📸</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<button id="btn-topo" aria-label="Voltar ao topo">&#8679;</button>
+<!-- Footer injetado por assets/footer.js -->
 
 <!-- ─── MODAL EM BREVE ──────────────────────────── -->
 <div id="modal-em-breve" role="dialog" aria-modal="true" aria-labelledby="modal-titulo-txt">
@@ -145,6 +101,7 @@
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
 <script src="data/schedule.js"></script>
+<script src="assets/footer.js"></script>
 
 <script>
 /* ── HELPERS ────────────────────────────── */
@@ -154,24 +111,12 @@ function revealAll() {
   },{threshold:.12});
   document.querySelectorAll('.reveal,.reveal-from-right').forEach(el=>io.observe(el));
 }
-(function() {
-  const btn=document.getElementById('btn-topo');
-  if(!btn)return;
-  window.addEventListener('scroll',()=>btn.classList.toggle('visible',window.scrollY>400));
-  btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-})();
-
 /* ── CONFIG ─────────────────────────────── */
 function parseISODate(iso){const[y,m,d]=iso.split('-').map(Number);return new Date(y,m-1,d);}
 
 function applyConfig() {
   const {evento, redes_sociais} = CONFIG;
   const safe=(id,fn)=>{const el=document.getElementById(id);if(el)fn(el);};
-  safe('footer-desc',el=>el.textContent=`${evento.nome} · ${evento.cidade} · ${evento.datas_exibicao}`);
-  safe('footer-copy',el=>el.textContent=`© 2026 ${evento.edicao} · Região Brasileira da Sociedade Internacional de Biometria`);
-  safe('footer-email',el=>{el.href='mailto:'+evento.email_contato;el.textContent=evento.email_contato;});
-  safe('footer-site-rbras',el=>{el.href=evento.site_rbras;el.target='_blank';el.rel='noopener noreferrer';});
-  safe('social-instagram',el=>el.href=redes_sociais.instagram);
   const link=evento.link_inscricoes, emBreve=!link||link==='#';
   safe('nav-cta-link',el=>{el.href=evento.link_area_inscrito;el.target='_blank';el.rel='noopener noreferrer';});
   ['cta-inscricoes'].forEach(id=>{
