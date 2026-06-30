@@ -23,6 +23,14 @@ const DATES = [
     link:      "premio.html"
   },
   {
+    titulo:    "Fundo de Financiamento - Auxílio Estudante",
+    inicio:    "2026-06-25",
+    fim:       "2026-09-30",
+    descricao: "Inscrições para auxílio individual e coletivo a estudantes associados",
+    icone:     "🎓",
+    link:      "fundo-estudante.html"
+  },
+  {
     titulo:    "Submissão de Trabalhos",
     inicio:    "2026-05-11",
     fim:       "2026-08-15",

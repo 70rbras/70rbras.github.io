@@ -29,6 +29,8 @@
           <li><a href="${root}cientifico.html#datas">Datas Importantes</a></li>
           <li><a href="${root}cientifico.html#submissoes">Submissões</a></li>
           <li><a href="${root}cientifico.html#comissao">Comissões</a></li>
+          <li><a href="${root}premio.html">Prêmio Destaque</a></li>
+          <li><a href="${root}fundo-estudante.html">Fundo de Financiamento</a></li>
           <li><a href="${root}inscricoes.html">Inscrições</a></li>
         </ul>
       </div>
