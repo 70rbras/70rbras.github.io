@@ -107,7 +107,7 @@
       <div class="inscricoes-info-box">
         <div class="info-box-icon">🏨</div>
         <h4>Hospedagem</h4>
-        <p>Uma lista de hotéis parceiros próximos ao campus será divulgada em breve. Campinas oferece ampla rede hoteleira em diferentes faixas de preço.</p>
+        <p>Confira a lista de <a href="#hospedagem" style="color:var(--teal);font-weight:600">hotéis parceiros</a> próximos ao campus. Campinas também oferece ampla rede hoteleira em diferentes faixas de preço.</p>
       </div>
 
       <div class="inscricoes-info-box">
@@ -117,6 +117,17 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ─── HOSPEDAGEM ─────────────────────────────────── -->
+<section id="hospedagem" style="padding:4rem 0 6rem;background:var(--white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--blue">Onde Ficar</span>
+      <h2 class="section-title" style="margin-top:1rem">Hotéis <span>Parceiros</span></h2>
+    </div>
+    <div id="hotels-list" style="margin-top:3rem"></div>
   </div>
 </section>
 
@@ -137,6 +148,7 @@
 <!-- ─── SCRIPTS ─────────────────────────────────────── -->
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
+<script src="data/hotels.js"></script>
 <script src="assets/footer.js"></script>
 
 <script>
@@ -163,7 +175,52 @@ function applyConfig() {
   });
 }
 
+function formatBRL(valor) {
+  return 'R$ ' + valor.toFixed(2).replace('.', ',');
+}
+
+function renderHotels() {
+  const container = document.getElementById('hotels-list');
+  if (!container || typeof HOTELS === 'undefined') return;
+
+  container.innerHTML = HOTELS.map(hotel => {
+    const maxPessoas = Math.max(...hotel.tarifas.map(t => Math.max(...Object.keys(t.precos).map(Number))));
+    const colunas = Array.from({ length: maxPessoas }, (_, i) => i + 1);
+
+    const linhas = hotel.tarifas.map(t => {
+      const celulas = colunas.map(n =>
+        `<td class="preco">${t.precos[n] !== undefined ? formatBRL(t.precos[n]) : '—'}</td>`
+      ).join('');
+      return `<tr><td><div class="td-cat">${t.tipo} · cama de ${t.cama.toLowerCase()}</div></td>${celulas}</tr>`;
+    }).join('');
+
+    const thead = colunas.map(n => `<th>${n} pessoa${n > 1 ? 's' : ''}</th>`).join('');
+
+    const beneficios = (hotel.beneficios || [])
+      .map(b => `<span class="socio-tag">${b}</span>`).join(' ');
+
+    return `
+      <div class="venue-details reveal" style="margin-bottom:2.5rem;padding:2rem;border:1px solid rgba(26,56,112,.1);border-radius:16px">
+        <h3 class="section-title" style="font-size:1.4rem;margin-bottom:.3rem">${hotel.nome}</h3>
+        <p class="section-body" style="margin-bottom:.3rem">
+          <a href="${hotel.mapaUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">${hotel.endereco}</a>
+        </p>
+        <p class="section-body" style="margin-bottom:1rem">📞 ${hotel.telefone}</p>
+        ${hotel.observacao ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:1.5rem"><strong>Atenção:</strong> ${hotel.observacao}</p>` : ''}
+        <div class="tabela-wrapper">
+          <table class="tabela-precos">
+            <thead><tr><th class="th-cat">Tipo de quarto</th>${thead}</tr></thead>
+            <tbody>${linhas}</tbody>
+          </table>
+        </div>
+        ${beneficios ? `<div style="margin-top:1.25rem;display:flex;gap:.5rem;flex-wrap:wrap">${beneficios}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
 applyConfig();
+renderHotels();
 revealAll();
 </script>
 </body>
