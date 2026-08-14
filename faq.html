@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perguntas Frequentes - 70ª RBras 2026</title>
+  <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
+  <meta name="description" content="Respostas às dúvidas mais frequentes sobre inscrições, submissão de trabalhos e demais aspectos da 70ª RBras 2026.">
+  <meta property="og:title" content="Perguntas Frequentes - 70ª RBras 2026">
+  <meta property="og:description" content="Respostas às dúvidas mais frequentes sobre inscrições, submissão de trabalhos e demais aspectos da 70ª RBras 2026.">
+  <meta property="og:url" content="https://70rbras.org/faq.html">
+  <meta property="og:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7Z8S78NNX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-X7Z8S78NNX');
+  </script>
+
+  <style>
+    /* ── Estilos específicos da página faq.html ── */
+
+    /* Busca */
+    .faq-search-wrap { max-width: 560px; margin: 0 auto 3rem; position: relative; }
+    .faq-search-wrap input {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      padding: .95em 1.4em .95em 3em;
+      border-radius: 999px;
+      border: 1.5px solid rgba(26,56,112,.15);
+      background: var(--white);
+      color: var(--text-dark);
+      box-shadow: 0 8px 28px rgba(26,56,112,.08);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .faq-search-wrap input:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 8px 28px rgba(42,144,128,.18);
+    }
+    .faq-search-wrap .search-icon {
+      position: absolute; left: 1.25em; top: 50%; transform: translateY(-50%);
+      font-size: 1.05rem; opacity: .5; pointer-events: none;
+    }
+    .faq-search-empty {
+      display: none;
+      text-align: center;
+      color: var(--text-mid);
+      font-size: .95rem;
+      padding: 2.5rem 1rem;
+    }
+    .faq-search-empty.visible { display: block; }
+
+    /* Categoria */
+    .faq-categoria { margin-bottom: 3.5rem; }
+    .faq-categoria:last-child { margin-bottom: 0; }
+    .faq-categoria-header {
+      display: flex; align-items: center; gap: .7rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: .8rem;
+      border-bottom: 2px solid rgba(42,144,128,.15);
+    }
+    .faq-categoria-header .fc-icon { font-size: 1.4rem; }
+    .faq-categoria-header h2 {
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* Item (accordion via <details>) */
+    .faq-item {
+      background: var(--white);
+      border: 1px solid rgba(26,56,112,.1);
+      border-radius: 14px;
+      margin-bottom: .9rem;
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+      scroll-margin-top: 110px;
+    }
+    .faq-item:hover { box-shadow: 0 8px 24px rgba(26,56,112,.08); }
+    .faq-item[open] { border-color: rgba(42,144,128,.35); box-shadow: 0 8px 28px rgba(42,144,128,.12); }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.2rem 1.6rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      font-weight: 600; font-size: .98rem; line-height: 1.4;
+      color: var(--text-dark);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary .faq-chevron {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: rgba(42,144,128,.1);
+      color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem;
+      transition: transform var(--transition);
+    }
+    .faq-item[open] summary .faq-chevron { transform: rotate(180deg); }
+    .faq-item .faq-answer {
+      padding: 0 1.6rem 1.4rem;
+      font-size: .92rem;
+      color: var(--text-mid);
+    }
+    .faq-item .faq-answer p { margin: 0; line-height: 1.75; }
+    .faq-item .faq-answer a { color: var(--teal); font-weight: 600; }
+    .faq-item .faq-link {
+      display: flex; align-items: center; gap: .3rem;
+      margin-top: .9rem;
+      line-height: 1.4;
+      font-size: .78rem; font-weight: 600;
+      color: var(--text-mid); opacity: .6;
+      text-decoration: none;
+    }
+    .faq-item .faq-link:hover { opacity: 1; color: var(--teal); }
+    .faq-item.faq-hidden { display: none; }
+    .faq-categoria.faq-hidden { display: none; }
+
+    /* Chips de navegação rápida por categoria */
+    .faq-chips {
+      display: flex; gap: .7rem; flex-wrap: wrap; justify-content: center;
+      margin-top: 1.6rem;
+    }
+
+    /* CTA final */
+    .faq-cta {
+      text-align: center;
+      background: var(--off-white);
+      border-radius: 20px;
+      padding: 2.8rem 2rem;
+      margin-top: 3.5rem;
+    }
+    .faq-cta h3 { font-size: 1.15rem; font-weight: 700; color: var(--text-dark); margin-bottom: .6rem; }
+    .faq-cta p { font-size: .92rem; color: var(--text-mid); max-width: 46ch; margin: 0 auto 1.6rem; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar injetada por assets/nav.js -->
+
+<!-- ─── CABEÇALHO DA PÁGINA ───────────────────────── -->
+<section class="page-header">
+  <svg class="page-header-decor" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M200 580 Q200 400 200 200" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M200 480 Q260 420 320 400" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 420 Q140 360 80 340" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="320" cy="400" r="8" fill="white"/><circle cx="340" cy="390" r="5" fill="white"/>
+    <circle cx="80"  cy="340" r="8" fill="white"/><circle cx="62"  cy="330" r="5" fill="white"/>
+  </svg>
+  <div class="container">
+    <span class="tag tag--teal">Ajuda</span>
+    <h1 class="page-header-title">Perguntas Frequentes</h1>
+    <p class="page-header-sub">Respostas às dúvidas mais comuns sobre inscrições, submissão de trabalhos e participação na 70ª RBras.</p>
+    <!-- Chips de categoria, populados via JS -->
+    <nav class="faq-chips" id="faq-chips" aria-label="Categorias de perguntas"></nav>
+  </div>
+  <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+  </svg>
+</section>
+
+<!-- ─── FAQ ─────────────────────────────────────── -->
+<section style="padding:4.5rem 0 5.5rem;background:var(--white)">
+  <div class="container" style="max-width:820px">
+
+    <!-- Busca -->
+    <div class="faq-search-wrap reveal">
+      <span class="search-icon">🔎</span>
+      <input type="search" id="faq-search" placeholder="Digite uma palavra-chave, ex.: pagamento, pôster, nota fiscal…" aria-label="Buscar nas perguntas frequentes">
+    </div>
+
+    <!-- Conteúdo gerado via JS a partir de data/faq.js -->
+    <div id="faq-content"></div>
+
+    <p class="faq-search-empty" id="faq-empty">Nenhuma pergunta encontrada para esse termo. Tente outra palavra ou veja abaixo como falar conosco.</p>
+
+    <!-- CTA final -->
+    <div class="faq-cta reveal">
+      <h3>Não encontrou sua resposta?</h3>
+      <p>Se a sua dúvida não está listada acima, escreva para a organização - toda pergunta recorrente é adicionada aqui para ajudar outros participantes.</p>
+      <a href="#" class="btn btn--primary" id="faq-email-btn" style="font-size:.95rem;padding:.8em 2.2em">✉️ Enviar e-mail para a organização</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer injetado por assets/footer.js -->
+
+<!-- ─── SCRIPTS ─────────────────────────────────── -->
+<script src="assets/nav.js"></script>
+<script src="data/config.js"></script>
+<script src="data/faq.js"></script>
+<script src="assets/footer.js"></script>
+
+<script>
+/* ── Link de e-mail via CONFIG ───────────────────── */
+(function () {
+  const btn = document.getElementById('faq-email-btn');
+  if (btn && typeof CONFIG !== 'undefined') {
+    btn.href = 'mailto:' + CONFIG.evento.email_contato;
+  }
+})();
+
+/* ── Renderiza FAQ a partir de data/faq.js ───────── */
+(function () {
+  if (typeof FAQ === 'undefined') return;
+
+  const content = document.getElementById('faq-content');
+  const chips   = document.getElementById('faq-chips');
+
+  FAQ.forEach(cat => {
+    // Chip de navegação
+    const chip = document.createElement('a');
+    chip.href = '#cat-' + cat.categoria;
+    chip.className = 'btn btn--outline';
+    chip.style.cssText = 'font-size:.83rem;padding:.5em 1.3em';
+    chip.textContent = `${cat.icone} ${cat.categoriaLabel}`;
+    chips.appendChild(chip);
+
+    // Bloco da categoria
+    const catEl = document.createElement('div');
+    catEl.className = 'faq-categoria reveal';
+    catEl.id = 'cat-' + cat.categoria;
+    catEl.dataset.categoria = cat.categoria;
+
+    const header = document.createElement('div');
+    header.className = 'faq-categoria-header';
+    header.innerHTML = `<span class="fc-icon">${cat.icone}</span><h2>${cat.categoriaLabel}</h2>`;
+    catEl.appendChild(header);
+
+    cat.perguntas.forEach(p => {
+      const item = document.createElement('details');
+      item.className = 'faq-item';
+      item.id = 'faq-' + p.id;
+      item.dataset.pergunta = p.pergunta.toLowerCase();
+      item.dataset.resposta = p.resposta.toLowerCase();
+      item.innerHTML = `
+        <summary>
+          <span>${p.pergunta}</span>
+          <span class="faq-chevron">▾</span>
+        </summary>
+        <div class="faq-answer">
+          <p>${p.resposta}</p>
+          <a class="faq-link" href="#faq-${p.id}">🔗 Link direto para esta resposta</a>
+        </div>`;
+      catEl.appendChild(item);
+    });
+
+    content.appendChild(catEl);
+  });
+
+  /* ── Abre e rola até a pergunta indicada na âncora ── */
+  function openFromHash() {
+    if (!location.hash) return;
+    const el = document.querySelector(location.hash);
+    if (el && el.tagName === 'DETAILS') {
+      el.open = true;
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 50);
+    }
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+
+  /* ── Busca client-side ───────────────────────────── */
+  const searchInput = document.getElementById('faq-search');
+  const emptyMsg     = document.getElementById('faq-empty');
+
+  searchInput.addEventListener('input', () => {
+    const term = searchInput.value.trim().toLowerCase();
+    let anyVisible = false;
+
+    document.querySelectorAll('.faq-categoria').forEach(catEl => {
+      let catHasVisible = false;
+      catEl.querySelectorAll('.faq-item').forEach(item => {
+        const match = !term || item.dataset.pergunta.includes(term) || item.dataset.resposta.includes(term);
+        item.classList.toggle('faq-hidden', !match);
+        if (match) catHasVisible = true;
+        if (match && term) item.open = true;
+      });
+      catEl.classList.toggle('faq-hidden', !catHasVisible);
+      if (catHasVisible) anyVisible = true;
+    });
+
+    emptyMsg.classList.toggle('visible', !anyVisible);
+  });
+})();
+
+/* ── Scroll Reveal (após injetar os itens do FAQ) ── */
+const revealEls = document.querySelectorAll('.reveal, .reveal-from-right');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObs.observe(el));
+</script>
+
+</body>
+</html>

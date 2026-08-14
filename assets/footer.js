@@ -37,6 +37,7 @@
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
+          <li><a href="${root}faq.html">Perguntas Frequentes</a></li>
           <li><a href="#" id="footer-email">70rbras@unicamp.br</a></li>
           <li><a href="${root}cientifico.html#comissao">Comissão Organizadora</a></li>
           <li><a href="#" id="footer-site-rbras" target="_blank" rel="noopener noreferrer">RBras.org.br</a></li>

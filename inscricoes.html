@@ -107,15 +107,23 @@
     </div>
 
     <!-- Aviso -->
-    <div class="inscricoes-aviso reveal">
-      ⚠️ O sistema de inscrições será disponibilizado em <strong>11 de maio de 2026</strong>. Acompanhe esta página para informações atualizadas.
+    <div class="inscricoes-aviso reveal" id="inscricoes-aviso">
+      📅 Inscrições abertas. <strong id="inscricoes-lote-status">Carregando informações do lote vigente…</strong>
     </div>
 
     <!-- Botões principais -->
     <div class="inscricoes-cta-btn reveal" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
-      <a href="#" class="btn btn--primary" id="inscricoes-inscrevase-btn" style="font-size:1rem;padding:.9em 2.4em;" target="_blank" rel="noopener noreferrer">Inscreva-se agora ↗</a>
+      <a href="#" class="btn btn--primary" id="inscricoes-inscrevase-btn" style="font-size:1rem;padding:.9em 2.4em;" target="_blank" rel="noopener noreferrer">Inscreva-se na 70ª RBras ↗</a>
       <a href="https://www.rbras.org.br/associado/" class="btn btn--gold" style="font-size:1rem;padding:.9em 2.4em;" target="_blank" rel="noopener noreferrer">Filie-se à RBras ↗</a>
     </div>
+
+    <p class="reveal" style="text-align:center;margin-top:1rem;font-size:.82rem;color:var(--text-mid);opacity:.85">
+      ⏳ A filiação passa por verificação documental manual - a aprovação pode levar alguns dias antes de valer o desconto de sócio.
+    </p>
+
+    <p class="reveal" style="text-align:center;margin-top:.6rem;font-size:.88rem;color:var(--text-mid)">
+      Dúvidas sobre pagamento, nota fiscal ou verificação de associado? Veja as <a href="faq.html#cat-inscricoes" style="color:var(--teal);font-weight:600">Perguntas Frequentes ↗</a>
+    </p>
 
   </div>
 </section>
@@ -163,7 +171,7 @@
     <p class="cta-title">Pronto para se inscrever?</p>
     <p class="cta-sub">O sistema de inscrições abre em 11 de maio de 2026. Reserve a data!</p>
     <div class="cta-actions">
-      <a href="#" class="btn btn--primary" style="font-size:1.05rem;padding:1em 2.4em" id="cta-inscricoes">Inscreva-se agora ↗</a>
+      <a href="#" class="btn btn--primary" style="font-size:1.05rem;padding:1em 2.4em" id="cta-inscricoes">Inscreva-se na 70ª RBras ↗</a>
       <a href="index.html" class="btn btn--outline" style="font-size:1.05rem;padding:1em 2.4em">← Voltar à página inicial</a>
     </div>
   </div>
@@ -196,6 +204,27 @@ function revealAll() {
   },{threshold:.12});
   document.querySelectorAll('.reveal,.reveal-from-right').forEach(el=>io.observe(el));
 }
+/* ── STATUS DO LOTE VIGENTE ─────────────── */
+function applyLoteStatus() {
+  const el = document.getElementById('inscricoes-lote-status');
+  if (!el) return;
+  const hoje    = new Date();
+  const fimL1   = new Date('2026-09-30T23:59:59');
+  const fimL2   = new Date('2026-10-31T23:59:59');
+  const inicioEvento = new Date('2026-11-23T00:00:00');
+  const dias = (ate) => Math.max(0, Math.ceil((ate - hoje) / (1000*60*60*24)));
+
+  if (hoje <= fimL1) {
+    el.textContent = `1º Lote vigente (menor valor) até 30 de setembro de 2026 — faltam ${dias(fimL1)} dia${dias(fimL1)!==1?'s':''}.`;
+  } else if (hoje <= fimL2) {
+    el.textContent = `2º Lote vigente até 31 de outubro de 2026 — faltam ${dias(fimL2)} dia${dias(fimL2)!==1?'s':''}. O 1º Lote já se encerrou.`;
+  } else if (hoje < inicioEvento) {
+    el.textContent = `3º Lote vigente (valor cheio) até o início do evento, em 23 de novembro de 2026.`;
+  } else {
+    el.textContent = `Inscrições no local, durante o evento.`;
+  }
+}
+
 /* ── CONFIG ─────────────────────────────── */
 function applyConfig() {
   const {evento, redes_sociais} = CONFIG;
@@ -229,6 +258,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')fecharModalEmBreve()
 
 /* ── BOOT ──────────────────────────────── */
 applyConfig();
+applyLoteStatus();
 revealAll();
 </script>
 </body>

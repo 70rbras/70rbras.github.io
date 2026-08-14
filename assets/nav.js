@@ -63,6 +63,9 @@
       <!-- Inscrições -->
       <li><a href="${root}inscricoes.html"${activeClass('inscricoes.html')}>Inscrições</a></li>
 
+      <!-- FAQ -->
+      <li><a href="${root}faq.html"${activeClass('faq.html')}>FAQ</a></li>
+
       <!-- Apoio -->
       <li><a href="${root}index.html#patrocinadores">Apoio</a></li>
 
