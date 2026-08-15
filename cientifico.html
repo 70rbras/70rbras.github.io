@@ -118,13 +118,13 @@
           <tbody>
             <tr>
               <td><span class="sub-mod-badge">📄</span> Comunicação Oral</td>
-              <td>até 15 ago</td>
+              <td class="prorrogado">🔔 até 24 ago</td>
               <td class="check">✔</td>
               <td class="dash">-</td>
             </tr>
             <tr>
               <td><span class="sub-mod-badge">📄</span> Pôster</td>
-              <td>até 15 ago</td>
+              <td class="prorrogado">🔔 até 24 ago</td>
               <td class="check">✔</td>
               <td class="dash">- *</td>
             </tr>
@@ -142,14 +142,15 @@
             </tr>
             <tr>
               <td><span class="sub-mod-badge">🏅</span> Concurso</td>
-              <td>até 15 ago</td>
+              <td class="prorrogado">🔔 até 24 ago</td>
               <td class="check">✔</td>
               <td class="check">✔ tese/diss. + docs.</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p style="margin-top:1rem;font-size:.82rem;color:var(--text-mid);opacity:.85">* O sistema de submissão exige o envio de um arquivo PDF mesmo para pôster. Se isso acontecer, envie um PDF só com título e autores - ele não será avaliado, mas permite concluir a submissão. Veja a <a href="faq.html#faq-poster-pdf-obrigatorio" style="color:var(--teal);font-weight:600">FAQ ↗</a>.</p>
+      <p style="margin-top:1rem;font-size:.85rem;color:#5c4400;font-weight:700">🔔 Prazo prorrogado: Comunicação Oral, Pôster e Concurso Tese/Dissertação/IC agora encerram em <strong>24 de agosto de 2026, às 23h59</strong> (prazo original era 15 de agosto).</p>
+      <p style="margin-top:.6rem;font-size:.82rem;color:var(--text-mid);opacity:.85">* O sistema de submissão exige o envio de um arquivo PDF mesmo para pôster. Se isso acontecer, envie um PDF só com título e autores - ele não será avaliado, mas permite concluir a submissão. Veja a <a href="faq.html#faq-poster-pdf-obrigatorio" style="color:var(--teal);font-weight:600">FAQ ↗</a>.</p>
     </div>
 
   </div>
@@ -191,7 +192,7 @@
     <div class="modal-icone" aria-hidden="true">📝</div>
     <h2 class="modal-titulo" id="modal-titulo-txt">Submissão em breve</h2>
     <span class="modal-linha"></span>
-    <p class="modal-texto">O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai - 15 ago de 2026</strong>.</p>
+    <p class="modal-texto">O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>🔔 Prazo prorrogado para Comunicação Oral, Pôster e Concurso Tese/Dissertação/IC: <strong>até 24 de agosto de 2026 (23h59)</strong>.</p>
     <button class="modal-fechar" id="modal-fechar-btn">Entendido</button>
   </div>
 </div>
@@ -293,9 +294,12 @@ function renderDates() {
     const urgent = (status !== 'past') && remaining >= 0 && remaining <= 7;
     const urgentAttr = urgent ? ' data-urgent="true"' : '';
     const urgentBadge = urgent ? `<span class="tl-urgent-badge">Encerra em breve</span>` : '';
+    const extended = d.prorrogado && status !== 'past';
+    const extendedAttr = extended ? ' data-extended="true"' : '';
+    const extendedBadge = extended ? `<span class="tl-extended-badge">🔔 Prazo Prorrogado</span>` : '';
     const checkBadge = status === 'past' ? '&#10003; ' : '';
     const linkHtml = d.link ? `<a href="${d.link}" class="tl-link">Saiba mais &rarr;</a>` : '';
-    return `<div class="tl-content reveal" data-status="${status}"${urgentAttr}>${urgentBadge}<span class="tl-status-badge">${checkBadge}${DATE_STATUS_LABEL[status]}</span><div class="tl-title">${d.titulo}</div><div class="tl-date">${range}</div><div class="tl-countdown">${countdown}</div><p class="tl-note">${d.descricao}</p>${linkHtml}</div>`;
+    return `<div class="tl-content reveal" data-status="${status}"${urgentAttr}${extendedAttr}>${extendedBadge}${urgentBadge}<span class="tl-status-badge">${checkBadge}${DATE_STATUS_LABEL[status]}</span><div class="tl-title">${d.titulo}</div><div class="tl-date">${range}</div><div class="tl-countdown">${countdown}</div><p class="tl-note">${d.descricao}</p>${linkHtml}</div>`;
   }
 
   function renderRegular(d, idx) {
@@ -346,7 +350,7 @@ function renderCommittee() {
 /* ─── MODAL EM BREVE ───────────────────────────────── */
 const MODAL_CONTEUDO = {
   inscricao: { titulo:'Inscrições em breve', icone:'🗓️', texto:'As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>Volte a visitar esta página para mais informações sobre prazos, valores e categorias de inscrição.' },
-  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai - 15 ago de 2026</strong>.' }
+  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>🔔 Prazo prorrogado para Comunicação Oral, Pôster e Concurso Tese/Dissertação/IC: <strong>até 24 de agosto de 2026 (23h59)</strong>.' }
 };
 function abrirModalEmBreve(tipo) {
   const cfg=MODAL_CONTEUDO[tipo]||MODAL_CONTEUDO.inscricao;
@@ -407,9 +411,14 @@ function renderSubmissions() {
         </div>`
       : '';
 
+    const prazoBadgeClass = m.prorrogado ? 'tab-prazo-badge tab-prazo-badge--extended' : 'tab-prazo-badge';
+    const prazoIcon  = m.prorrogado ? '🔔' : '📅';
+    const prazoLabel = m.prorrogado ? 'Prazo prorrogado' : 'Prazo';
+    const prazoNotaHtml = m.prazo_nota ? `<p class="tab-prazo-nota">${m.prazo_nota}</p>` : '';
     return `
       <div class="tab-panel" id="tab-panel-${m.id}" role="tabpanel" aria-labelledby="tab-btn-${m.id}" hidden>
-        <div class="tab-prazo-badge"><span class="tab-prazo-icon">📅</span> Prazo: <strong>${m.prazo}</strong></div>
+        <div class="${prazoBadgeClass}"><span class="tab-prazo-icon">${prazoIcon}</span> ${prazoLabel}: <strong>${m.prazo}</strong></div>
+        ${prazoNotaHtml}
         ${duracaoHtml}${elegibilidadeHtml}${camposHtml}${notasHtml}${pdfHtml}${areasTpl}
       </div>`;
   }

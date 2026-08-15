@@ -9,6 +9,7 @@
 //   descricao → descrição curta exibida abaixo da data
 //   icone     → emoji exibido no card
 //   destaque  → (opcional) true = card principal do evento (banner destacado)
+//   prorrogado → (opcional) true = selo dourado "Prazo Prorrogado" no card
 //
 // O status (Encerrado / Aberto agora / Em breve), a contagem de dias e a
 // ordenação cronológica são calculados automaticamente em tempo de renderização.
@@ -33,17 +34,19 @@ const DATES = [
   {
     titulo:    "Submissão de Trabalhos",
     inicio:    "2026-05-11",
-    fim:       "2026-08-15",
-    descricao: "Envio de trabalhos orais e pôsteres",
+    fim:       "2026-08-24",
+    descricao: "Envio de trabalhos orais e pôsteres — prazo prorrogado até 24/ago (23h59)",
     icone:     "📝",
+    prorrogado: true,
     link:      "cientifico.html#submissoes"
   },
   {
     titulo:    "Concurso Tese/Dissertação/IC",
     inicio:    "2026-05-11",
-    fim:       "2026-08-15",
-    descricao: "Submissão de teses, dissertações e trabalhos de IC para avaliação e premiação",
+    fim:       "2026-08-24",
+    descricao: "Submissão de teses, dissertações e trabalhos de IC para avaliação e premiação — prazo prorrogado até 24/ago (23h59)",
     icone:     "🏅",
+    prorrogado: true,
     link:      "cientifico.html#submissoes"
   },
   {

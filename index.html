@@ -221,7 +221,7 @@
       <span class="tag tag--gold">Apoio</span>
       <h2 class="section-title" style="margin-top:1rem">Patrocinadores &amp; <span>Apoiadores</span></h2>
     </div>
-    <div class="sponsors-tiers reveal" id="sponsors-tiers">
+    <div class="sponsors-grid reveal" id="sponsors-grid">
       <!-- preenchido via sponsors.js -->
     </div>
   </div>
@@ -362,9 +362,11 @@ function renderSpeakersNames() {
    PATROCINADORES
 ════════════════════════════════════════════════ */
 function renderSponsors() {
-  const el = document.getElementById('sponsors-tiers');
+  const el = document.getElementById('sponsors-grid');
   if (!el) return;
-  el.innerHTML = SPONSORS.map(t=>`<div class="sponsor-tier"><h3>${t.tier}</h3><div class="sponsor-logos">${t.patrocinadores.map(p=>`<a href="${p.url}" class="sponsor-logo sponsor-logo--${t.nivel}" target="_blank" rel="noopener" title="${p.nome}">${p.logo?`<img src="${p.logo}" alt="${p.nome}">`:`<span>${p.nome}</span>`}</a>`).join('')}</div></div>`).join('');
+  const pesoOrder = { lg: 0, md: 1, sm: 2 };
+  const sorted = [...SPONSORS].sort((a,b) => (pesoOrder[a.peso]??0) - (pesoOrder[b.peso]??0));
+  el.innerHTML = sorted.map(p=>`<a href="${p.url}" class="sponsor-logo sponsor-logo--${p.peso||'lg'}" target="_blank" rel="noopener" title="${p.nome}">${p.logo?`<img src="${p.logo}" alt="${p.nome}">`:`<span>${p.nome}</span>`}</a>`).join('');
 }
 
 /* ═══════════════════════════════════════════════
@@ -389,7 +391,7 @@ function renderSponsors() {
 ════════════════════════════════════════════════ */
 const MODAL_CONTEUDO = {
   inscricao: { titulo:'Inscrições em breve', icone:'🗓️', texto:'As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>Volte a visitar esta página para mais informações sobre prazos, valores e categorias de inscrição.' },
-  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>Fique atento ao prazo de submissão: <strong>11 mai - 15 ago de 2026</strong>.' }
+  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>🔔 Prazo prorrogado para Comunicação Oral, Pôster e Concurso Tese/Dissertação/IC: <strong>até 24 de agosto de 2026 (23h59)</strong>.' }
 };
 function abrirModalEmBreve(tipo) {
   const cfg=MODAL_CONTEUDO[tipo]||MODAL_CONTEUDO.inscricao;
