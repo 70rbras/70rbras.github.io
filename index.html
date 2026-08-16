@@ -366,7 +366,12 @@ function renderSponsors() {
   if (!el) return;
   const pesoOrder = { lg: 0, md: 1, sm: 2 };
   const sorted = [...SPONSORS].sort((a,b) => (pesoOrder[a.peso]??0) - (pesoOrder[b.peso]??0));
-  el.innerHTML = sorted.map(p=>`<a href="${p.url}" class="sponsor-logo sponsor-logo--${p.peso||'lg'}" target="_blank" rel="noopener" title="${p.nome}">${p.logo?`<img src="${p.logo}" alt="${p.nome}">`:`<span>${p.nome}</span>`}</a>`).join('');
+  el.innerHTML = sorted.map(p=>{
+    const tag = p.url ? 'a' : 'div';
+    const attrs = p.url ? `href="${p.url}" target="_blank" rel="noopener"` : '';
+    const brk = p.quebraAntes ? `<div class="sponsors-break"></div>` : '';
+    return `${brk}<${tag} class="sponsor-logo sponsor-logo--${p.peso||'lg'}" ${attrs} title="${p.nome}">${p.logo?`<img src="${p.logo}" alt="${p.nome}">`:`<span>${p.nome}</span>`}</${tag}>`;
+  }).join('');
 }
 
 /* ═══════════════════════════════════════════════

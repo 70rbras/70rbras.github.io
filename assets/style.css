@@ -937,6 +937,7 @@ section { position: relative; }
 /* ──────────────────────────────────────────── */
 #patrocinadores { padding: 5rem 0; background: var(--white); }
 .sponsors-grid { display: flex; flex-wrap: wrap; gap: 1.75rem; justify-content: center; align-items: center; }
+.sponsors-break { flex-basis: 100%; height: 0; }
 .sponsor-logo { background: var(--off-white); border-radius: 12px; display: grid; place-items: center; transition: filter var(--transition), transform var(--transition); filter: grayscale(30%); cursor: pointer; }
 .sponsor-logo:hover { filter: none; transform: scale(1.04); }
 .sponsor-logo--lg { width: 180px; height: 80px; }
