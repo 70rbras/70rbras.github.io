@@ -75,6 +75,13 @@
       <p class="section-body" style="margin-top:.6rem;font-size:.88rem">Dúvidas sobre submissão? Consulte as <a href="faq.html#cat-submissoes" style="color:var(--teal);font-weight:600">Perguntas Frequentes ↗</a></p>
     </div>
 
+    <!-- Última chance: Comunicação Oral e Pôster -->
+    <div class="sub-lastcall-callout reveal">
+      <span class="sub-lastcall-badge">🔔 Última oportunidade</span>
+      <h3>Perdeu o prazo de Pôster ou Comunicação Oral?</h3>
+      <p>Recebemos diversos pedidos de autores que não conseguiram submeter dentro do prazo. Para tratar com equidade e transparência todos os interessados em participar da <strong>70ª RBras</strong>, reabrimos, só desta vez e exclusivamente para <strong>Pôster</strong> e <strong>Comunicação Oral</strong>, uma última janela de submissão até <strong>sexta-feira, 28 de agosto de 2026, às 17h, horário de Brasília</strong> (horário de encerramento do sistema). Depois disso não haverá nova prorrogação. As demais modalidades (Concurso Tese/Dissertação/IC, Sessão Temática, Minicurso) já estão encerradas e não são afetadas por esta extensão.</p>
+    </div>
+
     <!-- Botão Submeter (placeholder) -->
     <div style="display:flex;justify-content:center;margin-bottom:2.5rem">
       <a href="#" class="btn btn--primary" id="sub-trabalhos-btn" style="font-size:1rem;padding:.9em 2.4em">Acessar sistema de submissão ↗</a>
@@ -118,13 +125,13 @@
           <tbody>
             <tr>
               <td><span class="sub-mod-badge">📄</span> Comunicação Oral</td>
-              <td class="prorrogado">🔔 até 24 ago</td>
+              <td class="prorrogado">🔔 até 28 ago, 17h (Brasília)</td>
               <td class="check">✔</td>
               <td class="dash">-</td>
             </tr>
             <tr>
               <td><span class="sub-mod-badge">📄</span> Pôster</td>
-              <td class="prorrogado">🔔 até 24 ago</td>
+              <td class="prorrogado">🔔 até 28 ago, 17h (Brasília)</td>
               <td class="check">✔</td>
               <td class="dash">- *</td>
             </tr>
@@ -149,7 +156,8 @@
           </tbody>
         </table>
       </div>
-      <p style="margin-top:1rem;font-size:.85rem;color:#5c4400;font-weight:700">🔔 Prazo prorrogado: Comunicação Oral, Pôster e Concurso Tese/Dissertação/IC agora encerram em <strong>24 de agosto de 2026, às 23h59</strong> (prazo original era 15 de agosto).</p>
+      <p style="margin-top:1rem;font-size:.85rem;color:#5c4400;font-weight:700">🔔 Última oportunidade: Comunicação Oral e Pôster têm janela final de submissão até <strong>sexta-feira, 28 de agosto de 2026, às 17h (horário de Brasília)</strong> (prazo original era 15 de agosto; prorrogado depois para 24 de agosto).</p>
+      <p style="margin-top:.4rem;font-size:.85rem;color:var(--text-mid)">O Concurso Tese/Dissertação/IC encerrou em 24 de agosto e não é contemplado por esta nova janela.</p>
       <p style="margin-top:.6rem;font-size:.82rem;color:var(--text-mid);opacity:.85">* O sistema de submissão exige o envio de um arquivo PDF mesmo para pôster. Se isso acontecer, envie um PDF só com título e autores - ele não será avaliado, mas permite concluir a submissão. Veja a <a href="faq.html#faq-poster-pdf-obrigatorio" style="color:var(--teal);font-weight:600">FAQ ↗</a>.</p>
     </div>
 
@@ -192,7 +200,7 @@
     <div class="modal-icone" aria-hidden="true">📝</div>
     <h2 class="modal-titulo" id="modal-titulo-txt">Submissão em breve</h2>
     <span class="modal-linha"></span>
-    <p class="modal-texto">O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>🔔 Prazo prorrogado para Comunicação Oral, Pôster e Concurso Tese/Dissertação/IC: <strong>até 24 de agosto de 2026 (23h59)</strong>.</p>
+    <p class="modal-texto">O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>🔔 Última oportunidade para Comunicação Oral e Pôster: <strong>até sexta-feira, 28 de agosto de 2026, às 17h (horário de Brasília)</strong>.</p>
     <button class="modal-fechar" id="modal-fechar-btn">Entendido</button>
   </div>
 </div>
@@ -350,7 +358,7 @@ function renderCommittee() {
 /* ─── MODAL EM BREVE ───────────────────────────────── */
 const MODAL_CONTEUDO = {
   inscricao: { titulo:'Inscrições em breve', icone:'🗓️', texto:'As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>Volte a visitar esta página para mais informações sobre prazos, valores e categorias de inscrição.' },
-  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>🔔 Prazo prorrogado para Comunicação Oral, Pôster e Concurso Tese/Dissertação/IC: <strong>até 24 de agosto de 2026 (23h59)</strong>.' }
+  submissao: { titulo:'Submissão em breve', icone:'📝', texto:'O sistema de submissão de trabalhos para a <strong>70ª RBras 2026</strong> será aberto em breve.<br><br>🔔 Última oportunidade para Comunicação Oral e Pôster: <strong>até sexta-feira, 28 de agosto de 2026, às 17h (horário de Brasília)</strong>.' }
 };
 function abrirModalEmBreve(tipo) {
   const cfg=MODAL_CONTEUDO[tipo]||MODAL_CONTEUDO.inscricao;

@@ -94,6 +94,36 @@
   /* ── Injeta no início do body ───────────────── */
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
+  /* ── Faixa de aviso: última chance Pôster/Comunicação Oral ─ */
+  const ANNOUNCE_DEADLINE = new Date(2026, 7, 28, 17, 0, 0); // 28/ago/2026, 17h
+  const ANNOUNCE_KEY = 'rbras-announce-dismissed-2026-08-28';
+  if (new Date() < ANNOUNCE_DEADLINE && !localStorage.getItem(ANNOUNCE_KEY)) {
+    const announceHTML = `
+<div id="announce-bar">
+  <span>🔔 <strong>Última oportunidade para Pôster e Comunicação Oral</strong>: submissões tardias até sex, 28/ago, 17h (Brasília).</span>
+  <a href="${root}cientifico.html#submissoes">Saiba mais &rarr;</a>
+  <button class="announce-close" id="announce-close" aria-label="Fechar aviso">&#x2715;</button>
+</div>`;
+    document.body.insertAdjacentHTML('afterbegin', announceHTML);
+
+    const updateAnnounceOffset = () => {
+      const bar = document.getElementById('announce-bar');
+      const h = bar ? bar.offsetHeight : 0;
+      document.documentElement.style.setProperty('--announce-h', h + 'px');
+    };
+    updateAnnounceOffset();
+    window.addEventListener('resize', updateAnnounceOffset);
+    document.body.classList.add('has-announce');
+
+    document.getElementById('announce-close').addEventListener('click', () => {
+      localStorage.setItem(ANNOUNCE_KEY, '1');
+      document.getElementById('announce-bar').remove();
+      document.body.classList.remove('has-announce');
+      document.documentElement.style.setProperty('--announce-h', '0px');
+      window.removeEventListener('resize', updateAnnounceOffset);
+    });
+  }
+
   /* ── Comportamentos ─────────────────────────── */
   const navbar    = document.getElementById('navbar');
   const hamburger = document.getElementById('hamburger');

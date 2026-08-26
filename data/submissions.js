@@ -44,10 +44,10 @@ const SUBMISSION_MODALITIES = [
     id: "oral-poster",
     icone: "📄",
     titulo: "Comunicações Orais e Pôsteres",
-    prazo: "11 mai - 24 ago 2026",
-    prazo_iso_fim: "2026-08-24",
+    prazo: "11 mai - 28 ago 2026",
+    prazo_iso_fim: "2026-08-28",
     prorrogado: true,
-    prazo_nota: "Prazo original: 15 de agosto de 2026. <strong>Novo prazo final: 24 de agosto de 2026, às 23h59.</strong>",
+    prazo_nota: "Prazo original: 15 de agosto. Prorrogado até 24 de agosto. <strong>Última oportunidade excepcional: sexta-feira, 28 de agosto de 2026, até às 17h, horário de Brasília</strong> (horário de encerramento do sistema de submissão), exclusiva para quem ainda não enviou seu trabalho. Buscamos, com isso, oferecer condições equânimes a todos os interessados em participar.",
     campos: [
       "Título",
       "Autor(es)",
