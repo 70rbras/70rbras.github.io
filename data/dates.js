@@ -67,8 +67,8 @@ const DATES = [
   },
   {
     titulo:    "Divulgação de Aceites",
-    inicio:    "2026-09-15",
-    fim:       "2026-09-15",
+    inicio:    "2026-09-25",
+    fim:       "2026-09-29",
     descricao: "Notificação sobre aprovação de apresentações e trabalhos",
     icone:     "✉️"
   },
