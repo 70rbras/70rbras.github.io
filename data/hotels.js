@@ -7,7 +7,11 @@
 //   nome       → nome do hotel
 //   endereco   → endereço completo (texto exibido)
 //   mapaUrl    → link do Google Maps (endereco fica clicável)
+//   distancia  → (opcional) distância/tempo até o IMECC (ex.: "3 km · ~8 min de carro")
+//   rotaUrl    → (opcional) link de rota até o IMECC; se omitido, é gerado
+//                automaticamente a partir de "endereco" (modo carro)
 //   telefone   → telefone/WhatsApp para reservas (texto livre, ex.: "(19) 3749-8500")
+//   site       → (opcional) URL do site do hotel
 //   observacao → aviso mostrado em destaque (ex.: código/menção ao evento)
 //   beneficios → lista curta de itens inclusos (café da manhã, estacionamento etc.)
 //   tarifas    → lista de tipos de quarto:
@@ -34,6 +38,7 @@ const HOTELS = [
     nome:       "Hotel Matiz Barão Geraldo Express",
     endereco:   "Av. Albino J. B. de Oliveira, 1700 - Barão Geraldo, Campinas - SP, 13084-551",
     mapaUrl:    "https://maps.app.goo.gl/F7ADyTz2fYD89EGo9",
+    distancia:  "3 km · ~8 min de carro",
     telefone:   "(19) 3749-8500",
     observacao: "No momento da reserva, informe que é participante da 70ª Reunião Anual da RBras.",
     beneficios: ["Café da manhã incluso", "Estacionamento gratuito"],
@@ -42,6 +47,23 @@ const HOTELS = [
       { tipo: "Standard", cama: "Solteiro", precos: { 1: 297.15, 2: 365.40, 3: 433.65 } },
       { tipo: "Superior", cama: "Casal",    precos: { 1: 423.15, 2: 491.40 } },
       { tipo: "Superior", cama: "Solteiro", precos: { 1: 360.15, 2: 428.40, 3: 496.65 } }
+    ]
+  },
+  {
+    nome:       "Unibarão Hotel",
+    endereco:   "R. Antônio Galvão de O. Barros, 101 - Barão Geraldo, Campinas - SP, 13084-275",
+    mapaUrl:    "https://maps.app.goo.gl/QHpZa96QHarVHXdt5",
+    distancia:  "2,5 km · ~6 min de carro",
+    telefone:   "(19) 3308-6656 / (19) 3289-6768 · WhatsApp (19) 98706-6656",
+    site:       "https://www.unibaraohotel.com.br",
+    observacao: "No momento da reserva, informe que é participante da 70ª Reunião Anual da RBras. Check-in a partir das 13h · check-out até as 12h.",
+    beneficios: ["Café da manhã opcional (R$ 20/pessoa)", "Estacionamento fechado", "Ar-condicionado", "Wi-Fi", "Recepção 24h"],
+    tarifas: [
+      { tipo: "Individual", cama: "Solteiro", precos: { 1: 230.00 } },
+      { tipo: "Duplo",      cama: "Solteiro", precos: { 2: 320.00 } },
+      { tipo: "Duplo",      cama: "Casal",    precos: { 2: 320.00 } },
+      { tipo: "Triplo",     cama: "Solteiro", precos: { 3: 390.00 } },
+      { tipo: "Quádruplo",  cama: "Solteiro", precos: { 4: 430.00 } }
     ]
   }
 ];

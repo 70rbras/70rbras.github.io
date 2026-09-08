@@ -199,13 +199,21 @@ function renderHotels() {
     const beneficios = (hotel.beneficios || [])
       .map(b => `<span class="socio-tag">${b}</span>`).join(' ');
 
+    const IMECC_DEST = 'IMECC Unicamp, Rua Sérgio Buarque de Holanda, 651, Campinas - SP, 13083-859';
+    const rotaUrl = hotel.rotaUrl || `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(hotel.endereco)}&destination=${encodeURIComponent(IMECC_DEST)}&travelmode=driving`;
+
     return `
       <div class="venue-details reveal" style="margin-bottom:2.5rem;padding:2rem;border:1px solid rgba(26,56,112,.1);border-radius:16px">
         <h3 class="section-title" style="font-size:1.4rem;margin-bottom:.3rem">${hotel.nome}</h3>
         <p class="section-body" style="margin-bottom:.3rem">
           <a href="${hotel.mapaUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">${hotel.endereco}</a>
         </p>
-        <p class="section-body" style="margin-bottom:1rem">📞 ${hotel.telefone}</p>
+        ${hotel.distancia ? `<p class="section-body" style="margin-bottom:.3rem;color:var(--text-mid)">📍 ${hotel.distancia} do IMECC</p>` : ''}
+        <p class="section-body" style="margin-bottom:.3rem">
+          🚗 <a href="${rotaUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">Ver rota até o IMECC de carro</a>
+        </p>
+        <p class="section-body" style="margin-bottom:${hotel.site ? '.3rem' : '1rem'}">📞 ${hotel.telefone}</p>
+        ${hotel.site ? `<p class="section-body" style="margin-bottom:1rem">🌐 <a href="${hotel.site}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">${hotel.site.replace(/^https?:\/\//, '')}</a></p>` : ''}
         ${hotel.observacao ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:1.5rem"><strong>Atenção:</strong> ${hotel.observacao}</p>` : ''}
         <div class="tabela-wrapper">
           <table class="tabela-precos">
