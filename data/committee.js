@@ -47,5 +47,61 @@ const COMMITTEE = [
       { nome: "Vera Lucia Damasceno Tomazella",     instituicao: "UFSCar e UFPB",             foto: "assets/fotos/vera-400.png",                       lattes: "http://lattes.cnpq.br/8870556978317000", website: "" },
       { nome: "Victor Hugo Lachos",                 instituicao: "University of Connecticut", foto: "assets/fotos/victorhugo-400.png",                 lattes: "http://lattes.cnpq.br/5456626204155096", website: "" }
     ]
+  },
+  {
+    secao: "tese-doutorado",
+    titulo: "Comissão Avaliadora: Melhor Tese de Doutorado",
+    icone: "🎓",
+    membros: [
+      { nome: "Lucia Pereira Barroso",           instituicao: "IME - USP",  foto: null, lattes: "", website: "" },
+      { nome: "Mário de Castro Andrade Filho",   instituicao: "ICMC - USP", foto: null, lattes: "", website: "" },
+      { nome: "Paulo Justiniano Ribeiro Junior", instituicao: "UFPR",       foto: null, lattes: "", website: "" }
+    ]
+  },
+  {
+    secao: "dissertacao-mestrado",
+    titulo: "Comissão Avaliadora: Melhor Dissertação de Mestrado",
+    icone: "🎓",
+    membros: [
+      { nome: "Erlandson Ferreira Saraiva", instituicao: "UFMS",  foto: null, lattes: "", website: "" },
+      { nome: "Fernanda de Bastiani",       instituicao: "UFPE",  foto: null, lattes: "", website: "" },
+      { nome: "Guilherme Pumi",             instituicao: "UFRGS", foto: null, lattes: "", website: "" }
+    ]
+  },
+  {
+    secao: "trabalho-ic",
+    titulo: "Comissão Avaliadora: Melhor Trabalho de IC",
+    icone: "🔍",
+    membros: [
+      { nome: "Carlos Tadeu Pagani Zanini", instituicao: "UFRJ", foto: null, lattes: "", website: "" },
+      { nome: "Jodavid de Araujo Ferreira", instituicao: "UFPE", foto: null, lattes: "", website: "" },
+      { nome: "Lia Hanna Martins Morita",   instituicao: "UFMT", foto: null, lattes: "", website: "" }
+    ]
+  },
+  {
+    secao: "poster-co-local",
+    titulo: "Comissão Avaliadora (Pôster + CO) Local",
+    icone: "📋",
+    membros: [
+      { nome: "Ágatha Sacramento Rodrigues",   instituicao: "UFES",                      foto: null, lattes: "", website: "" },
+      { nome: "Alex Rodrigo dos Santos Sousa", instituicao: "UNICAMP",                   foto: null, lattes: "", website: "" },
+      { nome: "Anderson Ara",                  instituicao: "UFPR",                      foto: null, lattes: "", website: "" },
+      { nome: "Benilton Carvalho",             instituicao: "UNICAMP",                   foto: null, lattes: "", website: "" },
+      { nome: "Carlos Trucius",                instituicao: "UNICAMP",                   foto: null, lattes: "", website: "" },
+      { nome: "Daiane Zuanetti",               instituicao: "UFSCar",                    foto: null, lattes: "", website: "" },
+      { nome: "Diogo Rossoni",                 instituicao: "UEM",                       foto: null, lattes: "", website: "" },
+      { nome: "Fernanda Lang Schumacher",      instituicao: "The Ohio State University", foto: null, lattes: "", website: "" },
+      { nome: "Idemauro Antonio Rodrigues de Lara", instituicao: "Esalq-USP",            foto: null, lattes: "", website: "" },
+      { nome: "Julia Pavan Soler",              instituicao: "USP",                      foto: null, lattes: "", website: "" },
+      { nome: "Larissa Ávila Matos",            instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" },
+      { nome: "Lia Hanna",                      instituicao: "UFMT",                     foto: null, lattes: "", website: "" },
+      { nome: "Mariana Rodrigues Motta",        instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" },
+      { nome: "Rafael Maia",                    instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" },
+      { nome: "Rafael Moral",                   instituicao: "Maynooth University",      foto: null, lattes: "", website: "" },
+      { nome: "Samara Flamini Kiihl",           instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" },
+      { nome: "Vanderly Janeiro",               instituicao: "UEM",                      foto: null, lattes: "", website: "" },
+      { nome: "Vera Tomazella",                 instituicao: "UFSCar",                   foto: null, lattes: "", website: "" },
+      { nome: "Victor Freguglia",               instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" }
+    ]
   }
 ];
