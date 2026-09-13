@@ -53,9 +53,9 @@ const COMMITTEE = [
     titulo: "Comissão Avaliadora: Melhor Tese de Doutorado",
     icone: "🎓",
     membros: [
-      { nome: "Lucia Pereira Barroso",           instituicao: "IME - USP",  foto: null, lattes: "", website: "" },
-      { nome: "Mário de Castro Andrade Filho",   instituicao: "ICMC - USP", foto: null, lattes: "", website: "" },
-      { nome: "Paulo Justiniano Ribeiro Junior", instituicao: "UFPR",       foto: null, lattes: "", website: "" }
+      { nome: "Lucia Pereira Barroso",           instituicao: "IME - USP",  foto: "assets/fotos/lucia-175.png", lattes: "http://lattes.cnpq.br/2264376518383172", website: "" },
+      { nome: "Mário de Castro Andrade Filho",   instituicao: "ICMC - USP", foto: "assets/fotos/mariocastro-200.png", lattes: "http://lattes.cnpq.br/6518161034709249", website: "" },
+      { nome: "Paulo Justiniano Ribeiro Junior", instituicao: "UFPR",       foto: "assets/fotos/paulojustiniano-232.png", lattes: "http://lattes.cnpq.br/0852938701434556", website: "" }
     ]
   },
   {
@@ -63,9 +63,9 @@ const COMMITTEE = [
     titulo: "Comissão Avaliadora: Melhor Dissertação de Mestrado",
     icone: "🎓",
     membros: [
-      { nome: "Erlandson Ferreira Saraiva", instituicao: "UFMS",  foto: null, lattes: "", website: "" },
-      { nome: "Fernanda de Bastiani",       instituicao: "UFPE",  foto: null, lattes: "", website: "" },
-      { nome: "Guilherme Pumi",             instituicao: "UFRGS", foto: null, lattes: "", website: "" }
+      { nome: "Erlandson Ferreira Saraiva", instituicao: "UFMS",  foto: "assets/fotos/erlandson-220.png", lattes: "http://lattes.cnpq.br/1890753837146343", website: "" },
+      { nome: "Fernanda de Bastiani",       instituicao: "UFPE",  foto: "assets/fotos/fernandabastiani-253.png", lattes: "http://lattes.cnpq.br/5519064508209103", website: "" },
+      { nome: "Guilherme Pumi",             instituicao: "UFRGS", foto: "assets/fotos/guilhermepumi-400.png", lattes: "http://lattes.cnpq.br/0541756341423245", website: "" }
     ]
   },
   {
@@ -73,9 +73,9 @@ const COMMITTEE = [
     titulo: "Comissão Avaliadora: Melhor Trabalho de IC",
     icone: "🔍",
     membros: [
-      { nome: "Carlos Tadeu Pagani Zanini", instituicao: "UFRJ", foto: null, lattes: "", website: "" },
-      { nome: "Jodavid de Araujo Ferreira", instituicao: "UFPE", foto: null, lattes: "", website: "" },
-      { nome: "Lia Hanna Martins Morita",   instituicao: "UFMT", foto: null, lattes: "", website: "" }
+      { nome: "Carlos Tadeu Pagani Zanini", instituicao: "UFRJ", foto: "assets/fotos/carlostadeu-300.png", lattes: "http://lattes.cnpq.br/9272277541388166", website: "" },
+      { nome: "Jodavid de Araujo Ferreira", instituicao: "UFPE", foto: "assets/fotos/jodavid-300.png", lattes: "http://lattes.cnpq.br/4617170601890026", website: "" },
+      { nome: "Lia Hanna Martins Morita",   instituicao: "UFMT", foto: "assets/fotos/liahanna-400.jpg", lattes: "http://lattes.cnpq.br/8952048121396398", website: "" }
     ]
   },
   {
@@ -83,25 +83,25 @@ const COMMITTEE = [
     titulo: "Comissão Avaliadora (Pôster + CO) Local",
     icone: "📋",
     membros: [
-      { nome: "Ágatha Sacramento Rodrigues",   instituicao: "UFES",                      foto: null, lattes: "", website: "" },
-      { nome: "Alex Rodrigo dos Santos Sousa", instituicao: "UNICAMP",                   foto: null, lattes: "", website: "" },
-      { nome: "Anderson Ara",                  instituicao: "UFPR",                      foto: null, lattes: "", website: "" },
-      { nome: "Benilton Carvalho",             instituicao: "UNICAMP",                   foto: null, lattes: "", website: "" },
-      { nome: "Carlos Trucius",                instituicao: "UNICAMP",                   foto: null, lattes: "", website: "" },
-      { nome: "Daiane Zuanetti",               instituicao: "UFSCar",                    foto: null, lattes: "", website: "" },
-      { nome: "Diogo Rossoni",                 instituicao: "UEM",                       foto: null, lattes: "", website: "" },
-      { nome: "Fernanda Lang Schumacher",      instituicao: "The Ohio State University", foto: null, lattes: "", website: "" },
-      { nome: "Idemauro Antonio Rodrigues de Lara", instituicao: "Esalq-USP",            foto: null, lattes: "", website: "" },
-      { nome: "Julia Pavan Soler",              instituicao: "USP",                      foto: null, lattes: "", website: "" },
-      { nome: "Larissa Ávila Matos",            instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" },
-      { nome: "Lia Hanna",                      instituicao: "UFMT",                     foto: null, lattes: "", website: "" },
-      { nome: "Mariana Rodrigues Motta",        instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" },
-      { nome: "Rafael Maia",                    instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" },
-      { nome: "Rafael Moral",                   instituicao: "Maynooth University",      foto: null, lattes: "", website: "" },
-      { nome: "Samara Flamini Kiihl",           instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" },
-      { nome: "Vanderly Janeiro",               instituicao: "UEM",                      foto: null, lattes: "", website: "" },
-      { nome: "Vera Tomazella",                 instituicao: "UFSCar",                   foto: null, lattes: "", website: "" },
-      { nome: "Victor Freguglia",               instituicao: "UNICAMP",                  foto: null, lattes: "", website: "" }
+      { nome: "Ágatha Sacramento Rodrigues",   instituicao: "UFES",                      foto: "assets/fotos/agatha-400.png", lattes: "http://lattes.cnpq.br/3445977720574534", website: "" },
+      { nome: "Alex Rodrigo dos Santos Sousa", instituicao: "UNICAMP",                   foto: "assets/fotos/alex-400.png", lattes: "http://lattes.cnpq.br/6521094728394053", website: "" },
+      { nome: "Anderson Ara",                  instituicao: "UFPR",                      foto: "assets/fotos/anderson-400.png", lattes: "http://lattes.cnpq.br/8916772290938469", website: "" },
+      { nome: "Benilton Carvalho",             instituicao: "UNICAMP",                   foto: "assets/fotos/benilton-400.png", lattes: "http://lattes.cnpq.br/0897291971174045", website: "" },
+      { nome: "Carlos Trucius",                instituicao: "UNICAMP",                   foto: "assets/fotos/trucios-300.png", lattes: "http://lattes.cnpq.br/9315014843913122", website: "" },
+      { nome: "Daiane Zuanetti",               instituicao: "UFSCar",                    foto: "assets/fotos/daiane-150.png", lattes: "http://lattes.cnpq.br/8352484284929824", website: "" },
+      { nome: "Diogo Rossoni",                 instituicao: "UEM",                       foto: "assets/fotos/diogorossoni-400.png", lattes: "http://lattes.cnpq.br/7817639261124081", website: "" },
+      { nome: "Fernanda Lang Schumacher",      instituicao: "The Ohio State University", foto: "assets/fotos/fernanda-200.png", lattes: "http://lattes.cnpq.br/8132149083320545", website: "" },
+      { nome: "Idemauro Antonio Rodrigues de Lara", instituicao: "Esalq-USP",            foto: "assets/fotos/idemauro-400.png", lattes: "http://lattes.cnpq.br/2458007865506934", website: "" },
+      { nome: "Julia Pavan Soler",              instituicao: "USP",                      foto: "assets/fotos/juliapavan-400.png", lattes: "http://lattes.cnpq.br/2947693375237766", website: "" },
+      { nome: "Larissa Ávila Matos",            instituicao: "UNICAMP",                  foto: "assets/fotos/larissa-400.png", lattes: "http://lattes.cnpq.br/6330766834005870", website: "" },
+      { nome: "Lia Hanna",                      instituicao: "UFMT",                     foto: "assets/fotos/liahanna-400.jpg", lattes: "http://lattes.cnpq.br/8952048121396398", website: "" },
+      { nome: "Mariana Rodrigues Motta",        instituicao: "UNICAMP",                  foto: "assets/fotos/mariana-300.png", lattes: "http://lattes.cnpq.br/6624470698679448", website: "" },
+      { nome: "Rafael Maia",                    instituicao: "UNICAMP",                  foto: "assets/fotos/rafael-400.png", lattes: "http://lattes.cnpq.br/9151825716259032", website: "" },
+      { nome: "Rafael Moral",                   instituicao: "Maynooth University",      foto: "assets/fotos/rafaelmoral-400.png", lattes: "http://lattes.cnpq.br/8041441890541410", website: "" },
+      { nome: "Samara Flamini Kiihl",           instituicao: "UNICAMP",                  foto: "assets/fotos/samara-360.png", lattes: "http://lattes.cnpq.br/3841950980858699", website: "" },
+      { nome: "Vanderly Janeiro",               instituicao: "UEM",                      foto: "assets/fotos/vanderlyjaneiro-342.png", lattes: "http://lattes.cnpq.br/7910133462131658", website: "" },
+      { nome: "Vera Tomazella",                 instituicao: "UFSCar",                   foto: "assets/fotos/vera-400.png", lattes: "http://lattes.cnpq.br/8870556978317000", website: "" },
+      { nome: "Victor Freguglia",               instituicao: "UNICAMP",                  foto: "assets/fotos/victor-200.png", lattes: "http://lattes.cnpq.br/6306080581906246", website: "" }
     ]
   }
 ];
