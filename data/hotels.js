@@ -75,7 +75,8 @@ const HOTELS = [
     telefone:   "(19) 98150-9819",
     email:      "cpv@funcamp.unicamp.br",
     site:       "https://www.funcamp.unicamp.br/CPV",
-    observacao: "No momento da reserva, informe que é participante da 70ª Reunião Anual da RBras.",
+    observacao: "No momento da reserva, informe que é participante da 70ª Reunião Anual da RBras. Check-in a partir das 14h · check-out até as 12h.",
+    beneficios: ["Café da manhã incluso", "Estacionamento", "Wi-Fi gratuito", "Piscina externa"],
     tarifas: [
       { tipo: "Single Master", cama: "Solteiro",           precos: { 1: 320.00 } },
       { tipo: "Twin Master",   cama: "Solteiro (2 camas)", precos: { 1: 320.00, 2: 340.00 } },
