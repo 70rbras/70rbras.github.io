@@ -11,6 +11,7 @@
 //   rotaUrl    → (opcional) link de rota até o IMECC; se omitido, é gerado
 //                automaticamente a partir de "endereco" (modo carro)
 //   telefone   → telefone/WhatsApp para reservas (texto livre, ex.: "(19) 3749-8500")
+//   email      → (opcional) e-mail para reservas
 //   site       → (opcional) URL do site do hotel
 //   observacao → aviso mostrado em destaque (ex.: código/menção ao evento)
 //   beneficios → lista curta de itens inclusos (café da manhã, estacionamento etc.)
@@ -64,6 +65,22 @@ const HOTELS = [
       { tipo: "Duplo",      cama: "Casal",    precos: { 2: 320.00 } },
       { tipo: "Triplo",     cama: "Solteiro", precos: { 3: 390.00 } },
       { tipo: "Quádruplo",  cama: "Solteiro", precos: { 4: 430.00 } }
+    ]
+  },
+  {
+    nome:       "Casa do Professor Visitante",
+    endereco:   "Av. Érico Veríssimo, 1251 - Cidade Universitária, Campinas - SP, 13083-851",
+    mapaUrl:    "https://maps.app.goo.gl/xLekGEC6jJCFEGsV7",
+    distancia:  "700 m · ~10 min a pé",
+    telefone:   "(19) 98150-9819",
+    email:      "cpv@funcamp.unicamp.br",
+    site:       "https://www.funcamp.unicamp.br/CPV",
+    observacao: "No momento da reserva, informe que é participante da 70ª Reunião Anual da RBras.",
+    tarifas: [
+      { tipo: "Single Master", cama: "Solteiro",           precos: { 1: 320.00 } },
+      { tipo: "Twin Master",   cama: "Solteiro (2 camas)", precos: { 1: 320.00, 2: 340.00 } },
+      { tipo: "Casal Master",  cama: "Casal",              precos: { 1: 320.00, 2: 340.00 } },
+      { tipo: "Twin Standard", cama: "Solteiro (2 camas)", precos: { 1: 265.00, 2: 320.00 } }
     ]
   }
 ];

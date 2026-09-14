@@ -212,7 +212,8 @@ function renderHotels() {
         <p class="section-body" style="margin-bottom:.3rem">
           🚗 <a href="${rotaUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">Ver rota até o IMECC de carro</a>
         </p>
-        <p class="section-body" style="margin-bottom:${hotel.site ? '.3rem' : '1rem'}">📞 ${hotel.telefone}</p>
+        <p class="section-body" style="margin-bottom:${(hotel.site || hotel.email) ? '.3rem' : '1rem'}">📞 ${hotel.telefone}</p>
+        ${hotel.email ? `<p class="section-body" style="margin-bottom:${hotel.site ? '.3rem' : '1rem'}">✉️ <a href="mailto:${hotel.email}" style="color:var(--teal);font-weight:600">${hotel.email}</a></p>` : ''}
         ${hotel.site ? `<p class="section-body" style="margin-bottom:1rem">🌐 <a href="${hotel.site}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">${hotel.site.replace(/^https?:\/\//, '')}</a></p>` : ''}
         ${hotel.observacao ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:1.5rem"><strong>Atenção:</strong> ${hotel.observacao}</p>` : ''}
         <div class="tabela-wrapper">
