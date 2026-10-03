@@ -1060,6 +1060,9 @@ table.tabela-precos { width: 100%; border-collapse: collapse; background: var(--
 .tabela-precos td { padding: .85rem 1.25rem; vertical-align: middle; }
 .tabela-precos td.preco { text-align: center; font-weight: 600; color: var(--text-dark); white-space: nowrap; }
 .tabela-precos td.preco.l1 { background: rgba(214,168,24,.09); font-weight: 700; color: var(--blue); }
+.tabela-precos thead .th-encerrado { background: #7c8798; }
+.tabela-precos thead .th-encerrado .th-lote-periodo::after { content: " · encerrado"; }
+.tabela-precos td.preco.encerrado { color: var(--text-mid); opacity: .55; text-decoration: line-through; font-weight: 500; }
 .td-cat { display: flex; align-items: center; gap: .55rem; }
 .inscricoes-cta-btn { margin-top: 3rem; text-align: center; }
 .socio-tag {
@@ -1209,35 +1212,24 @@ body.nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(
   color: var(--text-dark);
 }
 
-/* ── Última chance: Pôster/Comunicação Oral ─── */
-.sub-lastcall-callout {
-  background: linear-gradient(135deg, rgba(234,200,48,.14) 0%, rgba(214,168,24,.1) 100%);
-  border: 1.5px solid rgba(214,168,24,.4);
-  border-left: 4px solid var(--gold);
+/* ── Modelos de pôster (download) ───────────── */
+.sub-modelos-callout {
+  background: linear-gradient(135deg, rgba(42,144,128,.08) 0%, rgba(56,170,170,.12) 100%);
+  border: 1.5px solid rgba(42,144,128,.3);
+  border-left: 4px solid var(--teal);
   border-radius: var(--radius);
   padding: 1.75rem 2rem;
   margin-bottom: 2.5rem;
   text-align: center;
 }
-.sub-lastcall-badge {
+.sub-modelos-badge {
   display: inline-block; margin-bottom: .7rem;
   font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
-  color: #5c4400; background: var(--gold-light);
+  color: var(--white); background: var(--teal);
   padding: .32em .95em; border-radius: 999px;
 }
-.sub-lastcall-callout h3 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--text-dark);
-  margin-bottom: .6rem;
-}
-.sub-lastcall-callout p {
-  font-size: .93rem;
-  line-height: 1.7;
-  color: var(--text-mid);
-  max-width: 66ch;
-  margin-inline: auto;
-}
+.sub-modelos-callout h3 { font-size: 1.15rem; font-weight: 800; color: var(--text-dark); margin-bottom: .6rem; }
+.sub-modelos-callout p  { font-size: .93rem; line-height: 1.7; color: var(--text-mid); max-width: 66ch; margin-inline: auto; }
 
 /* ── Abas: navegação ────────────────────────── */
 .sub-tabs-wrap {
@@ -1456,7 +1448,7 @@ body.nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(
   .sub-tab-btn.active { border-left-color: var(--teal); border-bottom: none; }
   .sub-tabs-panels { padding: 1.25rem; }
   .sub-rules-callout { padding: 1.25rem; }
-  .sub-lastcall-callout { padding: 1.25rem; }
+  .sub-modelos-callout { padding: 1.25rem; }
   .sub-summary-wrap { padding: 1.25rem; }
   .tab-areas-cols { columns: 1; }
 }

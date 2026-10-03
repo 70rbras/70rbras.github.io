@@ -61,11 +61,11 @@
               <th class="th-cat">Categoria</th>
               <th class="th-l1">
                 <span class="th-lote-num">1º Lote</span>
-                <span class="th-lote-periodo">11 mai - 30 set</span>
+                <span class="th-lote-periodo">11 mai - 2 out</span>
               </th>
               <th>
                 <span class="th-lote-num">2º Lote</span>
-                <span class="th-lote-periodo">1 out - 31 out</span>
+                <span class="th-lote-periodo">3 out - 31 out</span>
               </th>
               <th>
                 <span class="th-lote-num">3º Lote</span>
@@ -169,7 +169,7 @@
 <section id="inscricoes-cta">
   <div class="container reveal">
     <p class="cta-title">Pronto para se inscrever?</p>
-    <p class="cta-sub">O sistema de inscrições abre em 11 de maio de 2026. Reserve a data!</p>
+    <p class="cta-sub">2º Lote vigente até 31 de outubro. A partir de 1º de novembro valem os valores do 3º Lote.</p>
     <div class="cta-actions">
       <a href="#" class="btn btn--primary" style="font-size:1.05rem;padding:1em 2.4em" id="cta-inscricoes">Inscreva-se na 70ª RBras ↗</a>
       <a href="index.html" class="btn btn--outline" style="font-size:1.05rem;padding:1em 2.4em">← Voltar à página inicial</a>
@@ -209,15 +209,28 @@ function applyLoteStatus() {
   const el = document.getElementById('inscricoes-lote-status');
   if (!el) return;
   const hoje    = new Date();
-  const fimL1   = new Date('2026-09-30T23:59:59');
+  const fimL1   = new Date('2026-10-02T23:59:59');
   const fimL2   = new Date('2026-10-31T23:59:59');
   const inicioEvento = new Date('2026-11-23T00:00:00');
   const dias = (ate) => Math.max(0, Math.ceil((ate - hoje) / (1000*60*60*24)));
 
+  // Destaca a coluna do lote vigente e esmaece os lotes já encerrados
+  const loteAtual = hoje <= fimL1 ? 0 : hoje <= fimL2 ? 1 : 2;
+  document.querySelectorAll('.tabela-precos thead th:not(.th-cat)').forEach((th, i) => {
+    th.classList.toggle('th-l1', i === loteAtual);
+    th.classList.toggle('th-encerrado', i < loteAtual);
+  });
+  document.querySelectorAll('.tabela-precos tbody tr').forEach(tr => {
+    tr.querySelectorAll('td.preco').forEach((td, i) => {
+      td.classList.toggle('l1', i === loteAtual);
+      td.classList.toggle('encerrado', i < loteAtual);
+    });
+  });
+
   if (hoje <= fimL1) {
-    el.textContent = `1º Lote vigente (menor valor) até 30 de setembro de 2026 — faltam ${dias(fimL1)} dia${dias(fimL1)!==1?'s':''}.`;
+    el.textContent = `1º Lote vigente (menor valor) até 2 de outubro de 2026 - faltam ${dias(fimL1)} dia${dias(fimL1)!==1?'s':''}.`;
   } else if (hoje <= fimL2) {
-    el.textContent = `2º Lote vigente até 31 de outubro de 2026 — faltam ${dias(fimL2)} dia${dias(fimL2)!==1?'s':''}. O 1º Lote já se encerrou.`;
+    el.textContent = `2º Lote vigente até 31 de outubro de 2026 - faltam ${dias(fimL2)} dia${dias(fimL2)!==1?'s':''}. Os valores do 1º Lote se encerraram em 2 de outubro.`;
   } else if (hoje < inicioEvento) {
     el.textContent = `3º Lote vigente (valor cheio) até o início do evento, em 23 de novembro de 2026.`;
   } else {

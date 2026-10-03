@@ -48,6 +48,11 @@ const FAQ = [
     icone: "📝",
     perguntas: [
       {
+        id: "modelo-poster",
+        pergunta: "Meu pôster foi aceito. Existe um modelo oficial? Qual o tamanho?",
+        resposta: "Sim. Há modelos oficiais em PowerPoint e em LaTeX, que produzem o mesmo resultado. O arquivo final deve ser um PDF em tamanho <strong>A0 retrato (841 × 1189 mm)</strong>. Baixe o <a href=\"assets/documentos/modelos-poster-70rbras.zip\" download>pacote com os modelos (.zip)</a> ou consulte o <a href=\"assets/documentos/manual-poster-70rbras.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">manual de uso (PDF)</a>."
+      },
+      {
         id: "poster-pdf-obrigatorio",
         pergunta: "Estou realizando a submissão de um trabalho na modalidade pôster. O sistema de submissão obriga o envio de um arquivo PDF, mas as instruções indicam que o preenchimento do formulário da plataforma é suficiente. Como proceder?",
         resposta: "Para contornar a limitação do sistema de submissões sem complicação extra, envie apenas um PDF contendo o título do trabalho e autores. Este arquivo não será considerado pela Comissão de Avaliação, mas permitirá a conclusão imediata da sua submissão."

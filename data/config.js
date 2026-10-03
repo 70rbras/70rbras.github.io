@@ -17,7 +17,8 @@ const CONFIG = {
     site_rbras:     "https://www.rbras.org.br",
     link_inscricoes:    "https://app.ciente.studio/70-rbras/subscription",
     link_submissao:     "https://app.ciente.studio/70-rbras/submissions",
-    link_area_inscrito: "https://app.ciente.studio/"
+    link_area_inscrito: "https://app.ciente.studio/",
+    link_modelos_poster: "assets/documentos/modelos-poster-70rbras.zip"   // vazio = bloco oculto em cientifico.html
   },
   redes_sociais: {
     instagram: "https://www.instagram.com/70rbras"

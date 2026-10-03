@@ -35,7 +35,7 @@ const DATES = [
     titulo:    "Submissão de Trabalhos",
     inicio:    "2026-05-11",
     fim:       "2026-08-28",
-    descricao: "Comunicação Oral e Pôster: última oportunidade excepcional até 28/ago, 17h (horário de Brasília)",
+    descricao: "Comunicação Oral e Pôster: encerrada em 28/ago",
     icone:     "📝",
     prorrogado: true,
     link:      "cientifico.html#submissoes"
@@ -44,7 +44,7 @@ const DATES = [
     titulo:    "Concurso Tese/Dissertação/IC",
     inicio:    "2026-05-11",
     fim:       "2026-08-24",
-    descricao: "Submissão de teses, dissertações e trabalhos de IC para avaliação e premiação: prazo prorrogado até 24/ago (23h59)",
+    descricao: "Submissão de teses, dissertações e trabalhos de IC para avaliação e premiação: encerrada em 24/ago",
     icone:     "🏅",
     prorrogado: true,
     link:      "cientifico.html#submissoes"
@@ -60,8 +60,8 @@ const DATES = [
   {
     titulo:    "Inscrições com Desconto",
     inicio:    "2026-05-11",
-    fim:       "2026-09-30",
-    descricao: "1º Lote",
+    fim:       "2026-10-02",
+    descricao: "1º Lote: encerrado em 2/out",
     icone:     "💳",
     link:      "inscricoes.html"
   },
@@ -73,8 +73,24 @@ const DATES = [
     icone:     "✉️"
   },
   {
+    titulo:    "Pagamento da Inscrição de Apresentadores",
+    inicio:    "2026-09-25",
+    fim:       "2026-10-15",
+    descricao: "Autores com trabalho aceito devem estar com a inscrição paga para entrar na programação final",
+    icone:     "💰",
+    link:      "inscricoes.html"
+  },
+  {
+    titulo:    "Resultado do Fundo - Auxílio Estudante",
+    inicio:    "2026-10-15",
+    fim:       "2026-10-15",
+    descricao: "Previsão de envio do resultado por e-mail aos solicitantes",
+    icone:     "📬",
+    link:      "fundo-estudante.html"
+  },
+  {
     titulo:    "Inscrições sem Desconto",
-    inicio:    "2026-10-01",
+    inicio:    "2026-10-03",
     fim:       "2026-10-31",
     descricao: "2º Lote",
     icone:     "🖊️",
