@@ -5,17 +5,21 @@
 //
 // Campos:
 //   nome       → nome do hotel
+//   tipo       → (opcional) selo exibido ao lado do nome (ex.: "Airbnb")
 //   endereco   → endereço completo (texto exibido)
 //   mapaUrl    → link do Google Maps (endereco fica clicável)
 //   distancia  → (opcional) distância/tempo até o IMECC (ex.: "3 km · ~8 min de carro")
 //   rotaUrl    → (opcional) link de rota até o IMECC; se omitido, é gerado
-//                automaticamente a partir de "endereco" (modo carro)
-//   telefone   → telefone/WhatsApp para reservas (texto livre, ex.: "(19) 3749-8500")
+//                automaticamente a partir de "endereco"
+//   rotaModo   → (opcional) "walking" para rota a pé; padrão é de carro
+//   telefone   → (opcional) telefone/WhatsApp para reservas (texto livre, ex.: "(19) 3749-8500")
 //   email      → (opcional) e-mail para reservas
 //   site       → (opcional) URL do site do hotel
+//   instagram  → (opcional) perfil do Instagram, sem "@" (ex.: "acasapiramide")
+//   reservaUrl → (opcional) link de reserva online (ex.: Airbnb); exibido como botão
 //   observacao → aviso mostrado em destaque (ex.: código/menção ao evento)
 //   beneficios → lista curta de itens inclusos (café da manhã, estacionamento etc.)
-//   tarifas    → lista de tipos de quarto:
+//   tarifas    → (opcional) lista de tipos de quarto; se omitida, a tabela não aparece:
 //                  tipo   → nome do tipo de quarto (ex.: "Standard", "Superior")
 //                  cama   → descrição da cama (ex.: "Casal", "Solteiro")
 //                  precos → valores por número de hóspedes: { 1: valor, 2: valor, 3: valor }
@@ -83,5 +87,16 @@ const HOTELS = [
       { tipo: "Casal Master",  cama: "Casal",              precos: { 1: 320.00, 2: 340.00 } },
       { tipo: "Twin Standard", cama: "Solteiro (2 camas)", precos: { 1: 265.00, 2: 320.00 } }
     ]
+  },
+  {
+    nome:       "Casa Pirâmide de Vidro",
+    tipo:       "Airbnb",
+    endereco:   "R. Aristídes Lôbo, 1200 - Cidade Universitária, Campinas - SP, 13083-060",
+    mapaUrl:    "https://maps.app.goo.gl/APEgRr1viA5Dmym46",
+    distancia:  "850 m · ~11 min a pé",
+    rotaModo:   "walking",
+    instagram:  "acasapiramide",
+    reservaUrl: "https://www.airbnb.com/pr/casa-da-piramide",
+    observacao: "No momento da reserva, informe que é participante da 70ª Reunião Anual da RBras. Reservas e consulta de valores diretamente pelo Airbnb."
   }
 ];

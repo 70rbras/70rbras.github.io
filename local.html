@@ -107,7 +107,7 @@
       <div class="inscricoes-info-box">
         <div class="info-box-icon">🏨</div>
         <h4>Hospedagem</h4>
-        <p>Confira a lista de <a href="#hospedagem" style="color:var(--teal);font-weight:600">hotéis parceiros</a> próximos ao campus. Campinas também oferece ampla rede hoteleira em diferentes faixas de preço.</p>
+        <p>Confira as <a href="#hospedagem" style="color:var(--teal);font-weight:600">opções de hospedagem</a> próximas ao campus. Campinas também oferece ampla rede hoteleira em diferentes faixas de preço.</p>
       </div>
 
       <div class="inscricoes-info-box">
@@ -125,7 +125,7 @@
   <div class="container">
     <div class="section-header reveal">
       <span class="tag tag--blue">Onde Ficar</span>
-      <h2 class="section-title" style="margin-top:1rem">Hotéis <span>Parceiros</span></h2>
+      <h2 class="section-title" style="margin-top:1rem">Opções de <span>Hospedagem</span></h2>
     </div>
     <div id="hotels-list" style="margin-top:3rem"></div>
   </div>
@@ -184,10 +184,11 @@ function renderHotels() {
   if (!container || typeof HOTELS === 'undefined') return;
 
   container.innerHTML = HOTELS.map(hotel => {
-    const maxPessoas = Math.max(...hotel.tarifas.map(t => Math.max(...Object.keys(t.precos).map(Number))));
+    const tarifas = hotel.tarifas || [];
+    const maxPessoas = tarifas.length ? Math.max(...tarifas.map(t => Math.max(...Object.keys(t.precos).map(Number)))) : 0;
     const colunas = Array.from({ length: maxPessoas }, (_, i) => i + 1);
 
-    const linhas = hotel.tarifas.map(t => {
+    const linhas = tarifas.map(t => {
       const celulas = colunas.map(n =>
         `<td class="preco">${t.precos[n] !== undefined ? formatBRL(t.precos[n]) : '—'}</td>`
       ).join('');
@@ -200,28 +201,37 @@ function renderHotels() {
       .map(b => `<span class="socio-tag">${b}</span>`).join(' ');
 
     const IMECC_DEST = 'IMECC Unicamp, Rua Sérgio Buarque de Holanda, 651, Campinas - SP, 13083-859';
-    const rotaUrl = hotel.rotaUrl || `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(hotel.endereco)}&destination=${encodeURIComponent(IMECC_DEST)}&travelmode=driving`;
+    const aPe = hotel.rotaModo === 'walking';
+    const rotaUrl = hotel.rotaUrl || `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(hotel.endereco)}&destination=${encodeURIComponent(IMECC_DEST)}&travelmode=${aPe ? 'walking' : 'driving'}`;
+
+    const contatos = [
+      hotel.telefone  ? `📞 ${hotel.telefone}` : '',
+      hotel.email     ? `✉️ <a href="mailto:${hotel.email}" style="color:var(--teal);font-weight:600">${hotel.email}</a>` : '',
+      hotel.site      ? `🌐 <a href="${hotel.site}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">${hotel.site.replace(/^https?:\/\//, '')}</a>` : '',
+      hotel.instagram ? `📷 <a href="https://www.instagram.com/${hotel.instagram}/" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">@${hotel.instagram}</a>` : ''
+    ].filter(Boolean).map((c, i, arr) =>
+      `<p class="section-body" style="margin-bottom:${i === arr.length - 1 ? '1rem' : '.3rem'}">${c}</p>`
+    ).join('');
 
     return `
       <div class="venue-details reveal" style="margin-bottom:2.5rem;padding:2rem;border:1px solid rgba(26,56,112,.1);border-radius:16px">
-        <h3 class="section-title" style="font-size:1.4rem;margin-bottom:.3rem">${hotel.nome}</h3>
+        <h3 class="section-title" style="font-size:1.4rem;margin-bottom:.3rem">${hotel.nome}${hotel.tipo ? ` <span class="tag tag--teal" style="font-size:.7rem;vertical-align:middle;margin-left:.4rem">${hotel.tipo}</span>` : ''}</h3>
         <p class="section-body" style="margin-bottom:.3rem">
           <a href="${hotel.mapaUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">${hotel.endereco}</a>
         </p>
         ${hotel.distancia ? `<p class="section-body" style="margin-bottom:.3rem;color:var(--text-mid)">📍 ${hotel.distancia} do IMECC</p>` : ''}
         <p class="section-body" style="margin-bottom:.3rem">
-          🚗 <a href="${rotaUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">Ver rota até o IMECC de carro</a>
+          ${aPe ? '🚶' : '🚗'} <a href="${rotaUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">Ver rota até o IMECC ${aPe ? 'a pé' : 'de carro'}</a>
         </p>
-        <p class="section-body" style="margin-bottom:${(hotel.site || hotel.email) ? '.3rem' : '1rem'}">📞 ${hotel.telefone}</p>
-        ${hotel.email ? `<p class="section-body" style="margin-bottom:${hotel.site ? '.3rem' : '1rem'}">✉️ <a href="mailto:${hotel.email}" style="color:var(--teal);font-weight:600">${hotel.email}</a></p>` : ''}
-        ${hotel.site ? `<p class="section-body" style="margin-bottom:1rem">🌐 <a href="${hotel.site}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">${hotel.site.replace(/^https?:\/\//, '')}</a></p>` : ''}
+        ${contatos}
         ${hotel.observacao ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:1.5rem"><strong>Atenção:</strong> ${hotel.observacao}</p>` : ''}
-        <div class="tabela-wrapper">
+        ${tarifas.length ? `<div class="tabela-wrapper">
           <table class="tabela-precos">
             <thead><tr><th class="th-cat">Tipo de quarto</th>${thead}</tr></thead>
             <tbody>${linhas}</tbody>
           </table>
-        </div>
+        </div>` : ''}
+        ${hotel.reservaUrl ? `<a href="${hotel.reservaUrl}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Reservar no ${hotel.tipo || 'site'} ↗</a>` : ''}
         ${beneficios ? `<div style="margin-top:1.25rem;display:flex;gap:.5rem;flex-wrap:wrap">${beneficios}</div>` : ''}
       </div>
     `;
