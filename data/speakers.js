@@ -10,6 +10,14 @@
 
 const SPEAKERS = [
   {
+    nome:        "María Gabriela Cendoya",
+    instituicao: "Universidad Nacional de Mar del Plata (Argentina)",
+    tipo:        "Conferencista",
+    tema:        "Título a ser divulgado em breve",
+    foto:        "assets/fotos/cendoya-302.png",
+    resumo:      "María Gabriela Cendoya é Professora de Estatística na Facultad de Ciencias Agrarias da Universidad Nacional de Mar del Plata, Argentina, e Presidente da International Biometric Society (IBS) no biênio 2026-2027.<br>O resumo da conferência será divulgado em breve."
+  },
+  {
     nome:        "Amanda Merian Freitas Mendes",
     instituicao: "Universidade Federal do Paraná (UFPR)",
     tipo:        "Palestrante",

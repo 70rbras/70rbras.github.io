@@ -34,7 +34,7 @@ const SCHEDULE = [
       {
         horario: "11:30",
         itens: [
-          { tipo: "conf",    titulo: "C-1",                        fim: "12:30", descricao: "Conferência convidada", local: "Auditório Principal" }
+          { tipo: "conf",    titulo: "C-1",                        fim: "12:30", descricao: "Conferência de Abertura - International Biometric Society (María Gabriela Cendoya)", local: "Auditório Principal" }
         ]
       },
       {
