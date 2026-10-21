@@ -21,7 +21,7 @@ const DATES = [
     fim:       "2026-09-15",
     descricao: "Período de indicação ao Prêmio Destaque RBras",
     icone:     "🏆",
-    link:      "premio.html"
+    link:      "premios.html#destaque"
   },
   {
     titulo:    "Fundo de Financiamento - Auxílio Estudante",

@@ -98,6 +98,13 @@
   </svg>
 </section>
 
+<!-- ─── PRÊMIOS: faixa de anúncio (gerada via data/premios.js; oculta sem premiados) ── -->
+<section id="premios-home" hidden>
+  <div class="container">
+    <div class="premios-home-inner" id="premios-home-inner"></div>
+  </div>
+</section>
+
 <!-- ─── WASA SATÉLITE ─────────────────────────────── -->
 <section id="wasa-home">
   <div class="container">
@@ -273,6 +280,7 @@
 <script src="data/config.js"></script>
 <script src="data/speakers.js"></script>
 <script src="data/sponsors.js"></script>
+<script src="data/premios.js"></script>
 <script src="assets/footer.js"></script>
 
 <script>
@@ -424,11 +432,44 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') fecharModalEmBr
 })();
 
 /* ═══════════════════════════════════════════════
+   PRÊMIOS - FAIXA DE ANÚNCIO
+════════════════════════════════════════════════ */
+function renderPremiosHome() {
+  const sec = document.getElementById('premios-home');
+  const el  = document.getElementById('premios-home-inner');
+  if (!sec || !el || typeof PREMIOS === 'undefined') return;
+  const anunciados = PREMIOS.filter(p => p.premiado);
+  if (!anunciados.length) return;
+
+  // Card principal: Prêmio Destaque, se anunciado; senão o primeiro anunciado
+  const main = anunciados.find(p => p.id === 'destaque') || anunciados[0];
+  const w = main.premiado;
+  const iniciais = w.nome.split(' ').filter(x => !['Prof.','Profa.','Dr.','Dra.'].includes(x) && x.length > 2);
+  const foto = w.foto
+    ? `<img src="${w.foto}" alt="${w.nome}">`
+    : (iniciais[0][0] + iniciais[iniciais.length - 1][0]).toUpperCase();
+  const outros = anunciados.filter(p => p !== main)
+    .map(p => `<strong>${p.titulo}:</strong> ${p.premiado.nome}`).join(' · ');
+
+  el.innerHTML = `
+    <div class="premios-home-foto">${foto}</div>
+    <div>
+      <span class="premios-home-eyebrow">🏆 ${main.titulo} 2026</span>
+      <div class="premios-home-nome">${w.nome}</div>
+      ${w.instituicao ? `<div class="premios-home-inst">${w.instituicao}</div>` : ''}
+      ${outros ? `<div class="premios-home-outros">${outros}</div>` : ''}
+    </div>
+    <a href="premios.html#premiados" class="btn btn--gold">Conheça os Prêmios RBras &#8594;</a>`;
+  sec.hidden = false;
+}
+
+/* ═══════════════════════════════════════════════
    BOOT
 ════════════════════════════════════════════════ */
 applyConfig();
 renderSpeakersNames();
 renderSponsors();
+renderPremiosHome();
 revealAll();
 </script>
 </body>

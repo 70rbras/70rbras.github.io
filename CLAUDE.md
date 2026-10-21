@@ -30,7 +30,8 @@ site-rbras-claude/
 ├── logistica.html        # Local, como chegar, hospedagem, gráficas (atalhos no topo)
 ├── local.html            # Apenas redireciona para logistica.html (preserva #ancora); não editar
 ├── faq.html              # Perguntas frequentes
-├── premio.html           # Prêmio Destaque
+├── premios.html          # Prêmios RBras: vitrine Premiados 2026 + Destaque + Concurso Tese/Dissertação/IC
+├── premio.html           # Apenas redireciona para premios.html (preserva #ancora); não editar
 ├── fundo-estudante.html  # Fundo de Financiamento ao estudante
 ├── wasa.html             # WASA (evento satélite)
 ├── LEIAME.md             # Guia de manutenção em português
@@ -44,6 +45,7 @@ site-rbras-claude/
 │   ├── schedule.js       # Programação dos 3 dias
 │   ├── committee.js      # Comissões organizadora e científica
 │   ├── sponsors.js       # Patrocinadores/apoiadores (grade única, sem tiers)
+│   ├── premios.js        # Prêmios e premiados (premios.html + faixa #premios-home na Home)
 │   ├── submissions.js    # Modalidades e regras de submissão
 │   ├── faq.js            # Perguntas frequentes por categoria
 │   ├── hotels.js         # Hospedagem (logistica.html#hospedagem)
@@ -228,6 +230,21 @@ Grade única, sem tiers visíveis; `quebraAntes: true` força nova linha.
 - **Gráficas:** Connect Print (selo "Parceira", banner 0,80×1,20 m R$ 85,00 e 0,90×1,20 m R$ 87,50; arquivos preferencialmente via WhatsApp) e Cromarte Gráfica Digital (selo "Parceira", 2 WhatsApp, pôster 0,90×1,20 m em 5 materiais de R$ 35,90 a R$ 239,90, prazo 1 a 2 dias úteis; não trabalha com lona, oferece papéis promocionais recicláveis)
 - Pôster oficial: A0 retrato (841×1189 mm); as duas opções de banner da Connect Print foram mantidas por decisão da organização
 - Links para `#graficas`: menu Logística, rodapé, botão "Onde imprimir" em `cientifico.html`, FAQ "Onde posso imprimir meu pôster?"
+
+---
+
+## 11c. Prêmios (data/premios.js)
+
+Todos os prêmios centralizados em `premios.html` (decisão out/2026). `premiado: null` = card "A anunciar"; preenchido = card revelado + faixa dourada `#premios-home` na Home (logo após o Hero, oculta se nenhum premiado).
+
+| Prêmio | Premiado(a) |
+|--------|-------------|
+| Destaque RBras 2026 | Prof. Dr. Dalton Francisco de Andrade (UFSC), anunciado em 21/10/2026; Lattes 8698702467925654; foto assets/fotos/dalton-andrade-400.jpg (recorte de foto 2072×1354 enviada pela organização) |
+| Melhor Tese de Doutorado | a anunciar |
+| Melhor Dissertação de Mestrado | a anunciar |
+| Melhor Trabalho de IC | a anunciar |
+
+Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov); texto usa "durante a 70ª RBras". Menu: "🏆 Prêmios RBras" com selo `.nav-new-badge` "Novo".
 
 ---
 

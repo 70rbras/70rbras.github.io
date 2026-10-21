@@ -51,12 +51,12 @@
 
       <!-- Científico (dropdown) -->
       <li class="nav-dropdown">
-        <a href="${root}cientifico.html" class="nav-dropdown-toggle"${dropdownActiveClass('cientifico.html', 'premio.html', 'fundo-estudante.html')}>Científico ${chev}</a>
+        <a href="${root}cientifico.html" class="nav-dropdown-toggle"${dropdownActiveClass('cientifico.html', 'premios.html', 'fundo-estudante.html')}>Científico ${chev}</a>
         <ul class="nav-dropdown-menu">
           <li><a href="${root}cientifico.html#datas">Datas Importantes</a></li>
           <li><a href="${root}cientifico.html#submissoes">Submissões</a></li>
           <li><a href="${root}cientifico.html#comissao">Comissões</a></li>
-          <li><a href="${root}premio.html"${activeClass('premio.html')} style="color:var(--gold-light)">🏆 Prêmio Destaque</a></li>
+          <li><a href="${root}premios.html"${activeClass('premios.html')} style="color:var(--gold-light)">🏆 Prêmios RBras <span class="nav-new-badge">Novo</span></a></li>
           <li><a href="${root}fundo-estudante.html"${activeClass('fundo-estudante.html')} style="color:var(--gold-light)">🎓 Fundo de Financiamento</a></li>
         </ul>
       </li>

@@ -16,6 +16,7 @@ site-rbras-claude/
 │   ├── dates.js        ← datas importantes (prazos, inscrições)
 │   ├── schedule.js     ← programação dos 3 dias
 │   ├── committee.js    ← comissão organizadora
+│   ├── premios.js      ← prêmios e premiados (premios.html + faixa na Home)
 │   └── sponsors.js     ← patrocinadores e apoiadores
 └── assets/
     └── fotos/          ← fotos dos palestrantes (JPG/PNG, 400×400 px)
@@ -89,6 +90,16 @@ Cada tier do array `SPONSORS` tem:
 - `patrocinadores` → lista de `{ nome, logo, url }`
   - `logo`: caminho para a imagem (ex: `"assets/logos/fapesp.png"`) ou `""` para exibir só o nome
   - `url`: link ao clicar no logo
+
+---
+
+### Prêmios (`data/premios.js`)
+Um objeto por prêmio no array `PREMIOS` (Destaque, Tese, Dissertação, IC).
+- Para anunciar um vencedor, troque `premiado: null` por `{ nome, instituicao, foto, lattes, ... }`
+  - Destaque: campo `texto` (array de parágrafos)
+  - Tese/Dissertação/IC: campos `trabalho` e `orientador`
+- Assim que houver um premiado, a faixa dourada aparece sozinha na Home e o card sai de "A anunciar"
+- `premio.html` antigo apenas redireciona para `premios.html`
 
 ---
 
