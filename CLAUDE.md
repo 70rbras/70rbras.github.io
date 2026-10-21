@@ -225,7 +225,7 @@ Grade única, sem tiers visíveis; `quebraAntes: true` força nova linha.
 ## 11b. Logística (data/hotels.js, data/graficas.js)
 
 - **Hospedagem:** Hotel Matiz Barão Geraldo Express, Unibarão Hotel, Casa do Professor Visitante, Casa Pirâmide de Vidro (Airbnb)
-- **Gráficas:** Connect Print (selo "Parceira", banner 0,80×1,20 m R$ 85,00 e 0,90×1,20 m R$ 87,50; arquivos preferencialmente via WhatsApp) e Cromarte Gráfica Digital (sem preços; contatar mencionando o evento)
+- **Gráficas:** Connect Print (selo "Parceira", banner 0,80×1,20 m R$ 85,00 e 0,90×1,20 m R$ 87,50; arquivos preferencialmente via WhatsApp) e Cromarte Gráfica Digital (selo "Parceira", 2 WhatsApp, pôster 0,90×1,20 m em 5 materiais de R$ 35,90 a R$ 239,90, prazo 1 a 2 dias úteis; não trabalha com lona, oferece papéis promocionais recicláveis)
 - Pôster oficial: A0 retrato (841×1189 mm); as duas opções de banner da Connect Print foram mantidas por decisão da organização
 - Links para `#graficas`: menu Logística, rodapé, botão "Onde imprimir" em `cientifico.html`, FAQ "Onde posso imprimir meu pôster?"
 

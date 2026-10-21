@@ -271,10 +271,10 @@ function renderGraficas() {
     const mapaUrl = g.mapaUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(g.endereco)}`;
     const aPe = g.rotaModo === 'walking';
     const rotaUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(g.endereco)}&destination=${encodeURIComponent(IMECC_DEST)}&travelmode=${aPe ? 'walking' : 'driving'}`;
-    const waDigits = g.whatsapp ? g.whatsapp.replace(/\D/g, '') : '';
+    const whatsapps = [].concat(g.whatsapp || []);
 
     const contatos = [
-      g.whatsapp  ? `💬 WhatsApp ${link(`https://wa.me/55${waDigits}`, g.whatsapp, true)}` : '',
+      ...whatsapps.map(w => `💬 WhatsApp ${link(`https://wa.me/55${w.replace(/\D/g, '')}`, w, true)}`),
       g.telefone  ? `📞 ${g.telefone}` : '',
       g.email     ? `✉️ ${link(`mailto:${g.email}`, g.email)}` : '',
       g.site      ? `🌐 ${link(g.site, g.site.replace(/^https?:\/\//, ''), true)}` : '',
@@ -284,7 +284,7 @@ function renderGraficas() {
     ).join('');
 
     const precos = (g.precos || []).map(p =>
-      `<tr><td><div class="td-cat">${p.item}</div></td><td class="preco">${formatBRL(p.valor)}</td></tr>`
+      `<tr><td><div class="td-cat">${p.item}</div>${p.detalhe ? `<div style="font-size:.8rem;color:var(--text-mid);margin-top:.2rem">${p.detalhe}</div>` : ''}</td><td class="preco">${formatBRL(p.valor)}</td></tr>`
     ).join('');
 
     return `
@@ -296,6 +296,8 @@ function renderGraficas() {
           ${aPe ? '🚶' : '🚗'} ${link(rotaUrl, `Ver rota até o IMECC ${aPe ? 'a pé' : 'de carro'}`, true)}
         </p>
         ${contatos}
+        ${g.prazo ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:.5rem"><strong>Prazo:</strong> ${g.prazo}</p>` : ''}
+        ${g.materiais ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:.5rem"><strong>Materiais:</strong> ${g.materiais}</p>` : ''}
         ${g.envio ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:.5rem"><strong>Envio dos arquivos:</strong> ${g.envio}</p>` : ''}
         ${g.observacao ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:1.5rem"><strong>Atenção:</strong> ${g.observacao}</p>` : ''}
         ${precos ? `<div class="tabela-wrapper">
