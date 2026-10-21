@@ -5,7 +5,9 @@
 (function () {
   /* ── Detecta a página atual ─────────────────── */
   const raw  = window.location.pathname;
-  const page = raw.split('/').pop() || 'index.html';
+  // Normaliza para "nome.html", inclusive em URLs sem extensão (ex.: /logistica)
+  const last = raw.split('/').pop() || 'index.html';
+  const page = last.endsWith('.html') ? last : last + '.html';
 
   function isPage(name) {
     if (name === 'index.html') {
@@ -39,12 +41,11 @@
 
       <!-- Evento (dropdown) -->
       <li class="nav-dropdown">
-        <a href="${root}index.html#sobre" class="nav-dropdown-toggle"${dropdownActiveClass('index.html', 'local.html')}>Evento ${chev}</a>
+        <a href="${root}index.html#sobre" class="nav-dropdown-toggle"${dropdownActiveClass('index.html', 'palestrantes.html', 'programacao.html')}>Evento ${chev}</a>
         <ul class="nav-dropdown-menu">
           <li><a href="${root}index.html#sobre">Sobre</a></li>
           <li><a href="${root}palestrantes.html"${activeClass('palestrantes.html')}>Convidados</a></li>
           <li><a href="${root}programacao.html"${activeClass('programacao.html')}>Programação</a></li>
-          <li><a href="${root}local.html"${activeClass('local.html')}>Local</a></li>
         </ul>
       </li>
 
@@ -62,6 +63,17 @@
 
       <!-- Inscrições -->
       <li><a href="${root}inscricoes.html"${activeClass('inscricoes.html')}>Inscrições</a></li>
+
+      <!-- Logística (dropdown) -->
+      <li class="nav-dropdown">
+        <a href="${root}logistica.html" class="nav-dropdown-toggle"${dropdownActiveClass('logistica.html')}>Logística ${chev}</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="${root}logistica.html#local">Local do Evento</a></li>
+          <li><a href="${root}logistica.html#como-chegar">Como Chegar</a></li>
+          <li><a href="${root}logistica.html#hospedagem">Hospedagem</a></li>
+          <li><a href="${root}logistica.html#graficas">Gráficas</a></li>
+        </ul>
+      </li>
 
       <!-- FAQ -->
       <li><a href="${root}faq.html"${activeClass('faq.html')}>FAQ</a></li>

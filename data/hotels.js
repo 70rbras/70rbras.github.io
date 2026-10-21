@@ -1,6 +1,6 @@
 // ─── HOTÉIS PARCEIROS ─────────────────────────────────────────────────────
 // Para adicionar um novo hotel, copie o bloco abaixo e cole como novo item
-// do array HOTELS. Nada mais precisa ser editado - a página local.html
+// do array HOTELS. Nada mais precisa ser editado - a página logistica.html
 // renderiza a lista e as tabelas de tarifas automaticamente.
 //
 // Campos:

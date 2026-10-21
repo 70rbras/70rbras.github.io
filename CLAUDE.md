@@ -26,6 +26,13 @@ site-rbras-claude/
 ├── palestrantes.html     # Página dedicada: cards completos + modal de bios
 ├── programacao.html      # Página dedicada: grade completa dos 3 dias
 ├── inscricoes.html       # Página dedicada: tabela de valores, lotes, benefícios
+├── cientifico.html       # Datas, submissões (modelos de pôster), comissões
+├── logistica.html        # Local, como chegar, hospedagem, gráficas (atalhos no topo)
+├── local.html            # Apenas redireciona para logistica.html (preserva #ancora); não editar
+├── faq.html              # Perguntas frequentes
+├── premio.html           # Prêmio Destaque
+├── fundo-estudante.html  # Fundo de Financiamento ao estudante
+├── wasa.html             # WASA (evento satélite)
 ├── LEIAME.md             # Guia de manutenção em português
 ├── CNAME                 # Configuração de domínio (70rbras.org)
 ├── CLAUDE.md             # Este arquivo de memória
@@ -36,11 +43,19 @@ site-rbras-claude/
 │   ├── speakers.js       # Palestrantes e resumos das palestras
 │   ├── schedule.js       # Programação dos 3 dias
 │   ├── committee.js      # Comissões organizadora e científica
-│   └── sponsors.js       # Patrocinadores por tier
+│   ├── sponsors.js       # Patrocinadores/apoiadores (grade única, sem tiers)
+│   ├── submissions.js    # Modalidades e regras de submissão
+│   ├── faq.js            # Perguntas frequentes por categoria
+│   ├── hotels.js         # Hospedagem (logistica.html#hospedagem)
+│   ├── graficas.js       # Gráficas para pôster (logistica.html#graficas)
+│   └── wasa.js           # Dados do WASA
 └── assets/
     ├── style.css         # CSS compartilhado por TODAS as páginas
     ├── nav.js            # Navbar injetável (carregada por todas as páginas)
-    ├── logos/            # Arquivos de logo
+    ├── footer.js         # Rodapé injetável (carregado por todas as páginas)
+    ├── logos/            # Arquivos de logo (baixados localmente, nunca hotlink)
+    ├── documentos/       # PDFs e modelos de pôster (.zip)
+    ├── imagens/          # Banners e cartazes
     └── fotos/            # Fotos dos palestrantes (400×400 px, JPG)
 ```
 
@@ -48,7 +63,9 @@ site-rbras-claude/
 
 **Arquitetura multi-página (desde mai/2026):**
 - `assets/style.css` — único arquivo CSS, carregado por todas as páginas
-- `assets/nav.js` — injeta a navbar no início do `<body>`; detecta a página ativa via `window.location.pathname` e marca o link com classe `.active`
+- `assets/nav.js` — injeta a navbar no início do `<body>`; detecta a página ativa via `window.location.pathname` (normaliza URLs sem `.html`, ex.: `/logistica`) e marca o link com classe `.active`
+- `assets/footer.js`: injeta o rodapé (colunas Evento, Científico, Logística, Contato)
+- Navbar fixa: `assets/style.css` aplica `scroll-margin-top` em todo `[id]`, para que links `#ancora` não fiquem escondidos sob o menu
 - Cada página carrega apenas os `data/*.js` de que precisa (ex.: `programacao.html` só precisa de `schedule.js`)
 - Navbar usa links reais entre páginas; seções que permanecem na Home são referenciadas como `index.html#ancora`
 
@@ -95,6 +112,8 @@ site-rbras-claude/
 8. **Patrocinadores (sponsors)** — Logos por tier (Ouro, Prata, Bronze/Apoio)
 9. **Inscrições (CTA)** — Chamada para inscrição
 10. **Footer** — Links, redes sociais, copyright
+
+**Menu principal (ordem, out/2026):** Evento (Sobre, Convidados, Programação) · Científico · Inscrições · Logística (Local do Evento, Como Chegar, Hospedagem, Gráficas) · FAQ · Apoio · botão Área do Inscrito · WASA. A ordem segue a jornada do participante (conhecer, submeter, inscrever-se, planejar viagem).
 
 ---
 
@@ -196,22 +215,30 @@ Todos têm links para Currículo Lattes e fotos integradas.
 
 ## 11. Patrocinadores (data/sponsors.js)
 
-| Tier | Patrocinadores |
-|------|----------------|
-| 🥇 Ouro | FAPESP, CNPq |
-| 🥈 Prata | (vazio) |
-| 🥉 Bronze / Apoio | (vazio) |
+Grade única, sem tiers visíveis; `quebraAntes: true` força nova linha.
+
+| Linha | Apoiadores |
+|-------|------------|
+| 1 (fomento) | FAPESP, CNPq, FAEPEX |
+| 2 | IBS, CONRE-3, CONRE-4, Equifax |
+
+## 11b. Logística (data/hotels.js, data/graficas.js)
+
+- **Hospedagem:** Hotel Matiz Barão Geraldo Express, Unibarão Hotel, Casa do Professor Visitante, Casa Pirâmide de Vidro (Airbnb)
+- **Gráficas:** Connect Print (selo "Parceira", banner 0,80×1,20 m R$ 85,00 e 0,90×1,20 m R$ 87,50; arquivos preferencialmente via WhatsApp) e Cromarte Gráfica Digital (sem preços; contatar mencionando o evento)
+- Pôster oficial: A0 retrato (841×1189 mm); as duas opções de banner da Connect Print foram mantidas por decisão da organização
+- Links para `#graficas`: menu Logística, rodapé, botão "Onde imprimir" em `cientifico.html`, FAQ "Onde posso imprimir meu pôster?"
 
 ---
 
-## 12. Status atual do projeto (abr 2026)
+## 12. Status atual do projeto (atualizado out/2026)
 
 - ✅ Estrutura e design do site concluídos
 - ✅ Conteúdo de palestrantes, programação e comissões populados
 - ✅ Fotos padronizadas (400×400 px)
-- ✅ Patrocinadores Ouro adicionados (FAPESP, CNPq)
-- ⏳ Links de inscrição e submissão ainda são placeholders ("#")
-- ⏳ Tiers Prata e Bronze de patrocínio ainda vazios
+- ✅ Apoiadores: FAPESP, CNPq, FAEPEX, IBS, CONRE-3, CONRE-4, Equifax (out/2026)
+- ✅ Página Logística com hospedagem e gráficas; menu Logística separado de Evento (out/2026)
+- ⏳ Links de inscrição e submissão ainda são placeholders ("#") (status de abr/2026, não reverificado)
 - ⏳ Links de redes sociais precisam ser preenchidos
 - ⏳ Placeholder para mapa do local ainda não implementado
 
@@ -226,7 +253,10 @@ Editar `data/speakers.js` — cada palestrante é um objeto no array `speakers`.
 Editar `data/dates.js` — formato ISO `YYYY-MM-DD`.
 
 ### Adicionar patrocinador
-Editar `data/sponsors.js` — inserir no array do tier correspondente.
+Editar `data/sponsors.js`: inserir item no array `SPONSORS` (grade única). Baixar o logo para `assets/logos/logo-<nome>.png|svg` (não usar URL externa) e recortar margens brancas se houver.
+
+### Adicionar hotel ou gráfica
+Editar `data/hotels.js` ou `data/graficas.js` (campos documentados no topo de cada arquivo). Campo omitido não aparece no card.
 
 ### Atualizar programação
 Editar `data/schedule.js` — cada dia é um objeto com array de `slots`.
@@ -245,4 +275,4 @@ A **RBras (Região Brasileira da Sociedade Internacional de Biometria)** é a as
 
 ---
 
-*Arquivo gerado em 24/04/2026 com base na exploração completa do repositório.*
+*Arquivo gerado em 24/04/2026; atualizado em 21/10/2026 (logística, gráficas, menu, apoiadores).*

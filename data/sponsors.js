@@ -16,8 +16,11 @@
 const SPONSORS = [
   { nome: "FAPESP", logo: "assets/logos/logo-fapesp.png", url: "https://fapesp.br", peso: "lg" },
   { nome: "CNPq",   logo: "assets/logos/logo-cnpq.png",   url: "https://cnpq.br",  peso: "lg" },
-  { nome: "CONRE-3", logo: "assets/logos/logo-conre-3.png", url: "https://www.conre3.org.br/portal/", peso: "lg", quebraAntes: true },
-  { nome: "CONRE-4", logo: "assets/logos/logo-conre-4.png", url: "https://www.conre4.org.br/", peso: "lg" }
+  { nome: "FAEPEX", logo: "assets/logos/logo-faepex.png", url: "https://www.prp.unicamp.br/faepex", peso: "lg" },
+  { nome: "International Biometric Society (IBS)", logo: "assets/logos/logo-ibs.png", url: "https://www.biometricsociety.org", peso: "lg", quebraAntes: true },
+  { nome: "CONRE-3", logo: "assets/logos/logo-conre-3.png", url: "https://www.conre3.org.br/portal/", peso: "lg" },
+  { nome: "CONRE-4", logo: "assets/logos/logo-conre-4.png", url: "https://www.conre4.org.br/", peso: "lg" },
+  { nome: "Equifax", logo: "assets/logos/logo-equifax.svg", url: "https://www.equifax.com.br", peso: "lg" }
 
   // Para adicionar um novo apoiador:
   // { nome: "Nome", logo: "assets/logos/nome.png", url: "https://...", peso: "md" }

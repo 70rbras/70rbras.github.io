@@ -20,7 +20,6 @@
           <li><a href="${root}index.html#sobre">Sobre</a></li>
           <li><a href="${root}palestrantes.html">Convidados</a></li>
           <li><a href="${root}programacao.html">Programação</a></li>
-          <li><a href="${root}local.html">Local</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -32,6 +31,15 @@
           <li><a href="${root}premio.html">Prêmio Destaque</a></li>
           <li><a href="${root}fundo-estudante.html">Fundo de Financiamento</a></li>
           <li><a href="${root}inscricoes.html">Inscrições</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Logística</h4>
+        <ul>
+          <li><a href="${root}logistica.html#local">Local do Evento</a></li>
+          <li><a href="${root}logistica.html#como-chegar">Como Chegar</a></li>
+          <li><a href="${root}logistica.html#hospedagem">Hospedagem</a></li>
+          <li><a href="${root}logistica.html#graficas">Gráficas</a></li>
         </ul>
       </div>
       <div class="footer-col">
