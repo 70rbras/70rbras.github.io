@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apresentadores - 70ª RBras 2026</title>
+  <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
+  <meta name="description" content="Instruções para quem apresenta na 70ª RBras 2026: modelos oficiais de pôster (A0), sessões de pôsteres e comunicações orais.">
+  <meta property="og:title" content="Apresentadores - 70ª RBras 2026">
+  <meta property="og:description" content="Modelos oficiais de pôster, formato A0, horários das sessões e instruções para comunicações orais.">
+  <meta property="og:url" content="https://70rbras.org/apresentadores.html">
+  <meta property="og:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7Z8S78NNX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-X7Z8S78NNX');
+  </script>
+
+  <style>
+    /* ── Estilos específicos da página apresentadores.html ── */
+    .apres-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-top: 2.5rem;
+    }
+    .apres-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 2rem 1.9rem;
+      border: 1px solid rgba(26,56,112,.1);
+      box-shadow: 0 8px 28px rgba(26,56,112,.07);
+    }
+    .apres-card h3 {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 1.1rem;
+      display: flex; align-items: center; gap: .55rem;
+    }
+    .apres-lista { list-style: none; }
+    .apres-lista li {
+      position: relative;
+      padding: .55rem 0 .55rem 1.6rem;
+      font-size: .93rem; line-height: 1.6;
+      color: var(--text-mid);
+      border-bottom: 1px solid rgba(26,56,112,.07);
+    }
+    .apres-lista li:last-child { border-bottom: none; }
+    .apres-lista li::before {
+      content: '✓';
+      position: absolute; left: 0; top: .55rem;
+      color: var(--teal); font-weight: 700;
+    }
+    .apres-lista a { color: var(--teal); font-weight: 600; }
+    .apres-aviso {
+      background: rgba(214,168,24,.1);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: .85rem 1.1rem;
+      font-size: .9rem; color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .apres-embreve {
+      text-align: center;
+      padding: 1.6rem 1rem;
+      background: var(--off-white);
+      border: 1.5px dashed rgba(42,144,128,.35);
+      border-radius: 14px;
+    }
+    .apres-embreve .icone { font-size: 2rem; display: block; margin-bottom: .5rem; }
+    .apres-embreve strong { display: block; color: var(--text-dark); font-size: 1rem; margin-bottom: .3rem; }
+    .apres-embreve p { font-size: .88rem; color: var(--text-mid); line-height: 1.55; }
+
+    /* Sessões (lidas de schedule.js) */
+    .sessao-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 1rem;
+      padding: .85rem 0;
+      border-bottom: 1px solid rgba(26,56,112,.07);
+    }
+    .sessao-item:last-child { border-bottom: none; }
+    .sessao-quando { font-weight: 700; color: var(--blue); font-size: .88rem; line-height: 1.35; }
+    .sessao-quando span { display: block; font-weight: 500; color: var(--text-mid); font-size: .8rem; }
+    .sessao-titulo { font-weight: 600; color: var(--text-dark); font-size: .93rem; }
+    .sessao-local { font-size: .83rem; color: var(--text-mid); margin-top: .15rem; }
+    .sessao-rodape { margin-top: 1rem; font-size: .84rem; }
+    .sessao-rodape a { color: var(--teal); font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .apres-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar injetada por assets/nav.js -->
+
+<!-- ─── CABEÇALHO DA PÁGINA ───────────────────────── -->
+<section class="page-header">
+  <svg class="page-header-decor" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M200 580 Q200 400 200 200" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M200 480 Q260 420 320 400" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 360 Q270 300 340 280" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="320" cy="400" r="8" fill="white"/><circle cx="340" cy="390" r="5" fill="white"/>
+    <circle cx="340" cy="280" r="8" fill="white"/><circle cx="358" cy="268" r="6" fill="white"/>
+  </svg>
+  <div class="container">
+    <span class="tag tag--teal">Trabalho aceito?</span>
+    <h1 class="page-header-title">Apresentadores</h1>
+    <p class="page-header-sub">Tudo o que você precisa para apresentar seu pôster ou sua comunicação oral na 70ª RBras.</p>
+    <nav aria-label="Seções desta página" style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+      <a href="#poster" class="btn btn--outline" style="font-size:.85rem;padding:.55em 1.4em">🖼️ Pôster</a>
+      <a href="#oral"   class="btn btn--outline" style="font-size:.85rem;padding:.55em 1.4em">🎤 Comunicação Oral</a>
+      <a href="logistica.html#graficas" class="btn btn--outline" style="font-size:.85rem;padding:.55em 1.4em">🖨️ Onde imprimir</a>
+    </nav>
+  </div>
+  <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+  </svg>
+</section>
+
+<!-- ─── PÔSTER ───────────────────────────────────── -->
+<section id="poster" style="padding:4.5rem 0 5rem;background:var(--white)">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:2.5rem">
+      <span class="tag tag--gold">Pôster</span>
+      <h2 class="section-title" style="margin-top:1rem">Prepare seu <span>pôster</span></h2>
+    </div>
+
+    <!-- Modelos de pôster (link em data/config.js → link_modelos_poster; oculto enquanto vazio) -->
+    <div class="sub-modelos-callout reveal" id="modelos-poster" hidden>
+      <span class="sub-modelos-badge">🖼️ Modelos oficiais</span>
+      <h3>Baixe o modelo e o manual</h3>
+      <p>Modelos em <strong>PowerPoint</strong> ou <strong>LaTeX</strong>, com arquivo final em PDF, tamanho <strong>A0 retrato (841 × 1189 mm)</strong>. O pacote traz também o manual de uso.</p>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:1.1rem">
+        <a href="#" class="btn btn--primary" id="modelos-poster-btn" download style="font-size:.95rem;padding:.8em 2em">⬇ Baixar modelos (.zip, 5 MB)</a>
+        <a href="assets/documentos/manual-poster-70rbras.pdf" class="btn btn--ghost" target="_blank" rel="noopener noreferrer" style="font-size:.95rem;padding:.8em 2em">Ver manual (PDF) ↗</a>
+        <a href="logistica.html#graficas" class="btn btn--ghost" style="font-size:.95rem;padding:.8em 2em">🖨️ Onde imprimir</a>
+      </div>
+    </div>
+
+    <div class="apres-grid">
+      <div class="apres-card reveal">
+        <h3><span>📋</span> Instruções</h3>
+        <div id="poster-instrucoes"></div>
+      </div>
+      <div class="apres-card reveal reveal-delay-1">
+        <h3><span>🗓️</span> Sessões de pôsteres</h3>
+        <div id="poster-sessoes"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMUNICAÇÃO ORAL ─────────────────────────── -->
+<section id="oral" style="padding:4.5rem 0 5rem;background:var(--off-white)">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:0">
+      <span class="tag tag--teal">Comunicação Oral</span>
+      <h2 class="section-title" style="margin-top:1rem">Prepare sua <span>apresentação</span></h2>
+    </div>
+    <div class="apres-grid">
+      <div class="apres-card reveal">
+        <h3><span>📋</span> Instruções</h3>
+        <div id="oral-instrucoes"></div>
+      </div>
+      <div class="apres-card reveal reveal-delay-1">
+        <h3><span>🗓️</span> Sessões de comunicações orais</h3>
+        <div id="oral-sessoes"></div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:2.5rem">
+      <a href="#" class="btn btn--primary" id="area-inscrito-btn" style="font-size:1rem;padding:.9em 2.4em">Acompanhar minha submissão (Área do Inscrito) ↗</a>
+    </div>
+    <p style="text-align:center;margin-top:1rem;font-size:.88rem;color:var(--text-mid)">Dúvidas? Consulte as <a href="faq.html" style="color:var(--teal);font-weight:600">Perguntas Frequentes</a>.</p>
+  </div>
+</section>
+
+<!-- Footer injetado por assets/footer.js -->
+
+<!-- ─── SCRIPTS ─────────────────────────────────────── -->
+<script src="assets/nav.js"></script>
+<script src="data/config.js"></script>
+<script src="data/schedule.js"></script>
+<script src="data/apresentadores.js"></script>
+<script src="assets/footer.js"></script>
+
+<script>
+/* ─── HELPERS ──────────────────────────────────────── */
+function revealAll() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal, .reveal-from-right').forEach(el => io.observe(el));
+}
+
+/* ─── CONFIG ───────────────────────────────────────── */
+function applyConfig() {
+  const { evento } = CONFIG;
+  const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
+  ['nav-cta-link', 'area-inscrito-btn'].forEach(id =>
+    safe(id, el => { el.href = evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; }));
+  if (evento.link_modelos_poster) {
+    safe('modelos-poster', el => { el.hidden = false; });
+    safe('modelos-poster-btn', el => { el.href = evento.link_modelos_poster; });
+  }
+}
+
+/* ─── INSTRUÇÕES (data/apresentadores.js) ──────────── */
+function renderInstrucoes(id, m) {
+  const el = document.getElementById(id);
+  if (!el || !m) return;
+  const aviso = m.aviso ? `<div class="apres-aviso">${m.aviso}</div>` : '';
+  el.innerHTML = aviso + (m.instrucoes.length
+    ? `<ul class="apres-lista">${m.instrucoes.map(i => `<li>${i}</li>`).join('')}</ul>`
+    : `<div class="apres-embreve"><span class="icone">⏳</span><strong>Instruções em breve</strong><p>As orientações para esta modalidade serão publicadas aqui. Volte a consultar esta página.</p></div>`);
+}
+
+/* ─── SESSÕES (data/schedule.js) ───────────────────── */
+function renderSessoes(id, filtro) {
+  const el = document.getElementById(id);
+  if (!el || typeof SCHEDULE === 'undefined') return;
+  const linhas = [];
+  SCHEDULE.forEach(dia => dia.blocos.forEach(b => b.itens.forEach(it => {
+    if (filtro(it)) linhas.push({ dia: dia.dia, inicio: it.inicio || b.horario, ...it });
+  })));
+  el.innerHTML = linhas.length
+    ? linhas.map(s => `
+        <div class="sessao-item">
+          <div class="sessao-quando">${s.dia}<span>${s.inicio}${s.fim ? ' - ' + s.fim : ''}</span></div>
+          <div><div class="sessao-titulo">${s.titulo}</div><div class="sessao-local">${s.local || ''}</div></div>
+        </div>`).join('') + `<p class="sessao-rodape"><a href="programacao.html">Ver programação completa &rarr;</a></p>`
+    : `<p style="font-size:.9rem;color:var(--text-mid)">Horários em breve na <a href="programacao.html" style="color:var(--teal);font-weight:600">programação</a>.</p>`;
+}
+
+/* ─── BOOT ─────────────────────────────────────────── */
+applyConfig();
+renderInstrucoes('poster-instrucoes', APRESENTADORES.poster);
+renderInstrucoes('oral-instrucoes', APRESENTADORES.oral);
+renderSessoes('poster-sessoes', it => /p[ôo]ster/i.test(it.titulo));
+renderSessoes('oral-sessoes', it => /^CO-\d/.test(it.titulo));
+revealAll();
+</script>
+</body>
+</html>

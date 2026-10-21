@@ -88,7 +88,7 @@
         </div>
         <div class="hero-actions reveal reveal-delay-4">
           <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer" id="hero-btn-inscricoes">Inscreva-se na 70ª RBras ↗</a>
-          <a href="programacao.html" class="btn btn--outline" target="_blank" rel="noopener noreferrer">Ver Programação</a>
+          <a href="programacao.html" class="btn btn--outline">Ver Programação</a>
         </div>
       </div>
     </div>
@@ -102,6 +102,17 @@
 <section id="premios-home" hidden>
   <div class="container">
     <div class="premios-home-inner" id="premios-home-inner"></div>
+  </div>
+</section>
+
+<!-- ─── PRÓXIMAS DATAS (gerada via data/dates.js; só itens abertos ou futuros) ── -->
+<section id="proximas-datas">
+  <div class="container">
+    <div class="proximas-header">
+      <span class="tag tag--blue">Calendário</span>
+      <h2 class="section-title">Próximas <span>datas</span></h2>
+    </div>
+    <div class="proximas-grid" id="proximas-grid"></div>
   </div>
 </section>
 
@@ -186,8 +197,8 @@
 
           <!-- CTAs para páginas internas -->
           <div class="sobre-ctas" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem">
-            <a href="palestrantes.html" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Conheça os Convidados →</a>
-            <a href="programacao.html" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Ver Programação →</a>
+            <a href="palestrantes.html" class="btn btn--primary">Conheça os Convidados →</a>
+            <a href="programacao.html" class="btn btn--ghost">Ver Programação →</a>
           </div>
         </div>
       </div>
@@ -215,8 +226,8 @@
     <p class="cta-sub">Garanta sua vaga na maior reunião de biometria e estatística do Brasil.</p>
     <div class="cta-actions">
       <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem;padding:1em 2.4em" id="cta-inscricoes">Inscreva-se na 70ª RBras ↗</a>
-      <a href="inscricoes.html" class="btn btn--outline" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem;padding:1em 2.4em">Ver valores e categorias</a>
-      <a href="cientifico.html#modelos-poster" class="btn btn--outline" style="font-size:1.05rem;padding:1em 2.4em" id="cta-modelos-poster">Modelos de pôster</a>
+      <a href="inscricoes.html" class="btn btn--outline" style="font-size:1.05rem;padding:1em 2.4em">Ver valores e categorias</a>
+      <a href="apresentadores.html#modelos-poster" class="btn btn--outline" style="font-size:1.05rem;padding:1em 2.4em" id="cta-modelos-poster">Modelos de pôster</a>
     </div>
   </div>
 </section>
@@ -281,6 +292,7 @@
 <script src="data/speakers.js"></script>
 <script src="data/sponsors.js"></script>
 <script src="data/premios.js"></script>
+<script src="data/dates.js"></script>
 <script src="assets/footer.js"></script>
 
 <script>
@@ -464,12 +476,54 @@ function renderPremiosHome() {
 }
 
 /* ═══════════════════════════════════════════════
+   PRÓXIMAS DATAS
+════════════════════════════════════════════════ */
+function renderProximasDatas() {
+  const sec = document.getElementById('proximas-datas');
+  const el  = document.getElementById('proximas-grid');
+  if (!sec || !el || typeof DATES === 'undefined') return;
+  const MESES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const parse = iso => { const [y,m,d] = iso.split('-').map(Number); return new Date(y, m-1, d); };
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  const dias = (a, b) => Math.round((b - a) / 86400000);
+  const fmt = (ini, fim) => ini.getTime() === fim.getTime()
+    ? `${ini.getDate()} ${MESES[ini.getMonth()]}`
+    : ini.getMonth() === fim.getMonth()
+      ? `${ini.getDate()} a ${fim.getDate()} ${MESES[fim.getMonth()]}`
+      : `${ini.getDate()} ${MESES[ini.getMonth()]} a ${fim.getDate()} ${MESES[fim.getMonth()]}`;
+
+  const itens = DATES
+    .map(d => ({ ...d, _ini: parse(d.inicio), _fim: parse(d.fim) }))
+    .filter(d => d._fim >= hoje)
+    .sort((a, b) => a._ini - b._ini);
+  if (!itens.length) { sec.hidden = true; return; }
+
+  el.innerHTML = itens.map(d => {
+    const aberto = d._ini <= hoje;
+    const n = aberto ? dias(hoje, d._fim) : dias(hoje, d._ini);
+    const status = aberto
+      ? (d._ini.getTime() === d._fim.getTime() ? 'Hoje' : n === 0 ? 'Último dia' : `Aberto · termina em ${n} dia${n !== 1 ? 's' : ''}`)
+      : (n === 1 ? 'Começa amanhã' : `Em ${n} dias`);
+    const tag = d.link ? 'a' : 'div';
+    const href = d.link ? ` href="${d.link}"` : '';
+    return `<${tag} class="proxima-card${aberto ? ' is-aberto' : ''}${d.destaque ? ' is-destaque' : ''}"${href}>
+      <span class="proxima-icone">${d.icone}</span>
+      <span class="proxima-status">${status}</span>
+      <span class="proxima-titulo">${d.titulo}</span>
+      <span class="proxima-data">${fmt(d._ini, d._fim)}</span>
+      ${d.descricao ? `<span class="proxima-desc">${d.descricao}</span>` : ''}
+    </${tag}>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════════
    BOOT
 ════════════════════════════════════════════════ */
 applyConfig();
 renderSpeakersNames();
 renderSponsors();
 renderPremiosHome();
+renderProximasDatas();
 revealAll();
 </script>
 </body>

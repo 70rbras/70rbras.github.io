@@ -233,6 +233,19 @@
       line-height: 1.7;
     }
 
+    .concurso-regras {
+      max-width: 760px;
+      margin: 1.8rem auto 0;
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+      border-left: 3px solid var(--teal);
+    }
+    .concurso-regras h3 { font-size: .95rem; font-weight: 700; color: var(--text-dark); margin-bottom: .8rem; }
+    .concurso-regras ul { list-style: none; }
+    .concurso-regras li { position: relative; padding: .3rem 0 .3rem 1.2rem; font-size: .88rem; color: var(--text-mid); line-height: 1.55; }
+    .concurso-regras li::before { content: '-'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
     /* ── Responsivo ── */
     @media (max-width: 900px) {
       .premiado-hero { grid-template-columns: 1fr; text-align: center; padding: 2.4rem 1.6rem; gap: 1.8rem; }
@@ -243,6 +256,7 @@
       .premio-intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
     @media (max-width: 600px) {
+      .premio-header-orb { display: none; }
       .premiado-foto { width: 170px; height: 170px; }
       .premiado-foto .iniciais { font-size: 3.2rem; }
     }
@@ -364,8 +378,11 @@
     <div class="concurso-grid" id="concurso-grid"></div>
     <p class="concurso-info reveal">
       As inscrições no concurso estão encerradas e os trabalhos estão em avaliação pelas comissões acima. Os resultados serão publicados nesta página.
-      <br><a href="cientifico.html#submissoes" style="color:var(--teal);font-weight:600">Regras do concurso em Submissões &rarr;</a>
     </p>
+    <div class="concurso-regras reveal" id="concurso-regras" hidden>
+      <h3>📎 Documentação exigida na inscrição</h3>
+      <ul id="concurso-docs"></ul>
+    </div>
   </div>
 </section>
 
@@ -487,8 +504,16 @@ function renderConcurso() {
   const concurso = (typeof SUBMISSION_MODALITIES !== 'undefined') ? SUBMISSION_MODALITIES.find(s => s.id === 'concurso') : null;
   const eleg = document.getElementById('concurso-elegibilidade');
   if (concurso && eleg) eleg.innerHTML = 'Premiação dos melhores trabalhos de pós-graduação e graduação. ' + concurso.elegibilidade;
+  if (concurso && concurso.pdf) {
+    document.getElementById('concurso-docs').innerHTML = concurso.pdf.itens.map(i => `<li>${i}</li>`).join('');
+    document.getElementById('concurso-regras').hidden = false;
+  }
 }
 
+(function () {
+  const el = document.getElementById('nav-cta-link');
+  if (el && typeof CONFIG !== 'undefined') { el.href = CONFIG.evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
+})();
 renderDestaque();
 renderCategorias();
 renderConcurso();

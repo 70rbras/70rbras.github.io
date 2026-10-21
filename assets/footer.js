@@ -20,17 +20,18 @@
           <li><a href="${root}index.html#sobre">Sobre</a></li>
           <li><a href="${root}palestrantes.html">Convidados</a></li>
           <li><a href="${root}programacao.html">Programação</a></li>
+          <li><a href="${root}comissoes.html">Comissões</a></li>
+          <li><a href="${root}premios.html">Prêmios RBras</a></li>
+          <li><a href="${root}index.html#patrocinadores">Apoiadores</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Científico</h4>
+        <h4>Participar</h4>
         <ul>
-          <li><a href="${root}cientifico.html#datas">Datas Importantes</a></li>
-          <li><a href="${root}cientifico.html#submissoes">Submissões</a></li>
-          <li><a href="${root}cientifico.html#comissao">Comissões</a></li>
-          <li><a href="${root}premios.html">Prêmios RBras</a></li>
-          <li><a href="${root}fundo-estudante.html">Fundo de Financiamento</a></li>
           <li><a href="${root}inscricoes.html">Inscrições</a></li>
+          <li><a href="${root}apresentadores.html#poster">Apresentadores: Pôster</a></li>
+          <li><a href="${root}apresentadores.html#oral">Apresentadores: Comunicação Oral</a></li>
+          <li><a href="${root}fundo-estudante.html">Fundo de Financiamento</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -47,7 +48,7 @@
         <ul>
           <li><a href="${root}faq.html">Perguntas Frequentes</a></li>
           <li><a href="#" id="footer-email">70rbras@unicamp.br</a></li>
-          <li><a href="${root}cientifico.html#comissao">Comissão Organizadora</a></li>
+          <li><a href="${root}comissoes.html">Comissão Organizadora</a></li>
           <li><a href="#" id="footer-site-rbras" target="_blank" rel="noopener noreferrer">RBras.org.br</a></li>
         </ul>
       </div>

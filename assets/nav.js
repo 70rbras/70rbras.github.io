@@ -41,23 +41,24 @@
 
       <!-- Evento (dropdown) -->
       <li class="nav-dropdown">
-        <a href="${root}index.html#sobre" class="nav-dropdown-toggle"${dropdownActiveClass('index.html', 'palestrantes.html', 'programacao.html')}>Evento ${chev}</a>
+        <a href="${root}index.html#sobre" class="nav-dropdown-toggle"${dropdownActiveClass('index.html', 'palestrantes.html', 'programacao.html', 'comissoes.html', 'premios.html')}>Evento ${chev}</a>
         <ul class="nav-dropdown-menu">
           <li><a href="${root}index.html#sobre">Sobre</a></li>
           <li><a href="${root}palestrantes.html"${activeClass('palestrantes.html')}>Convidados</a></li>
           <li><a href="${root}programacao.html"${activeClass('programacao.html')}>Programação</a></li>
+          <li><a href="${root}comissoes.html"${activeClass('comissoes.html')}>Comissões</a></li>
+          <li><a href="${root}premios.html"${activeClass('premios.html')} style="color:var(--gold-light)">🏆 Prêmios RBras <span class="nav-new-badge">Novo</span></a></li>
+          <li><a href="${root}index.html#patrocinadores">Apoiadores</a></li>
         </ul>
       </li>
 
-      <!-- Científico (dropdown) -->
+      <!-- Apresentadores (dropdown) -->
       <li class="nav-dropdown">
-        <a href="${root}cientifico.html" class="nav-dropdown-toggle"${dropdownActiveClass('cientifico.html', 'premios.html', 'fundo-estudante.html')}>Científico ${chev}</a>
+        <a href="${root}apresentadores.html" class="nav-dropdown-toggle"${dropdownActiveClass('apresentadores.html')}>Apresentadores ${chev}</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="${root}cientifico.html#datas">Datas Importantes</a></li>
-          <li><a href="${root}cientifico.html#submissoes">Submissões</a></li>
-          <li><a href="${root}cientifico.html#comissao">Comissões</a></li>
-          <li><a href="${root}premios.html"${activeClass('premios.html')} style="color:var(--gold-light)">🏆 Prêmios RBras <span class="nav-new-badge">Novo</span></a></li>
-          <li><a href="${root}fundo-estudante.html"${activeClass('fundo-estudante.html')} style="color:var(--gold-light)">🎓 Fundo de Financiamento</a></li>
+          <li><a href="${root}apresentadores.html#poster">Pôster</a></li>
+          <li><a href="${root}apresentadores.html#oral">Comunicação Oral</a></li>
+          <li><a href="${root}logistica.html#graficas">Onde imprimir</a></li>
         </ul>
       </li>
 
@@ -77,9 +78,6 @@
 
       <!-- FAQ -->
       <li><a href="${root}faq.html"${activeClass('faq.html')}>FAQ</a></li>
-
-      <!-- Apoio -->
-      <li><a href="${root}index.html#patrocinadores">Apoio</a></li>
 
       <!-- CTA -->
       <li><a href="#" class="nav-cta" id="nav-cta-link">Área do Inscrito</a></li>
@@ -106,17 +104,27 @@
   /* ── Injeta no início do body ───────────────── */
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
-  /* ── Faixa de aviso: última chance Pôster/Comunicação Oral ─ */
-  const ANNOUNCE_DEADLINE = new Date(2026, 7, 28, 17, 0, 0); // 28/ago/2026, 17h
-  const ANNOUNCE_KEY = 'rbras-announce-dismissed-2026-08-28';
-  if (new Date() < ANNOUNCE_DEADLINE && !localStorage.getItem(ANNOUNCE_KEY)) {
-    const announceHTML = `
+  /* ── Faixa de aviso (configurada em data/config.js → avisos) ─
+     Roda após o carregamento de todos os scripts, pois nav.js é
+     carregado antes de config.js em todas as páginas. */
+  function aplicarAviso() {
+    if (typeof CONFIG === 'undefined' || !Array.isArray(CONFIG.avisos)) return;
+    const agora = new Date();
+    const data = iso => new Date(iso + ':00-03:00');   // horário de Brasília
+    const storageGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    const aviso = CONFIG.avisos.find(a =>
+      (!a.inicio || agora >= data(a.inicio)) &&
+      (!a.fim || agora <= data(a.fim)) &&
+      !storageGet('rbras-aviso-' + a.id));
+    if (!aviso) return;
+
+    const linkHTML = aviso.link ? `<a href="${root}${aviso.link}">${aviso.link_texto || 'Saiba mais'} &rarr;</a>` : '';
+    document.body.insertAdjacentHTML('afterbegin', `
 <div id="announce-bar">
-  <span>🔔 <strong>Última oportunidade para Pôster e Comunicação Oral</strong>: submissões tardias até sex, 28/ago, 17h (Brasília).</span>
-  <a href="${root}cientifico.html#submissoes">Saiba mais &rarr;</a>
+  <span>${aviso.texto}</span>
+  ${linkHTML}
   <button class="announce-close" id="announce-close" aria-label="Fechar aviso">&#x2715;</button>
-</div>`;
-    document.body.insertAdjacentHTML('afterbegin', announceHTML);
+</div>`);
 
     const updateAnnounceOffset = () => {
       const bar = document.getElementById('announce-bar');
@@ -128,13 +136,15 @@
     document.body.classList.add('has-announce');
 
     document.getElementById('announce-close').addEventListener('click', () => {
-      localStorage.setItem(ANNOUNCE_KEY, '1');
+      try { localStorage.setItem('rbras-aviso-' + aviso.id, '1'); } catch (e) {}
       document.getElementById('announce-bar').remove();
       document.body.classList.remove('has-announce');
       document.documentElement.style.setProperty('--announce-h', '0px');
       window.removeEventListener('resize', updateAnnounceOffset);
     });
   }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aplicarAviso);
+  else aplicarAviso();
 
   /* ── Comportamentos ─────────────────────────── */
   const navbar    = document.getElementById('navbar');

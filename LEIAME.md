@@ -17,6 +17,7 @@ site-rbras-claude/
 │   ├── schedule.js     ← programação dos 3 dias
 │   ├── committee.js    ← comissão organizadora
 │   ├── premios.js      ← prêmios e premiados (premios.html + faixa na Home)
+│   ├── apresentadores.js ← instruções de Pôster e Comunicação Oral (apresentadores.html)
 │   └── sponsors.js     ← patrocinadores e apoiadores
 └── assets/
     └── fotos/          ← fotos dos palestrantes (JPG/PNG, 400×400 px)
@@ -100,6 +101,13 @@ Um objeto por prêmio no array `PREMIOS` (Destaque, Tese, Dissertação, IC).
   - Tese/Dissertação/IC: campos `trabalho` e `orientador`
 - Assim que houver um premiado, a faixa dourada aparece sozinha na Home e o card sai de "A anunciar"
 - `premio.html` antigo apenas redireciona para `premios.html`
+
+---
+
+### Apresentadores (`data/apresentadores.js`)
+- `poster.instrucoes` e `oral.instrucoes`: listas de instruções (aceitam HTML)
+- Lista vazia mostra "Instruções em breve"
+- Horários e salas das sessões vêm de `data/schedule.js` (itens "Sessão de Pôsteres" e "CO-")
 
 ---
 

@@ -26,7 +26,9 @@ site-rbras-claude/
 ├── palestrantes.html     # Página dedicada: cards completos + modal de bios
 ├── programacao.html      # Página dedicada: grade completa dos 3 dias
 ├── inscricoes.html       # Página dedicada: tabela de valores, lotes, benefícios
-├── cientifico.html       # Datas, submissões (modelos de pôster), comissões
+├── apresentadores.html   # Instruções para Pôster e Comunicação Oral (modelos A0, sessões lidas de schedule.js)
+├── comissoes.html        # Todas as comissões (render de COMMITTEE)
+├── cientifico.html       # Apenas redireciona (#comissao → comissoes.html; demais → apresentadores.html); não editar
 ├── logistica.html        # Local, como chegar, hospedagem, gráficas (atalhos no topo)
 ├── local.html            # Apenas redireciona para logistica.html (preserva #ancora); não editar
 ├── faq.html              # Perguntas frequentes
@@ -40,13 +42,14 @@ site-rbras-claude/
 ├── padroniza_fotos.py    # Script Python para normalizar fotos de palestrantes
 ├── data/
 │   ├── config.js         # Configurações gerais do evento
-│   ├── dates.js          # Datas importantes e prazos
+│   ├── dates.js          # Datas e prazos; Home mostra só os abertos/futuros (faixa #proximas-datas)
 │   ├── speakers.js       # Palestrantes e resumos das palestras
 │   ├── schedule.js       # Programação dos 3 dias
 │   ├── committee.js      # Comissões organizadora e científica
 │   ├── sponsors.js       # Patrocinadores/apoiadores (grade única, sem tiers)
 │   ├── premios.js        # Prêmios e premiados (premios.html + faixa #premios-home na Home)
-│   ├── submissions.js    # Modalidades e regras de submissão
+│   ├── apresentadores.js # Instruções de Pôster e Comunicação Oral (lista vazia = "Instruções em breve")
+│   ├── submissions.js    # Modalidades e regras de submissão (premios.html usa o item "concurso")
 │   ├── faq.js            # Perguntas frequentes por categoria
 │   ├── hotels.js         # Hospedagem (logistica.html#hospedagem)
 │   ├── graficas.js       # Gráficas para pôster (logistica.html#graficas)
@@ -66,7 +69,7 @@ site-rbras-claude/
 **Arquitetura multi-página (desde mai/2026):**
 - `assets/style.css` — único arquivo CSS, carregado por todas as páginas
 - `assets/nav.js` — injeta a navbar no início do `<body>`; detecta a página ativa via `window.location.pathname` (normaliza URLs sem `.html`, ex.: `/logistica`) e marca o link com classe `.active`
-- `assets/footer.js`: injeta o rodapé (colunas Evento, Científico, Logística, Contato)
+- `assets/footer.js`: injeta o rodapé (colunas Evento, Participar, Logística, Contato)
 - Navbar fixa: `assets/style.css` aplica `scroll-margin-top` em todo `[id]`, para que links `#ancora` não fiquem escondidos sob o menu
 - Cada página carrega apenas os `data/*.js` de que precisa (ex.: `programacao.html` só precisa de `schedule.js`)
 - Navbar usa links reais entre páginas; seções que permanecem na Home são referenciadas como `index.html#ancora`
@@ -115,20 +118,25 @@ site-rbras-claude/
 9. **Inscrições (CTA)** — Chamada para inscrição
 10. **Footer** — Links, redes sociais, copyright
 
-**Menu principal (ordem, out/2026):** Evento (Sobre, Convidados, Programação) · Científico · Inscrições · Logística (Local do Evento, Como Chegar, Hospedagem, Gráficas) · FAQ · Apoio · botão Área do Inscrito · WASA. A ordem segue a jornada do participante (conhecer, submeter, inscrever-se, planejar viagem).
+**Menu principal (ordem, out/2026):** Evento (Sobre, Convidados, Programação, Comissões, 🏆 Prêmios RBras, Apoiadores) · Apresentadores (Pôster, Comunicação Oral, Onde imprimir) · Inscrições · Logística (Local do Evento, Como Chegar, Hospedagem, Gráficas) · FAQ · botão Área do Inscrito · WASA. "Apoio" saiu do menu principal em 21/10/2026 (virou "Apoiadores" dentro de Evento e no rodapé; seção #patrocinadores segue na Home). O menu "Científico" foi aposentado em 21/10/2026 (datas e submissões vencidas). Fundo de Financiamento fica fora do menu: link no rodapé (coluna Participar) e em inscricoes.html; quando houver resultado, pôr bloco "Resultado" no topo de fundo-estudante.html e item temporário com selo "Novo" no Evento.
+
+**Rodapé:** Evento (inclui Apoiadores) · Participar (Inscrições, Apresentadores, Fundo) · Logística · Contato.
 
 ---
 
 ## 6. Datas importantes (data/dates.js)
 
+Exibidas na Home, faixa "Próximas datas" (#proximas-datas, logo após a faixa de Prêmios): só itens com `fim` >= hoje, em ordem de início; o que passou some sozinho.
+
 | Evento | Período |
 |--------|---------|
-| Submissão de Trabalhos | 11 mai – 15 ago 2026 |
-| Propostas de Sessões, Mesas e Minicursos | 11 mai – 15 jul 2026 |
-| Inscrições com Desconto (Early Bird) | 11 mai – 30 set 2026 |
-| Divulgação de Aceites | 14–15 set 2026 |
-| Inscrições sem Desconto (Regular) | 1 out – 23 nov 2026 |
-| **70ª RBras (Evento Principal)** | **23–25 nov 2026** |
+| Inscrições com Desconto (1º Lote) | 11 mai a 2 out 2026 |
+| Inscrições sem Desconto (2º Lote) | 3 a 31 out 2026 |
+| Inscrições Tardias (3º Lote, valor cheio) | 1 a 23 nov 2026 |
+| **70ª RBras (Evento Principal)** | **23 a 25 nov 2026** |
+| VIII WASA (satélite) | 26 nov 2026 |
+
+Prazos já encerrados (submissões, concurso, aceites, Fundo) seguem no arquivo, mas não aparecem.
 
 ---
 
@@ -255,10 +263,12 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 - ✅ Fotos padronizadas (400×400 px)
 - ✅ Apoiadores: FAPESP, CNPq, FAEPEX, IBS, CONRE-3, CONRE-4, Equifax (out/2026)
 - ✅ Página Logística com hospedagem e gráficas; menu Logística separado de Evento (out/2026)
-- ⏳ Links de inscrição e submissão ainda são placeholders ("#") (status de abr/2026, não reverificado)
-- ⏳ Links de redes sociais precisam ser preenchidos
-- ⏳ Placeholder para mapa do local ainda não implementado
-
+- ✅ Links de inscrição, submissão e Área do Inscrito apontam para app.ciente.studio (data/config.js)
+- ✅ Instagram configurado (data/config.js → redes_sociais)
+- ✅ Mapa do local (iframe Google Maps em logistica.html)
+- ✅ Prêmios centralizados, menu Científico aposentado, página Apresentadores, faixa "Próximas datas" (out/2026)
+- ✅ Links internos não abrem mais em nova aba (só links externos usam target="_blank")
+- ⏳ Local do credenciamento: "A ser determinado" em data/schedule.js
 ---
 
 ## 13. Como fazer alterações comuns
@@ -282,7 +292,10 @@ Editar `data/schedule.js` — cada dia é um objeto com array de `slots`.
 Editar `data/committee.js` — separado em `organizing` e `scientific`.
 
 ### Mudar links de inscrição/submissão
-Editar `data/config.js` — campos `registrationUrl` e `submissionUrl`.
+Editar `data/config.js`, campos `link_inscricoes`, `link_submissao` e `link_area_inscrito`.
+
+### Faixa de aviso no topo do site
+Editar `data/config.js` → `avisos` (id, texto, link, link_texto, inicio, fim em horário de Brasília). Aparece o primeiro aviso dentro do período; some sozinho após `fim`; quem fecha não vê de novo (localStorage por `id`). Renderizada por `assets/nav.js` no DOMContentLoaded (nav.js carrega antes de config.js).
 
 ---
 

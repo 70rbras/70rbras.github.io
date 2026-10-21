@@ -366,6 +366,8 @@ section { position: relative; }
   overflow: hidden;
 }
 .page-header .container { position: relative; z-index: 2; }
+/* Faixa de aviso empurra a navbar para baixo: compensa no cabeçalho das subpáginas */
+body.has-announce .page-header { padding-top: calc(7.5rem + var(--announce-h, 0px)); }
 .page-header .tag { margin-bottom: 1rem; }
 .page-header-title {
   font-family: 'Montserrat', sans-serif;
@@ -1606,3 +1608,41 @@ body.nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(
   .premios-home-inner { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
   .premios-home-foto { margin: 0 auto; width: 120px; height: 120px; font-size: 2.2rem; }
 }
+
+/* ── Home: Próximas datas (data/dates.js) ────── */
+#proximas-datas { background: var(--white); padding: 4rem 0 3.5rem; }
+#proximas-datas[hidden] { display: none; }
+.proximas-header { text-align: center; margin-bottom: 2.2rem; }
+.proximas-header .section-title { margin-top: .8rem; }
+.proximas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+}
+.proxima-card {
+  display: flex; flex-direction: column; gap: .3rem;
+  background: var(--off-white);
+  border: 1px solid rgba(26,56,112,.1);
+  border-top: 4px solid var(--blue-mid);
+  border-radius: 16px;
+  padding: 1.3rem 1.3rem 1.4rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+a.proxima-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(26,56,112,.12); }
+.proxima-card.is-aberto { border-top-color: var(--teal); background: var(--white); box-shadow: 0 6px 20px rgba(42,144,128,.12); }
+.proxima-card.is-destaque { border-top-color: var(--gold); background: linear-gradient(145deg, var(--blue) 0%, #0d2654 100%); }
+.proxima-icone { font-size: 1.5rem; margin-bottom: .2rem; }
+.proxima-status {
+  font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--blue-mid);
+}
+.proxima-card.is-aberto .proxima-status { color: var(--teal); }
+.proxima-titulo { font-weight: 700; color: var(--text-dark); font-size: 1rem; line-height: 1.3; }
+.proxima-data { font-weight: 600; color: var(--blue); font-size: .92rem; }
+.proxima-desc { font-size: .82rem; color: var(--text-mid); line-height: 1.45; margin-top: .2rem; }
+.proxima-card.is-destaque .proxima-status { color: var(--gold); }
+.proxima-card.is-destaque .proxima-titulo { color: var(--white); }
+.proxima-card.is-destaque .proxima-data { color: var(--gold-light); }
+.proxima-card.is-destaque .proxima-desc { color: rgba(255,255,255,.72); }

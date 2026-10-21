@@ -13,6 +13,9 @@
 //
 // O status (Encerrado / Aberto agora / Em breve), a contagem de dias e a
 // ordenação cronológica são calculados automaticamente em tempo de renderização.
+//
+// Exibido em: index.html, faixa "Próximas datas" (#proximas-datas). Só aparecem
+// os itens ainda abertos ou futuros; o que já passou some sozinho.
 
 const DATES = [
   {
@@ -38,7 +41,7 @@ const DATES = [
     descricao: "Comunicação Oral e Pôster: encerrada em 28/ago",
     icone:     "📝",
     prorrogado: true,
-    link:      "cientifico.html#submissoes"
+    link:      "apresentadores.html"
   },
   {
     titulo:    "Concurso Tese/Dissertação/IC",
@@ -47,7 +50,7 @@ const DATES = [
     descricao: "Submissão de teses, dissertações e trabalhos de IC para avaliação e premiação: encerrada em 24/ago",
     icone:     "🏅",
     prorrogado: true,
-    link:      "cientifico.html#submissoes"
+    link:      "apresentadores.html"
   },
   {
     titulo:    "Propostas de Sessões Temáticas e Minicursos",
@@ -55,7 +58,7 @@ const DATES = [
     fim:       "2026-07-15",
     descricao: "Submissão de propostas de sessões temáticas e minicursos",
     icone:     "🎤",
-    link:      "cientifico.html#submissoes"
+    link:      "apresentadores.html"
   },
   {
     titulo:    "Inscrições com Desconto",
@@ -92,7 +95,7 @@ const DATES = [
     titulo:    "Inscrições sem Desconto",
     inicio:    "2026-10-03",
     fim:       "2026-10-31",
-    descricao: "2º Lote",
+    descricao: "2º Lote: valores intermediários. Sócios RBras, ABE ou IBS têm desconto",
     icone:     "🖊️",
     link:      "inscricoes.html"
   },
@@ -100,7 +103,7 @@ const DATES = [
     titulo:    "Inscrições Tardias",
     inicio:    "2026-11-01",
     fim:       "2026-11-23",
-    descricao: "3º Lote",
+    descricao: "3º Lote: valor cheio, até o início do evento",
     icone:     "🖊️",
     link:      "inscricoes.html"
   },
@@ -112,5 +115,13 @@ const DATES = [
     icone:     "📅",
     destaque:  true,
     link:      "programacao.html"
+  },
+  {
+    titulo:    "VIII WASA (evento satélite)",
+    inicio:    "2026-11-26",
+    fim:       "2026-11-26",
+    descricao: "Workshop em Análise de Sobrevivência e Aplicações - inscrição independente",
+    icone:     "🛰️",
+    link:      "wasa.html"
   }
 ];

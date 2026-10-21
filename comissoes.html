@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comissões - 70ª RBras 2026</title>
+  <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
+  <meta name="description" content="Comissões organizadora, científica e avaliadoras da 70ª RBras 2026.">
+  <meta property="og:title" content="Comissões - 70ª RBras 2026">
+  <meta property="og:url" content="https://70rbras.org/comissoes.html">
+  <meta property="og:image" content="https://70rbras.org/assets/logos/70rbras_logo_positivo_cor.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7Z8S78NNX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-X7Z8S78NNX');
+  </script>
+</head>
+<body>
+
+<!-- Navbar injetada por assets/nav.js -->
+
+<!-- ─── CABEÇALHO DA PÁGINA ───────────────────────── -->
+<section class="page-header">
+  <svg class="page-header-decor" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M200 580 Q200 400 200 200" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M200 480 Q260 420 320 400" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M200 360 Q270 300 340 280" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="320" cy="400" r="8" fill="white"/><circle cx="340" cy="390" r="5" fill="white"/>
+    <circle cx="340" cy="280" r="8" fill="white"/><circle cx="358" cy="268" r="6" fill="white"/>
+  </svg>
+  <div class="container">
+    <span class="tag tag--teal">Organização</span>
+    <h1 class="page-header-title">Comissões</h1>
+    <p class="page-header-sub">As equipes responsáveis pela organização, pelo programa científico e pela avaliação dos prêmios da 70ª RBras.</p>
+  </div>
+  <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+  </svg>
+</section>
+
+<!-- ─── COMISSÕES ─────────────────────────────────── -->
+<section id="comissao" style="padding:4rem 0 6rem;background:var(--white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--teal">Organização</span>
+      <h2 class="section-title" style="margin-top:1rem"><span>Comissões</span></h2>
+      <p class="section-body">As comissões avaliadoras do Concurso Tese/Dissertação/IC aparecem também em <a href="premios.html#concurso" style="color:var(--teal);font-weight:600">Prêmios RBras</a>.</p>
+    </div>
+    <div class="comissoes-grid" id="comissoes-grid">
+      <!-- preenchido via committee.js -->
+    </div>
+  </div>
+</section>
+
+<!-- Footer injetado por assets/footer.js -->
+
+<!-- ─── SCRIPTS ─────────────────────────────────────── -->
+<script src="assets/nav.js"></script>
+<script src="data/config.js"></script>
+<script src="data/committee.js"></script>
+<script src="assets/footer.js"></script>
+
+<script>
+/* ─── HELPERS ──────────────────────────────────────── */
+function revealAll() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal, .reveal-from-right').forEach(el => io.observe(el));
+}
+
+/* ─── CONFIG ───────────────────────────────────────── */
+(function () {
+  const el = document.getElementById('nav-cta-link');
+  if (el && typeof CONFIG !== 'undefined') { el.href = CONFIG.evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
+})();
+
+/* ─── COMISSÕES ────────────────────────────────────── */
+function getInitials(nome) {
+  const TITLES = ['Prof.','Dr.','Profa.','Dra.','Me.','Ms.','Msa.','MSc.','PhD.'];
+  const parts = nome.split(' ').filter(w => !TITLES.includes(w) && w.length>1 && /^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/.test(w));
+  if (parts.length===0) return nome[0];
+  if (parts.length===1) return parts[0][0];
+  return (parts[0][0]+parts[parts.length-1][0]).toUpperCase();
+}
+function renderCommittee() {
+  const el = document.getElementById('comissoes-grid');
+  if (!el) return;
+  el.innerHTML = COMMITTEE.map((c,i) => {
+    const coords=c.membros.filter(m=>m.coordenador), members=c.membros.filter(m=>!m.coordenador);
+    function memberCard(m) {
+      const initials=getInitials(m.nome);
+      const photoHTML=m.foto?`<img src="${m.foto}" alt="${m.nome}" loading="lazy">`:`<span class="comissao-member-initials">${initials}</span>`;
+      const links=[m.lattes?`<a class="member-link member-link--lattes" href="${m.lattes}" target="_blank" rel="noopener">Lattes</a>`:'',m.website?`<a class="member-link member-link--website" href="${m.website}" target="_blank" rel="noopener">↗ Site</a>`:''].filter(Boolean).join('');
+      return `<div class="comissao-member-card${m.coordenador?' is-coord':''}"><div class="comissao-member-photo">${photoHTML}</div><div class="comissao-member-info"><div class="name">${m.nome}</div>${m.coordenador?'<span class="coord-badge">Coordenadora</span>':''}<div class="affil">${m.instituicao}</div>${links?`<span class="member-links">${links}</span>`:''}</div></div>`;
+    }
+    return `<div class="comissao-card reveal${i>0?' reveal-delay-1':''}"><div class="comissao-card-header"><span class="card-icon">${c.icone}</span><h3>${c.titulo}</h3></div>${coords.length?`<div class="comissao-member-grid comissao-member-grid--coord">${coords.map(memberCard).join('')}</div><div class="comissao-coord-divider"></div>`:''}<div class="comissao-member-grid">${members.map(memberCard).join('')}</div></div>`;
+  }).join('');
+}
+
+
+/* ─── BOOT ─────────────────────────────────────────── */
+renderCommittee();
+revealAll();
+</script>
+</body>
+</html>

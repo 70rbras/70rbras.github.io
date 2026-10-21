@@ -1,6 +1,6 @@
 // ─── SUBMISSÕES ───────────────────────────────────────────────────────────────
 // Dados das modalidades de submissão da 70ª RBras 2026.
-// Carregado por: cientifico.html
+// Carregado por: premios.html (regras do Concurso). cientifico.html foi aposentado em out/2026.
 
 // ── Regras gerais (valem para todas as modalidades) ──────────────────────────
 const SUBMISSION_RULES = [

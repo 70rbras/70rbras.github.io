@@ -18,9 +18,28 @@ const CONFIG = {
     link_inscricoes:    "https://app.ciente.studio/70-rbras/subscription",
     link_submissao:     "https://app.ciente.studio/70-rbras/submissions",
     link_area_inscrito: "https://app.ciente.studio/",
-    link_modelos_poster: "assets/documentos/modelos-poster-70rbras.zip"   // vazio = bloco oculto em cientifico.html
+    link_modelos_poster: "assets/documentos/modelos-poster-70rbras.zip"   // vazio = bloco oculto em apresentadores.html
   },
   redes_sociais: {
     instagram: "https://www.instagram.com/70rbras"
-  }
+  },
+
+  // ─── FAIXA DE AVISO (topo de todas as páginas) ────────────────────────────
+  // Mostra o PRIMEIRO aviso da lista que estiver dentro do período [inicio, fim].
+  // Fora do período, o aviso some sozinho. Lista vazia = sem faixa.
+  //   id        → identificador único (o visitante que fechar o aviso não o vê de novo)
+  //   texto     → mensagem (aceita HTML, ex.: <strong>)
+  //   link      → (opcional) destino do link "Saiba mais"
+  //   link_texto→ (opcional) texto do link; padrão "Saiba mais"
+  //   inicio    → (opcional) "AAAA-MM-DDTHH:MM" (horário de Brasília)
+  //   fim       → "AAAA-MM-DDTHH:MM" (horário de Brasília)
+  avisos: [
+    {
+      id:         "fim-2o-lote-2026",
+      texto:      "⏳ <strong>Últimos dias do 2º Lote</strong>: inscrições com valor intermediário até 31/out.",
+      link:       "inscricoes.html",
+      link_texto: "Ver valores",
+      fim:        "2026-10-31T23:59"
+    }
+  ]
 };
