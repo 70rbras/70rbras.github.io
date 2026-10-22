@@ -1,6 +1,6 @@
 {
- "gerado_em": "2026-10-22T16:46:36-0300",
- "gerado_em_texto": "22/10/2026 às 16:46",
+ "gerado_em": "2026-10-22T17:06:10-0300",
+ "gerado_em_texto": "22/10/2026 às 17:06",
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -267,7 +267,7 @@
    "fim": "15:30",
    "tipo": "Sessão Temática",
    "tipo_slug": "sessao-tematica",
-   "titulo": "Sessão Conre 3 e 4",
+   "titulo": "Sessão Conre 3 e 4 - Além dos Testes e Modelos: O que Ensinar em Estatística na Era da Inteligência Artificial?",
    "subtitulo": "",
    "local": {
     "id": "CDC-A2",
@@ -465,7 +465,7 @@
    "fim": "11:30",
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
-   "titulo": "Conferência 2",
+   "titulo": "Conferência 2 - Beyond Univariate Models: Statistical Challenges and Opportunities in Multi-Trait Analysis",
    "subtitulo": "Asuman Turkmen",
    "local": {
     "id": "CDC-A3",
@@ -494,7 +494,7 @@
    "fim": "11:30",
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
-   "titulo": "Conferência 3",
+   "titulo": "Conferência 3 - A Zero-Inflated Spatiotemporal Model for Underreported Infectious Diseases Counts",
    "subtitulo": "Guilherme Lopes de Oliveira",
    "local": {
     "id": "CDC-A1",
@@ -897,7 +897,7 @@
    "fim": "13:00",
    "tipo": "Sessão Temática",
    "tipo_slug": "sessao-tematica",
-   "titulo": "Sessão ABE",
+   "titulo": "Sessão ABE -  Aprendizado Estatístico: Novas Abordagens e Perspectivas",
    "subtitulo": "",
    "local": {
     "id": "CDC-A3",
@@ -919,7 +919,7 @@
    "fim": "13:00",
    "tipo": "Sessão Temática",
    "tipo_slug": "sessao-tematica",
-   "titulo": "Sessão Embrapa",
+   "titulo": "Sessão Embrapa - Tecnologias Digitais, Coleta de Dados e Experimentação On-Farm com\r\nagricultura e pecuária na Embrapa.",
    "subtitulo": "",
    "local": {
     "id": "CDC-A1",
@@ -1007,7 +1007,7 @@
    "fim": "15:00",
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
-   "titulo": "Conferência 4",
+   "titulo": "Conferência 4 - Estatística em Tempos de Dados Complexos: Desafios e Oportunidades em Estatística Aplicada",
    "subtitulo": "Rosemeire Fiaccone",
    "local": {
     "id": "CDC-A3",
@@ -1058,7 +1058,7 @@
    "fim": "16:30",
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
-   "titulo": "Conferência 5",
+   "titulo": "Conferência 5 - A novel approach for analyzing non-proportional hazards with long-term survivors: The defective-Yang-Prentice model",
    "subtitulo": "Vinicius Calsavara",
    "local": {
     "id": "CDC-A3",
