@@ -44,7 +44,8 @@ site-rbras-claude/
 │   ├── config.js         # Configurações gerais do evento
 │   ├── dates.js          # Datas e prazos; Home mostra só os abertos/futuros (faixa #proximas-datas)
 │   ├── speakers.js       # Palestrantes e resumos das palestras
-│   ├── schedule.js       # Programação dos 3 dias
+│   ├── programacao.json  # Programação dos 3 dias (gerada da planilha; NÃO editar à mão)
+│   ├── schedule.js       # Programação antiga; agora serve apenas a apresentadores.html
 │   ├── committee.js      # Comissões organizadora e científica
 │   ├── sponsors.js       # Patrocinadores/apoiadores (grade única, sem tiers)
 │   ├── premios.js        # Prêmios e premiados (premios.html + faixa #premios-home na Home)
@@ -71,7 +72,7 @@ site-rbras-claude/
 - `assets/nav.js` — injeta a navbar no início do `<body>`; detecta a página ativa via `window.location.pathname` (normaliza URLs sem `.html`, ex.: `/logistica`) e marca o link com classe `.active`
 - `assets/footer.js`: injeta o rodapé (colunas Evento, Participar, Logística, Contato)
 - Navbar fixa: `assets/style.css` aplica `scroll-margin-top` em todo `[id]`, para que links `#ancora` não fiquem escondidos sob o menu
-- Cada página carrega apenas os `data/*.js` de que precisa (ex.: `programacao.html` só precisa de `schedule.js`)
+- Cada página carrega apenas os `data/*.js` de que precisa (ex.: `programacao.html` carrega `assets/programacao.js`, que lê `data/programacao.json`)
 - Navbar usa links reais entre páginas; seções que permanecem na Home são referenciadas como `index.html#ancora`
 
 ---
@@ -163,37 +164,19 @@ Prazos já encerrados (submissões, concurso, aceites, Fundo) seguem no arquivo,
 
 ---
 
-## 8. Programação (data/schedule.js)
+## 8. Programação (planilha → data/programacao.json)
 
-### Dia 1 — 23 nov (segunda)
-- 08:00 — Credenciamento + Minicursos M-1, M-2
-- 10:00 — Coffee break
-- 10:30 — Abertura oficial
-- 11:30 — Conferência C-1
-- 12:30 — Almoço
-- 14:00 — Sessões Temáticas (ST-1 a ST-3), Comunicações Orais (CO-1), Iniciação Científica (IC-M-D)
-- 15:30 — Conferência C-2
-- 16:30 — Coffee break
-- 17:30 — Sessão de Pôsteres 1
+A programação vem de uma planilha do Google, não de um arquivo editado à mão. A cadeia é:
 
-### Dia 2 — 24 nov (terça)
-- 08:00 — Minicursos M-1, M-2 (continuação)
-- 10:00 — Coffee break
-- 10:30 — Conferência C-3
-- 11:30 — Sessão de Pôsteres 2
-- 12:30 — Almoço
-- 14:00 — Atividade especial (a ser divulgada — não mencionar o CNPEM publicamente antes do evento)
-- 17:30 — Assembleia RBras + Entrega de Prêmios
+1. **Planilha do Google**, publicada em CSV aba por aba (atividades, trabalhos, locais, pessoas, config). As URLs ficam em `scripts/fontes.json`.
+2. **`scripts/build_programacao.py`** lê as abas, valida (horário final anterior ao inicial, local inexistente, conflito de sala, trabalho apontando para sessão inexistente) e gera **`data/programacao.json`**. Com erro, não grava nada e sai com código 1; avisos (ex.: local a definir) não bloqueiam.
+3. **`assets/programacao.js`** (estilos em `assets/programacao.css`, prefixo `pg-`) lê o JSON e desenha as três visões: visão geral (só atividades com `destaque = SIM`), dia a dia (filtro por prédio, aviso de troca de prédio) e busca de trabalhos (número, autor, título, área). Âncoras: `#geral`, `#dia`, `#busca` e o `id` de cada atividade (ex.: `#CO-5`).
 
-### Dia 3 — 25 nov (quarta)
-- 08:00 — Minicursos MC-1, MC-2
-- 09:00 — Comunicações Orais (CO-2 a CO-4)
-- 10:00 — Coffee break
-- 10:30 — Conferência C-4
-- 11:30 — Conferência C-5
-- 12:30 — Almoço
-- 14:00 — Sessões Temáticas (ST-4 a ST-6), Comunicações Orais (CO-5)
-- 15:30 — Cerimônia de encerramento + Premiação
+**Atualização automática:** `.github/workflows/programacao.yml` roda de hora em hora no minuto 17 e também pelo botão **Run workflow** (aba Actions). Commita `data/programacao.json` só quando há diferença. Quando a validação encontra erro, o fluxo falha e recusa a publicação; o site continua com a última versão boa.
+
+**Rodar localmente:** `python3 scripts/build_programacao.py --csv scripts/fontes.json -o data/programacao.json`. Para ver a página, servir com `python3 -m http.server` (o `fetch` não funciona em `file://`).
+
+**Sigilo:** a atividade especial da tarde de 24 nov não deve mencionar o CNPEM publicamente antes do evento. Vale também para a planilha publicada e para `data/programacao.json`, que são públicos.
 
 ---
 
@@ -268,7 +251,8 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 - ✅ Mapa do local (iframe Google Maps em logistica.html)
 - ✅ Prêmios centralizados, menu Científico aposentado, página Apresentadores, faixa "Próximas datas" (out/2026)
 - ✅ Links internos não abrem mais em nova aba (só links externos usam target="_blank")
-- ⏳ Local do credenciamento: "A ser determinado" em data/schedule.js
+- ⏳ Local do credenciamento: a pendência passou para a planilha, na atividade de id `INSCRICOES`
+- ⏳ `apresentadores.html` ainda lê horários e salas de `data/schedule.js`: são duas fontes de verdade (planilha e schedule.js) até a migração
 ---
 
 ## 13. Como fazer alterações comuns
@@ -286,7 +270,7 @@ Editar `data/sponsors.js`: inserir item no array `SPONSORS` (grade única). Baix
 Editar `data/hotels.js` ou `data/graficas.js` (campos documentados no topo de cada arquivo). Campo omitido não aparece no card.
 
 ### Atualizar programação
-Editar `data/schedule.js` — cada dia é um objeto com array de `slots`.
+A programação agora se altera na planilha do Google (ver seção 8). Nunca editar `data/programacao.json` à mão: o próximo ciclo do fluxo o sobrescreve. Para publicar na hora, usar o botão Run workflow.
 
 ### Adicionar membro de comissão
 Editar `data/committee.js` — separado em `organizing` e `scientific`.
