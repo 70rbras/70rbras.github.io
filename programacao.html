@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="./assets/programacao.css">
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7Z8S78NNX"></script>
   <script>
@@ -43,31 +44,49 @@
   </svg>
 </section>
 
-<!-- ─── PROGRAMAÇÃO ───────────────────────────────── -->
-<section id="programacao">
+<!-- ─── PROGRAMAÇÃO (assets/programacao.js + data/programacao.json) ─── -->
+<section class="pg" id="programacao">
   <div class="container">
-    <div class="sched-tabs reveal" id="sched-tabs">
-      <!-- gerado via schedule.js -->
+    <div class="pg-topo">
+      <p class="pg-aviso" id="pgAviso">Programação preliminar, sujeita a alterações.</p>
+      <p class="pg-atualizado" id="pgAtualizado"></p>
     </div>
-    <div id="sched-days-container">
-      <!-- gerado via schedule.js -->
-    </div>
-  </div>
-</section>
 
-<!-- ─── LEGENDA ───────────────────────────────────── -->
-<section style="padding:0 0 5rem;background:linear-gradient(180deg,var(--off-white) 0%,var(--white) 100%)">
-  <div class="container">
-    <div class="reveal" style="max-width:760px;margin-inline:auto;background:var(--white);border-radius:var(--radius);padding:1.5rem 2rem;box-shadow:0 2px 14px rgba(26,56,112,.07)">
-      <p style="font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid);margin-bottom:.9rem">Legenda</p>
-      <div style="display:flex;flex-wrap:wrap;gap:.6rem">
-        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--gold);flex-shrink:0"></span>Conferência</span>
-        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--teal);flex-shrink:0"></span>Minicurso</span>
-        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--blue-mid);flex-shrink:0"></span>Sessão Temática / Oral</span>
-        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--olive);flex-shrink:0"></span>Social / Visita</span>
-        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:#bbb;flex-shrink:0"></span>Intervalo</span>
-      </div>
+    <div class="pg-modos" role="tablist" aria-label="Formas de ver a programação">
+      <button class="pg-modo" type="button" role="tab" data-modo="geral" aria-selected="true"
+              aria-controls="pgGeral">Visão geral</button>
+      <button class="pg-modo" type="button" role="tab" data-modo="dia" aria-selected="false"
+              aria-controls="pgDia">Dia a dia</button>
+      <button class="pg-modo" type="button" role="tab" data-modo="busca" aria-selected="false"
+              aria-controls="pgBusca">Buscar</button>
     </div>
+
+    <div class="pg-painel" id="pgGeral" role="tabpanel" aria-label="Visão geral dos três dias">
+      <div class="pg-grade" id="pgGrade"></div>
+    </div>
+
+    <div class="pg-painel" id="pgDia" role="tabpanel" aria-label="Programação dia a dia" hidden>
+      <div class="pg-dias" id="pgDias" role="tablist" aria-label="Dias do evento"></div>
+      <div class="pg-filtros" id="pgFiltros"></div>
+      <div class="pg-linha-tempo" id="pgTempo"></div>
+    </div>
+
+    <div class="pg-painel" id="pgBusca" role="tabpanel" aria-label="Busca de trabalhos" hidden>
+      <label class="pg-busca-campo" for="pgCampo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+          <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <input id="pgCampo" type="search" autocomplete="off"
+               placeholder="Número do trabalho, autor, título ou área temática">
+      </label>
+      <p class="pg-busca-ajuda" id="pgAjuda">
+        São 392 trabalhos aceitos: 360 pôsteres e 32 comunicações orais.
+      </p>
+      <div id="pgResultados"></div>
+    </div>
+
+    <div class="pg-legenda" id="pgLegenda"></div>
   </div>
 </section>
 
@@ -100,7 +119,6 @@
 <!-- ─── DATA FILES ─────────────────────────────────── -->
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
-<script src="data/schedule.js"></script>
 <script src="assets/footer.js"></script>
 
 <script>
@@ -112,8 +130,6 @@ function revealAll() {
   document.querySelectorAll('.reveal,.reveal-from-right').forEach(el=>io.observe(el));
 }
 /* ── CONFIG ─────────────────────────────── */
-function parseISODate(iso){const[y,m,d]=iso.split('-').map(Number);return new Date(y,m-1,d);}
-
 function applyConfig() {
   const {evento, redes_sociais} = CONFIG;
   const safe=(id,fn)=>{const el=document.getElementById(id);if(el)fn(el);};
@@ -125,50 +141,6 @@ function applyConfig() {
       else{el.href=link;el.target='_blank';el.rel='noopener noreferrer';}
     });
   });
-}
-
-/* ── PROGRAMAÇÃO ─────────────────────────── */
-const TYPE_LABELS = {conf:'Conferência',mini:'Minicurso',session:'Sessão',social:'Social',break:'Intervalo'};
-const PIN_ICON  = `<svg width="11" height="14" viewBox="0 0 11 14" fill="none"><path d="M5.5 0C3.01 0 1 2.01 1 4.5c0 3.37 4.5 9.5 4.5 9.5S10 7.87 10 4.5C10 2.01 7.99 0 5.5 0zm0 6.5A2 2 0 1 1 5.5 2.5a2 2 0 0 1 0 4z" fill="currentColor"/></svg>`;
-const CLOCK_ICON= `<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 3.5V6.2l1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-const MAPS_ICON = `<svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8H2z" stroke="currentColor" stroke-width="1.3"/><path d="M2 4.5h8M4.5 2v8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><path d="M6 6l1.5-2.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>`;
-
-function bestCols(n){if(n<=3)return n;const prefs=[3,2,4,5];for(const c of prefs){if(c>n)continue;if(n%c!==1)return c;}return 3;}
-
-function renderCard(item,inicio){
-  const isBreak=item.tipo==='break';
-  const inicioCard=item.inicio||inicio;
-  const tempoHTML=(inicioCard||item.fim)?`<span class="sched-card-time">${CLOCK_ICON}${inicioCard}${item.fim?`<span class="sched-time-sep">-</span>${item.fim}`:''}</span>`:'';
-  let localHTML='';
-  if(item.local){
-    localHTML=item.maps_url
-      ?`<a class="sched-card-local sched-card-local--link" href="${item.maps_url}" target="_blank" rel="noopener">${PIN_ICON}${item.local} ${MAPS_ICON}</a>`
-      :`<span class="sched-card-local">${PIN_ICON}${item.local}</span>`;
-  }
-  return `<div class="sched-card type-bg-${item.tipo}${isBreak?' is-break':''}">
-    <div class="sched-card-header"><h4>${item.titulo}</h4><span class="sched-type type-${item.tipo}">${TYPE_LABELS[item.tipo]||item.tipo}</span></div>
-    ${item.descricao?`<p>${item.descricao}</p>`:''}
-    <div class="sched-card-footer">${tempoHTML}${localHTML}</div>
-  </div>`;
-}
-
-function renderSchedule(){
-  const days=SCHEDULE;
-  const tabs=document.getElementById('sched-tabs');
-  const container=document.getElementById('sched-days-container');
-  const hoje=new Date();hoje.setHours(0,0,0,0);
-  const eventoIni=parseISODate(CONFIG.evento.inicio), eventoFim=parseISODate(CONFIG.evento.fim);
-  let activeIdx=0;
-  if(hoje>=eventoIni&&hoje<=eventoFim){const offset=Math.floor((hoje-eventoIni)/86400000);activeIdx=Math.min(offset,days.length-1);}
-  tabs.innerHTML=days.map((d,i)=>`<button class="sched-tab${i===activeIdx?' active':''}" onclick="showDay('sched-day-${i}',this)">${d.dia}</button>`).join('');
-  container.innerHTML=days.map((d,i)=>`<div class="sched-day${i===activeIdx?' active':''}" id="sched-day-${i}"><div class="sched-blocks">${d.blocos.map(b=>`<div class="sched-block"><div class="sched-block-time"><span class="time-hhmm">${b.horario}</span></div><div class="sched-block-cards" style="--sched-cols:${bestCols(b.itens.length)}">${b.itens.map(item=>renderCard(item,b.horario)).join('')}</div></div>`).join('')}</div></div>`).join('');
-}
-
-function showDay(id,btn){
-  document.querySelectorAll('.sched-day').forEach(d=>d.classList.remove('active'));
-  document.querySelectorAll('.sched-tab').forEach(b=>b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
 }
 
 /* ── MODAL EM BREVE ────────────────────── */
@@ -188,8 +160,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')fecharModalEmBreve()
 
 /* ── BOOT ──────────────────────────────── */
 applyConfig();
-renderSchedule();
 revealAll();
 </script>
+<script src="./assets/programacao.js" defer></script>
 </body>
 </html>

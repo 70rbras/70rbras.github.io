@@ -14,7 +14,8 @@ site-rbras-claude/
 │   ├── config.js       ← configuração geral (datas, local, links, e-mail)
 │   ├── speakers.js     ← palestrantes convidados e resumos das palestras
 │   ├── dates.js        ← datas importantes (prazos, inscrições)
-│   ├── schedule.js     ← programação dos 3 dias
+│   ├── programacao.json ← programação dos 3 dias (gerada da planilha; não editar à mão)
+│   ├── schedule.js     ← programação antiga; usada só por apresentadores.html
 │   ├── committee.js    ← comissão organizadora
 │   ├── premios.js      ← prêmios e premiados (premios.html + faixa na Home)
 │   ├── apresentadores.js ← instruções de Pôster e Comunicação Oral (apresentadores.html)
@@ -68,12 +69,19 @@ Cada item do array `DATES` tem os campos:
 
 ---
 
-### Programação (`data/schedule.js`)
-Cada dia tem um campo `atividades` com lista de itens:
-- `horario` → horário no formato `"HH:MM"`
-- `tipo` → `"keynote"`, `"mini"`, `"session"`, `"social"` ou `"break"`
-- `titulo` → título da atividade
-- `descricao` → informação complementar (sala, palestrante, etc.) — pode ser `""`
+### Programação (planilha do Google → `data/programacao.json`)
+A programação **não se edita mais em arquivo**: altere a planilha do Google da programação.
+- A planilha é publicada em CSV, uma URL por aba, listadas em `scripts/fontes.json`
+- `scripts/build_programacao.py` lê as abas, valida e gera `data/programacao.json`
+- `assets/programacao.js` lê o JSON e monta as três visões: visão geral, dia a dia e busca de trabalhos
+- O fluxo `.github/workflows/programacao.yml` roda de hora em hora (minuto 17) e também pelo botão **Run workflow**, na aba Actions do GitHub
+- Se a validação encontrar erro (horário invertido, sala inexistente, conflito de sala, trabalho sem sessão válida), nada é publicado e o site mantém a última versão boa
+- **Nunca edite `data/programacao.json` à mão**: o próximo ciclo do fluxo sobrescreve o arquivo
+
+Para gerar localmente:
+```bash
+python3 scripts/build_programacao.py --csv scripts/fontes.json -o data/programacao.json
+```
 
 ---
 
@@ -107,7 +115,8 @@ Um objeto por prêmio no array `PREMIOS` (Destaque, Tese, Dissertação, IC).
 ### Apresentadores (`data/apresentadores.js`)
 - `poster.instrucoes` e `oral.instrucoes`: listas de instruções (aceitam HTML)
 - Lista vazia mostra "Instruções em breve"
-- Horários e salas das sessões vêm de `data/schedule.js` (itens "Sessão de Pôsteres" e "CO-")
+- Horários e salas das sessões ainda vêm de `data/schedule.js` (itens "Sessão de Pôsteres" e "CO-"), não da planilha
+  - Ao mudar horário ou sala de pôster/comunicação oral na planilha, atualize também o `schedule.js` até a migração desta página
 
 ---
 
@@ -145,8 +154,8 @@ Acesse `http://localhost:3000` no navegador.
 ---
 
 ## Arquivos obsoletos para apagar
-Os arquivos `.json` na pasta `data/` são versões antigas e **não são mais usados**.
-Podem ser apagados com segurança:
+Os arquivos `.json` abaixo, se existirem na pasta `data/`, são versões antigas e **não são mais usados**.
+Podem ser apagados com segurança. **Exceção:** `data/programacao.json` está em uso (é a programação gerada da planilha) e não deve ser apagado.
 ```
 data/config.json
 data/speakers.json
