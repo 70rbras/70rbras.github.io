@@ -1171,10 +1171,19 @@ body.nav-open #navbar { backdrop-filter: none; -webkit-backdrop-filter: none; }
 body.nav-open .nav-links {
   display: flex; flex-direction: column;
   position: fixed; top: 0; right: 0; bottom: 0; left: 0;
-  background: rgba(13,33,53,.97); align-items: center; justify-content: center;
-  gap: 2.5rem; z-index: 1000;
+  background: rgba(13,33,53,.97); align-items: center; justify-content: flex-start;
+  gap: 1.6rem; z-index: 1000;
+  /* Menu maior que a tela (celular): rola em vez de cortar o topo */
+  overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+  padding: calc(var(--announce-h, 0px) + 5rem) 1rem 3rem;
 }
-body.nav-open .nav-links > li > a { font-size: 1.4rem; }
+body.nav-open .hamburger { position: relative; z-index: 1001; }
+/* Centraliza quando cabe; quando não cabe, começa do topo e rola */
+body.nav-open .nav-links > li:first-child { margin-top: auto; }
+body.nav-open .nav-links > li:last-child { margin-bottom: auto; }
+body.nav-open { overflow: hidden; }
+body.nav-open .nav-links > li { flex-shrink: 0; text-align: center; }
+body.nav-open .nav-links > li > a { font-size: 1.3rem; }
 body.nav-open .nav-dropdown-menu {
   position: static;
   opacity: 1; pointer-events: auto;
