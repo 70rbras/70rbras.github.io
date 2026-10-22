@@ -1,0 +1,46 @@
+name: Atualizar programação
+
+# Lê as abas publicadas da planilha, valida e grava data/programacao.json.
+# Roda de hora em hora e também sob demanda, pelo botão "Run workflow".
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/build_programacao.py'
+      - 'scripts/fontes.json'
+      - '.github/workflows/programacao.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: programacao
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Gerar o JSON a partir da planilha
+        run: python3 scripts/build_programacao.py --csv scripts/fontes.json -o data/programacao.json
+
+      - name: Publicar quando houver mudança
+        run: |
+          if git diff --quiet -- data/programacao.json; then
+            echo "Programação sem alterações."
+            exit 0
+          fi
+          git config user.name  "programacao-bot"
+          git config user.email "actions@github.com"
+          git add data/programacao.json
+          git commit -m "Programação atualizada a partir da planilha"
+          git push
