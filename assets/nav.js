@@ -153,9 +153,11 @@
 
   // Scroll: fundo sólido ao rolar (só na home; subpáginas já têm .solid via class="solid")
   if (isPage('index.html')) {
-    window.addEventListener('scroll', () => {
+    const atualizarNavbar = () => {
       navbar.classList.toggle('scrolled', window.scrollY > 60);
-    });
+    };
+    window.addEventListener('scroll', atualizarNavbar);
+    atualizarNavbar();
   }
 
   // Hamburger toggle
