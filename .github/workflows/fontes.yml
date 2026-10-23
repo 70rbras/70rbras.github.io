@@ -1,0 +1,26 @@
+name: Verificar fontes únicas
+
+# Recusa a publicação quando um fato que já tem fonte em data/ reaparece
+# escrito à mão no HTML. A lista de pendências conhecidas fica em
+# scripts/fontes-unicas.json. Plano: claude/plano-fontes-unicas-70rbras.md.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verificar fontes únicas
+        run: node scripts/checar_fontes.mjs
