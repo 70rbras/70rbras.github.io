@@ -1,0 +1,184 @@
+[
+  {
+    "arquivo": "programacao.html",
+    "regra": "R4",
+    "limite": 3,
+    "motivo": "contagem de trabalhos escrita à mão; a fonte é data/programacao.json",
+    "tarefa": "D1.3"
+  },
+  {
+    "arquivo": "apresentadores.html",
+    "regra": "R8",
+    "limite": 1,
+    "motivo": "ligação repetida que deveria viver em assets/nav.js",
+    "tarefa": "D2.1"
+  },
+  {
+    "arquivo": "assets/footer.js",
+    "regra": "R3",
+    "limite": 1,
+    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
+    "tarefa": "D2.1"
+  },
+  {
+    "arquivo": "comissoes.html",
+    "regra": "R8",
+    "limite": 1,
+    "motivo": "ligação repetida que deveria viver em assets/nav.js",
+    "tarefa": "D2.1"
+  },
+  {
+    "arquivo": "index.html",
+    "regra": "R8",
+    "limite": 1,
+    "motivo": "ligação repetida que deveria viver em assets/nav.js",
+    "tarefa": "D2.1"
+  },
+  {
+    "arquivo": "inscricoes.html",
+    "regra": "R8",
+    "limite": 1,
+    "motivo": "ligação repetida que deveria viver em assets/nav.js",
+    "tarefa": "D2.1"
+  },
+  {
+    "arquivo": "logistica.html",
+    "regra": "R8",
+    "limite": 1,
+    "motivo": "ligação repetida que deveria viver em assets/nav.js",
+    "tarefa": "D2.1"
+  },
+  {
+    "arquivo": "palestrantes.html",
+    "regra": "R8",
+    "limite": 1,
+    "motivo": "ligação repetida que deveria viver em assets/nav.js",
+    "tarefa": "D2.1"
+  },
+  {
+    "arquivo": "premios.html",
+    "regra": "R8",
+    "limite": 1,
+    "motivo": "ligação repetida que deveria viver em assets/nav.js",
+    "tarefa": "D2.1"
+  },
+  {
+    "arquivo": "programacao.html",
+    "regra": "R8",
+    "limite": 1,
+    "motivo": "ligação repetida que deveria viver em assets/nav.js",
+    "tarefa": "D2.1"
+  },
+  {
+    "arquivo": "logistica.html",
+    "regra": "R3",
+    "limite": 3,
+    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
+    "tarefa": "D2.2"
+  },
+  {
+    "arquivo": "wasa.html",
+    "regra": "R3",
+    "limite": 1,
+    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
+    "tarefa": "D2.2"
+  },
+  {
+    "arquivo": "index.html",
+    "regra": "R1",
+    "limite": 4,
+    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
+    "tarefa": "D2.3"
+  },
+  {
+    "arquivo": "index.html",
+    "regra": "R3",
+    "limite": 6,
+    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
+    "tarefa": "D2.3"
+  },
+  {
+    "arquivo": "logistica.html",
+    "regra": "R1",
+    "limite": 1,
+    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
+    "tarefa": "D2.3"
+  },
+  {
+    "arquivo": "inscricoes.html",
+    "regra": "R1",
+    "limite": 7,
+    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
+    "tarefa": "D3.2"
+  },
+  {
+    "arquivo": "inscricoes.html",
+    "regra": "R2",
+    "limite": 18,
+    "motivo": "valor em reais escrito à mão; a fonte é um arquivo de data/",
+    "tarefa": "D3.3"
+  },
+  {
+    "arquivo": "data/submissions.js",
+    "regra": "R7",
+    "limite": 2,
+    "motivo": "símbolo declarado em data/ sem nenhum consumidor",
+    "tarefa": "D3.4"
+  },
+  {
+    "arquivo": "fundo-estudante.html",
+    "regra": "R1",
+    "limite": 9,
+    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
+    "tarefa": "D3.5"
+  },
+  {
+    "arquivo": "fundo-estudante.html",
+    "regra": "R2",
+    "limite": 9,
+    "motivo": "valor em reais escrito à mão; a fonte é um arquivo de data/",
+    "tarefa": "D3.5"
+  },
+  {
+    "arquivo": "wasa.html",
+    "regra": "R2",
+    "limite": 2,
+    "motivo": "valor em reais escrito à mão; a fonte é um arquivo de data/",
+    "tarefa": "D3.5"
+  },
+  {
+    "arquivo": "data/committee.js",
+    "regra": "R6",
+    "limite": 17,
+    "motivo": "pessoa registrada mais de uma vez nos arquivos de dados",
+    "tarefa": "D4.2"
+  },
+  {
+    "arquivo": "data/wasa.js",
+    "regra": "R7",
+    "limite": 2,
+    "motivo": "símbolo declarado em data/ sem nenhum consumidor",
+    "tarefa": "D4.3"
+  },
+  {
+    "arquivo": "wasa.html",
+    "regra": "R1",
+    "limite": 4,
+    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
+    "tarefa": "D4.3"
+  },
+  {
+    "arquivo": "premios.html",
+    "regra": "R3",
+    "limite": 5,
+    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
+    "tarefa": "D5.1"
+  },
+  {
+    "arquivo": "programacao.html",
+    "regra": "R1",
+    "limite": 1,
+    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
+    "tarefa": "D5.1"
+  }
+]
