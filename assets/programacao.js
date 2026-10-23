@@ -17,6 +17,10 @@
     'refeicao': '#8C9BAD'
   };
   var LEVES = ['intervalo', 'refeicao'];
+  /* 'A definir' ainda não foi decidido. 'LIVRE' é o tempo em que cada participante
+     escolhe onde ficar. Nenhum dos dois é prédio, portanto nenhum dos dois entra nos
+     avisos de troca de prédio. */
+  var SEM_PREDIO = ['A definir', 'LIVRE'];
 
   var raiz = document.querySelector('.pg');
   if (!raiz) return;
@@ -221,6 +225,39 @@
     });
   }
 
+  function predioDe(a) {
+    var p = a.local && a.local.predio;
+    return p && SEM_PREDIO.indexOf(p) < 0 ? p : null;
+  }
+
+  function listarPredios(predios) {
+    if (predios.length === 1) return texto(predios[0]);
+    var inicio = predios.slice(0, -1).map(function (p) { return texto(p); }).join(', ');
+    return inicio + ' e ' + texto(predios[predios.length - 1]);
+  }
+
+  /* O aviso compara o conjunto de prédios do bloco anterior com o conjunto do bloco
+     atual. Guardar um único prédio não resolve o caso de duas atividades simultâneas
+     em prédios diferentes: quem está no prédio que não continua precisa do aviso,
+     quem já está no prédio de destino não precisa. */
+  function avisoTroca(origens, destinos) {
+    if (!origens.length || !destinos.length) return '';
+
+    if (destinos.length === 1) {
+      var trocam = origens.filter(function (p) { return destinos.indexOf(p) < 0; });
+      if (!trocam.length) return '';
+      return '<p class="pg-mudanca">Troca de prédio: ' + listarPredios(trocam) +
+        ' para ' + texto(destinos[0]) + '</p>';
+    }
+
+    var mesmos = origens.length === destinos.length && origens.every(function (p) {
+      return destinos.indexOf(p) >= 0;
+    });
+    if (mesmos) return '';
+    return '<p class="pg-mudanca">Atividades em mais de um prédio: ' +
+      listarPredios(destinos) + '. Confira onde é a sua antes de sair.</p>';
+  }
+
   function montarTempo() {
     var lista = doDia(diaAtivo).filter(function (a) {
       return predioAtivo === 'todos' || a.local.predio === predioAtivo;
@@ -238,20 +275,15 @@
       else blocos.push({ inicio: a.inicio, itens: [a] });
     });
 
-    var predioAnterior = null;
+    var prediosAnteriores = [];
     el.tempo.innerHTML = blocos.map(function (bloco) {
       var fins = bloco.itens.map(function (a) { return a.fim; })
         .filter(function (f, i, arr) { return f && arr.indexOf(f) === i; });
-      var predios = bloco.itens.map(function (a) { return a.local.predio; })
-        .filter(function (p, i, arr) { return p && p !== 'A definir' && arr.indexOf(p) === i; });
+      var predios = bloco.itens.map(function (a) { return predioDe(a); })
+        .filter(function (p, i, arr) { return p && arr.indexOf(p) === i; });
 
-      var mudanca = '';
-      if (predioAnterior && predios.length === 1 && predioAnterior !== predios[0] &&
-          !bloco.itens.every(function (a) { return LEVES.indexOf(a.tipo_slug) >= 0; })) {
-        mudanca = '<p class="pg-mudanca">Troca de prédio: ' + texto(predioAnterior) +
-          ' para ' + texto(predios[0]) + '</p>';
-      }
-      if (predios.length === 1) predioAnterior = predios[0];
+      var mudanca = avisoTroca(prediosAnteriores, predios);
+      if (predios.length) prediosAnteriores = predios;
 
       var cartoes = bloco.itens.map(function (a) {
         var leve = LEVES.indexOf(a.tipo_slug) >= 0;
