@@ -335,6 +335,25 @@
 
 .pg-sala { min-width: 0; }
 
+a.pg-sala {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--pg-borda-forte);
+  text-underline-offset: .18em;
+}
+a.pg-sala:hover,
+a.pg-sala:focus-visible {
+  color: var(--pg-azul);
+  text-decoration-color: currentColor;
+}
+
+.pg-como {
+  margin: .3rem 0 0;
+  font-size: .8rem;
+  line-height: 1.45;
+  color: var(--pg-texto-fraco);
+}
+
 .pg-desc {
   font-size: .85rem;
   color: var(--pg-texto-fraco);

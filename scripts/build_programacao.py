@@ -149,6 +149,10 @@ def construir(dados):
             'como_chegar': norm(r.get('como_chegar')),
             'mapa_url': norm(r.get('mapa_url')),
         }
+        mapa = locais[lid]['mapa_url']
+        if mapa and not mapa.startswith('https://'):
+            avisos.append('local %s tem mapa_url fora do padrão https, '
+                          'portanto o link não será exibido' % lid)
 
     pessoas = {}
     for r in dados['pessoas']:

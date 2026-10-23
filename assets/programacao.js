@@ -70,6 +70,18 @@
     return !v || v.indexOf('a confirmar') === 0 || v.indexOf('a definir') === 0;
   }
 
+  /* texto() escapa < e >, mas não escapa aspas, portanto não serve sozinho dentro
+     de um atributo HTML. atributo() fecha essa brecha. */
+  function atributo(valor) {
+    return texto(valor).replace(/"/g, '&quot;');
+  }
+
+  /* Só aceita https, sem espaço nem aspas. Um valor digitado errado na planilha
+     deixa de virar link em vez de virar um link executável. */
+  function urlSegura(u) {
+    return /^https:\/\/[^\s"'<>]+$/.test(u || '') ? u : '';
+  }
+
   function ondeHtml(a) {
     var l = a.local || {};
     var temPredio = l.predio && l.predio !== 'A definir';
@@ -77,10 +89,20 @@
     if (!temPredio) sala = 'local a definir';
     else if (indefinido(l.sala)) sala = 'sala a confirmar';
     else sala = l.sala;
+
+    var mapa = temPredio ? urlSegura(l.mapa_url) : '';
+    var comoChegar = temPredio && l.como_chegar ? l.como_chegar : '';
+
     return '<div class="pg-onde">' +
-      (temPredio ? '<span class="pg-predio" data-predio="' + texto(l.predio) + '">' +
+      (temPredio ? '<span class="pg-predio" data-predio="' + atributo(l.predio) + '">' +
         texto(l.predio) + '</span>' : '') +
-      '<span class="pg-sala">' + texto(sala) + '</span></div>';
+      (mapa
+        ? '<a class="pg-sala" href="' + atributo(mapa) + '" target="_blank" rel="noopener"' +
+          ' aria-label="' + atributo(sala + ', abre o mapa em nova aba') + '">' +
+          texto(sala) + '</a>'
+        : '<span class="pg-sala">' + texto(sala) + '</span>') +
+      '</div>' +
+      (comoChegar ? '<p class="pg-como">' + texto(comoChegar) + '</p>' : '');
   }
 
   function ondeTexto(a) {
