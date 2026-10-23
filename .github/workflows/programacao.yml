@@ -33,6 +33,13 @@ jobs:
       - name: Gerar o JSON a partir da planilha
         run: python3 scripts/build_programacao.py --csv scripts/fontes.json -o data/programacao.json
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verificar fontes únicas
+        run: node scripts/checar_fontes.mjs
+
       - name: Publicar quando houver mudança
         run: |
           if git diff --quiet -- data/programacao.json; then
