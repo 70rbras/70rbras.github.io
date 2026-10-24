@@ -2,6 +2,8 @@
 
 Site estático em HTML/CSS/JS. Funciona em GitHub Pages, qualquer VPS ou localmente.
 
+Cada informação do site tem um único lugar de edição, listado em `FONTES.md`. Depois de qualquer alteração, rode `node scripts/checar_fontes.mjs`: ele recusa a publicação quando um fato que já tem fonte em `data/` aparece escrito à mão numa página.
+
 ---
 
 ## Estrutura de arquivos
@@ -10,6 +12,7 @@ Site estático em HTML/CSS/JS. Funciona em GitHub Pages, qualquer VPS ou localme
 site-rbras-claude/
 ├── index.html          ← estrutura e visual do site (não editar)
 ├── LEIAME.md           ← este guia
+├── FONTES.md           ← onde se edita cada informação do site
 ├── data/
 │   ├── config.js       ← configuração geral (datas, local, links, e-mail)
 │   ├── speakers.js     ← palestrantes convidados e resumos das palestras
@@ -62,10 +65,13 @@ Tamanho ideal: **400×400 px**, formato JPG ou PNG.
 ### Datas importantes (`data/dates.js`)
 Cada item do array `DATES` tem os campos:
 - `titulo` → nome do prazo
-- `data` → texto da data (ex: `"31 ago 2026"` ou `"A definir"`)
+- `inicio` e `fim` → datas no formato ISO `AAAA-MM-DD`
 - `descricao` → descrição curta
 - `icone` → emoji exibido no card
-- `cor` → cor do destaque: `"blue"`, `"teal"`, `"gold"` ou `"olive"`
+- `link` → (opcional) página de destino do card
+- `destaque` → (opcional) `true` no card principal do evento
+
+O status, a contagem de dias e a ordenação são calculados na hora da exibição. Só aparecem na home os prazos ainda abertos ou futuros.
 
 ---
 

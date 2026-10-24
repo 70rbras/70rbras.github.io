@@ -37,6 +37,7 @@ site-rbras-claude/
 ├── fundo-estudante.html  # Fundo de Financiamento ao estudante
 ├── wasa.html             # WASA (evento satélite)
 ├── LEIAME.md             # Guia de manutenção em português
+├── FONTES.md             # Onde se edita cada informação; regras de fonte única
 ├── CNAME                 # Configuração de domínio (70rbras.org)
 ├── CLAUDE.md             # Este arquivo de memória
 ├── padroniza_fotos.py    # Script Python para normalizar fotos de palestrantes
@@ -55,6 +56,11 @@ site-rbras-claude/
 │   ├── hotels.js         # Hospedagem (logistica.html#hospedagem)
 │   ├── graficas.js       # Gráficas para pôster (logistica.html#graficas)
 │   └── wasa.js           # Dados do WASA
+├── scripts/
+│   ├── build_programacao.py  # Planilha publicada em CSV → data/programacao.json
+│   ├── fontes.json           # URLs das abas publicadas
+│   ├── checar_fontes.mjs     # Verificador de fontes únicas (Node, sem dependência)
+│   └── fontes-unicas.json    # Lista das pendências conhecidas, por tarefa
 └── assets/
     ├── style.css         # CSS compartilhado por TODAS as páginas
     ├── nav.js            # Navbar injetável (carregada por todas as páginas)
@@ -66,6 +72,8 @@ site-rbras-claude/
 ```
 
 **Regra de ouro:** Todo conteúdo do site é controlado pelos arquivos em `data/`. As páginas HTML não devem ser editadas para mudanças de conteúdo — apenas para mudanças estruturais de layout ou estilo.
+
+**Fonte única de verdade:** `FONTES.md` diz onde se edita cada informação do site. A regra é verificada por `scripts/checar_fontes.mjs`, que recusa a publicação quando um fato que já tem fonte em `data/` reaparece escrito à mão numa página. As pendências conhecidas ficam em `scripts/fontes-unicas.json`, cada uma com a tarefa de `claude/plano-fontes-unicas-70rbras.md` que vai eliminá-la. Antes de qualquer commit, rodar `node scripts/checar_fontes.mjs`.
 
 **Arquitetura multi-página (desde mai/2026):**
 - `assets/style.css` — único arquivo CSS, carregado por todas as páginas
@@ -251,11 +259,15 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 - ✅ Mapa do local (iframe Google Maps em logistica.html)
 - ✅ Prêmios centralizados, menu Científico aposentado, página Apresentadores, faixa "Próximas datas" (out/2026)
 - ✅ Links internos não abrem mais em nova aba (só links externos usam target="_blank")
+- ✅ `programacao-previa.html` removida (23/10/2026): era cópia congelada do JSON, publicada em paralelo a `programacao.html`
+- ✅ Verificador de fontes únicas instalado (23/10/2026), ligado aos fluxos `fontes.yml` e `programacao.yml`; retrato inicial de 103 ocorrências em 26 entradas
 - ⏳ Local do credenciamento: a pendência passou para a planilha, na atividade de id `INSCRICOES`
 - ⏳ `apresentadores.html` ainda lê horários e salas de `data/schedule.js`: são duas fontes de verdade (planilha e schedule.js) até a migração
 ---
 
 ## 13. Como fazer alterações comuns
+
+Antes de editar, consultar `FONTES.md`: ele lista onde mora cada informação. Depois de editar, rodar `node scripts/checar_fontes.mjs`.
 
 ### Adicionar/editar palestrante
 Editar `data/speakers.js` — cada palestrante é um objeto no array `speakers`.
