@@ -1,14 +1,14 @@
 // ─── APRESENTADORES ──────────────────────────────────────────────────────────
 // Alimenta apresentadores.html (instruções para quem apresenta Pôster ou
-// Comunicação Oral). Carregado junto com data/config.js e data/schedule.js.
+// Comunicação Oral). Carregado junto com data/config.js.
 //
 // Campos por modalidade:
 //   instrucoes → lista de instruções (aceita HTML). Lista vazia = bloco
 //                "Instruções em breve" no lugar da lista.
 //   aviso      → (opcional) destaque curto exibido acima da lista
 //
-// Os horários e salas das sessões NÃO ficam aqui: são lidos de data/schedule.js
-// (itens "Sessão de Pôsteres ..." e "CO-...").
+// Os horários e salas das sessões NÃO ficam aqui: são lidos de
+// data/programacao.json, gerado da planilha da comissão.
 //
 // Os links dos modelos de pôster ficam em data/config.js (link_modelos_poster).
 

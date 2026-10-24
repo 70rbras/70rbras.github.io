@@ -77,7 +77,7 @@
     .apres-embreve strong { display: block; color: var(--text-dark); font-size: 1rem; margin-bottom: .3rem; }
     .apres-embreve p { font-size: .88rem; color: var(--text-mid); line-height: 1.55; }
 
-    /* Sessões (lidas de schedule.js) */
+    /* Sessões (lidas de data/programacao.json) */
     .sessao-item {
       display: grid;
       grid-template-columns: 92px 1fr;
@@ -188,7 +188,6 @@
 <!-- ─── SCRIPTS ─────────────────────────────────────── -->
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
-<script src="data/schedule.js"></script>
 <script src="data/apresentadores.js"></script>
 <script src="assets/footer.js"></script>
 
@@ -223,29 +222,79 @@ function renderInstrucoes(id, m) {
     : `<div class="apres-embreve"><span class="icone">⏳</span><strong>Instruções em breve</strong><p>As orientações para esta modalidade serão publicadas aqui. Volte a consultar esta página.</p></div>`);
 }
 
-/* ─── SESSÕES (data/schedule.js) ───────────────────── */
-function renderSessoes(id, filtro) {
+/* ─── SESSÕES (data/programacao.json) ──────────────── */
+/* A programação vem da planilha da comissão, portanto todo valor é tratado
+   como entrada não confiável: escapado antes de entrar no HTML. */
+function esc(v) {
+  return String(v == null ? '' : v)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+function urlSegura(u) {
+  u = String(u || '').trim();
+  return /^https:\/\/[^\s"'<>]+$/.test(u) ? u : '';
+}
+function renderSessoes(id, dados, slug) {
   const el = document.getElementById(id);
-  if (!el || typeof SCHEDULE === 'undefined') return;
-  const linhas = [];
-  SCHEDULE.forEach(dia => dia.blocos.forEach(b => b.itens.forEach(it => {
-    if (filtro(it)) linhas.push({ dia: dia.dia, inicio: it.inicio || b.horario, ...it });
-  })));
-  el.innerHTML = linhas.length
-    ? linhas.map(s => `
-        <div class="sessao-item">
-          <div class="sessao-quando">${s.dia}<span>${s.inicio}${s.fim ? ' - ' + s.fim : ''}</span></div>
-          <div><div class="sessao-titulo">${s.titulo}</div><div class="sessao-local">${s.local || ''}</div></div>
-        </div>`).join('') + `<p class="sessao-rodape"><a href="programacao.html">Ver programação completa &rarr;</a></p>`
-    : `<p style="font-size:.9rem;color:var(--text-mid)">Horários em breve na <a href="programacao.html" style="color:var(--teal);font-weight:600">programação</a>.</p>`;
+  if (!el) return;
+  const rotulo = {};
+  (dados.dias || []).forEach(d => { rotulo[d.data] = d.rotulo_curto || d.data; });
+  const linhas = (dados.atividades || [])
+    .filter(a => a.tipo_slug === slug)
+    .sort((a, b) => (a.data + a.inicio).localeCompare(b.data + b.inicio));
+
+  if (!linhas.length) {
+    el.innerHTML = '<p style="font-size:.9rem;color:var(--text-mid)">Horários em breve na <a href="programacao.html" style="color:var(--teal);font-weight:600">programação</a>.</p>';
+    return;
+  }
+
+  el.innerHTML = linhas.map(a => {
+    const local = a.local || {};
+    const mapa = urlSegura(local.mapa_url);
+    const onde = local.nome
+      ? (mapa
+          ? '<a href="' + esc(mapa) + '" target="_blank" rel="noopener noreferrer">' + esc(local.nome) + '</a>'
+          : esc(local.nome))
+      : '';
+    const como = local.como_chegar
+      ? '<div class="sessao-local">' + esc(local.como_chegar) + '</div>'
+      : '';
+    return '<div class="sessao-item">' +
+      '<div class="sessao-quando">' + esc(rotulo[a.data] || a.data) +
+        '<span>' + esc(a.inicio) + (a.fim ? ' - ' + esc(a.fim) : '') + '</span></div>' +
+      '<div>' +
+        '<div class="sessao-titulo"><a href="programacao.html#' + esc(a.id) + '">' + esc(a.titulo) + '</a></div>' +
+        (onde ? '<div class="sessao-local">' + onde + '</div>' : '') +
+        como +
+      '</div>' +
+    '</div>';
+  }).join('') + '<p class="sessao-rodape"><a href="programacao.html">Ver programação completa &rarr;</a></p>';
+}
+
+function carregarSessoes() {
+  ['poster-sessoes', 'oral-sessoes'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '<p style="font-size:.9rem;color:var(--text-mid)">Carregando os horários...</p>';
+  });
+  fetch('data/programacao.json', { cache: 'no-cache' })
+    .then(r => { if (!r.ok) throw new Error('resposta ' + r.status); return r.json(); })
+    .then(dados => {
+      renderSessoes('poster-sessoes', dados, 'poster');
+      renderSessoes('oral-sessoes', dados, 'comunicacao-oral');
+    })
+    .catch(() => {
+      ['poster-sessoes', 'oral-sessoes'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = '<p style="font-size:.9rem;color:var(--text-mid)">Não foi possível carregar os horários agora. Consulte a <a href="programacao.html" style="color:var(--teal);font-weight:600">programação</a>.</p>';
+      });
+    });
 }
 
 /* ─── BOOT ─────────────────────────────────────────── */
 applyConfig();
 renderInstrucoes('poster-instrucoes', APRESENTADORES.poster);
 renderInstrucoes('oral-instrucoes', APRESENTADORES.oral);
-renderSessoes('poster-sessoes', it => /p[ôo]ster/i.test(it.titulo));
-renderSessoes('oral-sessoes', it => /^CO-\d/.test(it.titulo));
+carregarSessoes();
 revealAll();
 </script>
 </body>
