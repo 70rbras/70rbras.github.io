@@ -12,7 +12,8 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img class="footer-logo-img" src="${root}assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026">
-        <p id="footer-desc">70ª Reunião da Região Brasileira da<br>Sociedade Internacional de Biometria<br>UNICAMP, Campinas, SP</p>
+        <!-- Preenchido abaixo a partir de CONFIG.evento (data/config.js). -->
+        <p id="footer-desc"></p>
       </div>
       <div class="footer-col">
         <h4>Evento</h4>
@@ -47,7 +48,7 @@
         <h4>Contato</h4>
         <ul>
           <li><a href="${root}faq.html">Perguntas Frequentes</a></li>
-          <li><a href="#" id="footer-email">70rbras@unicamp.br</a></li>
+          <li><a href="#" id="footer-email"></a></li>
           <li><a href="${root}comissoes.html">Comissão Organizadora</a></li>
           <li><a href="#" id="footer-site-rbras" target="_blank" rel="noopener noreferrer">RBras.org.br</a></li>
         </ul>
@@ -78,7 +79,10 @@
   const { evento, redes_sociais } = CONFIG;
   const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
 
-  safe('footer-desc',       el => el.innerHTML = '70ª Reunião da Região Brasileira da<br>Sociedade Internacional de Biometria<br>' + evento.cidade);
+  const escapar = s => String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  safe('footer-desc',       el => el.innerHTML = escapar(evento.nome) + '<br>' + escapar(evento.cidade));
   safe('footer-copy',       el => el.innerHTML = `© 2026 ${evento.edicao} · Região Brasileira da Sociedade Internacional de Biometria · <span style="opacity:.6;font-size:.78rem;">Este site utiliza cookies analíticos para medir o alcance do evento (Google Analytics 4).</span>`);
   safe('footer-email',      el => { el.href = 'mailto:' + evento.email_contato; el.textContent = evento.email_contato; });
   safe('footer-site-rbras', el => { el.href = evento.site_rbras; });

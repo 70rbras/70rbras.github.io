@@ -80,7 +80,7 @@
       <li><a href="${root}faq.html"${activeClass('faq.html')}>FAQ</a></li>
 
       <!-- CTA -->
-      <li><a href="#" class="nav-cta" id="nav-cta-link">Área do Inscrito</a></li>
+      <li><a href="#" class="nav-cta" id="nav-cta-link" data-link="area-inscrito">Área do Inscrito</a></li>
 
       <!-- WASA (evento satélite, dropdown) -->
       <li class="nav-dropdown">
@@ -143,8 +143,34 @@
       window.removeEventListener('resize', updateAnnounceOffset);
     });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aplicarAviso);
-  else aplicarAviso();
+  /* ── Ligações externas (configuradas em data/config.js → evento) ─
+     Todo elemento com data-link recebe o endereço do campo correspondente.
+     O botão da Área do Inscrito usa o mecanismo, assim como os botões das
+     páginas que levam ao mesmo destino, portanto nenhum arquivo fora daqui
+     precisa nomear o campo da configuração. Roda junto com a faixa de aviso,
+     pois nav.js é carregado antes de config.js em todas as páginas. */
+  const CAMPO_DO_LINK = {
+    'area-inscrito': 'link_area_inscrito'
+  };
+
+  function aplicarLigacoes() {
+    if (typeof CONFIG === 'undefined' || !CONFIG.evento) return;
+    document.querySelectorAll('[data-link]').forEach(el => {
+      const campo = CAMPO_DO_LINK[el.dataset.link];
+      const url = campo ? CONFIG.evento[campo] : '';
+      if (!url || url === '#') return;
+      el.href = url;
+      el.target = '_blank';
+      el.rel = 'noopener noreferrer';
+    });
+  }
+
+  function aplicarConfig() {
+    aplicarAviso();
+    aplicarLigacoes();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aplicarConfig);
+  else aplicarConfig();
 
   /* ── Comportamentos ─────────────────────────── */
   const navbar    = document.getElementById('navbar');

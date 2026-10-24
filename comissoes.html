@@ -74,12 +74,6 @@ function revealAll() {
   document.querySelectorAll('.reveal, .reveal-from-right').forEach(el => io.observe(el));
 }
 
-/* ─── CONFIG ───────────────────────────────────────── */
-(function () {
-  const el = document.getElementById('nav-cta-link');
-  if (el && typeof CONFIG !== 'undefined') { el.href = CONFIG.evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
-})();
-
 /* ─── COMISSÕES ────────────────────────────────────── */
 function getInitials(nome) {
   const TITLES = ['Prof.','Dr.','Profa.','Dra.','Me.','Ms.','Msa.','MSc.','PhD.'];

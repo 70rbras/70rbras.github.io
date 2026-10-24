@@ -245,7 +245,6 @@ function applyConfig() {
   const safe=(id,fn)=>{const el=document.getElementById(id);if(el)fn(el);};
   safe('inscricoes-email',el=>el.textContent=evento.email_contato);
   const link=evento.link_inscricoes, emBreve=!link||link==='#';
-  safe('nav-cta-link',el=>{el.href=evento.link_area_inscrito;el.target='_blank';el.rel='noopener noreferrer';});
   ['inscricoes-inscrevase-btn','cta-inscricoes'].forEach(id=>{
     safe(id,el=>{
       el.addEventListener('click',()=>{if(typeof gtag!=='undefined')gtag('event','registration_click',{button_id:id});});

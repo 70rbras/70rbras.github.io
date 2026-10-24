@@ -177,7 +177,7 @@
       </div>
     </div>
     <div style="display:flex;justify-content:center;margin-top:2.5rem">
-      <a href="#" class="btn btn--primary" id="area-inscrito-btn" style="font-size:1rem;padding:.9em 2.4em">Acompanhar minha submissão (Área do Inscrito) ↗</a>
+      <a href="#" class="btn btn--primary" id="area-inscrito-btn" data-link="area-inscrito" style="font-size:1rem;padding:.9em 2.4em">Acompanhar minha submissão (Área do Inscrito) ↗</a>
     </div>
     <p style="text-align:center;margin-top:1rem;font-size:.88rem;color:var(--text-mid)">Dúvidas? Consulte as <a href="faq.html" style="color:var(--teal);font-weight:600">Perguntas Frequentes</a>.</p>
   </div>
@@ -204,8 +204,6 @@ function revealAll() {
 function applyConfig() {
   const { evento } = CONFIG;
   const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
-  ['nav-cta-link', 'area-inscrito-btn'].forEach(id =>
-    safe(id, el => { el.href = evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; }));
   if (evento.link_modelos_poster) {
     safe('modelos-poster', el => { el.hidden = false; });
     safe('modelos-poster-btn', el => { el.href = evento.link_modelos_poster; });

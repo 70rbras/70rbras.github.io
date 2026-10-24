@@ -79,12 +79,12 @@ Quem tem acesso de escrita ao repositório além da planilha deve ser registrado
 
 O arquivo `scripts/fontes-unicas.json` é a lista do que ainda falta. Cada entrada registra o arquivo, a regra violada, quantas ocorrências existem hoje além da tarefa do plano que vai eliminá-las. O campo de limite impede o retrocesso: uma ocorrência nova no mesmo arquivo passa do limite, portanto a verificação falha.
 
-As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram concluídas em 23/10/2026. As tarefas D1.1, que deu fonte única aos horários de `apresentadores.html`, além da D1.2, que removeu a página de prévia congelada, foram concluídas em 24/10/2026. O retrato inicial, de 23/10/2026, tinha 103 ocorrências distribuídas em 26 entradas. As maiores são os dezoito valores de inscrição escritos em `inscricoes.html`, as dezessete pessoas repetidas em `data/committee.js`, além das nove datas somadas a nove valores em `fundo-estudante.html`. Cada tarefa concluída remove as suas entradas.
+As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram concluídas em 23/10/2026. As tarefas D1.1, que deu fonte única aos horários de `apresentadores.html`, além da D1.2, que removeu a página de prévia congelada, foram concluídas em 24/10/2026. No mesmo dia foram concluídas a D1.3 além da D2.1, que levou a identidade do evento para os componentes compartilhados. O retrato inicial, de 23/10/2026, tinha 103 ocorrências distribuídas em 26 entradas; depois da D2.1 restam 91 ocorrências em 16 entradas. As maiores são os dezoito valores de inscrição escritos em `inscricoes.html`, as dezessete pessoas repetidas em `data/committee.js`, além das nove datas somadas a nove valores em `fundo-estudante.html`. Cada tarefa concluída remove as suas entradas.
 
 | Tarefa do plano | O que ela elimina | Estado |
 |---|---|---|
 | D1.3 | contagem de trabalhos escrita em `programacao.html` | concluída em 24/10/2026 |
-| D2.1 | ligação repetida do botão Área do Inscrito, nome do evento no rodapé | pendente |
+| D2.1 | ligação repetida do botão Área do Inscrito, nome do evento no rodapé | concluída em 24/10/2026 |
 | D2.2 | endereço do IMECC repetido em `logistica.html` além de `wasa.html` | pendente |
 | D2.3 | tema além das datas escritas na home e em `logistica.html` | pendente |
 | D3.2 | datas de lote escritas em `inscricoes.html` | pendente |

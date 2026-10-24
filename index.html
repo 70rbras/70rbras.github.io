@@ -320,7 +320,6 @@ function applyConfig() {
   // Botões de inscrição
   const linkInscricoes = evento.link_inscricoes;
   const isEmBreve = !linkInscricoes || linkInscricoes === '#';
-  safe('nav-cta-link', el => { el.href = evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; });
   ['hero-btn-inscricoes', 'cta-inscricoes'].forEach(id => {
     safe(id, el => {
       el.addEventListener('click', () => { if (typeof gtag !== 'undefined') gtag('event', 'registration_click', { button_id: id }); });
