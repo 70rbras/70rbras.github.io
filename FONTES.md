@@ -79,20 +79,20 @@ Quem tem acesso de escrita ao repositório além da planilha deve ser registrado
 
 O arquivo `scripts/fontes-unicas.json` é a lista do que ainda falta. Cada entrada registra o arquivo, a regra violada, quantas ocorrências existem hoje além da tarefa do plano que vai eliminá-las. O campo de limite impede o retrocesso: uma ocorrência nova no mesmo arquivo passa do limite, portanto a verificação falha.
 
-O retrato inicial, de 23/10/2026, tinha 103 ocorrências distribuídas em 26 entradas. As maiores são os dezoito valores de inscrição escritos em `inscricoes.html`, as dezessete pessoas repetidas em `data/committee.js`, além das nove datas somadas a nove valores em `fundo-estudante.html`. Cada tarefa concluída remove as suas entradas.
+As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram concluídas em 23/10/2026. As tarefas D1.1, que deu fonte única aos horários de `apresentadores.html`, além da D1.2, que removeu a página de prévia congelada, foram concluídas em 24/10/2026. O retrato inicial, de 23/10/2026, tinha 103 ocorrências distribuídas em 26 entradas. As maiores são os dezoito valores de inscrição escritos em `inscricoes.html`, as dezessete pessoas repetidas em `data/committee.js`, além das nove datas somadas a nove valores em `fundo-estudante.html`. Cada tarefa concluída remove as suas entradas.
 
-| Tarefa do plano | O que ela elimina |
-|---|---|
-| D1.3 | contagem de trabalhos escrita em `programacao.html` |
-| D2.1 | ligação repetida do botão Área do Inscrito, nome do evento no rodapé |
-| D2.2 | endereço do IMECC repetido em `logistica.html` além de `wasa.html` |
-| D2.3 | tema além das datas escritas na home e em `logistica.html` |
-| D3.2 | datas de lote escritas em `inscricoes.html` |
-| D3.3 | valores de inscrição escritos em `inscricoes.html` |
-| D3.4 | dados sem consumidor em `data/submissions.js` |
-| D3.5 | prazos além de valores do Fundo e do WASA |
-| D4.2 | pessoas repetidas em `data/committee.js` |
-| D4.3 | dados do WASA sem consumidor, datas escritas em `wasa.html` |
-| D5.1 | metadados escritos à mão em `premios.html` além de `programacao.html` |
+| Tarefa do plano | O que ela elimina | Estado |
+|---|---|---|
+| D1.3 | contagem de trabalhos escrita em `programacao.html` | concluída em 24/10/2026 |
+| D2.1 | ligação repetida do botão Área do Inscrito, nome do evento no rodapé | pendente |
+| D2.2 | endereço do IMECC repetido em `logistica.html` além de `wasa.html` | pendente |
+| D2.3 | tema além das datas escritas na home e em `logistica.html` | pendente |
+| D3.2 | datas de lote escritas em `inscricoes.html` | pendente |
+| D3.3 | valores de inscrição escritos em `inscricoes.html` | pendente |
+| D3.4 | dados sem consumidor em `data/submissions.js` | pendente |
+| D3.5 | prazos além de valores do Fundo e do WASA | pendente |
+| D4.2 | pessoas repetidas em `data/committee.js` | pendente |
+| D4.3 | dados do WASA sem consumidor, datas escritas em `wasa.html` | pendente |
+| D5.1 | metadados escritos à mão em `premios.html` além de `programacao.html` | pendente |
 
 Quando a lista ficar vazia, o site terá uma única fonte para cada informação publicada. O verificador continua rodando depois disso, com a função de impedir que o problema volte. É o que permite à próxima comissão assumir o repositório sem repetir este trabalho.

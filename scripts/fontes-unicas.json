@@ -1,12 +1,5 @@
 [
   {
-    "arquivo": "programacao.html",
-    "regra": "R4",
-    "limite": 3,
-    "motivo": "contagem de trabalhos escrita à mão; a fonte é data/programacao.json",
-    "tarefa": "D1.3"
-  },
-  {
     "arquivo": "apresentadores.html",
     "regra": "R8",
     "limite": 1,

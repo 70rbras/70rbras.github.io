@@ -414,6 +414,49 @@
     if (nome === 'busca' && el.campo) el.campo.focus();
   }
 
+  /* Os plurais das modalidades: a planilha guarda o rótulo no singular. */
+  var PLURAIS = {
+    'poster': 'pôsteres',
+    'comunicacao-oral': 'comunicações orais'
+  };
+
+  function plural(nome, quantos) {
+    if (quantos === 1) return nome.toLowerCase();
+    var chave = semAcento(String(nome)).toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    return PLURAIS[chave] || (nome.toLowerCase() + 's');
+  }
+
+  /* A contagem de trabalhos sai do próprio JSON: escrita à mão ela envelhece
+     a cada alteração da planilha. */
+  function montarAjuda() {
+    if (!el.ajuda) return;
+    var lista = dados.trabalhos || [];
+    if (!lista.length) {
+      el.ajuda.textContent = 'A relação de trabalhos aceitos ainda não foi publicada.';
+      return;
+    }
+    var porModalidade = [];
+    lista.forEach(function (t) {
+      var nome = t.modalidade || 'Trabalho';
+      var achado = null;
+      porModalidade.forEach(function (m) { if (m.nome === nome) achado = m; });
+      if (achado) achado.quantos += 1;
+      else porModalidade.push({ nome: nome, quantos: 1 });
+    });
+    porModalidade.sort(function (a, b) { return b.quantos - a.quantos; });
+
+    var partes = porModalidade.map(function (m) {
+      return m.quantos + ' ' + plural(m.nome, m.quantos);
+    });
+    var detalhe = partes.length === 1
+      ? partes[0]
+      : partes.slice(0, -1).join(', ') + ' e ' + partes[partes.length - 1];
+
+    el.ajuda.textContent = lista.length === 1
+      ? 'É 1 trabalho aceito: ' + detalhe + '.'
+      : 'São ' + lista.length + ' trabalhos aceitos: ' + detalhe + '.';
+  }
+
   function iniciar(d) {
     dados = d;
 
@@ -436,6 +479,7 @@
     montarTempo();
     montarIndice();
     montarLegenda();
+    montarAjuda();
     montarBusca('');
 
     Array.prototype.forEach.call(el.modos, function (b) {
