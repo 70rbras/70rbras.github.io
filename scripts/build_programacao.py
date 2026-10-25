@@ -266,6 +266,32 @@ def construir(dados):
     }, erros, avisos
 
 
+def resumo_sem_sessao(trabalhos):
+    """Linhas de resumo das pendências de alocação, uma por modalidade.
+
+    A validação já recusa trabalho apontando para sessão inexistente, além de
+    avisar um a um sobre os que seguem sem sessão. Com centenas de trabalhos
+    essa lista não informa o tamanho da pendência, que é o número que a
+    comissão acompanha até a véspera. Tarefa D1.4 do plano de fontes únicas.
+    """
+    contagem = {}
+    for t in trabalhos:
+        if (t.get('sessao') or '').strip():
+            continue
+        chave = (t.get('modalidade') or '').strip() or 'sem modalidade'
+        contagem[chave] = contagem.get(chave, 0) + 1
+
+    total = sum(contagem.values())
+    if not total:
+        return ['trabalhos sem sessão alocada: nenhum']
+
+    plural = 'trabalho' if total == 1 else 'trabalhos'
+    linhas = ['%d %s sem sessão alocada:' % (total, plural)]
+    for modalidade, n in sorted(contagem.items()):
+        linhas.append('  %s: %d' % (modalidade, n))
+    return linhas
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -282,6 +308,8 @@ def main():
 
     for a in avisos:
         print('aviso: %s' % a)
+    for linha in resumo_sem_sessao(saida['trabalhos']):
+        print(linha)
     for e in erros:
         print('ERRO: %s' % e, file=sys.stderr)
 
