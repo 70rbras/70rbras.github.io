@@ -89,7 +89,8 @@ As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram
 | D2.1 | ligação repetida do botão Área do Inscrito, nome do evento no rodapé | concluída em 24/10/2026 |
 | D2.2 | endereço do IMECC repetido em `logistica.html` além de `wasa.html` | concluída em 25/10/2026 |
 | D2.3 | tema além das datas escritas na home e em `logistica.html` | concluída em 25/10/2026 |
-| D3.2 | datas de lote escritas em `inscricoes.html` | pendente |
+| D3.1 | datas repetidas na descrição do próprio prazo | concluída em 25/10/2026 |
+| D3.2 | datas de lote escritas em `inscricoes.html`, além das funções de apoio sem consumidor | pendente |
 | D3.3 | valores de inscrição escritos em `inscricoes.html` | pendente |
 | D3.4 | dados sem consumidor em `data/submissions.js` | pendente |
 | D3.5 | prazos além de valores do Fundo e do WASA | pendente |
