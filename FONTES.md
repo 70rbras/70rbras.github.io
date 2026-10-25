@@ -81,14 +81,14 @@ Quem tem acesso de escrita ao repositório além da planilha deve ser registrado
 
 O arquivo `scripts/fontes-unicas.json` é a lista do que ainda falta. Cada entrada registra o arquivo, a regra violada, quantas ocorrências existem hoje além da tarefa do plano que vai eliminá-las. O campo de limite impede o retrocesso: uma ocorrência nova no mesmo arquivo passa do limite, portanto a verificação falha.
 
-As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram concluídas em 23/10/2026. As tarefas D1.1, que deu fonte única aos horários de `apresentadores.html`, além da D1.2, que removeu a página de prévia congelada, foram concluídas em 24/10/2026. No mesmo dia foram concluídas a D1.3 além da D2.1, que levou a identidade do evento para os componentes compartilhados. A D2.2, que separou o endereço do IMECC em campos próprios, foi concluída em 25/10/2026. O retrato inicial, de 23/10/2026, tinha 103 ocorrências distribuídas em 26 entradas; depois da D2.2 restam 87 ocorrências em 14 entradas. As maiores são os dezoito valores de inscrição escritos em `inscricoes.html`, as dezessete pessoas repetidas em `data/committee.js`, além das nove datas somadas a nove valores em `fundo-estudante.html`. Cada tarefa concluída remove as suas entradas.
+As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram concluídas em 23/10/2026. As tarefas D1.1, que deu fonte única aos horários de `apresentadores.html`, além da D1.2, que removeu a página de prévia congelada, foram concluídas em 24/10/2026. No mesmo dia foram concluídas a D1.3 além da D2.1, que levou a identidade do evento para os componentes compartilhados. A D2.2, que separou o endereço do IMECC em campos próprios, além da D2.3, que unificou a redação do tema, foram concluídas em 25/10/2026. O retrato inicial, de 23/10/2026, tinha 103 ocorrências distribuídas em 26 entradas; depois da D2.3 restam 82 ocorrências em 13 entradas. Duas entradas de `index.html` tiveram o limite reduzido em vez de removidas, pois as ocorrências restantes são metadados, que só saem com o gerador da D5.1. As maiores são os dezoito valores de inscrição escritos em `inscricoes.html`, as dezessete pessoas repetidas em `data/committee.js`, além das nove datas somadas a nove valores em `fundo-estudante.html`. Cada tarefa concluída remove as suas entradas.
 
 | Tarefa do plano | O que ela elimina | Estado |
 |---|---|---|
 | D1.3 | contagem de trabalhos escrita em `programacao.html` | concluída em 24/10/2026 |
 | D2.1 | ligação repetida do botão Área do Inscrito, nome do evento no rodapé | concluída em 24/10/2026 |
 | D2.2 | endereço do IMECC repetido em `logistica.html` além de `wasa.html` | concluída em 25/10/2026 |
-| D2.3 | tema além das datas escritas na home e em `logistica.html` | pendente |
+| D2.3 | tema além das datas escritas na home e em `logistica.html` | concluída em 25/10/2026 |
 | D3.2 | datas de lote escritas em `inscricoes.html` | pendente |
 | D3.3 | valores de inscrição escritos em `inscricoes.html` | pendente |
 | D3.4 | dados sem consumidor em `data/submissions.js` | pendente |

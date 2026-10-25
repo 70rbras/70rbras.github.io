@@ -36,7 +36,7 @@
   <div class="container">
     <span class="tag tag--teal">Local do Evento</span>
     <h1 class="page-header-title">IMECC · Unicamp</h1>
-    <p class="page-header-sub">Instituto de Matemática, Estatística e Computação Científica - Campinas, SP · 23-25 de novembro de 2026</p>
+    <p class="page-header-sub">Instituto de Matemática, Estatística e Computação Científica - Campinas, SP · <span id="logistica-datas"></span></p>
     <nav class="page-header-links" aria-label="Seções desta página">
       <a href="#local">📍 Local</a>
       <a href="#como-chegar">🧭 Como Chegar</a>
@@ -193,6 +193,7 @@ function enderecoLinhas(evento) {
 function applyConfig() {
   const { evento, redes_sociais } = CONFIG;
   const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
+  safe('logistica-datas',  el => el.textContent = evento.datas_exibicao);
   safe('venue-local-nome', el => el.innerHTML = evento.local_nome);
   safe('venue-local-end',  el => el.innerHTML = enderecoLinhas(evento).join('<br>'));
 

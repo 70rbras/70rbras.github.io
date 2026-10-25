@@ -50,7 +50,7 @@
   <div class="container">
     <div class="hero-content">
       <div class="hero-logo-col">
-        <img class="hero-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="70ª RBras 2026 - Dados que revelam vida: Estatística e Ciência de Dados na Biometria" id="hero-logo">
+        <img class="hero-logo-img" src="assets/logos/70rbras_logo_negativo_cor.png" alt="" id="hero-logo">
       </div>
       <div class="hero-text-col">
         <span class="tag tag--gold reveal">70ª Edição · 2026</span>
@@ -65,7 +65,7 @@
           <div class="hero-info-item">
             <div class="icon">📅</div>
             <div>
-              <strong style="color:white;display:block" id="hero-datas">23-25 de Novembro de 2026</strong>
+              <strong style="color:white;display:block" id="hero-datas"></strong>
               <span style="color:rgba(255,255,255,.6);font-size:.85rem">3 dias de congresso</span>
             </div>
           </div>
@@ -153,7 +153,7 @@
         <h2 class="section-title">A maior reunião de <span>biometria e estatística</span> do Brasil</h2>
         <div class="section-body">
           <p>A Reunião Anual da RBras é o principal fórum nacional para a troca de conhecimentos e avanços nas áreas de estatística, biometria e disciplinas relacionadas.</p>
-          <p>Em sua 70ª edição, o tema <em>"Dados que revelam vida: Estatística e Ciência de Dados na Biometria"</em> convida estudantes, pesquisadores e profissionais a explorar como métodos estatísticos e biométricos estão transformando ciências da vida, saúde, agricultura e meio ambiente.</p>
+          <p>Em sua 70ª edição, o tema <em id="tema-sobre"></em> convida estudantes, pesquisadores e profissionais a explorar como métodos estatísticos e biométricos estão transformando ciências da vida, saúde, agricultura e meio ambiente.</p>
           <div class="sobre-cards">
             <div class="sobre-card">
               <span class="sobre-card-icon">🏥</span>
@@ -191,7 +191,7 @@
             </svg>
           </button>
           <div class="sobre-expandido" id="sobre-expandido" aria-hidden="true">
-            O tema <em>"Dados que revelam vida: Estatística e Ciência de Dados na Biometria"</em> destaca como a integração de ferramentas analíticas com os objetivos da Agenda 2030 da ONU, especialmente nas áreas relacionadas à Biometria, transforma dados em conhecimento acionável para melhorar a qualidade de vida. Estatística e Ciência de Dados são fundamentais para monitorar e avaliar o progresso dos ODS: identificam padrões, detectam desigualdades, prevêem tendências e suportam decisões baseadas em evidências para enfrentar desafios como erradicação da pobreza, mitigação das mudanças climáticas, promoção da saúde e bem-estar, e garantia de educação de qualidade.
+            O tema <em id="tema-ods"></em> destaca como a integração de ferramentas analíticas com os objetivos da Agenda 2030 da ONU, especialmente nas áreas relacionadas à Biometria, transforma dados em conhecimento acionável para melhorar a qualidade de vida. Estatística e Ciência de Dados são fundamentais para monitorar e avaliar o progresso dos ODS: identificam padrões, detectam desigualdades, prevêem tendências e suportam decisões baseadas em evidências para enfrentar desafios como erradicação da pobreza, mitigação das mudanças climáticas, promoção da saúde e bem-estar, e garantia de educação de qualidade.
           </div>
           <p>Promovida pela <strong>Região Brasileira da Sociedade Internacional de Biometria (RBras)</strong>, a edição de 2026 acontece na Unicamp, Campinas/SP, um dos maiores polos científicos e tecnológicos do Brasil.</p>
 
@@ -316,6 +316,12 @@ function applyConfig() {
   safe('hero-datas',     el => el.textContent = evento.datas_exibicao);
   safe('hero-cidade',    el => el.textContent = evento.cidade);
   safe('hero-local-nome',el => el.innerHTML   = evento.local_nome);
+
+  // Tema do evento: uma única redação, vinda de data/config.js
+  const ano = String(evento.inicio).slice(0, 4);
+  safe('hero-logo',   el => el.alt = evento.edicao + ' ' + ano + ' - ' + evento.tema);
+  ['tema-sobre', 'tema-ods'].forEach(id =>
+    safe(id, el => el.textContent = '"' + evento.tema + '"'));
 
   // Botões de inscrição
   const linkInscricoes = evento.link_inscricoes;
