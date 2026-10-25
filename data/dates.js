@@ -147,6 +147,15 @@ const DATES = [
 
 const dataPorId = id => DATES.find(d => d.id === id) || null;
 
+// "2026-10-02" devolve "2 out", forma usada onde não cabe a data por extenso.
+const dataCurta = iso => {
+  const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun',
+                 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+  const [ano, mes, dia] = String(iso || '').split('-').map(Number);
+  if (!ano || !mes || !dia || mes < 1 || mes > 12) return '';
+  return dia + ' ' + meses[mes - 1];
+};
+
 // "2026-10-31" devolve "31 de outubro de 2026".
 const dataPorExtenso = iso => {
   const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',

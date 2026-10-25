@@ -16,7 +16,7 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Nome, tema, datas, endereço, e-mail, links externos | `data/config.js` | todas as páginas |
 | Endereço do local, em campos separados | `data/config.js`, campos `local_logradouro` a `local_cep` | `logistica.html`, `wasa.html` |
 | Destino usado no cálculo de rota | `data/config.js`, campo `endereco_rota` | `logistica.html` |
-| Prazos, lotes de inscrição | `data/dates.js` | home, `inscricoes.html`, `premios.html` |
+| Prazos, lotes de inscrição | `data/dates.js`, cada registro com `id` estável | home, `inscricoes.html`, `premios.html` |
 | Valores de inscrição | `data/inscricoes.js` | `inscricoes.html` |
 | Convidados além das palestras | `data/speakers.js` | `palestrantes.html`, home |
 | Comissões | `data/committee.js` | `comissoes.html`, `premios.html` |
@@ -90,7 +90,7 @@ As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram
 | D2.2 | endereço do IMECC repetido em `logistica.html` além de `wasa.html` | concluída em 25/10/2026 |
 | D2.3 | tema além das datas escritas na home e em `logistica.html` | concluída em 25/10/2026 |
 | D3.1 | datas repetidas na descrição do próprio prazo | concluída em 25/10/2026 |
-| D3.2 | datas de lote escritas em `inscricoes.html`, além das funções de apoio sem consumidor | pendente |
+| D3.2 | datas de lote escritas em `inscricoes.html`, além das funções de apoio sem consumidor | concluída em 25/10/2026 |
 | D3.3 | valores de inscrição escritos em `inscricoes.html` | pendente |
 | D3.4 | dados sem consumidor em `data/submissions.js` | pendente |
 | D3.5 | prazos além de valores do Fundo e do WASA | pendente |

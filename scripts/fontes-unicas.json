@@ -15,13 +15,6 @@
   },
   {
     "arquivo": "inscricoes.html",
-    "regra": "R1",
-    "limite": 7,
-    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
-    "tarefa": "D3.2"
-  },
-  {
-    "arquivo": "inscricoes.html",
     "regra": "R2",
     "limite": 18,
     "motivo": "valor em reais escrito à mão; a fonte é um arquivo de data/",
@@ -89,12 +82,5 @@
     "limite": 1,
     "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
     "tarefa": "D5.1"
-  },
-  {
-    "arquivo": "data/dates.js",
-    "regra": "R7",
-    "limite": 2,
-    "motivo": "dataPorId e dataPorExtenso criadas pela D3.1 para uso das páginas; o primeiro consumidor chega na D3.2",
-    "tarefa": "D3.2"
   }
 ]

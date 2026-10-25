@@ -61,15 +61,15 @@
               <th class="th-cat">Categoria</th>
               <th class="th-l1">
                 <span class="th-lote-num">1º Lote</span>
-                <span class="th-lote-periodo">11 mai - 2 out</span>
+                <span class="th-lote-periodo" id="periodo-lote-1"></span>
               </th>
               <th>
                 <span class="th-lote-num">2º Lote</span>
-                <span class="th-lote-periodo">3 out - 31 out</span>
+                <span class="th-lote-periodo" id="periodo-lote-2"></span>
               </th>
               <th>
                 <span class="th-lote-num">3º Lote</span>
-                <span class="th-lote-periodo">a partir de 1 nov</span>
+                <span class="th-lote-periodo" id="periodo-lote-3"></span>
               </th>
             </tr>
           </thead>
@@ -170,7 +170,7 @@
 <section id="inscricoes-cta">
   <div class="container reveal">
     <p class="cta-title">Pronto para se inscrever?</p>
-    <p class="cta-sub">2º Lote vigente até 31 de outubro. A partir de 1º de novembro valem os valores do 3º Lote.</p>
+    <p class="cta-sub" id="inscricoes-cta-sub"></p>
     <div class="cta-actions">
       <a href="#" class="btn btn--primary" style="font-size:1.05rem;padding:1em 2.4em" id="cta-inscricoes">Inscreva-se na 70ª RBras ↗</a>
       <a href="index.html" class="btn btn--outline" style="font-size:1.05rem;padding:1em 2.4em">← Voltar à página inicial</a>
@@ -187,7 +187,7 @@
     <div class="modal-icone" aria-hidden="true">🗓️</div>
     <h2 class="modal-titulo" id="modal-titulo-txt">Inscrições em breve</h2>
     <span class="modal-linha"></span>
-    <p class="modal-texto">As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em <strong>11 de maio de 2026</strong>.<br><br>Volte a visitar esta página para mais informações sobre prazos, valores e categorias de inscrição.</p>
+    <p class="modal-texto">As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em <strong id="modal-abertura-data"></strong>.<br><br>Volte a visitar esta página para mais informações sobre prazos, valores e categorias de inscrição.</p>
     <button class="modal-fechar" id="modal-fechar-btn">Entendido</button>
   </div>
 </div>
@@ -195,6 +195,7 @@
 <!-- ─── DATA FILES ─────────────────────────────────── -->
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
+<script src="data/dates.js"></script>
 <script src="assets/footer.js"></script>
 
 <script>
@@ -206,13 +207,27 @@ function revealAll() {
   document.querySelectorAll('.reveal,.reveal-from-right').forEach(el=>io.observe(el));
 }
 /* ── STATUS DO LOTE VIGENTE ─────────────── */
+/* Períodos dos lotes e data de abertura, lidos de data/dates.js pelos
+   identificadores da D3.1. Nenhuma data é escrita nesta página. */
+function applyDatas() {
+  if (typeof dataPorId === 'undefined') return;
+  const safe=(id,fn)=>{const el=document.getElementById(id);if(el)fn(el);};
+  const l1=dataPorId('lote-1'), l2=dataPorId('lote-2'), l3=dataPorId('lote-3');
+  if (l1) safe('periodo-lote-1', el=>el.textContent=dataCurta(l1.inicio)+' - '+dataCurta(l1.fim));
+  if (l2) safe('periodo-lote-2', el=>el.textContent=dataCurta(l2.inicio)+' - '+dataCurta(l2.fim));
+  if (l3) safe('periodo-lote-3', el=>el.textContent='a partir de '+dataCurta(l3.inicio));
+  if (l1) safe('modal-abertura-data', el=>el.textContent=dataPorExtenso(l1.inicio));
+}
+
 function applyLoteStatus() {
   const el = document.getElementById('inscricoes-lote-status');
-  if (!el) return;
+  if (!el || typeof dataPorId === 'undefined') return;
+  const l1=dataPorId('lote-1'), l2=dataPorId('lote-2'), ev=dataPorId('evento');
+  if (!l1 || !l2 || !ev) return;
   const hoje    = new Date();
-  const fimL1   = new Date('2026-10-02T23:59:59');
-  const fimL2   = new Date('2026-10-31T23:59:59');
-  const inicioEvento = new Date('2026-11-23T00:00:00');
+  const fimL1   = new Date(l1.fim + 'T23:59:59');
+  const fimL2   = new Date(l2.fim + 'T23:59:59');
+  const inicioEvento = new Date(ev.inicio + 'T00:00:00');
   const dias = (ate) => Math.max(0, Math.ceil((ate - hoje) / (1000*60*60*24)));
 
   // Destaca a coluna do lote vigente e esmaece os lotes já encerrados
@@ -228,15 +243,22 @@ function applyLoteStatus() {
     });
   });
 
+  let frase;
   if (hoje <= fimL1) {
-    el.textContent = `1º Lote vigente (menor valor) até 2 de outubro de 2026 - faltam ${dias(fimL1)} dia${dias(fimL1)!==1?'s':''}.`;
+    frase = `1º Lote vigente (menor valor) até ${dataPorExtenso(l1.fim)} - faltam ${dias(fimL1)} dia${dias(fimL1)!==1?'s':''}.`;
   } else if (hoje <= fimL2) {
-    el.textContent = `2º Lote vigente até 31 de outubro de 2026 - faltam ${dias(fimL2)} dia${dias(fimL2)!==1?'s':''}. Os valores do 1º Lote se encerraram em 2 de outubro.`;
+    frase = `2º Lote vigente até ${dataPorExtenso(l2.fim)} - faltam ${dias(fimL2)} dia${dias(fimL2)!==1?'s':''}. Os valores do 1º Lote se encerraram em ${dataPorExtenso(l1.fim)}.`;
   } else if (hoje < inicioEvento) {
-    el.textContent = `3º Lote vigente (valor cheio) até o início do evento, em 23 de novembro de 2026.`;
+    frase = `3º Lote vigente (valor cheio) até o início do evento, em ${dataPorExtenso(ev.inicio)}.`;
   } else {
-    el.textContent = `Inscrições no local, durante o evento.`;
+    frase = `Inscrições no local, durante o evento.`;
   }
+
+  /* A mesma frase calculada alimenta a faixa do topo além do bloco final,
+     para que as duas nunca divirjam na virada de lote. */
+  el.textContent = frase;
+  const sub = document.getElementById('inscricoes-cta-sub');
+  if (sub) sub.textContent = frase;
 }
 
 /* ── CONFIG ─────────────────────────────── */
@@ -271,6 +293,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')fecharModalEmBreve()
 
 /* ── BOOT ──────────────────────────────── */
 applyConfig();
+applyDatas();
 applyLoteStatus();
 revealAll();
 </script>
