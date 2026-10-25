@@ -587,8 +587,7 @@
       <p class="wasa-local-endereco">
         <strong>Instituto de Matemática, Estatística e Computação Científica (IMECC)</strong><br>
         Universidade Estadual de Campinas<br>
-        Rua Sérgio Buarque de Holanda, 651 · Cidade Universitária Zeferino Vaz<br>
-        Campinas, SP · CEP 13083-859
+        <span id="wasa-local-end"></span>
       </p>
       <p class="wasa-local-nota" style="text-align:left">
         O WASA acontece no dia seguinte ao encerramento da 70ª RBras, no mesmo campus e prédio do evento principal.
@@ -661,6 +660,15 @@
 <script src="data/wasa.js"></script>
 <script src="assets/footer.js"></script>
 <script>
+/* ── Endereço do local, a partir de data/config.js ── */
+(function () {
+  const el = document.getElementById('wasa-local-end');
+  if (!el || typeof CONFIG === 'undefined') return;
+  const e = CONFIG.evento;
+  el.innerHTML = e.local_logradouro + ' · ' + e.local_bairro + '<br>' +
+                 e.local_cidade + ', ' + e.local_estado + ' · CEP ' + e.local_cep;
+})();
+
 (function () {
   /* ── Renderiza a programação WASA no padrão sched-block/sched-card ── */
   const container = document.getElementById('wasa-sched-container');

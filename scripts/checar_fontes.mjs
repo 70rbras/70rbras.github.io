@@ -121,10 +121,9 @@ function canonicos({ valores, programacao }) {
   empurra(cfg.link_submissao, 'CONFIG.evento.link_submissao');
   empurra(cfg.link_area_inscrito, 'CONFIG.evento.link_area_inscrito');
 
-  /* O endereço entra pelo logradouro, que é a parte estável da string. */
-  const endereco = String(cfg.local_endereco || '');
-  const logradouro = endereco.split(/,|·| - /)[0].trim();
-  if (logradouro) textos.push({ texto: logradouro, rotulo: 'CONFIG.evento.local_endereco' });
+  /* O endereço entra pelo logradouro, que é a parte que identifica o local. */
+  const logradouro = String(cfg.local_logradouro || '').trim();
+  if (logradouro) textos.push({ texto: logradouro, rotulo: 'CONFIG.evento.local_logradouro' });
 
   /* O nome de quem recebe prêmio vive em data/premios.js. Ele aparece hoje nos
      metadados de premios.html, que a fase 5 passa a gerar. */
