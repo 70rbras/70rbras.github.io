@@ -1,101 +1,17 @@
 [
   {
-    "arquivo": "apresentadores.html",
-    "regra": "R8",
-    "limite": 1,
-    "motivo": "ligação repetida que deveria viver em assets/nav.js",
-    "tarefa": "D2.1"
-  },
-  {
-    "arquivo": "assets/footer.js",
-    "regra": "R3",
-    "limite": 1,
-    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
-    "tarefa": "D2.1"
-  },
-  {
-    "arquivo": "comissoes.html",
-    "regra": "R8",
-    "limite": 1,
-    "motivo": "ligação repetida que deveria viver em assets/nav.js",
-    "tarefa": "D2.1"
+    "arquivo": "index.html",
+    "regra": "R1",
+    "limite": 3,
+    "motivo": "data escrita à mão; repartida entre D3.4 (prazo de submissão), D4.3 (data do WASA) e D5.1 (metadados)",
+    "tarefa": "D5.1"
   },
   {
     "arquivo": "index.html",
-    "regra": "R8",
-    "limite": 1,
-    "motivo": "ligação repetida que deveria viver em assets/nav.js",
-    "tarefa": "D2.1"
-  },
-  {
-    "arquivo": "inscricoes.html",
-    "regra": "R8",
-    "limite": 1,
-    "motivo": "ligação repetida que deveria viver em assets/nav.js",
-    "tarefa": "D2.1"
-  },
-  {
-    "arquivo": "logistica.html",
-    "regra": "R8",
-    "limite": 1,
-    "motivo": "ligação repetida que deveria viver em assets/nav.js",
-    "tarefa": "D2.1"
-  },
-  {
-    "arquivo": "palestrantes.html",
-    "regra": "R8",
-    "limite": 1,
-    "motivo": "ligação repetida que deveria viver em assets/nav.js",
-    "tarefa": "D2.1"
-  },
-  {
-    "arquivo": "premios.html",
-    "regra": "R8",
-    "limite": 1,
-    "motivo": "ligação repetida que deveria viver em assets/nav.js",
-    "tarefa": "D2.1"
-  },
-  {
-    "arquivo": "programacao.html",
-    "regra": "R8",
-    "limite": 1,
-    "motivo": "ligação repetida que deveria viver em assets/nav.js",
-    "tarefa": "D2.1"
-  },
-  {
-    "arquivo": "logistica.html",
     "regra": "R3",
     "limite": 3,
-    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
-    "tarefa": "D2.2"
-  },
-  {
-    "arquivo": "wasa.html",
-    "regra": "R3",
-    "limite": 1,
-    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
-    "tarefa": "D2.2"
-  },
-  {
-    "arquivo": "index.html",
-    "regra": "R1",
-    "limite": 4,
-    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
-    "tarefa": "D2.3"
-  },
-  {
-    "arquivo": "index.html",
-    "regra": "R3",
-    "limite": 6,
-    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
-    "tarefa": "D2.3"
-  },
-  {
-    "arquivo": "logistica.html",
-    "regra": "R1",
-    "limite": 1,
-    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
-    "tarefa": "D2.3"
+    "motivo": "tema do evento nos metadados, que o robô lê sem executar JavaScript; sai com o gerador da D5.1",
+    "tarefa": "D5.1"
   },
   {
     "arquivo": "inscricoes.html",

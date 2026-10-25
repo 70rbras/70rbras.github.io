@@ -36,7 +36,7 @@
   <div class="container">
     <span class="tag tag--teal">Local do Evento</span>
     <h1 class="page-header-title">IMECC · Unicamp</h1>
-    <p class="page-header-sub">Instituto de Matemática, Estatística e Computação Científica - Campinas, SP · 23-25 de novembro de 2026</p>
+    <p class="page-header-sub">Instituto de Matemática, Estatística e Computação Científica - Campinas, SP · <span id="logistica-datas"></span></p>
     <nav class="page-header-links" aria-label="Seções desta página">
       <a href="#local">📍 Local</a>
       <a href="#como-chegar">🧭 Como Chegar</a>
@@ -73,7 +73,8 @@
             <div class="venue-fact-icon">🏛️</div>
             <div class="venue-fact-body">
               <h4 id="venue-local-nome">IMECC - Unicamp</h4>
-              <p id="venue-local-end">Rua Sérgio Buarque de Holanda, 651<br>Cidade Universitária Zeferino Vaz<br>Campinas, SP · CEP 13083-859</p>
+              <!-- Preenchido a partir de CONFIG.evento (data/config.js). -->
+              <p id="venue-local-end"></p>
             </div>
           </div>
         </div>
@@ -178,14 +179,25 @@ function revealAll() {
   document.querySelectorAll('.reveal, .reveal-from-right').forEach(el => io.observe(el));
 }
 
+/* Endereço do local em três linhas, montado por concatenação dos campos de
+   data/config.js. A forma antiga substituía trechos de uma linha única, o que
+   fazia a cidade aparecer duas vezes. */
+function enderecoLinhas(evento) {
+  return [
+    evento.local_logradouro,
+    evento.local_bairro,
+    evento.local_cidade + ', ' + evento.local_estado + ' · CEP ' + evento.local_cep
+  ];
+}
+
 function applyConfig() {
   const { evento, redes_sociais } = CONFIG;
   const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
+  safe('logistica-datas',  el => el.textContent = evento.datas_exibicao);
   safe('venue-local-nome', el => el.innerHTML = evento.local_nome);
-  safe('venue-local-end',  el => el.innerHTML = evento.local_endereco.replace(' - ', '<br>').replace(', SP ·', '<br>Campinas, SP ·'));
+  safe('venue-local-end',  el => el.innerHTML = enderecoLinhas(evento).join('<br>'));
 
   // CTA inscrições
-  safe('nav-cta-link', el => { el.href = evento.link_area_inscrito; el.target = '_blank'; el.rel = 'noopener noreferrer'; });
   const linkInscricoes = evento.link_inscricoes;
   const isEmBreve = !linkInscricoes || linkInscricoes === '#';
   safe('cta-inscricoes', el => {
@@ -219,7 +231,7 @@ function renderHotels() {
     const beneficios = (hotel.beneficios || [])
       .map(b => `<span class="socio-tag">${b}</span>`).join(' ');
 
-    const IMECC_DEST = 'IMECC Unicamp, Rua Sérgio Buarque de Holanda, 651, Campinas - SP, 13083-859';
+    const IMECC_DEST = CONFIG.evento.endereco_rota;
     const aPe = hotel.rotaModo === 'walking';
     const rotaUrl = hotel.rotaUrl || `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(hotel.endereco)}&destination=${encodeURIComponent(IMECC_DEST)}&travelmode=${aPe ? 'walking' : 'driving'}`;
 
@@ -263,7 +275,7 @@ function renderGraficas() {
   if (!container) return;
   if (typeof GRAFICAS === 'undefined' || !GRAFICAS.length) { if (section) section.hidden = true; return; }
 
-  const IMECC_DEST = 'IMECC Unicamp, Rua Sérgio Buarque de Holanda, 651, Campinas - SP, 13083-859';
+  const IMECC_DEST = CONFIG.evento.endereco_rota;
   const link = (href, texto, externo) =>
     `<a href="${href}"${externo ? ' target="_blank" rel="noopener noreferrer"' : ''} style="color:var(--teal);font-weight:600">${texto}</a>`;
 

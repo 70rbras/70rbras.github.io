@@ -11,7 +11,15 @@ const CONFIG = {
     datas_exibicao: "23 a 25 de Novembro de 2026",
     cidade:         "Unicamp, Campinas, SP",
     local_nome:     "IMECC / UNICAMP<br>Instituto de Matemática, Estatística e Computação Científica",
-    local_endereco: "Rua Sérgio Buarque de Holanda, 651 - Cidade Universitária 'Zeferino Vaz', Campinas, SP · CEP 13083-859",
+    // Endereço em campos próprios: a exibição é montada por concatenação,
+    // nunca por substituição de texto sobre uma linha única.
+    local_logradouro: "Rua Sérgio Buarque de Holanda, 651",
+    local_bairro:     "Cidade Universitária Zeferino Vaz",
+    local_cidade:     "Campinas",
+    local_estado:     "SP",
+    local_cep:        "13083-859",
+    // Forma usada no cálculo de rota do Google Maps.
+    endereco_rota:    "IMECC Unicamp, Rua Sérgio Buarque de Holanda, 651, Campinas - SP, 13083-859",
     local_instituicao: "Unicamp",
     email_contato:  "70rbras@unicamp.br",
     site_rbras:     "https://www.rbras.org.br",
