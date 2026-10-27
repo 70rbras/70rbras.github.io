@@ -25,6 +25,19 @@ const wasaHomenagem = {
   ],
 };
 
+/* Inscrição no WASA: taxas, formas de pagamento, endereço do formulário além
+   do e-mail de contato. Consumido por wasa.html e pelo bloco do WASA na home,
+   portanto nenhum desses valores é escrito nas páginas. */
+const wasaInscricao = {
+  taxas: [
+    { rotulo: 'Profissionais', valor: 50 },
+    { rotulo: 'Estudantes',    valor: 25, nota: 'graduação e pós-graduação' }
+  ],
+  formas_pagamento: ['PIX', 'TED'],
+  formulario: 'https://docs.google.com/forms/d/e/1FAIpQLSfQgHnC0pJpahJINn92FfRN__BsyhGkVI3ao1ORp6hVQe81IA/viewform',
+  email: 'wasasurvival@gmail.com'
+};
+
 const wasaProgramacao = [
   {
     periodo: 'Manhã',

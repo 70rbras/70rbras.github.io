@@ -22,8 +22,8 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Comissões | `data/committee.js` | `comissoes.html`, `premios.html` |
 | Prêmios além de premiados | `data/premios.js` | `premios.html`, faixa da home |
 | Regras de submissão | `data/submissions.js` | `premios.html`, home |
-| WASA | `data/wasa.js` | `wasa.html`, bloco da home |
-| Fundo de Financiamento | `data/fundo.js` | `fundo-estudante.html` |
+| WASA | `data/wasa.js`, taxas e formulário em `wasaInscricao` | `wasa.html`, bloco da home |
+| Fundo de Financiamento | `data/fundo.js`, com o prazo em `data/dates.js` | `fundo-estudante.html` |
 | Hospedagem, gráficas, perguntas frequentes | `data/hotels.js`, `data/graficas.js`, `data/faq.js` | `logistica.html`, `faq.html` |
 | Faixa de aviso no topo | `data/config.js`, campo `avisos`, com prazo por `fim_id` | todas as páginas |
 
@@ -93,7 +93,7 @@ As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram
 | D3.2 | datas de lote escritas em `inscricoes.html`, além das funções de apoio sem consumidor | concluída em 25/10/2026 |
 | D3.3 | valores de inscrição escritos em `inscricoes.html` | concluída em 27/10/2026 |
 | D3.4 | dados sem consumidor em `data/submissions.js`, prazos repetidos na faixa de aviso | concluída em 27/10/2026 |
-| D3.5 | prazos além de valores do Fundo e do WASA | pendente |
+| D3.5 | prazos além de valores do Fundo e do WASA | concluída em 27/10/2026 |
 | D4.2 | pessoas repetidas em `data/committee.js` | pendente |
 | D4.3 | dados do WASA sem consumidor, datas escritas em `wasa.html` | pendente |
 | D5.1 | metadados escritos à mão em `premios.html` além de `programacao.html` | pendente |

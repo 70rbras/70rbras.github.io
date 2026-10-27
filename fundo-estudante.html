@@ -489,7 +489,7 @@
       Fundo de Financiamento<br><span style="color:var(--gold-light)">para Estudantes</span>
     </h1>
     <p class="page-header-sub" style="max-width:58ch">
-      Auxílio financeiro da RBras para participação de estudantes associados na 70ª Reunião Anual: até R$ 5.000,00 em auxílios individuais e coletivos.
+      Auxílio financeiro da RBras para participação de estudantes associados na 70ª Reunião Anual: até <span id="fundo-total-texto"></span> em auxílios individuais e coletivos.
     </p>
     <!-- Âncoras internas -->
     <nav aria-label="Seções desta página" style="margin-top:1.75rem;display:flex;gap:.85rem;flex-wrap:wrap;justify-content:center">
@@ -529,10 +529,8 @@
         </p>
         <div class="fundo-status-banner">
           <span class="status-dot" id="fundo-status-dot"></span>
-          <span class="status-text" id="fundo-status-text">
-            <strong>Inscrições abertas</strong><br>
-            Prazo: até <span class="prazo">30 de setembro de 2026, 23h59</span>
-          </span>
+          <!-- Preenchido a partir de data/fundo.js além de data/dates.js. -->
+          <span class="status-text" id="fundo-status-text"></span>
         </div>
       </div>
 
@@ -548,14 +546,14 @@
           <span class="stat-icon">💰</span>
           <span class="stat-text">
             <strong>Montante total</strong>
-            Até R$ 5.000,00 em 2026
+            Até <span id="fundo-total-card"></span> em <span id="fundo-ano"></span>
           </span>
         </div>
         <div class="card-stat" style="margin-top:.6rem">
           <span class="stat-icon">🗓️</span>
           <span class="stat-text">
             <strong>Inscrições</strong>
-            Encerradas em 30 de setembro de 2026
+            <span id="fundo-inscricoes-estado"></span>
           </span>
         </div>
       </div>
@@ -565,17 +563,17 @@
     <!-- Cards de valores -->
     <div class="valores-grid">
       <div class="valor-card valor-card--total reveal">
-        <div class="valor-num">R$ 5.000</div>
+        <div class="valor-num" id="fundo-num-total"></div>
         <div class="valor-label">Montante Total</div>
         <div class="valor-desc">Recursos da RBras destinados à edição 2026 do fundo.</div>
       </div>
       <div class="valor-card reveal reveal-delay-1">
-        <div class="valor-num">R$ 3.000</div>
+        <div class="valor-num" id="fundo-num-individual"></div>
         <div class="valor-label">Auxílios Individuais</div>
         <div class="valor-desc">Distribuídos entre os estudantes selecionados, conforme pontuação de mérito.</div>
       </div>
       <div class="valor-card reveal reveal-delay-2">
-        <div class="valor-num">R$ 2.000</div>
+        <div class="valor-num" id="fundo-num-coletivo"></div>
         <div class="valor-label">Auxílio Coletivo</div>
         <div class="valor-desc">Para propostas de grupos de estudantes, dividido conforme mérito e viabilidade.</div>
       </div>
@@ -599,7 +597,7 @@
       <div class="modalidade-card reveal">
         <div class="mc-icon">🎓</div>
         <h4>Auxílio Individual</h4>
-        <div class="mc-valor">Até R$ 3.000,00</div>
+        <div class="mc-valor" id="fundo-mc-individual"></div>
         <ul>
           <li>Para alunos de <strong>graduação</strong>: ser associado(a) da RBras na categoria estudante desde junho de 2025 ou data anterior.</li>
           <li>Para alunos de <strong>pós-graduação</strong>: ser associado(a) da RBras na categoria estudante desde junho de 2025 ou data anterior.</li>
@@ -610,7 +608,7 @@
       <div class="modalidade-card mc-coletivo reveal reveal-delay-1">
         <div class="mc-icon">👥</div>
         <h4>Auxílio Coletivo</h4>
-        <div class="mc-valor">Até R$ 2.000,00</div>
+        <div class="mc-valor" id="fundo-mc-coletivo"></div>
         <ul>
           <li>Grupo com no mínimo <strong>três estudantes</strong> associados da RBras, na categoria estudante (graduação ou pós-graduação).</li>
           <li>Ao menos um integrante associado(a) à RBras desde junho de 2025 ou data anterior.</li>
@@ -724,7 +722,7 @@
           <div class="processo-step step-teal">
             <span class="step-badge">Passo 2</span>
             <h4>Envie por e-mail</h4>
-            <p>A documentação era encaminhada para <strong>secretaria@rbras.org.br</strong>, com cópia para <strong>agatha.srodrigues@gmail.com</strong>, até 30 de setembro de 2026, 23h59, com o campo "assunto" especificando "[70ª RBras] - Solicitação Auxílio Individual" ou "[70ª RBras] - Solicitação Auxílio Coletivo".</p>
+            <p>A documentação era encaminhada para <strong>secretaria@rbras.org.br</strong>, com cópia para <strong>agatha.srodrigues@gmail.com</strong>, até <span id="fundo-prazo-passo2"></span>, com o campo "assunto" especificando "[70ª RBras] - Solicitação Auxílio Individual" ou "[70ª RBras] - Solicitação Auxílio Coletivo".</p>
           </div>
 
           <div class="processo-step step-olive">
@@ -784,7 +782,7 @@
       </p>
       <div class="cta-btn-wrap">
         <span class="prazo-pill">
-          🔒 Inscrições encerradas em <strong>30 de setembro de 2026</strong>
+          🔒 Inscrições encerradas em <strong id="fundo-prazo-pill"></strong>
         </span>
         <a class="cta-pdf-link" href="assets/documentos/chamada-interna-01-2026-fundo-financiamento-estudante.pdf" target="_blank" rel="noopener noreferrer">
           Ler o edital completo (PDF) ↗
@@ -801,6 +799,7 @@
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
 <script src="data/dates.js"></script>
+<script src="data/fundo.js"></script>
 <script src="assets/footer.js"></script>
 
 <script>
@@ -813,24 +812,52 @@ revealEls.forEach(el => revealObs.observe(el));
 
 
 
-/* ── Status dinâmico das inscrições ──────────────── */
+/* ── Fundo: montantes além do estado, de data/fundo.js e data/dates.js ── */
 (function() {
-  const inicio = new Date('2026-06-25');
-  const fim    = new Date('2026-09-30T23:59:59');
-  const hoje   = new Date();
-  const dot    = document.getElementById('fundo-status-dot');
-  const txt    = document.getElementById('fundo-status-text');
-  if (!dot || !txt) return;
+  if (typeof FUNDO === 'undefined' || typeof dataPorId !== 'function') return;
+  const prazo = dataPorId(FUNDO.prazo_id);
+  if (!prazo) return;
 
-  if (hoje < inicio) {
-    dot.className = 'status-dot encerrado';
-    txt.innerHTML = '<strong>Inscrições em breve</strong><br>Abertura em <span class="prazo">25 de junho de 2026</span>';
-  } else if (hoje <= fim) {
-    const diasRestantes = Math.ceil((fim - hoje) / (1000 * 60 * 60 * 24));
-    txt.innerHTML = `<strong>Inscrições abertas</strong><br>Encerram em <span class="prazo">30 de setembro de 2026</span> - faltam <strong>${diasRestantes} dia${diasRestantes !== 1 ? 's' : ''}</strong>`;
-  } else {
-    dot.className = 'status-dot encerrado';
-    txt.innerHTML = '<strong>Período de inscrições encerrado</strong><br>O Fundo de Financiamento para Estudantes 2026 está em avaliação.';
+  const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
+  const reais = (v, cent) => 'R$ ' + Number(v).toLocaleString('pt-BR',
+    { minimumFractionDigits: cent ? 2 : 0, maximumFractionDigits: cent ? 2 : 0 });
+  const m = FUNDO.montantes || {};
+  const ano = String(prazo.fim).slice(0, 4);
+
+  safe('fundo-total-texto',    el => el.textContent = reais(m.total, true));
+  safe('fundo-total-card',     el => el.textContent = reais(m.total, true));
+  safe('fundo-ano',            el => el.textContent = ano);
+  safe('fundo-num-total',      el => el.textContent = reais(m.total, false));
+  safe('fundo-num-individual', el => el.textContent = reais(m.individual, false));
+  safe('fundo-num-coletivo',   el => el.textContent = reais(m.coletivo, false));
+  safe('fundo-mc-individual',  el => el.textContent = 'Até ' + reais(m.individual, true));
+  safe('fundo-mc-coletivo',    el => el.textContent = 'Até ' + reais(m.coletivo, true));
+  safe('fundo-prazo-passo2',   el => el.textContent = dataPorExtenso(prazo.fim) + ', 23h59');
+  safe('fundo-prazo-pill',     el => el.textContent = dataPorExtenso(prazo.fim));
+
+  const hoje   = new Date();
+  const inicio = new Date(prazo.inicio + 'T00:00:00');
+  const fim    = new Date(prazo.fim + 'T23:59:59');
+  const fase   = hoje < inicio ? 'antes' : (hoje <= fim ? 'aberto' : 'encerrado');
+  const estado = (FUNDO.estados || {})[fase];
+  const dias   = Math.max(0, Math.ceil((fim - hoje) / 86400000));
+
+  const texto = t => String(t || '')
+    .replace(/\{inicio\}/g, dataPorExtenso(prazo.inicio))
+    .replace(/\{fim\}/g, dataPorExtenso(prazo.fim))
+    .replace(/\{dias\}/g, dias + (dias !== 1 ? ' dias' : ' dia'))
+    .replace(/\{ano\}/g, ano);
+
+  safe('fundo-inscricoes-estado', el => el.textContent =
+    fase === 'encerrado' ? 'Encerradas em ' + dataPorExtenso(prazo.fim)
+    : fase === 'aberto'  ? 'Abertas até ' + dataPorExtenso(prazo.fim)
+    : 'Abrem em ' + dataPorExtenso(prazo.inicio));
+
+  const dot = document.getElementById('fundo-status-dot');
+  const txt = document.getElementById('fundo-status-text');
+  if (dot && txt && estado) {
+    if (fase !== 'aberto') dot.className = 'status-dot encerrado';
+    txt.innerHTML = '<strong>' + estado.titulo + '</strong><br>' + texto(estado.detalhe);
   }
 })();
 </script>

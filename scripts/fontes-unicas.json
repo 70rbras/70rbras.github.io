@@ -16,23 +16,16 @@
   {
     "arquivo": "fundo-estudante.html",
     "regra": "R1",
-    "limite": 9,
-    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
-    "tarefa": "D3.5"
+    "limite": 2,
+    "motivo": "data escrita à mão nos metadados, que o robô lê sem executar JavaScript; sai com o gerador da D5.1",
+    "tarefa": "D5.1"
   },
   {
     "arquivo": "fundo-estudante.html",
     "regra": "R2",
-    "limite": 9,
-    "motivo": "valor em reais escrito à mão; a fonte é um arquivo de data/",
-    "tarefa": "D3.5"
-  },
-  {
-    "arquivo": "wasa.html",
-    "regra": "R2",
     "limite": 2,
-    "motivo": "valor em reais escrito à mão; a fonte é um arquivo de data/",
-    "tarefa": "D3.5"
+    "motivo": "valor em reais nos metadados, que o robô lê sem executar JavaScript; sai com o gerador da D5.1",
+    "tarefa": "D5.1"
   },
   {
     "arquivo": "data/committee.js",
