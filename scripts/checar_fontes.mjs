@@ -218,6 +218,52 @@ function coletarPessoas({ valores, simbolos }) {
   return pessoas;
 }
 
+/* Nem toda pessoa aparece como registro completo. A programação do WASA, por
+   exemplo, cita o palestrante por nome, em texto. Essas menções entram no
+   relatório para que a mesma pessoa, cadastrada com ficha em outro arquivo,
+   seja reconhecida apesar de não ter Lattes nem foto no segundo lugar. */
+const CAMPOS_DE_MENCAO = ['palestrante', 'coordenador', 'responsavel', 'autor'];
+
+function coletarMencoes({ valores, simbolos }) {
+  const mencoes = [];
+  const visitar = (no, origem) => {
+    if (!no || typeof no !== 'object') return;
+    if (Array.isArray(no)) { no.forEach(x => visitar(x, origem)); return; }
+    for (const campo of CAMPOS_DE_MENCAO) {
+      const v = no[campo];
+      if (typeof v === 'string' && v.trim()) {
+        mencoes.push({ nome: v.trim(), chave: normalizarNome(v), campo, origem });
+      }
+    }
+    const marcador = no.secao || no.id || no.titulo;
+    const abaixo = marcador ? `${origem} · ${marcador}` : origem;
+    Object.values(no).forEach(x => visitar(x, abaixo));
+  };
+  for (const [simbolo, arquivo] of simbolos) visitar(valores[simbolo], arquivo);
+  return mencoes;
+}
+
+/* Mesma pessoa em arquivos diferentes, reconhecida pelo nome normalizado.
+   Cobre o registro repetido entre arquivos além da menção em texto. */
+function repetidasEntreArquivos(pessoas, mencoes) {
+  const porNome = new Map();
+  const juntar = (chave, item) => {
+    if (!chave) return;
+    if (!porNome.has(chave)) porNome.set(chave, []);
+    porNome.get(chave).push(item);
+  };
+  for (const p of pessoas) juntar(p.chave, { nome: p.nome, arquivo: p.origem.split(' · ')[0], onde: p.origem, tipo: 'ficha' });
+  for (const m of mencoes) juntar(m.chave, { nome: m.nome, arquivo: m.origem.split(' · ')[0], onde: m.origem, tipo: 'menção em ' + m.campo });
+
+  const saida = [];
+  for (const [chave, lista] of porNome) {
+    const arquivos = new Set(lista.map(i => i.arquivo));
+    if (arquivos.size < 2) continue;
+    saida.push({ chave, lista, arquivos: [...arquivos] });
+  }
+  return saida.sort((a, b) => a.lista[0].nome.localeCompare(b.lista[0].nome));
+}
+
 function divergenciasDePessoas(pessoas) {
   const grupos = new Map();
   const chaveDe = p => (p.lattes && p.lattes.trim()) || (p.foto && p.foto.trim()) || p.chave;
@@ -301,19 +347,71 @@ for (const [simbolo, arquivo] of dados.simbolos) {
 }
 
 if (MODO_PESSOAS) {
-  console.log('# Pessoas com registro repetido ou divergente\n');
-  console.log('As primeiras da lista são as que precisam de decisão da comissão.\n');
-  const ordenadas = [...divergentes].sort((a, b) =>
-    (Number(b.nomesDiferentes) + Number(b.instituicoesDiferentes)) -
-    (Number(a.nomesDiferentes) + Number(a.instituicoesDiferentes)));
-  for (const g of ordenadas) {
-    console.log(`## ${g.lista[0].nome}`);
-    console.log(`- chave de agrupamento: ${g.chave}`);
-    for (const p of g.lista) {
-      console.log(`- "${p.nome}" · ${p.instituicao || 'sem instituição'} · ${p.origem}`);
-    }
-    console.log(`- nome divergente: ${g.nomesDiferentes ? 'sim' : 'não'}; instituição divergente: ${g.instituicoesDiferentes ? 'sim' : 'não'}\n`);
+  const mencoes = coletarMencoes(dados);
+  const entreArquivos = repetidasEntreArquivos(pessoas, mencoes);
+  const linhas = [];
+  const diz = t => linhas.push(t);
+
+  const precisamDecisao = divergentes.filter(g => g.nomesDiferentes || g.instituicoesDiferentes);
+  const soRepetidas = divergentes.filter(g => !g.nomesDiferentes && !g.instituicoesDiferentes);
+
+  diz('# Pessoas com registro repetido ou divergente no site da 70ª RBras\n');
+  diz('Relatório gerado por `node scripts/checar_fontes.mjs --pessoas`, tarefa D4.1 do');
+  diz('plano de fontes únicas. Ele agrupa as pessoas pelo currículo Lattes, pela foto');
+  diz('além do nome normalizado, mostrando cada grafia com o arquivo onde aparece.\n');
+  diz('A seção 1 é a que precisa de decisão da comissão: para cada pessoa, qual grafia');
+  diz('do nome além de qual instituição passam a valer. A seção 2 lista quem aparece');
+  diz('duas vezes com o mesmo registro, que o código resolve sem decisão humana. A');
+  diz('seção 3 mostra quem é citado em mais de um arquivo.\n');
+  diz(`Data da geração: ${new Date().toLocaleDateString('pt-BR')}\n`);
+  diz('---\n');
+
+  diz(`## 1. Precisam de decisão da comissão: ${precisamDecisao.length} pessoas\n`);
+  diz('| Pessoa | Grafias registradas | Instituições registradas | Grafia oficial | Instituição oficial |');
+  diz('|---|---|---|---|---|');
+  for (const g of precisamDecisao) {
+    const nomes = [...new Set(g.lista.map(p => p.nome))].join(' / ');
+    const inst = [...new Set(g.lista.map(p => p.instituicao).filter(Boolean))].join(' / ');
+    diz(`| ${g.lista[0].nome} | ${nomes} | ${inst || 'sem instituição'} |  |  |`);
   }
+  diz('');
+  for (const g of precisamDecisao) {
+    diz(`### ${g.lista[0].nome}`);
+    diz(`- chave de agrupamento: ${g.chave}`);
+    for (const p of g.lista) diz(`- "${p.nome}" · ${p.instituicao || 'sem instituição'} · ${p.origem}`);
+    diz(`- nome divergente: ${g.nomesDiferentes ? 'sim' : 'não'}; instituição divergente: ${g.instituicoesDiferentes ? 'sim' : 'não'}\n`);
+  }
+
+  diz('---\n');
+  diz(`## 2. Registro repetido sem divergência: ${soRepetidas.length} pessoas\n`);
+  diz('Aparecem mais de uma vez com a mesma grafia além da mesma instituição, em geral');
+  diz('por integrarem duas comissões. A tarefa D4.2 as unifica sem decisão de conteúdo.\n');
+  for (const g of soRepetidas) {
+    diz(`- **${g.lista[0].nome}** · ${g.lista[0].instituicao || 'sem instituição'} · ${g.lista.map(p => p.origem.split(' · ').slice(1).join(' · ') || p.origem).join(', ')}`);
+  }
+  diz('');
+
+  diz('---\n');
+  diz(`## 3. Citadas em mais de um arquivo: ${entreArquivos.length} pessoas\n`);
+  diz('A mesma pessoa aparece em arquivos diferentes, às vezes como ficha completa,');
+  diz('às vezes como nome em texto dentro da programação. A unificação precisa');
+  diz('alcançar os dois casos.\n');
+  if (!entreArquivos.length) {
+    diz('Nenhuma ocorrência.\n');
+  } else {
+    for (const g of entreArquivos) {
+      diz(`### ${g.lista[0].nome}`);
+      for (const i of g.lista) diz(`- ${i.tipo}: "${i.nome}" · ${i.onde}`);
+      diz('');
+    }
+  }
+
+  const texto = linhas.join('\n');
+  console.log(texto);
+  const destino = path.join(RAIZ, 'scripts', 'saida', 'pessoas-divergentes.md');
+  fs.mkdirSync(path.dirname(destino), { recursive: true });
+  fs.writeFileSync(destino, texto + '\n', 'utf8');
+  console.error(`\nrelatório gravado em scripts/saida/pessoas-divergentes.md`);
   process.exit(0);
 }
 
