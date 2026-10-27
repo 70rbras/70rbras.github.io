@@ -41,13 +41,26 @@ const CONFIG = {
   //   link_texto→ (opcional) texto do link; padrão "Saiba mais"
   //   inicio    → (opcional) "AAAA-MM-DDTHH:MM" (horário de Brasília)
   //   fim       → "AAAA-MM-DDTHH:MM" (horário de Brasília)
+  //   inicio_id → (opcional) identificador de data/dates.js; usa o início do
+  //               registro, dispensando escrever a data aqui
+  //   fim_id    → (opcional) identificador de data/dates.js; usa o fim do registro
+  //   No texto, {inicio} e {fim} são trocados pela data curta do prazo
+  //   referenciado, por exemplo "31 out".
   avisos: [
     {
       id:         "fim-2o-lote-2026",
-      texto:      "⏳ <strong>Últimos dias do 2º Lote</strong>: inscrições com valor intermediário até 31/out.",
+      texto:      "⏳ <strong>Últimos dias do 2º Lote</strong>: inscrições com valor intermediário até {fim}.",
       link:       "inscricoes.html",
       link_texto: "Ver valores",
-      fim:        "2026-10-31T23:59"
+      fim_id:     "lote-2"
+    },
+    {
+      id:         "3o-lote-2026",
+      texto:      "🖊️ <strong>3º Lote</strong>: inscrições com valor cheio até o início do evento, em {fim}.",
+      link:       "inscricoes.html",
+      link_texto: "Ver valores",
+      inicio_id:  "lote-3",
+      fim_id:     "lote-3"
     }
   ]
 };

@@ -409,9 +409,11 @@ function renderSponsors() {
 /* ═══════════════════════════════════════════════
    MODAL EM BREVE
 ════════════════════════════════════════════════ */
+const prazoSubmissao = (typeof dataPorId === 'function' && dataPorId('submissao-trabalhos')) || null;
+const dataSubmissao = prazoSubmissao ? dataPorExtenso(prazoSubmissao.fim) : '';
 const MODAL_CONTEUDO = {
   inscricao: { titulo:'Inscrições em breve', icone:'🗓️', texto:'As inscrições para a <strong>70ª RBras 2026</strong> serão abertas em breve.<br><br>Volte a visitar esta página para mais informações sobre prazos, valores e categorias de inscrição.' },
-  submissao: { titulo:'Submissões encerradas', icone:'📝', texto:'As submissões de trabalhos para a <strong>70ª RBras 2026</strong> foram encerradas em 28 de agosto de 2026.' }
+  submissao: { titulo:'Submissões encerradas', icone:'📝', texto:'As submissões de trabalhos para a <strong>70ª RBras 2026</strong> foram encerradas em ' + dataSubmissao + '.' }
 };
 function abrirModalEmBreve(tipo) {
   const cfg=MODAL_CONTEUDO[tipo]||MODAL_CONTEUDO.inscricao;

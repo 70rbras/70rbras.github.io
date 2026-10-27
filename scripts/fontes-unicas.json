@@ -2,8 +2,8 @@
   {
     "arquivo": "index.html",
     "regra": "R1",
-    "limite": 3,
-    "motivo": "data escrita à mão; repartida entre D3.4 (prazo de submissão), D4.3 (data do WASA) e D5.1 (metadados)",
+    "limite": 2,
+    "motivo": "data escrita à mão; repartida entre D4.3 (data do WASA) e D5.1 (metadados)",
     "tarefa": "D5.1"
   },
   {
@@ -12,13 +12,6 @@
     "limite": 3,
     "motivo": "tema do evento nos metadados, que o robô lê sem executar JavaScript; sai com o gerador da D5.1",
     "tarefa": "D5.1"
-  },
-  {
-    "arquivo": "data/submissions.js",
-    "regra": "R7",
-    "limite": 2,
-    "motivo": "símbolo declarado em data/ sem nenhum consumidor",
-    "tarefa": "D3.4"
   },
   {
     "arquivo": "fundo-estudante.html",

@@ -338,7 +338,7 @@
         <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:1.6rem">Como foi o processo em 2026</h3>
         <div class="processo-timeline">
           <div class="processo-step step-done">
-            <span class="step-badge">11 mai a 15 set</span>
+            <span class="step-badge" id="prazo-indicacoes"></span>
             <h4>Indicações</h4>
             <p>Associados da RBras enviaram indicações por formulário online, com documento de até 2 páginas sobre a trajetória da pessoa indicada.</p>
           </div>
@@ -376,9 +376,7 @@
       </p>
     </div>
     <div class="concurso-grid" id="concurso-grid"></div>
-    <p class="concurso-info reveal">
-      As inscrições no concurso estão encerradas e os trabalhos estão em avaliação pelas comissões acima. Os resultados serão publicados nesta página.
-    </p>
+    <p class="concurso-info reveal" id="concurso-estado"></p>
     <div class="concurso-regras reveal" id="concurso-regras" hidden>
       <h3>📎 Documentação exigida na inscrição</h3>
       <ul id="concurso-docs"></ul>
@@ -392,6 +390,7 @@
 <!-- ─── SCRIPTS ─────────────────────────────────── -->
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
+<script src="data/dates.js"></script>
 <script src="data/premios.js"></script>
 <script src="data/committee.js"></script>
 <script src="data/submissions.js"></script>
@@ -500,6 +499,22 @@ function renderConcurso() {
         ${membros}
       </div>`;
   }).join('');
+
+  /* Prazos lidos de data/dates.js: nem a linha do tempo nem o estado do
+     concurso trazem data escrita à mão nesta página. */
+  const temDatas = typeof dataPorId === 'function';
+  const indic = temDatas ? dataPorId('premio-destaque') : null;
+  const badge = document.getElementById('prazo-indicacoes');
+  if (indic && badge) badge.textContent = dataCurta(indic.inicio) + ' a ' + dataCurta(indic.fim);
+
+  const prazoConcurso = temDatas ? dataPorId('concurso-tdi') : null;
+  const estado = document.getElementById('concurso-estado');
+  if (prazoConcurso && estado) {
+    const encerrado = new Date() > new Date(prazoConcurso.fim + 'T23:59:59');
+    estado.textContent = encerrado
+      ? 'As inscrições no concurso estão encerradas e os trabalhos estão em avaliação pelas comissões acima. Os resultados serão publicados nesta página.'
+      : 'As inscrições no concurso estão abertas até ' + dataPorExtenso(prazoConcurso.fim) + '. Os resultados serão publicados nesta página.';
+  }
 
   const concurso = (typeof SUBMISSION_MODALITIES !== 'undefined') ? SUBMISSION_MODALITIES.find(s => s.id === 'concurso') : null;
   const eleg = document.getElementById('concurso-elegibilidade');

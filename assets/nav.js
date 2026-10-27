@@ -112,16 +112,31 @@
     const agora = new Date();
     const data = iso => new Date(iso + ':00-03:00');   // horário de Brasília
     const storageGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
-    const aviso = CONFIG.avisos.find(a =>
-      (!a.inicio || agora >= data(a.inicio)) &&
-      (!a.fim || agora <= data(a.fim)) &&
-      !storageGet('rbras-aviso-' + a.id));
+    /* Um aviso fixa inicio e fim, ou referencia um prazo de data/dates.js
+       pelos campos inicio_id e fim_id, de modo que a data viva num lugar só. */
+    const registro = id => (typeof dataPorId === 'function' ? dataPorId(id) : null);
+    const periodo = a => ({
+      inicio: a.inicio || (registro(a.inicio_id) ? registro(a.inicio_id).inicio + 'T00:00' : ''),
+      fim:    a.fim    || (registro(a.fim_id)    ? registro(a.fim_id).fim    + 'T23:59' : '')
+    });
+    const curta = iso => (typeof dataCurta === 'function' ? dataCurta(String(iso).slice(0, 10)) : '');
+
+    const aviso = CONFIG.avisos
+      .map(a => Object.assign({}, a, { periodo: periodo(a) }))
+      .find(a =>
+        (!a.periodo.inicio || agora >= data(a.periodo.inicio)) &&
+        (!a.periodo.fim || agora <= data(a.periodo.fim)) &&
+        !storageGet('rbras-aviso-' + a.id));
     if (!aviso) return;
+
+    const textoAviso = String(aviso.texto || '')
+      .replace(/\{inicio\}/g, curta(aviso.periodo.inicio))
+      .replace(/\{fim\}/g, curta(aviso.periodo.fim));
 
     const linkHTML = aviso.link ? `<a href="${root}${aviso.link}">${aviso.link_texto || 'Saiba mais'} &rarr;</a>` : '';
     document.body.insertAdjacentHTML('afterbegin', `
 <div id="announce-bar">
-  <span>${aviso.texto}</span>
+  <span>${textoAviso}</span>
   ${linkHTML}
   <button class="announce-close" id="announce-close" aria-label="Fechar aviso">&#x2715;</button>
 </div>`);

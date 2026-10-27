@@ -1,42 +1,9 @@
 // ─── SUBMISSÕES ───────────────────────────────────────────────────────────────
 // Dados das modalidades de submissão da 70ª RBras 2026.
 // Carregado por: premios.html (regras do Concurso). cientifico.html foi aposentado em out/2026.
-
-// ── Regras gerais (valem para todas as modalidades) ──────────────────────────
-const SUBMISSION_RULES = [
-  "O autor responsável por apresentar o trabalho deverá <strong>se inscrever no site antes de realizar a submissão</strong>.",
-  "Para se inscrever, acesse a área Submissões pelo site do evento e preencha os dados solicitados.",
-  "<strong>A inscrição não precisa estar paga</strong> no momento da submissão do resumo.",
-  "Serão aceitos resumos em <strong>português ou inglês</strong>.",
-  "O autor deverá inserir as informações requeridas no formulário e, quando necessário, <strong>anexar os documentos em PDF</strong> exigidos.",
-  "Em caso de aceitação, a inscrição do(a) autor(a) apresentador(a) deverá estar <strong>paga até 15 de outubro</strong> para garantir a inclusão na programação final."
-];
-
-// ── Áreas temáticas (Comunicações Orais e Pôsteres) ──────────────────────────
-const THEMATIC_AREAS = [
-  "Amostragem",
-  "Análise de Big Data",
-  "Análise de dados categóricos e modelos discretos",
-  "Análise de dados longitudinais / Modelos de efeitos mistos",
-  "Análise de sobrevivência",
-  "Aprendizado de máquina",
-  "Bioinformática",
-  "Dados de imagem e sinal",
-  "Ensaios clínicos",
-  "Ensino, Extensão e Difusão da Estatística",
-  "Genética, Microarranjos e dados ômicos",
-  "Infecções, doenças e controle",
-  "Inferência causal",
-  "Métodos Bayesianos",
-  "Métodos intensivos em computador e desenvolvimento de software",
-  "Modelagem espacial e espaço-temporal",
-  "Modelagem preditiva",
-  "Modelos de mistura",
-  "Outros tópicos biométricos relacionados",
-  "Probabilidade e Processos Estocásticos",
-  "Regressão quantílica",
-  "Visualização e estatísticas gráficas"
-];
+//
+// Prazos: cada modalidade referencia um registro de data/dates.js pelo campo
+// prazo_id. Nenhuma data é escrita aqui.
 
 // ── Modalidades de submissão ──────────────────────────────────────────────────
 const SUBMISSION_MODALITIES = [
@@ -44,8 +11,7 @@ const SUBMISSION_MODALITIES = [
     id: "oral-poster",
     icone: "📄",
     titulo: "Comunicações Orais e Pôsteres",
-    prazo: "11 mai - 28 ago 2026",
-    prazo_iso_fim: "2026-08-28",
+    prazo_id: "submissao-trabalhos",
     prorrogado: true,
     prazo_nota: "Prazo original: 15 de agosto. Prorrogado até 24 de agosto. <strong>Última oportunidade excepcional: sexta-feira, 28 de agosto de 2026, até às 17h, horário de Brasília</strong> (horário de encerramento do sistema de submissão), exclusiva para quem ainda não enviou seu trabalho. Buscamos, com isso, oferecer condições equânimes a todos os interessados em participar.",
     campos: [
@@ -67,8 +33,7 @@ const SUBMISSION_MODALITIES = [
     id: "minicurso",
     icone: "🎓",
     titulo: "Minicurso",
-    prazo: "11 mai - 15 jul 2026",
-    prazo_iso_fim: "2026-07-15",
+    prazo_id: "propostas-sessoes",
     duracao: "4h total · 2h/dia",
     campos: [
       "Título do Minicurso",
@@ -99,8 +64,7 @@ const SUBMISSION_MODALITIES = [
     id: "sessao-tematica",
     icone: "🎤",
     titulo: "Sessão Temática",
-    prazo: "11 mai - 15 jul 2026",
-    prazo_iso_fim: "2026-07-15",
+    prazo_id: "propostas-sessoes",
     duracao: "1h30",
     campos: [
       "Título da Sessão Temática",
@@ -128,8 +92,7 @@ const SUBMISSION_MODALITIES = [
     id: "concurso",
     icone: "🏅",
     titulo: "Concurso Tese/Dissertação/IC",
-    prazo: "11 mai - 24 ago 2026",
-    prazo_iso_fim: "2026-08-24",
+    prazo_id: "concurso-tdi",
     prorrogado: true,
     prazo_nota: "Prazo original: 15 de agosto de 2026. <strong>Novo prazo final: 24 de agosto de 2026, às 23h59.</strong>",
     elegibilidade: "Títulos obtidos em universidades brasileiras entre <strong>jan/2024 e jul/2026</strong>.",

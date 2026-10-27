@@ -25,7 +25,7 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | WASA | `data/wasa.js` | `wasa.html`, bloco da home |
 | Fundo de Financiamento | `data/fundo.js` | `fundo-estudante.html` |
 | Hospedagem, gráficas, perguntas frequentes | `data/hotels.js`, `data/graficas.js`, `data/faq.js` | `logistica.html`, `faq.html` |
-| Faixa de aviso no topo | `data/config.js`, campo `avisos` | todas as páginas |
+| Faixa de aviso no topo | `data/config.js`, campo `avisos`, com prazo por `fim_id` | todas as páginas |
 
 Dois arquivos nunca se editam à mão. O primeiro é `data/programacao.json`, que o fluxo automático regrava de hora em hora a partir da planilha. O segundo é qualquer página `.html`, que só muda por alteração de estrutura ou de estilo.
 
@@ -92,7 +92,7 @@ As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram
 | D3.1 | datas repetidas na descrição do próprio prazo | concluída em 25/10/2026 |
 | D3.2 | datas de lote escritas em `inscricoes.html`, além das funções de apoio sem consumidor | concluída em 25/10/2026 |
 | D3.3 | valores de inscrição escritos em `inscricoes.html` | concluída em 27/10/2026 |
-| D3.4 | dados sem consumidor em `data/submissions.js` | pendente |
+| D3.4 | dados sem consumidor em `data/submissions.js`, prazos repetidos na faixa de aviso | concluída em 27/10/2026 |
 | D3.5 | prazos além de valores do Fundo e do WASA | pendente |
 | D4.2 | pessoas repetidas em `data/committee.js` | pendente |
 | D4.3 | dados do WASA sem consumidor, datas escritas em `wasa.html` | pendente |
