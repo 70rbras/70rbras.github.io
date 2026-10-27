@@ -73,35 +73,8 @@
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="grupo-row"><td colspan="4">🎓 Estudante de Graduação</td></tr>
-            <tr>
-              <td><div class="td-cat">Sócio RBras / ABE / IBS</div></td>
-              <td class="preco l1">R$ 140</td><td class="preco">R$ 155</td><td class="preco">R$ 185</td>
-            </tr>
-            <tr>
-              <td><div class="td-cat">Não-sócio</div></td>
-              <td class="preco l1">R$ 240</td><td class="preco">R$ 265</td><td class="preco">R$ 315</td>
-            </tr>
-            <tr class="grupo-row"><td colspan="4">📚 Estudante de Pós-Graduação</td></tr>
-            <tr>
-              <td><div class="td-cat">Sócio RBras / ABE / IBS</div></td>
-              <td class="preco l1">R$ 220</td><td class="preco">R$ 245</td><td class="preco">R$ 290</td>
-            </tr>
-            <tr>
-              <td><div class="td-cat">Não-sócio</div></td>
-              <td class="preco l1">R$ 330</td><td class="preco">R$ 365</td><td class="preco">R$ 430</td>
-            </tr>
-            <tr class="grupo-row"><td colspan="4">👤 Pesquisador / Profissional</td></tr>
-            <tr>
-              <td><div class="td-cat">Sócio RBras / ABE / IBS</div></td>
-              <td class="preco l1">R$ 390</td><td class="preco">R$ 430</td><td class="preco">R$ 510</td>
-            </tr>
-            <tr>
-              <td><div class="td-cat">Não-sócio</div></td>
-              <td class="preco l1">R$ 660</td><td class="preco">R$ 730</td><td class="preco">R$ 860</td>
-            </tr>
-          </tbody>
+          <!-- Linhas montadas a partir de data/inscricoes.js. -->
+          <tbody id="tabela-precos-corpo"></tbody>
         </table>
       </div>
     </div>
@@ -196,6 +169,7 @@
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
 <script src="data/dates.js"></script>
+<script src="data/inscricoes.js"></script>
 <script src="assets/footer.js"></script>
 
 <script>
@@ -207,6 +181,28 @@ function revealAll() {
   document.querySelectorAll('.reveal,.reveal-from-right').forEach(el=>io.observe(el));
 }
 /* ── STATUS DO LOTE VIGENTE ─────────────── */
+/* Tabela de valores, montada a partir de data/inscricoes.js. Nenhum valor em
+   reais é escrito nesta página: a formatação acontece aqui, os números vivem
+   no arquivo de dados. Roda antes de applyLoteStatus, que destaca a coluna do
+   lote vigente percorrendo as células já criadas. */
+function renderValores() {
+  const corpo = document.getElementById('tabela-precos-corpo');
+  if (!corpo || typeof INSCRICOES === 'undefined') return;
+  const esc = t => String(t == null ? '' : t)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const reais = v => 'R$ ' + Number(v).toLocaleString('pt-BR',
+    { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+
+  corpo.innerHTML = (INSCRICOES.grupos || []).map(g => {
+    const linhas = (g.categorias || []).map(c => {
+      const nota = c.elegibilidade ? `<small>${esc(c.elegibilidade)}</small>` : '';
+      const celulas = (c.valores || []).map(v => `<td class="preco">${reais(v)}</td>`).join('');
+      return `<tr><td><div class="td-cat">${esc(c.rotulo)}${nota}</div></td>${celulas}</tr>`;
+    }).join('');
+    return `<tr class="grupo-row"><td colspan="4">${esc(g.titulo)}</td></tr>` + linhas;
+  }).join('');
+}
+
 /* Períodos dos lotes e data de abertura, lidos de data/dates.js pelos
    identificadores da D3.1. Nenhuma data é escrita nesta página. */
 function applyDatas() {
@@ -294,6 +290,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')fecharModalEmBreve()
 /* ── BOOT ──────────────────────────────── */
 applyConfig();
 applyDatas();
+renderValores();
 applyLoteStatus();
 revealAll();
 </script>

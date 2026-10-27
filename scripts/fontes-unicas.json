@@ -14,13 +14,6 @@
     "tarefa": "D5.1"
   },
   {
-    "arquivo": "inscricoes.html",
-    "regra": "R2",
-    "limite": 18,
-    "motivo": "valor em reais escrito à mão; a fonte é um arquivo de data/",
-    "tarefa": "D3.3"
-  },
-  {
     "arquivo": "data/submissions.js",
     "regra": "R7",
     "limite": 2,

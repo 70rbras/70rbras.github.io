@@ -91,7 +91,7 @@ As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram
 | D2.3 | tema além das datas escritas na home e em `logistica.html` | concluída em 25/10/2026 |
 | D3.1 | datas repetidas na descrição do próprio prazo | concluída em 25/10/2026 |
 | D3.2 | datas de lote escritas em `inscricoes.html`, além das funções de apoio sem consumidor | concluída em 25/10/2026 |
-| D3.3 | valores de inscrição escritos em `inscricoes.html` | pendente |
+| D3.3 | valores de inscrição escritos em `inscricoes.html` | concluída em 27/10/2026 |
 | D3.4 | dados sem consumidor em `data/submissions.js` | pendente |
 | D3.5 | prazos além de valores do Fundo e do WASA | pendente |
 | D4.2 | pessoas repetidas em `data/committee.js` | pendente |
