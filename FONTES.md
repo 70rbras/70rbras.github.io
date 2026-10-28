@@ -96,7 +96,7 @@ As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram
 | D3.4 | dados sem consumidor em `data/submissions.js`, prazos repetidos na faixa de aviso | concluída em 27/10/2026 |
 | D3.5 | prazos além de valores do Fundo e do WASA | concluída em 27/10/2026 |
 | D4.2 | pessoas repetidas em `data/committee.js` | concluída em 27/10/2026 |
-| D4.3 | dados do WASA sem consumidor, datas escritas em `wasa.html` | pendente |
+| D4.3 | dados do WASA sem consumidor, datas escritas em `wasa.html` | concluída em 27/10/2026 |
 | D5.1 | metadados escritos à mão em `premios.html` além de `programacao.html` | pendente |
 
 Quando a lista ficar vazia, o site terá uma única fonte para cada informação publicada. O verificador continua rodando depois disso, com a função de impedir que o problema volte. É o que permite à próxima comissão assumir o repositório sem repetir este trabalho.

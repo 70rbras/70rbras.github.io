@@ -434,9 +434,9 @@
         <img src="assets/logos/wasa_logo.png" alt="Logo VIII WASA">
       </div>
       <div class="wasa-hero-text">
-        <div class="wasa-badge"><span class="wasa-badge-dot"></span>26 de novembro de 2026</div>
+        <div class="wasa-badge"><span class="wasa-badge-dot"></span><span id="wasa-badge-data"></span></div>
         <h1 class="page-header-title">WASA</h1>
-        <p class="page-header-sub">VIII Workshop em Análise de Sobrevivência e Aplicações</p>
+        <p class="page-header-sub" id="wasa-nome"></p>
       </div>
     </div>
   </div>
@@ -451,28 +451,28 @@
     <div class="section-header reveal">
       <span class="tag tag--teal">Sobre</span>
       <h2 class="section-title">VIII Workshop em<br>Análise de Sobrevivência e Aplicações</h2>
-      <p class="section-body">O WASA reúne pesquisadores da área de Estatística para discutir avanços em análise de sobrevivência, confiabilidade e aplicações. O evento também presta uma homenagem especial ao Professor Francisco Louzada Neto, por sua destacada trajetória e contribuição à Estatística e à Análise de Sobrevivência, marcada por liderança, dedicação e excelência.</p>
+      <p class="section-body" id="wasa-descricao"></p>
     </div>
     <div class="wasa-info-grid reveal">
       <div class="wasa-info-card">
         <span class="wasa-info-icon">📅</span>
         <div>
           <div class="wasa-info-label">Data</div>
-          <div class="wasa-info-value">Quinta-feira<br>26 de novembro de 2026</div>
+          <div class="wasa-info-value" id="wasa-info-data"></div>
         </div>
       </div>
       <div class="wasa-info-card">
         <span class="wasa-info-icon">📍</span>
         <div>
           <div class="wasa-info-label">Local</div>
-          <div class="wasa-info-value">IMECC - Unicamp<br>Campinas, SP</div>
+          <div class="wasa-info-value" id="wasa-info-local"></div>
         </div>
       </div>
       <div class="wasa-info-card">
         <span class="wasa-info-icon">🏛️</span>
         <div>
           <div class="wasa-info-label">Organização</div>
-          <div class="wasa-info-value">ICMC - USP</div>
+          <div class="wasa-info-value" id="wasa-info-org"></div>
         </div>
       </div>
       <div class="wasa-info-card">
@@ -492,7 +492,7 @@
     <div class="section-header reveal">
       <span class="tag tag--teal">Organização</span>
       <h2 class="section-title">Comissão Organizadora</h2>
-      <p class="section-body">Instituto de Ciências Matemáticas e de Computação<br>Universidade de São Paulo</p>
+      <p class="section-body" id="wasa-org-extenso"></p>
     </div>
     <div class="wasa-org-grid reveal">
       <div class="wasa-org-card">Daiane de Souza Santos</div>
@@ -509,15 +509,13 @@
   <div class="container">
     <div class="homenagem-inner">
       <div class="homenagem-photo-wrap">
-        <img class="homenagem-photo"
-             src="assets/fotos/louzada-400.jpg"
-             alt="Prof. Dr. Francisco Louzada Neto">
+        <img class="homenagem-photo" id="homenagem-foto" src="" alt="">
       </div>
       <div class="homenagem-texto">
         <p class="homenagem-pretitulo">Homenagem</p>
-        <h2 class="homenagem-nome">Prof. Dr. Francisco Louzada Neto</h2>
-        <div class="homenagem-bio">
-          <p>Francisco Louzada Neto é Professor Titular da Universidade de São Paulo (USP), vinculado ao Instituto de Ciências Matemáticas e de Computação (ICMC) de São Carlos. Sua formação acadêmica inclui o bacharelado em Estatística pela Universidade Federal de São Carlos (UFSCar, 1988), o mestrado em Ciências da Computação e Matemática Computacional pela USP (1991) e o doutorado (PhD) em Estatística pela Universidade de Oxford, Inglaterra (1998). Iniciou sua carreira docente em 1989 como Professor Auxiliar na UFSCar, onde atuou por mais de duas décadas, chegando ao posto de Professor Associado, antes de sua migração para a USP em 2011.</p>
+        <h2 class="homenagem-nome" id="homenagem-nome"></h2>
+        <div class="homenagem-bio" id="homenagem-bio">
+          <p hidden>Francisco Louzada Neto é Professor Titular da Universidade de São Paulo (USP), vinculado ao Instituto de Ciências Matemáticas e de Computação (ICMC) de São Carlos. Sua formação acadêmica inclui o bacharelado em Estatística pela Universidade Federal de São Carlos (UFSCar, 1988), o mestrado em Ciências da Computação e Matemática Computacional pela USP (1991) e o doutorado (PhD) em Estatística pela Universidade de Oxford, Inglaterra (1998). Iniciou sua carreira docente em 1989 como Professor Auxiliar na UFSCar, onde atuou por mais de duas décadas, chegando ao posto de Professor Associado, antes de sua migração para a USP em 2011.</p>
           <p>Na esfera institucional, Louzada-Neto exerceu cargos de destaque, presidindo a Associação Brasileira de Estatística (ABE) em dois mandatos (2012-2014 e 2016-2018). Atualmente, é Diretor do Centro de Ciências Matemáticas Aplicadas à Indústria (CeMEAI), um Centro de Pesquisa, Inovação e Difusão (CEPID) financiado pela FAPESP, além de coordenar o Laboratório de Estudos do Risco (CER-USP) e o MBA em Ciência de Dados do CeMEAI. Também é membro eleito do International Statistical Institute (ISI) e atuou como representante da América Latina no comitê do Prêmio Internacional Mahalanobis em 2021.</p>
           <p>Sua atuação científica concentra-se em Ciência de Dados e Estatística, com ênfase em Análise de Sobrevivência e Confiabilidade, Aprendizado de Máquina, Inferência e Modelos de Risco. É editor do periódico Sankhya A e de séries de livros de estatística da Springer e da Blucher, tendo também integrado o corpo editorial de diversas revistas nacionais e internacionais. Ao longo da carreira, recebeu reconhecimentos como o Arnold Prize da Royal Statistical Society (1998) e a Medalha de Honra da UFSCar, consolidando-se como uma das principais referências da estatística brasileira.</p>
         </div>
@@ -647,9 +645,63 @@
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
 <script src="data/dates.js"></script>
+<script src="data/pessoas.js"></script>
 <script src="data/wasa.js"></script>
 <script src="assets/footer.js"></script>
 <script>
+/* ── Nome com tratamento, a partir do cadastro de data/pessoas.js ── */
+function nomeDaPessoa(id) {
+  const p = (typeof PESSOAS !== 'undefined' && id) ? PESSOAS[id] : null;
+  if (!p) return '';
+  return (p.tratamento ? p.tratamento + ' ' : '') + p.nome;
+}
+
+/* ── Identidade do WASA: data, local, organização e homenagem ── */
+(function () {
+  if (typeof wasaInfo === 'undefined') return;
+  const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
+  const esc = t => String(t == null ? '' : t)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  safe('wasa-nome',      el => el.textContent = wasaInfo.nome);
+  safe('wasa-descricao', el => el.textContent = wasaInfo.descricao);
+
+  const org = wasaInfo.organizacao || {};
+  safe('wasa-info-org',    el => el.textContent = org.sigla + ' - ' + org.universidade_sigla);
+  safe('wasa-org-extenso', el => el.innerHTML = esc(org.instituto) + '<br>' + esc(org.universidade));
+
+  /* A data vem de data/dates.js; o dia da semana é derivado dela, portanto
+     nenhuma das duas informações está escrita nesta página. */
+  const prazo = (typeof dataPorId === 'function') ? dataPorId(wasaInfo.prazo_id) : null;
+  if (prazo) {
+    const porExtenso = dataPorExtenso(prazo.inicio);
+    const d = new Date(prazo.inicio + 'T12:00:00');
+    const semana = d.toLocaleDateString('pt-BR', { weekday: 'long' });
+    const diaSemana = semana.charAt(0).toUpperCase() + semana.slice(1);
+    safe('wasa-badge-data', el => el.textContent = porExtenso);
+    safe('wasa-info-data',  el => el.innerHTML = esc(diaSemana) + '<br>' + esc(porExtenso));
+  }
+
+  /* O local do evento vive em data/config.js. */
+  if (typeof CONFIG !== 'undefined') {
+    const e = CONFIG.evento;
+    safe('wasa-info-local', el => el.innerHTML =
+      'IMECC - ' + esc(e.local_instituicao) + '<br>' + esc(e.local_cidade) + ', ' + esc(e.local_estado));
+  }
+
+  /* Homenagem: a pessoa vem do cadastro, o texto vem de wasaHomenagem. */
+  if (typeof wasaHomenagem !== 'undefined' && typeof PESSOAS !== 'undefined') {
+    const p = PESSOAS[wasaHomenagem.pessoa];
+    if (p) {
+      const nome = nomeDaPessoa(wasaHomenagem.pessoa);
+      safe('homenagem-nome', el => el.textContent = nome);
+      safe('homenagem-foto', el => { if (p.foto) { el.src = p.foto; el.alt = nome; } });
+      safe('homenagem-bio',  el => el.innerHTML =
+        (wasaHomenagem.paragrafos || []).map(t => `<p>${esc(t)}</p>`).join(''));
+    }
+  }
+})();
+
 /* ── Inscrição no WASA, a partir de data/wasa.js ── */
 (function () {
   if (typeof wasaInscricao === 'undefined') return;
@@ -722,7 +774,7 @@
       <div>
         ${showBadge ? `<span class="wasa-sc-badge" style="${badge}">${label}</span>` : ''}
         <p class="wasa-sc-titulo">${slot.titulo}</p>
-        ${slot.palestrante ? `<p class="wasa-sc-palestrante">${slot.palestrante}</p>` : ''}
+        ${nomeDaPessoa(slot.pessoa) ? `<p class="wasa-sc-palestrante">${nomeDaPessoa(slot.pessoa)}</p>` : ''}
       </div>
     </div>`;
   }

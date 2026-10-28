@@ -37,6 +37,22 @@ Uma linha preenchida vale para todas as páginas. Depois da D4.2 a pessoa passa 
 
 ---
 
+## Correspondências confirmadas
+
+A programação do WASA citava os palestrantes por nome em texto, com o tratamento à frente, em grafias mais curtas do que as do cadastro. A tabela abaixo registra quem é quem, decisão tomada em 27/10/2026, pois nem toda correspondência era dedutível do repositório.
+
+| Como aparecia na programação | Pessoa no cadastro |
+|---|---|
+| Prof. Francisco Louzada | Francisco Louzada Neto |
+| Prof. Mário de Castro | Mário de Castro Andrade Filho |
+| Profa. Vera Tomazella | Vera Lucia Damasceno Tomazella |
+| Profa. Fernanda Lang Schumacher | Fernanda Lang Schumacher |
+| Prof. Vinicius Calsavara | Vinicius Calsavara |
+
+Quatro palestrantes não existiam em lugar nenhum do repositório, portanto entraram no cadastro apenas com nome além do tratamento: Gleici da Silva Castro Perdoná, Adriane Caroline Teixeira Portela, Pedro Luiz Ramos, somados ao próprio Francisco Louzada Neto, que tinha foto mas não tinha ficha. A instituição deles segue em branco, pois o site nunca a publicou. Preenchê-la é edição direta de `data/pessoas.js`, sem necessidade de nova decisão formal.
+
+---
+
 ## Fora desta tabela
 
 Sete pessoas aparecem duas vezes com grafia além de instituição idênticas, em geral por integrarem duas comissões. São Mariana Rodrigues Motta, Alex Rodrigo dos Santos Sousa, Benilton Carvalho, Larissa Ávila Matos, Nancy Lopes Garcia, Samara Flamini Kiihl além de Fernanda Lang Schumacher. A D4.2 as unifica sem decisão humana.

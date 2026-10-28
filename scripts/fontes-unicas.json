@@ -28,18 +28,11 @@
     "tarefa": "D5.1"
   },
   {
-    "arquivo": "data/wasa.js",
-    "regra": "R7",
-    "limite": 2,
-    "motivo": "símbolo declarado em data/ sem nenhum consumidor",
-    "tarefa": "D4.3"
-  },
-  {
     "arquivo": "wasa.html",
     "regra": "R1",
-    "limite": 4,
-    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
-    "tarefa": "D4.3"
+    "limite": 2,
+    "motivo": "data escrita à mão nos metadados, que o robô lê sem executar JavaScript; sai com o gerador da D5.1",
+    "tarefa": "D5.1"
   },
   {
     "arquivo": "premios.html",

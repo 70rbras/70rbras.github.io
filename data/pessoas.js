@@ -12,11 +12,19 @@
 //   genero      → "f" ou "m"; preenchido apenas onde o site exibe rótulo
 //                 flexionado, hoje só nas coordenações de comissão. Ausente,
 //                 o rótulo sai na forma neutra.
+//   tratamento  → "Prof." ou "Profa."; usado onde o site antecede o nome do
+//                 tratamento, hoje só na programação do WASA. Ausente, o nome
+//                 aparece sozinho.
 //
 // O identificador é derivado do nome oficial, devendo permanecer estável: é
 // por ele que as demais listas encontram a pessoa.
 
 const PESSOAS = {
+  "adriane-caroline-teixeira-portela": {
+    nome:        "Adriane Caroline Teixeira Portela",
+    instituicao: "",
+    tratamento:  "Profa.",
+  },
   "agatha-sacramento-rodrigues": {
     nome:        "Ágatha Sacramento Rodrigues",
     instituicao: "UFES",
@@ -82,6 +90,22 @@ const PESSOAS = {
     foto:        "assets/fotos/erlandson-220.png",
     lattes:      "http://lattes.cnpq.br/1890753837146343",
   },
+  "francisco-louzada-neto": {
+    nome:        "Francisco Louzada Neto",
+    instituicao: "",
+    foto:        "assets/fotos/louzada-400.jpg",
+    tratamento:  "Prof.",
+  },
+  "gleici-da-silva-castro-perdona": {
+    nome:        "Gleici da Silva Castro Perdoná",
+    instituicao: "",
+    tratamento:  "Profa.",
+  },
+  "pedro-luiz-ramos": {
+    nome:        "Pedro Luiz Ramos",
+    instituicao: "",
+    tratamento:  "Prof.",
+  },
   "fernanda-de-bastiani": {
     nome:        "Fernanda de Bastiani",
     instituicao: "UFPE",
@@ -89,6 +113,7 @@ const PESSOAS = {
     lattes:      "http://lattes.cnpq.br/5519064508209103",
   },
   "fernanda-lang-schumacher": {
+    tratamento:  "Profa.",
     nome:        "Fernanda Lang Schumacher",
     instituicao: "The Ohio State University",
     foto:        "assets/fotos/fernanda-200.png",
@@ -155,6 +180,7 @@ const PESSOAS = {
     genero:      "f",
   },
   "mario-de-castro-andrade-filho": {
+    tratamento:  "Prof.",
     nome:        "Mário de Castro Andrade Filho",
     instituicao: "ICMC - USP",
     foto:        "assets/fotos/mariocastro-200.png",
@@ -214,6 +240,7 @@ const PESSOAS = {
     lattes:      "http://lattes.cnpq.br/7910133462131658",
   },
   "vera-lucia-damasceno-tomazella": {
+    tratamento:  "Profa.",
     nome:        "Vera Lucia Damasceno Tomazella",
     instituicao: "UFSCar",
     foto:        "assets/fotos/vera-400.png",
@@ -232,6 +259,7 @@ const PESSOAS = {
     lattes:      "http://lattes.cnpq.br/5456626204155096",
   },
   "vinicius-calsavara": {
+    tratamento:  "Prof.",
     nome:        "Vinicius Calsavara",
     instituicao: "Cedars-Sinai Medical Center (EUA)",
     foto:        "assets/fotos/vinicius-400.png",
