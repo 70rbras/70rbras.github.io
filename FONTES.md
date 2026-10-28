@@ -28,6 +28,7 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Hospedagem, gráficas, perguntas frequentes | `data/hotels.js`, `data/graficas.js`, `data/faq.js` | `logistica.html`, `faq.html` |
 | Faixa de aviso no topo | `data/config.js`, campo `avisos`, com prazo por `fim_id` | todas as páginas |
 | Metadados de prévia de link | `scripts/gerar_meta.mjs`, mapa `PAGINAS`; os fatos vêm de `data/` | bloco `meta:inicio` do `<head>` de cada página |
+| Manifesto do aplicativo instalável | `scripts/gerar_meta.mjs`, objeto `APLICATIVO`; nome, nome curto além da descrição vêm de `data/config.js` | `manifest.webmanifest`, mais as três linhas do bloco `meta:inicio` |
 
 Três trechos nunca se editam à mão. O primeiro é `data/programacao.json`, que o fluxo automático regrava de hora em hora a partir da planilha. O segundo é qualquer página `.html`, que só muda por alteração de estrutura ou de estilo. O terceiro é o bloco entre `<!-- meta:inicio -->` e `<!-- meta:fim -->` do `<head>`, que `scripts/gerar_meta.mjs` descarta e reescreve a cada execução.
 
@@ -49,7 +50,7 @@ Existe um segundo modo, voltado às pessoas cadastradas. Ele agrupa os registros
 node scripts/checar_fontes.mjs --pessoas
 ```
 
-Os metadados têm comando próprio. O robô que monta a prévia de um link não executa o JavaScript da página, portanto título, descrição além de imagem precisam estar escritos no HTML entregue pelo servidor. O comando abaixo lê os arquivos de dados, depois reescreve o bloco entre os marcadores em cada página.
+Os metadados têm comando próprio. O robô que monta a prévia de um link não executa o JavaScript da página, portanto título, descrição além de imagem precisam estar escritos no HTML entregue pelo servidor. O mesmo comando grava `manifest.webmanifest`, que o sistema operacional lê para instalar o aplicativo na tela inicial, com o nome do evento vindo de `data/config.js` como em qualquer outro lugar.
 
 ```
 node scripts/gerar_meta.mjs

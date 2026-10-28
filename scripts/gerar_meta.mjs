@@ -142,6 +142,53 @@ function montarCampos(dados) {
   };
 }
 
+/* ---------------------------------------------- manifesto do aplicativo */
+
+/* Configuração do aplicativo instalável. O nome, o nome curto além da
+   descrição vêm de data/config.js, pois são fatos do evento: aqui ficam só as
+   escolhas de comportamento. As duas cores saem das variáveis de
+   assets/style.css. Plano: claude/plano-app-70rbras.md, tarefa T0.2. */
+const APLICATIVO = {
+  start_url: 'programacao.html?fonte=app',
+  scope: '/',
+  display: 'standalone',
+  orientation: 'portrait-primary',
+  lang: 'pt-BR',
+  dir: 'ltr',
+  theme_color: '#1A3870',       // --blue
+  background_color: '#FFFFFF',  // --white, o fundo real do body
+  categories: ['education', 'science'],
+  icones: [
+    { src: 'assets/icons/icon-192.png', sizes: '192x192', purpose: 'any' },
+    { src: 'assets/icons/icon-512.png', sizes: '512x512', purpose: 'any' },
+    { src: 'assets/icons/icon-512-maskable.png', sizes: '512x512', purpose: 'maskable' }
+  ],
+  apple_touch_icon: 'assets/icons/apple-touch-icon.png'
+};
+
+const MANIFESTO = 'manifest.webmanifest';
+
+function montarManifesto(campos) {
+  const m = {
+    name: campos.nome,
+    short_name: campos.edicao,
+    description: campos.tema,
+    lang: APLICATIVO.lang,
+    dir: APLICATIVO.dir,
+    start_url: APLICATIVO.start_url,
+    scope: APLICATIVO.scope,
+    display: APLICATIVO.display,
+    orientation: APLICATIVO.orientation,
+    theme_color: APLICATIVO.theme_color,
+    background_color: APLICATIVO.background_color,
+    categories: APLICATIVO.categories,
+    icons: APLICATIVO.icones.map(i => ({
+      src: i.src, sizes: i.sizes, type: 'image/png', purpose: i.purpose
+    }))
+  };
+  return JSON.stringify(m, null, 2) + '\n';
+}
+
 /* ------------------------------------------------------- mapa das páginas */
 
 /* Cada entrada declara apenas a prosa própria da página. Todo fato do evento
@@ -287,12 +334,22 @@ function montarBloco(arquivo, campos, base) {
   const meta = (atributo, nome, conteudo) =>
     `${RECUO}<meta ${atributo}="${nome}" content="${escapar(conteudo)}">`;
 
+  /* As três linhas do aplicativo instalável valem para toda página, inclusive
+     as de redirecionamento, pois o escopo do manifesto cobre o site inteiro.
+     Elas vivem aqui, não no HTML, para que a cor do tema exista num lugar só. */
+  const aplicativo = () => [
+    `${RECUO}<link rel="manifest" href="${MANIFESTO}">`,
+    meta('name', 'theme-color', APLICATIVO.theme_color),
+    `${RECUO}<link rel="apple-touch-icon" href="${APLICATIVO.apple_touch_icon}">`
+  ];
+
   const titulo = resolver(pagina.titulo, campos);
   const linhas = [`${RECUO}<title>${escapar(titulo)}</title>`];
 
   if (pagina.redireciona) {
     linhas.push(`${RECUO}<link rel="canonical" href="${base}/${pagina.redireciona}">`);
     linhas.push(meta('name', 'robots', 'noindex'));
+    linhas.push(...aplicativo());
     return linhas.join('\n');
   }
 
@@ -313,6 +370,7 @@ function montarBloco(arquivo, campos, base) {
   linhas.push(meta('property', 'og:type', 'website'));
   linhas.push(meta('name', 'twitter:card', cartao));
   linhas.push(meta('name', 'twitter:image', `${base}/${imagem}`));
+  linhas.push(...aplicativo());
   return linhas.join('\n');
 }
 
@@ -349,6 +407,19 @@ export function gerar({ gravar = true } = {}) {
     relatorio.push({ arquivo, estado: 'diferente' });
     if (gravar) fs.writeFileSync(path.join(RAIZ, arquivo), depois, 'utf8');
   }
+
+  /* O manifesto é gerado por inteiro, não por trecho delimitado, portanto a
+     comparação é do arquivo todo. Ausente conta como diferente: o gerador o
+     cria, enquanto o modo de conferência acusa a falta. */
+  const manifesto = montarManifesto(campos);
+  const atual = existe(MANIFESTO) ? ler(MANIFESTO) : '';
+  if (atual === manifesto) {
+    relatorio.push({ arquivo: MANIFESTO, estado: 'em dia' });
+  } else {
+    relatorio.push({ arquivo: MANIFESTO, estado: 'diferente' });
+    if (gravar) fs.writeFileSync(path.join(RAIZ, MANIFESTO), manifesto, 'utf8');
+  }
+
   return relatorio;
 }
 
