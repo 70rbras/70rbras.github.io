@@ -163,7 +163,8 @@ const APLICATIVO = {
     { src: 'assets/icons/icon-512.png', sizes: '512x512', purpose: 'any' },
     { src: 'assets/icons/icon-512-maskable.png', sizes: '512x512', purpose: 'maskable' }
   ],
-  apple_touch_icon: 'assets/icons/apple-touch-icon.png'
+  apple_touch_icon: 'assets/icons/apple-touch-icon.png',
+  registrador: 'assets/registrar-sw.js'
 };
 
 const MANIFESTO = 'manifest.webmanifest';
@@ -371,6 +372,9 @@ function montarBloco(arquivo, campos, base) {
   linhas.push(meta('name', 'twitter:card', cartao));
   linhas.push(meta('name', 'twitter:image', `${base}/${imagem}`));
   linhas.push(...aplicativo());
+  /* O registrador do service worker fica só nas páginas de conteúdo: as de
+     redirecionamento saem da tela antes de o registro terminar. */
+  linhas.push(`${RECUO}<script src="${APLICATIVO.registrador}" defer></script>`);
   return linhas.join('\n');
 }
 

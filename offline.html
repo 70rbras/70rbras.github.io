@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Página servida pelo service worker quando a rede falha e a página pedida
+       ainda não está guardada no aparelho. Fica fora do gerador de metadados de
+       propósito: ela não é compartilhada em rede social nem indexada, além de
+       precisar funcionar sem nenhum outro arquivo do site. -->
+  <title>Sem conexão · 70ª RBras</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
+  <meta name="theme-color" content="#1A3870">
+  <style>
+    :root { --azul: #1A3870; --claro: #F2F6FA; --texto: #0C1C3A; --meio: #3A5068; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem 1.25rem;
+      background: var(--claro);
+      color: var(--texto);
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+    .caixa { max-width: 32rem; text-align: center; }
+    img { width: 96px; height: 96px; border-radius: 20px; margin-bottom: 1.5rem; }
+    h1 { font-size: 1.5rem; margin-bottom: .75rem; color: var(--azul); }
+    p { color: var(--meio); margin-bottom: 1rem; }
+    .botao {
+      display: inline-block;
+      margin-top: .5rem; padding: .8em 2em;
+      border: 0; border-radius: 999px;
+      background: var(--azul); color: #fff;
+      font: inherit; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+    }
+    .links { margin-top: 2rem; font-size: .95rem; }
+    .links a { color: var(--azul); margin: 0 .6rem; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0C1C3A; color: #E8EDF5; }
+      h1 { color: #9DB8E8; }
+      p { color: #AFC0D4; }
+      .links a { color: #9DB8E8; }
+    }
+  </style>
+</head>
+<body>
+  <main class="caixa">
+    <img src="assets/icons/icon-192.png" alt="">
+    <h1>Sem conexão</h1>
+    <p>Esta página ainda não está guardada neste aparelho, portanto precisa de internet para abrir.</p>
+    <p>As páginas que você já visitou continuam disponíveis, inclusive a programação completa.</p>
+    <button class="botao" onclick="location.reload()">Tentar de novo</button>
+    <nav class="links">
+      <a href="programacao.html">Programação</a>
+      <a href="apresentadores.html">Apresentadores</a>
+      <a href="index.html">Início</a>
+    </nav>
+  </main>
+</body>
+</html>
