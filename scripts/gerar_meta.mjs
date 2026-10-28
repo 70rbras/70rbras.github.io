@@ -233,8 +233,12 @@ const PAGINAS = {
   'fundo-estudante.html': {
     url: 'fundo-estudante.html',
     titulo: 'Fundo de Financiamento para Estudantes - {edicao} {ano}',
-    descricao: 'Fundo de Financiamento da RBras para participação de estudantes associados na {edicao} {ano}. Auxílios individuais (até {fundo_individual}) e coletivos (até {fundo_coletivo}). Inscrições encerradas em {fundo_prazo}.',
-    og_descricao: 'Auxílios individuais e coletivos da RBras para participação de estudantes associados na {edicao}. Inscrições encerradas em {fundo_prazo}.'
+    /* O bloco é gerado no momento do commit, não a cada visita, portanto o
+       metadado carrega fato, nunca estado: ele cita o prazo sem afirmar se o
+       período está aberto ou encerrado, o que o impede de envelhecer sozinho.
+       Os três textos de estado de data/fundo.js seguem valendo na página. */
+    descricao: 'Fundo de Financiamento da RBras para participação de estudantes associados na {edicao} {ano}. Auxílios individuais de até {fundo_individual} e coletivos de até {fundo_coletivo}, com solicitação até {fundo_prazo}.',
+    og_descricao: 'Auxílios individuais e coletivos da RBras para participação de estudantes associados na {edicao}, com solicitação até {fundo_prazo}.'
   },
 
   'wasa.html': {
