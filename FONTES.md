@@ -27,8 +27,9 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Fundo de Financiamento | `data/fundo.js`, com o prazo em `data/dates.js` | `fundo-estudante.html` |
 | Hospedagem, gráficas, perguntas frequentes | `data/hotels.js`, `data/graficas.js`, `data/faq.js` | `logistica.html`, `faq.html` |
 | Faixa de aviso no topo | `data/config.js`, campo `avisos`, com prazo por `fim_id` | todas as páginas |
+| Metadados de prévia de link | `scripts/gerar_meta.mjs`, mapa `PAGINAS`; os fatos vêm de `data/` | bloco `meta:inicio` do `<head>` de cada página |
 
-Dois arquivos nunca se editam à mão. O primeiro é `data/programacao.json`, que o fluxo automático regrava de hora em hora a partir da planilha. O segundo é qualquer página `.html`, que só muda por alteração de estrutura ou de estilo.
+Três trechos nunca se editam à mão. O primeiro é `data/programacao.json`, que o fluxo automático regrava de hora em hora a partir da planilha. O segundo é qualquer página `.html`, que só muda por alteração de estrutura ou de estilo. O terceiro é o bloco entre `<!-- meta:inicio -->` e `<!-- meta:fim -->` do `<head>`, que `scripts/gerar_meta.mjs` descarta e reescreve a cada execução.
 
 Alguns arquivos da tabela ainda estão sendo criados pelo plano de correção. Enquanto a tarefa correspondente não terminar, a informação continua no lugar antigo, registrada como pendência em `scripts/fontes-unicas.json`. A seção 5 mostra como ler esse arquivo.
 
@@ -46,6 +47,18 @@ Existe um segundo modo, voltado às pessoas cadastradas. Ele agrupa os registros
 
 ```
 node scripts/checar_fontes.mjs --pessoas
+```
+
+Os metadados têm comando próprio. O robô que monta a prévia de um link não executa o JavaScript da página, portanto título, descrição além de imagem precisam estar escritos no HTML entregue pelo servidor. O comando abaixo lê os arquivos de dados, depois reescreve o bloco entre os marcadores em cada página.
+
+```
+node scripts/gerar_meta.mjs
+```
+
+Existe também o modo de conferência, que não grava nada. Ele compara o bloco publicado com o que o gerador produziria, saindo com erro quando alguma página estiver fora de dia. É o comando a rodar quando houver dúvida sobre ter regerado depois de mexer em `data/`.
+
+```
+node scripts/gerar_meta.mjs --verificar
 ```
 
 O mesmo verificador roda sozinho no GitHub, em duas situações. A primeira é a cada envio de alteração, pelo fluxo `fontes.yml`. A segunda é a cada atualização horária da programação, dentro do fluxo `programacao.yml`, antes da publicação do JSON.
@@ -84,6 +97,10 @@ O arquivo `scripts/fontes-unicas.json` é a lista do que ainda falta. Cada entra
 
 As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram concluídas em 23/10/2026. As tarefas D1.1, que deu fonte única aos horários de `apresentadores.html`, além da D1.2, que removeu a página de prévia congelada, foram concluídas em 24/10/2026. No mesmo dia foram concluídas a D1.3 além da D2.1, que levou a identidade do evento para os componentes compartilhados. A D2.2, que separou o endereço do IMECC em campos próprios, além da D2.3, que unificou a redação do tema, foram concluídas em 25/10/2026. No mesmo dia a D1.4 fechou a fase 1, acrescentando ao relatório do fluxo a contagem de trabalhos sem sessão alocada, por modalidade; ela não remove entrada da lista de exceções, portanto não aparece na tabela abaixo. O retrato inicial, de 23/10/2026, tinha 103 ocorrências distribuídas em 26 entradas; depois da D2.3 restam 82 ocorrências em 13 entradas. Duas entradas de `index.html` tiveram o limite reduzido em vez de removidas, pois as ocorrências restantes são metadados, que só saem com o gerador da D5.1. As maiores são os dezoito valores de inscrição escritos em `inscricoes.html`, as dezessete pessoas repetidas em `data/committee.js`, além das nove datas somadas a nove valores em `fundo-estudante.html`. Cada tarefa concluída remove as suas entradas.
 
+A D5.1 foi concluída em 27/10/2026, com o gerador `scripts/gerar_meta.mjs`. O bloco de metadados das quatorze páginas passou a ser montado a partir de `data/config.js`, `data/dates.js`, `data/premios.js`, `data/fundo.js` além de `data/wasa.js`, portanto nenhum título, descrição ou imagem de compartilhamento é digitado na página. A lista de exceções não esvaziou com ela: são oito entradas, com vinte e duas ocorrências, todas dentro do bloco gerado.
+
+A permanência dessas entradas é esperada. O verificador lê o HTML entregue pelo servidor, sem meio de distinguir texto gerado de texto digitado, portanto continua acusando a data do evento na descrição da home do mesmo modo que acusaria uma data escrita à mão. A distinção chega na D5.2, que executa o gerador em memória para comparar o resultado com o arquivo: quando essa regra entrar, as oito entradas saem de uma vez.
+
 | Tarefa do plano | O que ela elimina | Estado |
 |---|---|---|
 | D1.3 | contagem de trabalhos escrita em `programacao.html` | concluída em 24/10/2026 |
@@ -98,6 +115,7 @@ As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram
 | D4.2 | pessoas repetidas em `data/committee.js` | concluída em 27/10/2026 |
 | D4.3 | dados do WASA sem consumidor, datas escritas em `wasa.html` | concluída em 27/10/2026 |
 | D4.4 | funções de iniciais repetidas em três páginas | concluída em 27/10/2026 |
-| D5.1 | metadados escritos à mão em `premios.html` além de `programacao.html` | pendente |
+| D5.1 | metadados escritos à mão em todas as páginas | concluída em 27/10/2026 |
+| D5.2 | gerador ligado à verificação, que esvazia as oito entradas acima | pendente |
 
 Quando a lista ficar vazia, o site terá uma única fonte para cada informação publicada. O verificador continua rodando depois disso, com a função de impedir que o problema volte. É o que permite à próxima comissão assumir o repositório sem repetir este trabalho.

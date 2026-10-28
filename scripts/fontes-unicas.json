@@ -3,49 +3,56 @@
     "arquivo": "index.html",
     "regra": "R1",
     "limite": 2,
-    "motivo": "data escrita à mão; repartida entre D4.3 (data do WASA) e D5.1 (metadados)",
-    "tarefa": "D5.1"
+    "motivo": "data do evento no bloco <!-- meta:inicio -->, gerado por scripts/gerar_meta.mjs a partir de data/config.js; o robô de prévia não executa JavaScript, portanto o bloco precisa existir no HTML",
+    "tarefa": "D5.2"
   },
   {
     "arquivo": "index.html",
     "regra": "R3",
-    "limite": 3,
-    "motivo": "tema do evento nos metadados, que o robô lê sem executar JavaScript; sai com o gerador da D5.1",
-    "tarefa": "D5.1"
-  },
-  {
-    "arquivo": "fundo-estudante.html",
-    "regra": "R1",
-    "limite": 2,
-    "motivo": "data escrita à mão nos metadados, que o robô lê sem executar JavaScript; sai com o gerador da D5.1",
-    "tarefa": "D5.1"
-  },
-  {
-    "arquivo": "fundo-estudante.html",
-    "regra": "R2",
-    "limite": 2,
-    "motivo": "valor em reais nos metadados, que o robô lê sem executar JavaScript; sai com o gerador da D5.1",
-    "tarefa": "D5.1"
-  },
-  {
-    "arquivo": "wasa.html",
-    "regra": "R1",
-    "limite": 2,
-    "motivo": "data escrita à mão nos metadados, que o robô lê sem executar JavaScript; sai com o gerador da D5.1",
-    "tarefa": "D5.1"
-  },
-  {
-    "arquivo": "premios.html",
-    "regra": "R3",
-    "limite": 5,
-    "motivo": "identidade do evento escrita à mão; a fonte é data/config.js",
-    "tarefa": "D5.1"
+    "limite": 7,
+    "motivo": "nome, tema e datas do evento no bloco gerado por scripts/gerar_meta.mjs a partir de data/config.js",
+    "tarefa": "D5.2"
   },
   {
     "arquivo": "programacao.html",
     "regra": "R1",
     "limite": 1,
-    "motivo": "data escrita à mão; a fonte é data/dates.js ou data/config.js",
-    "tarefa": "D5.1"
+    "motivo": "data do evento no bloco gerado por scripts/gerar_meta.mjs a partir de data/config.js",
+    "tarefa": "D5.2"
+  },
+  {
+    "arquivo": "programacao.html",
+    "regra": "R3",
+    "limite": 1,
+    "motivo": "datas de exibição no bloco gerado por scripts/gerar_meta.mjs a partir de data/config.js",
+    "tarefa": "D5.2"
+  },
+  {
+    "arquivo": "premios.html",
+    "regra": "R3",
+    "limite": 5,
+    "motivo": "nome e foto do premiado no bloco gerado por scripts/gerar_meta.mjs a partir de data/premios.js",
+    "tarefa": "D5.2"
+  },
+  {
+    "arquivo": "wasa.html",
+    "regra": "R1",
+    "limite": 2,
+    "motivo": "data do WASA no bloco gerado por scripts/gerar_meta.mjs a partir do registro wasa de data/dates.js",
+    "tarefa": "D5.2"
+  },
+  {
+    "arquivo": "fundo-estudante.html",
+    "regra": "R1",
+    "limite": 2,
+    "motivo": "prazo do Fundo no bloco gerado por scripts/gerar_meta.mjs a partir do registro fundo-estudante de data/dates.js",
+    "tarefa": "D5.2"
+  },
+  {
+    "arquivo": "fundo-estudante.html",
+    "regra": "R2",
+    "limite": 2,
+    "motivo": "montantes do auxílio no bloco gerado por scripts/gerar_meta.mjs a partir de data/fundo.js",
+    "tarefa": "D5.2"
   }
 ]
