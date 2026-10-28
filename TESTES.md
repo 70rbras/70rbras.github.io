@@ -140,7 +140,30 @@ Quem executar registra abaixo o aparelho, o sistema, o navegador além do result
 
 ### Execuções
 
-Nenhuma ainda. Registrar aqui, uma seção por aparelho, no formato: aparelho, sistema, navegador, data, depois o resultado de cada um dos oito passos.
+#### iPhone, Safari, 28/10/2026
+
+Executada pelo Benilton, sobre o site publicado. Os passos 1 a 6 foram percorridos, todos com o resultado esperado. Os passos 7 e 8 não foram executados, portanto seguem pendentes neste aparelho.
+
+| Passo | Resultado |
+|---|---|
+| 1 | aprovado, instalou na tela inicial pelo Safari |
+| 2 | aprovado, abre sem a barra de endereço |
+| 3 | aprovado |
+| 4 | aprovado, as páginas visitadas abrem em modo avião |
+| 5 | aprovado, a busca de trabalhos responde sem rede |
+| 6 | aprovado, o selo indica a cópia guardada |
+| 7 | não executado, por depender de alteração real na planilha seguida do botão Run workflow |
+| 8 | não executado, por depender do VoiceOver |
+
+Durante estes testes apareceu o defeito da caixa "Convidados confirmados" da home, que exibia "undefined" no lugar dos sete nomes. Ele não é do aplicativo: atinge o site em qualquer navegador, inclusive no computador. A causa foi a tarefa D4.2, com a correção publicada no mesmo dia, além do passo 8 da seção 1 nascer dessa falha.
+
+#### Android, Chrome
+
+Pendente. Nenhum passo executado até 28/10/2026. É a execução que mais falta, pois o Android responde por boa parte do público, além de ser onde o convite de instalação do Chrome se comporta de modo diferente do Safari.
+
+#### O que fica em aberto
+
+Dois passos seguem sem execução em qualquer aparelho. O passo 7 é o único que exercita de ponta a ponta a faixa de dado novo, que é o caminho pelo qual a comissão corrige uma sala durante o evento. O passo 8, do leitor de tela, não tem substituto: nenhuma auditoria automática diz se o que é anunciado faz sentido ouvido.
 
 ---
 
