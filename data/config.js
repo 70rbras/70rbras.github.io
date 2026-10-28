@@ -8,7 +8,7 @@ const CONFIG = {
     tema:           "Dados que revelam vida: Estatística e Ciência de Dados na Biometria",
     inicio:         "2026-11-23",          // formato AAAA-MM-DD (usado no contador)
     fim:            "2026-11-25",
-    datas_exibicao: "23 a 25 de Novembro de 2026",
+    datas_exibicao: "23 a 25 de novembro de 2026",
     cidade:         "Unicamp, Campinas, SP",
     local_nome:     "IMECC / UNICAMP<br>Instituto de Matemática, Estatística e Computação Científica",
     // Endereço em campos próprios: a exibição é montada por concatenação,
