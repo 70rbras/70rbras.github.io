@@ -109,10 +109,35 @@ O item fica registrado sem correção, por estar fora do escopo da D6.1, cuja es
 
 ---
 
-## 2. Roteiro do aplicativo
+## 2. T4.1, roteiro do aplicativo em aparelho real
 
-Reservado para a tarefa T4.1 do plano do aplicativo, que testa instalação na tela inicial, uso sem internet além de leitura por leitor de tela, em aparelho real. Nenhuma execução registrada até 28/10/2026.
+Este roteiro precisa de aparelho de verdade: um iPhone com Safari além de um Android com Chrome. O emulador do navegador de mesa não reproduz a instalação na tela inicial, nem o comportamento de armazenamento do Safari, nem o leitor de tela do sistema. Nenhuma execução registrada até 28/10/2026.
 
-O escopo do aplicativo foi reduzido às fases 0 e 2 em 27/10/2026, portanto o roteiro de nove passos encolhe junto. Os passos de agenda pessoal além de exportação para calendário saem, pois as tarefas que os entregariam ficaram fora desta edição.
+O escopo do aplicativo foi reduzido às fases 0 e 2 em 27/10/2026, portanto o roteiro encolheu de nove para oito passos. Saíram os passos de agenda pessoal além de exportação para calendário, que dependiam da fase 1, mais o de faixa de aviso da comissão, que dependia da fase 3.
 
-Quem executar o roteiro registra aqui a data, o aparelho, o navegador além do resultado de cada passo. Dois aparelhos são o mínimo: um iPhone com Safari além de um Android com Chrome.
+Quem executar registra abaixo o aparelho, o sistema, o navegador além do resultado de cada passo, com a data. Um passo que falhar fica escrito do mesmo modo que um que passou: o valor deste arquivo está em registrar o que aconteceu, não em registrar sucesso.
+
+| Passo | O que fazer | O que precisa acontecer |
+|---|---|---|
+| 1 | Abrir `https://70rbras.org` e instalar na tela inicial. No iPhone: Compartilhar, depois Adicionar à Tela de Início. No Android: menu do Chrome, depois Instalar aplicativo | o ícone aparece na tela inicial, com o numeral legível, sem o nome cortado |
+| 2 | Abrir pelo ícone da tela inicial | o aplicativo abre sem a barra de endereço do navegador, com a barra do sistema na cor azul do evento |
+| 3 | Visitar a programação, a página de apresentadores além de outras duas páginas | todas abrem normalmente, com a programação listando os três dias |
+| 4 | Ligar o modo avião, fechar o aplicativo, abrir de novo pelo ícone | as páginas visitadas continuam abrindo, com a grade da programação desenhada |
+| 5 | Ainda em modo avião, usar a busca de trabalhos por autor além de por número | a busca responde, pois o JSON está guardado no aparelho |
+| 6 | Ainda em modo avião, olhar o carimbo no topo da programação, depois tocar em Tentar atualizar | o selo diz "cópia guardada neste aparelho"; o botão responde "Sem rede agora", sem afirmar que está em dia |
+| 7 | Desligar o modo avião. Alterar um horário na planilha, rodar o fluxo pelo botão Run workflow, voltar ao aplicativo | aparece a faixa com o botão Recarregar; a página não recarrega sozinha; tocando em Recarregar, o horário novo aparece |
+| 8 | Ligar o leitor de tela, VoiceOver no iPhone ou TalkBack no Android, percorrer a programação | os botões de dia além dos cartões de atividade são anunciados com texto que faz sentido ouvido, não apenas lido |
+
+### Execuções
+
+Nenhuma ainda. Registrar aqui, uma seção por aparelho, no formato: aparelho, sistema, navegador, data, depois o resultado de cada um dos oito passos.
+
+---
+
+## 3. T4.2, auditoria de desempenho e acessibilidade
+
+Reservado para o resultado do Lighthouse em perfil móvel, com rede limitada, nas páginas `index.html`, `programacao.html` além de `apresentadores.html`. O critério é 90 ou mais em desempenho, acessibilidade além de melhores práticas, sem erro de contraste abaixo de 4,5 para 1 em texto normal, sem alvo de toque abaixo de 44 pixels, sem imagem sem texto alternativo.
+
+É também onde o critério de instalabilidade do Chrome pode enfim ser conferido. Ele exige manifesto somado a service worker com manipulador de `fetch`, que passaram a existir com as tarefas T0.2 e T2.1.
+
+Nenhuma execução registrada até 28/10/2026.
