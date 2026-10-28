@@ -38,6 +38,7 @@ site-rbras-claude/
 ├── wasa.html             # WASA (evento satélite)
 ├── LEIAME.md             # Guia de manutenção em português
 ├── FONTES.md             # Onde se edita cada informação; regras de fonte única
+├── TESTES.md             # Roteiros de conferência executados, com resultado e data
 ├── CNAME                 # Configuração de domínio (70rbras.org)
 ├── CLAUDE.md             # Este arquivo de memória
 ├── padroniza_fotos.py    # Script Python para normalizar fotos de palestrantes
@@ -81,7 +82,7 @@ site-rbras-claude/
 
 **Regra de ouro:** Todo conteúdo do site é controlado pelos arquivos em `data/`. As páginas HTML não devem ser editadas para mudanças de conteúdo — apenas para mudanças estruturais de layout ou estilo.
 
-**Fonte única de verdade:** `FONTES.md` diz onde se edita cada informação do site. A regra é verificada por `scripts/checar_fontes.mjs`, que recusa a publicação quando um fato que já tem fonte em `data/` reaparece escrito à mão numa página. As pendências conhecidas ficam em `scripts/fontes-unicas.json`, cada uma com a tarefa de `claude/plano-fontes-unicas-70rbras.md` que vai eliminá-la. Antes de qualquer commit, rodar `node scripts/checar_fontes.mjs`. Os metadados do `<head>` não se editam à mão: o bloco entre `<!-- meta:inicio -->` e `<!-- meta:fim -->` é reescrito por `node scripts/gerar_meta.mjs`, que o monta a partir dos arquivos de `data/`.
+**Fonte única de verdade:** `FONTES.md` diz onde se edita cada informação do site. A regra é verificada por `scripts/checar_fontes.mjs`, que recusa a publicação quando um fato que já tem fonte em `data/` reaparece escrito à mão numa página. As pendências conhecidas ficariam em `scripts/fontes-unicas.json`, cada uma com a tarefa de `claude/plano-fontes-unicas-70rbras.md` que vai eliminá-la; desde 28/10/2026 esse arquivo está vazio, portanto qualquer fato reescrito à mão recusa a publicação de imediato. Antes de qualquer commit, rodar `node scripts/checar_fontes.mjs`. Os metadados do `<head>` não se editam à mão: o bloco entre `<!-- meta:inicio -->` e `<!-- meta:fim -->` é reescrito por `node scripts/gerar_meta.mjs`, que o monta a partir dos arquivos de `data/`.
 
 **Arquitetura multi-página (desde mai/2026):**
 - `assets/style.css` — único arquivo CSS, carregado por todas as páginas
@@ -275,9 +276,12 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 - ✅ Identidade do evento, prazos, valores de inscrição, Fundo e WASA em arquivos de `data/` (fases 2 e 3 do plano de fontes únicas, 24 a 27/10/2026)
 - ✅ Cadastro único de pessoas em `data/pessoas.js`; funções de cartão e iniciais em `assets/pessoas.js` (27/10/2026)
 - ✅ Metadados do `<head>` gerados por `scripts/gerar_meta.mjs` nas 14 páginas (27/10/2026)
+- ✅ Verificador confere o bloco gerado contra o gerador, pela regra R9 (28/10/2026)
+- ✅ Conferência cruzada dos sete passos registrada em `TESTES.md` (28/10/2026)
+- ✅ **Plano de fontes únicas concluído (28/10/2026): `scripts/fontes-unicas.json` está vazio, portanto cada informação publicada tem uma fonte só**
 - ⏳ Local do credenciamento: a pendência passou para a planilha, na atividade de id `INSCRICOES`
-- ⏳ Restam 8 entradas em `scripts/fontes-unicas.json`, todas dentro do bloco de metadados: saem com a tarefa D5.2, que compara o bloco publicado com o que o gerador produziria
 - ⏳ Nenhum dos 392 trabalhos tem o campo `painel` preenchido na planilha
+- ⏳ `programacao.html#CO-5` não abre a atividade quando ela não é do dia padrão: `assets/programacao.js` só trata `#geral`, `#dia` e `#busca` no `location.hash` (registrado em `TESTES.md`, seção 1.8)
 ---
 
 ## 13. Como fazer alterações comuns
@@ -322,4 +326,4 @@ A **RBras (Região Brasileira da Sociedade Internacional de Biometria)** é a as
 
 ---
 
-*Arquivo gerado em 24/04/2026; atualizado em 27/10/2026 (fontes únicas: fases 1 a 5 do plano, cadastro de pessoas, gerador de metadados).*
+*Arquivo gerado em 24/04/2026; atualizado em 28/10/2026 (plano de fontes únicas concluído: lista de exceções vazia, conferência cruzada registrada em TESTES.md).*

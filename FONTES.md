@@ -97,13 +97,17 @@ Quem tem acesso de escrita ao repositório além da planilha deve ser registrado
 
 ## 5. Estado das pendências
 
-O arquivo `scripts/fontes-unicas.json` é a lista do que ainda falta. Cada entrada registra o arquivo, a regra violada, quantas ocorrências existem hoje além da tarefa do plano que vai eliminá-las. O campo de limite impede o retrocesso: uma ocorrência nova no mesmo arquivo passa do limite, portanto a verificação falha.
+**A lista está vazia desde 28/10/2026.** O arquivo `scripts/fontes-unicas.json` guarda hoje um array sem nenhum item, o que significa que cada informação publicada no site tem uma fonte só. O verificador continua rodando a cada envio, agora com a função de impedir o retrocesso: qualquer fato que reapareça escrito à mão numa página recusa a publicação de imediato, sem exceção para onde recorrer.
+
+O formato continua documentado para o caso de ser preciso de novo. Cada entrada registra o arquivo, a regra violada, o limite de ocorrências toleradas além da tarefa que vai eliminá-las. Registrar uma pendência conhecida é o caminho legítimo quando a correção não couber na mesma mudança, desde que a entrada nasça com a tarefa que a resolve.
 
 As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram concluídas em 23/10/2026. As tarefas D1.1, que deu fonte única aos horários de `apresentadores.html`, além da D1.2, que removeu a página de prévia congelada, foram concluídas em 24/10/2026. No mesmo dia foram concluídas a D1.3 além da D2.1, que levou a identidade do evento para os componentes compartilhados. A D2.2, que separou o endereço do IMECC em campos próprios, além da D2.3, que unificou a redação do tema, foram concluídas em 25/10/2026. No mesmo dia a D1.4 fechou a fase 1, acrescentando ao relatório do fluxo a contagem de trabalhos sem sessão alocada, por modalidade; ela não remove entrada da lista de exceções, portanto não aparece na tabela abaixo. O retrato inicial, de 23/10/2026, tinha 103 ocorrências distribuídas em 26 entradas; depois da D2.3 restam 82 ocorrências em 13 entradas. Duas entradas de `index.html` tiveram o limite reduzido em vez de removidas, pois as ocorrências restantes são metadados, que só saem com o gerador da D5.1. As maiores são os dezoito valores de inscrição escritos em `inscricoes.html`, as dezessete pessoas repetidas em `data/committee.js`, além das nove datas somadas a nove valores em `fundo-estudante.html`. Cada tarefa concluída remove as suas entradas.
 
-A D5.1 foi concluída em 27/10/2026, com o gerador `scripts/gerar_meta.mjs`. O bloco de metadados das quatorze páginas passou a ser montado a partir de `data/config.js`, `data/dates.js`, `data/premios.js`, `data/fundo.js` além de `data/wasa.js`, portanto nenhum título, descrição ou imagem de compartilhamento é digitado na página. A lista de exceções não esvaziou com ela: são oito entradas, com vinte e duas ocorrências, todas dentro do bloco gerado.
+A D5.1 foi concluída em 27/10/2026, com o gerador `scripts/gerar_meta.mjs`. O bloco de metadados das quatorze páginas passou a ser montado a partir de `data/config.js`, `data/dates.js`, `data/premios.js`, `data/fundo.js` além de `data/wasa.js`, portanto nenhum título, descrição ou imagem de compartilhamento é digitado na página. A lista não esvaziou com ela: ficaram oito entradas, com vinte e duas ocorrências, todas dentro do bloco gerado.
 
-A permanência dessas entradas é esperada. O verificador lê o HTML entregue pelo servidor, sem meio de distinguir texto gerado de texto digitado, portanto continua acusando a data do evento na descrição da home do mesmo modo que acusaria uma data escrita à mão. A distinção chega na D5.2, que executa o gerador em memória para comparar o resultado com o arquivo: quando essa regra entrar, as oito entradas saem de uma vez.
+A permanência dessas entradas era esperada. O verificador lê o HTML entregue pelo servidor, sem meio de distinguir texto gerado de texto digitado, portanto acusava a data do evento na descrição da home do mesmo modo que acusaria uma data escrita à mão. A D5.2 resolveu isso em 28/10/2026: as regras de texto deixaram de valer dentro do trecho entre os marcadores, substituídas pela regra R9, que executa o gerador em memória para comparar o resultado com o arquivo.
+
+A D6.1 conferiu o site inteiro em 28/10/2026, com o roteiro de sete passos registrado em `TESTES.md`, sem encontrar divergência de conteúdo. A D6.2 então removeu as oito entradas restantes, fechando o plano. Nenhuma exceção permaneceu, portanto não há justificativa a registrar aqui.
 
 | Tarefa do plano | O que ela elimina | Estado |
 |---|---|---|
@@ -120,6 +124,8 @@ A permanência dessas entradas é esperada. O verificador lê o HTML entregue pe
 | D4.3 | dados do WASA sem consumidor, datas escritas em `wasa.html` | concluída em 27/10/2026 |
 | D4.4 | funções de iniciais repetidas em três páginas | concluída em 27/10/2026 |
 | D5.1 | metadados escritos à mão em todas as páginas | concluída em 27/10/2026 |
-| D5.2 | gerador ligado à verificação, que esvazia as oito entradas acima | pendente |
+| D5.2 | regra R9, que confere o bloco gerado e dispensa as oito entradas acima | concluída em 28/10/2026 |
+| D6.1 | conferência cruzada dos sete passos, registrada em `TESTES.md` | concluída em 28/10/2026 |
+| D6.2 | remoção das oito entradas restantes da lista | concluída em 28/10/2026 |
 
-Quando a lista ficar vazia, o site terá uma única fonte para cada informação publicada. O verificador continua rodando depois disso, com a função de impedir que o problema volte. É o que permite à próxima comissão assumir o repositório sem repetir este trabalho.
+Com a lista vazia, o site tem uma única fonte para cada informação publicada. O verificador continua rodando a cada envio além de a cada atualização horária da programação, com a função de impedir que o problema volte. É o que permite à próxima comissão assumir o repositório sem repetir este trabalho.
