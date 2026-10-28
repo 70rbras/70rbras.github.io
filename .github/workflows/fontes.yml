@@ -3,6 +3,13 @@ name: Verificar fontes únicas
 # Recusa a publicação quando um fato que já tem fonte em data/ reaparece
 # escrito à mão no HTML. A lista de pendências conhecidas fica em
 # scripts/fontes-unicas.json. Plano: claude/plano-fontes-unicas-70rbras.md.
+#
+# Desde a tarefa D5.2 o mesmo comando confere também o bloco de metadados do
+# <head>: ele executa scripts/gerar_meta.mjs em memória, sem gravar nada, para
+# comparar o bloco publicado com o que o gerador produziria. Uma metatag
+# alterada à mão recusa o envio, citando a página além do comando que regera.
+# Por isso não existe passo separado para o gerador: a regra vive dentro do
+# verificador que este fluxo já executa.
 
 on:
   push:

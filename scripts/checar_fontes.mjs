@@ -17,6 +17,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import process from 'node:process';
+import { gerar } from './gerar_meta.mjs';
 
 const RAIZ = process.argv.find(a => a.startsWith('--raiz='))?.slice(7) || process.cwd();
 const MODO_PESSOAS = process.argv.includes('--pessoas');
@@ -146,8 +147,29 @@ const REGRAS = {
   R5: 'cópia dos dados da programação fora de data/programacao.json',
   R6: 'pessoa registrada mais de uma vez nos arquivos de dados',
   R7: 'símbolo declarado em data/ sem nenhum consumidor',
-  R8: 'ligação repetida que deveria viver em assets/nav.js'
+  R8: 'ligação repetida que deveria viver em assets/nav.js',
+  R9: 'bloco de metadados diferente do que o gerador produziria; regere com node scripts/gerar_meta.mjs'
 };
+
+/* ------------------------------------------------- bloco de metadados */
+
+const META_INICIO = '<!-- meta:inicio -->';
+const META_FIM = '<!-- meta:fim -->';
+
+/* O trecho entre os marcadores é escrito por scripts/gerar_meta.mjs, nunca
+   digitado, portanto as regras de texto não valem dentro dele: a conferência
+   desse trecho é a regra R9, que o compara com o que o gerador produziria.
+   A máscara troca o miolo por espaços, preservando as quebras de linha, de
+   modo que arquivo e linha continuem corretos no relatório. */
+function mascararBlocoMeta(conteudo) {
+  const i = conteudo.indexOf(META_INICIO);
+  const f = conteudo.indexOf(META_FIM);
+  if (i < 0 || f < 0 || f < i) return conteudo;
+  const de = i + META_INICIO.length;
+  return conteudo.slice(0, de)
+    + conteudo.slice(de, f).replace(/[^\n]/g, ' ')
+    + conteudo.slice(f);
+}
 
 const RE_DATA_ISO = /\b20\d{2}-\d{2}-\d{2}\b/g;
 const RE_DATA_BARRA = /\b\d{1,2}\/\d{1,2}\/20\d{2}\b/g;
@@ -324,7 +346,7 @@ const achados = [];
 const paginas = listar('.', n => n.endsWith('.html'));
 const scripts = listar('assets', n => n.endsWith('.js'));
 for (const rel of [...paginas, ...scripts]) {
-  varrerArquivo(rel, ler(rel), canon, achados);
+  varrerArquivo(rel, mascararBlocoMeta(ler(rel)), canon, achados);
 }
 
 /* R6 e R7 olham para os arquivos de dados, não para as páginas. */
@@ -413,6 +435,29 @@ if (MODO_PESSOAS) {
   fs.writeFileSync(destino, texto + '\n', 'utf8');
   console.error(`\nrelatório gravado em scripts/saida/pessoas-divergentes.md`);
   process.exit(0);
+}
+
+/* R9 executa o gerador em memória, sem gravar nada, comparando o bloco de cada
+   página com o que ele produziria. É o que torna impossível o metadado obsoleto
+   descrito em M1 no plano: alterar a metatag à mão passa a recusar a
+   publicação, em vez de passar despercebido até alguém compartilhar o link. */
+let relatorioMeta = [];
+try {
+  relatorioMeta = gerar({ gravar: false });
+} catch (erro) {
+  achados.push({
+    arquivo: 'scripts/gerar_meta.mjs', regra: 'R9', linha: 0,
+    trecho: `o gerador não pôde ser executado: ${erro.message}`
+  });
+}
+for (const r of relatorioMeta) {
+  if (r.estado === 'em dia') continue;
+  achados.push({
+    arquivo: r.arquivo, regra: 'R9', linha: 0,
+    trecho: r.estado === 'ausente'
+      ? 'página declarada no mapa do gerador que não existe no repositório'
+      : 'bloco fora de dia; rode node scripts/gerar_meta.mjs e comite o resultado'
+  });
 }
 
 const excecoes = carregarExcecoes();

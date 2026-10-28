@@ -25,6 +25,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import process from 'node:process';
+import { pathToFileURL } from 'node:url';
 
 const RAIZ = process.argv.find(a => a.startsWith('--raiz='))?.slice(7) || process.cwd();
 const MODO_VERIFICAR = process.argv.includes('--verificar');
@@ -353,28 +354,36 @@ export function gerar({ gravar = true } = {}) {
 
 /* -------------------------------------------------------------- execução */
 
-const relatorio = gerar({ gravar: !MODO_VERIFICAR });
-const diferentes = relatorio.filter(r => r.estado === 'diferente');
-const ausentes = relatorio.filter(r => r.estado === 'ausente');
+/* O bloco abaixo só roda quando este arquivo é chamado direto na linha de
+   comando. Importado, como faz scripts/checar_fontes.mjs na regra R9, o módulo
+   apenas expõe gerar(), sem escrever em página nenhuma. */
+const chamadoDireto = process.argv[1]
+  && pathToFileURL(process.argv[1]).href === import.meta.url;
 
-for (const r of relatorio) console.log(`${r.estado.padEnd(10)} ${r.arquivo}`);
-console.log('');
+if (chamadoDireto) {
+  const relatorio = gerar({ gravar: !MODO_VERIFICAR });
+  const diferentes = relatorio.filter(r => r.estado === 'diferente');
+  const ausentes = relatorio.filter(r => r.estado === 'ausente');
 
-if (ausentes.length) {
-  console.error(`${ausentes.length} página do mapa não existe no repositório.`);
-  process.exit(1);
-}
+  for (const r of relatorio) console.log(`${r.estado.padEnd(10)} ${r.arquivo}`);
+  console.log('');
 
-if (MODO_VERIFICAR) {
-  if (!diferentes.length) {
-    console.log('Bloco de metadados em dia em todas as páginas.');
-    process.exit(0);
+  if (ausentes.length) {
+    console.error(`${ausentes.length} página do mapa não existe no repositório.`);
+    process.exit(1);
   }
-  console.error(`${diferentes.length} página(s) com bloco de metadados fora de dia.`);
-  console.error('Regere com: node scripts/gerar_meta.mjs');
-  process.exit(1);
-}
 
-console.log(diferentes.length
-  ? `${diferentes.length} página(s) reescrita(s).`
-  : 'Nada a reescrever: o bloco já estava em dia.');
+  if (MODO_VERIFICAR) {
+    if (!diferentes.length) {
+      console.log('Bloco de metadados em dia em todas as páginas.');
+      process.exit(0);
+    }
+    console.error(`${diferentes.length} página(s) com bloco de metadados fora de dia.`);
+    console.error('Regere com: node scripts/gerar_meta.mjs');
+    process.exit(1);
+  }
+
+  console.log(diferentes.length
+    ? `${diferentes.length} página(s) reescrita(s).`
+    : 'Nada a reescrever: o bloco já estava em dia.');
+}

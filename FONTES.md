@@ -73,6 +73,10 @@ A primeira coisa a fazer é ler a mensagem na aba Actions do repositório. Ela d
 
 Quando a causa estiver no repositório, existem dois caminhos. O primeiro é corrigir, movendo o fato para o arquivo de dados que lhe corresponde na tabela da seção 1. O segundo, válido apenas para pendência conhecida, é registrar a entrada em `scripts/fontes-unicas.json`, com a tarefa do plano que vai resolvê-la.
 
+Existe um terceiro caso, que tem solução de um comando. Quando a mensagem citar a regra R9, o bloco de metadados de alguma página ficou diferente do que o gerador produziria, em geral porque um dado de `data/` mudou sem que o gerador tenha sido executado depois. A correção é rodar `node scripts/gerar_meta.mjs`, conferir o que mudou, depois comitar junto o arquivo de dados além da página regerada.
+
+Essa regra alcança também o fluxo horário da programação, que roda o verificador antes de publicar o JSON. Um bloco de metadados fora de dia passa então a recusar a atualização da programação, mesmo sem relação com a planilha. O contorno é o mesmo comando acima, enviado ao repositório, seguido do botão Run workflow para publicar na hora.
+
 ---
 
 ## 4. Como reverter uma publicação ruim
