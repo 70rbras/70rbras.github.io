@@ -45,6 +45,8 @@
   };
 
   var dados = null;
+  /* 'rede' ou 'cache', conforme o cabeçalho que o service worker escreve. */
+  var origem = 'rede';
   var diaAtivo = null;
   var predioAtivo = 'todos';
 
@@ -457,12 +459,111 @@
       : 'São ' + lista.length + ' trabalhos aceitos: ' + detalhe + '.';
   }
 
+  /* ──────────────────────────────────────── estado dos dados em exibição ──
+     Quem está no campus precisa saber se a programação na tela veio da rede
+     agora ou é a cópia guardada no aparelho, pois só a segunda pode estar
+     velha. A página nunca recarrega sozinha: oferece o botão e espera o toque,
+     porque recarregar sem aviso derruba a leitura de quem está no meio da
+     grade. Tarefa T2.2 de claude/plano-app-70rbras.md. */
+
+  function escreverEstado() {
+    if (!el.atualizado || !dados) return;
+    el.atualizado.textContent = 'Atualizada em ' + (dados.gerado_em_texto || '');
+
+    var selo = document.createElement('span');
+    selo.className = 'app-origem' + (origem === 'cache' ? ' app-origem--cache' : '');
+    selo.textContent = origem === 'cache' ? 'cópia guardada neste aparelho' : 'direto da rede';
+    el.atualizado.appendChild(selo);
+
+    if (origem !== 'cache') return;
+
+    var botao = document.createElement('button');
+    botao.type = 'button';
+    botao.className = 'app-botao-linha';
+    botao.textContent = 'Tentar atualizar';
+    botao.addEventListener('click', function () {
+      botao.disabled = true;
+      botao.textContent = 'Procurando...';
+      procurarVersaoNova(true).then(function (resultado) {
+        if (resultado === 'nova') return;            // o aviso já apareceu
+        botao.disabled = false;
+        botao.textContent = resultado === 'em-dia' ? 'Já está em dia' : 'Sem rede agora';
+        setTimeout(function () { botao.textContent = 'Tentar atualizar'; }, 4000);
+      });
+    });
+    el.atualizado.appendChild(botao);
+  }
+
+  /* Busca o JSON ignorando qualquer cópia guardada. Devolve 'nova', 'em-dia'
+     ou 'sem-rede'. Mostrar o aviso é efeito, não resposta. */
+  function procurarVersaoNova(pedidoDoVisitante) {
+    return fetch('data/programacao.json', { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('resposta ' + r.status);
+        /* O service worker atende este pedido pelo cache quando a rede falha.
+           Responder "já está em dia" nesse caso seria mentira: o que houve foi
+           ausência de rede, não ausência de novidade. */
+        if (r.headers.get('X-RBras-Origem') === 'cache') throw new Error('sem rede');
+        return r.json();
+      })
+      .then(function (novo) {
+        var antes = dados && dados.versao_dados;
+        var agora = novo && novo.versao_dados;
+        /* Sem o campo nos dois lados, o carimbo de geração serve de desempate. */
+        var mudou = (antes && agora) ? (agora !== antes)
+                                     : (novo.gerado_em !== (dados && dados.gerado_em));
+        if (!mudou) return 'em-dia';
+        mostrarAviso();
+        return 'nova';
+      })
+      .catch(function () {
+        if (pedidoDoVisitante && window.console) console.info('programacao: sem rede agora');
+        return 'sem-rede';
+      });
+  }
+
+  function mostrarAviso() {
+    if (raiz.querySelector('.app-aviso-dados')) return;
+    var topo = raiz.querySelector('.pg-topo') || raiz.firstElementChild;
+    if (!topo) return;
+
+    var caixa = document.createElement('div');
+    caixa.className = 'app-aviso-dados';
+    caixa.setAttribute('role', 'status');
+
+    var texto = document.createElement('span');
+    texto.textContent = 'Há uma versão mais recente da programação.';
+
+    var acoes = document.createElement('div');
+    acoes.className = 'app-aviso-acoes';
+
+    var recarregar = document.createElement('button');
+    recarregar.type = 'button';
+    recarregar.className = 'app-botao';
+    recarregar.textContent = 'Recarregar';
+    recarregar.addEventListener('click', function () { location.reload(); });
+
+    var fechar = document.createElement('button');
+    fechar.type = 'button';
+    fechar.className = 'app-fechar';
+    fechar.setAttribute('aria-label', 'Dispensar aviso');
+    fechar.textContent = '✕';
+    fechar.addEventListener('click', function () { caixa.remove(); });
+
+    acoes.appendChild(recarregar);
+    acoes.appendChild(fechar);
+    caixa.appendChild(texto);
+    caixa.appendChild(acoes);
+    topo.parentNode.insertBefore(caixa, topo);
+  }
+
+  /* Quando a rede volta, confere em silêncio: o aviso só aparece se houver
+     mesmo dado novo. */
+  window.addEventListener('online', function () { procurarVersaoNova(false); });
+
   function iniciar(d) {
     dados = d;
-
-    if (el.atualizado && d.gerado_em_texto) {
-      el.atualizado.textContent = 'Atualizada em ' + d.gerado_em_texto;
-    }
+    escreverEstado();
     if (el.aviso) {
       var mostrar = (d.config.mostrar_aviso || 'SIM').toUpperCase() === 'SIM';
       el.aviso.hidden = !mostrar;
@@ -505,6 +606,9 @@
     fetch('data/programacao.json', { cache: 'no-cache' })
       .then(function (r) {
         if (!r.ok) throw new Error('resposta ' + r.status);
+        /* O service worker marca o que serviu do cache. Sem service worker, ou
+           sem o cabeçalho, a resposta veio da rede. */
+        origem = r.headers.get('X-RBras-Origem') === 'cache' ? 'cache' : 'rede';
         return r.json();
       })
       .then(iniciar)

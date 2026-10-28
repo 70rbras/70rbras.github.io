@@ -21,7 +21,7 @@
  * Plano: claude/plano-app-70rbras.md, tarefa T2.1.
  */
 
-const VERSAO = 1;
+const VERSAO = 2;
 const CACHE = 'rbras70-casco-v' + VERSAO;
 const SEM_REDE = 'offline.html';
 const LIMITE_MS = 3000;
@@ -52,6 +52,7 @@ const CASCO = [
   'assets/nav.js',
   'assets/footer.js',
   'assets/programacao.js',
+  'assets/app.css',
   'assets/pessoas.js',
   'assets/registrar-sw.js',
 
@@ -138,13 +139,29 @@ function guardar(pedido, resposta) {
   return resposta;
 }
 
+/* A página precisa saber se exibe dado da rede ou cópia guardada, pois a
+   diferença muda o que ela conta ao participante. O cabeçalho abaixo é o modo
+   de dizer isso sem inventar estado, acertando inclusive no caso em que a rede
+   existe mas estourou o tempo limite. Consumido por assets/programacao.js. */
+function marcarComoCache(resposta) {
+  var cabecalhos = new Headers(resposta.headers);
+  cabecalhos.set('X-RBras-Origem', 'cache');
+  return resposta.blob().then(function (corpo) {
+    return new Response(corpo, {
+      status: resposta.status,
+      statusText: resposta.statusText,
+      headers: cabecalhos
+    });
+  });
+}
+
 /* Rede primeiro: o conteúdo fresco vale mais, o cache é a rede de segurança. */
 function redePrimeiro(pedido, reserva) {
   return comLimite(pedido)
     .then(function (resposta) { return guardar(pedido, resposta); })
     .catch(function () {
       return caches.match(pedido).then(function (guardada) {
-        if (guardada) return guardada;
+        if (guardada) return marcarComoCache(guardada);
         return reserva ? caches.match(reserva) : Response.error();
       });
     });
