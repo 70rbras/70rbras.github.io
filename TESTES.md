@@ -12,9 +12,9 @@ O princípio das duas é o mesmo. Não basta o verificador automático sair com 
 
 **Execução de 28/10/2026**, sobre o `main` em `06dc604`, com a planilha lida ao vivo nas cinco abas publicadas em CSV. Os passos 1, 2, 3, 5 e 6 foram executados por leitura das páginas servidas localmente, comparadas com a planilha além dos arquivos de `data/`. O passo 7 foi executado contra o site publicado em `https://70rbras.org`, na parte que não depende de aparelho.
 
-Dois passos ficaram com parte pendente, por dependerem de informação que não está no repositório. O passo 4 exige a planilha de valores aprovada pela comissão, que não vive aqui. O passo 7 exige um aparelho com aplicativo de mensagem, para ver a prévia montada de fato.
+Dois passos dependiam de informação que não está no repositório, tendo sido fechados por conferência do Benilton no mesmo dia. O passo 4 exigia a planilha de valores aprovada pela comissão, que não vive aqui. O passo 7 exigia um aparelho com aplicativo de mensagem, para ver a prévia montada de fato.
 
-O resultado geral é de conformidade. Nenhuma divergência de conteúdo foi encontrada entre planilha, arquivos de dados além das páginas. Um defeito de navegação apareceu durante o passo 1, registrado na seção 1.8, sem relação com fonte única.
+O resultado geral é de conformidade, com os sete passos concluídos. Nenhuma divergência de conteúdo foi encontrada entre planilha, arquivos de dados além das páginas. Um defeito de navegação apareceu durante o passo 1, registrado na seção 1.8, sem relação com fonte única.
 
 ### 1.1 Passo 1: cinco atividades, da planilha às páginas
 
@@ -50,7 +50,7 @@ O bloco do local em `logistica.html` exibe três linhas, com a cidade uma única
 
 ### 1.4 Passo 4: dezoito valores de inscrição
 
-Parte automática concluída, parte humana pendente. A tabela publicada em `inscricoes.html` é montada a partir de `data/inscricoes.js`, exibindo os dezoito valores abaixo, com os períodos lidos de `data/dates.js`. O verificador confirma que nenhum valor em reais está escrito no HTML.
+Concluído, sem divergência. A tabela publicada em `inscricoes.html` é montada a partir de `data/inscricoes.js`, exibindo os dezoito valores abaixo, com os períodos lidos de `data/dates.js`. O verificador confirma que nenhum valor em reais está escrito no HTML.
 
 | Categoria | 1º Lote | 2º Lote | 3º Lote |
 |---|---|---|---|
@@ -61,7 +61,7 @@ Parte automática concluída, parte humana pendente. A tabela publicada em `insc
 | Pesquisador ou profissional, sócio RBras, ABE ou IBS | R$ 390 | R$ 430 | R$ 510 |
 | Pesquisador ou profissional, não-sócio | R$ 660 | R$ 730 | R$ 860 |
 
-**Pendente:** conferir os dezoito valores acima contra a planilha de valores aprovada pela comissão, que não está no repositório. A faixa de estado do lote foi conferida: em 28/10/2026 a página exibe uma única frase calculada, "2º Lote vigente até 31 de outubro de 2026", o que confirma a correção do achado A5, que tinha duas frases contraditórias.
+Os dezoito valores acima foram conferidos pelo Benilton, em 28/10/2026, contra a planilha de valores aprovada pela comissão, que não está no repositório. Nenhuma divergência. A faixa de estado do lote foi conferida no mesmo dia: a página exibe uma única frase calculada, "2º Lote vigente até 31 de outubro de 2026", o que confirma a correção do achado A5, que tinha duas frases contraditórias.
 
 ### 1.5 Passo 5: WASA na página além da home
 
@@ -85,7 +85,7 @@ Duas observações de leitura, que não são divergência. Na programação do W
 
 ### 1.7 Passo 7: prévia de link
 
-Parte automática concluída, parte humana pendente. Os cinco endereços abaixo foram buscados no site publicado, com a leitura do bloco entre `<!-- meta:inicio -->` e `<!-- meta:fim -->` do HTML entregue pelo servidor, que é exatamente o que o robô de prévia lê.
+Concluído, sem divergência. Os cinco endereços abaixo foram buscados no site publicado, com a leitura do bloco entre `<!-- meta:inicio -->` e `<!-- meta:fim -->` do HTML entregue pelo servidor, que é exatamente o que o robô de prévia lê.
 
 | Endereço                                   | Resultado                                                                                                          |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
@@ -97,7 +97,7 @@ Parte automática concluída, parte humana pendente. Os cinco endereços abaixo 
 
 As duas imagens de compartilhamento respondem com código 200: o logotipo, com 88 KB em PNG, além da foto da pessoa premiada, com 28 KB em JPEG. O texto publicado já traz a redação sem marca de gênero além do mês em minúscula, portanto a publicação está em dia com o `main`.
 
-**Pendente:** colar os cinco endereços num aplicativo de mensagem, num aparelho real, para ver a prévia montada. O que falta conferir é visual, não textual: se a imagem aparece, se o título corta em lugar aceitável, se a descrição fica legível no cartão.
+A conferência visual foi feita pelo Benilton, em 28/10/2026, colando os cinco endereços num aplicativo de mensagem. A prévia monta corretamente nos cinco casos, com imagem, título além de descrição legíveis no cartão.
 
 ### 1.8 Defeito encontrado durante a execução
 
