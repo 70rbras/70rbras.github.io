@@ -20,7 +20,11 @@
 // Assim que o primeiro `premiado` for preenchido, a faixa dourada aparece
 // automaticamente na Home e o card correspondente em premios.html é revelado.
 
-const PREMIOS_ENTREGA = "Os prêmios serão entregues durante a 70ª RBras, de 23 a 25 de novembro de 2026, no IMECC/Unicamp.";
+// A frase cita a edição além das datas do evento, que vivem em data/config.js.
+// Aqui ficam apenas os marcadores {edicao} e {datas}, trocados em premios.html
+// no momento de escrever o texto, do mesmo modo que data/submissions.js faz com
+// os prazos. Nenhuma data é escrita neste arquivo.
+const PREMIOS_ENTREGA = "Os prêmios serão entregues durante a {edicao}, de {datas}, no IMECC/Unicamp.";
 
 const PREMIOS = [
   {

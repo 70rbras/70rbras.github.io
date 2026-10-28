@@ -527,7 +527,15 @@ function renderConcurso() {
 renderDestaque();
 renderCategorias();
 renderConcurso();
-document.getElementById('premios-entrega').textContent = PREMIOS_ENTREGA;
+/* A frase da entrega vem de data/premios.js com marcadores: a edição além das
+   datas são lidas de data/config.js, nunca escritas aqui nem lá. */
+const entrega = document.getElementById('premios-entrega');
+if (entrega && typeof PREMIOS_ENTREGA === 'string') {
+  const ev = (typeof CONFIG !== 'undefined' && CONFIG.evento) ? CONFIG.evento : {};
+  entrega.textContent = PREMIOS_ENTREGA
+    .replace('{edicao}', ev.edicao || '')
+    .replace('{datas}', ev.datas_exibicao || '');
+}
 
 /* ── Scroll Reveal ──────────────────────────────── */
 const revealObs = new IntersectionObserver((entries) => {
