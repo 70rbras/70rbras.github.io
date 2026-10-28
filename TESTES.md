@@ -14,7 +14,9 @@ O princípio das duas é o mesmo. Não basta o verificador automático sair com 
 
 Dois passos dependiam de informação que não está no repositório, tendo sido fechados por conferência do Benilton no mesmo dia. O passo 4 exigia a planilha de valores aprovada pela comissão, que não vive aqui. O passo 7 exigia um aparelho com aplicativo de mensagem, para ver a prévia montada de fato.
 
-O resultado geral é de conformidade, com os sete passos concluídos. Nenhuma divergência de conteúdo foi encontrada entre planilha, arquivos de dados além das páginas. Um defeito de navegação apareceu durante o passo 1, registrado na seção 1.8, sem relação com fonte única.
+O resultado geral é de conformidade, com os oito passos concluídos. Nenhuma divergência de conteúdo foi encontrada entre planilha, arquivos de dados além das páginas. Dois defeitos apareceram no caminho, ambos sem relação com fonte única: um de navegação, registrado na seção 1.9, outro de valor ausente, registrado no passo 8.
+
+O roteiro da tarefa D6.1 tem sete passos. O oitavo nasceu da própria execução, em 28/10/2026, depois que um defeito escapou dos sete: ele custa pouco, enquanto cobre uma classe de erro que nenhum verificador do repositório alcança.
 
 ### 1.1 Passo 1: cinco atividades, da planilha às páginas
 
@@ -99,7 +101,15 @@ As duas imagens de compartilhamento respondem com código 200: o logotipo, com 8
 
 A conferência visual foi feita pelo Benilton, em 28/10/2026, colando os cinco endereços num aplicativo de mensagem. A prévia monta corretamente nos cinco casos, com imagem, título além de descrição legíveis no cartão.
 
-### 1.8 Defeito encontrado durante a execução
+### 1.8 Passo 8: varredura por valor ausente nas páginas
+
+Concluído, com um defeito encontrado além de corrigido. Este passo não consta do roteiro original: ele foi acrescentado em 28/10/2026, depois que a caixa "Convidados confirmados" da home apareceu com "undefined" no lugar dos nomes, durante os testes em celular.
+
+O procedimento é renderizar cada página num navegador, depois procurar no texto visível as marcas que o JavaScript deixa quando lê campo que não existe: `undefined`, `NaN` além de `[object Object]`. Procurar no código-fonte não serve, pois o conteúdo é montado em tempo de execução. É também por isso que `scripts/checar_fontes.mjs` não alcança esse erro: ele procura fato duplicado no arquivo, não valor ausente na tela.
+
+O resultado da execução de 28/10/2026 foi uma ocorrência, na home, com sete convidados exibidos como "undefined · undefined". A causa foi a tarefa D4.2, que moveu nome e instituição para `data/pessoas.js` adaptando `palestrantes.html`, sem adaptar a caixa da home. Depois da correção as onze páginas saem limpas nas três marcas.
+
+### 1.9 Defeito encontrado durante a execução
 
 O endereço com âncora de atividade não abre a atividade quando ela não é do dia exibido por padrão. Em `assets/programacao.js`, a leitura de `location.hash` aceita apenas `geral`, `dia` além de `busca`: qualquer outro valor cai no modo padrão, sem selecionar o dia da atividade. Como a visão dia a dia desenha um dia por vez, `programacao.html#CO-5` abre no dia 23, onde o elemento `CO-5` nem existe no documento.
 
