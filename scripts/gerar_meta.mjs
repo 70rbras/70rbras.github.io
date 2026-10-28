@@ -221,8 +221,10 @@ const PAGINAS = {
     og_titulo: campos => campos.premiado
       ? `${campos.premio_titulo} ${campos.ano}: ${campos.premiado}`
       : `Prêmios RBras ${campos.ano} - ${campos.edicao} ${campos.ano}`,
+    /* A frase não carrega marca de gênero, pois o nome vem do cadastro: ela
+       precisa servir a qualquer pessoa premiada nesta edição ou nas próximas. */
     og_descricao: campos => campos.premiado
-      ? `A RBras anuncia o ${campos.premiado} (${campos.premiado_sigla}) como vencedor do ${campos.premio_titulo} ${campos.ano}. Conheça todos os prêmios da ${campos.edicao}.`
+      ? `A RBras anuncia quem recebe o ${campos.premio_titulo} ${campos.ano}: ${campos.premiado} (${campos.premiado_sigla}). Conheça todos os prêmios da ${campos.edicao}.`
       : `Conheça todos os prêmios da ${campos.edicao}.`,
     imagem: campos => campos.premiado_foto || IMAGEM_PADRAO,
     cartao: campos => (campos.premiado_foto ? 'summary' : 'summary_large_image')
