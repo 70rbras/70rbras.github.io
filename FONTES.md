@@ -18,8 +18,9 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Destino usado no cálculo de rota | `data/config.js`, campo `endereco_rota` | `logistica.html` |
 | Prazos, lotes de inscrição | `data/dates.js`, cada registro com `id` estável | home, `inscricoes.html`, `premios.html` |
 | Valores de inscrição | `data/inscricoes.js` | `inscricoes.html` |
-| Convidados além das palestras | `data/speakers.js` | `palestrantes.html`, home |
-| Comissões | `data/committee.js` | `comissoes.html`, `premios.html` |
+| Convidados além das palestras | `data/speakers.js`, só o conteúdo da palestra | `palestrantes.html`, home |
+| Pessoas: comissões, convidados | `data/pessoas.js`, cadastro único | `comissoes.html`, `palestrantes.html`, `premios.html` |
+| Comissões | `data/committee.js`, lista de identificadores | `comissoes.html`, `premios.html` |
 | Prêmios além de premiados | `data/premios.js` | `premios.html`, faixa da home |
 | Regras de submissão | `data/submissions.js` | `premios.html`, home |
 | WASA | `data/wasa.js`, taxas e formulário em `wasaInscricao` | `wasa.html`, bloco da home |
@@ -94,7 +95,7 @@ As tarefas D0.1 a D0.3, que instalaram o verificador além deste registro, foram
 | D3.3 | valores de inscrição escritos em `inscricoes.html` | concluída em 27/10/2026 |
 | D3.4 | dados sem consumidor em `data/submissions.js`, prazos repetidos na faixa de aviso | concluída em 27/10/2026 |
 | D3.5 | prazos além de valores do Fundo e do WASA | concluída em 27/10/2026 |
-| D4.2 | pessoas repetidas em `data/committee.js` | pendente |
+| D4.2 | pessoas repetidas em `data/committee.js` | concluída em 27/10/2026 |
 | D4.3 | dados do WASA sem consumidor, datas escritas em `wasa.html` | pendente |
 | D5.1 | metadados escritos à mão em `premios.html` além de `programacao.html` | pendente |
 

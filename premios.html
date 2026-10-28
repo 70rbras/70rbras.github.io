@@ -392,6 +392,7 @@
 <script src="data/config.js"></script>
 <script src="data/dates.js"></script>
 <script src="data/premios.js"></script>
+<script src="data/pessoas.js"></script>
 <script src="data/committee.js"></script>
 <script src="data/submissions.js"></script>
 <script src="assets/footer.js"></script>
@@ -490,7 +491,7 @@ function renderConcurso() {
   el.innerHTML = PREMIOS.filter(p => p.comissao).map((p, i) => {
     const c = (typeof COMMITTEE !== 'undefined') ? COMMITTEE.find(x => x.secao === p.comissao) : null;
     const membros = c
-      ? `<div class="cc-label">Comissão avaliadora</div><ul>${c.membros.map(m => `<li>${m.nome} <span>(${m.instituicao})</span></li>`).join('')}</ul>`
+      ? `<div class="cc-label">Comissão avaliadora</div><ul>${c.membros.map(m => (typeof PESSOAS !== 'undefined' && PESSOAS[m.pessoa]) || null).filter(Boolean).map(p => `<li>${p.nome} <span>(${p.instituicao})</span></li>`).join('')}</ul>`
       : '';
     return `
       <div class="concurso-card reveal${i ? ' reveal-delay-' + i : ''}">

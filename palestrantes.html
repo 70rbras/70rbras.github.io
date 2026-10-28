@@ -104,6 +104,7 @@
 <script src="assets/nav.js"></script>
 <script src="data/config.js"></script>
 <script src="data/dates.js"></script>
+<script src="data/pessoas.js"></script>
 <script src="data/speakers.js"></script>
 <script src="assets/footer.js"></script>
 
@@ -131,10 +132,17 @@ function applyConfig() {
 }
 
 /* ── PALESTRANTES + MODAL ──────────────── */
+/* Cada palestra referencia a pessoa em data/pessoas.js; a fusão devolve nome,
+   foto e instituição ao lado do conteúdo da palestra. */
+const PALESTRAS = SPEAKERS
+  .map(s => { const p = (typeof PESSOAS !== 'undefined') ? PESSOAS[s.pessoa] : null;
+              return p ? Object.assign({}, p, s) : null; })
+  .filter(Boolean);
+
 function renderSpeakers() {
   const grid = document.getElementById('speakers-grid');
   if (!grid) return;
-  grid.innerHTML = SPEAKERS.map((s,i) => {
+  grid.innerHTML = PALESTRAS.map((s,i) => {
     const delay = i>0&&i<4?` reveal-delay-${i}`:'';
     const foto  = s.foto?`<img src="${s.foto}" alt="${s.nome}" loading="lazy">`:'👤';
     return `<div class="speaker-card reveal${delay}" data-index="${i}" role="button" tabindex="0" aria-label="Ver resumo de ${s.nome}">
@@ -149,10 +157,10 @@ function renderSpeakers() {
 
   grid.addEventListener('click', e => {
     const card = e.target.closest('.speaker-card');
-    if(card) openModal(SPEAKERS[+card.dataset.index]);
+    if(card) openModal(PALESTRAS[+card.dataset.index]);
   });
   grid.addEventListener('keydown', e => {
-    if(e.key==='Enter'||e.key===' '){const card=e.target.closest('.speaker-card');if(card)openModal(SPEAKERS[+card.dataset.index]);}
+    if(e.key==='Enter'||e.key===' '){const card=e.target.closest('.speaker-card');if(card)openModal(PALESTRAS[+card.dataset.index]);}
   });
 }
 

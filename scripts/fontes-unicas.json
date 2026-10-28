@@ -28,13 +28,6 @@
     "tarefa": "D5.1"
   },
   {
-    "arquivo": "data/committee.js",
-    "regra": "R6",
-    "limite": 17,
-    "motivo": "pessoa registrada mais de uma vez nos arquivos de dados",
-    "tarefa": "D4.2"
-  },
-  {
     "arquivo": "data/wasa.js",
     "regra": "R7",
     "limite": 2,
