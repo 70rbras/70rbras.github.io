@@ -392,10 +392,17 @@ function startCountdown(target) {
 ════════════════════════════════════════════════ */
 function renderSpeakersNames() {
   const el = document.getElementById('sobre-speakers-names');
-  if (!el || typeof SPEAKERS === 'undefined') return;
-  el.innerHTML = SPEAKERS.map(s =>
-    `<span style="display:block"><strong>${s.nome}</strong> <span style="color:var(--text-mid);font-size:.85rem">· ${s.instituicao}</span></span>`
-  ).join('');
+  if (!el || typeof SPEAKERS === 'undefined' || typeof resolverPessoa !== 'function') return;
+  /* Desde a D4.2 cada entrada de SPEAKERS guarda só o conteúdo da palestra:
+     nome e instituição vêm do cadastro de data/pessoas.js, pela mesma fusão
+     que palestrantes.html usa. A instituição pode faltar no cadastro, então
+     sai do texto em vez de virar "undefined". */
+  el.innerHTML = SPEAKERS.map(resolverPessoa).filter(Boolean).map(s => {
+    const onde = s.instituicao
+      ? ` <span style="color:var(--text-mid);font-size:.85rem">· ${s.instituicao}</span>`
+      : '';
+    return `<span style="display:block"><strong>${s.nome}</strong>${onde}</span>`;
+  }).join('');
 }
 
 /* ═══════════════════════════════════════════════
