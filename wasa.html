@@ -646,16 +646,11 @@
 <script src="data/config.js"></script>
 <script src="data/dates.js"></script>
 <script src="data/pessoas.js"></script>
+<script src="assets/pessoas.js"></script>
 <script src="data/wasa.js"></script>
 <script src="assets/footer.js"></script>
 <script>
-/* ── Nome com tratamento, a partir do cadastro de data/pessoas.js ── */
-function nomeDaPessoa(id) {
-  const p = (typeof PESSOAS !== 'undefined' && id) ? PESSOAS[id] : null;
-  if (!p) return '';
-  return (p.tratamento ? p.tratamento + ' ' : '') + p.nome;
-}
-
+/* nomeDaPessoa vive em assets/pessoas.js. */
 /* ── Identidade do WASA: data, local, organização e homenagem ── */
 (function () {
   if (typeof wasaInfo === 'undefined') return;

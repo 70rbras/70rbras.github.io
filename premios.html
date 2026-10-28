@@ -393,19 +393,14 @@
 <script src="data/dates.js"></script>
 <script src="data/premios.js"></script>
 <script src="data/pessoas.js"></script>
+<script src="assets/pessoas.js"></script>
 <script src="data/committee.js"></script>
 <script src="data/submissions.js"></script>
 <script src="assets/footer.js"></script>
 
 <script>
 /* ── Helpers ────────────────────────────────────── */
-function getInitials(nome) {
-  const TITLES = ['Prof.', 'Profa.', 'Dr.', 'Dra.'];
-  const parts = nome.split(' ').filter(w => !TITLES.includes(w) && w.length > 2);
-  if (parts.length === 0) return nome[0];
-  if (parts.length === 1) return parts[0][0];
-  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-}
+/* iniciaisDaPessoa vive em assets/pessoas.js. */
 function paragrafos(texto) {
   if (!texto) return '';
   return (Array.isArray(texto) ? texto : [texto]).map(p => `<p>${p}</p>`).join('');
@@ -432,7 +427,7 @@ function renderDestaque() {
   }
   const foto = w.foto
     ? `<img src="${w.foto}" alt="${w.nome}">`
-    : `<span class="iniciais">${getInitials(w.nome)}</span>`;
+    : `<span class="iniciais">${iniciaisDaPessoa(w.nome)}</span>`;
   const lattes = w.lattes
     ? `<a href="${w.lattes}" class="btn btn--gold" target="_blank" rel="noopener noreferrer" style="font-size:.85rem">Currículo Lattes &#8599;</a>`
     : '';

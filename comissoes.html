@@ -64,6 +64,7 @@
 <script src="data/config.js"></script>
 <script src="data/dates.js"></script>
 <script src="data/pessoas.js"></script>
+<script src="assets/pessoas.js"></script>
 <script src="data/committee.js"></script>
 <script src="assets/footer.js"></script>
 
@@ -76,24 +77,9 @@ function revealAll() {
   document.querySelectorAll('.reveal, .reveal-from-right').forEach(el => io.observe(el));
 }
 
-/* ─── CADASTRO DE PESSOAS ──────────────────────────── */
-/* Cada membro é uma referência a data/pessoas.js. A fusão abaixo devolve o
-   registro da pessoa somado aos atributos da participação, de modo que o
-   restante do código continue lendo nome, foto e instituição direto. */
-function resolverPessoa(ref) {
-  const p = (typeof PESSOAS !== 'undefined') ? PESSOAS[ref.pessoa] : null;
-  return p ? Object.assign({}, p, ref) : null;
-}
-const ROTULO_COORDENACAO = { f: 'Coordenadora', m: 'Coordenador' };
-
 /* ─── COMISSÕES ────────────────────────────────────── */
-function getInitials(nome) {
-  const TITLES = ['Prof.','Dr.','Profa.','Dra.','Me.','Ms.','Msa.','MSc.','PhD.'];
-  const parts = nome.split(' ').filter(w => !TITLES.includes(w) && w.length>1 && /^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/.test(w));
-  if (parts.length===0) return nome[0];
-  if (parts.length===1) return parts[0][0];
-  return (parts[0][0]+parts[parts.length-1][0]).toUpperCase();
-}
+/* resolverPessoa, iniciaisDaPessoa e rotuloCoordenacao vivem em
+   assets/pessoas.js, compartilhadas com as demais páginas. */
 function renderCommittee() {
   const el = document.getElementById('comissoes-grid');
   if (!el) return;
@@ -101,10 +87,10 @@ function renderCommittee() {
     const todos=c.membros.map(resolverPessoa).filter(Boolean);
     const coords=todos.filter(m=>m.coordenacao), members=todos.filter(m=>!m.coordenacao);
     function memberCard(m) {
-      const initials=getInitials(m.nome);
+      const initials=iniciaisDaPessoa(m.nome);
       const photoHTML=m.foto?`<img src="${m.foto}" alt="${m.nome}" loading="lazy">`:`<span class="comissao-member-initials">${initials}</span>`;
       const links=[m.lattes?`<a class="member-link member-link--lattes" href="${m.lattes}" target="_blank" rel="noopener">Lattes</a>`:'',m.website?`<a class="member-link member-link--website" href="${m.website}" target="_blank" rel="noopener">↗ Site</a>`:''].filter(Boolean).join('');
-      const rotulo=ROTULO_COORDENACAO[m.genero]||'Coordenação';
+      const rotulo=rotuloCoordenacao(m);
       return `<div class="comissao-member-card${m.coordenacao?' is-coord':''}"><div class="comissao-member-photo">${photoHTML}</div><div class="comissao-member-info"><div class="name">${m.nome}</div>${m.coordenacao?`<span class="coord-badge">${rotulo}</span>`:''}<div class="affil">${m.instituicao}</div>${links?`<span class="member-links">${links}</span>`:''}</div></div>`;
     }
     return `<div class="comissao-card reveal${i>0?' reveal-delay-1':''}"><div class="comissao-card-header"><span class="card-icon">${c.icone}</span><h3>${c.titulo}</h3></div>${coords.length?`<div class="comissao-member-grid comissao-member-grid--coord">${coords.map(memberCard).join('')}</div><div class="comissao-coord-divider"></div>`:''}<div class="comissao-member-grid">${members.map(memberCard).join('')}</div></div>`;
