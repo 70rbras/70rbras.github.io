@@ -258,6 +258,12 @@ def construir(dados):
     return {
         'gerado_em': agora.strftime('%Y-%m-%dT%H:%M:%S%z'),
         'gerado_em_texto': agora.strftime('%d/%m/%Y às %H:%M'),
+        # Versão dos dados no formato AAAAMMDDHHMM, derivada do carimbo acima.
+        # Serve ao service worker: comparar um inteiro diz se o JSON vindo da
+        # rede difere do guardado no aparelho, sem baixar e comparar o
+        # documento inteiro. Cresce sozinho a cada geração, portanto não exige
+        # ler a saída anterior para saber onde parou.
+        'versao_dados': int(agora.strftime('%Y%m%d%H%M')),
         'config': config,
         'dias': dias,
         'atividades': atividades,
