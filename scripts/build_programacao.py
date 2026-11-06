@@ -26,6 +26,11 @@ from datetime import datetime, timezone, timedelta
 
 ABAS = ['atividades', 'trabalhos', 'locais', 'pessoas', 'config']
 
+# Limite de caracteres da coluna descricao, que e exibida dentro do cartao da
+# programacao. Texto mais longo que isso pertence a coluna resumo, que so
+# aparece no dialogo de detalhes. Passar do limite gera aviso, nao erro.
+LIMITE_DESCRICAO = 140
+
 DIAS_SEMANA = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira',
                'Sexta-feira', 'Sábado', 'Domingo']
 DIAS_CURTO = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
@@ -192,13 +197,19 @@ def construir(dados):
         for p in ids_pessoas:
             if p not in pessoas:
                 avisos.append('atividade %s cita a pessoa desconhecida %s' % (aid, p))
+        descricao = norm(r.get('descricao'))
+        resumo = norm(r.get('resumo'))
+        if len(descricao) > LIMITE_DESCRICAO:
+            avisos.append('atividade %s tem descrição de %d caracteres, acima dos %d que o '
+                          'cartão comporta; texto longo pertence à coluna resumo'
+                          % (aid, len(descricao), LIMITE_DESCRICAO))
         atividades.append({
             'id': aid, 'data': dia, 'inicio': ini, 'fim': fim,
             'tipo': norm(r.get('tipo')), 'tipo_slug': slug(r.get('tipo')),
             'titulo': titulo, 'subtitulo': norm(r.get('subtitulo')),
             'local': locais.get(lid, {'id': lid, 'predio': '', 'sala': '', 'nome': lid}),
             'pessoas': [pessoas[p] for p in ids_pessoas if p in pessoas],
-            'grupo': norm(r.get('grupo')), 'descricao': norm(r.get('descricao')),
+            'grupo': norm(r.get('grupo')), 'descricao': descricao, 'resumo': resumo,
             'destaque': sim(r.get('destaque')),
         })
 
