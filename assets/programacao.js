@@ -116,6 +116,7 @@
       '<div class="pg-dialogo-resumo">' + paragrafos(a.resumo) + '</div>';
     if (typeof el.dialogo.showModal === 'function') el.dialogo.showModal();
     else el.dialogo.setAttribute('open', '');
+    marcarEndereco(id);
   }
 
   /* Os cartoes sao reescritos a cada troca de dia ou de filtro, portanto o
@@ -137,6 +138,40 @@
     el.dialogo.addEventListener('click', function (e) {
       if (e.target === el.dialogo) el.dialogo.close();
     });
+    /* O evento close cobre as tres formas de fechar: tecla Esc, botao e clique
+       no fundo. Fechado o dialogo, o endereco volta ao da pagina. */
+    el.dialogo.addEventListener('close', function () { marcarEndereco(null); });
+  }
+
+  /* Endereco proprio da atividade aberta, de modo que o link enviado a quem
+     apresenta leve direto ao cartao dela. Usa replaceState para nao encher o
+     historico de navegacao a cada abertura. */
+  function marcarEndereco(id) {
+    if (!window.history || !history.replaceState) return;
+    try {
+      history.replaceState(null, '',
+        id ? '#' + encodeURIComponent(id) : location.pathname + location.search);
+    } catch (e) { /* navegador que recusa a reescrita do endereco */ }
+  }
+
+  /* Leva a atividade indicada pelo endereco: seleciona o dia dela, rola ate o
+     cartao e abre o dialogo quando houver resumo. Devolve false para
+     identificador inexistente, de modo que o chamador caia no modo padrao. */
+  function irParaAtividade(id) {
+    if (!dados) return false;
+    var a = dados.atividades.filter(function (x) { return x.id === id; })[0];
+    if (!a) return false;
+    trocarModo('dia');
+    var remontar = false;
+    if (a.data && a.data !== diaAtivo) { diaAtivo = a.data; remontar = true; }
+    /* O filtro de predio esconde cartoes, portanto volta a Tudo para garantir
+       que a atividade apontada pelo endereco esteja na tela. */
+    if (predioAtivo !== 'todos') { predioAtivo = 'todos'; remontar = true; }
+    if (remontar) { montarSeletorDias(); montarFiltros(); montarTempo(); }
+    var cartao = document.getElementById(id);
+    if (cartao && cartao.scrollIntoView) cartao.scrollIntoView();
+    if (a.resumo) abrirDialogo(id);
+    return true;
   }
 
   function faixa(a) {
@@ -675,9 +710,12 @@
       });
     }
 
+    /* O endereco aceita tres nomes de modo ou o identificador de uma atividade,
+       como programacao.html#CO-5. Valor desconhecido cai no modo padrao. */
     var alvo = (location.hash || '').replace('#', '');
+    try { alvo = decodeURIComponent(alvo); } catch (e) { /* endereco malformado */ }
     if (alvo && ['geral', 'dia', 'busca'].indexOf(alvo) >= 0) trocarModo(alvo);
-    else trocarModo(doHoje ? 'dia' : 'geral');
+    else if (!(alvo && irParaAtividade(alvo))) trocarModo(doHoje ? 'dia' : 'geral');
   }
 
   if (window.PROGRAMACAO) {
