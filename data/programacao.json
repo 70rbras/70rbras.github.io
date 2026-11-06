@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-06T19:07:30-0300",
- "gerado_em_texto": "06/11/2026 às 19:07",
- "versao_dados": 202611061907,
+ "gerado_em": "2026-11-06T19:39:51-0300",
+ "gerado_em_texto": "06/11/2026 às 19:39",
+ "versao_dados": 202611061939,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -60,7 +60,8 @@
     }
    ],
    "grupo": "Minicursos",
-   "descricao": "Exige sala com computadores.",
+   "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -89,7 +90,8 @@
     }
    ],
    "grupo": "Minicursos",
-   "descricao": "Exige sala com computadores.",
+   "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -118,7 +120,8 @@
     }
    ],
    "grupo": "Minicursos",
-   "descricao": "Com Benilton Carvalho - Técnicas de agrupamento e análise de dados de scRNA-seq em nível introdutório. Participantes devem trazer laptops com acesso a rede sem fio.",
+   "descricao": "Técnicas de agrupamento e análise de dados de scRNA-seq em nível introdutório. Participantes devem trazer laptops com acesso a rede sem fio.",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -141,6 +144,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "Retirada de crachá e material do congresso.",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -163,6 +167,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -185,6 +190,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -214,6 +220,7 @@
    ],
    "grupo": "Conferências",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -236,6 +243,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "Intervalo Livre",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -265,6 +273,7 @@
    ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -294,6 +303,7 @@
    ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -323,6 +333,7 @@
    ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -345,6 +356,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -367,6 +379,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -389,6 +402,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "Primeira sessão de pôsteres, servida com café.",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -411,6 +425,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -439,7 +454,8 @@
     }
    ],
    "grupo": "Minicursos",
-   "descricao": "Exige sala com computadores.",
+   "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -468,7 +484,8 @@
     }
    ],
    "grupo": "Minicursos",
-   "descricao": "Exige sala com computadores.",
+   "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -497,7 +514,8 @@
     }
    ],
    "grupo": "Minicursos",
-   "descricao": "Com Benilton Carvalho - Técnicas de agrupamento e análise de dados de scRNA-seq em nível introdutório. Participantes devem trazer laptops com acesso a rede sem fio.",
+   "descricao": "Técnicas de agrupamento e análise de dados de scRNA-seq em nível introdutório. Participantes devem trazer laptops com acesso a rede sem fio.",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -520,6 +538,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -549,6 +568,7 @@
    ],
    "grupo": "Conferências",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -578,6 +598,7 @@
    ],
    "grupo": "Conferências",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -600,6 +621,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -622,6 +644,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -644,6 +667,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -666,6 +690,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -688,6 +713,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "Intervalo Livre",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -710,6 +736,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "Segunda sessão de pôsteres, servida com café.",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -732,6 +759,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -754,6 +782,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "Reunião ordinária da Região Brasileira da Sociedade Internacional de Biometria.",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -776,6 +805,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "Por adesão - detalhes e ingressos em breve.",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -805,6 +835,7 @@
    ],
    "grupo": "Mini-Conferências",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -833,7 +864,8 @@
     }
    ],
    "grupo": "Mini-Conferências",
-   "descricao": "Muitos problemas de aprendizado exigem mais do que prever uma saída a partir de uma entrada individual: o objetivo é aprender um operador que atua sobre funções e captura a dependência entre variáveis aleatórias. Nesta palestra, apresentamos uma abordagem baseada no método de Newton funcional para o aprendizado de operadores de esperança condicional, por meio de otimização de segunda ordem em espaços de funções. A representação resultante pode ser utilizada em diferentes tarefas, incluindo regressão, quantificação de incertezas e análise de dependência.",
+   "descricao": "",
+   "resumo": "Muitos problemas de aprendizado exigem mais do que prever uma saída a partir de uma entrada individual: o objetivo é aprender um operador que atua sobre funções e captura a dependência entre variáveis aleatórias. Nesta palestra, apresentamos uma abordagem baseada no método de Newton funcional para o aprendizado de operadores de esperança condicional, por meio de otimização de segunda ordem em espaços de funções. A representação resultante pode ser utilizada em diferentes tarefas, incluindo regressão, quantificação de incertezas e análise de dependência.",
    "destaque": false
   },
   {
@@ -856,6 +888,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -878,6 +911,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -900,6 +934,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -922,6 +957,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -944,6 +980,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "Terceira sessão de pôsteres, iniciada junto com o café.",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -966,6 +1003,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -995,6 +1033,7 @@
    ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -1024,6 +1063,7 @@
    ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -1053,6 +1093,7 @@
    ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -1075,6 +1116,7 @@
    "pessoas": [],
    "grupo": "Comunicações Orais",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -1097,6 +1139,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "Intervalo Livre",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -1126,6 +1169,7 @@
    ],
    "grupo": "Conferências",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -1148,6 +1192,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "",
+   "resumo": "",
    "destaque": false
   },
   {
@@ -1177,6 +1222,7 @@
    ],
    "grupo": "Conferências",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   },
   {
@@ -1199,6 +1245,7 @@
    "pessoas": [],
    "grupo": "",
    "descricao": "",
+   "resumo": "",
    "destaque": true
   }
  ],
