@@ -25,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -50,4 +52,13 @@ jobs:
           git config user.email "actions@github.com"
           git add data/programacao.json
           git commit -m "Programação atualizada a partir da planilha"
-          git push
+          for tentativa in 1 2 3; do
+            if git push; then
+              echo "Publicado na tentativa $tentativa."
+              exit 0
+            fi
+            echo "Push recusado, reaplicando sobre o remoto atualizado."
+            git pull --rebase --autostash origin main || exit 1
+          done
+          echo "Três tentativas recusadas."
+          exit 1
