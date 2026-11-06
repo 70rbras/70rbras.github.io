@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-06T08:04:39-0300",
- "gerado_em_texto": "06/11/2026 às 08:04",
- "versao_dados": 202611060804,
+ "gerado_em": "2026-11-06T14:53:17-0300",
+ "gerado_em_texto": "06/11/2026 às 14:53",
+ "versao_dados": 202611061453,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -744,7 +744,7 @@
    "fim": "09:00",
    "tipo": "Mini-Conferência",
    "tipo_slug": "mini-conferencia",
-   "titulo": "Quantificação da incerteza sensível à deriva por meio de um método espectral-Newton funcional",
+   "titulo": "Métodos de Newton Funcionais para Aprendizado de Operadores",
    "subtitulo": "Thiago Rodrigo Ramos (UFSCar) - Jovens pesquisadores",
    "local": {
     "id": "IMECC-253",
@@ -756,7 +756,7 @@
    },
    "pessoas": [],
    "grupo": "Mini-Conferências",
-   "descricao": "",
+   "descricao": "Muitos problemas de aprendizado exigem mais do que prever uma saída a partir de uma entrada individual: o objetivo é aprender um operador que atua sobre funções e captura a dependência entre variáveis aleatórias. Nesta palestra, apresentamos uma abordagem baseada no método de Newton funcional para o aprendizado de operadores de esperança condicional, por meio de otimização de segunda ordem em espaços de funções. A representação resultante pode ser utilizada em diferentes tarefas, incluindo regressão, quantificação de incertezas e análise de dependência.",
    "destaque": false
   },
   {
