@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-06T18:32:51-0300",
- "gerado_em_texto": "06/11/2026 às 18:32",
- "versao_dados": 202611061832,
+ "gerado_em": "2026-11-06T19:07:30-0300",
+ "gerado_em_texto": "06/11/2026 às 19:07",
+ "versao_dados": 202611061907,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -42,7 +42,7 @@
    "tipo": "Minicurso",
    "tipo_slug": "minicurso",
    "titulo": "Aprendizado Federado: modelos colaborativos com preservação de privacidade dos dados",
-   "subtitulo": "Erick Jun Miyagi (IMECC/UNICAMP) - Dia 1 de 2",
+   "subtitulo": "Dia 1 de 2",
    "local": {
     "id": "IMECC-L003",
     "predio": "IMECC",
@@ -51,7 +51,14 @@
     "como_chegar": "A partir do saguão do IMECC, desça para o subsolo do prédio (direção Biblioteca), saia do prédio principal pela porta ao lado da. biblioteca. Dirija-se ao estacionamento e o Anexo II estará na sua diagonal esquerda (prédio branco). Entre pela porta de vidro e será a sala logo em frente a esta porta.",
     "mapa_url": "https://maps.app.goo.gl/ggCdrKCBz7WuupLs6"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "erick",
+     "nome": "Erick Jun Miyagi",
+     "instituicao": "IMECC/UNICAMP",
+     "papel": "Ministrante"
+    }
+   ],
    "grupo": "Minicursos",
    "descricao": "Exige sala com computadores.",
    "destaque": true
@@ -64,7 +71,7 @@
    "tipo": "Minicurso",
    "tipo_slug": "minicurso",
    "titulo": "Além da Predição: introdução ao Causal Machine Learning com aplicações em R",
-   "subtitulo": "Paulo Henrique Sales Guimarães (UFLA) - Dia 1 de 2",
+   "subtitulo": "Dia 1 de 2",
    "local": {
     "id": "IMECC-LAB150",
     "predio": "IMECC",
@@ -73,7 +80,14 @@
     "como_chegar": "A partir do saguão do IMECC, no primeiro andar, em frente ao elevador.",
     "mapa_url": "https://maps.app.goo.gl/nEr4DxwMe1Za6U778"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "paulo-henrique-guimaraes",
+     "nome": "Paulo Henrique Sales Guimarães",
+     "instituicao": "UFLA",
+     "papel": "Ministrante"
+    }
+   ],
    "grupo": "Minicursos",
    "descricao": "Exige sala com computadores.",
    "destaque": false
@@ -86,7 +100,7 @@
    "tipo": "Minicurso",
    "tipo_slug": "minicurso",
    "titulo": "Agrupamento e expressão diferencial em transcriptômica de célula única",
-   "subtitulo": "Benilton de Sá Cavalho (IMECC/UNICAMP) - Dia 1 de 2",
+   "subtitulo": "Dia 1 de 2",
    "local": {
     "id": "IMECC-253",
     "predio": "IMECC",
@@ -99,8 +113,8 @@
     {
      "id": "benilton",
      "nome": "Benilton de Sá Carvalho",
-     "instituicao": "IMECC / UNICAMP",
-     "papel": "Minicurso"
+     "instituicao": "IMECC/UNICAMP",
+     "papel": "Ministrante"
     }
    ],
    "grupo": "Minicursos",
@@ -181,7 +195,7 @@
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
    "titulo": "Conferência 1 - Prediction Accuracy Depends on Training Population Connectivity: A Case Study in Genomic Prediction of Sunflower Hybrids",
-   "subtitulo": "María Gabriela Cendoya (IBS)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A3",
     "predio": "CDC",
@@ -194,7 +208,7 @@
     {
      "id": "cendoya",
      "nome": "María Gabriela Cendoya",
-     "instituicao": "Universidad Nacional de Mar del Plata",
+     "instituicao": "IBS & Universidad Nacional de Mar del Plata",
      "papel": "Conferencista IBS"
     }
    ],
@@ -232,7 +246,7 @@
    "tipo": "Sessão Temática",
    "tipo_slug": "sessao-tematica",
    "titulo": "Métodos estatísticos na análise de dados genômicos",
-   "subtitulo": "Chair: Júlia Soler (IME/USP)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A1",
     "predio": "CDC",
@@ -241,7 +255,14 @@
     "como_chegar": "",
     "mapa_url": "https://maps.app.goo.gl/NeDNbho1LjMFLdB86"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "julia-soler",
+     "nome": "Júlia Soler",
+     "instituicao": "IME/USP",
+     "papel": "Coordenadora"
+    }
+   ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
    "destaque": true
@@ -254,7 +275,7 @@
    "tipo": "Sessão Temática",
    "tipo_slug": "sessao-tematica",
    "titulo": "Da amostragem no campo ao mercado de carbono: dados que promovem ação",
-   "subtitulo": "Chair: Luís Gustavo Barioni (EMBRAPA Digital)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A3",
     "predio": "CDC",
@@ -263,7 +284,14 @@
     "como_chegar": "",
     "mapa_url": "https://maps.app.goo.gl/NeDNbho1LjMFLdB86"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "luis-gustavo",
+     "nome": "Luís Gustavo Barioni",
+     "instituicao": "EMBRAPA Digital",
+     "papel": "Coordenador"
+    }
+   ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
    "destaque": false
@@ -276,7 +304,7 @@
    "tipo": "Sessão Temática",
    "tipo_slug": "sessao-tematica",
    "titulo": "Sessão Conre 3 e 4 - Além dos Testes e Modelos: O que Ensinar em Estatística na Era da Inteligência Artificial?",
-   "subtitulo": "Chair: Camila Bertini (UNIFESP/CONRE-3)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A2",
     "predio": "CDC",
@@ -285,7 +313,14 @@
     "como_chegar": "",
     "mapa_url": "https://maps.app.goo.gl/NeDNbho1LjMFLdB86"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "camila",
+     "nome": "Camila Bertini",
+     "instituicao": "UNIFESP/CONRE-3",
+     "papel": "Coordenadora"
+    }
+   ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
    "destaque": false
@@ -386,7 +421,7 @@
    "tipo": "Minicurso",
    "tipo_slug": "minicurso",
    "titulo": "Aprendizado Federado: modelos colaborativos com preservação de privacidade dos dados",
-   "subtitulo": "Erick Jun Miyagi (IMECC/UNICAMP) - Dia 2 de 2",
+   "subtitulo": "Dia 2 de 2",
    "local": {
     "id": "IMECC-L003",
     "predio": "IMECC",
@@ -395,7 +430,14 @@
     "como_chegar": "A partir do saguão do IMECC, desça para o subsolo do prédio (direção Biblioteca), saia do prédio principal pela porta ao lado da. biblioteca. Dirija-se ao estacionamento e o Anexo II estará na sua diagonal esquerda (prédio branco). Entre pela porta de vidro e será a sala logo em frente a esta porta.",
     "mapa_url": "https://maps.app.goo.gl/ggCdrKCBz7WuupLs6"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "erick",
+     "nome": "Erick Jun Miyagi",
+     "instituicao": "IMECC/UNICAMP",
+     "papel": "Ministrante"
+    }
+   ],
    "grupo": "Minicursos",
    "descricao": "Exige sala com computadores.",
    "destaque": true
@@ -408,7 +450,7 @@
    "tipo": "Minicurso",
    "tipo_slug": "minicurso",
    "titulo": "Além da Predição: introdução ao Causal Machine Learning com aplicações em R",
-   "subtitulo": "Paulo Henrique Sales Guimarães (UFLA) - Dia 2 de 2",
+   "subtitulo": "Dia 2 de 2",
    "local": {
     "id": "IMECC-LAB150",
     "predio": "IMECC",
@@ -417,7 +459,14 @@
     "como_chegar": "A partir do saguão do IMECC, no primeiro andar, em frente ao elevador.",
     "mapa_url": "https://maps.app.goo.gl/nEr4DxwMe1Za6U778"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "paulo-henrique-guimaraes",
+     "nome": "Paulo Henrique Sales Guimarães",
+     "instituicao": "UFLA",
+     "papel": "Ministrante"
+    }
+   ],
    "grupo": "Minicursos",
    "descricao": "Exige sala com computadores.",
    "destaque": false
@@ -430,7 +479,7 @@
    "tipo": "Minicurso",
    "tipo_slug": "minicurso",
    "titulo": "Agrupamento e expressão diferencial em transcriptômica de célula única",
-   "subtitulo": "Benilton de Sá Cavalho (IMECC/UNICAMP) - Dia 2 de 2",
+   "subtitulo": "Dia 2 de 2",
    "local": {
     "id": "IMECC-253",
     "predio": "IMECC",
@@ -439,7 +488,14 @@
     "como_chegar": "A partir do saguão do IMECC, no segundo andar, próximo ao elevador.",
     "mapa_url": "https://maps.app.goo.gl/nEr4DxwMe1Za6U778"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "benilton",
+     "nome": "Benilton de Sá Carvalho",
+     "instituicao": "IMECC/UNICAMP",
+     "papel": "Ministrante"
+    }
+   ],
    "grupo": "Minicursos",
    "descricao": "Com Benilton Carvalho - Técnicas de agrupamento e análise de dados de scRNA-seq em nível introdutório. Participantes devem trazer laptops com acesso a rede sem fio.",
    "destaque": false
@@ -474,7 +530,7 @@
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
    "titulo": "Conferência 2 - Beyond Univariate Models: Statistical Challenges and Opportunities in Multi-Trait Analysis",
-   "subtitulo": "Asuman Turkmen (The Ohio State University)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A3",
     "predio": "CDC",
@@ -503,7 +559,7 @@
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
    "titulo": "Conferência 3 - A Zero-Inflated Spatiotemporal Model for Underreported Infectious Diseases Counts",
-   "subtitulo": "Guilherme Lopes de Oliveira (CEFET)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A1",
     "predio": "CDC",
@@ -730,7 +786,7 @@
    "tipo": "Mini-Conferência",
    "tipo_slug": "mini-conferencia",
    "titulo": "Modelagem de quantis condicionais em dados eletrocardiográficos: uma aplicação da regressão quantílica",
-   "subtitulo": "Amanda Merian Freitas Mendes (UFPR) - Jovens pesquisadores",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-151",
     "predio": "IMECC",
@@ -739,7 +795,14 @@
     "como_chegar": "A partir do saguão do IMECC, no primeiro andar, próximo ao elevador.",
     "mapa_url": "https://maps.app.goo.gl/nEr4DxwMe1Za6U778"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "amanda",
+     "nome": "Amanda Merian Freitas Mendes",
+     "instituicao": "UFPR",
+     "papel": "Jovem Pesquisadora"
+    }
+   ],
    "grupo": "Mini-Conferências",
    "descricao": "",
    "destaque": true
@@ -752,7 +815,7 @@
    "tipo": "Mini-Conferência",
    "tipo_slug": "mini-conferencia",
    "titulo": "Métodos de Newton Funcionais para Aprendizado de Operadores",
-   "subtitulo": "Thiago Rodrigo Ramos (UFSCar) - Jovens pesquisadores",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-253",
     "predio": "IMECC",
@@ -761,7 +824,14 @@
     "como_chegar": "A partir do saguão do IMECC, no segundo andar, próximo ao elevador.",
     "mapa_url": "https://maps.app.goo.gl/nEr4DxwMe1Za6U778"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "thiago",
+     "nome": "Thiago Rodrigo Ramos",
+     "instituicao": "UFSCar",
+     "papel": "Jovem Pesquisador"
+    }
+   ],
    "grupo": "Mini-Conferências",
    "descricao": "Muitos problemas de aprendizado exigem mais do que prever uma saída a partir de uma entrada individual: o objetivo é aprender um operador que atua sobre funções e captura a dependência entre variáveis aleatórias. Nesta palestra, apresentamos uma abordagem baseada no método de Newton funcional para o aprendizado de operadores de esperança condicional, por meio de otimização de segunda ordem em espaços de funções. A representação resultante pode ser utilizada em diferentes tarefas, incluindo regressão, quantificação de incertezas e análise de dependência.",
    "destaque": false
@@ -906,7 +976,7 @@
    "tipo": "Sessão Temática",
    "tipo_slug": "sessao-tematica",
    "titulo": "Sessão ABE -  Aprendizado Estatístico: Novas Abordagens e Perspectivas",
-   "subtitulo": "Chair: Paulo Henrique Ferreira da Silva (UFBA)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A3",
     "predio": "CDC",
@@ -915,7 +985,14 @@
     "como_chegar": "",
     "mapa_url": "https://maps.app.goo.gl/NeDNbho1LjMFLdB86"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "paulo-henrique-silva",
+     "nome": "Paulo Henrique Ferreira da Silva",
+     "instituicao": "UFBA",
+     "papel": "Coordenador"
+    }
+   ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
    "destaque": true
@@ -928,7 +1005,7 @@
    "tipo": "Sessão Temática",
    "tipo_slug": "sessao-tematica",
    "titulo": "Sessão Embrapa - Tecnologias Digitais, Coleta de Dados e Experimentação On-Farm com\r\nagricultura e pecuária na Embrapa.",
-   "subtitulo": "Chair: Waldomiro Barioni Junior (EMBRAPA Pecuária Sudeste)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A1",
     "predio": "CDC",
@@ -937,7 +1014,14 @@
     "como_chegar": "",
     "mapa_url": "https://maps.app.goo.gl/NeDNbho1LjMFLdB86"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "waldomiro",
+     "nome": "Waldomiro Barioni Junior",
+     "instituicao": "EMBRAPA Pecuária Sudeste",
+     "papel": "Coordenador"
+    }
+   ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
    "destaque": false
@@ -950,7 +1034,7 @@
    "tipo": "Sessão Temática",
    "tipo_slug": "sessao-tematica",
    "titulo": "Sessão Jovem Pesquisador- Estatística e Inteligência Artificial: transformações na pesquisa científica e na formação profissional",
-   "subtitulo": "Chair: Marcos Jardel Henriques (UFSCar - ICMC/USP)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A2",
     "predio": "CDC",
@@ -959,7 +1043,14 @@
     "como_chegar": "",
     "mapa_url": "https://maps.app.goo.gl/NeDNbho1LjMFLdB86"
    },
-   "pessoas": [],
+   "pessoas": [
+    {
+     "id": "marcos",
+     "nome": "Marcos Jardel Henriques",
+     "instituicao": "UFSCar - ICMC/USP",
+     "papel": "Coordenador"
+    }
+   ],
    "grupo": "Sessões Temáticas",
    "descricao": "",
    "destaque": false
@@ -1016,7 +1107,7 @@
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
    "titulo": "Conferência 4 - Estatística em Tempos de Dados Complexos: Desafios e Oportunidades em Estatística Aplicada",
-   "subtitulo": "Rosemeire Fiaccone (UFBA)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A3",
     "predio": "CDC",
@@ -1067,7 +1158,7 @@
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
    "titulo": "Conferência 5 - A novel approach for analyzing non-proportional hazards with long-term survivors: The defective-Yang-Prentice model",
-   "subtitulo": "Vinicius Calsavara (Cedars-Sinai Medical Center)",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A3",
     "predio": "CDC",
