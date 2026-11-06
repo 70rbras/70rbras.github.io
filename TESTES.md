@@ -14,7 +14,7 @@ O princípio das duas é o mesmo. Não basta o verificador automático sair com 
 
 Dois passos dependiam de informação que não está no repositório, tendo sido fechados por conferência do Benilton no mesmo dia. O passo 4 exigia a planilha de valores aprovada pela comissão, que não vive aqui. O passo 7 exigia um aparelho com aplicativo de mensagem, para ver a prévia montada de fato.
 
-O resultado geral é de conformidade, com os oito passos concluídos. Nenhuma divergência de conteúdo foi encontrada entre planilha, arquivos de dados além das páginas. Dois defeitos apareceram no caminho, ambos sem relação com fonte única: um de navegação, registrado na seção 1.9, outro de valor ausente, registrado no passo 8.
+O resultado geral é de conformidade, com os oito passos concluídos. Nenhuma divergência de conteúdo foi encontrada entre planilha, arquivos de dados além das páginas. Dois defeitos apareceram no caminho, ambos sem relação com fonte única: um de navegação, registrado na seção 1.9 além de corrigido em 06/11/2026, outro de valor ausente, registrado no passo 8.
 
 O roteiro da tarefa D6.1 tem sete passos. O oitavo nasceu da própria execução, em 28/10/2026, depois que um defeito escapou dos sete: ele custa pouco, enquanto cobre uma classe de erro que nenhum verificador do repositório alcança.
 
@@ -109,13 +109,15 @@ O procedimento é renderizar cada página num navegador, depois procurar no text
 
 O resultado da execução de 28/10/2026 foi uma ocorrência, na home, com sete convidados exibidos como "undefined · undefined". A causa foi a tarefa D4.2, que moveu nome e instituição para `data/pessoas.js` adaptando `palestrantes.html`, sem adaptar a caixa da home. Depois da correção as onze páginas saem limpas nas três marcas.
 
-### 1.9 Defeito encontrado durante a execução
+### 1.9 Defeito encontrado durante a execução, corrigido em 06/11/2026
 
-O endereço com âncora de atividade não abre a atividade quando ela não é do dia exibido por padrão. Em `assets/programacao.js`, a leitura de `location.hash` aceita apenas `geral`, `dia` além de `busca`: qualquer outro valor cai no modo padrão, sem selecionar o dia da atividade. Como a visão dia a dia desenha um dia por vez, `programacao.html#CO-5` abre no dia 23, onde o elemento `CO-5` nem existe no documento.
+O endereço com âncora de atividade não abria a atividade quando ela não era do dia exibido por padrão. Em `assets/programacao.js`, a leitura de `location.hash` aceitava apenas `geral`, `dia` além de `busca`: qualquer outro valor caía no modo padrão, sem selecionar o dia da atividade. Como a visão dia a dia desenha um dia por vez, `programacao.html#CO-5` abria no dia 23, onde o elemento `CO-5` nem existe no documento.
 
-O efeito prático recai sobre quem recebe o link da própria sessão. Dos treze blocos de apresentação, apenas os dois do primeiro dia abrem corretamente por âncora. O `CLAUDE.md`, na seção 8, descreve o comportamento pretendido, que é a âncora levar à atividade.
+O efeito prático recaía sobre quem recebe o link da própria sessão. Dos treze blocos de apresentação, apenas os dois do primeiro dia abriam corretamente por âncora. O `CLAUDE.md`, na seção 8, já descrevia o comportamento pretendido, que é a âncora levar à atividade.
 
-O item fica registrado sem correção, por estar fora do escopo da D6.1, cuja especificação lista apenas este arquivo. Ele também alcança o plano do aplicativo, cuja tarefa T1.5 propõe gravar no arquivo de calendário um endereço nesse mesmo formato.
+O item ficou registrado sem correção em 28/10/2026, por estar fora do escopo da D6.1, cuja especificação lista apenas este arquivo. A correção veio com a tarefa P10, no commit `029f4b2`, de 06/11/2026. A leitura do endereço passou a reconhecer identificador de atividade: o dia correspondente é selecionado, o filtro de prédio volta a "Tudo", a página rola até o cartão além de o diálogo de detalhes abrir quando a atividade tiver resumo; identificador desconhecido segue caindo no modo padrão.
+
+A verificação da correção cobriu sete cenários no navegador, em 06/11/2026. O endereço `#CO-5` abre no dia 24 com o cartão na tela, o `#MC-2` abre no dia 25 com o diálogo aberto no título correto, enquanto o `#M3-D1` rola até o cartão sem abrir diálogo por não ter resumo. Os valores `#geral`, `#NAO-EXISTE` além do endereço sem âncora caem no comportamento esperado, sem erro de console. Com isso a tarefa T1.5 do plano do aplicativo, que propõe gravar no arquivo de calendário um endereço nesse mesmo formato, deixa de depender de correção prévia.
 
 ---
 

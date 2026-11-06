@@ -186,8 +186,9 @@ Prazos já encerrados (submissões, concurso, aceites, Fundo) seguem no arquivo,
 A programação vem de uma planilha do Google, não de um arquivo editado à mão. A cadeia é:
 
 1. **Planilha do Google**, publicada em CSV aba por aba (atividades, trabalhos, locais, pessoas, config). As URLs ficam em `scripts/fontes.json`.
-2. **`scripts/build_programacao.py`** lê as abas, valida (horário final anterior ao inicial, local inexistente, conflito de sala, trabalho apontando para sessão inexistente) e gera **`data/programacao.json`**. Com erro, não grava nada e sai com código 1; avisos (ex.: local a definir) não bloqueiam.
-3. **`assets/programacao.js`** (estilos em `assets/programacao.css`, prefixo `pg-`) lê o JSON e desenha as três visões: visão geral (só atividades com `destaque = SIM`), dia a dia (filtro por prédio, aviso de troca de prédio) e busca de trabalhos (número, autor, título, área). Âncoras: `#geral`, `#dia`, `#busca` e o `id` de cada atividade (ex.: `#CO-5`).
+2. **`scripts/build_programacao.py`** lê as abas, valida (horário final anterior ao inicial, local inexistente, conflito de sala, trabalho apontando para sessão inexistente) e gera **`data/programacao.json`**. Com erro, não grava nada e sai com código 1; avisos (ex.: local a definir, ou `descricao` acima de `LIMITE_DESCRICAO`, que são 140 caracteres) não bloqueiam. A coluna `descricao` é a frase curta do cartão, enquanto a coluna `resumo` guarda o texto longo, que só aparece no diálogo.
+3. **`assets/programacao.js`** (estilos em `assets/programacao.css`, prefixo `pg-`) lê o JSON e desenha as três visões: visão geral (só atividades com `destaque = SIM`), dia a dia (filtro por prédio, aviso de troca de prédio) e busca de trabalhos (número, autor, título, área). Quem apresenta sai em linha própria, a partir de `pessoas_ids`, com rótulo derivado do tipo da atividade. Âncoras: `#geral`, `#dia`, `#busca` e o `id` de cada atividade (ex.: `#CO-5`), que seleciona o dia, rola até o cartão e abre o diálogo quando houver resumo.
+4. **Diálogo de detalhes**: elemento `<dialog>` nativo em `programacao.html`, preenchido por `assets/programacao.js` na abertura com tipo, título, apresentador além do resumo. O botão "Ver resumo" só aparece no cartão quando a atividade tem resumo; abrir grava o `id` no endereço por `replaceState`, fechar devolve o endereço da página.
 
 **Atualização automática:** `.github/workflows/programacao.yml` roda de hora em hora no minuto 17 e também pelo botão **Run workflow** (aba Actions). Commita `data/programacao.json` só quando há diferença. Quando a validação encontra erro, o fluxo falha e recusa a publicação; o site continua com a última versão boa.
 
@@ -258,7 +259,7 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 
 ---
 
-## 12. Status atual do projeto (atualizado out/2026)
+## 12. Status atual do projeto (atualizado nov/2026)
 
 - ✅ Estrutura e design do site concluídos
 - ✅ Conteúdo de palestrantes, programação e comissões populados
@@ -281,7 +282,9 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 - ✅ **Plano de fontes únicas concluído (28/10/2026): `scripts/fontes-unicas.json` está vazio, portanto cada informação publicada tem uma fonte só**
 - ⏳ Local do credenciamento: a pendência passou para a planilha, na atividade de id `INSCRICOES`
 - ⏳ Nenhum dos 392 trabalhos tem o campo `painel` preenchido na planilha
-- ⏳ `programacao.html#CO-5` não abre a atividade quando ela não é do dia padrão: `assets/programacao.js` só trata `#geral`, `#dia` e `#busca` no `location.hash` (registrado em `TESTES.md`, seção 1.8)
+- ✅ Apresentador em linha própria no cartão da programação, com rótulo derivado do tipo da atividade: Ministrante, Conferencista, Coordenação ou Participação (06/11/2026)
+- ✅ Coluna `resumo` da planilha publicada no JSON, exibida num diálogo aberto pelo botão "Ver resumo" do cartão (06/11/2026)
+- ✅ `programacao.html#CO-5` abre a atividade em qualquer dia, selecionando o dia, rolando até o cartão e abrindo o diálogo quando houver resumo (06/11/2026; defeito registrado em `TESTES.md`, seção 1.9)
 ---
 
 ## 13. Como fazer alterações comuns
