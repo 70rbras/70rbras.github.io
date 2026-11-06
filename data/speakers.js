@@ -42,8 +42,8 @@ const SPEAKERS = [
   {
     pessoa:  "thiago-rodrigo-ramos",
     tipo:    "Palestrante",
-    tema:    "Quantificação da incerteza sensível à deriva por meio de um método espectral-Newton funcional",
-    resumo:  "Os modelos de aprendizado de máquina são cada vez mais utilizados em domínios de alto risco, como saúde e finanças, onde a quantificação da incerteza é essencial e as mudanças na distribuição podem prejudicar seriamente o desempenho preditivo.<br>No entanto, muitas abordagens existentes para detecção e adaptação de mudanças abordam componentes isolados do ciclo capturar-adaptar-operar, frequentemente sem levar em conta explicitamente a incerteza preditiva. Neste artigo, apresentamos uma estrutura em etapas para o aprendizado de distribuições condicionais que visa diretamente mudanças prejudiciais que afetam o desempenho preditivo. Nosso método aprende uma decomposição espectral da razão de densidade f_{XY}/(f_Xf_Y) por meio de atualizações funcionais alternadas de Newton, que lembram os métodos de gradient boosting. Introduzimos também uma métrica de degradação de desempenho para identificar mudanças prejudiciais que devem desencadear uma adaptação. Experimentos preliminares em benchmarks de estimação de distribuição condicional com deslocamentos induzidos sugerem que essa abordagem oferece um caminho fundamentado para a modelagem robusta de distribuição condicional em ambientes não estacionários de alto risco."
+    tema:    "Métodos de Newton Funcionais para Aprendizado de Operadores",
+    resumo:  "Muitos problemas de aprendizado exigem mais do que prever uma saída a partir de uma entrada individual: o objetivo é aprender um operador que atua sobre funções e captura a dependência entre variáveis aleatórias. Nesta palestra, apresentamos uma abordagem baseada no método de Newton funcional para o aprendizado de operadores de esperança condicional, por meio de otimização de segunda ordem em espaços de funções. A representação resultante pode ser utilizada em diferentes tarefas, incluindo regressão, quantificação de incertezas e análise de dependência."
   },
   {
     pessoa:  "vinicius-calsavara",
