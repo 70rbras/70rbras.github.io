@@ -17,6 +17,19 @@
     'refeicao': '#8C9BAD'
   };
   var LEVES = ['intervalo', 'refeicao'];
+  /* Rotulo de quem apresenta, derivado do tipo da atividade. O campo papel da
+     ficha descreve a funcao da pessoa no evento, nao a funcao dela nesta
+     atividade, portanto nao serve de rotulo. Cada entrada traz singular e
+     plural; tipo sem entrada exibe os nomes sem rotulo. */
+  var ROTULOS = {
+    'minicurso': ['Ministrante', 'Ministrantes'],
+    'conferencia': ['Conferencista', 'Conferencistas'],
+    'mini-conferencia': ['Conferencista', 'Conferencistas'],
+    'sessao-tematica': ['Coordena\u00e7\u00e3o', 'Coordena\u00e7\u00e3o'],
+    'institucional': ['Participa\u00e7\u00e3o', 'Participa\u00e7\u00e3o'],
+    'social': ['Participa\u00e7\u00e3o', 'Participa\u00e7\u00e3o'],
+    'sessao-especial': ['Participa\u00e7\u00e3o', 'Participa\u00e7\u00e3o']
+  };
   /* 'A definir' ainda não foi decidido. 'LIVRE' é o tempo em que cada participante
      escolhe onde ficar. Nenhum dos dois é prédio, portanto nenhum dos dois entra nos
      avisos de troca de prédio. */
@@ -61,6 +74,22 @@
   }
 
   function cor(a) { return CORES[a.tipo_slug] || '#1A3870'; }
+
+  /* Nome e instituicao de cada pessoa ligada a atividade, em linha propria, sem
+     disputar lugar com o subtitulo. Atividade sem pessoa no cadastro nao produz
+     elemento algum, de modo que o cartao sai como saia antes. */
+  function quemHtml(a) {
+    var pessoas = a.pessoas || [];
+    if (!pessoas.length) return '';
+    var nomes = pessoas.map(function (p) {
+      return p.instituicao ? p.nome + ' (' + p.instituicao + ')' : p.nome;
+    }).join(', ');
+    var par = ROTULOS[a.tipo_slug];
+    var rotulo = par ? par[pessoas.length > 1 ? 1 : 0] : '';
+    return '<p class="pg-quem">' +
+      (rotulo ? '<span class="pg-quem-rotulo">' + texto(rotulo) + ':</span> ' : '') +
+      texto(nomes) + '</p>';
+  }
 
   function faixa(a) {
     if (!a.inicio) return 'horário a definir';
@@ -311,12 +340,12 @@
 
       var cartoes = bloco.itens.map(function (a) {
         var leve = LEVES.indexOf(a.tipo_slug) >= 0;
-        var pessoas = a.pessoas.map(function (p) { return p.nome; }).join(', ');
         return '<article class="pg-cartao' + (leve ? ' is-leve' : '') + '" style="--cor:' + cor(a) + '"' +
           ' id="' + texto(a.id) + '">' +
           '<span class="pg-tipo">' + texto(a.tipo) + '</span>' +
           '<h3 class="pg-titulo">' + texto(a.titulo) + '</h3>' +
-          (a.subtitulo || pessoas ? '<p class="pg-sub">' + texto(pessoas || a.subtitulo) + '</p>' : '') +
+          (a.subtitulo ? '<p class="pg-sub">' + texto(a.subtitulo) + '</p>' : '') +
+          quemHtml(a) +
           ondeHtml(a) +
           (a.descricao ? '<p class="pg-desc">' + texto(a.descricao) + '</p>' : '') +
           '</article>';

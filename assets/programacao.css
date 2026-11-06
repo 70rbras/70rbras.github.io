@@ -305,6 +305,20 @@
   margin: 0;
 }
 
+/* quem apresenta: linha propria, abaixo do subtitulo, com rotulo derivado do
+   tipo da atividade. */
+.pg-quem {
+  font-size: .88rem;
+  line-height: 1.45;
+  color: var(--pg-texto);
+  margin: .15rem 0 0;
+}
+
+.pg-quem-rotulo {
+  font-weight: 600;
+  color: var(--pg-texto-fraco);
+}
+
 .pg-onde {
   display: flex;
   flex-wrap: wrap;
