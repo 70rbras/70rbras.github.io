@@ -99,6 +99,14 @@
 
     <div class="pg-legenda" id="pgLegenda"></div>
   </div>
+
+  <!-- Dialogo de detalhes. Nasce vazio: assets/programacao.js escreve o conteudo
+       no momento da abertura, a partir da atividade correspondente. -->
+  <dialog class="pg-dialogo" id="pgDialogo" aria-labelledby="pgDialogoTitulo">
+    <button type="button" class="pg-dialogo-fechar" id="pgDialogoFechar"
+            aria-label="Fechar">&#x2715;</button>
+    <div class="pg-dialogo-corpo" id="pgDialogoCorpo"></div>
+  </dialog>
 </section>
 
 <!-- ─── CTA ──────────────────────────────────────── -->

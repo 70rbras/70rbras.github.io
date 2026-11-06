@@ -54,7 +54,10 @@
     campo: raiz.querySelector('#pgCampo'),
     resultados: raiz.querySelector('#pgResultados'),
     ajuda: raiz.querySelector('#pgAjuda'),
-    legenda: raiz.querySelector('#pgLegenda')
+    legenda: raiz.querySelector('#pgLegenda'),
+    dialogo: raiz.querySelector('#pgDialogo'),
+    dialogoCorpo: raiz.querySelector('#pgDialogoCorpo'),
+    dialogoFechar: raiz.querySelector('#pgDialogoFechar')
   };
 
   var dados = null;
@@ -89,6 +92,51 @@
     return '<p class="pg-quem">' +
       (rotulo ? '<span class="pg-quem-rotulo">' + texto(rotulo) + ':</span> ' : '') +
       texto(nomes) + '</p>';
+  }
+
+  /* Resumo em paragrafos. A planilha e entrada nao confiavel, portanto o texto
+     passa por texto(), enquanto a separacao se faz por linha em branco, nunca
+     por interpretacao de marcacao escrita na celula. */
+  function paragrafos(t) {
+    return String(t || '').split(/\r?\n\s*\r?\n/)
+      .map(function (p) { return p.replace(/\s+/g, ' ').trim(); })
+      .filter(function (p) { return p; })
+      .map(function (p) { return '<p>' + texto(p) + '</p>'; })
+      .join('');
+  }
+
+  function abrirDialogo(id) {
+    if (!el.dialogo || !dados) return;
+    var a = dados.atividades.filter(function (x) { return x.id === id; })[0];
+    if (!a || !a.resumo) return;
+    el.dialogoCorpo.innerHTML =
+      '<p class="pg-dialogo-tipo" style="--cor:' + cor(a) + '">' + texto(a.tipo) + '</p>' +
+      '<h2 class="pg-dialogo-titulo" id="pgDialogoTitulo">' + texto(a.titulo) + '</h2>' +
+      quemHtml(a) +
+      '<div class="pg-dialogo-resumo">' + paragrafos(a.resumo) + '</div>';
+    if (typeof el.dialogo.showModal === 'function') el.dialogo.showModal();
+    else el.dialogo.setAttribute('open', '');
+  }
+
+  /* Os cartoes sao reescritos a cada troca de dia ou de filtro, portanto o
+     clique e ouvido no container, nunca em cada botao. */
+  function ligarDialogo() {
+    if (!el.dialogo || el.dialogo.getAttribute('data-ligado')) return;
+    el.dialogo.setAttribute('data-ligado', '1');
+    if (el.tempo) {
+      el.tempo.addEventListener('click', function (e) {
+        var b = e.target && e.target.closest ? e.target.closest('.pg-detalhes') : null;
+        if (b) abrirDialogo(b.getAttribute('data-id'));
+      });
+    }
+    if (el.dialogoFechar) {
+      el.dialogoFechar.addEventListener('click', function () { el.dialogo.close(); });
+    }
+    /* Clique no fundo escurecido: o alvo e o proprio dialogo, pois o conteudo
+       vive num elemento interno. */
+    el.dialogo.addEventListener('click', function (e) {
+      if (e.target === el.dialogo) el.dialogo.close();
+    });
   }
 
   function faixa(a) {
@@ -348,6 +396,8 @@
           quemHtml(a) +
           ondeHtml(a) +
           (a.descricao ? '<p class="pg-desc">' + texto(a.descricao) + '</p>' : '') +
+          (a.resumo ? '<button type="button" class="pg-detalhes" aria-haspopup="dialog"' +
+            ' data-id="' + atributo(a.id) + '">Ver resumo</button>' : '') +
           '</article>';
       }).join('');
 
@@ -609,6 +659,7 @@
     montarTempo();
     montarIndice();
     montarLegenda();
+    ligarDialogo();
     montarAjuda();
     montarBusca('');
 
