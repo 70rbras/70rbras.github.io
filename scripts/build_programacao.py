@@ -26,6 +26,12 @@ from datetime import datetime, timezone, timedelta
 
 ABAS = ['atividades', 'trabalhos', 'locais', 'pessoas', 'config']
 
+# A aba pessoas_cadastro e a ficha unica, compartilhada com as paginas do site.
+# A aba pessoas e o cadastro antigo, mantido enquanto a coluna pessoas_ids da
+# aba atividades ainda usar os identificadores curtos. E opcional justamente
+# para que a planilha possa perder uma das duas sem derrubar a geracao.
+ABAS_OPCIONAIS = ['pessoas_cadastro']
+
 # Limite de caracteres da coluna descricao, que e exibida dentro do cartao da
 # programacao. Texto mais longo que isso pertence a coluna resumo, que so
 # aparece no dialogo de detalhes. Passar do limite gera aviso, nao erro.
@@ -117,14 +123,20 @@ def ler_de_csv(caminho_fontes):
     faltando = [a for a in ABAS if a not in fontes]
     if faltando:
         sys.exit('fontes.json não traz as abas: %s' % ', '.join(faltando))
-    return {aba: ler_csv_url(fontes[aba]) for aba in ABAS}
+    dados = {aba: ler_csv_url(fontes[aba]) for aba in ABAS}
+    for aba in ABAS_OPCIONAIS:
+        dados[aba] = ler_csv_url(fontes[aba]) if aba in fontes else []
+    return dados
 
 
 def ler_de_xlsx(caminho):
     import openpyxl
     wb = openpyxl.load_workbook(caminho, data_only=True)
     dados = {}
-    for aba in ABAS:
+    for aba in ABAS + ABAS_OPCIONAIS:
+        if aba not in wb.sheetnames:
+            dados[aba] = []
+            continue
         ws = wb[aba]
         cab = [norm(c.value) for c in ws[1]]
         linhas = []
@@ -159,14 +171,26 @@ def construir(dados):
             avisos.append('local %s tem mapa_url fora do padrão https, '
                           'portanto o link não será exibido' % lid)
 
-    pessoas = {}
-    for r in dados['pessoas']:
+    # Ficha unica, compartilhada com as paginas do site. A instituicao exibida no
+    # cartao e a forma curta, pois a coluna e estreita; sem ela vale a longa.
+    cadastro = {}
+    for r in dados.get('pessoas_cadastro', []):
         pid = norm(r.get('pessoa_id'))
         if not pid:
             continue
-        pessoas[pid] = {'id': pid, 'nome': norm(r.get('nome')),
-                        'instituicao': norm(r.get('instituicao')),
-                        'papel': norm(r.get('papel'))}
+        cadastro[pid] = {'id': pid, 'nome': norm(r.get('nome')),
+                         'instituicao': (norm(r.get('instituicao_curta'))
+                                         or norm(r.get('instituicao')))}
+
+    # Cadastro antigo, consultado apenas quando o identificador nao estiver no
+    # novo. Some junto com a aba pessoas, assim que a migracao terminar.
+    legado = {}
+    for r in dados.get('pessoas', []):
+        pid = norm(r.get('pessoa_id'))
+        if not pid:
+            continue
+        legado[pid] = {'id': pid, 'nome': norm(r.get('nome')),
+                       'instituicao': norm(r.get('instituicao'))}
 
     config = {}
     for r in dados['config']:
@@ -194,8 +218,15 @@ def construir(dados):
         if lid == 'A-DEFINIR':
             avisos.append('atividade %s ainda sem local definido' % aid)
         ids_pessoas = [p.strip() for p in norm(r.get('pessoas_ids')).split(';') if p.strip()]
+        fichas = []
         for p in ids_pessoas:
-            if p not in pessoas:
+            if p in cadastro:
+                fichas.append(cadastro[p])
+            elif p in legado:
+                avisos.append('atividade %s usa o identificador antigo %s; '
+                              'a ficha vive agora na aba pessoas_cadastro' % (aid, p))
+                fichas.append(legado[p])
+            else:
                 avisos.append('atividade %s cita a pessoa desconhecida %s' % (aid, p))
         descricao = norm(r.get('descricao'))
         resumo = norm(r.get('resumo'))
@@ -208,7 +239,7 @@ def construir(dados):
             'tipo': norm(r.get('tipo')), 'tipo_slug': slug(r.get('tipo')),
             'titulo': titulo, 'subtitulo': norm(r.get('subtitulo')),
             'local': locais.get(lid, {'id': lid, 'predio': '', 'sala': '', 'nome': lid}),
-            'pessoas': [pessoas[p] for p in ids_pessoas if p in pessoas],
+            'pessoas': fichas,
             'grupo': norm(r.get('grupo')), 'descricao': descricao, 'resumo': resumo,
             'destaque': sim(r.get('destaque')),
         })
