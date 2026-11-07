@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-06T20:15:07-0300",
- "gerado_em_texto": "06/11/2026 às 20:15",
- "versao_dados": 202611062015,
+ "gerado_em": "2026-11-06T22:48:51-0300",
+ "gerado_em_texto": "06/11/2026 às 22:48",
+ "versao_dados": 202611062248,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -266,7 +266,7 @@
    "pessoas": [
     {
      "id": "julia-soler",
-     "nome": "Júlia Soler",
+     "nome": "Júlia Pavan Soler",
      "instituicao": "IME/USP",
      "papel": "Coordenadora"
     }
@@ -1162,7 +1162,7 @@
    "pessoas": [
     {
      "id": "fiaccone",
-     "nome": "Rosemeire Fiaccone",
+     "nome": "Rosemeire L. Fiaccone",
      "instituicao": "Universidade Federal da Bahia (UFBA)",
      "papel": "Conferencista"
     }
