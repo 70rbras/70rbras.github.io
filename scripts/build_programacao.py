@@ -24,13 +24,11 @@ import unicodedata
 import urllib.request
 from datetime import datetime, timezone, timedelta
 
-ABAS = ['atividades', 'trabalhos', 'locais', 'pessoas', 'config']
-
-# A aba pessoas_cadastro e a ficha unica, compartilhada com as paginas do site.
-# A aba pessoas e o cadastro antigo, mantido enquanto a coluna pessoas_ids da
-# aba atividades ainda usar os identificadores curtos. E opcional justamente
-# para que a planilha possa perder uma das duas sem derrubar a geracao.
-ABAS_OPCIONAIS = ['pessoas_cadastro']
+# A aba pessoas_cadastro e a ficha unica, compartilhada com as paginas do site:
+# scripts/build_cadastro.mjs gera data/pessoas.js da mesma aba. A aba pessoas
+# antiga saiu de cena em 07/11/2026, quando a coluna pessoas_ids terminou de
+# migrar para os identificadores longos.
+ABAS = ['atividades', 'trabalhos', 'locais', 'pessoas_cadastro', 'config']
 
 # Limite de caracteres da coluna descricao, que e exibida dentro do cartao da
 # programacao. Texto mais longo que isso pertence a coluna resumo, que so
@@ -123,20 +121,14 @@ def ler_de_csv(caminho_fontes):
     faltando = [a for a in ABAS if a not in fontes]
     if faltando:
         sys.exit('fontes.json não traz as abas: %s' % ', '.join(faltando))
-    dados = {aba: ler_csv_url(fontes[aba]) for aba in ABAS}
-    for aba in ABAS_OPCIONAIS:
-        dados[aba] = ler_csv_url(fontes[aba]) if aba in fontes else []
-    return dados
+    return {aba: ler_csv_url(fontes[aba]) for aba in ABAS}
 
 
 def ler_de_xlsx(caminho):
     import openpyxl
     wb = openpyxl.load_workbook(caminho, data_only=True)
     dados = {}
-    for aba in ABAS + ABAS_OPCIONAIS:
-        if aba not in wb.sheetnames:
-            dados[aba] = []
-            continue
+    for aba in ABAS:
         ws = wb[aba]
         cab = [norm(c.value) for c in ws[1]]
         linhas = []
@@ -174,23 +166,13 @@ def construir(dados):
     # Ficha unica, compartilhada com as paginas do site. A instituicao exibida no
     # cartao e a forma curta, pois a coluna e estreita; sem ela vale a longa.
     cadastro = {}
-    for r in dados.get('pessoas_cadastro', []):
+    for r in dados['pessoas_cadastro']:
         pid = norm(r.get('pessoa_id'))
         if not pid:
             continue
         cadastro[pid] = {'id': pid, 'nome': norm(r.get('nome')),
                          'instituicao': (norm(r.get('instituicao_curta'))
                                          or norm(r.get('instituicao')))}
-
-    # Cadastro antigo, consultado apenas quando o identificador nao estiver no
-    # novo. Some junto com a aba pessoas, assim que a migracao terminar.
-    legado = {}
-    for r in dados.get('pessoas', []):
-        pid = norm(r.get('pessoa_id'))
-        if not pid:
-            continue
-        legado[pid] = {'id': pid, 'nome': norm(r.get('nome')),
-                       'instituicao': norm(r.get('instituicao'))}
 
     config = {}
     for r in dados['config']:
@@ -222,10 +204,6 @@ def construir(dados):
         for p in ids_pessoas:
             if p in cadastro:
                 fichas.append(cadastro[p])
-            elif p in legado:
-                avisos.append('atividade %s usa o identificador antigo %s; '
-                              'a ficha vive agora na aba pessoas_cadastro' % (aid, p))
-                fichas.append(legado[p])
             else:
                 avisos.append('atividade %s cita a pessoa desconhecida %s' % (aid, p))
         descricao = norm(r.get('descricao'))
