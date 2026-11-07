@@ -399,9 +399,9 @@ function renderSpeakersNames() {
      sai do texto em vez de virar "undefined". */
   el.innerHTML = SPEAKERS.map(resolverPessoa).filter(Boolean).map(s => {
     const onde = s.instituicao
-      ? ` <span style="color:var(--text-mid);font-size:.85rem">· ${s.instituicao}</span>`
+      ? ` <span style="color:var(--text-mid);font-size:.85rem">· ${escTexto(s.instituicao)}</span>`
       : '';
-    return `<span style="display:block"><strong>${s.nome}</strong>${onde}</span>`;
+    return `<span style="display:block"><strong>${escTexto(s.nome)}</strong>${onde}</span>`;
   }).join('');
 }
 

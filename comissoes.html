@@ -99,12 +99,13 @@ function renderCommittee() {
     const coords=todos.filter(m=>m.coordenacao), members=todos.filter(m=>!m.coordenacao);
     function memberCard(m) {
       const initials=iniciaisDaPessoa(m.nome);
-      const photoHTML=m.foto?`<img src="${m.foto}" alt="${m.nome}" loading="lazy">`:`<span class="comissao-member-initials">${initials}</span>`;
-      const links=[m.lattes?`<a class="member-link member-link--lattes" href="${m.lattes}" target="_blank" rel="noopener">Lattes</a>`:'',m.website?`<a class="member-link member-link--website" href="${m.website}" target="_blank" rel="noopener">↗ Site</a>`:''].filter(Boolean).join('');
+      const photoHTML=m.foto?`<img src="${escAtributo(m.foto)}" alt="${escAtributo(m.nome)}" loading="lazy">`:`<span class="comissao-member-initials">${escTexto(initials)}</span>`;
+      const lattes=urlDePessoa(m.lattes), site=urlDePessoa(m.website);
+      const links=[lattes?`<a class="member-link member-link--lattes" href="${escAtributo(lattes)}" target="_blank" rel="noopener">Lattes</a>`:'',site?`<a class="member-link member-link--website" href="${escAtributo(site)}" target="_blank" rel="noopener">↗ Site</a>`:''].filter(Boolean).join('');
       const rotulo=rotuloCoordenacao(m);
-      return `<div class="comissao-member-card${m.coordenacao?' is-coord':''}"><div class="comissao-member-photo">${photoHTML}</div><div class="comissao-member-info"><div class="name">${m.nome}</div>${m.coordenacao?`<span class="coord-badge">${rotulo}</span>`:''}<div class="affil">${m.instituicao}</div>${links?`<span class="member-links">${links}</span>`:''}</div></div>`;
+      return `<div class="comissao-member-card${m.coordenacao?' is-coord':''}"><div class="comissao-member-photo">${photoHTML}</div><div class="comissao-member-info"><div class="name">${escTexto(m.nome)}</div>${m.coordenacao?`<span class="coord-badge">${escTexto(rotulo)}</span>`:''}<div class="affil">${escTexto(m.instituicao)}</div>${links?`<span class="member-links">${links}</span>`:''}</div></div>`;
     }
-    return `<div class="comissao-card reveal${i>0?' reveal-delay-1':''}"><div class="comissao-card-header"><span class="card-icon">${c.icone}</span><h3>${c.titulo}</h3></div>${coords.length?`<div class="comissao-member-grid comissao-member-grid--coord">${coords.map(memberCard).join('')}</div><div class="comissao-coord-divider"></div>`:''}<div class="comissao-member-grid">${members.map(memberCard).join('')}</div></div>`;
+    return `<div class="comissao-card reveal${i>0?' reveal-delay-1':''}"><div class="comissao-card-header"><span class="card-icon">${escTexto(c.icone)}</span><h3>${escTexto(c.titulo)}</h3></div>${coords.length?`<div class="comissao-member-grid comissao-member-grid--coord">${coords.map(memberCard).join('')}</div><div class="comissao-coord-divider"></div>`:''}<div class="comissao-member-grid">${members.map(memberCard).join('')}</div></div>`;
   }).join('');
 }
 

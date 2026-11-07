@@ -39,6 +39,27 @@ function iniciaisDaPessoa(nome) {
   return (partes[0][0] + partes[partes.length - 1][0]).toUpperCase();
 }
 
+/* O cadastro passa a vir da planilha, que a comissão edita, portanto tudo que
+   sai dele é escapado antes de virar HTML: marcação escrita numa célula aparece
+   como texto, nunca como elemento. */
+function escTexto(v) {
+  return String(v == null ? '' : v)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/* Dentro de atributo é preciso neutralizar também a aspa, que fecharia o valor. */
+function escAtributo(v) {
+  return escTexto(v).replace(/"/g, '&quot;');
+}
+
+/* Endereço aceito num href: só http ou https, sem espaço nem aspas. Qualquer
+   outro valor devolve cadeia vazia, de modo que o link deixa de ser montado em
+   vez de virar um link executável. */
+function urlDePessoa(u) {
+  const s = String(u == null ? '' : u).trim();
+  return /^https?:\/\/[^\s"'<>]+$/i.test(s) ? s : '';
+}
+
 /* Rótulo da coordenação de comissão, flexionado pelo gênero registrado.
    Sem gênero registrado, sai na forma neutra. */
 function rotuloCoordenacao(pessoa) {

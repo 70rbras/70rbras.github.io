@@ -153,13 +153,13 @@ function renderSpeakers() {
   if (!grid) return;
   grid.innerHTML = PALESTRAS.map((s,i) => {
     const delay = i>0&&i<4?` reveal-delay-${i}`:'';
-    const foto  = s.foto?`<img src="${s.foto}" alt="${s.nome}" loading="lazy">`:'👤';
-    return `<div class="speaker-card reveal${delay}" data-index="${i}" role="button" tabindex="0" aria-label="Ver resumo de ${s.nome}">
+    const foto  = s.foto?`<img src="${escAtributo(s.foto)}" alt="${escAtributo(s.nome)}" loading="lazy">`:'👤';
+    return `<div class="speaker-card reveal${delay}" data-index="${i}" role="button" tabindex="0" aria-label="Ver resumo de ${escAtributo(s.nome)}">
       <div class="speaker-photo">${foto}</div>
-      <div class="speaker-name">${s.nome}</div>
-      <div class="speaker-role">${s.tipo}</div>
-      <div class="speaker-org">${s.instituicao}</div>
-      <div class="speaker-topic">${s.tema}</div>
+      <div class="speaker-name">${escTexto(s.nome)}</div>
+      <div class="speaker-role">${escTexto(s.tipo)}</div>
+      <div class="speaker-org">${escTexto(s.instituicao)}</div>
+      <div class="speaker-topic">${escTexto(s.tema)}</div>
       <div class="speaker-hint">↗ clique para ver o resumo</div>
     </div>`;
   }).join('');
@@ -176,13 +176,15 @@ function renderSpeakers() {
 function openModal(s) {
   if(typeof gtag!=='undefined') gtag('event','speaker_view',{speaker_name:s.nome,speaker_type:s.tipo});
   const modal=document.getElementById('speaker-modal');
-  const foto=s.foto?`<img src="${s.foto}" alt="${s.nome}" loading="lazy">`:'👤';
+  const foto=s.foto?`<img src="${escAtributo(s.foto)}" alt="${escAtributo(s.nome)}" loading="lazy">`:'👤';
   document.getElementById('modal-photo').innerHTML=foto;
   document.getElementById('modal-speaker-name').textContent=s.nome;
   document.getElementById('modal-role').textContent=s.tipo;
   document.getElementById('modal-org').textContent=s.instituicao;
   document.getElementById('modal-topic').textContent=s.tema;
-  document.getElementById('modal-abstract').innerHTML=s.resumo.split(/\n\s*\n/).map(p=>`<p>${p.trim().replace(/\n/g,' ')}</p>`).join('');
+  /* O resumo vem da planilha: parágrafo por linha em branco, quebra simples
+     vira <br>, com o texto escapado antes de qualquer marcação ser montada. */
+  document.getElementById('modal-abstract').innerHTML=s.resumo.split(/\n\s*\n/).map(p=>`<p>${escTexto(p.trim()).replace(/\n/g,'<br>')}</p>`).join('');
   modal.classList.add('open');
   document.body.style.overflow='hidden';
 }
