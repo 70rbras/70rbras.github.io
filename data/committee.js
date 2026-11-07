@@ -1,12 +1,9 @@
+// ATENÇÃO: arquivo gerado por scripts/build_cadastro.mjs a partir da planilha.
+// Alteração feita à mão aqui é desfeita na próxima geração: corrija na planilha.
 // ─── COMISSÕES ────────────────────────────────────────────────────────────────
 // Cada entrada representa uma comissão exibida como coluna no site. Os membros
-// são referências ao cadastro de data/pessoas.js: nome, instituição, foto e
-// Lattes vivem lá, não aqui.
-//
-// Campos por comissão:
-//   secao  → identificador interno, por exemplo "organizadora"
-//   titulo → título exibido no cabeçalho do card
-//   icone  → emoji exibido ao lado do título
+// são referências ao cadastro de data/pessoas.js: nome, instituição, foto além
+// do Lattes vivem lá, não aqui.
 //
 // Campos por membro:
 //   pessoa      → identificador em PESSOAS
@@ -29,8 +26,8 @@ const COMMITTEE = [
       { pessoa: "rafael-pimentel-maia" },
       { pessoa: "samara-flamini-kiihl" },
       { pessoa: "tatiana-benaglia" },
-      { pessoa: "victor-freguglia-souza" }
-    ]
+      { pessoa: "victor-freguglia-souza" },
+    ],
   },
   {
     secao: "cientifica",
@@ -45,8 +42,8 @@ const COMMITTEE = [
       { pessoa: "nancy-lopes-garcia" },
       { pessoa: "rafael-de-andrade-moral" },
       { pessoa: "vera-lucia-damasceno-tomazella" },
-      { pessoa: "victor-hugo-lachos" }
-    ]
+      { pessoa: "victor-hugo-lachos" },
+    ],
   },
   {
     secao: "tese-doutorado",
@@ -55,8 +52,8 @@ const COMMITTEE = [
     membros: [
       { pessoa: "lucia-pereira-barroso" },
       { pessoa: "mario-de-castro-andrade-filho" },
-      { pessoa: "paulo-justiniano-ribeiro-junior" }
-    ]
+      { pessoa: "paulo-justiniano-ribeiro-junior" },
+    ],
   },
   {
     secao: "dissertacao-mestrado",
@@ -65,8 +62,8 @@ const COMMITTEE = [
     membros: [
       { pessoa: "erlandson-ferreira-saraiva" },
       { pessoa: "fernanda-de-bastiani" },
-      { pessoa: "guilherme-pumi" }
-    ]
+      { pessoa: "guilherme-pumi" },
+    ],
   },
   {
     secao: "trabalho-ic",
@@ -75,8 +72,8 @@ const COMMITTEE = [
     membros: [
       { pessoa: "carlos-tadeu-pagani-zanini" },
       { pessoa: "jodavid-de-araujo-ferreira" },
-      { pessoa: "lia-hanna-martins-morita" }
-    ]
+      { pessoa: "lia-hanna-martins-morita" },
+    ],
   },
   {
     secao: "poster-co-local",
@@ -101,7 +98,7 @@ const COMMITTEE = [
       { pessoa: "samara-flamini-kiihl" },
       { pessoa: "vanderly-janeiro" },
       { pessoa: "vera-lucia-damasceno-tomazella" },
-      { pessoa: "victor-freguglia-souza" }
-    ]
-  }
+      { pessoa: "victor-freguglia-souza" },
+    ],
+  },
 ];

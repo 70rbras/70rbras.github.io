@@ -1,7 +1,8 @@
 name: Atualizar programação
 
-# Lê as abas publicadas da planilha, valida e grava data/programacao.json.
-# Roda de hora em hora e também sob demanda, pelo botão "Run workflow".
+# Lê as abas publicadas da planilha, valida e grava os dados em data/.
+# São quatro arquivos: a programação, além do cadastro de pessoas, comissões e
+# convidados. Roda de hora em hora e também sob demanda, pelo botão "Run workflow".
 
 on:
   schedule:
@@ -10,6 +11,7 @@ on:
   push:
     paths:
       - 'scripts/build_programacao.py'
+      - 'scripts/build_cadastro.mjs'
       - 'scripts/fontes.json'
       - '.github/workflows/programacao.yml'
 
@@ -39,19 +41,23 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Gerar o cadastro a partir da planilha
+        run: node scripts/build_cadastro.mjs --fontes scripts/fontes.json
+
       - name: Verificar fontes únicas
         run: node scripts/checar_fontes.mjs
 
       - name: Publicar quando houver mudança
         run: |
-          if git diff --quiet -- data/programacao.json; then
-            echo "Programação sem alterações."
+          ARQUIVOS="data/programacao.json data/pessoas.js data/committee.js data/speakers.js"
+          if git diff --quiet -- $ARQUIVOS; then
+            echo "Planilha sem alterações."
             exit 0
           fi
           git config user.name  "programacao-bot"
           git config user.email "actions@github.com"
-          git add data/programacao.json
-          git commit -m "Programação atualizada a partir da planilha"
+          git add $ARQUIVOS
+          git commit -m "Dados atualizados a partir da planilha"
           for tentativa in 1 2 3; do
             if git push; then
               echo "Publicado na tentativa $tentativa."
