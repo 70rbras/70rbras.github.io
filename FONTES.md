@@ -18,9 +18,9 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Destino usado no cálculo de rota | `data/config.js`, campo `endereco_rota` | `logistica.html` |
 | Prazos, lotes de inscrição | `data/dates.js`, cada registro com `id` estável | home, `inscricoes.html`, `premios.html` |
 | Valores de inscrição | `data/inscricoes.js` | `inscricoes.html` |
-| Convidados além das palestras | `data/speakers.js`, só o conteúdo da palestra | `palestrantes.html`, home |
-| Pessoas: comissões, convidados | `data/pessoas.js`, cadastro único | `comissoes.html`, `palestrantes.html`, `premios.html` |
-| Comissões | `data/committee.js`, lista de identificadores | `comissoes.html`, `premios.html` |
+| Convidados além das palestras | Planilha, aba `convidados`; gera `data/speakers.js` | `palestrantes.html`, home |
+| Pessoas: ficha única de cada uma | Planilha, aba `pessoas_cadastro`; gera `data/pessoas.js` | `comissoes.html`, `palestrantes.html`, `premios.html`, `programacao.html` |
+| Comissões | Planilha, aba `comissoes`; gera `data/committee.js` | `comissoes.html`, `premios.html` |
 | Prêmios além de premiados | `data/premios.js` | `premios.html`, faixa da home |
 | Regras de submissão | `data/submissions.js` | `premios.html`, home |
 | WASA | `data/wasa.js`, taxas e formulário em `wasaInscricao` | `wasa.html`, bloco da home |
@@ -30,7 +30,9 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Metadados de prévia de link | `scripts/gerar_meta.mjs`, mapa `PAGINAS`; os fatos vêm de `data/` | bloco `meta:inicio` do `<head>` de cada página |
 | Manifesto do aplicativo instalável | `scripts/gerar_meta.mjs`, objeto `APLICATIVO`; nome, nome curto além da descrição vêm de `data/config.js` | `manifest.webmanifest`, mais as três linhas do bloco `meta:inicio` |
 
-Três trechos nunca se editam à mão. O primeiro é `data/programacao.json`, que o fluxo automático regrava de hora em hora a partir da planilha. O segundo é qualquer página `.html`, que só muda por alteração de estrutura ou de estilo. O terceiro é o bloco entre `<!-- meta:inicio -->` e `<!-- meta:fim -->` do `<head>`, que `scripts/gerar_meta.mjs` descarta e reescreve a cada execução.
+Alguns trechos nunca se editam à mão. Os quatro primeiros são gerados pelo fluxo horário a partir da planilha: `data/programacao.json`, `data/pessoas.js`, `data/committee.js` além de `data/speakers.js`, os três últimos escritos por `scripts/build_cadastro.mjs`, que abre cada um com o aviso correspondente. Também não se editam as páginas `.html`, que só mudam por alteração de estrutura ou de estilo, nem o bloco entre `<!-- meta:inicio -->` e `<!-- meta:fim -->` do `<head>`, que `scripts/gerar_meta.mjs` descarta e reescreve a cada execução.
+
+A ficha responde quem a pessoa é; o papel dela pertence ao vínculo. Uma linha da aba `comissoes` diz que fulano integra certa comissão, uma linha da aba `convidados` diz que ele dá certa palestra, enquanto a coluna `pessoas_ids` da aba `atividades` diz que ele ministra certo minicurso. É o que permite a mesma pessoa aparecer nos três lugares sem o nome ser repetido em nenhum.
 
 Alguns arquivos da tabela ainda estão sendo criados pelo plano de correção. Enquanto a tarefa correspondente não terminar, a informação continua no lugar antigo, registrada como pendência em `scripts/fontes-unicas.json`. A seção 5 mostra como ler esse arquivo.
 
@@ -77,6 +79,8 @@ Quando a causa estiver no repositório, existem dois caminhos. O primeiro é cor
 Existe um terceiro caso, que tem solução de um comando. Quando a mensagem citar a regra R9, o bloco de metadados de alguma página ficou diferente do que o gerador produziria, em geral porque um dado de `data/` mudou sem que o gerador tenha sido executado depois. A correção é rodar `node scripts/gerar_meta.mjs`, conferir o que mudou, depois comitar junto o arquivo de dados além da página regerada.
 
 Essa regra alcança também o fluxo horário da programação, que roda o verificador antes de publicar o JSON. Um bloco de metadados fora de dia passa então a recusar a atualização da programação, mesmo sem relação com a planilha. O contorno é o mesmo comando acima, enviado ao repositório, seguido do botão Run workflow para publicar na hora.
+
+A regra R10 guarda o cadastro único de pessoas. Ela recusa a publicação quando uma comissão ou um convidado aponta para identificador sem ficha em `data/pessoas.js`, além de quando a programação publica alguém com nome diferente do que a ficha registra. A correção é sempre na planilha: ou o identificador está errado na aba `comissoes` ou `convidados`, ou a ficha correspondente não existe na aba `pessoas_cadastro`.
 
 ---
 

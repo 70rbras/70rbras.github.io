@@ -45,10 +45,10 @@ site-rbras-claude/
 ├── data/
 │   ├── config.js         # Configurações gerais do evento
 │   ├── dates.js          # Datas e prazos; Home mostra só os abertos/futuros (faixa #proximas-datas)
-│   ├── pessoas.js        # Cadastro único de pessoas (id, nome, instituição, foto, Lattes)
-│   ├── speakers.js       # Palestras dos convidados; a pessoa vem de pessoas.js
+│   ├── pessoas.js        # Cadastro único de pessoas; GERADO da planilha, não editar
+│   ├── speakers.js       # Palestras dos convidados; GERADO da planilha, não editar
 │   ├── programacao.json  # Programação dos 3 dias (gerada da planilha; NÃO editar à mão)
-│   ├── committee.js      # Comissões, como listas de identificadores de pessoas.js
+│   ├── committee.js      # Comissões por identificador; GERADO da planilha, não editar
 │   ├── sponsors.js       # Patrocinadores/apoiadores (grade única, sem tiers)
 │   ├── premios.js        # Prêmios e premiados (premios.html + faixa #premios-home na Home)
 │   ├── inscricoes.js     # Categorias e valores de inscrição, por lote (inscricoes.html)
@@ -158,26 +158,15 @@ Prazos já encerrados (submissões, concurso, aceites, Fundo) seguem no arquivo,
 
 ---
 
-## 7. Palestrantes (data/speakers.js)
+## 7. Convidados (planilha → data/speakers.js)
 
-| Nome | Instituição | Tipo | Foto |
-|------|-------------|------|------|
-| Vinicius Calsavara | Cedars-Sinai Medical Center, EUA | Conferencista | ✅ |
-| Thiago Rodrigo Ramos | UFSCar, Brasil | Palestrante | ✅ |
-| Asuman Turkmen | The Ohio State University, EUA | Conferencista | ✅ |
-| Amanda Merian Freitas Mendes | UFPR, Brasil | Palestrante | ✅ |
-| Carlos Eduardo Ferreira | Fiocruz, Brasil | Conferencista | ❌ (placeholder) |
-| Guilherme Lopes de Oliveira | CEFET-MG, Brasil | Conferencista | ✅ |
+Os convidados vêm da aba `convidados` da planilha, que guarda o identificador da pessoa, o tipo, o tema além do resumo da palestra. O `scripts/build_cadastro.mjs` gera `data/speakers.js` a partir dela, enquanto nome, instituição, foto além do Lattes vêm da ficha em `data/pessoas.js`, gerada da aba `pessoas_cadastro`. Nenhum dos dois se edita à mão: a próxima geração desfaz a alteração.
 
-**Tópicos das palestras:**
-- Calsavara: Modelo defective-Yang-Prentice para sobreviventes de longo prazo
-- Ramos: Quantificação da incerteza sensível à deriva (método espectral-Newton)
-- Turkmen: Análise multi-trait e desafios estatísticos além de modelos univariados
-- Mendes: Regressão quantílica em dados eletrocardiográficos
-- Ferreira: Vigilância epidemiológica baseada em dados — lições da pandemia e perspectivas para o SUS
-- Oliveira: Modelo espaço-temporal zero-inflado para doenças infecciosas subnotificadas
+A lista de quem é convidado não é repetida aqui de propósito, pois ela muda na planilha. Para saber quem está publicado, abra `palestrantes.html` ou leia `data/speakers.js`.
 
-**Padrão das fotos:** 400×400 px, JPG, fundo neutro, processadas com `padroniza_fotos.py`
+O resumo é texto comum, sem marcação: parágrafos são separados por linha em branco, enquanto a quebra simples vira `<br>` na hora de exibir. A página escapa o conteúdo antes de montar o HTML, pois a origem é a planilha, editada pela comissão.
+
+**Padrão das fotos:** 400×400 px, JPG, fundo neutro, processadas com `padroniza_fotos.py`. O caminho de cada foto fica na coluna `foto` da aba `pessoas_cadastro`.
 
 ---
 
@@ -198,31 +187,21 @@ A programação vem de uma planilha do Google, não de um arquivo editado à mã
 
 ---
 
-## 9. Comissão Organizadora (data/committee.js)
+## 9. Comissões (planilha → data/committee.js)
 
-Todos os membros são da **UNICAMP**.
+As seis comissões vêm da aba `comissoes` da planilha, com uma linha por vínculo: `comissao_id`, `comissao_titulo`, `secao`, `icone`, `ordem`, `pessoa_id` além de `coordenacao`. O `scripts/build_cadastro.mjs` gera `data/committee.js` a partir dela, portanto o arquivo não se edita à mão. A Comissão Organizadora é a primeira delas, sendo a única inteiramente da UNICAMP.
 
-- **Coordenadora:** Mariana Rodrigues Motta
-- Alex Rodrigo dos Santos Sousa
-- **Benilton Carvalho** (dono deste repositório)
-- Carlos Cesar Trucios Maza
-- Larissa Ávila Matos
-- Nancy Lopes Garcia
-- Rafael Pimentel Maia
-- Samara Flamini Kiihl
-- Tatiana Benaglia
-- Victor Freguglia Souza
+O papel pertence ao vínculo, nunca à ficha. A mesma pessoa integra mais de uma comissão, podendo ainda ser convidada ou ministrar minicurso, de modo que a ficha responde quem ela é enquanto cada vínculo responde o que ela faz ali. A coordenação segue a mesma lógica: quem coordena uma comissão pode ser membro simples de outra.
 
-Todos têm links para Currículo Lattes e fotos integradas. Desde out/2026 a ficha de cada pessoa mora em `data/pessoas.js`: `data/committee.js` guarda apenas a lista de identificadores por comissão.
+A lista de membros não é repetida aqui, pois ela muda na planilha. Para saber quem integra cada comissão, abra `comissoes.html` ou leia `data/committee.js`.
 
 ---
 
-## 10. Comissão Científica (data/committee.js)
+## 10. Comissão Científica
 
-- **Coordenadora:** Daiane Aparecida Zuanetti (UFSCar)
-- Membros de: UFES, UFPR, The Ohio State University, ESALQ/USP, UNICAMP, Maynooth University, UFSCar/UFPB, University of Connecticut
+Ela é a segunda comissão da aba `comissoes`, portanto vale tudo o que a seção 9 descreve. Ao contrário da Organizadora, reúne pessoas de várias instituições, brasileiras além de estrangeiras.
 
-As grafias oficiais além das instituições oficiais das pessoas com registro divergente estão em `scripts/pessoas-oficiais.md`, decididas pela comissão em out/2026.
+As grafias oficiais além das instituições oficiais das pessoas com registro divergente estão em `scripts/pessoas-oficiais.md`, decididas pela comissão em out/2026. Desde 07/11/2026 a decisão é aplicada direto na aba `pessoas_cadastro`, que é a fonte do cadastro.
 
 ---
 
@@ -285,6 +264,9 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 - ✅ Apresentador em linha própria no cartão da programação, com rótulo derivado do tipo da atividade: Ministrante, Conferencista, Coordenação ou Participação (06/11/2026)
 - ✅ Coluna `resumo` da planilha publicada no JSON, exibida num diálogo aberto pelo botão "Ver resumo" do cartão (06/11/2026)
 - ✅ `programacao.html#CO-5` abre a atividade em qualquer dia, selecionando o dia, rolando até o cartão e abrindo o diálogo quando houver resumo (06/11/2026; defeito registrado em `TESTES.md`, seção 1.9)
+- ✅ **Cadastro de pessoas unificado na planilha (07/11/2026): as abas `pessoas_cadastro`, `comissoes` e `convidados` geram `data/pessoas.js`, `data/committee.js` e `data/speakers.js` por `scripts/build_cadastro.mjs`, dentro do fluxo horário**
+- ✅ Regra R10 no verificador: membro de comissão e convidado precisam ter ficha; a programação precisa publicar o mesmo nome que a ficha (07/11/2026)
+- ✅ Texto vindo da planilha é escapado antes de virar HTML nas páginas que exibem pessoas (07/11/2026)
 ---
 
 ## 13. Como fazer alterações comuns
