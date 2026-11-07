@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-07T13:54:11-0300",
- "gerado_em_texto": "07/11/2026 às 13:54",
- "versao_dados": 202611071354,
+ "gerado_em": "2026-11-07T16:21:54-0300",
+ "gerado_em_texto": "07/11/2026 às 16:21",
+ "versao_dados": 202611071621,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -53,7 +53,7 @@
    },
    "pessoas": [
     {
-     "id": "erick",
+     "id": "erick-jun-miyagi",
      "nome": "Erick Jun Miyagi",
      "instituicao": "IMECC/UNICAMP"
     }
@@ -82,7 +82,7 @@
    },
    "pessoas": [
     {
-     "id": "paulo-henrique-guimaraes",
+     "id": "paulo-henrique-sales-guimaraes",
      "nome": "Paulo Henrique Sales Guimarães",
      "instituicao": "UFLA"
     }
@@ -111,7 +111,7 @@
    },
    "pessoas": [
     {
-     "id": "benilton",
+     "id": "benilton-carvalho",
      "nome": "Benilton de Sá Carvalho",
      "instituicao": "IMECC/UNICAMP"
     }
@@ -209,7 +209,7 @@
    },
    "pessoas": [
     {
-     "id": "cendoya",
+     "id": "maria-gabriela-cendoya",
      "nome": "María Gabriela Cendoya",
      "instituicao": "IBS & Universidad Nacional de Mar del Plata"
     }
@@ -261,8 +261,8 @@
    },
    "pessoas": [
     {
-     "id": "julia-soler",
-     "nome": "Júlia Pavan Soler",
+     "id": "julia-pavan-soler",
+     "nome": "Julia Pavan Soler",
      "instituicao": "IME/USP"
     }
    ],
@@ -290,7 +290,7 @@
    },
    "pessoas": [
     {
-     "id": "luis-gustavo",
+     "id": "luis-gustavo-barioni",
      "nome": "Luís Gustavo Barioni",
      "instituicao": "EMBRAPA Digital"
     }
@@ -319,7 +319,7 @@
    },
    "pessoas": [
     {
-     "id": "camila",
+     "id": "camila-bertini",
      "nome": "Camila Bertini",
      "instituicao": "UNIFESP/CONRE-3"
     }
@@ -440,7 +440,7 @@
    },
    "pessoas": [
     {
-     "id": "erick",
+     "id": "erick-jun-miyagi",
      "nome": "Erick Jun Miyagi",
      "instituicao": "IMECC/UNICAMP"
     }
@@ -469,7 +469,7 @@
    },
    "pessoas": [
     {
-     "id": "paulo-henrique-guimaraes",
+     "id": "paulo-henrique-sales-guimaraes",
      "nome": "Paulo Henrique Sales Guimarães",
      "instituicao": "UFLA"
     }
@@ -498,7 +498,7 @@
    },
    "pessoas": [
     {
-     "id": "benilton",
+     "id": "benilton-carvalho",
      "nome": "Benilton de Sá Carvalho",
      "instituicao": "IMECC/UNICAMP"
     }
@@ -550,7 +550,7 @@
    },
    "pessoas": [
     {
-     "id": "turkmen",
+     "id": "asuman-turkmen",
      "nome": "Asuman Turkmen",
      "instituicao": "The Ohio State University"
     }
@@ -579,7 +579,7 @@
    },
    "pessoas": [
     {
-     "id": "lopes-oliveira",
+     "id": "guilherme-lopes-de-oliveira",
      "nome": "Guilherme Lopes de Oliveira",
      "instituicao": "CEFET - MG"
     }
@@ -754,10 +754,10 @@
    "id": "REUNIAO-RBRAS",
    "data": "2026-11-24",
    "inicio": "17:30",
-   "fim": "18:30",
+   "fim": "19:00",
    "tipo": "Institucional",
    "tipo_slug": "institucional",
-   "titulo": "Reunião da RBras",
+   "titulo": "Assembleia Geral Ordinária da RBras e Prêmio Destaque RBras",
    "subtitulo": "",
    "local": {
     "id": "IMECC-AUD",
@@ -815,7 +815,7 @@
    },
    "pessoas": [
     {
-     "id": "amanda",
+     "id": "amanda-merian-freitas-mendes",
      "nome": "Amanda Merian Freitas Mendes",
      "instituicao": "UFPR"
     }
@@ -844,7 +844,7 @@
    },
    "pessoas": [
     {
-     "id": "thiago",
+     "id": "thiago-rodrigo-ramos",
      "nome": "Thiago Rodrigo Ramos",
      "instituicao": "UFSCar"
     }
@@ -1011,7 +1011,7 @@
    },
    "pessoas": [
     {
-     "id": "paulo-henrique-silva",
+     "id": "paulo-henrique-ferreira-da-silva",
      "nome": "Paulo Henrique Ferreira da Silva",
      "instituicao": "UFBA"
     }
@@ -1040,7 +1040,7 @@
    },
    "pessoas": [
     {
-     "id": "waldomiro",
+     "id": "waldomiro-barioni-junior",
      "nome": "Waldomiro Barioni Junior",
      "instituicao": "EMBRAPA Pecuária Sudeste"
     }
@@ -1069,7 +1069,7 @@
    },
    "pessoas": [
     {
-     "id": "marcos",
+     "id": "marcos-jardel-henriques",
      "nome": "Marcos Jardel Henriques",
      "instituicao": "UFSCar - ICMC/USP"
     }
@@ -1144,7 +1144,7 @@
    },
    "pessoas": [
     {
-     "id": "fiaccone",
+     "id": "rosemeire-l-fiaccone",
      "nome": "Rosemeire L. Fiaccone",
      "instituicao": "Universidade Federal da Bahia (UFBA)"
     }
@@ -1196,7 +1196,7 @@
    },
    "pessoas": [
     {
-     "id": "calsavara",
+     "id": "vinicius-calsavara",
      "nome": "Vinicius Calsavara",
      "instituicao": "Cedars-Sinai Medical Center"
     }
