@@ -148,7 +148,8 @@ const REGRAS = {
   R6: 'pessoa registrada mais de uma vez nos arquivos de dados',
   R7: 'símbolo declarado em data/ sem nenhum consumidor',
   R8: 'ligação repetida que deveria viver em assets/nav.js',
-  R9: 'bloco de metadados diferente do que o gerador produziria; regere com node scripts/gerar_meta.mjs'
+  R9: 'bloco de metadados diferente do que o gerador produziria; regere com node scripts/gerar_meta.mjs',
+  R10: 'pessoa citada fora do cadastro único de data/pessoas.js'
 };
 
 /* ------------------------------------------------- bloco de metadados */
@@ -458,6 +459,46 @@ for (const r of relatorioMeta) {
       ? 'página declarada no mapa do gerador que não existe no repositório'
       : 'bloco fora de dia; rode node scripts/gerar_meta.mjs e comite o resultado'
   });
+}
+
+/* R10 guarda o cadastro único. Quem é citado como membro de comissão ou como
+   convidado precisa ter ficha em PESSOAS, enquanto a pessoa que a programação
+   publica precisa dizer o mesmo nome que a ficha diz.
+
+   A comparação de nome só acontece quando o identificador existe nos dois
+   lados. É de propósito: enquanto a coluna pessoas_ids da planilha ainda usar
+   os identificadores curtos, eles não estão no cadastro, de modo que acusar
+   ausência ali recusaria a publicação horária da programação. */
+const fichas = dados.valores.PESSOAS || {};
+
+function conferirCitacao(id, arquivo, onde) {
+  if (!id || fichas[id]) return;
+  achados.push({
+    arquivo, regra: 'R10', linha: 0,
+    trecho: `${onde} aponta para "${id}", que não tem ficha em data/pessoas.js`
+  });
+}
+
+for (const c of dados.valores.COMMITTEE || []) {
+  for (const m of c?.membros || []) {
+    conferirCitacao(m?.pessoa, 'data/committee.js', `comissão "${c?.titulo || ''}"`);
+  }
+}
+
+for (const s of dados.valores.SPEAKERS || []) {
+  conferirCitacao(s?.pessoa, 'data/speakers.js', `convidado "${s?.tipo || ''}"`);
+}
+
+for (const a of dados.programacao?.atividades || []) {
+  for (const p of a?.pessoas || []) {
+    const ficha = fichas[p?.id];
+    if (ficha && ficha.nome !== p.nome) {
+      achados.push({
+        arquivo: 'data/programacao.json', regra: 'R10', linha: 0,
+        trecho: `atividade ${a.id} publica "${p.nome}", enquanto o cadastro diz "${ficha.nome}"`
+      });
+    }
+  }
 }
 
 const excecoes = carregarExcecoes();
