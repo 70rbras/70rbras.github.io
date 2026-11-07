@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-06T22:48:51-0300",
- "gerado_em_texto": "06/11/2026 às 22:48",
- "versao_dados": 202611062248,
+ "gerado_em": "2026-11-06T22:54:25-0300",
+ "gerado_em_texto": "06/11/2026 às 22:54",
+ "versao_dados": 202611062254,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -55,8 +55,7 @@
     {
      "id": "erick",
      "nome": "Erick Jun Miyagi",
-     "instituicao": "IMECC/UNICAMP",
-     "papel": "Ministrante"
+     "instituicao": "IMECC/UNICAMP"
     }
    ],
    "grupo": "Minicursos",
@@ -85,8 +84,7 @@
     {
      "id": "paulo-henrique-guimaraes",
      "nome": "Paulo Henrique Sales Guimarães",
-     "instituicao": "UFLA",
-     "papel": "Ministrante"
+     "instituicao": "UFLA"
     }
    ],
    "grupo": "Minicursos",
@@ -115,8 +113,7 @@
     {
      "id": "benilton",
      "nome": "Benilton de Sá Carvalho",
-     "instituicao": "IMECC/UNICAMP",
-     "papel": "Ministrante"
+     "instituicao": "IMECC/UNICAMP"
     }
    ],
    "grupo": "Minicursos",
@@ -214,8 +211,7 @@
     {
      "id": "cendoya",
      "nome": "María Gabriela Cendoya",
-     "instituicao": "IBS & Universidad Nacional de Mar del Plata",
-     "papel": "Conferencista IBS"
+     "instituicao": "IBS & Universidad Nacional de Mar del Plata"
     }
    ],
    "grupo": "Conferências",
@@ -267,8 +263,7 @@
     {
      "id": "julia-soler",
      "nome": "Júlia Pavan Soler",
-     "instituicao": "IME/USP",
-     "papel": "Coordenadora"
+     "instituicao": "IME/USP"
     }
    ],
    "grupo": "Sessões Temáticas",
@@ -297,8 +292,7 @@
     {
      "id": "luis-gustavo",
      "nome": "Luís Gustavo Barioni",
-     "instituicao": "EMBRAPA Digital",
-     "papel": "Coordenador"
+     "instituicao": "EMBRAPA Digital"
     }
    ],
    "grupo": "Sessões Temáticas",
@@ -327,8 +321,7 @@
     {
      "id": "camila",
      "nome": "Camila Bertini",
-     "instituicao": "UNIFESP/CONRE-3",
-     "papel": "Coordenadora"
+     "instituicao": "UNIFESP/CONRE-3"
     }
    ],
    "grupo": "Sessões Temáticas",
@@ -449,8 +442,7 @@
     {
      "id": "erick",
      "nome": "Erick Jun Miyagi",
-     "instituicao": "IMECC/UNICAMP",
-     "papel": "Ministrante"
+     "instituicao": "IMECC/UNICAMP"
     }
    ],
    "grupo": "Minicursos",
@@ -479,8 +471,7 @@
     {
      "id": "paulo-henrique-guimaraes",
      "nome": "Paulo Henrique Sales Guimarães",
-     "instituicao": "UFLA",
-     "papel": "Ministrante"
+     "instituicao": "UFLA"
     }
    ],
    "grupo": "Minicursos",
@@ -509,8 +500,7 @@
     {
      "id": "benilton",
      "nome": "Benilton de Sá Carvalho",
-     "instituicao": "IMECC/UNICAMP",
-     "papel": "Ministrante"
+     "instituicao": "IMECC/UNICAMP"
     }
    ],
    "grupo": "Minicursos",
@@ -562,8 +552,7 @@
     {
      "id": "turkmen",
      "nome": "Asuman Turkmen",
-     "instituicao": "The Ohio State University",
-     "papel": "Conferencista"
+     "instituicao": "The Ohio State University"
     }
    ],
    "grupo": "Conferências",
@@ -592,8 +581,7 @@
     {
      "id": "lopes-oliveira",
      "nome": "Guilherme Lopes de Oliveira",
-     "instituicao": "CEFET - MG",
-     "papel": "Conferencista"
+     "instituicao": "CEFET - MG"
     }
    ],
    "grupo": "Conferências",
@@ -829,8 +817,7 @@
     {
      "id": "amanda",
      "nome": "Amanda Merian Freitas Mendes",
-     "instituicao": "UFPR",
-     "papel": "Jovem Pesquisadora"
+     "instituicao": "UFPR"
     }
    ],
    "grupo": "Mini-Conferências",
@@ -859,8 +846,7 @@
     {
      "id": "thiago",
      "nome": "Thiago Rodrigo Ramos",
-     "instituicao": "UFSCar",
-     "papel": "Jovem Pesquisador"
+     "instituicao": "UFSCar"
     }
    ],
    "grupo": "Mini-Conferências",
@@ -1027,8 +1013,7 @@
     {
      "id": "paulo-henrique-silva",
      "nome": "Paulo Henrique Ferreira da Silva",
-     "instituicao": "UFBA",
-     "papel": "Coordenador"
+     "instituicao": "UFBA"
     }
    ],
    "grupo": "Sessões Temáticas",
@@ -1057,8 +1042,7 @@
     {
      "id": "waldomiro",
      "nome": "Waldomiro Barioni Junior",
-     "instituicao": "EMBRAPA Pecuária Sudeste",
-     "papel": "Coordenador"
+     "instituicao": "EMBRAPA Pecuária Sudeste"
     }
    ],
    "grupo": "Sessões Temáticas",
@@ -1087,8 +1071,7 @@
     {
      "id": "marcos",
      "nome": "Marcos Jardel Henriques",
-     "instituicao": "UFSCar - ICMC/USP",
-     "papel": "Coordenador"
+     "instituicao": "UFSCar - ICMC/USP"
     }
    ],
    "grupo": "Sessões Temáticas",
@@ -1163,8 +1146,7 @@
     {
      "id": "fiaccone",
      "nome": "Rosemeire L. Fiaccone",
-     "instituicao": "Universidade Federal da Bahia (UFBA)",
-     "papel": "Conferencista"
+     "instituicao": "Universidade Federal da Bahia (UFBA)"
     }
    ],
    "grupo": "Conferências",
@@ -1216,8 +1198,7 @@
     {
      "id": "calsavara",
      "nome": "Vinicius Calsavara",
-     "instituicao": "Cedars-Sinai Medical Center",
-     "papel": "Conferencista"
+     "instituicao": "Cedars-Sinai Medical Center"
     }
    ],
    "grupo": "Conferências",
