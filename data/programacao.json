@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-09T05:04:35-0300",
- "gerado_em_texto": "09/11/2026 às 05:04",
- "versao_dados": 202611090504,
+ "gerado_em": "2026-11-09T15:06:14-0300",
+ "gerado_em_texto": "09/11/2026 às 15:06",
+ "versao_dados": 202611091506,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -1238,7 +1238,9 @@
    "painel": "",
    "autor": "Caroline de Oliveira Costa",
    "titulo": "Medidas de Associação para Dados Ordinais: Uma Aplicação ao Desempenho no ENEM e à Escolaridade da Mãe",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "3",
@@ -1247,7 +1249,9 @@
    "painel": "",
    "autor": "Ivan Cunha Vieira",
    "titulo": "Impacto dos Mecanismos de Dados Faltantes nas Estimativas de Sobrevivência com Censura à Direita",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "4",
@@ -1256,7 +1260,9 @@
    "painel": "",
    "autor": "Lara Rodrigues de Almeida",
    "titulo": "Análise de Componentes Principais Clássica e Esparsa na Avaliação do Padrão de Ativação Muscular Pré e Pós Fadiga em Jovens e Idosos",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "6",
@@ -1265,7 +1271,9 @@
    "painel": "",
    "autor": "José Roberto Silva dos Santos",
    "titulo": "Bayesian Multivariate Probit Regression for Longitudinal Binary Data via Structured Latent Dependence Models",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "15",
@@ -1274,7 +1282,9 @@
    "painel": "",
    "autor": "Davi Sousa e Silva",
    "titulo": "Dynamic Normal Mixture Modeling with Daubechies Wavelets for Wind-Velocity Regime Identification",
-   "area": "Modelos de mistura"
+   "area": "Modelos de mistura",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "16",
@@ -1283,7 +1293,9 @@
    "painel": "",
    "autor": "Nixon Jerez",
    "titulo": "A new semi-parametric power-law regression model with long-term survival, change-point detection and regularization",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "17",
@@ -1292,7 +1304,9 @@
    "painel": "",
    "autor": "Clarice Demetrio",
    "titulo": "* Discrete Survival Models for Biological Pest Control.",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "19",
@@ -1301,7 +1315,9 @@
    "painel": "",
    "autor": "Breno Gabriel da Silva",
    "titulo": "Modeling Pinus taper using mixed-effects models",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "21",
@@ -1310,7 +1326,9 @@
    "painel": "",
    "autor": "Livia Ribeiro Melgaço",
    "titulo": "Análise de Séries Temporais de Contagem em Qualidade do Ar: Um Estudo Comparativo entre o Modelo GLARMA Clássico e uma abordagem Bayesiana",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "22",
@@ -1319,7 +1337,9 @@
    "painel": "",
    "autor": "Fidel Ernesto Castro Morales",
    "titulo": "Modelagem espaço-temporal de chuvas extremas baseada em processos de contagem: uma abordagem com processos de Poisson e Hawkes",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "23",
@@ -1328,7 +1348,9 @@
    "painel": "",
    "autor": "Carolina Hara",
    "titulo": "Modelos de regressão logito e probito com efeitos aleatórios para dados categóricos ordinais",
-   "area": ""
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "24",
@@ -1337,7 +1359,9 @@
    "painel": "",
    "autor": "Isabela Bolari Ramos",
    "titulo": "Selection of conilon coffee tree genotypes for transition-altitude cultivation under climate change",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "25",
@@ -1346,7 +1370,9 @@
    "painel": "",
    "autor": "Larissa Carvalho Vilas Boas",
    "titulo": "Avanços em modelos AMMI bayesianos aplicados a dados multiambientais",
-   "area": ""
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "26",
@@ -1355,7 +1381,9 @@
    "painel": "",
    "autor": "Ana Carolina Santos Barbizan",
    "titulo": "O Desafio do Letramento Estatístico na Análise de Experimentos de Pesquisa",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "27",
@@ -1364,7 +1392,9 @@
    "painel": "",
    "autor": "Murilo de Paula Ferreira da Silva",
    "titulo": "Selection of Coffea canephora genotypes for polyculture systems using mixed models",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "30",
@@ -1373,7 +1403,9 @@
    "painel": "",
    "autor": "Tales Piffer Coltre",
    "titulo": "Uso do RStudio como ambiente de programação: um olhar a partir dos discentes da Engenharia Agronômica em 2025/1",
-   "area": ""
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "31",
@@ -1382,7 +1414,9 @@
    "painel": "",
    "autor": "Hellen Geremias Gatica Santos",
    "titulo": "Seleção de marcadores genéticos com controle da taxa de falsas descobertas: aplicação do filtro knockoff com diferentes geradores de variáveis de controle",
-   "area": "Análise de Big Data"
+   "area": "Análise de Big Data",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "35",
@@ -1391,7 +1425,9 @@
    "painel": "",
    "autor": "João Felipe de Brites Senra",
    "titulo": "Nonlinear Modeling of Arabica Coffee Growth under High-Density Planting",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "37",
@@ -1400,7 +1436,9 @@
    "painel": "",
    "autor": "Felipe Ramos",
    "titulo": "Introdução à Teoria de Percolação: Aspectos Analíticos e Computacionais",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "39",
@@ -1409,7 +1447,9 @@
    "painel": "",
    "autor": "Vinícius Morgado Rosa Vianna",
    "titulo": "Ferramentas intervalares para comparação de métodos preditivos",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "40",
@@ -1418,7 +1458,9 @@
    "painel": "",
    "autor": "Daniel Augusto de Melo Pedro",
    "titulo": "DETECÇÃO DE DOENÇAS EM CANA-DE-AÇÚCAR UTILIZANDO ANÁLISE DE IMAGEM E APRENDIZADO DE MÁQUINA",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "41",
@@ -1427,7 +1469,9 @@
    "painel": "",
    "autor": "Giullber Valentim da Silva",
    "titulo": "Função de Perda de Taguchi vs Polinomial: Análise Bootstrap da Superestimação no Controle de Qualidade dos Grãos de Café",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "42",
@@ -1436,7 +1480,9 @@
    "painel": "",
    "autor": "Carla Valéria dos Santos Pacheco",
    "titulo": "Modelagem bayesiana da mortalidade associada a fungos entomopatogênicos considerando funções binomiais flexíveis",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "43",
@@ -1445,7 +1491,9 @@
    "painel": "",
    "autor": "Gustavo Pereira",
    "titulo": "Comparação de funções de ligação em modelos de regressão para respostas binárias com dados desbalanceados",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "44",
@@ -1454,7 +1502,9 @@
    "painel": "",
    "autor": "Marco Antonio de Oliveira",
    "titulo": "Clustering of post-vaccination immune responses to the Butantan Institute's quadrivalent influenza vaccine and associated baseline factors",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "45",
@@ -1463,7 +1513,9 @@
    "painel": "",
    "autor": "Juliana Marchesi Reina",
    "titulo": "Wavelet shrinkage based on the raised cosine prior",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "46",
@@ -1472,7 +1524,9 @@
    "painel": "",
    "autor": "Emanuel Victor da Silva Favorato",
    "titulo": "Modelos Bayesianos Espaço-temporais Hierárquicos em Econometria e Finanças",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "47",
@@ -1481,7 +1535,9 @@
    "painel": "",
    "autor": "Breno Gabriel da Silva",
    "titulo": "Temporal trends in temperature-related mortality across Brazil, 1996–2023: a nationwide time-series analysis",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "48",
@@ -1490,7 +1546,9 @@
    "painel": "",
    "autor": "Vinicius Fernandes da Silva",
    "titulo": "MAPEAMENTO DE TELAS ANTIGRANIZO EM POMARES DE MAÇÃ EM VACARIA - RS",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "50",
@@ -1499,7 +1557,9 @@
    "painel": "",
    "autor": "Julie Camolesi",
    "titulo": "Bayesian Calibration of a Dynamic Model with Sequential Rewetting Disturbance Incubation Data",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "51",
@@ -1508,7 +1568,9 @@
    "painel": "",
    "autor": "Wellington de Lara Martins",
    "titulo": "AVALIAÇÃO DO DESEMPENHO PREDITIVO DO BART EM PROBLEMAS DE CLASSIFICAÇÃO BINÁRIA",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "52",
@@ -1517,7 +1579,9 @@
    "painel": "",
    "autor": "Wellington de Lara Martins",
    "titulo": "COMPARAÇÃO DE MODELOS DE APRENDIZADO DE MÁQUINA PARA PREDIÇÃO PERMANÊNCIA DE ESTUDANTES DE CURSOS DE GRADUAÇÃO PRESENCIAL DA UFMT",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "53",
@@ -1526,7 +1590,9 @@
    "painel": "",
    "autor": "Israel Victor Rodrigues Menezes",
    "titulo": "Comparação entre estimadores da variância populacional sob diferentes distribuições de probabilidade",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "54",
@@ -1535,7 +1601,9 @@
    "painel": "",
    "autor": "Luben Miguel Cruz Cabezas",
    "titulo": "Conformal Calibration of Statistical Confidence Sets",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "55",
@@ -1544,7 +1612,9 @@
    "painel": "",
    "autor": "Rafael Cabral Fernandez",
    "titulo": "Bayesian Physics-Informed Gaussian Process Surrogates for Source Identification and Forward Prediction",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "57",
@@ -1553,7 +1623,9 @@
    "painel": "",
    "autor": "Marcos Alves de Lima",
    "titulo": "Coocorrência de reações adversas solicitadas pós-vacinação com a Butantan-DV em participantes adultos",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "58",
@@ -1562,7 +1634,9 @@
    "painel": "",
    "autor": "Fernando Humberto de Almeida Moraes Neto",
    "titulo": "A Evolução dos Métodos de Análise de Imagens: Dos Algoritmos Clássicos ao Aprendizado Profundo",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "59",
@@ -1571,7 +1645,9 @@
    "painel": "",
    "autor": "Éric Rocha",
    "titulo": "Semi-parametric additive mixed models based on unit-gamma      quantile distribution",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "60",
@@ -1580,7 +1656,9 @@
    "painel": "",
    "autor": "ALESSANDRO DAL COL LÚCIO",
    "titulo": "PRODUÇÃO DE MORANGUEIROS DESCRITA POR REGRESSÃO QUANTÍLICA COM MODELO LOGÍSTICO NÃO LINEAR",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "61",
@@ -1589,7 +1667,9 @@
    "painel": "",
    "autor": "Fernando Humberto de Almeida Moraes Neto",
    "titulo": "MODELAGEM DO TEMPO ATÉ O DESLIGAMENTO DE FUNCIONÁRIOS EM EMPRESAS NÃO PUBLICAS DO ESTADO DO MATO GROSSO",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "62",
@@ -1598,7 +1678,9 @@
    "painel": "",
    "autor": "Moises Andre Augusto",
    "titulo": "Quantile regression via MM algorithm",
-   "area": "Regressão Quantílica"
+   "area": "Regressão Quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "64",
@@ -1607,7 +1689,9 @@
    "painel": "",
    "autor": "Paulo Henrique Ferreira",
    "titulo": "Modelagem Probabilística e Otimização de Indicadores de Força para a Copa do Mundo da FIFA de 2026",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "65",
@@ -1616,7 +1700,9 @@
    "painel": "",
    "autor": "Abrantes João Afonso Mussafo",
    "titulo": "Avaliação das diferentes técnicas Espaço-temporais para análise de ocorrência da Malária na Província de Tete, Moçambique, de 2016 a 2022.",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "66",
@@ -1625,7 +1711,9 @@
    "painel": "",
    "autor": "Renan Mercuri Pinto",
    "titulo": "Diferenças ajustadas de desempenho entre redes de ensino: ponderação por escore de propensão e diagnósticos de comparabilidade no Enem",
-   "area": "Análise de Big Data"
+   "area": "Análise de Big Data",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "67",
@@ -1634,7 +1722,9 @@
    "painel": "",
    "autor": "Danilo Alvares",
    "titulo": "Bayesian survival analysis with prior knowledge elicitation",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "68",
@@ -1643,7 +1733,9 @@
    "painel": "",
    "autor": "JULIA CARRIEL TRIVELLATO",
    "titulo": "TIME TO REACH TARGET WEIGHT IN NELLORE CATTLE",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "69",
@@ -1652,7 +1744,9 @@
    "painel": "",
    "autor": "Rudimar Henrique de Andrade Maciel",
    "titulo": "Visualização de dados no esporte adaptado de uma equipe de basquetebol em cadeira de rodas",
-   "area": "Ensino, Extensão e Difusão da Estatística"
+   "area": "Ensino, Extensão e Difusão da Estatística",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "70",
@@ -1661,7 +1755,9 @@
    "painel": "",
    "autor": "Vladison de Sousa Magalhães",
    "titulo": "Modelos de regressão power logit longitudinais",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "71",
@@ -1670,7 +1766,9 @@
    "painel": "",
    "autor": "Josiane Rodrigues",
    "titulo": "Análise de cluster aplicada na caracterização agronômica de pimentas do gênero Capsicum para fins ornamentais",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "72",
@@ -1679,7 +1777,9 @@
    "painel": "",
    "autor": "Alberto Cargnelutti Filho",
    "titulo": "Tamanho ótimo de parcela para avaliar as produtividades de matéria fresca e matéria seca de alfafa com base no modelo linear de resposta com platô",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "73",
@@ -1688,7 +1788,9 @@
    "painel": "",
    "autor": "Apolinário Valentim João Mucocora",
    "titulo": "Produção de café no Brasil: perspectiva da inteligência artificial",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "74",
@@ -1697,7 +1799,9 @@
    "painel": "",
    "autor": "Alissa Frigotto",
    "titulo": "Correlação e regressão linear entre caracteres produtivos em cinco cultivares de algodão",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "75",
@@ -1706,7 +1810,9 @@
    "painel": "",
    "autor": "Alessandra Cristina Silva Farias",
    "titulo": "Closed captions para a estatística? Da análise à comunicação científica",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "76",
@@ -1715,7 +1821,9 @@
    "painel": "",
    "autor": "Daniela Lixinski Silveira",
    "titulo": "Relações lineares entre caracteres morfológicos e produtivos de milho",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "77",
@@ -1724,7 +1832,9 @@
    "painel": "",
    "autor": "Gabriel Peixoto",
    "titulo": "Avaliação de Desempenho de Novos Testes para Comparações Múltiplas de Coeficientes de Correlação Independentes via Simulação de Monte Carlo",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "78",
@@ -1733,7 +1843,9 @@
    "painel": "",
    "autor": "Francisco Felipe de Queiroz",
    "titulo": "Flexible modeling of nonnegative continuous data: Box-Cox symmetric regression and its zero-adjusted extension",
-   "area": "Modelos de mistura"
+   "area": "Modelos de mistura",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "81",
@@ -1742,7 +1854,9 @@
    "painel": "",
    "autor": "João Otávio Do lago",
    "titulo": "Vencer é Possível, Lucrar é Improvável: Uma Análise Estatística dos Jogos de Azar",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "82",
@@ -1751,7 +1865,9 @@
    "painel": "",
    "autor": "Leonardo Cesar Pradebon",
    "titulo": "Tamanho ótimo de parcela para avaliar a massa de pluma de cultivares de algodão com comparação entre dois métodos",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "83",
@@ -1760,7 +1876,9 @@
    "painel": "",
    "autor": "Lais Cherobini",
    "titulo": "Relações lineares entre caracteres de cultivares de algodão",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "84",
@@ -1769,7 +1887,9 @@
    "painel": "",
    "autor": "Eduardo Janotti Cavalcante",
    "titulo": "A Tail-Preserving Burr XII Survival Model for Long-Term Risk Prediction in Heart Failure Patients",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "85",
@@ -1778,7 +1898,9 @@
    "painel": "",
    "autor": "Verônica Manhães Saint'Clair",
    "titulo": "Comparação entre métodos de análise de sobrevivência clássica e riscos competitivos",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "88",
@@ -1787,7 +1909,9 @@
    "painel": "",
    "autor": "f244960@dac.unicamp.br",
    "titulo": "Bayesian wavelet shrinkage for low SNR data based on the Epanechnikov kernel",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "89",
@@ -1796,7 +1920,9 @@
    "painel": "",
    "autor": "Sabrina Caetano",
    "titulo": "Functionality Analysis: a Terminological-Conceptual Framework for Survival Analysis in Agricultural Sciences",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "90",
@@ -1805,7 +1931,9 @@
    "painel": "",
    "autor": "Paulo Henrique Brasil Ribeiro",
    "titulo": "Modelo GARMA Binomial Negativo para o número de manchas solares nos últimos séculos",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "91",
@@ -1814,7 +1942,9 @@
    "painel": "",
    "autor": "Danilo Araujo da Silva",
    "titulo": "Modelagem Híbrida de Séries Temporais de Contagem: Integração de Modelos GLARMA e aprendizado de máquina para o monitoramento da qualidade do ar.",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "92",
@@ -1823,7 +1953,9 @@
    "painel": "",
    "autor": "Gabriel Graciano Dias",
    "titulo": "DESENVOLVIMENTO DE APLICATIVO PARA MONITORAMENTO DAS DOENÇAS TROPICAIS NEGLIGENCIADAS NO BRASIL",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "94",
@@ -1832,7 +1964,9 @@
    "painel": "",
    "autor": "Luiz Fernando Silva Resende",
    "titulo": "A parametric framework for assessing and estimating sufficient follow-up time in cure models",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "95",
@@ -1841,7 +1975,9 @@
    "painel": "",
    "autor": "Renata Dourado Roque",
    "titulo": "Aplicação de métodos de aprendizado de máquina para identificação de regiões genômicas associadas a características agronômicas em arroz (Oryza sativa)",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "96",
@@ -1850,7 +1986,9 @@
    "painel": "",
    "autor": "Matheus da Costa Lima",
    "titulo": "Comparação entre modelos de crescimento alométrico com erro aditivo e multiplicativo em cortes comerciais de cordeiros Santa Inês",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "98",
@@ -1859,7 +1997,9 @@
    "painel": "",
    "autor": "Jéssica Carolina Zilio",
    "titulo": "Análise multivariada e estrutura de correlação na caracterização foliar de Duguetia furfuracea e Licania humilis sob diferentes condições ambientais",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "99",
@@ -1868,7 +2008,9 @@
    "painel": "",
    "autor": "Jodavid de Araújo Ferreira",
    "titulo": "Modelagem de Risco de Crédito com Machine Learning: Uma aplicação com dados desbalanceados",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "100",
@@ -1877,7 +2019,9 @@
    "painel": "",
    "autor": "Martha Liliana Huertas Madrid",
    "titulo": "Classificação multicanal de imagens de Radar de Abertura Sintética (SAR) utilizando métodos de  aprendizado supervisionado",
-   "area": "Dados de imagem e sinal"
+   "area": "Dados de imagem e sinal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "101",
@@ -1886,7 +2030,9 @@
    "painel": "",
    "autor": "Ana Clara Marczinski",
    "titulo": "Tamanho ótimo de parcela para avaliar a massa de caroço de cultivares de algodão com comparação entre dois métodos",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "102",
@@ -1895,7 +2041,9 @@
    "painel": "",
    "autor": "Guilherme Gomes dos Santos",
    "titulo": "Comparação de Modelos de Equações Estruturais com Dependência Espacial Aplicados a Dados de Violência",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "103",
@@ -1904,7 +2052,9 @@
    "painel": "",
    "autor": "Moisés Farias da Silva",
    "titulo": "Inferência causal em dados funcionais via transformadas de ondaletas: do pré-processamento à estimação em tempo real",
-   "area": "Inferência causal"
+   "area": "Inferência causal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "104",
@@ -1913,7 +2063,9 @@
    "painel": "",
    "autor": "Vitor Barelli",
    "titulo": "Clima, El Niño e Dengue: uma covariável mecanística de capacidade vetorial num modelo de painel",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "105",
@@ -1922,7 +2074,9 @@
    "painel": "",
    "autor": "Gabriel Victor da Silva de Araujo",
    "titulo": "Testes de hipóteses robustos em modelos de regressão beta",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "106",
@@ -1931,7 +2085,9 @@
    "painel": "",
    "autor": "Pedro Henrique de Araujo",
    "titulo": "Estudo de Séries Temporais Financeiras por meio de Análise Técnica e Cadeias de Markov",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "107",
@@ -1940,7 +2096,9 @@
    "painel": "",
    "autor": "Maria Beatriz Piccelli Paterno",
    "titulo": "Análise estatística da cintilografia de perfusão miocárdica no estado de São Paulo entre 2021 e 2024",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "108",
@@ -1949,7 +2107,9 @@
    "painel": "",
    "autor": "Alfredo José Barreto Luiz",
    "titulo": "Gráficos no auxílio à interpretação da relação entre dados de produtividade da soja e agrometeorológicos",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "109",
@@ -1958,7 +2118,9 @@
    "painel": "",
    "autor": "Caio Vinicius Costa dos Anjos",
    "titulo": "Comparação de estratégias baseadas em Redes Generativas Adversariais para criação de dados sintéticos",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "110",
@@ -1967,7 +2129,9 @@
    "painel": "",
    "autor": "Alexsandro Andre de Freitas",
    "titulo": "Match Insights: uma aplicação interativa para análise probabilística de partidas de futebol",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "111",
@@ -1976,7 +2140,9 @@
    "painel": "",
    "autor": "VERA TOMAZELLA",
    "titulo": "The Beta-pG family of distributions for cure rate regression models",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "112",
@@ -1985,7 +2151,9 @@
    "painel": "",
    "autor": "Gilberto Rodrigues Liska",
    "titulo": "A IMPORTÂNCIA DA PROGRAMAÇÃO NAS CIÊNCIAS AGRÁRIAS: UMA ANÁLISE TEMPORAL DO DESEMPENHO ACADÊMICO",
-   "area": "Ensino, Extensão e Difusão da Estatística"
+   "area": "Ensino, Extensão e Difusão da Estatística",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "113",
@@ -1994,7 +2162,9 @@
    "painel": "",
    "autor": "Nayara Maria Barbosa de Sousa",
    "titulo": "Aplicação do algoritmo Conditional Inference Random Forest via framework autoSurv do R para dados de sobrevivência",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "114",
@@ -2003,7 +2173,9 @@
    "painel": "",
    "autor": "Paulo César Ossani",
    "titulo": "Avaliação Estatística de Dados Sintéticos: Preservação de Estruturas de Dependência e Estatísticas de Ordem Superior",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "115",
@@ -2012,7 +2184,9 @@
    "painel": "",
    "autor": "Cormac Monaghan",
    "titulo": "Assessing goodness-of-fit in transition-based generalised linear models",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "116",
@@ -2021,7 +2195,9 @@
    "painel": "",
    "autor": "Elói Beijamim da Silva",
    "titulo": "Aplicação do Método Variacional Bayesiano para Detecção de Comunidades em Redes Aleatórias",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "117",
@@ -2030,7 +2206,9 @@
    "painel": "",
    "autor": "Isabela Lika Morioka",
    "titulo": "Aplicação de Métodos de Quantificação de Incerteza em Dados de Saúde",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "118",
@@ -2039,7 +2217,9 @@
    "painel": "",
    "autor": "Rafael Bráz Azevedo Farias",
    "titulo": "FATORES ASSOCIADOS À PROFICIÊNCIA EM LÍNGUA PORTUGUESA E MATEMÁTICA NO ENSINO MÉDIO BRASILEIRO: UMA ANÁLISE MULTINÍVEL COM SELEÇÃO DE VARIÁVEIS VIA LASSO ADAPTATIVO A PARTIR DOS MICRODADOS DO SAEB 2023",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "119",
@@ -2048,7 +2228,9 @@
    "painel": "",
    "autor": "Melissa Wendy Ribeiro Vicente",
    "titulo": "Caracterização de gêneros musicais brasileiros via Análise de Componentes Principais",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "120",
@@ -2057,7 +2239,9 @@
    "painel": "",
    "autor": "João Souza",
    "titulo": "Modelagem Logística Binomial na Identificação de Fatores de Risco para o Diabetes Mellitus na Capital Mineira",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "121",
@@ -2066,7 +2250,9 @@
    "painel": "",
    "autor": "Guilherme da Ros Ortega",
    "titulo": "Predição de Doença Cardíaca a partir de Indicadores Comportamentais: uma Comparação de Modelos de Aprendizado Supervisionado",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "122",
@@ -2075,7 +2261,9 @@
    "painel": "",
    "autor": "Bruna Marques de Queiroz",
    "titulo": "Abordagens de aprendizado de máquina para a estimativa da evapotranspiração de referência em regiões brasileiras produtoras de grãos com disponibilidade limitada de dados climáticos",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "124",
@@ -2084,7 +2272,9 @@
    "painel": "",
    "autor": "Carina Brunehilde Pinto da Silva",
    "titulo": "Bayesian Empirical Likelihood for Longitudinal Analysis (BELLA) via Hamiltonian Monte Carlo algorithm.",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "125",
@@ -2093,7 +2283,9 @@
    "painel": "",
    "autor": "João Pedro Tedesco Medrado Rocha",
    "titulo": "Rumo a Menos Falsos Negativos: Um Framework de Aprendizado de Máquina para Triagem em Larga Escala",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "126",
@@ -2102,7 +2294,9 @@
    "painel": "",
    "autor": "Miguel Flores",
    "titulo": "Taxa de acúmulo de massas verde e seca em plantas de níger em datas de semeadura",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "127",
@@ -2111,7 +2305,9 @@
    "painel": "",
    "autor": "Emily Teruya",
    "titulo": "Modelos de Regressão Power Logit Inflacionados em Zero e Um",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "128",
@@ -2120,7 +2316,9 @@
    "painel": "",
    "autor": "Maycon Junio Ivo Vieira",
    "titulo": "Classificação precoce da murcha-de-Ceratocystis em eucalipto por espectroscopia foliar no infravermelho próximo (NIR)",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "129",
@@ -2129,7 +2327,9 @@
    "painel": "",
    "autor": "Gustavo Jun Yakushiji",
    "titulo": "Análise de Componentes Principais para Séries Temporais: Uma Aplicação da Teoria Assintótica à Inflação de Preços de Alimentos no Brasil",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "130",
@@ -2138,7 +2338,9 @@
    "painel": "",
    "autor": "Caio Gomes Alves",
    "titulo": "Estimação e Diagnóstico de Modelos ETAS Espaço-Temporais via EM com Gradientes Analíticos: Aplicação a Catálogos Sísmicos do Perú e Irã",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "131",
@@ -2147,7 +2349,9 @@
    "painel": "",
    "autor": "Gabriela A. Lavezzo",
    "titulo": "Modelagem de concentrações de nitrato em águas subterrâneas na presença de múltiplos limites de quantificação",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "132",
@@ -2156,7 +2360,9 @@
    "painel": "",
    "autor": "Brian Alvarez Ribeiro de Melo",
    "titulo": "Avaliação da evolução de pacientes hospitalizados por COVID-19 no Paraná",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "134",
@@ -2165,7 +2371,9 @@
    "painel": "",
    "autor": "Beatriz Lima Silveira",
    "titulo": "Quanto custa em sobrevida o atraso no início do tratamento? Uma abordagem de inferência causal com dados de pacientes oncológicos",
-   "area": "Inferência causal"
+   "area": "Inferência causal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "135",
@@ -2174,7 +2382,9 @@
    "painel": "",
    "autor": "Lívia Cruz Veneri",
    "titulo": "AJUSTE DE MODELOS NÃO LINEARES AOS DADOS DA PEREIRA ASIÁTICA DA CULTIVAR SHINSSEIKI",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "136",
@@ -2183,7 +2393,9 @@
    "painel": "",
    "autor": "Momate Emate Ossifo",
    "titulo": "A discriminant analysis method for long-memory, heteroscedastic time series based on the cepstral M-quantile coefficients",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "137",
@@ -2192,7 +2404,9 @@
    "painel": "",
    "autor": "Nathália Lobo da Silva",
    "titulo": "Estudo sobre Modelos Aditivos Generalizados Robustos para Localização, Escala e Forma",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "138",
@@ -2201,7 +2415,9 @@
    "painel": "",
    "autor": "Eduardo Batista",
    "titulo": "Regressão com Classes Latentes: Implementação e Comparação das Abordagens Bayesiana e Frequentista",
-   "area": "Inferência causal"
+   "area": "Inferência causal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "141",
@@ -2210,7 +2426,9 @@
    "painel": "",
    "autor": "Helen Eduarda dos Santos Lourenço",
    "titulo": "GeoIA: Evolução e Tendências na Integração entre Inteligência Artificial e Dados Geoespaciais",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "142",
@@ -2219,7 +2437,9 @@
    "painel": "",
    "autor": "Carlos Souto Dos Santos Filho",
    "titulo": "Estimating the cure fraction via defective joint models: a comparison study",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "143",
@@ -2228,7 +2448,9 @@
    "painel": "",
    "autor": "Lucas dos Santos Rodrigues Szavara",
    "titulo": "Aprendizado de estrutura e parâmetros em redes bayesianas não-paramétricas",
-   "area": "Inferência causal"
+   "area": "Inferência causal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "144",
@@ -2237,7 +2459,9 @@
    "painel": "",
    "autor": "Osvaldo Moises Assinde",
    "titulo": "Regressão quantílica bayesiana Owen logaritmizada para dados longitudinais",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "145",
@@ -2246,7 +2470,9 @@
    "painel": "",
    "autor": "Osvaldo Moises Assinde",
    "titulo": "Inferência Bayesiana Hierárquica Espaço-Temporal via Regressão Beta aplicada ao ISDEL : uma análise do desenvolvimento econômico estadual do Brasil",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "146",
@@ -2255,7 +2481,9 @@
    "painel": "",
    "autor": "Larissa Reis Sousa Santos",
    "titulo": "Dados Federados: Abordagem Estatística com Aplicação no Cadastro Único",
-   "area": "Análise de Big Data"
+   "area": "Análise de Big Data",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "147",
@@ -2264,7 +2492,9 @@
    "painel": "",
    "autor": "Sandra Coelho da Silva",
    "titulo": "O impacto do El Niño-Oscilação do Sul (ENOS) nos padrões climáticos do Brasil (2000–2025): Uma Abordagem por Modelos Lineares Mistos",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "148",
@@ -2273,7 +2503,9 @@
    "painel": "",
    "autor": "Bruna Reghelin",
    "titulo": "Identificação de caracteres que determinam a massa de grãos da soja para seleção  indireta",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "149",
@@ -2282,7 +2514,9 @@
    "painel": "",
    "autor": "Pamela Silveira",
    "titulo": "Modelagem Híbrida SIRS-GARMA para Séries Epidemiológicas via Inferência Bayesiana",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "150",
@@ -2291,7 +2525,9 @@
    "painel": "",
    "autor": "Elpídio Ana Alberto",
    "titulo": "Modelos aditivos generalizados na caracterização da dinâmica temporal de respostas bioquímicas à ferrugem do cafeeiro",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "151",
@@ -2300,7 +2536,9 @@
    "painel": "",
    "autor": "Vitória Larrosa Bueno",
    "titulo": "Divergência genética entre variedades de polinização aberta de milho para caracteres fenológicos e produtividade de grãos",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "152",
@@ -2309,7 +2547,9 @@
    "painel": "",
    "autor": "Yana Miranda Borges",
    "titulo": "Análise de sobrevivência com modelos de mistura para a perda da capacidade germinativa de sementes de milho sob estresse térmico",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "153",
@@ -2318,7 +2558,9 @@
    "painel": "",
    "autor": "Artur Silva Monteiro",
    "titulo": "Acidentes em rodovias federais brasileiras no contexto da pandemia de COVID-19: uma análise exploratória dos dados da PRF",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "155",
@@ -2327,7 +2569,9 @@
    "painel": "",
    "autor": "Moises Lima",
    "titulo": "Modelo Poisson-Exponencial aplicado na avaliaªo de qualidade de cafØ em diferentes regiıes produtoras de Minas Gerais",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "159",
@@ -2336,7 +2580,9 @@
    "painel": "",
    "autor": "Elias Sabe",
    "titulo": "Comparação de critérios de informação em seleção de modelo em splines de regressão adaptativa multivariada",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "162",
@@ -2345,7 +2591,9 @@
    "painel": "",
    "autor": "CARLOS FELIX",
    "titulo": "Uma Nova Abordagem para Aplicação de Logica Fuzzy em Intervalos de Confiança Aleatorizados",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "163",
@@ -2354,7 +2602,9 @@
    "painel": "",
    "autor": "vasco lacerda augusto",
    "titulo": "Avaliação da qualidade de cafés provenientes de diferentes regiões produtoras de Minas Gerais utilizando modelos de regressão espacial",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "164",
@@ -2363,7 +2613,9 @@
    "painel": "",
    "autor": "ADRYELLE DA SILVA",
    "titulo": "ANÁLISE DOS FOCOS DE QUEIMADAS NO ESTADO DO PIAUÍ POR MODELOS NÃO LINEARES",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "165",
@@ -2372,7 +2624,9 @@
    "painel": "",
    "autor": "Natan Hilário",
    "titulo": "Deep Survival AFT: Redes Neurais em Modelos com Fração de Cura Aplicados ao TCGA-BRCA",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "166",
@@ -2381,7 +2635,9 @@
    "painel": "",
    "autor": "Haward Antunny da Silva Américo",
    "titulo": "Modelos lineares generalizados aplicados à identificação de fatores associados à adesão ao tratamento com enalapril",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "167",
@@ -2390,7 +2646,9 @@
    "painel": "",
    "autor": "Lucas Coelho da Silva",
    "titulo": "Predição da produtividade de cana-de-açúcar com Random Forest a partir de imagens aéreas multiespectrais",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "169",
@@ -2399,7 +2657,9 @@
    "painel": "",
    "autor": "Carlo Luders",
    "titulo": "Regressão logística penalizada de Firth e modelagem bayesiana hierárquica na avaliação de indicadores fuzzy da primeira infância",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "170",
@@ -2408,7 +2668,9 @@
    "painel": "",
    "autor": "Tiago Pereira Marques",
    "titulo": "Modelagem estatística para avaliação de um protocolo de crioablação vertebral: novas perspectivas",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "171",
@@ -2417,7 +2679,9 @@
    "painel": "",
    "autor": "Maria José Pereira Barbosa Filha",
    "titulo": "Violência sexual contra adolescentes na Região Norte: análise e visualização das notificações, 2009-2024",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "172",
@@ -2426,7 +2690,9 @@
    "painel": "",
    "autor": "Dina Rubi Ramos Eugenio",
    "titulo": "Modeling Student Trajectories Using Discrete-Time Multi-State Models with Correlated Transitions: A Unicamp Case Study",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "173",
@@ -2435,7 +2701,9 @@
    "painel": "",
    "autor": "Ricardo Antonio Ruiz Cardozo",
    "titulo": "MIBLUP: Ponderação da Matriz Genômica por Informação Mútua no Melhoramento de Plantas",
-   "area": "Genética, Microarranjos e dados ômicos"
+   "area": "Genética, Microarranjos e dados ômicos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "174",
@@ -2444,7 +2712,9 @@
    "painel": "",
    "autor": "Daniel Theiss Provatti",
    "titulo": "Desafios no Ensino de Programação em Ciências Agrárias: Uma Análise Estatística Descritiva Temporal do Desempenho de Estudantes em uma Universidade",
-   "area": "Ensino, Extensão e Difusão da Estatística"
+   "area": "Ensino, Extensão e Difusão da Estatística",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "175",
@@ -2453,7 +2723,9 @@
    "painel": "",
    "autor": "Davi Vitório Vicentin Vitti",
    "titulo": "Obtenção do delineamento em blocos casualizados em galpões avícolas: uma abordagem de análise de agrupamento para controle da variabilidade espacial",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "176",
@@ -2462,7 +2734,9 @@
    "painel": "",
    "autor": "Reinaldo Anacleto",
    "titulo": "Modelagem de tópicos e evolução temporal: uma análise das músicas de maior audiência no Brasil",
-   "area": "Modelos de mistura"
+   "area": "Modelos de mistura",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "177",
@@ -2471,7 +2745,9 @@
    "painel": "",
    "autor": "Reinaldo Anacleto",
    "titulo": "Modelos de fração de cura e distribuição Weibull discreta em análise de sobrevivência",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "181",
@@ -2480,7 +2756,9 @@
    "painel": "",
    "autor": "Miguel Junior",
    "titulo": "Modelagem Gravitacional para Estudo de Deslocamento Habitacional",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "182",
@@ -2489,7 +2767,9 @@
    "painel": "",
    "autor": "Alexandra Condori Chocce",
    "titulo": "Modelo de tempo de promoção Birnbaum-Saunders generalizado com fração de cura",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "183",
@@ -2498,7 +2778,9 @@
    "painel": "",
    "autor": "FREDERICO MACHADO ALMEIDA",
    "titulo": "A modified score function for monotone likelihood in promotion time cure rate model",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "184",
@@ -2507,7 +2789,9 @@
    "painel": "",
    "autor": "Elisangela Aparecida da Silva Lizzi",
    "titulo": "SELEÇÃO DE BIOMARCADORES EM DADOS DE ALTA DIMENSIONALIDADE DE EXPRESSÃO GÊNICA PARA DOENÇA DE ALZHEIMER",
-   "area": "Bioinformática"
+   "area": "Bioinformática",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "186",
@@ -2516,7 +2800,9 @@
    "painel": "",
    "autor": "Ícaro da Costa Francisco",
    "titulo": "Geospatial Random Forest Aplicado à Modelagem de Temperaturas Globais: Desempenho e Análise Espacial",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "187",
@@ -2525,7 +2811,9 @@
    "painel": "",
    "autor": "CRISTIANO NUNES NESI",
    "titulo": "Condições meteorológicas pré-florescimento e risco de contaminação por deoxinivalenol: uma análise por regressão quantílica",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "188",
@@ -2534,7 +2822,9 @@
    "painel": "",
    "autor": "Pablo Vinicius Nascimento de Almeida",
    "titulo": "Ajuste de modelos não lineares aos dados de crescimento da Mimosa caesalpiniifolia Benth (sabiá)",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "189",
@@ -2543,7 +2833,9 @@
    "painel": "",
    "autor": "Pedro Augusto Lima do Nascimento",
    "titulo": "Relações e predição da produtividade de grãos da aveia branca por caracteres fitossanitários e agronômicos",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "191",
@@ -2552,7 +2844,9 @@
    "painel": "",
    "autor": "Isabel guizzi",
    "titulo": "Componentes de variância e parâmetros genéticos para produtividade de grãos em genótipos de aveia branca",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "192",
@@ -2561,7 +2855,9 @@
    "painel": "",
    "autor": "Arthur Souza",
    "titulo": "Uma abordagem robusta sob modelos de regressão BCCG",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "193",
@@ -2570,7 +2866,9 @@
    "painel": "",
    "autor": "Emanuel Victor da Silva Favorato",
    "titulo": "Olimpíada Brasileira de Estatística: análise de desempenho dos estudantes na primeira fase",
-   "area": "Ensino, Extensão e Difusão da Estatística"
+   "area": "Ensino, Extensão e Difusão da Estatística",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "194",
@@ -2579,7 +2877,9 @@
    "painel": "",
    "autor": "ralcarde@usp.br",
    "titulo": "Setting early-stage plant breeding designs",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "197",
@@ -2588,7 +2888,9 @@
    "painel": "",
    "autor": "THIAGO ROBERTO ALVES",
    "titulo": "Estimação e estabilidade de limiares de precipitação via distribuição Tweedie",
-   "area": "Métodos intensivos em computador e desenvolvimento de software"
+   "area": "Métodos intensivos em computador e desenvolvimento de software",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "198",
@@ -2597,7 +2899,9 @@
    "painel": "",
    "autor": "Eliseu Castanheiro Alberto",
    "titulo": "PARÂMETROS DO MODELO LOGÍSTICOS E GOMPERTZ EM SUPPORT VECTOR REGRESSION",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "199",
@@ -2606,7 +2910,9 @@
    "painel": "",
    "autor": "Murilo Vieira Loro",
    "titulo": "Redes neurais para avaliação da divergência genética entre variedades de polinização aberta de milho",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "200",
@@ -2615,7 +2921,9 @@
    "painel": "",
    "autor": "Carolyne Brito",
    "titulo": "Modelo de mistura log-logístico para dados de sobrevivência com fração de cura e riscos competitivos",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "201",
@@ -2624,7 +2932,9 @@
    "painel": "",
    "autor": "Alan Vitor Lima Silva",
    "titulo": "SVM com kernels estruturados: uma aplicação ao diagnóstico de mastite subclínica via ordenha robótica",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "202",
@@ -2633,7 +2943,9 @@
    "painel": "",
    "autor": "Larissa Buzinari de Farias",
    "titulo": "Olimpíada Brasileira de Estatística: Uma Experiência na Preparação de Alunos na Região de Presidente Prudente - SP",
-   "area": "Ensino, Extensão e Difusão da Estatística"
+   "area": "Ensino, Extensão e Difusão da Estatística",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "203",
@@ -2642,7 +2954,9 @@
    "painel": "",
    "autor": "Luiza Graça",
    "titulo": "Métodos multivariados em GWAS: uma comparação entre modelos",
-   "area": "Genética, Microarranjos e dados ômicos"
+   "area": "Genética, Microarranjos e dados ômicos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "204",
@@ -2651,7 +2965,9 @@
    "painel": "",
    "autor": "Nicoli Prosperi Pereira",
    "titulo": "Utilização de sinais de EEG na determinação de respondentes a placebo",
-   "area": ""
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "205",
@@ -2660,7 +2976,9 @@
    "painel": "",
    "autor": "Vitor Hugo Mourão",
    "titulo": "Effect of training-profile depth on EM-based latent-class allocation and 100-cm soil organic carbon prediction",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "206",
@@ -2669,7 +2987,9 @@
    "painel": "",
    "autor": "Matheus Custódio da Silva",
    "titulo": "Processos de interrupção e retomadas de exportações cafeeiras: uma aplicação da análise de sobrevivência com eventos recorrentes",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "207",
@@ -2678,7 +2998,9 @@
    "painel": "",
    "autor": "Juliana Nascimento de Paula",
    "titulo": "Redução de biomarcadores laboratoriais e desempenho de algoritmos de aprendizado estatístico na diferenciação entre bacteremias Gram-positivas e Gram-negativas",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "208",
@@ -2687,7 +3009,9 @@
    "painel": "",
    "autor": "Gilberto Rodrigues Liska",
    "titulo": "Proposta de um intervalo de confiança para as correlações dos teores de antocianina, compostos fenólicos totais de alfaces e parâmetros colorimétricos em componentes principais",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "209",
@@ -2696,7 +3020,9 @@
    "painel": "",
    "autor": "Keyliane Travassos Almeida da Silva",
    "titulo": "A robust multilevel framework for modeling longitudinal bilateral manual dexterity in multiple sclerosis",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "210",
@@ -2705,7 +3031,9 @@
    "painel": "",
    "autor": "Guilherme Chaveiro Soares",
    "titulo": "Calibração de Intervalos Conformes baseada em Transporte Ótimo e Distribuições de Referência",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "211",
@@ -2714,7 +3042,9 @@
    "painel": "",
    "autor": "Larissa Gonçalves Barbosa Vilela",
    "titulo": "Applications of Survival Analysis in the Genetics and Breeding of Beef Cattle: A Scoping Review",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "212",
@@ -2723,7 +3053,9 @@
    "painel": "",
    "autor": "João Felipe de Brites Senra",
    "titulo": "VARIABILIDADE FENOTÍPICA EM GENÓTIPOS DE CAFÉ CONILON PROVENIENTES DE LAVOURAS SEMINAIS",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "213",
@@ -2732,7 +3064,9 @@
    "painel": "",
    "autor": "Gleidisom Thyery Souza da Costa",
    "titulo": "Dinâmica Espaço-Temporal da Expansão Agropecuária: Uma Abordagem Multimétodo",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "215",
@@ -2741,7 +3075,9 @@
    "painel": "",
    "autor": "João Paulo Assis Bonifácio",
    "titulo": "Beyond the average lactation curve: distributional regression for daily milk yield in Holstein cows",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "216",
@@ -2750,7 +3086,9 @@
    "painel": "",
    "autor": "Sérgio Domingos Simão",
    "titulo": "MEMÓRIA LONGA E DESEMPENHO PREDITIVO DE MODELOS DE SÉRIES TEMPORAIS APLICADOS AO PREÇO DO CAFÉ ARÁBICA",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "217",
@@ -2759,7 +3097,9 @@
    "painel": "",
    "autor": "Matheus Tenório Baumgartner",
    "titulo": "A parametric Bayesian methodology for uncertainty estimation on circular quantiles",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "218",
@@ -2768,7 +3108,9 @@
    "painel": "",
    "autor": "LUCAS PEREIRA BARBOSA",
    "titulo": "Quais fatores contribuem para a integração do ZAR ao bloco BRIC? Uma Investigação via Coerência Wevelet Parcial",
-   "area": "Dados de imagem e sinal"
+   "area": "Dados de imagem e sinal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "219",
@@ -2777,7 +3119,9 @@
    "painel": "",
    "autor": "Tiago Pereira Marques",
    "titulo": "Consistência e aplicação de estimadores de máxima verossimilhança penalizada para o número de neurônios ocultos em redes neurais.",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "220",
@@ -2786,7 +3130,9 @@
    "painel": "",
    "autor": "Ciro Barbosa Gomes",
    "titulo": "Efeito de plano amostral em águas subterrâneas no semiárido paraibano: comparação de planos amostrais sem e com dependência espacial",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "221",
@@ -2795,7 +3141,9 @@
    "painel": "",
    "autor": "Luiz Alberto Beijo",
    "titulo": "MODELAGEM BAYESIANA DA TEMPERATURA MÍNIMA PARA O SEGURO DE CAFEZAIS NO SUL DE MINAS GERAIS",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "223",
@@ -2804,7 +3152,9 @@
    "painel": "",
    "autor": "Angélica Guareschi",
    "titulo": "Aprendizado de máquina para predição da produtividade de grãos por meio de  caracteres fenológicos em variedades de polinização aberta de milho",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "224",
@@ -2813,7 +3163,9 @@
    "painel": "",
    "autor": "Viviane Figueiredo",
    "titulo": "Aplicação da análise de componentes principais em dados de expressão gênica de alta dimensionalidade.",
-   "area": "Genética, Microarranjos e dados ômicos"
+   "area": "Genética, Microarranjos e dados ômicos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "226",
@@ -2822,7 +3174,9 @@
    "painel": "",
    "autor": "Márcio Luis Lanfredi Viola",
    "titulo": "Estudo do Perfil de Crianças com Desnutrição Infantil no Estado do Maranhão no ano de 2025",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "227",
@@ -2831,7 +3185,9 @@
    "painel": "",
    "autor": "Witória de Oliveira Araujo",
    "titulo": "Spatiotemporal Variability of XCO2 Anomalies in the State of São Paulo, Brazil",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "228",
@@ -2840,7 +3196,9 @@
    "painel": "",
    "autor": "Camille Menezes Pereira dos Santos",
    "titulo": "Modelos mistos multivariados Bayesianos aplicados à avaliação e seleção de genótipos de Brachiaria",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "230",
@@ -2849,7 +3207,9 @@
    "painel": "",
    "autor": "Paulo Lino",
    "titulo": "Classificação dos Trabalhadores da Pesca na Costa da Bahia pela Exposição ao Petróleo via Teoria de Resposta ao Item",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "233",
@@ -2858,7 +3218,9 @@
    "painel": "",
    "autor": "Thaís Ribeiro",
    "titulo": "Redes Bayesianas como Estratégia de Geração de Dados Sintéticos no Âmbito da Privacidade de Dados",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "234",
@@ -2867,7 +3229,9 @@
    "painel": "",
    "autor": "Maricielo Huayllapuma Lopez",
    "titulo": "Robust Wavelet Shrinkage Aplicado à Reconstrução de Sinais com Ruído e Outlier",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "235",
@@ -2876,7 +3240,9 @@
    "painel": "",
    "autor": "Eduardo Yoshio Nakano",
    "titulo": "A hybrid POS-AFT regression model for lifetime data",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "236",
@@ -2885,7 +3251,9 @@
    "painel": "",
    "autor": "Gustavo da Silveira Gomes",
    "titulo": "Estudo da influência genética e herdabilidade para fenótipos de pele em dados de família",
-   "area": "Bioinformática"
+   "area": "Bioinformática",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "237",
@@ -2894,7 +3262,9 @@
    "painel": "",
    "autor": "Bruna Marianne Viana dos Santos",
    "titulo": "Fluxo de informação entre criptomoedas tradicionais, verdes e índices de transição energética",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "239",
@@ -2903,7 +3273,9 @@
    "painel": "",
    "autor": "Shanda Andrea Huillca Torres",
    "titulo": "Modelagem de Misturas Binomiais Negativas para Clustering Probabilístico em Dados de scRNA-seq com Inferência via EM",
-   "area": "Modelos de mistura"
+   "area": "Modelos de mistura",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "240",
@@ -2912,7 +3284,9 @@
    "painel": "",
    "autor": "Poliana Silva",
    "titulo": "ANÁLISE DE SOBREVIVÊNCIA COM PENALIZAÇÃO DE FIRTH APLICADA AO COMPORTAMENTO DE FORRAGEAMENTO EM LEITÕES LACTENTES",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "241",
@@ -2921,7 +3295,9 @@
    "painel": "",
    "autor": "Isabela Eduarda Viana Silvério",
    "titulo": "Indústria 4.0: Uma perspectiva da integração entre Design of Experiments e Machine Learning como fator de otimização na produção de bioetanol",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "242",
@@ -2930,7 +3306,9 @@
    "painel": "",
    "autor": "thierry ribeiro",
    "titulo": "Computação Quântica Aplicada à Inteligência Artificial",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "243",
@@ -2939,7 +3317,9 @@
    "painel": "",
    "autor": "José Augusto Andrade Souza",
    "titulo": "Uso da Análise discriminante linear para avaliação e previsão da situação acadêmica de alunos em cursos de graduação na área de ciências exatas",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "245",
@@ -2948,7 +3328,9 @@
    "painel": "",
    "autor": "LUIS GONZAGA PINHEIRO FELIX",
    "titulo": "Comparação de Ajustes da Verossimilhança Perfilada na Inferência do Parâmetro de Forma da Distribuição Weibull Unitária.",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "246",
@@ -2957,7 +3339,9 @@
    "painel": "",
    "autor": "Matheus Ferreira dos Santos",
    "titulo": "DISTRIBUIÇÃO ESPAÇO TEMPORAL DAS ANOMALIAS CONGÊNITAS PRIORITÁRIAS PARA VIGILÂNCIA DE NASCIDOS VIVOS NO ESTADO DO PARANÁ, DE 2013 A 2022.",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "248",
@@ -2966,7 +3350,9 @@
    "painel": "",
    "autor": "Patricia Arruda de Moura",
    "titulo": "Significância não implica relevância: omissão de interação corte × região e integridade de contrastes varietais em cana-de-açúcar (Saccharum officinarum)",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "250",
@@ -2975,7 +3361,9 @@
    "painel": "",
    "autor": "Samantha Navarro Janine",
    "titulo": "Seleção de métodos para dados desbalanceados via simulação",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "252",
@@ -2984,7 +3372,9 @@
    "painel": "",
    "autor": "Jonas Firmiano da Silva",
    "titulo": "Modelagem de máximos de precipitação na Zona da Mata mineira utilizando a Distribuição Generalizada de Valores Extremos",
-   "area": ""
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "253",
@@ -2993,7 +3383,9 @@
    "painel": "",
    "autor": "rafael.js.oliveira@edu.ufes.br",
    "titulo": "Utilização de Métodos de Regressão para a Seleção de Causas de Óbito Associadas ao Feminicı́dio",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "254",
@@ -3002,7 +3394,9 @@
    "painel": "",
    "autor": "Maria Mailane Vieira da Silva",
    "titulo": "MODELO DE REGRESSÃO QUANTÍLICA BASEADO NA DISTRIBUIÇÃO OWEN GENERALIZADA EXPONENCIALIZADA",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "255",
@@ -3011,7 +3405,9 @@
    "painel": "",
    "autor": "João Silva",
    "titulo": "Functional data analysis of neuromuscular adaptation in gait before and after fatigue",
-   "area": "Dados de imagem e sinal"
+   "area": "Dados de imagem e sinal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "257",
@@ -3020,7 +3416,9 @@
    "painel": "",
    "autor": "Márcio Luis Lanfredi Viola",
    "titulo": "Estudo do Perfil das Escolas do Município de São Carlos",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "258",
@@ -3029,7 +3427,9 @@
    "painel": "",
    "autor": "Lucas Henrique Mendes Alves",
    "titulo": "Influência do tempo de acompanhamento na identificação de platôs de sobrevivência e da fração de cura em modelos de mistura Weibull",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "260",
@@ -3038,7 +3438,9 @@
    "painel": "",
    "autor": "William Tanigava",
    "titulo": "Impacto da Filtragem de Genes por Variabilidade na Estratificação Molecular de Pacientes via Manifold Learning e Agrupamento Não Supervisionado",
-   "area": "Bioinformática"
+   "area": "Bioinformática",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "261",
@@ -3047,7 +3449,9 @@
    "painel": "",
    "autor": "Sara Silvério",
    "titulo": "Avaliação do uso de funções spline em modelos de sobrevivência aplicados à germinação de sementes de pitaia.",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "262",
@@ -3056,7 +3460,9 @@
    "painel": "",
    "autor": "Márcio Roger Piagio",
    "titulo": "Modelo de Captura com Remoção para Estimação da Subnotificação de Casos em Sistemas de Vigilância Epidemiológica",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "264",
@@ -3065,7 +3471,9 @@
    "painel": "",
    "autor": "Milene Vieira Figueira",
    "titulo": "Sistema de baixo custo de aquisição de imagem 3D em gado de corte",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "265",
@@ -3074,7 +3482,9 @@
    "painel": "",
    "autor": "moyses nascimento",
    "titulo": "Stacking Ensemble Learning para predição genômica de produtividade em café Arábica",
-   "area": "Genética, Microarranjos e dados ômicos"
+   "area": "Genética, Microarranjos e dados ômicos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "266",
@@ -3083,7 +3493,9 @@
    "painel": "",
    "autor": "Ana Carolina Campana Nascimento",
    "titulo": "Predição genômica de múltiplos kernels integrada a caracteres aéreos para estimativa de atributos radiculares em soja",
-   "area": "Genética, Microarranjos e dados ômicos"
+   "area": "Genética, Microarranjos e dados ômicos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "267",
@@ -3092,7 +3504,9 @@
    "painel": "",
    "autor": "Julio Pereira",
    "titulo": "Determinantes de hospitalizações únicas e recorrentes por causas psiquiátricas em hospitais públicos portugueses, 2010–2018",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "268",
@@ -3101,7 +3515,9 @@
    "painel": "",
    "autor": "João Victor Bastos de Freitas",
    "titulo": "Additive partially linear M-quantile mixed models with principal component analysis for spatio-longitudinal data",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "269",
@@ -3110,7 +3526,9 @@
    "painel": "",
    "autor": "Vitória Silva Garcia",
    "titulo": "Modelos epidemiológicos de Nascimento e Morte dependentes da densidade para árvores filogenéticas",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "271",
@@ -3119,7 +3537,9 @@
    "painel": "",
    "autor": "Yasmin Beatriz Pereira Santana",
    "titulo": "IMPLEMENTAÇÃO DO MODELO AR(1) X AR(1) NA ANÁLISE DE EXPERIMENTOS DE CAMPO COM DEPENDÊNCIA ESPACIAL",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "272",
@@ -3128,7 +3548,9 @@
    "painel": "",
    "autor": "SYNTIA REGINA DE SOUZA",
    "titulo": "Entropia de Transferência Aplicada à Velocidade do Vento no Nordeste do Brasil",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "273",
@@ -3137,7 +3559,9 @@
    "painel": "",
    "autor": "SYNTIA REGINA DE SOUZA",
    "titulo": "Espaço de estados para demanda de transporte sob ausência não ignorável",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "274",
@@ -3146,7 +3570,9 @@
    "painel": "",
    "autor": "Henrique Farbelow",
    "titulo": "A Distribuição ET-Weibull em Modelos de Fração de Cura por Promoção: Inferência Clássica e Bayesiana",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "275",
@@ -3155,7 +3581,9 @@
    "painel": "",
    "autor": "Hellen Sonaly Silva Alves",
    "titulo": "Estudo dos pontos críticos da curva de crescimento dos frutos do cafeeiro cultivar Catuaí IAC 62",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "276",
@@ -3164,7 +3592,9 @@
    "painel": "",
    "autor": "Noe Osorio Macario",
    "titulo": "Análise de Sobrevivência e Aprendizado de Maquina em Dados Sociais: Uma comparação de modelos Preditivos",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "277",
@@ -3173,7 +3603,9 @@
    "painel": "",
    "autor": "Daví Barbosa Pereira de Sousa",
    "titulo": "Caracterização e fatores associados ao óbito por leishmaniose visceral em Minas Gerais, 2020-2025",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "278",
@@ -3182,7 +3614,9 @@
    "painel": "",
    "autor": "Jefferson Balbino",
    "titulo": "A Novel Cure Fraction Regression Model Incorporating Frailty and Two Systematic Components",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "279",
@@ -3191,7 +3625,9 @@
    "painel": "",
    "autor": "Daví Barbosa Pereira de Sousa",
    "titulo": "Modelos espaciais CAR para dados de contagem com excesso de zeros",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "280",
@@ -3200,7 +3636,9 @@
    "painel": "",
    "autor": "Gabriela Rodrigues",
    "titulo": "Modelo de duas partes baseado em Random Forest aplicado ao crescimento fúngico",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "281",
@@ -3209,7 +3647,9 @@
    "painel": "",
    "autor": "Luiz Peternelli",
    "titulo": "Pré-processamentos de dados espectrais na delimitação de blocos experimentais com base em características do solo",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "283",
@@ -3218,7 +3658,9 @@
    "painel": "",
    "autor": "Vitória Cristina Mendes da Silva",
    "titulo": "Comparação de modelos não lineares na descrição da  decomposição de sacarose em solo e areia",
-   "area": "Métodos intensivos em computador e desenvolvimento de software"
+   "area": "Métodos intensivos em computador e desenvolvimento de software",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "284",
@@ -3227,7 +3669,9 @@
    "painel": "",
    "autor": "João Felipe de Souza Silva",
    "titulo": "Identificação de Nadadores de Elite Usando Métodos Estatísticos e de Aprendizado de Máquina",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "285",
@@ -3236,7 +3680,9 @@
    "painel": "",
    "autor": "Fernando Andrade",
    "titulo": "Modelos Lineares Mistos Skew-Normal: uma abordagem Bayesiana para estimar o excesso de mortalidade",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "286",
@@ -3245,7 +3691,9 @@
    "painel": "",
    "autor": "Stephany Parteka",
    "titulo": "Evolução da função renal e proteinúria após transplante renal em pacientes sensibilizados: um estudo longitudinal",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "287",
@@ -3254,7 +3702,9 @@
    "painel": "",
    "autor": "Victoria Marchetti",
    "titulo": "Modelagem da variação temporal da temperatura e precipitação em estações climatológicas do estado de São Paulo",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "288",
@@ -3263,7 +3713,9 @@
    "painel": "",
    "autor": "Maria Júlia De Souza Pompei",
    "titulo": "Avaliação de Erro Escalonado em Redes LSTM Espaço-Temporais: Projeções de Dengue em Polos Altamente Urbanizados",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "289",
@@ -3272,7 +3724,9 @@
    "painel": "",
    "autor": "Rafael Simões Martins da Silva Oliveira",
    "titulo": "Evolução do quantitativo de famílias inscritas no Programa Bolsa Família em Cuiabá e Campo Verde",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "291",
@@ -3281,7 +3735,9 @@
    "painel": "",
    "autor": "Brenda Vieira de Oliveira",
    "titulo": "AVALIAÇÃO DA ESTABILIDADE NA SELEÇÃO DE MARCADORES MOLECULARES POR MÉTODOS DE MACHINE LEARNING",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "292",
@@ -3290,7 +3746,9 @@
    "painel": "",
    "autor": "Dinah Costa Almeida Gouveia",
    "titulo": "PERFIL DEMOGRÁFICO E DISTRIBUIÇÃO TEMPORAL E GEOGRÁFICA DAS CINTILOGRAFIAS DE GLÂNDULAS SALIVARES E LACRIMAIS NO ESTADO DE SÃO PAULO",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "293",
@@ -3299,7 +3757,9 @@
    "painel": "",
    "autor": "Rodrigo Ferreira de Abreu",
    "titulo": "Variograma marcado na análise de processos pontuais marcados espaço-temporais",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "294",
@@ -3308,7 +3768,9 @@
    "painel": "",
    "autor": "Rafael Moreno",
    "titulo": "Exposição ao petróleo por derramamento e sinais dermatológicos: um estudo com pescadores (as) artesanais na Bahia",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "295",
@@ -3317,7 +3779,9 @@
    "painel": "",
    "autor": "Rhoda Ayanfeoluwa Ojo",
    "titulo": "Bayesian Probabilistic Selection Framework for Assessing Hybrid Performance and Recommendation Risk in Multi-Environment Maize Trials",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "296",
@@ -3326,7 +3790,9 @@
    "painel": "",
    "autor": "Aloísio Fernando Silva Ribeiro",
    "titulo": "FASE FENOLÓGICA DA CANA-DE-AÇÚCAR PARA A COLETA DE IMAGENS  AÉREAS VISANDO A SELEÇÃO INDIRETA PARA PRODUTIVIDADE",
-   "area": "Dados de imagem e sinal"
+   "area": "Dados de imagem e sinal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "297",
@@ -3335,7 +3801,9 @@
    "painel": "",
    "autor": "Osmary Camila Bortoncello Glober",
    "titulo": "Explicabilidade na estimação de precipitação com dados do ERA5-Land no Brasil",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "298",
@@ -3344,7 +3812,9 @@
    "painel": "",
    "autor": "Samantha Gouvêa Oliveira",
    "titulo": "Estratégias para a delimitação de blocos experimentais com base em características do solo",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "299",
@@ -3353,7 +3823,9 @@
    "painel": "",
    "autor": "Vinicius Silva Begnami",
    "titulo": "Modelagem do tempo entre precipitações extremas: uma abordagem via splines cúbicas restritas",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "301",
@@ -3362,7 +3834,9 @@
    "painel": "",
    "autor": "OTAVIO MARQUES NEVES DA SILVA",
    "titulo": "Avaliação do impacto de violações nas suposições de teste de hipóteses",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "302",
@@ -3371,7 +3845,9 @@
    "painel": "",
    "autor": "Gustavo Borges de Rezende",
    "titulo": "Identificação de relações causais entre neurônios estocásticos com memória de alcance variável na presença de múltiplos confundidores.",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "303",
@@ -3380,7 +3856,9 @@
    "painel": "",
    "autor": "Maria Vitória dos Santos Gonsalves",
    "titulo": "Saúde ocular e exposição ao petróleo entre pescadores(as) artesanais e marisqueiras da Bahia",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "304",
@@ -3389,7 +3867,9 @@
    "painel": "",
    "autor": "Pedro Reginatto Constantino",
    "titulo": "Uso de Deep Learning para predição de idades de peixes em imagens de otólitos",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "305",
@@ -3398,7 +3878,9 @@
    "painel": "",
    "autor": "Lilian Martins",
    "titulo": "Determinação de metais dos méis de Abelhas sem ferrão com Abordagem Estatística Multivariada.",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "307",
@@ -3407,7 +3889,9 @@
    "painel": "",
    "autor": "João Paulo Sardo Madi",
    "titulo": "MODELAGEM GAMLSS PARA VOLUME INDIVIDUAL DE ÁRVORES DE Tectona grandis",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "308",
@@ -3416,7 +3900,9 @@
    "painel": "",
    "autor": "Isabele Alves Pereira",
    "titulo": "Modelagem Híbrida para a Previsão de Preços do Café no Estado de São Paulo",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "310",
@@ -3425,7 +3911,9 @@
    "painel": "",
    "autor": "Anderson andolfato filho",
    "titulo": "SHAP values sobre violações estruturais de DPGs: um estudo de simulação",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "311",
@@ -3434,7 +3922,9 @@
    "painel": "",
    "autor": "Louiziane Ribeiro Carvalho",
    "titulo": "Modelagem da curva de lactação de ovelhas Santa Inês",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "312",
@@ -3443,7 +3933,9 @@
    "painel": "",
    "autor": "Yana Miranda Borges",
    "titulo": "Modelagem de dados de contagem com sobredispersão na avaliação do efeito do papelão sobre a ocorrência do besouro cascudinho (Alphitobius diaperinus)",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "313",
@@ -3452,7 +3944,9 @@
    "painel": "",
    "autor": "Jackson Assis",
    "titulo": "Análise biométrica da germinação pré-colheita em trigo via modelos mistos: herdabilidade e acurácia seletiva",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "314",
@@ -3461,7 +3955,9 @@
    "painel": "",
    "autor": "Isabele Payão",
    "titulo": "Modelagem Bayesiana Semiparamétrica para Regressão Não Linear via Aproximações de Taylor",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "316",
@@ -3470,7 +3966,9 @@
    "painel": "",
    "autor": "Vitor Mendes",
    "titulo": "Análise de Resíduos no Modelo de Regressão Beta Prime Aumentado de Zeros",
-   "area": "Modelos de mistura"
+   "area": "Modelos de mistura",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "317",
@@ -3479,7 +3977,9 @@
    "painel": "",
    "autor": "Darah Moreira",
    "titulo": "Estimativa da Biomassa Florestal sob Seleção Amostral Não Aleatória: uma Aplicação do Modelo de Heckman",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "318",
@@ -3488,7 +3988,9 @@
    "painel": "",
    "autor": "Vitor Mendes",
    "titulo": "Testes de Hipóteses no Modelo de Regressão Beta Prime Aumentado de Zeros",
-   "area": "Modelos de mistura"
+   "area": "Modelos de mistura",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "320",
@@ -3497,7 +3999,9 @@
    "painel": "",
    "autor": "Thayza Soares Coelho",
    "titulo": "Análise de Precipitação em Belém - Modelagem Preditiva",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "321",
@@ -3506,7 +4010,9 @@
    "painel": "",
    "autor": "Matheus Correia da Silva",
    "titulo": "Adaptação transcultural e evidências psicométricas de uma medida de confiança em vacinas para adolescentes brasileiros",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "322",
@@ -3515,7 +4021,9 @@
    "painel": "",
    "autor": "Antonio Silva",
    "titulo": "A Regressão Power Logit Geograficamente Ponderada",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "323",
@@ -3524,7 +4032,9 @@
    "painel": "",
    "autor": "LUCAS PEREIRA BELO",
    "titulo": "Critérios de Informação: Como eles se comportam em modelos paramétricos de análise de sobrevivência",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "324",
@@ -3533,7 +4043,9 @@
    "painel": "",
    "autor": "Gligor Douglas Ortiz",
    "titulo": "DETECÇÃO BAYESIANA DE PONTOS DE MUDANÇA EM DADOS DE CONTAGEM POR RJMCMC E MODELOS HIERÁRQUICOS PARA EVENTOS RAROS",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "325",
@@ -3542,7 +4054,9 @@
    "painel": "",
    "autor": "Gabriel de Jesus Pereira",
    "titulo": "GG-KM: Flexible Semiparametric Promotion Time Cure Modeling Based on The Generalized Gamma Distribution and Kernel Machines",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "326",
@@ -3551,7 +4065,9 @@
    "painel": "",
    "autor": "Evelyn Rodrigues de Lacerda",
    "titulo": "ESPECTROSCOPIA VIS-NIR-SWIR, INDICADORES MICROBIANOS E CLASSIFICAÇÃO DO USO DO SOLO UTILIZANDO MODELOS DE APRENDIZADO DE MÁQUINA",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "327",
@@ -3560,7 +4076,9 @@
    "painel": "",
    "autor": "MANOEL SANTOS-NETO",
    "titulo": "A new parametric quantile regression model based on an Owen distribution",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "330",
@@ -3569,7 +4087,9 @@
    "painel": "",
    "autor": "Matheus Born Cabús",
    "titulo": "Formulação incremental do TRIGRS para atualização contínua da estabilidade de encostas sob precipitação",
-   "area": "Métodos intensivos em computador e desenvolvimento de software"
+   "area": "Métodos intensivos em computador e desenvolvimento de software",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "331",
@@ -3578,7 +4098,9 @@
    "painel": "",
    "autor": "Luis Davi De Araújo Pereira",
    "titulo": "Modelagem de Produtividade Agrícola com Limiar em Dados de Melhoramento Genético: Uma abordagem Bayesiana utilizando o algoritmo Griddy-Gibbs",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "332",
@@ -3587,7 +4109,9 @@
    "painel": "",
    "autor": "Ruth Elisabeth Vera Carbonelli",
    "titulo": "Regressão Quantílica em Modelos Lineares com Efeitos Mistos sob uma Abordagem Bayesiana para o Melhoramento de Plantas",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "333",
@@ -3596,7 +4120,9 @@
    "painel": "",
    "autor": "Flavio Barros",
    "titulo": "Inferência variacional black-box para modelos DINA e DINO: função-escore versus relaxação contínua",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "334",
@@ -3605,7 +4131,9 @@
    "painel": "",
    "autor": "Jackson Assis",
    "titulo": "Estimação do Índice de Theil-T sob Misturas Finitas Gama com Taxa Comum: Aplicação na Mensuração da Desuniformidade da AACPD",
-   "area": "Modelos de mistura"
+   "area": "Modelos de mistura",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "335",
@@ -3614,7 +4142,9 @@
    "painel": "",
    "autor": "Adriana Binda Lima",
    "titulo": "Comparação de Arquiteturas de Segmentação por Deep Learning para Extração do Espelho d'Água em Imagens de Sensoriamento Remoto",
-   "area": "Dados de imagem e sinal"
+   "area": "Dados de imagem e sinal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "336",
@@ -3623,7 +4153,9 @@
    "painel": "",
    "autor": "Maria Vitória dos Santos Gonsalves",
    "titulo": "Perfis de exposição ao petróleo entre pescadores(as) e marisqueiras afetados pelo derramamento do petróleo em 2019: Uma aplicação de Análise de Classes Latentes",
-   "area": "Inferência causal"
+   "area": "Inferência causal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "337",
@@ -3632,7 +4164,9 @@
    "painel": "",
    "autor": "Rafael Ribeiro",
    "titulo": "Estudo do Desempenho em Disciplinas de Primeiro Ano e o Impacto na Evasão e no Tempo de Permanência de Estudantes dos Cursos de Exatas da UNICAMP",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "338",
@@ -3641,7 +4175,9 @@
    "painel": "",
    "autor": "Vitor Pignatari",
    "titulo": "RandomMachines 0.2: reestruturação utilizando classes em S4",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "339",
@@ -3650,7 +4186,9 @@
    "painel": "",
    "autor": "Alexis Marichi Zela",
    "titulo": "COMPARAÇÃO DE MÉTODOS ESTATÍSTICOS DE REDUÇÃO DE DIMENSIONALIDADE EM DADOS DE scRNA-seq",
-   "area": "Genética, Microarranjos e dados ômicos"
+   "area": "Genética, Microarranjos e dados ômicos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "340",
@@ -3659,7 +4197,9 @@
    "painel": "",
    "autor": "Pedro Henrique Pereira Nunes",
    "titulo": "Desempenho agronômico de variedades de polinização aberta de milho a partir de caracteres fenológicos e produtivos",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "341",
@@ -3668,7 +4208,9 @@
    "painel": "",
    "autor": "Bruna Marques de Queiroz",
    "titulo": "Leveraging mixed-effects models to interpret longitudinal soil carbon dynamics",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "342",
@@ -3677,7 +4219,9 @@
    "painel": "",
    "autor": "Fernando Humberto de Almeida Moraes Neto",
    "titulo": "Distribuição de Marshall-Olkin Maxwell-Boltzmann: Um novo modelo defeituoso de dois parâmetros para análise de fração de cura",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "343",
@@ -3686,7 +4230,9 @@
    "painel": "",
    "autor": "DAVID HENRIQUES DA MATTA",
    "titulo": "Estudo do Fator de Conversão de Metano Entérico em Sistemas Leiteiros Brasileiros via Modelos Aditivos Generalizados (GAM)",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "344",
@@ -3695,7 +4241,9 @@
    "painel": "",
    "autor": "Renan Mercuri Pinto",
    "titulo": "What do adjustment diagnostics reveal in observational studies?",
-   "area": "Inferência causal"
+   "area": "Inferência causal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "345",
@@ -3704,7 +4252,9 @@
    "painel": "",
    "autor": "Gabriel Graciano de Mendonça",
    "titulo": "Análise Conjunta de Secas Meteorológicas e Térmicas no Município de Recife-PE",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "346",
@@ -3713,7 +4263,9 @@
    "painel": "",
    "autor": "Aline Rita Fernandes",
    "titulo": "Perfil de mortalidade em Minas Gerais: um estudo de regressão para dados de contagem",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "348",
@@ -3722,7 +4274,9 @@
    "painel": "",
    "autor": "Gabriel Graciano de Mendonça",
    "titulo": "Caracterização da Variabilidade Climatológica nos Municipios de Recife e Petrolina-PE",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "349",
@@ -3731,7 +4285,9 @@
    "painel": "",
    "autor": "Hudson Macedo",
    "titulo": "ANÁLISE FATORIAL DOS ATRIBUTOS SENSORIAIS DOS MÉIS DE ABELHAS APIS MELLIFERA E ABELHAS SOCIAIS SEM FERRÃO",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "351",
@@ -3740,7 +4296,9 @@
    "painel": "",
    "autor": "Marcela Silva de Araujo",
    "titulo": "Fatores associados à classificação final de casos de Chikungunya em Minas Gerais, Brasil, 2024–2025",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "352",
@@ -3749,7 +4307,9 @@
    "painel": "",
    "autor": "Ana Vitoria Gomes Grave",
    "titulo": "Parâmetros genéticos e identificação de genótipos de aveia branca para qualidade industrial de grãos avaliados em ambientes com e sem fungicidas",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "353",
@@ -3758,7 +4318,9 @@
    "painel": "",
    "autor": "Cleyton Batista de Alvarenga",
    "titulo": "Modulation of the droplet spectrum by working pressure, adjuvants, and herbicides.",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "355",
@@ -3767,7 +4329,9 @@
    "painel": "",
    "autor": "Matheus Correia da Silva",
    "titulo": "Adaptação transcultural e evidências de validade da versão brasileira da Escala de Literacia em Saúde Vacinal para adolescentes",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "356",
@@ -3776,7 +4340,9 @@
    "painel": "",
    "autor": "Sofia Ferreira",
    "titulo": "Caracterização matemática de modelos não lineares: uma aplicação na germinação de sementes de cacau",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "357",
@@ -3785,7 +4351,9 @@
    "painel": "",
    "autor": "Ulisses Mello",
    "titulo": "Modelagem da Obesidade em Adultos de São Paulo: uma Abordagem por Regressão Logística",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "359",
@@ -3794,7 +4362,9 @@
    "painel": "",
    "autor": "Cynthia Arantes Vieira Tojeiro",
    "titulo": "A latent competing-risk framework for zero-adjusted survival data with cure fraction via discrete frailty",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "360",
@@ -3803,7 +4373,9 @@
    "painel": "",
    "autor": "Nathalie Alves Silva",
    "titulo": "Inferência e Predição com XBART: Aplicações do Modelo Acelerado de Árvores Bayesianas",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "361",
@@ -3812,7 +4384,9 @@
    "painel": "",
    "autor": "Nathalie Alves Silva",
    "titulo": "Comparação entre Modelos de Suavização Exponencial de Holt e ARIMA na Previsão da Taxa de Leitos Hospitalares por Mil Habitante em Mato Grosso",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "362",
@@ -3821,7 +4395,9 @@
    "painel": "",
    "autor": "Gabriela França Oliveira",
    "titulo": "Regressão quantílica na identificação de associações genômicas em soja sob estresse hídrico",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "363",
@@ -3830,7 +4406,9 @@
    "painel": "",
    "autor": "Ruan Gabriel Da Cruz Cerqueira",
    "titulo": "Métodos para Estimação de Efeitos Causais em Modelos de Mistura para Trajetórias Latentes Longitudinais",
-   "area": "Inferência causal"
+   "area": "Inferência causal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "364",
@@ -3839,7 +4417,9 @@
    "painel": "",
    "autor": "Kaique Queirós dos Santos",
    "titulo": "Efeitos do derramamento de petróleo de 2019: Perfis de Qualidade de Vida Relacionada à Saúde em pescadores e marisqueiras via Análise de Correspondência Múltipla.",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "365",
@@ -3848,7 +4428,9 @@
    "painel": "",
    "autor": "Kaique Queirós dos Santos",
    "titulo": "Modelos Gravitacionais: Uma Análise Espacial do Acesso de Pessoas com Deficiência ao Ensino Terciário Público Federal via Sisu no Período de 2010-2023",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "366",
@@ -3857,7 +4439,9 @@
    "painel": "",
    "autor": "Gabriela Ferreira neto",
    "titulo": "Pontos críticos da perda de Nitrogênio por volatilização em fertilizantes de liberação lenta aplicados ao cafeeiro",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "367",
@@ -3866,7 +4450,9 @@
    "painel": "",
    "autor": "Wisley Vítor De Sousa Gonçalves",
    "titulo": "Amostragem e modelos preditivos para a biomassa e carbono da Macaúba (Acrocomia aculeata) com base no Inventário Florestal Nacional",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "369",
@@ -3875,7 +4461,9 @@
    "painel": "",
    "autor": "Lineu Alberto Cavazani de Freitas",
    "titulo": "Aprendizagem de Máquina Explicável (XAI) Aplicada à Auditoria de Modelos de Retenção Acadêmica na UFPR",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "370",
@@ -3884,7 +4472,9 @@
    "painel": "",
    "autor": "Daniel Moura Silva",
    "titulo": "Urbanização como preditor dominante da não conformidade da qualidade da água em cinco bacias hidrográficas de Pernambuco (2000–2025)",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "371",
@@ -3893,7 +4483,9 @@
    "painel": "",
    "autor": "Vitor Fujimoto",
    "titulo": "Desenvolvimento de Plataforma Interativa para Análise Espaço-Temporal de Índices de Extremos de Precipitação no Paraná",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "374",
@@ -3902,7 +4494,9 @@
    "painel": "",
    "autor": "Eric Batista Ferreira",
    "titulo": "Teste de Marascuilo modificado: comparação de múltiplas proporções dependentes no teste de preferência sensorial",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "375",
@@ -3911,7 +4505,9 @@
    "painel": "",
    "autor": "RODRIGO LUIZ COSTA CAVALCANTI",
    "titulo": "Análise Estatística da execução de restos a pagar: uma aplicação de responsabilidade fiscal ao orçamento do Ministério da Educação",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "376",
@@ -3920,7 +4516,9 @@
    "painel": "",
    "autor": "Baywood Princess Dera",
    "titulo": "BIAS CORRECTION AND VALIDATION OF MICRONIR PREDICTIONS FOR  SUGARCANE QUALITY ATTRIBUTES",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "377",
@@ -3929,7 +4527,9 @@
    "painel": "",
    "autor": "Camila Raquel",
    "titulo": "Utilização da Estatística Gradiente na classe dos modelos Hurdle",
-   "area": "Modelos de mistura"
+   "area": "Modelos de mistura",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "379",
@@ -3938,7 +4538,9 @@
    "painel": "",
    "autor": "Matheus Dias Aguiar",
    "titulo": "Modelagem Espaço-Temporal da Precipitação no Nordeste Brasileiro por Cadeias de Markov",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "380",
@@ -3947,7 +4549,9 @@
    "painel": "",
    "autor": "Vanessa Maculan Silvério",
    "titulo": "Factors associated with survival in patients with liver cancer",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "383",
@@ -3956,7 +4560,9 @@
    "painel": "",
    "autor": "Maria Vitória Neves",
    "titulo": "Inferência bayesiana aplicada à curva de lactação de ovelhas da raça Santa Inês ajustada pelo modelo de Wood",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "384",
@@ -3965,7 +4571,9 @@
    "painel": "",
    "autor": "Ananda Cristina Diniz Mendes da Silva",
    "titulo": "Desenvolvimento de Painel Interativo para Monitoramento Espaço-Temporal e Análise de Anomalias de Precipitação no Paraná",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "385",
@@ -3974,7 +4582,9 @@
    "painel": "",
    "autor": "Mauro Citro Lalucci",
    "titulo": "Regressão distribucional não linear paramétrica aplicada a curvas de crescimento infantil",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "386",
@@ -3983,7 +4593,9 @@
    "painel": "",
    "autor": "Maria Leticia Salvador",
    "titulo": "REDCap como ferramenta estratégica para o gerenciamento de dados em pesquisa clínica: experiência de um centro oncológico brasileiro",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "387",
@@ -3992,7 +4604,9 @@
    "painel": "",
    "autor": "Josimar Mendes de Vasconcelos",
    "titulo": "Comparação de Métodos de Estimação para os Parâmetros do Modelo Lomax-Gama",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "388",
@@ -4001,7 +4615,9 @@
    "painel": "",
    "autor": "Vanderly Janeiro",
    "titulo": "Avaliação da variabilidade das medições do SFI em equipamentos HVI por modelos lineares mistos",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "389",
@@ -4010,7 +4626,9 @@
    "painel": "",
    "autor": "Yusuf Nadi Karatay",
    "titulo": "Impacto da adoção de base dinâmica na diferença mínima detectável do acúmulo de carbono orgânico do solo",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "390",
@@ -4019,7 +4637,9 @@
    "painel": "",
    "autor": "Juliano Bortolini",
    "titulo": "Adaptação transcultural e avaliação psicométrica de uma medida de aceitação vacinal para adolescentes brasileiros",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "391",
@@ -4028,7 +4648,9 @@
    "painel": "",
    "autor": "Geovane Fernandes da Silva",
    "titulo": "AVALIAÇÃO COMPARATIVA DE MÉTODOS DE EXPLICABILIDADE NO CONTEXTO DE DESBALANCEAMENTO DE CLASSES",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "392",
@@ -4037,7 +4659,9 @@
    "painel": "",
    "autor": "Rafael Magalhães",
    "titulo": "Fenotipagem não supervisionada de pacientes hospitalizados com insuficiência cardíaca no SUS: robustez interna e associação com sobrevida",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "393",
@@ -4046,7 +4670,9 @@
    "painel": "",
    "autor": "Gabrielle Aparecida Affonso",
    "titulo": "Estabilidade da cobertura, mudança no perfil: evolução da vacinação entre 2019 e 2025 em três municípios do Paraná",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "394",
@@ -4055,7 +4681,9 @@
    "painel": "",
    "autor": "Gean Pereira Damaceno",
    "titulo": "Violence Against Women in Minas Gerais: A Multiscale Spatial Analysis of Socioeconomic and Demographic Factors",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "395",
@@ -4064,7 +4692,9 @@
    "painel": "",
    "autor": "Marília Rocha",
    "titulo": "Modeling Dengue dynamics across municipalities in Rio de Janeiro using Variable Length Markov Chains with exogenous covariates",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "396",
@@ -4073,7 +4703,9 @@
    "painel": "",
    "autor": "Alice Batista Nogueira",
    "titulo": "Generation of harder instances for the evaluation of imputation algorithms using an f-divergence-based amputation model",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "397",
@@ -4082,7 +4714,9 @@
    "painel": "",
    "autor": "Edfram Rodrigues Pereira",
    "titulo": "Método Theta e Variantes Otimizadas versus Modelos Estatísticos Tradicionais na Previsão de Níveis de Rio",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "398",
@@ -4091,7 +4725,9 @@
    "painel": "",
    "autor": "Tays Batista",
    "titulo": "Avaliação bioeconômica e interação G×A de genótipos elite de cana-de-açúcar sob impacto de custos logísticos",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "399",
@@ -4100,7 +4736,9 @@
    "painel": "",
    "autor": "Roberto Vila Gabriel",
    "titulo": "Estimadores não viesados para funções do parâmetro de taxa da distribuição exponencial",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "401",
@@ -4109,7 +4747,9 @@
    "painel": "",
    "autor": "Yesica Castellanos",
    "titulo": "Regressão Beta-Prime Bayesiana com Dados Censurados: Inferência, Predição e Modelagem da Precisão",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "403",
@@ -4118,7 +4758,9 @@
    "painel": "",
    "autor": "Ricardina Lucas",
    "titulo": "Análise do peso ao nascer na Região de Saúde de Lavras - Minas Gerais",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "404",
@@ -4127,7 +4769,9 @@
    "painel": "",
    "autor": "Hemerson Bruno da Silva Vasconcelos",
    "titulo": "Tempo de internação em partos únicos espontâneos: uma abordagem via GAMLSS",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "405",
@@ -4136,7 +4780,9 @@
    "painel": "",
    "autor": "Jair Rocha do Prado",
    "titulo": "Evolução dos resultados de aprendizagem no ciclo de alfabetização em Minas Gerais: análise descritiva da série histórica do SIMAVE, 2015–2025",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "406",
@@ -4145,7 +4791,9 @@
    "painel": "",
    "autor": "Miguel Luiz Martinho",
    "titulo": "Um BIB para experimentos multiambientais",
-   "area": "Genética, Microarranjos e dados ômicos"
+   "area": "Genética, Microarranjos e dados ômicos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "407",
@@ -4154,7 +4802,9 @@
    "painel": "",
    "autor": "Luiz Alberto Beijo",
    "titulo": "Análise da temperatura máxima de Caldas MG: uma abordagem Bayesiana",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "408",
@@ -4163,7 +4813,9 @@
    "painel": "",
    "autor": "Jairo Lordelo",
    "titulo": "Modelagem de Eventos Recorrentes via Distribuição Weibull Modificada com Fragilidade Gama Compartilhada",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "409",
@@ -4172,7 +4824,9 @@
    "painel": "",
    "autor": "Vitor Ribas Perrone",
    "titulo": "Estimação por ondaletas em dados funcionais agregados",
-   "area": "Métodos intensivos em computador e desenvolvimento de software"
+   "area": "Métodos intensivos em computador e desenvolvimento de software",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "410",
@@ -4181,7 +4835,9 @@
    "painel": "",
    "autor": "Annelise Poletto",
    "titulo": "Desenvolvimento de Plataforma Interativa para Análise Espaço-Temporal de Registros de Desastres Associados à Precipitação no Paraná",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "412",
@@ -4190,7 +4846,9 @@
    "painel": "",
    "autor": "Lia Hanna Martins Morita",
    "titulo": "Acompanhamento de Egressos na UFMT: Análise Quantitativa e Semântica das Ações Institucionais das Coordenações de Curso de Graduação",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "413",
@@ -4199,7 +4857,9 @@
    "painel": "",
    "autor": "Gabriel Dantas Morais",
    "titulo": "MODELOS NÃO LINEARES DE DEFASAGEM DISTRIBUÍDA E ESTRATÉGIAS DE REDUÇÃO DE SÉRIES TEMPORAIS CLIMÁTICAS: AVALIAÇÃO DA RELAÇÃO COM INADEQUAÇÃO NUTRICIONAL INFANTIL NA BAHIA",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "414",
@@ -4208,7 +4868,9 @@
    "painel": "",
    "autor": "Jair Rocha do Prado",
    "titulo": "Perfil multivariado dos óbitos por doenças crônicas não transmissíveis em Minas Gerais em 2025: uma Análise de Correspondência Múltipla",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "415",
@@ -4217,7 +4879,9 @@
    "painel": "",
    "autor": "Lucas Alves de Almeida",
    "titulo": "Validação de estimativas de altura do dossel de cana-de-açúcar obtidas por VANT por meio de reamostragem Bootstrap",
-   "area": "Amostragem"
+   "area": "Amostragem",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "416",
@@ -4226,7 +4890,9 @@
    "painel": "",
    "autor": "Thais Sena de Paula Domingues",
    "titulo": "Estudo de Associação Genômica no Risco de Malária em Populações Amazônicas",
-   "area": "Genética, Microarranjos e dados ômicos"
+   "area": "Genética, Microarranjos e dados ômicos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "417",
@@ -4235,7 +4901,9 @@
    "painel": "",
    "autor": "Josimar M. de Vasconcelos",
    "titulo": "Medidas de GoF através da Transformada de Mellin para a Distribuição Slashed-Lomax",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "418",
@@ -4244,7 +4912,9 @@
    "painel": "",
    "autor": "Aline Maia",
    "titulo": "TESTES UNILATERAIS NA ANALISE DE EXPERIMENTOS SOBRE CONTROLE DE DOENÇAS POSCOLHEITA",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "419",
@@ -4253,7 +4923,9 @@
    "painel": "",
    "autor": "Lucas Alves de Almeida",
    "titulo": "Avaliação do efeito da geada na predição do teor de clorofila (SPAD) em cana-de-açúcar com base em índices espectrais e aprendizado de máquina",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "420",
@@ -4262,7 +4934,9 @@
    "painel": "",
    "autor": "WILLIAM PEREIRA LEAL",
    "titulo": "Application of Geostatistical Models in the Analysis of Deforestation in the State of Piauí",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "421",
@@ -4271,7 +4945,9 @@
    "painel": "",
    "autor": "Victor Marcellus Bianchi Brandão",
    "titulo": "Distribuição espacial da dengue em nível de bairros ou setores censitários nos municípios do estado do Paraná",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "422",
@@ -4280,7 +4956,9 @@
    "painel": "",
    "autor": "Marcela Silva de Araujo",
    "titulo": "Classificação de consumidores de cafés especiais no Brasil por meio da análise de classes latentes",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "423",
@@ -4289,7 +4967,9 @@
    "painel": "",
    "autor": "Guilherme Fioresi",
    "titulo": "Modelagem de séries temporais de registros mensais de escorpiões em Piracicaba, São Paulo",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "424",
@@ -4298,7 +4978,9 @@
    "painel": "",
    "autor": "Walifer Costa Ferreira",
    "titulo": "DETERMINANTES ECONÔMICOS DA CAFEICULTURA BRASILEIRA: ANÁLISE DE REGRESSÃO LINEAR MÚLTIPLA A PARTIR DOS DADOS DA PAM/IBGE 2024",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "425",
@@ -4307,7 +4989,9 @@
    "painel": "",
    "autor": "Lyanderson Rabelo",
    "titulo": "Regressão Robusta sob Perda Quadrática: Uma Comparação Teórica e Empírica entre Truncamento Unilateral e Formulação Min-Max",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "426",
@@ -4316,7 +5000,9 @@
    "painel": "",
    "autor": "Fabiano Alecrim",
    "titulo": "Avaliação de modelos preditivos de metano entérico em bovinos de corte a pasto",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "427",
@@ -4325,7 +5011,9 @@
    "painel": "",
    "autor": "Welyrson Coutinho",
    "titulo": "Dinâmicas do desmatamento no Pará: uma análise visual das Regiões de Integração entre 2011 e 2025",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "428",
@@ -4334,7 +5022,9 @@
    "painel": "",
    "autor": "Damares Moraes de Jesus",
    "titulo": "PREVISÃO DOS PREÇOS INTERNACIONAIS DE POTÁSSIO, UREIA E DAP POR MODELOS ARIMA",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "429",
@@ -4343,7 +5033,9 @@
    "painel": "",
    "autor": "Iêda Maria de Siqueira Bezerra",
    "titulo": "Modelagem não linear mista do crescimento volumétrico de clones de eucalipto no Semiárido pernambucano",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "430",
@@ -4352,7 +5044,9 @@
    "painel": "",
    "autor": "Guilherme de Oliveira Cherobim",
    "titulo": "Modeling Inflation and Deflation in Count Differences: The k-Modified Skellam Regression Model",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "431",
@@ -4361,7 +5055,9 @@
    "painel": "",
    "autor": "Sarah Martins Rezende",
    "titulo": "Análise do crescimento dimensional de frutos de clones de café Conilon",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "433",
@@ -4370,7 +5066,9 @@
    "painel": "",
    "autor": "Alex Monito Nhancololo",
    "titulo": "Probabilistic Similarity Retrieval of Intensity Fields on Metric Graphs: Interpretable Representation and Scalable Indexing of Spatiotemporal Patterns in Road Networks",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "436",
@@ -4379,7 +5077,9 @@
    "painel": "",
    "autor": "TIAGO BARBOSA REZENDE",
    "titulo": "EXPOSIÇÃO A TELAS E SAÚDE MENTAL ESCOLAR: MODELAGEM MULTINÍVEL A PARTIR DA PESQUISA NACIONAL DE SAÚDE DO ESCOLAR, 2024",
-   "area": "Análise de dados longitudinais/Modelos de efeitos mistos"
+   "area": "Análise de dados longitudinais/Modelos de efeitos mistos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "437",
@@ -4388,7 +5088,9 @@
    "painel": "",
    "autor": "Rafael Sant'Ana Herzog",
    "titulo": "Incorporating Neural Networks Estimated Components in Defective Distribution-Based Cure Rate Models",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "438",
@@ -4397,7 +5099,9 @@
    "painel": "",
    "autor": "Matheus Oliveira de Castro",
    "titulo": "Bayesian Quantile Regression for Bounded Responses Using the Kumaraswamy Mixture Model",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "439",
@@ -4406,7 +5110,9 @@
    "painel": "",
    "autor": "Gualberto Segundo Agamez Montalvo",
    "titulo": "Uma nova aproximação para a função de distribuição acumulada normal padrão utilizando o algoritmo PIPE",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "441",
@@ -4415,7 +5121,9 @@
    "painel": "",
    "autor": "Mequias Moura da Silva",
    "titulo": "Comparação de Métodos Baseados em Árvores na Classificação de Dados de Diagnóstico Cardíaco",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "442",
@@ -4424,7 +5132,9 @@
    "painel": "",
    "autor": "Samuel Veríssimo Portela Mendes",
    "titulo": "Visualização gráfica e modelagem estatística da movimentação econômica em eventos culturais a partir de Notas Fiscais Eletrônicas de Consumidor (NFC-e): um estudo de caso do ITAPEDRO com aplicação em R Shiny.",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "443",
@@ -4433,7 +5143,9 @@
    "painel": "",
    "autor": "JONAS VASCONCELOS",
    "titulo": "Análise Multivariada da Trajetória Acadêmica: Clusterização de Cursos de Graduação e o Perfil de Estatística e Ciência de Dados da UFPR",
-   "area": "Visualização e estatísticas gráficas"
+   "area": "Visualização e estatísticas gráficas",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "445",
@@ -4442,7 +5154,9 @@
    "painel": "",
    "autor": "Patricia Barros",
    "titulo": "Dengue na Paraíba: Análise Espaço-Temporal e Modelagem por Séries Temporais",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "446",
@@ -4451,7 +5165,9 @@
    "painel": "",
    "autor": "Kállin Miola Albernaz",
    "titulo": "A taxa de evasão em cursos de graduação de exatas vista por uma nova proposta de regressão quantílica para dados unitários",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "448",
@@ -4460,7 +5176,9 @@
    "painel": "",
    "autor": "Arthur Pereira",
    "titulo": "Atualização do Pacote ExtremeTS para Determinação de Séries Extremas Acima de um Limiar: Uma Aplicação com Precipitação Pluviométrica no Estado de São Paulo, Brasil",
-   "area": "Métodos intensivos em computador e desenvolvimento de software"
+   "area": "Métodos intensivos em computador e desenvolvimento de software",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "450",
@@ -4469,7 +5187,9 @@
    "painel": "",
    "autor": "Gabriela dos Santos Amaral",
    "titulo": "Análise de Anomalias Recorrentes em Séries Temporais de ECG: Integração de Detecção Não-Supervisionada e Análise de Sobrevivência",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "451",
@@ -4478,7 +5198,9 @@
    "painel": "",
    "autor": "Cauã Oliveira",
    "titulo": "Associação entre monóxido de nitrogênio e internações por pneumonia em idosos: uma abordagem via modelos GAMLSS",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "453",
@@ -4487,7 +5209,9 @@
    "painel": "",
    "autor": "Felipe Emanoel Barletta Mendes",
    "titulo": "Modelagem Conjunta Bayesiana para Múltiplas Variáveis Respostas",
-   "area": "Métodos Bayesianos"
+   "area": "Métodos Bayesianos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "454",
@@ -4496,7 +5220,9 @@
    "painel": "",
    "autor": "Arthur Pereira",
    "titulo": "Modelagem não-linear da germinação de diferentes lotes de sementes de milho",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "455",
@@ -4505,7 +5231,9 @@
    "painel": "",
    "autor": "Andre Felipe Zilio Silva",
    "titulo": "Construção de um Indicador Socioeconômico (IS) pela Teoria de Resposta ao Item e análise das desigualdades educacionais na Rede Municipal de Curitiba",
-   "area": "Análise de Big Data"
+   "area": "Análise de Big Data",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "457",
@@ -4514,7 +5242,9 @@
    "painel": "",
    "autor": "Pedro Lucas Domingos Aguiar",
    "titulo": "Imputação de Dados Faltantes em Séries Temporais de Poluição Atmosférica: Um Método Preditivo Espaço-Temporal",
-   "area": ""
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "458",
@@ -4523,7 +5253,9 @@
    "painel": "",
    "autor": "Giovani Festa Paludo",
    "titulo": "Sistemas de identificação de plantas: uma revisão sob a perspectiva estatística",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "459",
@@ -4532,7 +5264,9 @@
    "painel": "",
    "autor": "Elisane Bäckström",
    "titulo": "Robustez de Características Temporais na Modelagem Estocástica de Beaconing sob Jitter",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "460",
@@ -4541,7 +5275,9 @@
    "painel": "",
    "autor": "Amanda Cyntia Lima Fonseca Rodrigues",
    "titulo": "Multi-State Frailty Models for Survival Meta-Analysis: A Unified Frequentist Framework for Indirect Comparisons with Competing and Semi-Competing Events",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "461",
@@ -4550,7 +5286,9 @@
    "painel": "",
    "autor": "Luzia Pedroso de Oliveira",
    "titulo": "Projetos com dados públicos e ODS no ensino de Probabilidade e Estatística: desenvolvimento de habilidades de análise e visualização de dados",
-   "area": "Ensino, Extensão e Difusão da Estatística"
+   "area": "Ensino, Extensão e Difusão da Estatística",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "462",
@@ -4559,7 +5297,9 @@
    "painel": "",
    "autor": "MARCOS JARDEL HENRIQUES",
    "titulo": "Do Sinal à Falha: Séries Temporais como Fonte de Informação para caracterização da Confiabilidade de Equipamentos",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "463",
@@ -4568,7 +5308,9 @@
    "painel": "",
    "autor": "Amanda Cyntia Lima Fonseca Rodrigues",
    "titulo": "Proton Compared with Photon Radiotherapy in Pediatric Ependymoma: A Survival Meta-Analysis Using Reconstructed Individual Patient Data with Shared Frailty Cox Models",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "464",
@@ -4577,7 +5319,9 @@
    "painel": "",
    "autor": "Bruna Freitas dos Santos",
    "titulo": "Análise comparativa de modelos preditivos e de classificação para avaliação da função pulmonar na Fibrose Cística",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "465",
@@ -4586,7 +5330,9 @@
    "painel": "",
    "autor": "Davi Oliveira Chaves",
    "titulo": "Concentração da produção de leite nos estados brasileiros",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "466",
@@ -4595,7 +5341,9 @@
    "painel": "",
    "autor": "Cícero Hitzschky",
    "titulo": "An ASEP-Inspired Stochastic Model of Social Mobility under Bottlenecks and Limited Opportunities",
-   "area": "Probabilidade e Processos Estocásticos"
+   "area": "Probabilidade e Processos Estocásticos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "467",
@@ -4604,7 +5352,9 @@
    "painel": "",
    "autor": "Renan Mercuri Pinto",
    "titulo": "From PISA and ENEM to a diagnostic workflow for causal inference in observational studies",
-   "area": "Inferência causal"
+   "area": "Inferência causal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "468",
@@ -4613,7 +5363,9 @@
    "painel": "",
    "autor": "João Antônio Oliveira Ribeiro de Castro",
    "titulo": "Modelagem Estocástica de Grafos Moleculares via Difusão Discreta para Geração de Fármacos",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "469",
@@ -4622,7 +5374,9 @@
    "painel": "",
    "autor": "AYODEJI FISAYO AFOLAYAN",
    "titulo": "Beyond Mean Efficiency: Revealing Heterogeneity in Rice Production Efficiency Using Stochastic and Quantile Frontier Approaches",
-   "area": "Regressão quantílica"
+   "area": "Regressão quantílica",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "470",
@@ -4631,7 +5385,9 @@
    "painel": "",
    "autor": "PAULO ANDRADE",
    "titulo": "Taxa de falha crescente em ventiladores pulmonares de UTI: evidência Weibull para a inadequação da manutenção corretiva em hospital público",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "471",
@@ -4640,7 +5396,9 @@
    "painel": "",
    "autor": "Yuri Wanderley Cavalcanti",
    "titulo": "Duas décadas de mudanças na experiência de cárie e perda dentária de adultos e idosos brasileiros: uma análise de dados em painel",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "472",
@@ -4649,7 +5407,9 @@
    "painel": "",
    "autor": "Francisco Fernandes",
    "titulo": "Comparação da distribuição de blocos de dependência genômica entre populações mundiais e a brasileira",
-   "area": "Genética, Microarranjos e dados ômicos"
+   "area": "Genética, Microarranjos e dados ômicos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "473",
@@ -4658,7 +5418,9 @@
    "painel": "",
    "autor": "Brenda Feitosa Lopes Machado",
    "titulo": "Evasão em cursos de Especialização e Qualificação: análise estatística de fatores associados",
-   "area": "Análise de dados categóricos e modelos discretos"
+   "area": "Análise de dados categóricos e modelos discretos",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "474",
@@ -4667,7 +5429,9 @@
    "painel": "",
    "autor": "Carlos de Oliveira",
    "titulo": "An extended exponentiated generalized Pareto distribution with applications to greenhouse gas flux estimation",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "475",
@@ -4676,7 +5440,9 @@
    "painel": "",
    "autor": "Gabriel Taveira",
    "titulo": "Indicadores de risco de lesão por pressão: identificação de perfis clínicos por meio da análise de classes latentes",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "476",
@@ -4685,7 +5451,9 @@
    "painel": "",
    "autor": "Agatha Sacramento Rodrigues",
    "titulo": "Competing Risks and Spatial Term in Time-to-Delivery Analysis: An Application to Health Regions in Brazil",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "477",
@@ -4694,7 +5462,9 @@
    "painel": "",
    "autor": "Elias Oliveira Vieira dos Santos",
    "titulo": "Tarefa de Regressão com Modelos da Família ARIMA: Intervalos de Previsão a partir de Dados de Dengue em Botucatu-SP",
-   "area": "Aprendizado de máquina"
+   "area": "Aprendizado de máquina",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "478",
@@ -4703,7 +5473,9 @@
    "painel": "",
    "autor": "Gabriel da Cruz Leão",
    "titulo": "Classificação de mecanismos de abuso e modelagem do tempo até a falha em baterias de lítio-íon",
-   "area": "Análise de sobrevivência"
+   "area": "Análise de sobrevivência",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "479",
@@ -4712,7 +5484,9 @@
    "painel": "",
    "autor": "Giovani Festa Paludo",
    "titulo": "Uma comparação de métodos de análise estatística de formas em classificação de folhas de plantas",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "480",
@@ -4721,7 +5495,9 @@
    "painel": "",
    "autor": "Jeniffer Johana Duarte Sanchez",
    "titulo": "Padrões de Crescimento de Crianças com Lipodistrofia Generalizada Congênita",
-   "area": "Infecções, doenças e controle"
+   "area": "Infecções, doenças e controle",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "481",
@@ -4730,7 +5506,9 @@
    "painel": "",
    "autor": "Bianca Perboni de Abreu",
    "titulo": "DESEMPENHO DE MODELOS DO CMIP6 PARA O SUDESTE DO BRASIL: ANÁLISE SAZONAL DE TEMPERATURA E PRECIPITAÇÃO",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "482",
@@ -4739,7 +5517,9 @@
    "painel": "",
    "autor": "elisa Lopes",
    "titulo": "Relação entre perímetro torácico e peso corporal de bovinos em diferentes avaliações",
-   "area": "Outros tópicos biométricos relacionados"
+   "area": "Outros tópicos biométricos relacionados",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "484",
@@ -4748,7 +5528,9 @@
    "painel": "",
    "autor": "Helena Fantin Gebler",
    "titulo": "Produção de mapas interpolados por análise espacial de Índices vegetativos do café via imagens de satélite.",
-   "area": "Modelagem espacial e espaço-temporal"
+   "area": "Modelagem espacial e espaço-temporal",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "485",
@@ -4757,7 +5539,9 @@
    "painel": "",
    "autor": "Pedro Florencio de Almeida Neto",
    "titulo": "Comparação de Modelos de Séries Temporais para Previsão de Pagamentos na Execução Orçamentária do Governo do Estado de São Paulo",
-   "area": "Modelagem preditiva"
+   "area": "Modelagem preditiva",
+   "resumo": "",
+   "tem_resumo": false
   }
  ],
  "locais": [
