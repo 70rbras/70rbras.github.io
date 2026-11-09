@@ -176,3 +176,62 @@ Reservado para o resultado do Lighthouse em perfil móvel, com rede limitada, na
 É também onde o critério de instalabilidade do Chrome pode enfim ser conferido. Ele exige manifesto somado a service worker com manipulador de `fetch`, que passaram a existir com as tarefas T0.2 e T2.1.
 
 Nenhuma execução registrada até 28/10/2026.
+
+---
+
+## 4. Resumos das apresentações, verificação de 09/11/2026
+
+Esta seção registra a verificação das seis tarefas do plano `claude/plano-resumos-apresentacoes-70rbras.md`, executadas em 09/11/2026. Duas técnicas foram usadas: casos sintéticos sobre a função `construir` do build, para as regras que nascem da planilha, além de navegador automatizado sobre os arquivos alterados, para o que o visitante vê. O JSON usado nos testes de navegador recebeu resumos de teste, pois a planilha real ainda não os tem.
+
+O resultado geral é de conformidade. Nenhum defeito sobreviveu à verificação, enquanto dois apareceram durante ela além de terem sido corrigidos no mesmo dia. Os dois estão registrados na subseção 4.3.
+
+### 4.1 Regras do build, por casos sintéticos
+
+A função `construir` foi exercitada com dados montados em memória, sem rede nem planilha. Cada caso confere uma regra, observando a lista de erros além da lista de avisos que a função devolve. O build contra a planilha real foi executado ao final de cada tarefa, sempre com 47 atividades além de 392 trabalhos publicados.
+
+| Caso | Regra conferida | Resultado |
+|---|---|---|
+| Resumo de oral além de resumo de pôster | o primeiro sai embutido, o segundo no arquivo próprio | conforme |
+| `ref` inexistente | erro, pois o resumo ficaria invisível | conforme |
+| `ref` de linha não publicada | aviso, não erro | conforme |
+| `ref` repetido | erro | conforme |
+| Resumo na coluna antiga | aviso de mover ou de apagar, conforme o caso | conforme |
+| Ausência da aba `resumos` | gera sem erro, pois a aba é opcional | conforme |
+| `ordem` define a sequência | lista na ordem pedida, não na de submissão | conforme |
+| `ordem` repetida na mesma sessão | aviso, com desempate pelo número do trabalho | conforme |
+| `ordem` não numérica | aviso, valor ignorado | conforme |
+| `pessoa_id` com ficha | nome além de instituição vêm da ficha | conforme |
+| Nome divergente da ficha | aviso, vale o da ficha | conforme |
+| `pessoa_id` sem ficha, com texto livre | aviso, vale o texto livre | conforme |
+| `pessoa_id` sem ficha, sem texto livre | erro, pois sairia sem apresentador | conforme |
+| Trabalho publicado sem título | aviso | conforme |
+| Linha reservada com `publicar` vazio | silêncio, pois ela não é publicada | conforme |
+
+### 4.2 Comportamento da página, por navegador automatizado
+
+Os testes rodaram em Chromium, servindo os arquivos alterados, conferindo estrutura além de endereço a cada passo. O console foi lido em todos eles, sem registro de erro.
+
+| Passo | O que foi conferido | Resultado |
+|---|---|---|
+| Visão geral | os itens saem como botão, com identificador além de rótulo acessível | conforme |
+| Bloco agrupado | o clique leva ao dia certo, com as irmãs presentes além do diálogo fechado | conforme |
+| Tecla Enter no item | mesmo comportamento do clique | conforme |
+| Diálogo por endereço | `#MC-2` abre com tipo, título, apresentador, dia, horário além de local | conforme |
+| Lista da sessão | `#CO-1` lista as apresentações na ordem, com resumo recolhido só onde há texto | conforme |
+| Endereço de apresentação | `#T-54` abre a sessão com aquela apresentação expandida | conforme |
+| Sessão de pôster | o cartão não vira lista; o botão leva à busca filtrada | conforme |
+| Busca filtrada | a sessão sai inteira, com a tarja trazendo nome além de contagem | conforme |
+| Busca textual dentro do filtro | o filtro permanece, reduzindo o conjunto | conforme |
+| Limpeza do filtro | volta à busca inteira, limpando o endereço | conforme |
+| Resumo sob demanda | o arquivo próprio é buscado na primeira abertura | conforme |
+| Linha de ajuda | a contagem exclui a modalidade convidada | conforme |
+| Service worker | o cache `rbras70-casco-v3` guarda o arquivo novo | conforme |
+| Sem rede | o resumo de pôster abre a partir do cache | conforme |
+
+### 4.3 Defeitos encontrados durante a verificação
+
+O primeiro estava no fluxo horário. O passo de publicação comparava os arquivos gerados com `git diff`, que não enxerga arquivo ainda não rastreado, portanto a primeira geração do `data/resumos-trabalhos.json` seria criada, ignorada pela comparação além de nunca commitada. A conferência passou a ser feita por `git status --porcelain`, que vê tanto o modificado quanto o novo; a correção se confirmou em produção no commit `b7f46e0` do bot, que trouxe o arquivo.
+
+O segundo estava na linha de ajuda da busca. Ela contava `dados.trabalhos` por modalidade, portanto as apresentações convidadas das sessões temáticas entrariam na conta de trabalhos aceitos, que é número de submissão. A contagem passou a excluir a modalidade convidada, conferida com uma linha falsa no JSON de teste.
+
+Nenhum dos dois teria aparecido sem a verificação. O primeiro só se manifestaria na próxima execução do fluxo, silenciosamente; o segundo, apenas quando as linhas das sessões temáticas entrassem na planilha.

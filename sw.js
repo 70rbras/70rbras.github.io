@@ -21,7 +21,7 @@
  * Plano: claude/plano-app-70rbras.md, tarefa T2.1.
  */
 
-const VERSAO = 2;
+const VERSAO = 3;
 const CACHE = 'rbras70-casco-v' + VERSAO;
 const SEM_REDE = 'offline.html';
 const LIMITE_MS = 3000;
@@ -72,6 +72,12 @@ const CASCO = [
   'data/graficas.js',
   'data/wasa.js',
   'data/programacao.json',
+  /* O resumo dos posteres vive aqui, fora do programacao.json, para nao pesar
+     no pedido que abre a programacao. Entra no casco porque o cenario do
+     service worker e justamente o campus sem rede: sem ele, o resumo so abriria
+     para quem ja o tivesse aberto antes. Servido por cachePrimeiro, portanto um
+     resumo recem-publicado aparece na visita seguinte. */
+  'data/resumos-trabalhos.json',
 
   'assets/icons/icon-192.png',
   'assets/icons/icon-512.png',
