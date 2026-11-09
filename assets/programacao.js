@@ -35,6 +35,11 @@
      avisos de troca de prédio. */
   var SEM_PREDIO = ['A definir', 'LIVRE'];
 
+  /* Acima deste numero de apresentacoes a sessao deixa de caber num dialogo: as
+     sessoes de poster reunem cerca de cento e vinte cada, portanto elas seguem
+     pela busca, nao por lista. */
+  var LIMITE_LISTA = 12;
+
   var raiz = document.querySelector('.pg');
   if (!raiz) return;
 
@@ -61,6 +66,8 @@
   };
 
   var dados = null;
+  /* Apresentacoes de cada sessao, pelo identificador da atividade. */
+  var apresentacoes = {};
   /* 'rede' ou 'cache', conforme o cabeçalho que o service worker escreve. */
   var origem = 'rede';
   var diaAtivo = null;
@@ -116,19 +123,84 @@
     return '<p class="pg-dialogo-quando">' + texto(partes.join(' \u00b7 ')) + '</p>';
   }
 
-  function abrirDialogo(id) {
+  /* As apresentacoes que compoem cada sessao saem da propria lista de trabalhos,
+     que ja traz a sessao de cada um. A ordem de fala vem da coluna ordem; sem
+     ela vale o numero do trabalho, de modo que a lista nunca saia aleatoria. */
+  function montarApresentacoes() {
+    apresentacoes = {};
+    (dados.trabalhos || []).forEach(function (t) {
+      if (!t.sessao) return;
+      if (!apresentacoes[t.sessao]) apresentacoes[t.sessao] = [];
+      apresentacoes[t.sessao].push(t);
+    });
+    Object.keys(apresentacoes).forEach(function (s) {
+      apresentacoes[s].sort(function (x, y) {
+        var ox = Number(x.ordem) || 9999, oy = Number(y.ordem) || 9999;
+        if (ox !== oy) return ox - oy;
+        return (Number(x.id) || 0) - (Number(y.id) || 0);
+      });
+    });
+  }
+
+  /* Lista exibivel da sessao. Devolve vazio tanto para sessao sem apresentacao
+     quanto para sessao grande demais, caso em que o caminho e a busca. */
+  function apresentacoesDe(id) {
+    var lista = apresentacoes[id] || [];
+    return lista.length && lista.length <= LIMITE_LISTA ? lista : [];
+  }
+
+  function apresentacaoPorId(tid) {
+    var achados = (dados.trabalhos || []).filter(function (t) { return t.id === tid; });
+    return achados.length ? achados[0] : null;
+  }
+
+  /* Uma apresentacao da lista. O resumo fica recolhido num details, pois quatro
+     resumos abertos de uma vez nao cabem na tela do telefone, enquanto o titulo
+     com quem apresenta e o que o visitante percorre para escolher. */
+  function apresentacaoHtml(t) {
+    var cabeca = [];
+    if (t.id) cabeca.push('#' + t.id);
+    if (t.area) cabeca.push(t.area);
+    return '<li class="pg-apres-item" id="T-' + atributo(t.id) + '">' +
+      (cabeca.length ? '<p class="pg-apres-cod">' + texto(cabeca.join(' \u00b7 ')) + '</p>' : '') +
+      '<h3 class="pg-apres-titulo">' + texto(t.titulo) + '</h3>' +
+      (t.autor ? '<p class="pg-apres-quem">' + texto(t.autor) + '</p>' : '') +
+      (t.resumo
+        ? '<details class="pg-apres-resumo"><summary>Resumo</summary>' +
+          '<div>' + paragrafos(t.resumo) + '</div></details>'
+        : '') +
+      '</li>';
+  }
+
+  function abrirDialogo(id, alvo) {
     if (!el.dialogo || !dados) return;
     var a = dados.atividades.filter(function (x) { return x.id === id; })[0];
-    if (!a || !a.resumo) return;
+    var lista = a ? apresentacoesDe(a.id) : [];
+    if (!a || (!a.resumo && !lista.length)) return;
     el.dialogoCorpo.innerHTML =
       '<p class="pg-dialogo-tipo" style="--cor:' + cor(a) + '">' + texto(a.tipo) + '</p>' +
       '<h2 class="pg-dialogo-titulo" id="pgDialogoTitulo">' + texto(a.titulo) + '</h2>' +
       quemHtml(a) +
       quandoHtml(a) +
-      '<div class="pg-dialogo-resumo">' + paragrafos(a.resumo) + '</div>';
+      (a.resumo ? '<div class="pg-dialogo-resumo">' + paragrafos(a.resumo) + '</div>' : '') +
+      (lista.length
+        ? '<p class="pg-apres-rotulo">' +
+          (lista.length === 1 ? 'Apresenta\u00e7\u00e3o desta sess\u00e3o'
+                              : lista.length + ' apresenta\u00e7\u00f5es desta sess\u00e3o') +
+          '</p><ol class="pg-apres">' + lista.map(apresentacaoHtml).join('') + '</ol>'
+        : '');
     if (typeof el.dialogo.showModal === 'function') el.dialogo.showModal();
     else el.dialogo.setAttribute('open', '');
-    marcarEndereco(id);
+
+    /* Vindo de um endereco de apresentacao, ela abre expandida e a rolagem para
+       nela, pois a lista pode passar da altura da tela. */
+    var item = alvo ? el.dialogoCorpo.querySelector('#T-' + (window.CSS && CSS.escape ? CSS.escape(alvo) : alvo)) : null;
+    if (item) {
+      var det = item.querySelector('details');
+      if (det) det.open = true;
+      if (item.scrollIntoView) item.scrollIntoView({ block: 'center' });
+    }
+    marcarEndereco(item ? 'T-' + alvo : id);
   }
 
   /* Os cartoes sao reescritos a cada troca de dia ou de filtro, portanto o
@@ -185,6 +257,16 @@
      geral: ali o visitante quer comparar as simultaneas, nao ler a primeira. */
   function irParaAtividade(id, abrirResumo) {
     if (!dados) return false;
+    /* Endereco de apresentacao, no padrao #T-39: leva a sessao que a contem,
+       abrindo o dialogo com ela expandida. E o endereco que quem apresenta
+       envia, portanto precisa funcionar vindo de fora do site. */
+    var alvo = null;
+    if (/^T-/.test(id)) {
+      var t = apresentacaoPorId(id.slice(2));
+      if (!t || !t.sessao) return false;
+      alvo = t.id;
+      id = t.sessao;
+    }
     var a = dados.atividades.filter(function (x) { return x.id === id; })[0];
     if (!a) return false;
     trocarModo('dia');
@@ -196,7 +278,8 @@
     if (remontar) { montarSeletorDias(); montarFiltros(); montarTempo(); }
     var cartao = document.getElementById(id);
     if (cartao && cartao.scrollIntoView) cartao.scrollIntoView();
-    if (abrirResumo !== false && a.resumo) abrirDialogo(id);
+    if (alvo) abrirDialogo(id, alvo);
+    else if (abrirResumo !== false && (a.resumo || apresentacoesDe(id).length)) abrirDialogo(id);
     return true;
   }
 
@@ -456,6 +539,10 @@
 
       var cartoes = bloco.itens.map(function (a) {
         var leve = LEVES.indexOf(a.tipo_slug) >= 0;
+        var lista = apresentacoesDe(a.id);
+        var rotulo = lista.length
+          ? (lista.length === 1 ? 'Ver a apresenta\u00e7\u00e3o' : 'Ver as ' + lista.length + ' apresenta\u00e7\u00f5es')
+          : 'Ver resumo';
         return '<article class="pg-cartao' + (leve ? ' is-leve' : '') + '" style="--cor:' + cor(a) + '"' +
           ' id="' + texto(a.id) + '">' +
           '<span class="pg-tipo">' + texto(a.tipo) + '</span>' +
@@ -464,8 +551,10 @@
           quemHtml(a) +
           ondeHtml(a) +
           (a.descricao ? '<p class="pg-desc">' + texto(a.descricao) + '</p>' : '') +
-          (a.resumo ? '<button type="button" class="pg-detalhes" aria-haspopup="dialog"' +
-            ' data-id="' + atributo(a.id) + '">Ver resumo</button>' : '') +
+          (a.resumo || lista.length
+            ? '<button type="button" class="pg-detalhes" aria-haspopup="dialog"' +
+              ' data-id="' + atributo(a.id) + '">' + texto(rotulo) + '</button>'
+            : '') +
           '</article>';
       }).join('');
 
@@ -721,6 +810,7 @@
     var doHoje = d.dias.filter(function (x) { return x.data === hoje; })[0];
     diaAtivo = doHoje ? doHoje.data : (d.dias[0] && d.dias[0].data);
 
+    montarApresentacoes();
     montarGeral();
     montarSeletorDias();
     montarFiltros();
@@ -744,8 +834,9 @@
       });
     }
 
-    /* O endereco aceita tres nomes de modo ou o identificador de uma atividade,
-       como programacao.html#CO-5. Valor desconhecido cai no modo padrao. */
+    /* O endereco aceita tres nomes de modo, o identificador de uma atividade,
+       como programacao.html#CO-5, ou o de uma apresentacao, como #T-39. Valor
+       desconhecido cai no modo padrao. */
     var alvo = (location.hash || '').replace('#', '');
     try { alvo = decodeURIComponent(alvo); } catch (e) { /* endereco malformado */ }
     if (alvo && ['geral', 'dia', 'busca'].indexOf(alvo) >= 0) trocarModo(alvo);
