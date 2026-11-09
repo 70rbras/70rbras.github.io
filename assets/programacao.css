@@ -431,9 +431,37 @@ a.pg-sala:focus-visible {
   gap: .25rem .7rem;
   padding: .55rem .6rem;
   border-radius: 10px;
+  border: 0;
   border-left: 3px solid var(--cor, var(--pg-azul));
   background: var(--pg-fundo-alt);
   min-width: 0;
+  width: 100%;
+  position: relative;
+  padding-right: 1.5rem;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+
+/* Sinal de que o item leva a outro lugar. Em telas de toque nao ha estado de
+   passagem do ponteiro, portanto a seta e o unico aviso disponivel. */
+.pg-item::after {
+  content: '\203A';
+  position: absolute;
+  top: .45rem;
+  right: .6rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--pg-texto-fraco);
+}
+
+.pg-item:hover { background: var(--pg-borda); }
+
+.pg-item:focus-visible {
+  outline: 2px solid var(--pg-azul);
+  outline-offset: 2px;
 }
 
 .pg-item-hora {
@@ -687,6 +715,12 @@ a.pg-sala:focus-visible {
   margin: 0 0 .5rem;
   color: var(--pg-azul);
   text-wrap: balance;
+}
+
+.pg-dialogo-quando {
+  margin: .2rem 0 0;
+  font-size: .82rem;
+  color: var(--pg-texto-fraco);
 }
 
 .pg-dialogo-resumo { margin-top: .9rem; }
