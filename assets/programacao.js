@@ -17,6 +17,13 @@
     'refeicao': '#8C9BAD'
   };
   var LEVES = ['intervalo', 'refeicao'];
+  /* Modalidade que nao vem de submissao, portanto fora da contagem de trabalhos
+     aceitos. As apresentacoes convidadas das sessoes tematicas sao programacao,
+     nao trabalho submetido. */
+  var NAO_SUBMETIDAS = ['convidada'];
+  /* Resultados exibidos numa busca por texto. Com filtro de sessao a lista sai
+     inteira, pois o visitante esta percorrendo aquela sessao, nao procurando. */
+  var LIMITE_BUSCA = 40;
   /* Rotulo de quem apresenta, derivado do tipo da atividade. O campo papel da
      ficha descreve a funcao da pessoa no evento, nao a funcao dela nesta
      atividade, portanto nao serve de rotulo. Cada entrada traz singular e
@@ -57,6 +64,7 @@
     filtros: raiz.querySelector('#pgFiltros'),
     tempo: raiz.querySelector('#pgTempo'),
     campo: raiz.querySelector('#pgCampo'),
+    filtroSessao: raiz.querySelector('#pgFiltroSessao'),
     resultados: raiz.querySelector('#pgResultados'),
     ajuda: raiz.querySelector('#pgAjuda'),
     legenda: raiz.querySelector('#pgLegenda'),
@@ -72,6 +80,10 @@
   var origem = 'rede';
   var diaAtivo = null;
   var predioAtivo = 'todos';
+  /* Sessao que a busca esta exibindo, vinda do cartao de poster ou do endereco. */
+  var sessaoFiltro = null;
+  /* Resumos que ficam fora da programacao, buscados uma vez so, sob demanda. */
+  var resumosFora = null;
 
   function texto(valor) {
     var d = document.createElement('div');
@@ -175,6 +187,82 @@
       '</li>';
   }
 
+  /* O resumo dos posteres vive em arquivo proprio, fora do pacote que o service
+     worker pre-carrega. Ele e buscado na primeira vez que alguem abre um resumo
+     na busca, ficando em memoria dali em diante. */
+  function carregarResumosFora() {
+    if (resumosFora) return Promise.resolve(resumosFora);
+    return fetch('data/resumos-trabalhos.json', { cache: 'no-cache' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('resposta ' + r.status);
+        return r.json();
+      })
+      .then(function (j) {
+        resumosFora = (j && j.resumos) || {};
+        return resumosFora;
+      });
+  }
+
+  /* Diálogo de uma apresentacao sozinha, usado quando a sessao dela e grande
+     demais para virar lista, que e o caso dos posteres. */
+  function abrirDialogoTrabalho(t) {
+    if (!el.dialogo || !t) return;
+    var s = dados.atividades.filter(function (x) { return x.id === t.sessao; })[0];
+    var d = s ? (dados.dias || []).filter(function (x) { return x.data === s.data; })[0] : null;
+    var corT = semAcento(t.modalidade) === 'poster' ? CORES['poster'] : CORES['comunicacao-oral'];
+    var onde = [];
+    if (t.id) onde.push('#' + t.id);
+    if (t.sessao) onde.push(t.sessao);
+    if (t.painel) onde.push('painel ' + t.painel);
+    if (s) {
+      if (d) onde.push(d.rotulo);
+      onde.push(faixa(s));
+      onde.push(ondeTexto(s));
+    }
+    var quem = t.instituicao ? t.autor + ' (' + t.instituicao + ')' : t.autor;
+    el.dialogoCorpo.innerHTML =
+      '<p class="pg-dialogo-tipo" style="--cor:' + corT + '">' + texto(t.modalidade) + '</p>' +
+      '<h2 class="pg-dialogo-titulo" id="pgDialogoTitulo">' + texto(t.titulo) + '</h2>' +
+      (t.autor ? '<p class="pg-quem">' + texto(quem) + '</p>' : '') +
+      '<p class="pg-dialogo-quando">' + texto(onde.join(' \u00b7 ')) + '</p>' +
+      (t.area ? '<p class="pg-dialogo-quando">' + texto(t.area) + '</p>' : '') +
+      '<div class="pg-dialogo-resumo" id="pgResumoTrabalho">' +
+      (t.resumo ? paragrafos(t.resumo)
+                : (t.tem_resumo ? '<p class="pg-vazio">Carregando o resumo...</p>' : '')) +
+      '</div>';
+    if (typeof el.dialogo.showModal === 'function') el.dialogo.showModal();
+    else el.dialogo.setAttribute('open', '');
+    marcarEndereco('T-' + t.id);
+
+    if (!t.resumo && t.tem_resumo) {
+      carregarResumosFora().then(function (mapa) {
+        var alvo = el.dialogoCorpo.querySelector('#pgResumoTrabalho');
+        if (!alvo) return;
+        var texto_resumo = mapa[t.id];
+        alvo.innerHTML = texto_resumo
+          ? paragrafos(texto_resumo)
+          : '<p class="pg-vazio">Resumo ainda não publicado.</p>';
+      }).catch(function () {
+        var alvo = el.dialogoCorpo.querySelector('#pgResumoTrabalho');
+        if (alvo) {
+          alvo.innerHTML = '<p class="pg-vazio">O resumo deste trabalho não foi guardado ' +
+            'neste aparelho, portanto ele só abre com internet.</p>';
+        }
+      });
+    }
+  }
+
+  /* Caminho unico de uma apresentacao, venha ela do resultado da busca ou do
+     endereco #T-39: sessao pequena abre a lista com o item expandido, sessao
+     grande abre a apresentacao sozinha. */
+  function abrirApresentacao(tid) {
+    var t = apresentacaoPorId(tid);
+    if (!t) return false;
+    if (t.sessao && apresentacoesDe(t.sessao).length) abrirDialogo(t.sessao, t.id);
+    else abrirDialogoTrabalho(t);
+    return true;
+  }
+
   function abrirDialogo(id, alvo) {
     if (!el.dialogo || !dados) return;
     var a = dados.atividades.filter(function (x) { return x.id === id; })[0];
@@ -214,7 +302,27 @@
     if (el.tempo) {
       el.tempo.addEventListener('click', function (e) {
         var b = e.target && e.target.closest ? e.target.closest('.pg-detalhes') : null;
-        if (b) abrirDialogo(b.getAttribute('data-id'));
+        if (!b) return;
+        /* Sessao grande demais para lista leva a busca filtrada, nao ao dialogo. */
+        if (b.getAttribute('data-busca')) irParaBusca(b.getAttribute('data-busca'));
+        else abrirDialogo(b.getAttribute('data-id'));
+      });
+    }
+    if (el.resultados) {
+      el.resultados.addEventListener('click', function (e) {
+        var b = e.target && e.target.closest ? e.target.closest('.pg-detalhes') : null;
+        if (b && b.getAttribute('data-trabalho')) abrirApresentacao(b.getAttribute('data-trabalho'));
+      });
+    }
+    if (el.filtroSessao) {
+      el.filtroSessao.addEventListener('click', function (e) {
+        var b = e.target && e.target.closest ? e.target.closest('.pg-filtro-limpar') : null;
+        if (b) {
+          sessaoFiltro = null;
+          montarFiltroSessao();
+          montarBusca(el.campo ? el.campo.value : '');
+          marcarEndereco(null);
+        }
       });
     }
     if (el.dialogoFechar) {
@@ -248,8 +356,14 @@
   function marcarEndereco(id) {
     if (!window.history || !history.replaceState) return;
     try {
+      /* O prefixo busca= fica legivel no endereco: so o identificador da sessao
+         e escapado, pois escapar o sinal de igual deixaria o endereco ilegivel
+         para quem o compartilha. */
+      var frag = /^busca=/.test(id || '')
+        ? 'busca=' + encodeURIComponent(id.slice(6))
+        : encodeURIComponent(id || '');
       history.replaceState(null, '',
-        id ? '#' + encodeURIComponent(id) : location.pathname + location.search);
+        id ? '#' + frag : location.pathname + location.search);
     } catch (e) { /* navegador que recusa a reescrita do endereco */ }
   }
 
@@ -267,6 +381,13 @@
     if (/^T-/.test(id)) {
       var t = apresentacaoPorId(id.slice(2));
       if (!t || !t.sessao) return false;
+      /* Apresentacao de sessao grande: o caminho e a busca filtrada, pois a
+         lista inteira de uma sessao de posteres nao cabe num dialogo. */
+      if (!apresentacoesDe(t.sessao).length) {
+        irParaBusca(t.sessao);
+        abrirDialogoTrabalho(t);
+        return true;
+      }
       alvo = t.id;
       id = t.sessao;
     }
@@ -543,9 +664,12 @@
       var cartoes = bloco.itens.map(function (a) {
         var leve = LEVES.indexOf(a.tipo_slug) >= 0;
         var lista = apresentacoesDe(a.id);
+        var todas = (apresentacoes[a.id] || []).length;
+        /* Sessao acima do limite nao vira lista: o cartao leva a busca filtrada. */
+        var paraBusca = !lista.length && todas > LIMITE_LISTA;
         var rotulo = lista.length
           ? (lista.length === 1 ? 'Ver a apresenta\u00e7\u00e3o' : 'Ver as ' + lista.length + ' apresenta\u00e7\u00f5es')
-          : 'Ver resumo';
+          : (paraBusca ? 'Ver os ' + todas + ' trabalhos' : 'Ver resumo');
         return '<article class="pg-cartao' + (leve ? ' is-leve' : '') + '" style="--cor:' + cor(a) + '"' +
           ' id="' + texto(a.id) + '">' +
           '<span class="pg-tipo">' + texto(a.tipo) + '</span>' +
@@ -557,7 +681,10 @@
           (a.resumo || lista.length
             ? '<button type="button" class="pg-detalhes" aria-haspopup="dialog"' +
               ' data-id="' + atributo(a.id) + '">' + texto(rotulo) + '</button>'
-            : '') +
+            : (paraBusca
+              ? '<button type="button" class="pg-detalhes"' +
+                ' data-busca="' + atributo(a.id) + '">' + texto(rotulo) + '</button>'
+              : '')) +
           '</article>';
       }).join('');
 
@@ -586,24 +713,66 @@
     });
   }
 
+  /* Tarja da sessao em exibicao, com o caminho de volta a busca inteira. */
+  function montarFiltroSessao() {
+    if (!el.filtroSessao) return;
+    if (!sessaoFiltro) {
+      el.filtroSessao.hidden = true;
+      el.filtroSessao.innerHTML = '';
+      return;
+    }
+    var a = dados.atividades.filter(function (x) { return x.id === sessaoFiltro; })[0];
+    var quantos = (apresentacoes[sessaoFiltro] || []).length;
+    el.filtroSessao.hidden = false;
+    el.filtroSessao.innerHTML =
+      '<span class="pg-filtro-nome">' + texto(a ? a.titulo : sessaoFiltro) + '</span>' +
+      '<span class="pg-filtro-conta">' + quantos +
+      (quantos === 1 ? ' trabalho' : ' trabalhos') + '</span>' +
+      '<button type="button" class="pg-filtro-limpar" aria-label="Limpar o filtro de sess\u00e3o">' +
+      'Ver todos \u2715</button>';
+  }
+
+  /* Leva a busca ja restrita a uma sessao. E o caminho das sessoes de poster,
+     grandes demais para virar lista no dialogo. */
+  function irParaBusca(sessao) {
+    sessaoFiltro = sessao || null;
+    if (el.campo) el.campo.value = '';
+    trocarModo('busca');
+    montarFiltroSessao();
+    montarBusca('');
+    if (sessaoFiltro) marcarEndereco('busca=' + sessaoFiltro);
+    if (el.paineis.busca && el.paineis.busca.scrollIntoView) {
+      el.paineis.busca.scrollIntoView();
+    }
+  }
+
   function montarBusca(consulta) {
     var q = semAcento(consulta).trim();
-    if (q.length < 2) {
+    var base = sessaoFiltro
+      ? indice.filter(function (r) { return r.t.sessao === sessaoFiltro; })
+      : indice;
+
+    if (!sessaoFiltro && q.length < 2) {
       el.resultados.innerHTML = '<p class="pg-vazio">Digite ao menos duas letras, ' +
         'o número do trabalho ou o nome de quem apresenta.</p>';
       return;
     }
-    var termos = q.split(/\s+/);
-    var achados = indice.filter(function (r) {
-      return termos.every(function (t) { return r.busca.indexOf(t) >= 0; });
-    });
+    var achados = base;
+    if (q.length >= 2) {
+      var termos = q.split(/\s+/);
+      achados = base.filter(function (r) {
+        return termos.every(function (t) { return r.busca.indexOf(t) >= 0; });
+      });
+    }
 
     if (!achados.length) {
       el.resultados.innerHTML = '<p class="pg-vazio">Nenhum trabalho encontrado para esta busca.</p>';
       return;
     }
 
-    var mostra = achados.slice(0, 40);
+    /* Com filtro de sessao a lista sai inteira: o visitante esta percorrendo
+       aquela sessao, portanto cortar em quarenta esconderia parte dela. */
+    var mostra = sessaoFiltro ? achados : achados.slice(0, LIMITE_BUSCA);
     var html = mostra.map(function (r) {
       var t = r.t, s = r.sessao, d = r.dia;
       var quando = s && d
@@ -619,8 +788,13 @@
         '</div>' +
         '<h4>' + texto(t.titulo) + '</h4>' +
         '<p class="pg-resultado-quando">' + quando + '</p>' +
-        '<p class="pg-resultado-meta">' + texto(t.autor) +
+        '<p class="pg-resultado-meta">' +
+        texto(t.instituicao ? t.autor + ' (' + t.instituicao + ')' : t.autor) +
         (t.area ? ' &middot; ' + texto(t.area) : '') + '</p>' +
+        (t.resumo || t.tem_resumo
+          ? '<button type="button" class="pg-detalhes" aria-haspopup="dialog"' +
+            ' data-trabalho="' + atributo(t.id) + '">Ver resumo</button>'
+          : '') +
         '</article>';
     }).join('');
 
@@ -671,7 +845,11 @@
      a cada alteração da planilha. */
   function montarAjuda() {
     if (!el.ajuda) return;
-    var lista = dados.trabalhos || [];
+    /* So entra na contagem o que veio de submissao: apresentacao convidada e
+       programacao, nao trabalho aceito. */
+    var lista = (dados.trabalhos || []).filter(function (t) {
+      return NAO_SUBMETIDAS.indexOf(semAcento(t.modalidade || '').trim()) < 0;
+    });
     if (!lista.length) {
       el.ajuda.textContent = 'A relação de trabalhos aceitos ainda não foi publicada.';
       return;
@@ -842,8 +1020,14 @@
        desconhecido cai no modo padrao. */
     var alvo = (location.hash || '').replace('#', '');
     try { alvo = decodeURIComponent(alvo); } catch (e) { /* endereco malformado */ }
-    if (alvo && ['geral', 'dia', 'busca'].indexOf(alvo) >= 0) trocarModo(alvo);
-    else if (!(alvo && irParaAtividade(alvo))) trocarModo(doHoje ? 'dia' : 'geral');
+    var comSessao = /^busca=(.+)$/.exec(alvo);
+    if (comSessao && dados.atividades.some(function (x) { return x.id === comSessao[1]; })) {
+      irParaBusca(comSessao[1]);
+    } else if (alvo && ['geral', 'dia', 'busca'].indexOf(alvo) >= 0) {
+      trocarModo(alvo);
+    } else if (!(alvo && irParaAtividade(alvo))) {
+      trocarModo(doHoje ? 'dia' : 'geral');
+    }
   }
 
   if (window.PROGRAMACAO) {

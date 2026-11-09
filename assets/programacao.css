@@ -723,6 +723,42 @@ a.pg-sala:focus-visible {
   color: var(--pg-texto-fraco);
 }
 
+/* ------------------------------------------- filtro de sessao na busca */
+.pg-filtro-sessao {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: .7rem 0 0;
+  padding: .55rem .7rem;
+  border-radius: 10px;
+  border-left: 3px solid var(--pg-azul);
+  background: var(--pg-fundo-alt);
+}
+
+.pg-filtro-nome { font-weight: 600; font-size: .92rem; }
+
+.pg-filtro-conta {
+  font-size: .8rem;
+  color: var(--pg-texto-fraco);
+  font-variant-numeric: tabular-nums;
+}
+
+.pg-filtro-limpar {
+  margin-left: auto;
+  border: 1px solid var(--pg-borda-forte);
+  background: var(--pg-fundo);
+  color: var(--pg-azul);
+  font: inherit;
+  font-size: .8rem;
+  padding: .25rem .6rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.pg-filtro-limpar:hover,
+.pg-filtro-limpar:focus-visible { background: var(--pg-fundo-alt); }
+
 /* ------------------------------------------- apresentacoes da sessao */
 .pg-apres-rotulo {
   margin: 1.1rem 0 .5rem;
