@@ -164,7 +164,10 @@
     return '<li class="pg-apres-item" id="T-' + atributo(t.id) + '">' +
       (cabeca.length ? '<p class="pg-apres-cod">' + texto(cabeca.join(' \u00b7 ')) + '</p>' : '') +
       '<h3 class="pg-apres-titulo">' + texto(t.titulo) + '</h3>' +
-      (t.autor ? '<p class="pg-apres-quem">' + texto(t.autor) + '</p>' : '') +
+      (t.autor
+        ? '<p class="pg-apres-quem">' +
+          texto(t.instituicao ? t.autor + ' (' + t.instituicao + ')' : t.autor) + '</p>'
+        : '') +
       (t.resumo
         ? '<details class="pg-apres-resumo"><summary>Resumo</summary>' +
           '<div>' + paragrafos(t.resumo) + '</div></details>'

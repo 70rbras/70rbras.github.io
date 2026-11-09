@@ -303,13 +303,37 @@ def construir(dados):
         if not sessao:
             avisos.append('trabalho %s publicado sem sessão' % tid)
         modalidade = norm(r.get('modalidade'))
+        # A ordem de fala nao e a ordem de submissao, portanto ela vem da coluna
+        # ordem. Valor ausente ou nao numerico deixa o trabalho no fim da lista,
+        # onde o desempate pelo numero mantem a sequencia estavel.
+        ordem = norm(r.get('ordem'))
+        if ordem and not re.fullmatch(r'\d+', ordem):
+            avisos.append('trabalho %s tem ordem %r, que nao e numero inteiro, '
+                          'portanto foi ignorada' % (tid, ordem))
+            ordem = ''
+        # Apresentador convidado costuma ter ficha, portanto nome e instituicao
+        # saem dela, como manda a regra do cadastro unico. Autor de trabalho
+        # submetido segue em texto livre, pois nenhum dos 360 tem ficha.
+        pid = norm(r.get('pessoa_id'))
+        autor = norm(r.get('autor_apresentador'))
+        instituicao = ''
+        if pid:
+            if pid in cadastro:
+                if autor and autor != cadastro[pid]['nome']:
+                    avisos.append('trabalho %s traz nome diferente do da ficha %s; '
+                                  'vale o da ficha' % (tid, pid))
+                autor = cadastro[pid]['nome']
+                instituicao = cadastro[pid]['instituicao']
+            else:
+                avisos.append('trabalho %s cita a pessoa desconhecida %s' % (tid, pid))
         resumo_trabalho = resumos.get(tid, '')
         fora = slug(modalidade) in MODALIDADES_FORA
         if resumo_trabalho and fora:
             resumos_fora[tid] = resumo_trabalho
         trabalhos.append({
             'id': tid, 'modalidade': modalidade, 'sessao': sessao,
-            'painel': norm(r.get('painel')), 'autor': norm(r.get('autor_apresentador')),
+            'painel': norm(r.get('painel')), 'autor': autor,
+            'instituicao': instituicao, 'ordem': int(ordem) if ordem else 0,
             'titulo': norm(r.get('titulo')), 'area': norm(r.get('area_tematica')),
             # O resumo do poster vive no arquivo proprio, portanto aqui fica so a
             # marca de que ele existe: ela permite a busca oferecer o botao sem
@@ -325,6 +349,20 @@ def construir(dados):
             return (1, 0)
 
     trabalhos.sort(key=chave_num)
+
+    # Duas apresentacoes da mesma sessao disputando o mesmo lugar na sequencia
+    # deixam a ordem a cargo do desempate pelo numero do trabalho, que e
+    # deterministico. Por isso avisa, em vez de recusar a publicacao inteira.
+    por_sessao = {}
+    for t in trabalhos:
+        if t['sessao'] and t['ordem']:
+            por_sessao.setdefault(t['sessao'], {}).setdefault(t['ordem'], []).append(t['id'])
+    for sessao in sorted(por_sessao):
+        for pos in sorted(por_sessao[sessao]):
+            iguais = por_sessao[sessao][pos]
+            if len(iguais) > 1:
+                avisos.append('sessao %s tem %d apresentacoes com ordem %d: %s'
+                              % (sessao, len(iguais), pos, ', '.join(iguais)))
 
     # Um ref sem destino e erro, pois costuma ser erro de digitacao que deixaria
     # o resumo invisivel sem ninguem perceber. Ref apontando para linha que
