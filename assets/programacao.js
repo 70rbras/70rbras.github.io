@@ -105,6 +105,17 @@
       .join('');
   }
 
+  /* Dia, horário além de local da atividade, em linha única. O diálogo é
+     alcançado por endereço compartilhado além do botão do cartão, portanto não
+     pode depender do cartão para dizer quando a atividade acontece. */
+  function quandoHtml(a) {
+    var d = (dados.dias || []).filter(function (x) { return x.data === a.data; })[0];
+    var partes = d ? [d.rotulo] : [];
+    partes.push(faixa(a));
+    partes.push(ondeTexto(a));
+    return '<p class="pg-dialogo-quando">' + texto(partes.join(' \u00b7 ')) + '</p>';
+  }
+
   function abrirDialogo(id) {
     if (!el.dialogo || !dados) return;
     var a = dados.atividades.filter(function (x) { return x.id === id; })[0];
@@ -113,6 +124,7 @@
       '<p class="pg-dialogo-tipo" style="--cor:' + cor(a) + '">' + texto(a.tipo) + '</p>' +
       '<h2 class="pg-dialogo-titulo" id="pgDialogoTitulo">' + texto(a.titulo) + '</h2>' +
       quemHtml(a) +
+      quandoHtml(a) +
       '<div class="pg-dialogo-resumo">' + paragrafos(a.resumo) + '</div>';
     if (typeof el.dialogo.showModal === 'function') el.dialogo.showModal();
     else el.dialogo.setAttribute('open', '');
@@ -143,6 +155,18 @@
     el.dialogo.addEventListener('close', function () { marcarEndereco(null); });
   }
 
+  /* A visao geral e um indice: cada item leva ao bloco correspondente na visao
+     dia a dia. Os itens sao reescritos a cada montagem, portanto o clique e
+     ouvido no container, nunca em cada botao. */
+  function ligarGeral() {
+    if (!el.grade || el.grade.getAttribute('data-ligado')) return;
+    el.grade.setAttribute('data-ligado', '1');
+    el.grade.addEventListener('click', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('.pg-item') : null;
+      if (b && b.getAttribute('data-id')) irParaAtividade(b.getAttribute('data-id'), false);
+    });
+  }
+
   /* Endereco proprio da atividade aberta, de modo que o link enviado a quem
      apresenta leve direto ao cartao dela. Usa replaceState para nao encher o
      historico de navegacao a cada abertura. */
@@ -154,10 +178,12 @@
     } catch (e) { /* navegador que recusa a reescrita do endereco */ }
   }
 
-  /* Leva a atividade indicada pelo endereco: seleciona o dia dela, rola ate o
-     cartao e abre o dialogo quando houver resumo. Devolve false para
-     identificador inexistente, de modo que o chamador caia no modo padrao. */
-  function irParaAtividade(id) {
+  /* Leva a atividade indicada: seleciona o dia dela, rola ate o cartao e abre o
+     dialogo quando houver resumo. Devolve false para identificador inexistente,
+     de modo que o chamador caia no modo padrao. Com abrirResumo igual a false o
+     dialogo nao abre, que e o caso de quem vem de um bloco agrupado da visao
+     geral: ali o visitante quer comparar as simultaneas, nao ler a primeira. */
+  function irParaAtividade(id, abrirResumo) {
     if (!dados) return false;
     var a = dados.atividades.filter(function (x) { return x.id === id; })[0];
     if (!a) return false;
@@ -170,7 +196,7 @@
     if (remontar) { montarSeletorDias(); montarFiltros(); montarTempo(); }
     var cartao = document.getElementById(id);
     if (cartao && cartao.scrollIntoView) cartao.scrollIntoView();
-    if (a.resumo) abrirDialogo(id);
+    if (abrirResumo !== false && a.resumo) abrirDialogo(id);
     return true;
   }
 
@@ -285,7 +311,8 @@
 
       if (!a.grupo) {
         usados[a.id] = true;
-        itens.push({ hora: a.inicio, fim: a.fim, nome: a.titulo, cor: cor(a), onde: ondeTexto(a) });
+        itens.push({ hora: a.inicio, fim: a.fim, nome: a.titulo, cor: cor(a),
+          onde: ondeTexto(a), id: a.id, quantas: 1 });
         return;
       }
 
@@ -297,7 +324,9 @@
         fim: fins.length ? fins.sort()[fins.length - 1] : '',
         nome: cadeia.length > 1 ? a.grupo : a.titulo,
         cor: cor(a),
-        onde: resumoOnde(cadeia)
+        onde: resumoOnde(cadeia),
+        id: cadeia[0].id,
+        quantas: cadeia.length
       });
     });
 
@@ -310,12 +339,16 @@
     el.grade.innerHTML = dados.dias.map(function (dia) {
       var itens = marcosDoDia(dia.data);
       var corpo = itens.length ? itens.map(function (a) {
-        return '<div class="pg-item" style="--cor:' + a.cor + '">' +
-          '<div class="pg-item-hora">' + texto(a.hora) +
-          (a.fim ? '<small>até ' + texto(a.fim) + '</small>' : '') + '</div>' +
-          '<div class="pg-item-nome">' + texto(a.nome) + '</div>' +
-          '<div class="pg-item-onde">' + texto(a.onde) + '</div>' +
-          '</div>';
+        var rotulo = a.quantas > 1
+          ? 'Ver as ' + a.quantas + ' atividades de ' + a.nome + ' na visão dia a dia'
+          : 'Ver ' + a.nome + ' na visão dia a dia';
+        return '<button type="button" class="pg-item" style="--cor:' + a.cor + '"' +
+          ' data-id="' + atributo(a.id) + '" aria-label="' + atributo(rotulo) + '">' +
+          '<span class="pg-item-hora">' + texto(a.hora) +
+          (a.fim ? '<small>até ' + texto(a.fim) + '</small>' : '') + '</span>' +
+          '<span class="pg-item-nome">' + texto(a.nome) + '</span>' +
+          '<span class="pg-item-onde">' + texto(a.onde) + '</span>' +
+          '</button>';
       }).join('') : '<p class="pg-sub" style="padding:.6rem">Sem marcos definidos para este dia.</p>';
       return '<div class="pg-coluna">' +
         '<div class="pg-coluna-topo"><strong>' + texto(dia.rotulo_curto) + '</strong>' +
@@ -695,6 +728,7 @@
     montarIndice();
     montarLegenda();
     ligarDialogo();
+    ligarGeral();
     montarAjuda();
     montarBusca('');
 
