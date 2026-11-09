@@ -302,6 +302,10 @@ def construir(dados):
             erros.append('trabalho %s aponta para a sessão inexistente %s' % (tid, sessao))
         if not sessao:
             avisos.append('trabalho %s publicado sem sessão' % tid)
+        # Linha criada para reservar lugar na sessao, publicada antes de o
+        # conteudo chegar, produz item vazio na lista do dialogo.
+        if not norm(r.get('titulo')):
+            avisos.append('trabalho %s publicado sem título' % tid)
         modalidade = norm(r.get('modalidade'))
         # A ordem de fala nao e a ordem de submissao, portanto ela vem da coluna
         # ordem. Valor ausente ou nao numerico deixa o trabalho no fim da lista,
@@ -324,8 +328,15 @@ def construir(dados):
                                   'vale o da ficha' % (tid, pid))
                 autor = cadastro[pid]['nome']
                 instituicao = cadastro[pid]['instituicao']
+            elif autor:
+                avisos.append('trabalho %s cita a pessoa desconhecida %s; vale o nome '
+                              'escrito na coluna autor_apresentador' % (tid, pid))
             else:
-                avisos.append('trabalho %s cita a pessoa desconhecida %s' % (tid, pid))
+                # Sem ficha e sem texto livre a apresentacao sairia publicada sem
+                # apresentador nenhum, que e falha visivel na lista da sessao.
+                erros.append('trabalho %s cita a pessoa desconhecida %s e nao traz '
+                             'autor_apresentador, portanto sairia sem apresentador'
+                             % (tid, pid))
         resumo_trabalho = resumos.get(tid, '')
         fora = slug(modalidade) in MODALIDADES_FORA
         if resumo_trabalho and fora:
