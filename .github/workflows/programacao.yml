@@ -49,8 +49,11 @@ jobs:
 
       - name: Publicar quando houver mudança
         run: |
-          ARQUIVOS="data/programacao.json data/pessoas.js data/committee.js data/speakers.js"
-          if git diff --quiet -- $ARQUIVOS; then
+          ARQUIVOS="data/programacao.json data/resumos-trabalhos.json data/pessoas.js data/committee.js data/speakers.js"
+          # git diff nao enxerga arquivo ainda nao rastreado, portanto a
+          # primeira geracao de um arquivo novo passaria batida. git status
+          # lista tanto o modificado quanto o novo.
+          if [ -z "$(git status --porcelain -- $ARQUIVOS)" ]; then
             echo "Planilha sem alterações."
             exit 0
           fi
