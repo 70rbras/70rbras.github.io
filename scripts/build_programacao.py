@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera data/programacao.json a partir da planilha da programação da 70ª RBras.
+"""Gera data/programacao.json além de data/resumos-trabalhos.json a partir da planilha.
 
 Duas fontes são aceitas:
 
@@ -12,6 +12,11 @@ e termina com código 1, de modo que o site nunca publica uma programação queb
 Uso:
     python3 scripts/build_programacao.py --csv scripts/fontes.json -o data/programacao.json
     python3 scripts/build_programacao.py --xlsx planilha.xlsx -o data/programacao.json
+
+São dois arquivos de saída. O primeiro leva a programação inteira, com o resumo
+das atividades além do resumo das apresentações que aparecem nela. O segundo leva
+o resumo dos pôsteres, consumido apenas pela busca, de modo que o pacote que o
+service worker pré-carrega não cresça com centenas de textos longos.
 """
 import argparse
 import csv
@@ -28,7 +33,18 @@ from datetime import datetime, timezone, timedelta
 # scripts/build_cadastro.mjs gera data/pessoas.js da mesma aba. A aba pessoas
 # antiga saiu de cena em 07/11/2026, quando a coluna pessoas_ids terminou de
 # migrar para os identificadores longos.
-ABAS = ['atividades', 'trabalhos', 'locais', 'pessoas_cadastro', 'config']
+ABAS = ['atividades', 'trabalhos', 'locais', 'pessoas_cadastro', 'config', 'resumos']
+
+# A aba resumos guarda o texto longo de atividade e de apresentacao numa fonte
+# so, encontrado pela coluna ref. Ela e opcional: planilha baixada antes de
+# 09/11/2026 nao a tem, e a ausencia dela nao impede a geracao.
+ABAS_OPCIONAIS = {'resumos'}
+
+# Modalidades cujo resumo sai num arquivo proprio, carregado so pela busca. Os
+# posteres sao 360, portanto embuti-los na programacao levaria o arquivo que o
+# service worker pre-carrega de algo proximo de 150 KB para mais de 600 KB, o
+# que pesaria na instalacao do aplicativo sem servir a escolha de sessao.
+MODALIDADES_FORA = {'poster'}
 
 # Limite de caracteres da coluna descricao, que e exibida dentro do cartao da
 # programacao. Texto mais longo que isso pertence a coluna resumo, que so
@@ -118,10 +134,10 @@ def ler_csv_url(url):
 def ler_de_csv(caminho_fontes):
     with open(caminho_fontes, encoding='utf-8') as f:
         fontes = json.load(f)
-    faltando = [a for a in ABAS if a not in fontes]
+    faltando = [a for a in ABAS if a not in fontes and a not in ABAS_OPCIONAIS]
     if faltando:
         sys.exit('fontes.json não traz as abas: %s' % ', '.join(faltando))
-    return {aba: ler_csv_url(fontes[aba]) for aba in ABAS}
+    return {aba: ler_csv_url(fontes[aba]) for aba in ABAS if aba in fontes}
 
 
 def ler_de_xlsx(caminho):
@@ -129,6 +145,10 @@ def ler_de_xlsx(caminho):
     wb = openpyxl.load_workbook(caminho, data_only=True)
     dados = {}
     for aba in ABAS:
+        if aba not in wb.sheetnames:
+            if aba in ABAS_OPCIONAIS:
+                continue
+            sys.exit('a planilha não traz a aba %s' % aba)
         ws = wb[aba]
         cab = [norm(c.value) for c in ws[1]]
         linhas = []
@@ -180,6 +200,18 @@ def construir(dados):
         if c:
             config[c] = norm(r.get('valor'))
 
+    # Aba resumos: uma linha por texto longo, encontrada pela coluna ref, que
+    # aceita identificador de atividade ou de apresentacao. Manter o texto numa
+    # fonte so evita que a mesma informacao passe a viver em dois lugares.
+    resumos = {}
+    for r in dados.get('resumos', []):
+        ref = norm(r.get('ref'))
+        if not ref:
+            continue
+        if ref in resumos:
+            erros.append('aba resumos tem mais de uma linha com ref %s' % ref)
+        resumos[ref] = norm(r.get('resumo'))
+
     atividades = []
     for r in dados['atividades']:
         aid = norm(r.get('id'))
@@ -207,7 +239,21 @@ def construir(dados):
             else:
                 avisos.append('atividade %s cita a pessoa desconhecida %s' % (aid, p))
         descricao = norm(r.get('descricao'))
-        resumo = norm(r.get('resumo'))
+        resumo = resumos.get(aid, '')
+        # Transicao: enquanto houver texto na coluna resumo da aba atividades,
+        # ele segue valendo, com aviso. A coluna sai da planilha quando a
+        # ultima celula tiver migrado para a aba resumos.
+        resumo_antigo = norm(r.get('resumo'))
+        if resumo_antigo and not resumo:
+            resumo = resumo_antigo
+            avisos.append('atividade %s ainda guarda o resumo na aba atividades; '
+                          'mover a célula para a aba resumos' % aid)
+        elif resumo_antigo and resumo_antigo != resumo:
+            avisos.append('atividade %s tem resumo nas duas abas, com textos diferentes; '
+                          'vale o da aba resumos' % aid)
+        elif resumo_antigo:
+            avisos.append('atividade %s tem o mesmo resumo nas duas abas; a célula da aba '
+                          'atividades pode ser apagada' % aid)
         if len(descricao) > LIMITE_DESCRICAO:
             avisos.append('atividade %s tem descrição de %d caracteres, acima dos %d que o '
                           'cartão comporta; texto longo pertence à coluna resumo'
@@ -245,6 +291,7 @@ def construir(dados):
     atividades.sort(key=lambda a: (a['data'], minutos(a['inicio']), posicao(a), a['id']))
 
     ids_atividades = {a['id'] for a in atividades}
+    resumos_fora = {}
     trabalhos = []
     for r in dados['trabalhos']:
         tid = norm(r.get('id_trabalho'))
@@ -255,10 +302,20 @@ def construir(dados):
             erros.append('trabalho %s aponta para a sessão inexistente %s' % (tid, sessao))
         if not sessao:
             avisos.append('trabalho %s publicado sem sessão' % tid)
+        modalidade = norm(r.get('modalidade'))
+        resumo_trabalho = resumos.get(tid, '')
+        fora = slug(modalidade) in MODALIDADES_FORA
+        if resumo_trabalho and fora:
+            resumos_fora[tid] = resumo_trabalho
         trabalhos.append({
-            'id': tid, 'modalidade': norm(r.get('modalidade')), 'sessao': sessao,
+            'id': tid, 'modalidade': modalidade, 'sessao': sessao,
             'painel': norm(r.get('painel')), 'autor': norm(r.get('autor_apresentador')),
             'titulo': norm(r.get('titulo')), 'area': norm(r.get('area_tematica')),
+            # O resumo do poster vive no arquivo proprio, portanto aqui fica so a
+            # marca de que ele existe: ela permite a busca oferecer o botao sem
+            # baixar o arquivo grande.
+            'resumo': '' if fora else resumo_trabalho,
+            'tem_resumo': bool(resumo_trabalho),
         })
 
     def chave_num(t):
@@ -269,13 +326,30 @@ def construir(dados):
 
     trabalhos.sort(key=chave_num)
 
+    # Um ref sem destino e erro, pois costuma ser erro de digitacao que deixaria
+    # o resumo invisivel sem ninguem perceber. Ref apontando para linha que
+    # existe na planilha porem nao esta publicada apenas avisa.
+    ids_trabalhos = {t['id'] for t in trabalhos}
+    todos_atividades = {norm(r.get('id')) for r in dados['atividades']}
+    todos_trabalhos = {norm(r.get('id_trabalho')) for r in dados['trabalhos']}
+    for ref in sorted(resumos):
+        if ref in ids_atividades or ref in ids_trabalhos:
+            continue
+        if ref in todos_atividades or ref in todos_trabalhos:
+            avisos.append('aba resumos traz %s, que existe na planilha porém não '
+                          'está publicado' % ref)
+        else:
+            erros.append('aba resumos aponta para %s, que não é atividade nem '
+                         'apresentação' % ref)
+
     dias = []
     for d in sorted({a['data'] for a in atividades if a['data']}):
         longo, curto = rotulos(d)
         dias.append({'data': d, 'rotulo': longo, 'rotulo_curto': curto})
 
     agora = datetime.now(timezone(timedelta(hours=-3)))
-    return {
+    versao = int(agora.strftime('%Y%m%d%H%M'))
+    saida = {
         'gerado_em': agora.strftime('%Y-%m-%dT%H:%M:%S%z'),
         'gerado_em_texto': agora.strftime('%d/%m/%Y às %H:%M'),
         # Versão dos dados no formato AAAAMMDDHHMM, derivada do carimbo acima.
@@ -283,13 +357,22 @@ def construir(dados):
         # rede difere do guardado no aparelho, sem baixar e comparar o
         # documento inteiro. Cresce sozinho a cada geração, portanto não exige
         # ler a saída anterior para saber onde parou.
-        'versao_dados': int(agora.strftime('%Y%m%d%H%M')),
+        'versao_dados': versao,
         'config': config,
         'dias': dias,
         'atividades': atividades,
         'trabalhos': trabalhos,
         'locais': list(locais.values()),
-    }, erros, avisos
+    }
+    # Arquivo proprio dos resumos que ficam fora da programacao. Ele carrega a
+    # mesma versao do outro, de modo que o aparelho saiba se a copia guardada
+    # corresponde a programacao em exibicao.
+    resumos_trabalhos = {
+        'gerado_em': agora.strftime('%Y-%m-%dT%H:%M:%S%z'),
+        'versao_dados': versao,
+        'resumos': resumos_fora,
+    }
+    return saida, resumos_trabalhos, erros, avisos
 
 
 def resumo_sem_sessao(trabalhos):
@@ -325,12 +408,15 @@ def main():
     fonte.add_argument('--csv', metavar='fontes.json', help='arquivo com as URLs das abas publicadas')
     fonte.add_argument('--xlsx', metavar='arquivo.xlsx', help='planilha baixada do Google Drive')
     ap.add_argument('-o', '--saida', default='data/programacao.json')
+    ap.add_argument('--saida-resumos', default='data/resumos-trabalhos.json',
+                    metavar='arquivo.json',
+                    help='resumos que ficam fora da programação, lidos pela busca')
     ap.add_argument('--permitir-erros', action='store_true',
                     help='grava o arquivo mesmo com erros (use apenas em teste local)')
     args = ap.parse_args()
 
     dados = ler_de_csv(args.csv) if args.csv else ler_de_xlsx(args.xlsx)
-    saida, erros, avisos = construir(dados)
+    saida, resumos_trabalhos, erros, avisos = construir(dados)
 
     for a in avisos:
         print('aviso: %s' % a)
@@ -341,6 +427,10 @@ def main():
 
     print('atividades publicadas: %d | trabalhos publicados: %d | dias: %d'
           % (len(saida['atividades']), len(saida['trabalhos']), len(saida['dias'])))
+    print('resumos: %d de atividade | %d de apresentação, dos quais %d em arquivo próprio'
+          % (len([a for a in saida['atividades'] if a['resumo']]),
+             len([t for t in saida['trabalhos'] if t['tem_resumo']]),
+             len(resumos_trabalhos['resumos'])))
 
     if erros and not args.permitir_erros:
         print('\n%d erro(s): nada foi gravado. Corrija a planilha e rode de novo.' % len(erros),
@@ -351,6 +441,11 @@ def main():
     with open(args.saida, 'w', encoding='utf-8') as f:
         json.dump(saida, f, ensure_ascii=False, indent=1)
     print('gravado: %s' % args.saida)
+
+    os.makedirs(os.path.dirname(args.saida_resumos) or '.', exist_ok=True)
+    with open(args.saida_resumos, 'w', encoding='utf-8') as f:
+        json.dump(resumos_trabalhos, f, ensure_ascii=False, indent=1)
+    print('gravado: %s' % args.saida_resumos)
     return 0
 
 
