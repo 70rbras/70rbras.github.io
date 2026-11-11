@@ -531,6 +531,7 @@ const PESSOAS = {
   "carlos-tadeu-pagani-zanini": {
     nome:               "Carlos Tadeu Pagani Zanini",
     instituicao:        "UFRJ",
+    instituicao_curta:  "UFRJ",
     foto:               "assets/fotos/carlostadeu-300.png",
     lattes:             "http://lattes.cnpq.br/9272277541388166",
   },
@@ -750,6 +751,7 @@ const PESSOAS = {
   "diogo-rossoni": {
     nome:               "Diogo Rossoni",
     instituicao:        "UEM",
+    instituicao_curta:  "UEM",
     foto:               "assets/fotos/diogorossoni-400.png",
     lattes:             "http://lattes.cnpq.br/7817639261124081",
   },
@@ -881,6 +883,7 @@ const PESSOAS = {
   "erlandson-ferreira-saraiva": {
     nome:               "Erlandson Ferreira Saraiva",
     instituicao:        "UFMS",
+    instituicao_curta:  "UFMS",
     foto:               "assets/fotos/erlandson-220.png",
     lattes:             "http://lattes.cnpq.br/1890753837146343",
   },
@@ -932,13 +935,14 @@ const PESSOAS = {
   "fernanda-de-bastiani": {
     nome:               "Fernanda de Bastiani",
     instituicao:        "UFPE",
+    instituicao_curta:  "UFPE",
     foto:               "assets/fotos/fernandabastiani-253.png",
     lattes:             "http://lattes.cnpq.br/5519064508209103",
   },
   "fernanda-lang-schumacher": {
     nome:               "Fernanda Lang Schumacher",
     instituicao:        "The Ohio State University",
-    instituicao_curta:  "OSU",
+    instituicao_curta:  "The Ohio State University",
     foto:               "assets/fotos/fernanda-200.png",
     lattes:             "http://lattes.cnpq.br/8132149083320545",
     website:            "https://cph.osu.edu/doc/cv-resume/schumacher-fernanda-cv-0/view",
@@ -991,7 +995,8 @@ const PESSOAS = {
   },
   "francisco-louzada-neto": {
     nome:               "Francisco Louzada Neto",
-    instituicao:        "",
+    instituicao:        "UFSCar",
+    instituicao_curta:  "UFSCar",
     foto:               "assets/fotos/louzada-400.jpg",
     tratamento:         "Prof.",
   },
@@ -1167,7 +1172,8 @@ const PESSOAS = {
   },
   "gleici-da-silva-castro-perdona": {
     nome:               "Gleici da Silva Castro Perdoná",
-    instituicao:        "",
+    instituicao:        "USP",
+    instituicao_curta:  "USP",
     tratamento:         "Profa.",
   },
   "gleidisom-thyery-souza-da-costa": {
@@ -1219,6 +1225,7 @@ const PESSOAS = {
   "guilherme-pumi": {
     nome:               "Guilherme Pumi",
     instituicao:        "UFRGS",
+    instituicao_curta:  "UFRGS",
     foto:               "assets/fotos/guilhermepumi-400.png",
     lattes:             "http://lattes.cnpq.br/0541756341423245",
   },
@@ -1815,6 +1822,7 @@ const PESSOAS = {
   "lucia-pereira-barroso": {
     nome:               "Lucia Pereira Barroso",
     instituicao:        "IME - USP",
+    instituicao_curta:  "IME - USP",
     foto:               "assets/fotos/lucia-175.png",
     lattes:             "http://lattes.cnpq.br/2264376518383172",
   },
@@ -2070,6 +2078,7 @@ const PESSOAS = {
   "mario-de-castro-andrade-filho": {
     nome:               "Mário de Castro Andrade Filho",
     instituicao:        "ICMC - USP",
+    instituicao_curta:  "ICMC - USP",
     foto:               "assets/fotos/mariocastro-200.png",
     lattes:             "http://lattes.cnpq.br/6518161034709249",
     tratamento:         "Prof.",
@@ -2435,7 +2444,8 @@ const PESSOAS = {
   },
   "pedro-luiz-ramos": {
     nome:               "Pedro Luiz Ramos",
-    instituicao:        "",
+    instituicao:        "CeMEAI - USP",
+    instituicao_curta:  "CeMEAI - USP",
     tratamento:         "Prof.",
   },
   "pedro-rafael-diniz-marinho": {
@@ -2794,7 +2804,8 @@ const PESSOAS = {
   },
   "thiago-roberto-alves": {
     nome:               "Thiago Roberto Alves",
-    instituicao:        "",
+    instituicao:        "UFPR",
+    instituicao_curta:  "UFPR",
   },
   "thiago-rodrigo-ramos": {
     nome:               "Thiago Rodrigo Ramos",
@@ -2865,6 +2876,7 @@ const PESSOAS = {
   "victor-freguglia-souza": {
     nome:               "Victor Freguglia Souza",
     instituicao:        "UNICAMP",
+    instituicao_curta:  "UNICAMP",
     foto:               "assets/fotos/victor-200.png",
     lattes:             "http://lattes.cnpq.br/6306080581906246",
   },

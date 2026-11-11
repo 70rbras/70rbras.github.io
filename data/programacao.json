@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-11T03:40:16-0300",
- "gerado_em_texto": "11/11/2026 às 03:40",
- "versao_dados": 202611110340,
+ "gerado_em": "2026-11-11T12:33:58-0300",
+ "gerado_em_texto": "11/11/2026 às 12:33",
+ "versao_dados": 202611111233,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -2354,7 +2354,7 @@
    "modalidade": "Comunicação oral",
    "sessao": "CO-2",
    "painel": "",
-   "autor": "Cormac Monaghan",
+   "autor": "Idemauro Antonio Rodrigues de Lara",
    "instituicao": "",
    "ordem": 3,
    "titulo": "Assessing goodness-of-fit in transition-based generalised linear models",
@@ -3187,7 +3187,7 @@
    "sessao": "CO-9",
    "painel": "",
    "autor": "Thiago Roberto Alves",
-   "instituicao": "",
+   "instituicao": "UFPR",
    "ordem": 2,
    "titulo": "Estimação e estabilidade de limiares de precipitação via distribuição Tweedie",
    "area": "Métodos intensivos em computador e desenvolvimento de software",
