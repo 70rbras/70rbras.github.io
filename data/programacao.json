@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-10T20:29:01-0300",
- "gerado_em_texto": "10/11/2026 às 20:29",
- "versao_dados": 202611102029,
+ "gerado_em": "2026-11-11T03:40:16-0300",
+ "gerado_em_texto": "11/11/2026 às 03:40",
+ "versao_dados": 202611110340,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -48,7 +48,7 @@
     "predio": "IMECC",
     "sala": "Sala L003",
     "nome": "IMECC - Anexo II, sala L003",
-    "como_chegar": "A partir do saguão do IMECC, desça para o subsolo do prédio (direção Biblioteca), saia do prédio principal pela porta ao lado da. biblioteca. Dirija-se ao estacionamento e o Anexo II estará na sua diagonal esquerda (prédio branco). Entre pela porta de vidro e será a sala logo em frente a esta porta.",
+    "como_chegar": "Prédio branco atrás do prédio principal do IMECC.",
     "mapa_url": "https://maps.app.goo.gl/ggCdrKCBz7WuupLs6"
    },
    "pessoas": [
@@ -117,7 +117,7 @@
     }
    ],
    "grupo": "Minicursos",
-   "descricao": "Técnicas de agrupamento e análise de dados de scRNA-seq em nível introdutório. Participantes devem trazer laptops com acesso a rede sem fio.",
+   "descricao": "",
    "resumo": "O avanço recente do aprendizado de máquina tem impulsionado a construção de modelos preditivos altamente precisos em diversas áreas do conhecimento. Entretanto, muitas perguntas científicas e de tomada de decisão exigem compreender relações de causa e efeito, e não apenas prever resultados.Nesse contexto, o campo de Causal Machine Learning combina princípios da inferência causal moderna com técnicas de aprendizado de máquina para estimar efeitos causais a partir de dados observacionais.Este minicurso apresenta os fundamentos da inferência causal e introduz métodos contemporâneos para estimação de efeitos de tratamento. Serão discutidas as diferenças entre associação, predição e causalidade, bem como conceitos fundamentais como resultados potenciais, contrafactuais, confun-dimento e diagramas causais (Directed Acyclic Graphs – DAGs). Em seguida, serão apresentados métodos clássicos de ajuste baseados em Propensity Score e abordagens modernas para estimação de efeitos heterogêneos, incluindo S-Learner, T-Learner e Causal Forests. Ao longo do minicurso, os participantes desenvolverão aplicações práticas em R utilizando bases de dados reais.Ao final, espera-se que os participantes compreendam os principais conceitos da inferência causal moderna e sejam capazes de implementar análises causais introdutórias em problemas reais de pesquisae tomada de decisão.",
    "destaque": false
   },
@@ -435,7 +435,7 @@
     "predio": "IMECC",
     "sala": "Sala L003",
     "nome": "IMECC - Anexo II, sala L003",
-    "como_chegar": "A partir do saguão do IMECC, desça para o subsolo do prédio (direção Biblioteca), saia do prédio principal pela porta ao lado da. biblioteca. Dirija-se ao estacionamento e o Anexo II estará na sua diagonal esquerda (prédio branco). Entre pela porta de vidro e será a sala logo em frente a esta porta.",
+    "como_chegar": "Prédio branco atrás do prédio principal do IMECC.",
     "mapa_url": "https://maps.app.goo.gl/ggCdrKCBz7WuupLs6"
    },
    "pessoas": [
@@ -937,7 +937,7 @@
     "predio": "IMECC",
     "sala": "Sala L002",
     "nome": "IMECC - Anexo II, sala L002",
-    "como_chegar": "A partir do saguão do IMECC, desça para o subsolo do prédio (direção Biblioteca), saia do prédio principal pela porta ao lado da. biblioteca. Dirija-se ao estacionamento e o Anexo II estará na sua diagonal esquerda (prédio branco). Entre pela porta de vidro e dirija-se à esquerda.",
+    "como_chegar": "Prédio branco atrás do prédio principal do IMECC.",
     "mapa_url": "https://maps.app.goo.gl/ggCdrKCBz7WuupLs6"
    },
    "pessoas": [],
@@ -6411,7 +6411,7 @@
    "predio": "IMECC",
    "sala": "Sala L002",
    "nome": "IMECC - Anexo II, sala L002",
-   "como_chegar": "A partir do saguão do IMECC, desça para o subsolo do prédio (direção Biblioteca), saia do prédio principal pela porta ao lado da. biblioteca. Dirija-se ao estacionamento e o Anexo II estará na sua diagonal esquerda (prédio branco). Entre pela porta de vidro e dirija-se à esquerda.",
+   "como_chegar": "Prédio branco atrás do prédio principal do IMECC.",
    "mapa_url": "https://maps.app.goo.gl/ggCdrKCBz7WuupLs6"
   },
   {
@@ -6419,7 +6419,7 @@
    "predio": "IMECC",
    "sala": "Sala L003",
    "nome": "IMECC - Anexo II, sala L003",
-   "como_chegar": "A partir do saguão do IMECC, desça para o subsolo do prédio (direção Biblioteca), saia do prédio principal pela porta ao lado da. biblioteca. Dirija-se ao estacionamento e o Anexo II estará na sua diagonal esquerda (prédio branco). Entre pela porta de vidro e será a sala logo em frente a esta porta.",
+   "como_chegar": "Prédio branco atrás do prédio principal do IMECC.",
    "mapa_url": "https://maps.app.goo.gl/ggCdrKCBz7WuupLs6"
   },
   {
@@ -6427,7 +6427,7 @@
    "predio": "IMECC",
    "sala": "Sala L004",
    "nome": "IMECC - Anexo II, sala L004",
-   "como_chegar": "A partir do saguão do IMECC, desça para o subsolo do prédio (direção Biblioteca), saia do prédio principal pela porta ao lado da. biblioteca. Dirija-se ao estacionamento e o Anexo II estará na sua diagonal esquerda (prédio branco). Entre pela porta de vidro e será a sala à sua direita.",
+   "como_chegar": "Prédio branco atrás do prédio principal do IMECC.",
    "mapa_url": "https://maps.app.goo.gl/ggCdrKCBz7WuupLs6"
   },
   {
