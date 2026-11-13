@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-13T14:50:12-0300",
- "gerado_em_texto": "13/11/2026 às 14:50",
- "versao_dados": 202611131450,
+ "gerado_em": "2026-11-13T20:39:27-0300",
+ "gerado_em_texto": "13/11/2026 às 20:39",
+ "versao_dados": 202611132039,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -1323,6 +1323,19 @@
    "tem_resumo": true
   },
   {
+   "id": "18",
+   "modalidade": "Pôster",
+   "sessao": "P1",
+   "painel": "",
+   "autor": "Adriane Caroline Teixeira Portela",
+   "instituicao": "UFSCar",
+   "ordem": 0,
+   "titulo": "Análise de confiabilidade de sistemas reparáveis: abordagens para dados de tempo de falha, degradação e degradação acelerada",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
    "id": "19",
    "modalidade": "Pôster",
    "sessao": "P1",
@@ -1466,6 +1479,19 @@
    "tem_resumo": true
   },
   {
+   "id": "36",
+   "modalidade": "Pôster",
+   "sessao": "P2",
+   "painel": "",
+   "autor": "Isabela Bolari Ramos",
+   "instituicao": "UFES",
+   "ordem": 0,
+   "titulo": "AVALIAÇÃO DE GENÓTIPOS DE ACEROLEIRA PARA O SUL DO ESTADO DO ESPÍRITO SANTO",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
    "id": "37",
    "modalidade": "Pôster",
    "sessao": "P3",
@@ -1607,6 +1633,19 @@
    "area": "Aprendizado de máquina",
    "resumo": "",
    "tem_resumo": true
+  },
+  {
+   "id": "49",
+   "modalidade": "Pôster",
+   "sessao": "P3",
+   "painel": "",
+   "autor": "Momate Emate Ossifo",
+   "instituicao": "UFES",
+   "ordem": 0,
+   "titulo": "Proposição de testes bootstrap para igualdade de matrizes de correlação",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "50",
@@ -1763,6 +1802,19 @@
    "area": "Regressão Quantílica",
    "resumo": "",
    "tem_resumo": true
+  },
+  {
+   "id": "63",
+   "modalidade": "Pôster",
+   "sessao": "P2",
+   "painel": "",
+   "autor": "Hellen Sonaly Silva Alves",
+   "instituicao": "UFLA",
+   "ordem": 0,
+   "titulo": "Ajuste e comparação de modelos não lineares para a predição do crescimento de novilhas com e sem adição de metionina",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "64",
@@ -1958,6 +2010,32 @@
    "area": "Modelos de mistura",
    "resumo": "The Box-Cox symmetric distributions constitute a broad class of probability models for positive continuous data, offering flexibility in modeling skewness and tail behavior. Their parameterization allows a straightforward quantile-based interpretation, which is particularly useful in regression modeling. Despite their potential, only a few specific distributions within this class have been explored in regression contexts, and zero-adjusted extensions have not yet been formally addressed in the literature. This paper formalizes the class of Box-Cox symmetric regression models and introduces a new zero-adjusted extension suitable for modeling data with a non-negligible proportion of observations equal to zero. We discuss maximum likelihood estimation, assess finite-sample performance through simulations, and develop diagnostic tools including residual analysis, local influence measures, and goodness-of-fit statistics. An empirical application on basic education expenditure illustrates the models' ability to capture complex patterns in zero-inflated and highly skewed nonnegative data. To support practical use, we developed the new BCSreg R package, which implements all proposed methods.",
    "tem_resumo": true
+  },
+  {
+   "id": "79",
+   "modalidade": "Pôster",
+   "sessao": "P3",
+   "painel": "",
+   "autor": "Laura Lucia Dominguez Barrios",
+   "instituicao": "UNICAMP",
+   "ordem": 0,
+   "titulo": "Abordagem Bayesiana para modelos multivariados com efeitos aleatórios e componentes de natureza mista: Uma aplicação em melhoramento vegetal",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
+   "id": "80",
+   "modalidade": "Pôster",
+   "sessao": "P1",
+   "painel": "",
+   "autor": "Áurea Galindo",
+   "instituicao": "UNICAMP",
+   "ordem": 0,
+   "titulo": "Finite mixture-based quantile regression models for bounded responses",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "81",
@@ -2571,6 +2649,19 @@
    "tem_resumo": true
   },
   {
+   "id": "133",
+   "modalidade": "Pôster",
+   "sessao": "P2",
+   "painel": "",
+   "autor": "Gustavo Jun Yakushiji",
+   "instituicao": "USP",
+   "ordem": 0,
+   "titulo": "Previsão hierárquica de séries temporais aplicada à inflação nos preços de alimentos no Brasil",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
    "id": "134",
    "modalidade": "Pôster",
    "sessao": "P2",
@@ -3130,6 +3221,19 @@
    "tem_resumo": true
   },
   {
+   "id": "190",
+   "modalidade": "Pôster",
+   "sessao": "P1",
+   "painel": "",
+   "autor": "Carina Brunehilde Pinto da Silva",
+   "instituicao": "UVA",
+   "ordem": 0,
+   "titulo": "Advances in Bayesian parametric and semi-parametric modeling of complex longitudinal data",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
    "id": "191",
    "modalidade": "Pôster",
    "sessao": "P3",
@@ -3180,6 +3284,19 @@
    "area": "Outros tópicos biométricos relacionados",
    "resumo": "",
    "tem_resumo": true
+  },
+  {
+   "id": "195",
+   "modalidade": "Pôster",
+   "sessao": "P2",
+   "painel": "",
+   "autor": "Leonardo Peressim",
+   "instituicao": "USP",
+   "ordem": 0,
+   "titulo": "Diagramas de Hasse e anatomia do delineamento experimental: uma abordagem computacional",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "197",
@@ -3401,6 +3518,19 @@
    "area": "Modelagem espacial e espaço-temporal",
    "resumo": "",
    "tem_resumo": true
+  },
+  {
+   "id": "214",
+   "modalidade": "Pôster",
+   "sessao": "P3",
+   "painel": "",
+   "autor": "Tiago Pereira Marques",
+   "instituicao": "UNIVESP",
+   "ordem": 0,
+   "titulo": "Estimating the number of hidden neurons in neural networks",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "215",
@@ -3728,6 +3858,19 @@
    "tem_resumo": true
   },
   {
+   "id": "247",
+   "modalidade": "Pôster",
+   "sessao": "P1",
+   "painel": "",
+   "autor": "Paulo Lino",
+   "instituicao": "UNICAMP",
+   "ordem": 0,
+   "titulo": "Modelagem Logística com Respostas Distais Utilizando o Modelo de Resposta Gradual: Uma Abordagem Bayesiana",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
    "id": "248",
    "modalidade": "Pôster",
    "sessao": "P1",
@@ -3752,6 +3895,19 @@
    "area": "Aprendizado de máquina",
    "resumo": "",
    "tem_resumo": true
+  },
+  {
+   "id": "251",
+   "modalidade": "Pôster",
+   "sessao": "P2",
+   "painel": "",
+   "autor": "George Anderson Alves dos Santos",
+   "instituicao": "UFBA",
+   "ordem": 0,
+   "titulo": "Desenvolvimento de metodologias estatísticas para modelagem da degradação da performance de sistemas reparáveis",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "252",
@@ -3804,6 +3960,19 @@
    "area": "Dados de imagem e sinal",
    "resumo": "",
    "tem_resumo": true
+  },
+  {
+   "id": "256",
+   "modalidade": "Pôster",
+   "sessao": "P3",
+   "painel": "",
+   "autor": "Marco Antonio Silva Guibor",
+   "instituicao": "UFPR",
+   "ordem": 0,
+   "titulo": "Normalising Flows em estimação de densidade e modelagem generativa: uma introdução às funções de acoplamento.",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "257",
@@ -3947,6 +4116,19 @@
    "area": "Infecções, doenças e controle",
    "resumo": "",
    "tem_resumo": true
+  },
+  {
+   "id": "270",
+   "modalidade": "Pôster",
+   "sessao": "P1",
+   "painel": "",
+   "autor": "Vitória Silva Garcia",
+   "instituicao": "UFRGS",
+   "ordem": 0,
+   "titulo": "Viés de amostragem em análises filogeográficas",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "271",
@@ -4404,6 +4586,19 @@
    "tem_resumo": true
   },
   {
+   "id": "309",
+   "modalidade": "Pôster",
+   "sessao": "P2",
+   "painel": "",
+   "autor": "Isabele Alves Pereira",
+   "instituicao": "UNESP",
+   "ordem": 0,
+   "titulo": "Modelagem Híbrida para a Previsão de Preços do Café no Estado de São Paulo",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
    "id": "310",
    "modalidade": "Pôster",
    "sessao": "P1",
@@ -4506,6 +4701,19 @@
    "area": "Modelos de mistura",
    "resumo": "",
    "tem_resumo": true
+  },
+  {
+   "id": "319",
+   "modalidade": "Pôster",
+   "sessao": "P3",
+   "painel": "",
+   "autor": "Beatriz Gomes",
+   "instituicao": "USP",
+   "ordem": 0,
+   "titulo": "Modelo de Regressão Weibull Discreto com Covariáveis Dependentes do Tempo",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "320",
@@ -5171,6 +5379,32 @@
    "tem_resumo": true
   },
   {
+   "id": "381",
+   "modalidade": "Pôster",
+   "sessao": "P1",
+   "painel": "",
+   "autor": "Cleanderson Fidelis",
+   "instituicao": "UEPB",
+   "ordem": 0,
+   "titulo": "Extensões e contribuições para os modelos de regressão com fração de cura",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
+   "id": "382",
+   "modalidade": "Pôster",
+   "sessao": "P2",
+   "painel": "",
+   "autor": "Magno Tairone de Freitas Severino",
+   "instituicao": "INSPER",
+   "ordem": 0,
+   "titulo": "Estimation and model selection for graphical models under mixing conditions",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
    "id": "383",
    "modalidade": "Pôster",
    "sessao": "P2",
@@ -5390,6 +5624,19 @@
    "area": "Probabilidade e Processos Estocásticos",
    "resumo": "Neste trabalho, derivamos explicitamente estimadores não viesados para diversas funções do parâmetro de taxa da distribuição exponencial, na ausência de um parâmetro de locação, incluindo potências do parâmetro de taxa, o quantil de ordem q, o momento de ordem p, a função de sobrevivência, o máximo, o mínimo, a função densidade de probabilidade, o tempo médio passado (mean past lifetime), a função geradora de momentos, entre outros. Este trabalho complementa, de forma não trivial, fórmulas já estabelecidas para estimadores não viesados de funções de parâmetros na distribuição exponencial com parâmetros de locação e taxa. Adicionalmente, estabelecemos um resultado que demonstra a normalidade assintótica dos estimadores não viesados propostos.",
    "tem_resumo": true
+  },
+  {
+   "id": "400",
+   "modalidade": "Pôster",
+   "sessao": "P3",
+   "painel": "",
+   "autor": "Edilenia Queiroz Pereira",
+   "instituicao": "USP",
+   "ordem": 0,
+   "titulo": "Modelagem de tempo de falha acelerado para sistemas reparáveis considerando fragilidade e diferentes funções de aceleração",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "401",
@@ -5873,6 +6120,19 @@
    "tem_resumo": true
   },
   {
+   "id": "444",
+   "modalidade": "Pôster",
+   "sessao": "P1",
+   "painel": "",
+   "autor": "Isabelle Cristina Idalgo Carnielli",
+   "instituicao": "UNICAMP",
+   "ordem": 0,
+   "titulo": "Uma Nova Abordagem Baseada em Dominância Local para Comparação entre Duas Distribuições",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
+  },
+  {
    "id": "445",
    "modalidade": "Pôster",
    "sessao": "P3",
@@ -5936,6 +6196,19 @@
    "area": "Análise de dados categóricos e modelos discretos",
    "resumo": "",
    "tem_resumo": true
+  },
+  {
+   "id": "452",
+   "modalidade": "Pôster",
+   "sessao": "P2",
+   "painel": "",
+   "autor": "Gabriela dos Santos Amaral",
+   "instituicao": "USP",
+   "ordem": 0,
+   "titulo": "Análise de Anomalias Recorrentes em Séries Temporais de ECG: Integração de Detecção Não-Supervisionada e Análise de Sobrevivência",
+   "area": "",
+   "resumo": "",
+   "tem_resumo": false
   },
   {
    "id": "453",
