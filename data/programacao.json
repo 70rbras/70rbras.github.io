@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-13T06:40:33-0300",
- "gerado_em_texto": "13/11/2026 às 06:40",
- "versao_dados": 202611130640,
+ "gerado_em": "2026-11-13T13:53:06-0300",
+ "gerado_em_texto": "13/11/2026 às 13:53",
+ "versao_dados": 202611131353,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -538,7 +538,7 @@
    "fim": "11:30",
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
-   "titulo": "Conferência 2 - Beyond Univariate Models: Statistical Challenges and Opportunities in Multi-Trait Analysis",
+   "titulo": "Conferência 2 -  A novel approach for analyzing non-proportional hazards with long-term survivors: The defective-Yang-Prentice model",
    "subtitulo": "",
    "local": {
     "id": "CDC-A3",
@@ -550,9 +550,9 @@
    },
    "pessoas": [
     {
-     "id": "asuman-turkmen",
-     "nome": "Asuman Turkmen",
-     "instituicao": "The Ohio State University"
+     "id": "vinicius-calsavara",
+     "nome": "Vinicius Calsavara",
+     "instituicao": "Cedars-Sinai Medical Center"
     }
    ],
    "grupo": "Conferências",
@@ -1184,7 +1184,7 @@
    "fim": "16:30",
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
-   "titulo": "Conferência 5 - A novel approach for analyzing non-proportional hazards with long-term survivors: The defective-Yang-Prentice model",
+   "titulo": "Conferência 5 - Beyond Univariate Models: Statistical Challenges and Opportunities in Multi-Trait Analysis",
    "subtitulo": "",
    "local": {
     "id": "CDC-A3",
@@ -1196,9 +1196,9 @@
    },
    "pessoas": [
     {
-     "id": "vinicius-calsavara",
-     "nome": "Vinicius Calsavara",
-     "instituicao": "Cedars-Sinai Medical Center"
+     "id": "asuman-turkmen",
+     "nome": "Asuman Turkmen",
+     "instituicao": "The Ohio State University"
     }
    ],
    "grupo": "Conferências",
