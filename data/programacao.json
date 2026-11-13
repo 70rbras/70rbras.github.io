@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-13T14:10:44-0300",
- "gerado_em_texto": "13/11/2026 às 14:10",
- "versao_dados": 202611131410,
+ "gerado_em": "2026-11-13T14:25:25-0300",
+ "gerado_em_texto": "13/11/2026 às 14:25",
+ "versao_dados": 202611131425,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -6338,6 +6338,45 @@
    "titulo": "Comparação de Modelos de Séries Temporais para Previsão de Pagamentos na Execução Orçamentária do Governo do Estado de São Paulo",
    "area": "Modelagem preditiva",
    "resumo": "",
+   "tem_resumo": true
+  },
+  {
+   "id": "ST-4-1",
+   "modalidade": "Sessão Temática",
+   "sessao": "ST-4",
+   "painel": "",
+   "autor": "Pedro Luiz Ramos",
+   "instituicao": "CeMEAI - USP",
+   "ordem": 1,
+   "titulo": "Survival Prediction with Machine Learning: A Unified Framework for Reliability Applications",
+   "area": "",
+   "resumo": "We propose a unified software framework for applying machine learning methods to survival prediction in reliability engineering. The framework standardizes model fitting, hyperparameter tuning, prediction, and evaluation through a common interface, addressing the fragmentation of existing implementations while preserving each method’s statistical assumptions and prediction capabilities. We review approaches including penalized survival regression, random survival forests, boosting, and support vector machines. An application to Backblaze hard-drive data demonstrates the workflow under substantial right censoring, comparing predictive discrimination through the C-index and illustrating predictions for new units. The emphasis is on connecting methodological choices with practical implementation and reproducible comparisons. The framework is implemented in survlearning, an R package that makes these methods accessible through a consistent set of functions.",
+   "tem_resumo": true
+  },
+  {
+   "id": "ST-4-2",
+   "modalidade": "Sessão Temática",
+   "sessao": "ST-4",
+   "painel": "",
+   "autor": "Fernando Humberto de Almeida Moraes Neto",
+   "instituicao": "UFMT",
+   "ordem": 2,
+   "titulo": "Addressing Data Imbalance in Medical Imaging: A Simulation Study Using Ensemble Transfer Learning for Skin Cancer Detection",
+   "area": "",
+   "resumo": "Data imbalance is a critical challenge in classification tasks, especially in the medical field, where accurate disease identification is essential. This study investigates the impact of imbalance in medical image datasets and proposes the use of transfer learning models combined with resampling and data augmentation to improve skin tumor detection. Images from ISIC (International Skin Imaging Collaboration) 2016, 2017, and 2018 were used, and simulations were performed varying the proportion of the minority class between 10% and 50%, considering data augmentation and resampling; we used a threshold-based ensemble of 13 convolutional neural network models. We evaluated the performance of combinations with standardized metrics, placing emphasis on the F2 -score. The results show that individual models have difficulty identifying malignant tumors when the imbalance is higher (10% malignant and 90% benign samples). However, the use of resampling and data augmentation and ensemble improves the outcome of these models to predict the malignant class. We conclude that the combination of these techniques is effective in dealing with imbalance, providing improvements in predictive performance.",
+   "tem_resumo": true
+  },
+  {
+   "id": "ST-4-3",
+   "modalidade": "Sessão Temática",
+   "sessao": "ST-4",
+   "painel": "",
+   "autor": "Leonardo Nascimento Ferreira",
+   "instituicao": "",
+   "ordem": 3,
+   "titulo": "Bolhas Personalizadas: O Comportamento Social das LLMs no Brasil",
+   "area": "",
+   "resumo": "A inteligência artificial não é neutra. Na prática, grandes modelos de linguagem frequentemente atuam como \"camaleões\": mudam de postura para agradar ao usuário e reforçam bolhas ideológicas no contexto político brasileiro. Nesta palestra, apresentarei evidências empíricas desse comportamento e avaliarei se o uso de fontes externas ajuda a mitigar o problema. Em seguida, ampliarei a análise para outros reflexos sociais dessas ferramentas no país. Mostrarei como os modelos reproduzem estereótipos de renda e ocupação em comparação aos dados reais do IBGE, além de manifestarem vieses de gênero e raça em recomendações educacionais. Por fim, proporei uma reflexão crítica sobre os riscos de termos sistemas que priorizam a concordância em detrimento da precisão dos fatos.",
    "tem_resumo": true
   }
  ],
