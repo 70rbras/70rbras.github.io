@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-15T14:48:40-0300",
- "gerado_em_texto": "15/11/2026 às 14:48",
- "versao_dados": 202611151448,
+ "gerado_em": "2026-11-15T16:56:43-0300",
+ "gerado_em_texto": "15/11/2026 às 16:56",
+ "versao_dados": 202611151656,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -822,11 +822,11 @@
   {
    "id": "PREMIACAO",
    "data": "2026-11-24",
-   "inicio": "19:30",
-   "fim": "23:30",
+   "inicio": "20:00",
+   "fim": "23:59",
    "tipo": "Social",
    "tipo_slug": "social",
-   "titulo": "Premiação e confraternização",
+   "titulo": "Jantar de Confraternização",
    "subtitulo": "",
    "local": {
     "id": "ADUNICAMP",
@@ -1743,19 +1743,6 @@
    "titulo": "Comparação entre estimadores da variância populacional sob diferentes distribuições de probabilidade",
    "area": "Análise de dados categóricos e modelos discretos",
    "resumo": "",
-   "tem_resumo": true
-  },
-  {
-   "id": "54",
-   "modalidade": "Comunicação oral",
-   "sessao": "CO-1",
-   "painel": "",
-   "autor": "Luben Miguel Cruz Cabezas",
-   "instituicao": "UFSCar",
-   "ordem": 2,
-   "titulo": "Conformal Calibration of Statistical Confidence Sets",
-   "area": "Aprendizado de máquina",
-   "resumo": "Constructing valid confidence sets is a crucial task in statistical inference, yet traditional methods often face challenges when dealing with complex models or limited observed sample sizes. These challenges are frequently encountered in modern applications, such as Likelihood-Free Inference (LFI). In these settings, confidence sets may fail to maintain a confidence level close to the nominal value. In this paper, we introduce two novel methods, TRUST and TRUST++, for calibrating confidence sets to achieve distribution-free conditional coverage. These methods rely entirely on simulated data from the statistical model to perform calibration. Leveraging insights from conformal prediction techniques adapted to the statistical inference context, our methods ensure both finite-sample local coverage and asymptotic conditional coverage as the number of simulations increases, even if the observed (real) sample size n is small. They effectively handle nuisance parameters and provide computationally efficient uncertainty quantification for the estimated confidence sets. This allows users to assess whether additional simulations are necessary for robust inference. Through theoretical analysis and experiments on models with tractable and intractable likelihoods, we demonstrate that our methods outperform existing approaches, particularly in small-sample regimes. This work bridges the gap between conformal prediction and statistical inference, offering practical tools for constructing valid confidence sets in complex models.",
    "tem_resumo": true
   },
   {
@@ -4928,19 +4915,6 @@
    "titulo": "Estimação do Índice de Theil-T sob Misturas Finitas Gama com Taxa Comum: Aplicação na Mensuração da Desuniformidade da AACPD",
    "area": "Modelos de mistura",
    "resumo": "",
-   "tem_resumo": true
-  },
-  {
-   "id": "335",
-   "modalidade": "Comunicação oral",
-   "sessao": "CO-7",
-   "painel": "",
-   "autor": "Adriana Binda Lima",
-   "instituicao": "UFAM",
-   "ordem": 2,
-   "titulo": "Comparação de Arquiteturas de Segmentação por Deep Learning para Extração do Espelho d'Água em Imagens de Sensoriamento Remoto",
-   "area": "Dados de imagem e sinal",
-   "resumo": "Este trabalho apresenta o desenvolvimento de um sistema híbrido que integra visão computacional e estatística multivariada para mapear e comparar a severidade das secas extremas na Região Metropolitana de Manaus. O estudo foca na extração automatizada do espelho d'água do Rio Negro, especificamente no trecho entre a foz em Anavilhanas e a Praia do Tupé, utilizando séries temporais de imagens orbitais do sensor Landsat-8. A metodologia fundamenta-se na comparação da eficácia de arquiteturas de redes neurais convolucionais voltadas à segmentação, como YOLO26-seg e U-Net, frente a algoritmos clássicos de limiarização e clusterização. O dataset, composto por imagens processadas via Google Earth Engine, foi submetido a técnicas de treinamento com pesos pré-treinados e data augmentation para garantir robustez. Os resultados obtidos demonstram a superioridade dos modelos de Deep Learning: o YOLO26-seg alcançou um índice de Intersection over Union (IoU) de 0,87 e F1-Score de 0,92, superando a arquitetura U-Net (IoU de 0,83) e métodos tradicionais como Otsu (IoU de 0,61). A análise qualitativa revelou que o paradigma YOLO é mais eficaz na mitigação de ruídos típicos da região amazônica, como sombras de nuvens e névoa, além de apresentar menor tempo de inferência. A inovação do projeto reside na hibridização da segmentação geométrica com a aplicação das distâncias de Mahalanobis e Bhattacharyya. Essas métricas estatísticas permitem caracterizar o estresse ambiental multivariado em nível de pixel, comparando qualitativamente os picos de seca de 2010 e 2023. A metodologia proposta contribui para o avanço do monitoramento de recursos hídricos, fornecendo uma ferramenta replicável e precisa para subsidiar a tomada de decisão por órgãos ambientais e a gestão de riscos frente a eventos climáticos extremos na Amazônia",
    "tem_resumo": true
   },
   {
