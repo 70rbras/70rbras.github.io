@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-15T12:54:23-0300",
- "gerado_em_texto": "15/11/2026 às 12:54",
- "versao_dados": 202611151254,
+ "gerado_em": "2026-11-15T13:07:01-0300",
+ "gerado_em_texto": "15/11/2026 às 13:07",
+ "versao_dados": 202611151307,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -353,13 +353,59 @@
    "destaque": false
   },
   {
-   "id": "SESSAO-PREMIOS",
+   "id": "CONC-DISS",
    "data": "2026-11-23",
    "inicio": "15:30",
    "fim": "16:30",
    "tipo": "Sessão Especial",
    "tipo_slug": "sessao-especial",
-   "titulo": "Apresentação de trabalhos: Iniciação Científica, Dissertação e Tese",
+   "titulo": "Concurso: Melhor Dissertação de Mestrado",
+   "subtitulo": "",
+   "local": {
+    "id": "CDC-A1",
+    "predio": "CDC",
+    "sala": "Auditório I",
+    "nome": "CDC - Auditório I",
+    "como_chegar": "",
+    "mapa_url": "https://maps.app.goo.gl/NeDNbho1LjMFLdB86"
+   },
+   "pessoas": [],
+   "grupo": "",
+   "descricao": "",
+   "resumo": "",
+   "destaque": true
+  },
+  {
+   "id": "CONC-IC",
+   "data": "2026-11-23",
+   "inicio": "15:30",
+   "fim": "16:30",
+   "tipo": "Sessão Especial",
+   "tipo_slug": "sessao-especial",
+   "titulo": "Concurso: Melhor Trabalho de Iniciação Científica",
+   "subtitulo": "",
+   "local": {
+    "id": "CDC-A2",
+    "predio": "CDC",
+    "sala": "Auditório II",
+    "nome": "CDC - Auditório II",
+    "como_chegar": "",
+    "mapa_url": "https://maps.app.goo.gl/NeDNbho1LjMFLdB86"
+   },
+   "pessoas": [],
+   "grupo": "",
+   "descricao": "",
+   "resumo": "",
+   "destaque": true
+  },
+  {
+   "id": "CONC-TESE",
+   "data": "2026-11-23",
+   "inicio": "15:30",
+   "fim": "16:30",
+   "tipo": "Sessão Especial",
+   "tipo_slug": "sessao-especial",
+   "titulo": "Concurso: Melhor Tese de Doutorado",
    "subtitulo": "",
    "local": {
     "id": "CDC-A3",
