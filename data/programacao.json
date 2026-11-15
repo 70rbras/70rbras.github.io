@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-15T16:56:43-0300",
- "gerado_em_texto": "15/11/2026 às 16:56",
- "versao_dados": 202611151656,
+ "gerado_em": "2026-11-15T17:10:24-0300",
+ "gerado_em_texto": "15/11/2026 às 17:10",
+ "versao_dados": 202611151710,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -337,7 +337,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações Orais 1 - Aprendizado de Máquina",
-   "subtitulo": "4 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-AUD",
     "predio": "IMECC",
@@ -643,7 +643,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações Orais 2 - Análise de Dados Categóricos e Modelos Discretos",
-   "subtitulo": "3 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A2",
     "predio": "CDC",
@@ -666,7 +666,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações Orais 3 - Análise de Dados Longitudinais/Modelos de Efeitos Mistos",
-   "subtitulo": "3 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A3",
     "predio": "CDC",
@@ -689,7 +689,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações Orais 4 - Amostragem",
-   "subtitulo": "3 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "CDC-A1",
     "predio": "CDC",
@@ -712,7 +712,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações Orais 5 - Bioinformática",
-   "subtitulo": "3 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-AUD",
     "predio": "IMECC",
@@ -758,7 +758,7 @@
    "tipo": "Pôster",
    "tipo_slug": "poster",
    "titulo": "Sessão de pôsteres 2",
-   "subtitulo": "100 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-POSTERES",
     "predio": "IMECC",
@@ -908,7 +908,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações orais 6 - Inferência Causal",
-   "subtitulo": "3 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-253",
     "predio": "IMECC",
@@ -931,7 +931,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações orais 7 - Dados de Imagem e Sinal",
-   "subtitulo": "3 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-AUD",
     "predio": "IMECC",
@@ -954,7 +954,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações orais 8 - Modelagem Espacial e Espaço-Temporal",
-   "subtitulo": "3 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-151",
     "predio": "IMECC",
@@ -977,7 +977,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações orais 9 - Métodos Bayesianos",
-   "subtitulo": "3 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-L002",
     "predio": "IMECC",
@@ -1000,7 +1000,7 @@
    "tipo": "Pôster",
    "tipo_slug": "poster",
    "titulo": "Sessão de pôsteres 3",
-   "subtitulo": "130 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-POSTERES",
     "predio": "IMECC",
@@ -1133,7 +1133,7 @@
    "tipo": "Comunicação Oral",
    "tipo_slug": "comunicacao-oral",
    "titulo": "Comunicações orais 10 - Análise de Sobrevivência",
-   "subtitulo": "4 trabalhos",
+   "subtitulo": "",
    "local": {
     "id": "IMECC-AUD",
     "predio": "IMECC",
