@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-15T08:09:29-0300",
- "gerado_em_texto": "15/11/2026 às 08:09",
- "versao_dados": 202611150809,
+ "gerado_em": "2026-11-15T12:54:23-0300",
+ "gerado_em_texto": "15/11/2026 às 12:54",
+ "versao_dados": 202611151254,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -5253,8 +5253,8 @@
    "modalidade": "Comunicação oral",
    "sessao": "CO-4",
    "painel": "",
-   "autor": "Wisley Vítor De Sousa Gonçalves",
-   "instituicao": "",
+   "autor": "Bruno Bee Ramirez",
+   "instituicao": "USP",
    "ordem": 2,
    "titulo": "Amostragem e modelos preditivos para a biomassa e carbono da Macaúba (Acrocomia aculeata) com base no Inventário Florestal Nacional",
    "area": "Amostragem",
