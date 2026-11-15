@@ -361,6 +361,32 @@ def construir(dados):
 
     trabalhos.sort(key=chave_num)
 
+    # O subtitulo das sessoes de apresentacao e contagem de trabalhos, portanto
+    # nao pode ser escrito a mao: despublicar um trabalho na planilha encolhe a
+    # lista da sessao enquanto a frase do cartao continuaria dizendo o numero
+    # antigo. A celula so prevalece quando traz outro texto, como o "Dia 1 de 2"
+    # dos minicursos.
+    contagem_sessao = {}
+    for t in trabalhos:
+        if t['sessao']:
+            contagem_sessao[t['sessao']] = contagem_sessao.get(t['sessao'], 0) + 1
+    for a in atividades:
+        n = contagem_sessao.get(a['id'], 0)
+        if not n:
+            continue
+        escrito = a['subtitulo']
+        if escrito and not re.fullmatch(r'\d+\s+trabalhos?', escrito, re.IGNORECASE):
+            avisos.append('atividade %s reune %d trabalhos publicados, porem o subtitulo '
+                          'escrito na planilha diz %r, que nao e contagem; vale o texto '
+                          'da planilha' % (a['id'], n, escrito))
+            continue
+        derivado = '%d trabalho%s' % (n, '' if n == 1 else 's')
+        if escrito and escrito != derivado:
+            avisos.append('atividade %s tem subtitulo %r na planilha, enquanto a contagem '
+                          'de trabalhos publicados e %d; vale a contagem, portanto a '
+                          'celula pode ser apagada' % (a['id'], escrito, n))
+        a['subtitulo'] = derivado
+
     # Duas apresentacoes da mesma sessao disputando o mesmo lugar na sequencia
     # deixam a ordem a cargo do desempate pelo numero do trabalho, que e
     # deterministico. Por isso avisa, em vez de recusar a publicacao inteira.
