@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-15T13:38:35-0300",
- "gerado_em_texto": "15/11/2026 às 13:38",
- "versao_dados": 202611151338,
+ "gerado_em": "2026-11-15T13:58:46-0300",
+ "gerado_em_texto": "15/11/2026 às 13:58",
+ "versao_dados": 202611151358,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -357,8 +357,8 @@
    "data": "2026-11-23",
    "inicio": "15:30",
    "fim": "16:30",
-   "tipo": "Sessão Especial",
-   "tipo_slug": "sessao-especial",
+   "tipo": "Concursos",
+   "tipo_slug": "concursos",
    "titulo": "Concurso: Melhor Dissertação de Mestrado",
    "subtitulo": "",
    "local": {
@@ -380,8 +380,8 @@
    "data": "2026-11-23",
    "inicio": "15:30",
    "fim": "16:30",
-   "tipo": "Sessão Especial",
-   "tipo_slug": "sessao-especial",
+   "tipo": "Concursos",
+   "tipo_slug": "concursos",
    "titulo": "Concurso: Melhor Trabalho de Iniciação Científica",
    "subtitulo": "",
    "local": {
@@ -403,8 +403,8 @@
    "data": "2026-11-23",
    "inicio": "15:30",
    "fim": "16:30",
-   "tipo": "Sessão Especial",
-   "tipo_slug": "sessao-especial",
+   "tipo": "Concursos",
+   "tipo_slug": "concursos",
    "titulo": "Concurso: Melhor Tese de Doutorado",
    "subtitulo": "",
    "local": {
