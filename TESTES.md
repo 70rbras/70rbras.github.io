@@ -250,3 +250,7 @@ Nenhum dos dois teria aparecido sem a verificação. O primeiro só se manifesta
 ### 5.1 Defeitos encontrados durante a verificação visual
 
 O primeiro era um espaço sobrando depois do parêntese no callout dos modelos ("do evento ( comunicação oral"), efeito de uma substituição de texto. O segundo era a lista de horários, que com 26 apresentações chegou a 2733 px de altura, deixando a coluna das instruções vazia ao lado; passou a rolar dentro do cartão, com altura máxima de 640 px. Sem rede de segurança, o primeiro só apareceria na leitura do texto no navegador, o que a conferência por script não faz.
+
+### 5.2 Defeito em produção: caixas vazias em `apresentadores.html` (16/11/2026)
+
+Quem já tinha visitado o site via a página nova com o dado antigo: o cartão "Tempo de apresentação" vazio e as instruções orais em "Instruções em breve". A causa foi o service worker. As páginas HTML usam rede primeiro, mas `data/apresentadores.js` usa cache primeiro, e `VERSAO` ficou em 3 apesar de a lista CASCO ter arquivos alterados, contra o aviso no topo de `sw.js`. Conferido no Chrome em 70rbras.org: o `APRESENTADORES.oral` guardado não tinha `tempos` nem instruções, enquanto o arquivo na rede tinha. Correção: `VERSAO` em 4. Regra a seguir: toda publicação que altere um arquivo da lista CASCO soma um a `VERSAO`.
