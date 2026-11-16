@@ -12,6 +12,8 @@
 //   icone     → emoji exibido no card
 //   destaque  → (opcional) true = card principal do evento (banner destacado)
 //   prorrogado → (opcional) true = selo dourado "Prazo Prorrogado" no card
+//   requer    → (opcional) bloco de data/config.js com `visivel`; com
+//               visivel: false o card não aparece (ex.: "jantar")
 //
 // O status (Encerrado / Aberto agora / Em breve), a contagem de dias e a
 // ordenação cronológica são calculados automaticamente em tempo de renderização.
@@ -119,6 +121,16 @@ const DATES = [
     descricao: "3º Lote: valor cheio, até o início do evento",
     icone:     "🖊️",
     link:      "inscricoes.html"
+  },
+  {
+    id:        "jantar-adesao",
+    titulo:    "Adesão ao Jantar dos 70 anos",
+    inicio:    "2026-11-16",
+    fim:       "2026-11-17",
+    descricao: "Jantar de Confraternização, por adesão",
+    icone:     "🍽️",
+    link:      "index.html#jantar",
+    requer:    "jantar"
   },
   {
     id:        "evento",

@@ -671,13 +671,15 @@
           ? (lista.length === 1 ? 'Ver a apresenta\u00e7\u00e3o' : 'Ver as ' + lista.length + ' apresenta\u00e7\u00f5es')
           : (paraBusca ? 'Ver os ' + todas + ' trabalhos' : 'Ver resumo');
         return '<article class="pg-cartao' + (leve ? ' is-leve' : '') + '" style="--cor:' + cor(a) + '"' +
-          ' id="' + texto(a.id) + '">' +
+          ' id="' + texto(a.id) + '" data-inicio="' + atributo(a.inicio) + '"' +
+          ' data-fim="' + atributo(a.fim) + '">' +
           '<span class="pg-tipo">' + texto(a.tipo) + '</span>' +
           '<h3 class="pg-titulo">' + texto(a.titulo) + '</h3>' +
           (a.subtitulo ? '<p class="pg-sub">' + texto(a.subtitulo) + '</p>' : '') +
           quemHtml(a) +
           ondeHtml(a) +
           (a.descricao ? '<p class="pg-desc">' + texto(a.descricao) + '</p>' : '') +
+          linkJantar(a) +
           (a.resumo || lista.length
             ? '<button type="button" class="pg-detalhes" aria-haspopup="dialog"' +
               ' data-id="' + atributo(a.id) + '">' + texto(rotulo) + '</button>'
@@ -688,11 +690,60 @@
           '</article>';
       }).join('');
 
-      return '<div class="pg-bloco">' + mudanca +
+      return '<div class="pg-bloco" id="pg-bloco-' + atributo(String(bloco.inicio).replace(':', '')) + '"' +
+        ' data-inicio="' + atributo(bloco.inicio) + '">' + mudanca +
         '<div class="pg-horario">' + texto(bloco.inicio || '—') +
         (fins.length === 1 ? '<small>até ' + texto(fins[0]) + '</small>' : '') +
         '</div><div class="pg-cartoes">' + cartoes + '</div></div>';
     }).join('');
+    marcarAgora();
+  }
+
+  /* Cartao do jantar: leva aos valores e a adesao na Home, enquanto
+     CONFIG.jantar (data/config.js) estiver visivel. */
+  function linkJantar(a) {
+    var j = (typeof CONFIG !== 'undefined') && CONFIG.jantar;
+    if (!j || j.visivel === false || j.atividade_id !== a.id) return '';
+    return '<a class="pg-detalhes" href="index.html#jantar">Valores e ades\u00e3o</a>';
+  }
+
+  // ------------------------------------------------------------ agora
+  /* Data e minuto de Brasília. Usa o relógio de assets/nav.js, que aceita
+     ?agora=AAAA-MM-DDTHH:MM para conferência; sem ele, calcula aqui. */
+  function relogio() {
+    if (window.Agenda && window.Agenda.agora) return window.Agenda.agora();
+    var d = new Date(Date.now() - 3 * 3600000);
+    return { data: d.toISOString().slice(0, 10), min: d.getUTCHours() * 60 + d.getUTCMinutes() };
+  }
+
+  /* Realça o que acontece agora e, na falta, o próximo bloco do dia. So vale
+     quando o dia em exibicao e hoje. Devolve o bloco a mostrar na abertura. */
+  function marcarAgora() {
+    if (!el.tempo) return null;
+    var r = relogio();
+    var ehHoje = diaAtivo === r.data;
+    var alvo = null;
+    Array.prototype.forEach.call(el.tempo.querySelectorAll('.pg-cartao'), function (c) {
+      var ini = minutos(c.dataset.inicio);
+      var fim = minutos(c.dataset.fim);
+      if (fim === null) fim = ini;
+      var agora = ehHoje && ini !== null && ini <= r.min && r.min < fim;
+      c.classList.toggle('is-agora', agora);
+      if (agora && !alvo) alvo = c.closest('.pg-bloco');
+    });
+    var proximo = null;
+    Array.prototype.forEach.call(el.tempo.querySelectorAll('.pg-bloco'), function (b) {
+      var ini = minutos(b.dataset.inicio);
+      var eh = ehHoje && !proximo && ini !== null && ini > r.min;
+      if (eh) proximo = b;
+      b.classList.toggle('is-proximo', eh);
+    });
+    return alvo || proximo;
+  }
+
+  function irParaAgora() {
+    var bloco = marcarAgora();
+    if (bloco && bloco.scrollIntoView) bloco.scrollIntoView({ block: 'start' });
   }
 
   // ------------------------------------------------------------ busca
@@ -987,7 +1038,9 @@
       if (mostrar && d.config.aviso_programacao) el.aviso.textContent = d.config.aviso_programacao;
     }
 
-    var hoje = new Date().toISOString().slice(0, 10);
+    /* Hoje em Brasilia: toISOString() usa UTC, o que depois das 21h abria
+       a pagina no dia seguinte. */
+    var hoje = relogio().data;
     var doHoje = d.dias.filter(function (x) { return x.data === hoje; })[0];
     diaAtivo = doHoje ? doHoje.data : (d.dias[0] && d.dias[0].data);
 
@@ -1027,7 +1080,12 @@
       trocarModo(alvo);
     } else if (!(alvo && irParaAtividade(alvo))) {
       trocarModo(doHoje ? 'dia' : 'geral');
+      /* No dia do evento, a pagina abre no que acontece agora. */
+      if (doHoje && !alvo) irParaAgora();
     }
+
+    /* O realce acompanha o relogio sem redesenhar a lista. */
+    setInterval(marcarAgora, 60000);
   }
 
   if (window.PROGRAMACAO) {

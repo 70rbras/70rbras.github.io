@@ -360,9 +360,10 @@
             <p>A Diretoria da RBras comunicou oficialmente o resultado.</p>
           </div>
           <div class="processo-step">
-            <span class="step-badge">Novembro</span>
+            <!-- Dia, horário e local vêm de data/programacao.json (entrega_atividade em data/premios.js). -->
+            <span class="step-badge" id="destaque-entrega-dia">Novembro</span>
             <h4>Entrega do prêmio</h4>
-            <p>Durante a 70ª RBras, no IMECC/Unicamp.</p>
+            <p id="destaque-entrega">Durante a 70ª RBras.</p>
           </div>
         </div>
       </div>
@@ -540,6 +541,28 @@ if (entrega && typeof PREMIOS_ENTREGA === 'string') {
     .replace('{edicao}', ev.edicao || '')
     .replace('{datas}', ev.datas_exibicao || '');
 }
+
+/* ── Entrega do Prêmio Destaque ─────────────────────
+   Dia, horário e local da cerimônia saem da atividade indicada em
+   data/premios.js (entrega_atividade), lida de data/programacao.json. Sem a
+   programação, fica o texto genérico escrito no HTML. */
+(function () {
+  const p = PREMIOS.find(x => x.id === 'destaque');
+  const alvo = document.getElementById('destaque-entrega');
+  const selo = document.getElementById('destaque-entrega-dia');
+  if (!p || !p.entrega_atividade || !alvo || typeof Agenda === 'undefined') return;
+  Agenda.carregar().then(dados => {
+    const a = Agenda.atividade(dados, p.entrega_atividade);
+    if (!a) return;
+    const e = Agenda.escapar;
+    const d = (dados.dias || []).find(x => x.data === a.data);
+    if (selo && d && d.rotulo_curto) selo.textContent = d.rotulo_curto;
+    const onde = Agenda.local(a);
+    alvo.innerHTML = 'Na ' + e(a.titulo) + ': ' + e(Agenda.dia(dados, a.data)) +
+      ', às ' + e(Agenda.hora(a.inicio)) + (onde ? ', ' + e(onde) : '') + '. ' +
+      '<a href="programacao.html#' + encodeURIComponent(a.id) + '" style="color:var(--teal);font-weight:600">Ver na programação &rarr;</a>';
+  }).catch(() => { /* fica o texto genérico */ });
+})();
 
 /* ── Scroll Reveal ──────────────────────────────── */
 const revealObs = new IntersectionObserver((entries) => {

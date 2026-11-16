@@ -16,6 +16,9 @@
 //       trabalho    → (Tese/Dissertação/IC) título do trabalho premiado
 //       orientador  → (Tese/Dissertação/IC) nome do(a) orientador(a)
 //   mencoes   → (opcional) array de menções honrosas, com os mesmos campos de `premiado`
+//   entrega_atividade → (opcional) id da atividade de data/programacao.json em que o
+//               prêmio é entregue. premios.html lê dali dia, horário e local, de
+//               modo que a planilha da programação continua a fonte única.
 //
 // Assim que o primeiro `premiado` for preenchido, a faixa dourada aparece
 // automaticamente na Home e o card correspondente em premios.html é revelado.
@@ -24,13 +27,14 @@
 // Aqui ficam apenas os marcadores {edicao} e {datas}, trocados em premios.html
 // no momento de escrever o texto, do mesmo modo que data/submissions.js faz com
 // os prazos. Nenhuma data é escrita neste arquivo.
-const PREMIOS_ENTREGA = "Os prêmios serão entregues durante a {edicao}, de {datas}, no IMECC/Unicamp.";
+const PREMIOS_ENTREGA = "Os prêmios serão entregues durante a {edicao}, de {datas}, na Unicamp.";
 
 const PREMIOS = [
   {
     id:        "destaque",
     titulo:    "Prêmio Destaque RBras",
     icone:     "🏆",
+    entrega_atividade: "REUNIAO-RBRAS",
     descricao: "Homenagem a quem dedicou a carreira ao ensino, à pesquisa e à orientação em Estatística e Biometria no Brasil.",
     premiado:  {
       nome:        "Prof. Dr. Dalton Francisco de Andrade",

@@ -7,7 +7,7 @@
   <title>70ª RBras 2026 - Dados que revelam vida: Estatística e Ciência de Dados na Biometria</title>
   <link rel="icon" type="image/png" href="assets/logos/70rbras_logo_positivo_cor.png">
   <link rel="canonical" href="https://70rbras.org">
-  <meta name="description" content="70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria - Dados que revelam vida: Estatística e Ciência de Dados na Biometria. 23 a 25 de novembro de 2026, IMECC, Unicamp, Campinas, SP.">
+  <meta name="description" content="70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria - Dados que revelam vida: Estatística e Ciência de Dados na Biometria. 23 a 25 de novembro de 2026, Centro de Convenções e IMECC, Unicamp, Campinas, SP.">
   <meta property="og:title" content="70ª RBras 2026 - Dados que revelam vida: Estatística e Ciência de Dados na Biometria">
   <meta property="og:description" content="70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria · 23 a 25 de novembro de 2026 · Unicamp, Campinas, SP">
   <meta property="og:url" content="https://70rbras.org">
@@ -80,7 +80,7 @@
             <div class="icon">📍</div>
             <div>
               <strong style="color:white;display:block" id="hero-cidade">Unicamp, Campinas, SP</strong>
-              <span style="color:rgba(255,255,255,.6);font-size:.85rem" id="hero-local-nome">IMECC - Unicamp</span>
+              <span style="color:rgba(255,255,255,.6);font-size:.85rem" id="hero-local-nome">Centro de Convenções (CDC) e IMECC</span>
             </div>
           </div>
         </div>
@@ -93,10 +93,16 @@
           <div class="cd-sep">:</div>
           <div class="cd-unit"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">seg</div></div>
         </div>
+        <!-- Modo evento: durante os dias do congresso, toma o lugar do contador.
+             Preenchido a partir de data/programacao.json (ver renderAgora). -->
+        <div class="hero-agora" id="hero-agora" aria-live="polite" hidden></div>
         <div class="hero-actions reveal reveal-delay-4">
-          <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer" id="hero-btn-inscricoes">Inscreva-se na 70ª RBras ↗</a>
-          <a href="programacao.html" class="btn btn--outline">Ver Programação</a>
+          <a href="programacao.html" class="btn btn--primary" id="hero-btn-programacao">Ver Programação</a>
+          <a href="programacao.html#busca" class="btn btn--outline">Encontre seu trabalho</a>
+          <a href="logistica.html#como-chegar" class="btn btn--outline">Como chegar</a>
         </div>
+        <p class="hero-inscricao" id="hero-inscricao">Ainda não se inscreveu?
+          <a href="#" target="_blank" rel="noopener noreferrer" id="hero-btn-inscricoes">Inscreva-se na 70ª RBras ↗</a></p>
       </div>
     </div>
   </div>
@@ -121,6 +127,11 @@
     </div>
     <div class="proximas-grid" id="proximas-grid"></div>
   </div>
+</section>
+
+<!-- ─── JANTAR DE CONFRATERNIZAÇÃO (CONFIG.jantar em data/config.js; visivel: false oculta) ── -->
+<section id="jantar" hidden>
+  <div class="container" id="jantar-inner"></div>
 </section>
 
 <!-- ─── WASA SATÉLITE ─────────────────────────────── -->
@@ -362,7 +373,17 @@ function applyConfig() {
 
   safe('instagram-strip-link', el => el.href = redes_sociais.instagram);
 
-  startCountdown(new Date(evento.inicio + 'T09:00:00'));
+  /* Encerrado o último lote, os convites à inscrição saem da Home. */
+  const ultimoLote = (typeof dataPorId === 'function') ? dataPorId('lote-3') : null;
+  if (ultimoLote && Agenda.agora().data > ultimoLote.fim) {
+    safe('hero-inscricao', el => el.hidden = true);
+    safe('inscricoes-cta', el => el.hidden = true);
+  }
+
+  /* Horário de Brasília explícito: o contador não depende do fuso do aparelho. */
+  const hoje = Agenda.agora().data;
+  if (hoje < evento.inicio) startCountdown(new Date(evento.inicio + 'T09:00:00-03:00'));
+  else renderAgora();
 }
 
 /* ═══════════════════════════════════════════════
@@ -372,9 +393,10 @@ function startCountdown(target) {
   const cd = document.getElementById('countdown');
   if (!cd) return;
   function pad(n, l=2) { return String(n).padStart(l,'0'); }
+  let timer = null;
   function tick() {
     const diff = target - Date.now();
-    if (diff <= 0) { cd.innerHTML = '<p style="color:var(--gold-light);font-weight:700;font-size:1.2rem">O evento começou! 🎉</p>'; return; }
+    if (diff <= 0) { clearInterval(timer); renderAgora(); return; }
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000)  / 60000);
@@ -384,7 +406,80 @@ function startCountdown(target) {
     document.getElementById('cd-mins').textContent  = pad(m);
     document.getElementById('cd-secs').textContent  = pad(s);
   }
-  tick(); setInterval(tick, 1000);
+  timer = setInterval(tick, 1000);
+  tick();
+}
+
+/* ═══════════════════════════════════════════════
+   MODO EVENTO - "Agora" e "A seguir"
+   Nos dias do congresso o contador dá lugar ao que acontece agora e ao
+   próximo horário, lidos de data/programacao.json. Atualiza a cada minuto.
+   Para conferir um momento: index.html?agora=2026-11-23T14:10
+════════════════════════════════════════════════ */
+let agoraTimer = null;
+function renderAgora() {
+  const cd  = document.getElementById('countdown');
+  const box = document.getElementById('hero-agora');
+  if (!box || typeof Agenda === 'undefined') return;
+  const { evento } = CONFIG;
+  const MAX = 4;
+
+  const desenhar = dados => {
+    const ag = Agenda.agora();
+    if (cd) cd.hidden = true;
+    box.hidden = false;
+    const btn = document.getElementById('hero-btn-programacao');
+
+    if (ag.data > evento.fim) {
+      box.innerHTML = '<p class="hero-agora-fim">A ' + Agenda.escapar(evento.edicao) +
+        ' foi encerrada. Obrigado pela participação!</p>';
+      if (btn) btn.textContent = 'Ver Programação';
+      return;
+    }
+    if (btn) btn.textContent = ag.data >= evento.inicio ? 'Programação de hoje' : 'Ver Programação';
+
+    const ativs = (dados.atividades || []).filter(a => Agenda.minutos(a.inicio) !== null);
+    const ini = a => Agenda.minutos(a.inicio);
+    const fim = a => Agenda.minutos(a.fim) ?? ini(a);
+    const agora = ativs.filter(a => a.data === ag.data && ini(a) <= ag.min && ag.min < fim(a))
+      .sort((x, y) => ini(x) - ini(y));
+    const futuras = ativs.filter(a => a.data > ag.data || (a.data === ag.data && ini(a) > ag.min))
+      .sort((x, y) => (x.data + x.inicio).localeCompare(y.data + y.inicio));
+    const seguinte = futuras.length
+      ? futuras.filter(a => a.data === futuras[0].data && a.inicio === futuras[0].inicio) : [];
+
+    const item = a => {
+      const onde = Agenda.local(a);
+      return '<li><a href="programacao.html#' + encodeURIComponent(a.id) + '">' +
+        '<span class="hero-agora-hora">' + Agenda.escapar(Agenda.faixa(a)) + '</span>' +
+        '<span class="hero-agora-titulo">' + Agenda.escapar(a.titulo) + '</span>' +
+        (onde ? '<span class="hero-agora-local">📍 ' + Agenda.escapar(onde) + '</span>' : '') +
+        '</a></li>';
+    };
+    const lista = (rotulo, itens) => {
+      if (!itens.length) return '';
+      const resto = itens.length - MAX;
+      return '<div class="hero-agora-grupo"><p class="hero-agora-rotulo">' + rotulo + '</p><ul>' +
+        itens.slice(0, MAX).map(item).join('') + '</ul>' +
+        (resto > 0 ? '<a class="hero-agora-mais" href="programacao.html#dia">+ ' + resto +
+          (resto === 1 ? ' atividade' : ' atividades') + ' no mesmo horário</a>' : '') + '</div>';
+    };
+    let rotuloSeguinte = 'A seguir';
+    if (seguinte.length && seguinte[0].data !== ag.data) {
+      rotuloSeguinte = 'Próximo: ' + Agenda.escapar(Agenda.dia(dados, seguinte[0].data));
+    }
+    const html = lista('<span class="hero-agora-pulso" aria-hidden="true"></span>Agora', agora) +
+      lista(rotuloSeguinte, seguinte);
+    box.innerHTML = html || '<p class="hero-agora-fim">Consulte a programação completa.</p>';
+  };
+
+  Agenda.carregar().then(dados => {
+    desenhar(dados);
+    if (!agoraTimer) agoraTimer = setInterval(() => desenhar(dados), 60000);
+  }).catch(() => {
+    /* Sem a programação, fica só o botão, que leva à página com cópia offline. */
+    if (cd) cd.hidden = true;
+  });
 }
 
 /* ═══════════════════════════════════════════════
@@ -533,6 +628,8 @@ function renderProximasDatas() {
   const itens = DATES
     .map(d => ({ ...d, _ini: parse(d.inicio), _fim: parse(d.fim) }))
     .filter(d => d._fim >= hoje)
+    /* Card ligado a um bloco de data/config.js some quando o bloco está oculto. */
+    .filter(d => !(d.requer && CONFIG[d.requer] && CONFIG[d.requer].visivel === false))
     .sort((a, b) => a._ini - b._ini);
   if (!itens.length) { sec.hidden = true; return; }
 
@@ -555,6 +652,89 @@ function renderProximasDatas() {
 }
 
 /* ═══════════════════════════════════════════════
+   JANTAR DE CONFRATERNIZAÇÃO
+   Textos e valores em CONFIG.jantar (data/config.js); dia, horário e mapa
+   na atividade correspondente de data/programacao.json; prazo de adesão em
+   data/dates.js. visivel: false oculta a seção; ela some sozinha depois do
+   dia do jantar, e as instruções de pagamento somem depois do prazo.
+════════════════════════════════════════════════ */
+function renderJantar() {
+  const j = CONFIG.jantar;
+  const sec = document.getElementById('jantar');
+  const box = document.getElementById('jantar-inner');
+  if (!j || j.visivel === false || !sec || !box || typeof Agenda === 'undefined') return;
+  const e = Agenda.escapar;
+  const reais = v => v === 0 ? 'Isento'
+    : Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const tabela = (titulo, linhas) => `
+    <div class="jantar-tabela">
+      <h3>${titulo}</h3>
+      <dl>${linhas.map(l => `<div><dt>${e(l.categoria)}</dt><dd>${e(reais(l.valor))}</dd></div>`).join('')}</dl>
+    </div>`;
+
+  Agenda.carregar().catch(() => null).then(dados => {
+    const a = dados ? Agenda.atividade(dados, j.atividade_id) : null;
+    const hoje = Agenda.agora().data;
+    if (a && hoje > a.data) return;                      // jantar já aconteceu
+    const prazo = (typeof dataPorId === 'function') ? dataPorId(j.prazo_id) : null;
+    const aberto = !prazo || hoje <= prazo.fim;
+    const mapa = a && a.local && /^https:\/\//.test(a.local.mapa_url || '') ? a.local.mapa_url : '';
+    const quando = a ? Agenda.dia(dados, a.data) + ', ' + Agenda.faixa(a) : '';
+
+    const pix = j.pix || {};
+    const adesao = aberto ? `
+      <div class="jantar-adesao">
+        <h3>Como aderir</h3>
+        <ol>
+          <li><strong>Pague via Pix</strong> com a chave ${e(pix.tipo || '')}:
+            <span class="jantar-pix"><code id="jantar-chave">${e(pix.chave || '')}</code>
+            <button type="button" class="jantar-copiar" id="jantar-copiar">Copiar chave</button></span>
+            <span class="jantar-favorecido">Favorecido: <strong>${e(pix.favorecido || '')}</strong>.
+            Confira esse nome no aplicativo do banco antes de confirmar: a organização não divulga outra chave.</span></li>
+          <li><strong>Preencha o formulário</strong> e anexe o comprovante do Pix.</li>
+          <li>A <strong>confirmação</strong> chega por e-mail depois da verificação do pagamento.</li>
+        </ol>
+        ${j.formulario ? `<a href="${e(j.formulario)}" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Formulário de adesão ↗</a>` : ''}
+        ${j.observacao ? `<p class="jantar-obs">${e(j.observacao)}</p>` : ''}
+      </div>`
+      : `<div class="jantar-adesao"><h3>Adesões encerradas</h3>
+          <p>O prazo de adesão terminou${prazo ? ' em ' + e(dataCurta(prazo.fim)) : ''}. Dúvidas:
+          <a href="mailto:${e(CONFIG.evento.email_contato)}">${e(CONFIG.evento.email_contato)}</a>.</p></div>`;
+
+    box.innerHTML = `
+      <div class="section-header">
+        <span class="tag tag--gold">Confraternização</span>
+        <h2 class="section-title" style="margin-top:1rem">Jantar dos <span>70 anos</span> da RBras</h2>
+      </div>
+      <div class="jantar-chips">
+        ${quando ? `<span class="jantar-chip">📅 <strong>${e(quando)}</strong></span>` : ''}
+        <span class="jantar-chip">📍 <strong>${e(j.local_nome || (a ? Agenda.local(a) : ''))}</strong>
+          · ${e(j.endereco || '')}${mapa ? ` · <a href="${e(mapa)}" target="_blank" rel="noopener noreferrer">mapa ↗</a>` : ''}</span>
+        ${aberto && prazo ? `<span class="jantar-chip jantar-chip--prazo">⏳ Adesões até <strong>${e(dataCurta(prazo.fim))}</strong></span>` : ''}
+      </div>
+      <div class="jantar-grid">
+        <div>
+          ${tabela('Ingressos', j.ingressos || [])}
+          ${tabela('Acompanhantes', j.acompanhantes || [])}
+        </div>
+        ${adesao}
+      </div>`;
+    sec.hidden = false;
+
+    const btn = document.getElementById('jantar-copiar');
+    if (btn) btn.addEventListener('click', () => {
+      const chave = pix.chave || '';
+      const ok = () => { btn.textContent = 'Copiada ✓'; setTimeout(() => { btn.textContent = 'Copiar chave'; }, 2000); };
+      if (navigator.clipboard) navigator.clipboard.writeText(chave).then(ok).catch(() => {});
+    });
+
+    /* Quem chega por index.html#jantar: a seção nasce oculta, então o
+       navegador não rolou até ela no carregamento. */
+    if (location.hash === '#jantar') sec.scrollIntoView();
+  });
+}
+
+/* ═══════════════════════════════════════════════
    BOOT
 ════════════════════════════════════════════════ */
 applyConfig();
@@ -562,6 +742,7 @@ renderSpeakersNames();
 renderSponsors();
 renderPremiosHome();
 renderProximasDatas();
+renderJantar();
 revealAll();
 </script>
 </body>

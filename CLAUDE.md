@@ -10,8 +10,10 @@ Site oficial da **70ª Reunião Anual da Região Brasileira da Sociedade Interna
 
 - **Tema:** "Dados que revelam vida: Estatística e Ciência de Dados na Biometria"
 - **Data do evento:** 23–25 de novembro de 2026 (segunda a quarta)
-- **Local:** IMECC — Instituto de Matemática, Estatística e Computação Científica, Unicamp, Campinas, SP
-  - Endereço: Rua Sérgio Buarque de Holanda, 651 — Cidade Universitária Zeferino Vaz, Campinas, SP · CEP 13083-859
+- **Local:** dois prédios da Unicamp, Campinas, SP, a 700 m um do outro (10 min a pé)
+  - **CDC**, Centro de Convenções da Unicamp: Avenida Érico Veríssimo, 500 · Cidade Universitária Zeferino Vaz - Barão Geraldo · CEP 13083-851 (credenciamento, abertura, conferências, sessões temáticas, concursos, encerramento)
+  - **IMECC**, Instituto de Matemática, Estatística e Computação Científica: Rua Sérgio Buarque de Holanda, 651 — Cidade Universitária Zeferino Vaz, Campinas, SP · CEP 13083-859 (minicursos, pôsteres, parte das comunicações orais, assembleia; também o WASA)
+  - Fonte: `data/config.js` (`evento.local_*` é o IMECC; `predios` e `trajeto` descrevem os dois prédios)
 - **Domínio:** 70rbras.org
 - **Contato:** 70rbras@unicamp.br
 - **Repositório GitHub:** site-rbras-claude
@@ -136,7 +138,7 @@ site-rbras-claude/
 9. **Inscrições (CTA)** — Chamada para inscrição
 10. **Footer** — Links, redes sociais, copyright
 
-**Menu principal (ordem, out/2026):** Evento (Sobre, Convidados, Programação, Comissões, 🏆 Prêmios RBras, Apoiadores) · Apresentadores (Pôster, Comunicação Oral, Onde imprimir) · Inscrições · Logística (Local do Evento, Como Chegar, Hospedagem, Gráficas) · FAQ · botão Área do Inscrito · WASA. "Apoio" saiu do menu principal em 21/10/2026 (virou "Apoiadores" dentro de Evento e no rodapé; seção #patrocinadores segue na Home). O menu "Científico" foi aposentado em 21/10/2026 (datas e submissões vencidas). Fundo de Financiamento fica fora do menu: link no rodapé (coluna Participar) e em inscricoes.html; quando houver resultado, pôr bloco "Resultado" no topo de fundo-estudante.html e item temporário com selo "Novo" no Evento.
+**Menu principal (ordem, nov/2026):** Evento (Sobre, Convidados, Comissões, 🏆 Prêmios RBras, Apoiadores) · Programação (item próprio desde 16/11/2026) · Apresentadores (Pôster, Comunicação Oral, Onde imprimir) · Inscrições · Logística (Local do Evento, Como Chegar, Hospedagem, Gráficas) · FAQ · botão Área do Inscrito · WASA. "Apoio" saiu do menu principal em 21/10/2026 (virou "Apoiadores" dentro de Evento e no rodapé; seção #patrocinadores segue na Home). O menu "Científico" foi aposentado em 21/10/2026 (datas e submissões vencidas). Fundo de Financiamento fica fora do menu: link no rodapé (coluna Participar) e em inscricoes.html; quando houver resultado, pôr bloco "Resultado" no topo de fundo-estudante.html e item temporário com selo "Novo" no Evento.
 
 **Rodapé:** Evento (inclui Apoiadores) · Participar (Inscrições, Apresentadores, Fundo) · Logística · Contato.
 
@@ -240,7 +242,7 @@ Todos os prêmios centralizados em `premios.html` (decisão out/2026). `premiado
 | Melhor Dissertação de Mestrado | a anunciar |
 | Melhor Trabalho de IC | a anunciar |
 
-Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov); texto usa "durante a 70ª RBras". Menu: "🏆 Prêmios RBras" com selo `.nav-new-badge` "Novo".
+Entrega do Destaque: dia, horário além de local lidos da atividade `REUNIAO-RBRAS` da programação (campo `entrega_atividade` em `data/premios.js`). Menu: "🏆 Prêmios RBras", sem selo "Novo" desde 16/11/2026.
 
 ---
 
@@ -281,6 +283,8 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 - ✅ Modelos de apresentação oral (PowerPoint e Beamer) e manual publicados em `apresentadores.html#modelos-oral`, com instruções, FAQ e CTA da Home atualizados (16/11/2026)
 - ✅ Regra R11 no verificador: arquivo do casco do service worker alterado sem somar um a `VERSAO` em `sw.js` recusa a publicação; o fluxo horário da programação usa `--sem-casco` e ignora os arquivos gerados (16/11/2026)
 - ✅ `data/resumos-trabalhos.json` no casco do service worker, com `VERSAO` em 3, além de duas validações novas no build (09/11/2026, tarefa P17)
+- ✅ Dois prédios em `logistica.html#local` (CDC e IMECC, endereço, o que acontece em cada um lido da programação, rota a pé, credenciamento), Hero e metadados citam os dois (16/11/2026)
+- ✅ Modo evento na Home (Agora / A seguir), Programação como item próprio do menu, botões "Encontre seu trabalho" e "Como chegar" no Hero, realce do "agora" na programação com correção de fuso, avisos ligados a atividades, entrega do Destaque lida da programação, seção do Jantar; `VERSAO` em 5 (16/11/2026)
 ---
 
 ## 13. Como fazer alterações comuns
@@ -314,11 +318,17 @@ Não editar o `<head>`. Ajustar o dado de origem em `data/`, ou a prosa da pági
 ### Modelos de pôster e de apresentação oral
 Arquivos em `assets/documentos/`: `modelos-poster-70rbras.zip`, `manual-poster-70rbras.pdf`, `modelos-apresentacao-oral-70rbras.zip`, `manual-apresentacao-oral-70rbras.pdf`. Os links ficam em `data/config.js` (`link_modelos_poster`, `link_modelos_oral`; vazio oculta o bloco em `apresentadores.html`). Instruções em `data/apresentadores.js`. O pacote oral vale para qualquer apresentação oral (comunicação oral, sessão temática, concursos, conferências e mini-conferências); o envio do arquivo segue o e-mail da organização "Envio da sua Apresentação para a 70a RBRas", com instruções por sessão e link de upload. Tela do evento: decisão de manter 16:9 (16/11/2026); o site e o manual afirmam isso. Tempos (16/11/2026), em `data/apresentadores.js` → `oral.tempos`: Comunicação Oral 15 min, Sessão Temática 20, Concursos de Tese e de Dissertação 15, Concurso de IC 10, mais 5 min de perguntas em todas. Conferências e mini-conferências sem tempo informado. Uso dos modelos é recomendado, não obrigatório.
 
+### Modo evento (Home e Programação)
+De 23 a 25/11 o contador da Home dá lugar ao bloco "Agora / A seguir", lido de `data/programacao.json`; a programação realça o cartão em andamento e rola até ele. O relógio é sempre o de Brasília (`Agenda.agora()` em `assets/nav.js`). Para conferir um momento, acrescente `?agora=2026-11-23T14:10` ao endereço de qualquer página. Depois do fim do 3º Lote, os convites à inscrição saem da Home.
+
+### Jantar de Confraternização
+Tudo em `data/config.js` → `jantar`. **Para ocultar tudo (seção, aviso, card de datas, link na programação): `visivel: false`.** As instruções de pagamento somem sozinhas depois do prazo `jantar-adesao` de `data/dates.js`; a seção some depois do dia do jantar. Agência e conta bancária ficam de fora de propósito (decisão de 16/11/2026): só chave Pix além de favorecido.
+
 ### Mudar links de inscrição/submissão
 Editar `data/config.js`, campos `link_inscricoes`, `link_submissao` e `link_area_inscrito`.
 
 ### Faixa de aviso no topo do site
-Editar `data/config.js` → `avisos` (id, texto, link, link_texto, inicio, fim em horário de Brasília). Aparece o primeiro aviso dentro do período; some sozinho após `fim`; quem fecha não vê de novo (localStorage por `id`). Renderizada por `assets/nav.js` no DOMContentLoaded (nav.js carrega antes de config.js).
+Editar `data/config.js` → `avisos` (id, texto, link, link_texto, inicio, fim em horário de Brasília; ou `inicio_id`/`fim_id` de dates.js; ou `atividade_id` da programação, com `{dia}`, `{horario}`, `{local}` no texto; `requer: "jantar"` some com `CONFIG.jantar.visivel: false`). Quem fecha um aviso passa a ver o seguinte da lista. Aparece o primeiro aviso dentro do período; some sozinho após `fim`; quem fecha não vê de novo (localStorage por `id`). Renderizada por `assets/nav.js` no DOMContentLoaded (nav.js carrega antes de config.js).
 
 ---
 

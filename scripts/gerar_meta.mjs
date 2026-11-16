@@ -209,7 +209,7 @@ const PAGINAS = {
   'index.html': {
     url: '',
     titulo: '{edicao} {ano} - {tema}',
-    descricao: '{nome} - {tema}. {datas}, IMECC, {cidade}.',
+    descricao: '{nome} - {tema}. {datas}, Centro de Convenções e IMECC, {cidade}.',
     og_descricao: '{nome} · {datas} · {cidade}'
   },
 
@@ -222,10 +222,10 @@ const PAGINAS = {
   'programacao.html': {
     url: 'programacao.html',
     titulo: 'Programação - {edicao} {ano}',
-    descricao: 'Programação científica da {edicao} {ano} - conferências, sessões temáticas, minicursos e pôsteres. {datas}, IMECC, {cidade}.',
+    descricao: 'Programação científica da {edicao} {ano} - conferências, sessões temáticas, minicursos e pôsteres. {datas}, Centro de Convenções e IMECC, {cidade}.',
     /* A prévia do link dispensa a data, que já sai na descrição do buscador:
        repeti-la só aumenta a contagem do verificador sem informar ninguém. */
-    og_descricao: 'Conferências, sessões temáticas, minicursos e pôsteres da {edicao} {ano}, no IMECC.'
+    og_descricao: 'Conferências, sessões temáticas, minicursos e pôsteres da {edicao} {ano}, na Unicamp.'
   },
 
   'inscricoes.html': {
@@ -250,7 +250,7 @@ const PAGINAS = {
   'logistica.html': {
     url: 'logistica.html',
     titulo: 'Logística - {edicao} {ano}',
-    descricao: 'Local da {edicao} {ano}: IMECC, {cidade}. Como chegar, aeroportos, hospedagem e gráficas.'
+    descricao: 'Local da {edicao} {ano}: Centro de Convenções e IMECC, {cidade}. Os dois prédios, como chegar, hospedagem e gráficas.'
   },
 
   'faq.html': {
