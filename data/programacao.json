@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-16T08:39:24-0300",
- "gerado_em_texto": "16/11/2026 às 08:39",
- "versao_dados": 202611160839,
+ "gerado_em": "2026-11-16T14:27:05-0300",
+ "gerado_em_texto": "16/11/2026 às 14:27",
+ "versao_dados": 202611161427,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -216,7 +216,7 @@
    ],
    "grupo": "Conferências",
    "descricao": "",
-   "resumo": "",
+   "resumo": "Population growth is driving the need for substantial increases in food production worldwide. In this context, genetic improvement has become a key tool for sustainably increasing agricultural productivity. Agronomic traits of interest are typically controlled by a large number of genes with small effects, and genomic selection has emerged as a powerful approach for predicting the genetic value of individuals using genome-wide molecular information through models such as GBLUP. The accuracy of genomic prediction depends on several factors, including the genetic variability of the germplasm, the density and distribution of molecular markers, trait heritability, the prediction model employed, and the design of the training population used to develop the predictive model. The objective of this lecture is to demonstrate how the design of the training population influences the accuracy of genomic predictions and how this effect is associated with the level of connectivity that the training population establishes among parental lines.",
    "destaque": true
   },
   {
