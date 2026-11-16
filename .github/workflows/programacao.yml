@@ -45,7 +45,7 @@ jobs:
         run: node scripts/build_cadastro.mjs --fontes scripts/fontes.json
 
       - name: Verificar fontes únicas
-        run: node scripts/checar_fontes.mjs
+        run: node scripts/checar_fontes.mjs --sem-casco
 
       - name: Publicar quando houver mudança
         run: |

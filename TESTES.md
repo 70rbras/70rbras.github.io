@@ -254,3 +254,20 @@ O primeiro era um espaço sobrando depois do parêntese no callout dos modelos (
 ### 5.2 Defeito em produção: caixas vazias em `apresentadores.html` (16/11/2026)
 
 Quem já tinha visitado o site via a página nova com o dado antigo: o cartão "Tempo de apresentação" vazio e as instruções orais em "Instruções em breve". A causa foi o service worker. As páginas HTML usam rede primeiro, mas `data/apresentadores.js` usa cache primeiro, e `VERSAO` ficou em 3 apesar de a lista CASCO ter arquivos alterados, contra o aviso no topo de `sw.js`. Conferido no Chrome em 70rbras.org: o `APRESENTADORES.oral` guardado não tinha `tempos` nem instruções, enquanto o arquivo na rede tinha. Correção: `VERSAO` em 4. Regra a seguir: toda publicação que altere um arquivo da lista CASCO soma um a `VERSAO`.
+
+### 5.3 Regra R11 do verificador (16/11/2026)
+
+Testada numa cópia do repositório, sem tocar no original.
+
+| Situação | Resultado esperado | Resultado |
+|---|---|---|
+| Arquivo do casco editado, `VERSAO` igual | violação em R11 | conforme |
+| Mesma edição com `VERSAO` somada, ainda sem commit | sem violação | conforme |
+| Edição e aumento comitados | sem violação | conforme |
+| Nova edição depois do aumento | violação em R11 | conforme |
+| Edição comitada sem novo aumento | violação em R11 | conforme |
+| Novo aumento ainda não comitado | sem violação | conforme |
+| `--sem-casco` | regra pulada | conforme |
+| Estado atual do repositório | sem violação | conforme |
+
+O fluxo `fontes.yml` ganhou `fetch-depth: 0`, pois a regra lê o histórico de `sw.js`. O fluxo `programacao.yml` usa `--sem-casco`, para que um aumento esquecido não trave a atualização horária da programação.

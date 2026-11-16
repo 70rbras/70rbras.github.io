@@ -279,6 +279,7 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 - ✅ Coluna `ordem` define a sequência de fala além de `pessoa_id` resolver o apresentador pela ficha (09/11/2026, tarefa P13)
 - ✅ Busca com filtro por sessão, botão de resumo no resultado além de carga sob demanda do segundo arquivo (09/11/2026, tarefa P16)
 - ✅ Modelos de apresentação oral (PowerPoint e Beamer) e manual publicados em `apresentadores.html#modelos-oral`, com instruções, FAQ e CTA da Home atualizados (16/11/2026)
+- ✅ Regra R11 no verificador: arquivo do casco do service worker alterado sem somar um a `VERSAO` em `sw.js` recusa a publicação; o fluxo horário da programação usa `--sem-casco` e ignora os arquivos gerados (16/11/2026)
 - ✅ `data/resumos-trabalhos.json` no casco do service worker, com `VERSAO` em 3, além de duas validações novas no build (09/11/2026, tarefa P17)
 ---
 

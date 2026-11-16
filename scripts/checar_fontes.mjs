@@ -10,18 +10,21 @@
  *   node scripts/checar_fontes.mjs              verifica e sai com 1 em caso de violação
  *   node scripts/checar_fontes.mjs --pessoas    relatório de pessoas com registro divergente
  *   node scripts/checar_fontes.mjs --gerar      imprime a lista de exceções do estado atual
+ *   node scripts/checar_fontes.mjs --sem-casco  pula a regra R11 (usado no fluxo horário da programação)
  *
  * Plano: claude/plano-fontes-unicas-70rbras.md, tarefa D0.1.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import { execFileSync } from 'node:child_process';
 import process from 'node:process';
 import { gerar } from './gerar_meta.mjs';
 
 const RAIZ = process.argv.find(a => a.startsWith('--raiz='))?.slice(7) || process.cwd();
 const MODO_PESSOAS = process.argv.includes('--pessoas');
 const MODO_GERAR = process.argv.includes('--gerar');
+const SEM_CASCO = process.argv.includes('--sem-casco');
 
 const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
   'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
@@ -149,7 +152,8 @@ const REGRAS = {
   R7: 'símbolo declarado em data/ sem nenhum consumidor',
   R8: 'ligação repetida que deveria viver em assets/nav.js',
   R9: 'bloco de metadados diferente do que o gerador produziria; regere com node scripts/gerar_meta.mjs',
-  R10: 'pessoa citada fora do cadastro único de data/pessoas.js'
+  R10: 'pessoa citada fora do cadastro único de data/pessoas.js',
+  R11: 'arquivo do casco do service worker alterado sem somar um a VERSAO em sw.js'
 };
 
 /* ------------------------------------------------- bloco de metadados */
@@ -500,6 +504,54 @@ for (const a of dados.programacao?.atividades || []) {
     }
   }
 }
+
+/* R11 guarda o service worker. Os arquivos do casco (lista CASCO de sw.js) são
+   servidos cache primeiro: quem já visitou recebe a cópia antiga, enquanto o
+   HTML novo chega pela rede. Sem somar um a VERSAO, a página nova aparece com
+   dado antigo (caixas vazias em apresentadores.html, em 16/11/2026).
+
+   A comparação parte do último commit que mudou a linha de VERSAO: qualquer
+   arquivo do casco alterado depois dele, inclusive na árvore de trabalho,
+   exige novo aumento. Ficam de fora os arquivos gerados pelo fluxo horário
+   (cadastro, programação e resumos), que se revalidam sozinhos. Sem git ou
+   sem histórico, a regra é pulada com aviso, nunca falha. */
+const GERADOS_CASCO = new Set([
+  'data/pessoas.js', 'data/speakers.js', 'data/committee.js',
+  'data/programacao.json', 'data/resumos-trabalhos.json'
+]);
+
+function conferirCasco() {
+  if (!existe('sw.js')) return;
+  const sw = ler('sw.js');
+  const bloco = sw.match(/const CASCO = \[([\s\S]*?)\];/);
+  if (!bloco) {
+    achados.push({ arquivo: 'sw.js', regra: 'R11', linha: 0, trecho: 'lista CASCO não encontrada' });
+    return;
+  }
+  const casco = [...bloco[1].matchAll(/^\s*'([^']+)'/gm)].map(m => m[1])
+    .filter(c => !c.endsWith('/') && !GERADOS_CASCO.has(c));
+  const git = (...args) => execFileSync('git', args, { cwd: RAIZ, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+  let ref;
+  let alterados;
+  try {
+    ref = git('log', '-1', '--format=%H', '-G^const VERSAO = ', '--', 'sw.js');
+    if (!ref) throw new Error('sem histórico de VERSAO');
+    /* Aumento ainda não comitado também vale: cobre tudo o que veio antes. */
+    const versao = t => (t.match(/^const VERSAO = (\d+)/m) || [])[1];
+    if (versao(git('show', 'HEAD:sw.js')) !== versao(sw)) return;
+    alterados = git('diff', '--name-only', ref).split('\n').filter(Boolean);
+  } catch (erro) {
+    console.log(`Aviso: regra R11 pulada (${erro.message.split('\n')[0]}).\n`);
+    return;
+  }
+  for (const arq of casco.filter(c => alterados.includes(c))) {
+    achados.push({
+      arquivo: arq, regra: 'R11', linha: 0,
+      trecho: 'alterado depois da última mudança de VERSAO em sw.js; some um a VERSAO'
+    });
+  }
+}
+if (!SEM_CASCO) conferirCasco();
 
 const excecoes = carregarExcecoes();
 const { violacoes, resolvidas } = aplicarExcecoes(achados, excecoes);
