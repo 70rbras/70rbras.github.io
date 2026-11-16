@@ -237,8 +237,8 @@ const PAGINAS = {
   'apresentadores.html': {
     url: 'apresentadores.html',
     titulo: 'Apresentadores - {edicao} {ano}',
-    descricao: 'Instruções para quem apresenta na {edicao} {ano}: modelos oficiais de pôster (A0), sessões de pôsteres e comunicações orais.',
-    og_descricao: 'Modelos oficiais de pôster, formato A0, horários das sessões e instruções para comunicações orais.'
+    descricao: 'Instruções para quem apresenta na {edicao} {ano}: modelos oficiais de pôster (A0) e de apresentação oral, sessões de pôsteres, comunicações orais e sessões temáticas.',
+    og_descricao: 'Modelos oficiais de pôster (A0) e de apresentação oral, horários das sessões e instruções para quem apresenta.'
   },
 
   'comissoes.html': {

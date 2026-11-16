@@ -26,7 +26,8 @@ const CONFIG = {
     link_inscricoes:    "https://app.ciente.studio/70-rbras/subscription",
     link_submissao:     "https://app.ciente.studio/70-rbras/submissions",
     link_area_inscrito: "https://app.ciente.studio/",
-    link_modelos_poster: "assets/documentos/modelos-poster-70rbras.zip"   // vazio = bloco oculto em apresentadores.html
+    link_modelos_poster: "assets/documentos/modelos-poster-70rbras.zip",   // vazio = bloco oculto em apresentadores.html
+    link_modelos_oral:   "assets/documentos/modelos-apresentacao-oral-70rbras.zip"   // vazio = bloco oculto em apresentadores.html
   },
   redes_sociais: {
     instagram: "https://www.instagram.com/70rbras"

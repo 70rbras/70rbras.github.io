@@ -235,3 +235,14 @@ O primeiro estava no fluxo horário. O passo de publicação comparava os arquiv
 O segundo estava na linha de ajuda da busca. Ela contava `dados.trabalhos` por modalidade, portanto as apresentações convidadas das sessões temáticas entrariam na conta de trabalhos aceitos, que é número de submissão. A contagem passou a excluir a modalidade convidada, conferida com uma linha falsa no JSON de teste.
 
 Nenhum dos dois teria aparecido sem a verificação. O primeiro só se manifestaria na próxima execução do fluxo, silenciosamente; o segundo, apenas quando as linhas das sessões temáticas entrassem na planilha.
+
+## 5. Modelos de apresentação oral (16/11/2026)
+
+| Passo | O que foi conferido | Resultado |
+|---|---|---|
+| Compilação | `pdflatex apresentacao.tex` em diretório limpo, com os arquivos do pacote | conforme |
+| Pacote | zip sem `.DS_Store`, `__MACOSX` nem scripts de geração; README, manual, `PowerPoint/` e `Beamer/` | conforme |
+| Servidor local | `apresentadores.html`, zip e manual respondem 200 | conforme |
+| Sintaxe | `node --check` em `config.js`, `apresentadores.js` e `faq.js`; seis instruções orais carregadas | conforme |
+| Metadados | `gerar_meta.mjs` sem diferença; `checar_fontes.mjs` sem violação | conforme |
+| Visual no navegador | callout, botões, lista de sessões com temáticas, celular | não conferido |

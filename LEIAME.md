@@ -121,8 +121,10 @@ Um objeto por prêmio no array `PREMIOS` (Destaque, Tese, Dissertação, IC).
 ### Apresentadores (`data/apresentadores.js`)
 - `poster.instrucoes` e `oral.instrucoes`: listas de instruções (aceitam HTML)
 - Lista vazia mostra "Instruções em breve"
-- Horários e salas das sessões ainda vêm de `data/schedule.js` (itens "Sessão de Pôsteres" e "CO-"), não da planilha
-  - Ao mudar horário ou sala de pôster/comunicação oral na planilha, atualize também o `schedule.js` até a migração desta página
+- Horários e salas das sessões vêm de `data/programacao.json` (gerado da planilha): pôsteres, comunicações orais e sessões temáticas
+- Modelos para download: `link_modelos_poster` e `link_modelos_oral` em `data/config.js`; vazio oculta o bloco
+  - Arquivos em `assets/documentos/`: `modelos-poster-70rbras.zip`, `manual-poster-70rbras.pdf`, `modelos-apresentacao-oral-70rbras.zip`, `manual-apresentacao-oral-70rbras.pdf`
+  - Para atualizar o zip oral: refazer o pacote com `README.md`, `Manual_Apresentacao_70RBras.pdf`, `PowerPoint/` e `Beamer/` e substituir o arquivo, mantendo o nome; copiar o manual avulso
 
 ---
 

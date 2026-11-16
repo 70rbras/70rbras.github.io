@@ -75,7 +75,7 @@ site-rbras-claude/
     ├── programacao.js    # Lê data/programacao.json e desenha as três visões
     ├── pessoas.js        # Funções compartilhadas de cartão e iniciais de pessoa
     ├── logos/            # Arquivos de logo (baixados localmente, nunca hotlink)
-    ├── documentos/       # PDFs e modelos de pôster (.zip)
+    ├── documentos/       # PDFs e modelos de pôster e de apresentação oral (.zip)
     ├── imagens/          # Banners e cartazes
     └── fotos/            # Fotos dos palestrantes (400×400 px, JPG)
 ```
@@ -278,6 +278,7 @@ Data exata da entrega ainda indefinida (Assembleia 24 nov ou encerramento 25 nov
 - ✅ Diálogo da sessão lista as apresentações que a compõem, com âncora `#T-39` por apresentação (09/11/2026, tarefa P14)
 - ✅ Coluna `ordem` define a sequência de fala além de `pessoa_id` resolver o apresentador pela ficha (09/11/2026, tarefa P13)
 - ✅ Busca com filtro por sessão, botão de resumo no resultado além de carga sob demanda do segundo arquivo (09/11/2026, tarefa P16)
+- ✅ Modelos de apresentação oral (PowerPoint e Beamer) e manual publicados em `apresentadores.html#modelos-oral`, com instruções, FAQ e CTA da Home atualizados (16/11/2026)
 - ✅ `data/resumos-trabalhos.json` no casco do service worker, com `VERSAO` em 3, além de duas validações novas no build (09/11/2026, tarefa P17)
 ---
 
@@ -308,6 +309,9 @@ Editar `data/inscricoes.js` (categorias e os três lotes), `data/fundo.js` (mont
 
 ### Alterar título, descrição ou imagem de prévia de link
 Não editar o `<head>`. Ajustar o dado de origem em `data/`, ou a prosa da página no mapa `PAGINAS` de `scripts/gerar_meta.mjs`, depois rodar `node scripts/gerar_meta.mjs` e commitar o resultado. O modo `--verificar` confere sem gravar.
+
+### Modelos de pôster e de apresentação oral
+Arquivos em `assets/documentos/`: `modelos-poster-70rbras.zip`, `manual-poster-70rbras.pdf`, `modelos-apresentacao-oral-70rbras.zip`, `manual-apresentacao-oral-70rbras.pdf`. Os links ficam em `data/config.js` (`link_modelos_poster`, `link_modelos_oral`; vazio oculta o bloco em `apresentadores.html`). Instruções em `data/apresentadores.js`. O pacote oral vale também para sessão temática; o envio do arquivo segue o e-mail da organização "Envio da sua Apresentação para a 70a RBRas", com instruções por sessão e link de upload. Tela do evento assumida como 16:9 por decisão do organizador (16/11/2026), sem confirmação do IMECC; o site e o manual afirmam isso. Pendente de confirmação: duração de cada tipo de apresentação (o site só dá a orientação de slides do manual, incluindo 10 min do concurso de IC).
 
 ### Mudar links de inscrição/submissão
 Editar `data/config.js`, campos `link_inscricoes`, `link_submissao` e `link_area_inscrito`.

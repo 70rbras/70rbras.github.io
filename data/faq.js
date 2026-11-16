@@ -53,6 +53,16 @@ const FAQ = [
         resposta: "Sim. Há modelos oficiais em PowerPoint e em LaTeX, que produzem o mesmo resultado. O arquivo final deve ser um PDF em tamanho <strong>A0 retrato (841 × 1189 mm)</strong>. Baixe o <a href=\"assets/documentos/modelos-poster-70rbras.zip\" download>pacote com os modelos (.zip)</a> ou consulte o <a href=\"assets/documentos/manual-poster-70rbras.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">manual de uso (PDF)</a>."
       },
       {
+        id: "modelo-oral",
+        pergunta: "Minha comunicação oral foi aceita. Existe um modelo oficial de slides? Qual o formato?",
+        resposta: "Sim. Há modelos oficiais em PowerPoint e em Beamer (LaTeX), que produzem o mesmo resultado projetado e servem também para sessão temática. Os slides estão em formato <strong>16:9</strong>. Baixe o <a href=\"assets/documentos/modelos-apresentacao-oral-70rbras.zip\" download>pacote com os modelos (.zip)</a> ou consulte o <a href=\"assets/documentos/manual-apresentacao-oral-70rbras.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">manual de uso (PDF)</a>."
+      },
+      {
+        id: "entrega-apresentacao-oral",
+        pergunta: "Como entrego o arquivo da minha apresentação oral?",
+        resposta: "Verifique o e-mail enviado pela organização do evento com o título &ldquo;Envio da sua Apresentação para a 70a RBRas&rdquo;. Ele traz instruções específicas para a sua sessão e indica como fazer o upload do arquivo da apresentação. Se não o encontrar, confira a caixa de spam ou escreva para <a href=\"mailto:70rbras@unicamp.br\">70rbras@unicamp.br</a>."
+      },
+      {
         id: "onde-imprimir-poster",
         pergunta: "Onde posso imprimir meu pôster?",
         resposta: "A organização indica gráficas próximas ao IMECC. Veja endereços, contatos e valores na página <a href=\"logistica.html#graficas\">Logística → Gráficas</a>."

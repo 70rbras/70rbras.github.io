@@ -18,6 +18,8 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Destino usado no cálculo de rota | `data/config.js`, campo `endereco_rota` | `logistica.html` |
 | Prazos, lotes de inscrição | `data/dates.js`, cada registro com `id` estável | home, `inscricoes.html`, `premios.html` |
 | Valores de inscrição | `data/inscricoes.js` | `inscricoes.html` |
+| Links dos modelos de pôster e de apresentação oral | `data/config.js`, campos `link_modelos_poster` e `link_modelos_oral` | `apresentadores.html` |
+| Instruções de pôster e de apresentação oral | `data/apresentadores.js` | `apresentadores.html` |
 | Convidados além das palestras | Planilha, aba `convidados`; gera `data/speakers.js` | `palestrantes.html`, home |
 | Pessoas: ficha única de cada uma | Planilha, aba `pessoas_cadastro`; gera `data/pessoas.js` | `comissoes.html`, `palestrantes.html`, `premios.html`, `programacao.html` |
 | Comissões | Planilha, aba `comissoes`; gera `data/committee.js` | `comissoes.html`, `premios.html` |
