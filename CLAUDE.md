@@ -41,6 +41,7 @@ site-rbras-claude/
 ├── LEIAME.md             # Guia de manutenção em português
 ├── FONTES.md             # Onde se edita cada informação; regras de fonte única
 ├── TESTES.md             # Roteiros de conferência executados, com resultado e data
+├── PENDENCIAS.md         # Pendências vivas do site (o que falta, quem destrava, onde editar)
 ├── CNAME                 # Configuração de domínio (70rbras.org)
 ├── CLAUDE.md             # Este arquivo de memória
 ├── padroniza_fotos.py    # Script Python para normalizar fotos de palestrantes
@@ -248,6 +249,8 @@ Entrega do Destaque: dia, horário além de local lidos da atividade `REUNIAO-RB
 
 ## 12. Status atual do projeto (atualizado nov/2026)
 
+**Pendências abertas: ver `PENDENCIAS.md`** (atualizar ao concluir cada item).
+
 - ✅ Estrutura e design do site concluídos
 - ✅ Conteúdo de palestrantes, programação e comissões populados
 - ✅ Fotos padronizadas (400×400 px)
@@ -316,7 +319,7 @@ Editar `data/inscricoes.js` (categorias e os três lotes), `data/fundo.js` (mont
 Não editar o `<head>`. Ajustar o dado de origem em `data/`, ou a prosa da página no mapa `PAGINAS` de `scripts/gerar_meta.mjs`, depois rodar `node scripts/gerar_meta.mjs` e commitar o resultado. O modo `--verificar` confere sem gravar.
 
 ### Modelos de pôster e de apresentação oral
-Arquivos em `assets/documentos/`: `modelos-poster-70rbras.zip`, `manual-poster-70rbras.pdf`, `modelos-apresentacao-oral-70rbras.zip`, `manual-apresentacao-oral-70rbras.pdf`. Os links ficam em `data/config.js` (`link_modelos_poster`, `link_modelos_oral`; vazio oculta o bloco em `apresentadores.html`). Instruções em `data/apresentadores.js`. O pacote oral vale para qualquer apresentação oral (comunicação oral, sessão temática, concursos, conferências e mini-conferências); o envio do arquivo segue o e-mail da organização "Envio da sua Apresentação para a 70a RBRas", com instruções por sessão e link de upload. Tela do evento: decisão de manter 16:9 (16/11/2026); o site e o manual afirmam isso. Tempos (16/11/2026), em `data/apresentadores.js` → `oral.tempos`: Comunicação Oral 15 min, Sessão Temática 20, Concursos de Tese e de Dissertação 15, Concurso de IC 10, mais 5 min de perguntas em todas. Conferências e mini-conferências sem tempo informado. Uso dos modelos é recomendado, não obrigatório.
+Arquivos em `assets/documentos/`: `modelos-poster-70rbras.zip`, `manual-poster-70rbras.pdf`, `modelos-apresentacao-oral-70rbras.zip`, `manual-apresentacao-oral-70rbras.pdf`. Os links ficam em `data/config.js` (`link_modelos_poster`, `link_modelos_oral`; vazio oculta o bloco em `apresentadores.html`). Instruções em `data/apresentadores.js`. O pacote oral vale para qualquer apresentação oral (comunicação oral, sessão temática, concursos, conferências e mini-conferências); o envio do arquivo segue o e-mail da organização "Envio da sua Apresentação para a 70a RBRas", com instruções por sessão e link de upload. Tela do evento: decisão de manter 16:9 (16/11/2026); o site e o manual afirmam isso. Tempos (16/11/2026), em `data/apresentadores.js` → `oral.tempos`: Comunicação Oral 15 min, Sessão Temática 20, Concursos de Tese e de Dissertação 15, Concurso de IC 10, Mini-Conferência 25, Conferência 55 (16/11/2026), mais 5 min de perguntas em todas. Uso dos modelos é recomendado, não obrigatório.
 
 ### Modo evento (Home e Programação)
 De 23 a 25/11 o contador da Home dá lugar ao bloco "Agora / A seguir", lido de `data/programacao.json`; a programação realça o cartão em andamento e rola até ele. O relógio é sempre o de Brasília (`Agenda.agora()` em `assets/nav.js`). Para conferir um momento, acrescente `?agora=2026-11-23T14:10` ao endereço de qualquer página. Depois do fim do 3º Lote, os convites à inscrição saem da Home.

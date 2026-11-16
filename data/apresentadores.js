@@ -25,13 +25,14 @@ const APRESENTADORES = {
   oral: {
     aviso: "",
     // Tempo de cada modalidade, em minutos. Tabela exibida em apresentadores.html.
-    // Conferências e mini-conferências não têm tempo informado aqui.
     tempos: [
       { modalidade: "Comunicação Oral",                            apresentacao: 15, perguntas: 5 },
       { modalidade: "Sessão Temática",                             apresentacao: 20, perguntas: 5 },
       { modalidade: "Concurso: Melhor Tese de Doutorado",          apresentacao: 15, perguntas: 5 },
       { modalidade: "Concurso: Melhor Dissertação de Mestrado",    apresentacao: 15, perguntas: 5 },
-      { modalidade: "Concurso: Melhor Trabalho de Iniciação Científica", apresentacao: 10, perguntas: 5 }
+      { modalidade: "Concurso: Melhor Trabalho de Iniciação Científica", apresentacao: 10, perguntas: 5 },
+      { modalidade: "Mini-Conferência",                            apresentacao: 25, perguntas: 5 },
+      { modalidade: "Conferência",                                 apresentacao: 55, perguntas: 5 }
     ],
     instrucoes: [
       "Recomenda-se que as apresentações orais utilizem, preferencialmente, os modelos oficiais disponibilizados nesta página. O uso dos modelos, contudo, não é obrigatório: o apresentador poderá empregar material próprio. Os modelos estão em PowerPoint e em Beamer (LaTeX), produzem o mesmo resultado projetado e valem para qualquer apresentação oral do evento: comunicação oral, sessão temática, concursos (tese, dissertação e iniciação científica), conferências e mini-conferências.",
