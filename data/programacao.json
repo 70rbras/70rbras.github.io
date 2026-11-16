@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-16T15:24:10-0300",
- "gerado_em_texto": "16/11/2026 às 15:24",
- "versao_dados": 202611161524,
+ "gerado_em": "2026-11-16T15:28:04-0300",
+ "gerado_em_texto": "16/11/2026 às 15:28",
+ "versao_dados": 202611161528,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -846,17 +846,17 @@
    "id": "MC-1",
    "data": "2026-11-25",
    "inicio": "08:00",
-   "fim": "09:00",
+   "fim": "08:30",
    "tipo": "Mini-Conferência",
    "tipo_slug": "mini-conferencia",
    "titulo": "Modelagem de quantis condicionais em dados eletrocardiográficos: uma aplicação da regressão quantílica",
    "subtitulo": "",
    "local": {
-    "id": "IMECC-151",
+    "id": "IMECC-253",
     "predio": "IMECC",
-    "sala": "Sala 151",
-    "nome": "IMECC - Sala 151",
-    "como_chegar": "Primeiro andar do IMECC, próximo ao elevador.",
+    "sala": "Sala 253",
+    "nome": "IMECC - Sala 253",
+    "como_chegar": "Segundo andar do IMECC, próximo ao elevador.",
     "mapa_url": "https://maps.app.goo.gl/nEr4DxwMe1Za6U778"
    },
    "pessoas": [
@@ -874,7 +874,7 @@
   {
    "id": "MC-2",
    "data": "2026-11-25",
-   "inicio": "08:00",
+   "inicio": "08:30",
    "fim": "09:00",
    "tipo": "Mini-Conferência",
    "tipo_slug": "mini-conferencia",
