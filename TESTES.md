@@ -245,4 +245,8 @@ Nenhum dos dois teria aparecido sem a verificação. O primeiro só se manifesta
 | Servidor local | `apresentadores.html`, zip e manual respondem 200 | conforme |
 | Sintaxe | `node --check` em `config.js`, `apresentadores.js` e `faq.js`; seis instruções orais carregadas | conforme |
 | Metadados | `gerar_meta.mjs` sem diferença; `checar_fontes.mjs` sem violação | conforme |
-| Visual no navegador | callout, botões, lista de sessões com temáticas, celular | não conferido |
+| Visual no navegador (16/11/2026, Chrome, 1280 px e viewport estreito de 606 px) | callout, tabela de tempos, instruções, lista com 26 horários agrupados por tipo, botão da Home | conforme, após dois ajustes |
+
+### 5.1 Defeitos encontrados durante a verificação visual
+
+O primeiro era um espaço sobrando depois do parêntese no callout dos modelos ("do evento ( comunicação oral"), efeito de uma substituição de texto. O segundo era a lista de horários, que com 26 apresentações chegou a 2733 px de altura, deixando a coluna das instruções vazia ao lado; passou a rolar dentro do cartão, com altura máxima de 640 px. Sem rede de segurança, o primeiro só apareceria na leitura do texto no navegador, o que a conferência por script não faz.

@@ -54,8 +54,13 @@ const FAQ = [
       },
       {
         id: "modelo-oral",
-        pergunta: "Minha comunicação oral foi aceita. Existe um modelo oficial de slides? Qual o formato?",
-        resposta: "Sim. Há modelos oficiais em PowerPoint e em Beamer (LaTeX), que produzem o mesmo resultado projetado e servem também para sessão temática. Os slides estão em formato <strong>16:9</strong>. Baixe o <a href=\"assets/documentos/modelos-apresentacao-oral-70rbras.zip\" download>pacote com os modelos (.zip)</a> ou consulte o <a href=\"assets/documentos/manual-apresentacao-oral-70rbras.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">manual de uso (PDF)</a>."
+        pergunta: "Vou fazer uma apresentação oral. Existe um modelo oficial de slides? Qual o formato?",
+        resposta: "Sim. Há modelos oficiais em PowerPoint e em Beamer (LaTeX), que produzem o mesmo resultado projetado e valem para qualquer apresentação oral do evento: comunicação oral, sessão temática, concursos (tese, dissertação e iniciação científica), conferências e mini-conferências. Os slides estão em formato <strong>16:9</strong>. Baixe o <a href=\"assets/documentos/modelos-apresentacao-oral-70rbras.zip\" download>pacote com os modelos (.zip)</a> ou consulte o <a href=\"assets/documentos/manual-apresentacao-oral-70rbras.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">manual de uso (PDF)</a>. Recomenda-se o uso dos modelos, mas ele <strong>não é obrigatório</strong>: o apresentador poderá empregar material próprio."
+      },
+      {
+        id: "tempo-apresentacao-oral",
+        pergunta: "Quanto tempo terei para a minha apresentação oral?",
+        resposta: "O tempo depende da modalidade e está na tabela da seção <a href=\"apresentadores.html#oral\">Apresentadores → Apresentações Orais</a>. Em todas as modalidades, a apresentação é seguida de 5 minutos para perguntas."
       },
       {
         id: "entrega-apresentacao-oral",
