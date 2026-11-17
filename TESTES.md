@@ -271,3 +271,18 @@ Testada numa cópia do repositório, sem tocar no original.
 | Estado atual do repositório | sem violação | conforme |
 
 O fluxo `fontes.yml` ganhou `fetch-depth: 0`, pois a regra lê o histórico de `sw.js`. O fluxo `programacao.yml` usa `--sem-casco`, para que um aumento esquecido não trave a atualização horária da programação.
+
+## 6. Endereço do WASA (17/11/2026)
+
+Queixa de usuários: o endereço do WASA não era encontrado. A seção Local ficava no fim da página, abaixo de um banner, e a caixa "Local" de Sobre trazia só "IMECC - Unicamp / Campinas, SP".
+
+| Conferência | O que se verificou | Resultado |
+|---|---|---|
+| Fontes | `checar_fontes.mjs` sem violação; `gerar_meta.mjs --verificar` em dia | conforme |
+| Data da nota | "26/11" montado de `data/dates.js` (registro `wasa`), nada escrito na página | conforme |
+| Ordem das seções | Hero, Sobre, Local, Organização, Homenagem, Programação, Inscrição | conforme |
+| Desktop (Chrome headless, 1300 px) | selo de local no hero, caixa "Local" com sala e endereço, cartão com foto ao lado do mapa | conforme |
+| Estreito (Chrome headless, 500 px) | cartão e mapa empilhados, sem rolagem lateral | conforme |
+| Mapa embutido | iframe carrega com "Open in Maps"; os blocos do mapa não carregam no modo headless, efeito do ambiente | conforme, conferir no navegador |
+| Service worker | `VERSAO` de 6 para 7 (casco: `wasa.html`, `index.html`, `data/wasa.js`, `assets/style.css`) | conforme |
+

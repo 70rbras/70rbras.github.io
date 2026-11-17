@@ -15,7 +15,7 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Programação, salas, trabalhos, pessoas do programa | Planilha do Google, abas publicadas em CSV | `programacao.html`, `apresentadores.html` |
 | Nome, tema, datas, endereço, e-mail, links externos | `data/config.js` | todas as páginas |
 | Endereço do local, em campos separados | `data/config.js`, campos `local_logradouro` a `local_cep` | `logistica.html`, `wasa.html` |
-| Destino usado no cálculo de rota | `data/config.js`, campo `endereco_rota` | `logistica.html` |
+| Destino usado no cálculo de rota | `data/config.js`, campo `endereco_rota` | `logistica.html`, `wasa.html` |
 | Prazos, lotes de inscrição | `data/dates.js`, cada registro com `id` estável | home, `inscricoes.html`, `premios.html` |
 | Valores de inscrição | `data/inscricoes.js` | `inscricoes.html` |
 | Links dos modelos de pôster e de apresentação oral | `data/config.js`, campos `link_modelos_poster` e `link_modelos_oral` | `apresentadores.html` |
@@ -26,6 +26,7 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Prêmios além de premiados | `data/premios.js` | `premios.html`, faixa da home |
 | Regras de submissão | `data/submissions.js` | `premios.html`, home |
 | WASA | `data/wasa.js`, taxas e formulário em `wasaInscricao` | `wasa.html`, bloco da home |
+| Sala do WASA | `data/wasa.js`, campo `wasaInfo.sala` (endereço segue em `data/config.js`) | `wasa.html`, bloco da home |
 | Fundo de Financiamento | `data/fundo.js`, com o prazo em `data/dates.js` | `fundo-estudante.html` |
 | Hospedagem, gráficas, perguntas frequentes | `data/hotels.js`, `data/graficas.js`, `data/faq.js` | `logistica.html`, `faq.html` |
 | Faixa de aviso no topo | `data/config.js`, campo `avisos`, com prazo por `fim_id`; dia, horário além de local por `atividade_id`, lidos de `data/programacao.json` | todas as páginas |

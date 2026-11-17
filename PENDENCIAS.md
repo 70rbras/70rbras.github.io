@@ -64,6 +64,11 @@ Legenda de quem destrava: **Organização** (precisa de informação ou decisão
 ### 11. Divulgar o aplicativo instalável
 - O site já funciona offline (service worker) e abre na programação quando instalado. Um aviso "Adicione à tela inicial" ajudaria no campus com rede ruim.
 
+### 13. Nomes da organização do WASA escritos à mão
+- **Quem:** Site (+ Planilha, se as pessoas ganharem ficha)
+- `wasa.html` traz à mão os cinco nomes da Comissão Organizadora do WASA e o nome da contato (Daiane de Souza) no cartão "Contato". Fogem da regra de fonte única; o verificador não reclama porque não são membros de comissão nem convidados da RBras.
+- Caminho: lista em `data/wasa.js` (ou fichas em `pessoas_cadastro` com ids), renderizada pela página.
+
 ### 12. Depois do evento
 - Home: hoje mostra "A 70ª RBras foi encerrada. Obrigado pela participação!" a partir de 26/11. Avaliar conteúdo pós-evento (certificados, fotos, premiados dos concursos).
 - `data/premios.js`: preencher os premiados de Tese, Dissertação e IC.
@@ -72,6 +77,9 @@ Legenda de quem destrava: **Organização** (precisa de informação ou decisão
 
 ## Concluído
 
+- 17/11/2026: Endereço do WASA visível: seção Local logo após Sobre (sala, endereço completo, mapa embutido, "Ver no mapa" e "Rota até aqui", foto do IMECC sem o logo da RBras), caixa "Local" de Sobre e selo do hero levando a `#local-wasa`, chip da Home apontando para `wasa.html#local-wasa`. Sala em `data/wasa.js` (`wasaInfo.sala`).
+
+- 16/11/2026: Tempos de Mini-Conferência (25 + 5 min) e Conferência (55 + 5 min) na tabela de `apresentadores.html#oral`.
 - 16/11/2026: Mudanças de 16/11 publicadas (commit e push pelo usuário).
 - 16/11/2026: Descrição do jantar (`PREMIACAO`) atualizada na planilha: "Por adesão: valores e pagamento na página inicial".
 - 16/11/2026: Programação como item próprio do menu; botões do Hero ("Ver Programação", "Encontre seu trabalho", "Como chegar"); inscrição rebaixada e oculta após o 3º Lote.

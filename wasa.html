@@ -195,13 +195,75 @@
       .wasa-inscricoes-callout-badge { margin-left: 0; }
     }
 
-    /* Seção Local */
+    /* Seção Local: cartão (foto, sala, endereço, ações) ao lado do mapa */
+    .wasa-local-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      align-items: stretch;
+    }
+    .wasa-local-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 14px rgba(26,56,112,.09);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .wasa-local-foto {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+    .wasa-local-corpo { padding: 1.5rem 1.6rem 1.7rem; }
+    .wasa-local-sala {
+      display: inline-block;
+      background: rgba(214,168,24,.15);
+      color: #7a5e00;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: .3em .9em;
+      margin-bottom: .9rem;
+    }
     .wasa-local-endereco {
       font-size: .95rem;
       color: var(--text-mid);
       line-height: 1.7;
       margin-bottom: 1.2rem;
     }
+    .wasa-local-endereco strong { color: var(--text-dark); }
+    .wasa-local-acoes { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .wasa-local-acoes .btn { font-size: .85rem; padding: .65em 1.3em; }
+    .wasa-local-chegar { font-size: .82rem; color: var(--text-mid); margin-top: .9rem; }
+    .wasa-local-chegar a { color: var(--teal); text-decoration: underline; text-underline-offset: .2em; }
+    .wasa-local-mapa {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(26,56,112,.09);
+      background: var(--off-white);
+      min-height: 360px;
+    }
+    .wasa-local-mapa iframe { width: 100%; height: 100%; min-height: 360px; border: 0; display: block; }
+    @media (max-width: 760px) {
+      .wasa-local-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .wasa-local-foto { height: 160px; }
+      .wasa-local-mapa, .wasa-local-mapa iframe { min-height: 260px; }
+    }
+    /* Caixa "Local" em Sobre: leva à seção Local */
+    a.wasa-info-card--link { text-decoration: none; color: inherit; transition: transform .2s ease, box-shadow .2s ease; }
+    a.wasa-info-card--link:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(26,56,112,.13); }
+    .wasa-info-mapa { display: inline-block; margin-top: .45rem; font-size: .8rem; font-weight: 600; color: var(--teal); }
+    /* Selos do hero: data e local */
+    .wasa-badges { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1rem; }
+    .wasa-badges .wasa-badge { margin-bottom: 0; }
+    a.wasa-badge--local { text-decoration: none; transition: background .2s ease; }
+    a.wasa-badge--local:hover { background: rgba(255,255,255,.25); }
     /* Cartaz do evento */
     .wasa-cartaz { text-align: center; margin-top: 3.5rem; position: relative; z-index: 1; }
     .wasa-cartaz-link {
@@ -392,25 +454,31 @@
       border-left: 3px solid var(--teal);
       padding: .7rem 1rem;
       border-radius: 0 6px 6px 0;
+      margin: 0;
     }
     /* Hero WASA: mais alto que os outros page-headers */
     .wasa-page-header { padding: 11rem 0 6.5rem; }
     /* Hero grid: logo à esquerda, texto à direita */
+    /* Três colunas simétricas: logo na primeira, texto na do meio, a terceira
+       vazia. Assim título, subtítulo e selos ficam no centro da página. */
     .wasa-hero-grid {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 3.5rem;
+      grid-template-columns: minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);
+      gap: 2rem;
       align-items: center;
     }
+    .wasa-hero-logo { justify-self: start; }
     .wasa-hero-text { text-align: center; }
+    .wasa-hero-text .wasa-badges { justify-content: center; }
     /* Animação de entrada do logo (disparada no load, da esquerda) */
     @keyframes wasa-logo-enter {
       from { opacity: 0; transform: translateX(-50px); }
       to   { opacity: 1; transform: none; }
     }
     .wasa-hero-logo img {
-      height: 200px;
-      width: auto;
+      width: 100%;
+      max-width: 200px;
+      height: auto;
       display: block;
       filter: drop-shadow(0 4px 24px rgba(0,0,0,.5));
       animation: wasa-logo-enter 1.1s cubic-bezier(.22,1,.36,1) .1s both;
@@ -443,7 +511,10 @@
         <img src="assets/logos/wasa_logo.png" alt="Logo VIII WASA">
       </div>
       <div class="wasa-hero-text">
-        <div class="wasa-badge"><span class="wasa-badge-dot"></span><span id="wasa-badge-data"></span></div>
+        <div class="wasa-badges">
+          <div class="wasa-badge"><span class="wasa-badge-dot"></span><span id="wasa-badge-data"></span></div>
+          <a class="wasa-badge wasa-badge--local" href="#local-wasa"><span aria-hidden="true">📍</span><span id="wasa-badge-local"></span></a>
+        </div>
         <h1 class="page-header-title">WASA</h1>
         <p class="page-header-sub" id="wasa-nome"></p>
       </div>
@@ -470,13 +541,14 @@
           <div class="wasa-info-value" id="wasa-info-data"></div>
         </div>
       </div>
-      <div class="wasa-info-card">
+      <a class="wasa-info-card wasa-info-card--link" href="#local-wasa">
         <span class="wasa-info-icon">📍</span>
         <div>
           <div class="wasa-info-label">Local</div>
           <div class="wasa-info-value" id="wasa-info-local"></div>
+          <span class="wasa-info-mapa">Ver endereço e mapa ↓</span>
         </div>
-      </div>
+      </a>
       <div class="wasa-info-card">
         <span class="wasa-info-icon">🏛️</span>
         <div>
@@ -495,8 +567,38 @@
   </div>
 </section>
 
+<!-- LOCAL: nome, sala, endereço e mapa vêm de data/config.js e data/wasa.js -->
+<section id="local-wasa" style="padding:4rem 0 5rem;background:var(--white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--blue">Local</span>
+      <h2 class="section-title" id="wasa-local-titulo">IMECC</h2>
+    </div>
+    <div class="wasa-local-grid reveal">
+      <div class="wasa-local-card">
+        <img class="wasa-local-foto" src="assets/imagens/imecc-externo.jpg" loading="lazy"
+             alt="Vista aérea do prédio do IMECC, Unicamp">
+        <div class="wasa-local-corpo">
+          <p class="wasa-local-sala" id="wasa-local-sala"></p>
+          <p class="wasa-local-endereco" id="wasa-local-end"></p>
+          <div class="wasa-local-acoes">
+            <a class="btn btn--ghost" id="wasa-local-mapa" target="_blank" rel="noopener noreferrer">Ver no mapa ↗</a>
+            <a class="btn btn--ghost" id="wasa-local-rota" target="_blank" rel="noopener noreferrer">Rota até aqui ↗</a>
+          </div>
+          <p class="wasa-local-nota" id="wasa-local-nota"></p>
+          <p class="wasa-local-chegar">Vindo de fora de Campinas? <a href="logistica.html#como-chegar">Veja como chegar</a> (aeroportos e rodoviária).</p>
+        </div>
+      </div>
+      <div class="wasa-local-mapa">
+        <iframe id="wasa-local-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa com a localização do IMECC, Unicamp"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ORGANIZACAO -->
-<section id="organizacao-wasa" style="padding:4rem 0 5rem;background:var(--white)">
+<section id="organizacao-wasa" style="padding:4rem 0 5rem;background:var(--off-white)">
   <div class="container">
     <div class="section-header reveal">
       <span class="tag tag--teal">Organização</span>
@@ -574,32 +676,6 @@
              style="width:520px;max-width:92vw">
       </a>
       <p class="wasa-cartaz-hint" style="color:var(--text-mid)">Clique para ampliar</p>
-    </div>
-  </div>
-</section>
-
-<!-- LOCAL -->
-<section id="local-wasa" style="padding:5rem 0;background:var(--white)">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="tag tag--blue">Local</span>
-      <h2 class="section-title">IMECC - Unicamp</h2>
-      <p class="section-body">Instituto de Matemática, Estatística e Computação Científica</p>
-    </div>
-    <div class="venue-banner reveal">
-      <img src="assets/imagens/banner-imecc-externo.png"
-           alt="IMECC - Instituto de Matemática, Estatística e Computação Científica, Unicamp">
-    </div>
-    <div class="reveal" style="max-width:640px;margin:0 auto;text-align:center">
-      <p class="wasa-local-endereco">
-        <strong>Instituto de Matemática, Estatística e Computação Científica (IMECC)</strong><br>
-        Universidade Estadual de Campinas<br>
-        <span id="wasa-local-end"></span>
-      </p>
-      <p class="wasa-local-nota" style="text-align:left">
-        O WASA acontece no dia seguinte ao encerramento da 70ª RBras, no mesmo campus e prédio do evento principal.
-      </p>
-      <a href="logistica.html" class="btn btn--outline" style="margin-top:1.5rem;font-size:.9rem;padding:.75em 1.8em">Como chegar ↗</a>
     </div>
   </div>
 </section>
@@ -690,7 +766,11 @@
   if (typeof CONFIG !== 'undefined') {
     const e = CONFIG.evento;
     safe('wasa-info-local', el => el.innerHTML =
-      'IMECC - ' + esc(e.local_instituicao) + '<br>' + esc(e.local_cidade) + ', ' + esc(e.local_estado));
+      (wasaInfo.sala ? esc(wasaInfo.sala) + '<br>' : '') +
+      '<span style="font-weight:400;font-size:.85rem;color:var(--text-mid)">' +
+      esc(e.local_logradouro) + ' · ' + esc(e.local_cidade) + ', ' + esc(e.local_estado) + '</span>');
+    safe('wasa-badge-local', el => el.textContent =
+      'IMECC · ' + e.local_instituicao + ', ' + e.local_cidade);
   }
 
   /* Homenagem: a pessoa vem do cadastro, o texto vem de wasaHomenagem. */
@@ -738,13 +818,47 @@
   });
 })();
 
-/* ── Endereço do local, a partir de data/config.js ── */
+/* ── Seção Local: nome, sala, endereço e mapa ──
+   Endereço e rota vêm de CONFIG.evento (o IMECC); nome por extenso, de
+   CONFIG.predios.IMECC; sala, de wasaInfo; data da nota, de data/dates.js. */
 (function () {
-  const el = document.getElementById('wasa-local-end');
-  if (!el || typeof CONFIG === 'undefined') return;
+  if (typeof CONFIG === 'undefined') return;
+  const safe = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
+  const esc = t => String(t == null ? '' : t)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const e = CONFIG.evento;
-  el.innerHTML = e.local_logradouro + ' · ' + e.local_bairro + '<br>' +
-                 e.local_cidade + ', ' + e.local_estado + ' · CEP ' + e.local_cep;
+  const imecc = (CONFIG.predios && CONFIG.predios.IMECC) || {};
+  const inst = String(e.local_instituicao || '').toUpperCase();
+  const nomeLongo = (imecc.nome ? imecc.nome + ' (IMECC)' : 'IMECC') + ' - ' + inst;
+
+  safe('wasa-local-titulo', el => el.innerHTML = 'IMECC · <span>' + esc(inst) + '</span>');
+  safe('wasa-local-sala', el => {
+    if (typeof wasaInfo !== 'undefined' && wasaInfo.sala) el.textContent = '🎤 ' + wasaInfo.sala;
+    else el.hidden = true;
+  });
+  safe('wasa-local-end', el => el.innerHTML =
+    '<strong>' + esc(nomeLongo) + '</strong><br>' +
+    esc(e.local_logradouro) + ' · ' + esc(e.local_bairro) + '<br>' +
+    esc(e.local_cidade) + ', ' + esc(e.local_estado) + ' · CEP ' + esc(e.local_cep));
+
+  const rota = e.endereco_rota;
+  safe('wasa-local-mapa', el => el.href =
+    'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(rota));
+  safe('wasa-local-rota', el => el.href =
+    'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(rota) + '&travelmode=driving');
+  safe('wasa-local-iframe', el => el.src =
+    'https://maps.google.com/maps?q=' + encodeURIComponent(rota) + '&z=16&output=embed');
+
+  const prazo = (typeof wasaInfo !== 'undefined' && typeof dataPorId === 'function')
+    ? dataPorId(wasaInfo.prazo_id) : null;
+  safe('wasa-local-nota', el => {
+    let txt = 'O WASA acontece no IMECC/' + inst;
+    if (prazo) {
+      const [, mes, dia] = prazo.inicio.split('-');
+      txt += ', no dia ' + dia + '/' + mes;
+    }
+    el.textContent = txt + '.';
+  });
 })();
 
 (function () {

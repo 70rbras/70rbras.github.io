@@ -89,10 +89,10 @@
         <a href="${root}wasa.html" class="nav-dropdown-toggle"${activeClass('wasa.html')}>WASA <span class="nav-satellite-badge">Sat&#233;lite</span> ${chev}</a>
         <ul class="nav-dropdown-menu">
           <li><a href="${root}wasa.html#sobre-wasa">Sobre</a></li>
+          <li><a href="${root}wasa.html#local-wasa">Local</a></li>
           <li><a href="${root}wasa.html#organizacao-wasa">Organização</a></li>
           <li><a href="${root}wasa.html#homenagem">Homenagem</a></li>
           <li><a href="${root}wasa.html#programacao-wasa">Programação</a></li>
-          <li><a href="${root}wasa.html#local-wasa">Local</a></li>
           <li><a href="${root}wasa.html#inscricoes-cta">Inscrições</a></li>
         </ul>
       </li>

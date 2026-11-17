@@ -1554,6 +1554,8 @@ body.nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(
   color: var(--text-mid);
 }
 .wasa-home-chip strong { color: var(--text-dark); font-weight: 600; }
+a.wasa-home-chip--link { text-decoration: none; transition: border-color .2s ease; }
+a.wasa-home-chip--link:hover { border-color: var(--teal); }
 .wasa-home-visual {
   display: flex;
   justify-content: center;

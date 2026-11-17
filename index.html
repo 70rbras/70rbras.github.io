@@ -145,7 +145,7 @@
         <p class="wasa-home-subtitle" id="wasa-home-nome"></p>
         <div class="wasa-home-meta">
           <span class="wasa-home-chip">📅 <strong id="wasa-home-data"></strong></span>
-          <span class="wasa-home-chip">📍 <strong id="wasa-home-local"></strong></span>
+          <a class="wasa-home-chip wasa-home-chip--link" href="wasa.html#local-wasa">📍 <strong id="wasa-home-local"></strong></a>
         </div>
         <p class="section-body" id="wasa-home-descricao"></p>
         <div style="margin-top:1.75rem;display:flex;gap:1rem;flex-wrap:wrap">
@@ -348,7 +348,8 @@ function applyConfig() {
   if (typeof wasaInfo !== 'undefined') {
     safe('wasa-home-nome',      el => el.textContent = wasaInfo.nome.replace(wasaInfo.edicao + ' ', ''));
     safe('wasa-home-descricao', el => el.textContent = wasaInfo.descricao);
-    safe('wasa-home-local',     el => el.textContent = evento.cidade);
+    safe('wasa-home-local',     el => el.textContent = 'IMECC · ' + evento.local_instituicao +
+      (wasaInfo.sala ? ' · ' + wasaInfo.sala : ''));
     const prazoWasa = (typeof dataPorId === 'function') ? dataPorId(wasaInfo.prazo_id) : null;
     if (prazoWasa) safe('wasa-home-data', el => el.textContent = dataPorExtenso(prazoWasa.inicio));
   }

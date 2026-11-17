@@ -14,6 +14,9 @@ const wasaInfo = {
   // repetido aqui.
   prazo_id:   'wasa',
 
+  // Sala dentro do IMECC. O endereço do prédio segue vindo de CONFIG.evento.
+  sala:       'Auditório do IMECC',
+
   // A organização aparece na página em forma curta além de forma extensa,
   // portanto fica guardada em partes, compostas conforme o espaço de cada lugar.
   organizacao: {
