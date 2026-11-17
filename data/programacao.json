@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-16T19:16:38-0300",
- "gerado_em_texto": "16/11/2026 às 19:16",
- "versao_dados": 202611161916,
+ "gerado_em": "2026-11-17T00:19:49-0300",
+ "gerado_em_texto": "17/11/2026 às 00:19",
+ "versao_dados": 202611170019,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -1000,7 +1000,7 @@
    "tipo": "Pôster",
    "tipo_slug": "poster",
    "titulo": "Sessão de pôsteres 3",
-   "subtitulo": "136 trabalhos",
+   "subtitulo": "135 trabalhos",
    "local": {
     "id": "IMECC-POSTERES",
     "predio": "IMECC",
@@ -4693,19 +4693,6 @@
    "ordem": 0,
    "titulo": "Modelagem Bayesiana Semiparamétrica para Regressão Não Linear via Aproximações de Taylor",
    "area": "Métodos Bayesianos",
-   "resumo": "",
-   "tem_resumo": true
-  },
-  {
-   "id": "316",
-   "modalidade": "Pôster",
-   "sessao": "P3",
-   "painel": "",
-   "autor": "Vitor Mendes",
-   "instituicao": "UFC",
-   "ordem": 0,
-   "titulo": "Análise de Resíduos no Modelo de Regressão Beta Prime Aumentado de Zeros",
-   "area": "Modelos de mistura",
    "resumo": "",
    "tem_resumo": true
   },
