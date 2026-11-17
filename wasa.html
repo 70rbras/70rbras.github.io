@@ -829,17 +829,19 @@
   const e = CONFIG.evento;
   const imecc = (CONFIG.predios && CONFIG.predios.IMECC) || {};
   const inst = String(e.local_instituicao || '').toUpperCase();
-  const nomeLongo = (imecc.nome ? imecc.nome + ' (IMECC)' : 'IMECC') + ' - ' + inst;
 
   safe('wasa-local-titulo', el => el.innerHTML = 'IMECC · <span>' + esc(inst) + '</span>');
   safe('wasa-local-sala', el => {
     if (typeof wasaInfo !== 'undefined' && wasaInfo.sala) el.textContent = '🎤 ' + wasaInfo.sala;
     else el.hidden = true;
   });
-  safe('wasa-local-end', el => el.innerHTML =
-    '<strong>' + esc(nomeLongo) + '</strong><br>' +
-    esc(e.local_logradouro) + ' · ' + esc(e.local_bairro) + '<br>' +
-    esc(e.local_cidade) + ', ' + esc(e.local_estado) + ' · CEP ' + esc(e.local_cep));
+  safe('wasa-local-end', el => el.innerHTML = [
+    '<strong>' + esc(imecc.nome || '') + '</strong>',
+    '<strong>IMECC - ' + esc(inst) + '</strong>',
+    esc(e.local_logradouro),
+    esc(e.local_bairro),
+    esc(e.local_cidade) + ', ' + esc(e.local_estado) + ' - CEP ' + esc(e.local_cep)
+  ].join('<br>'));
 
   const rota = e.endereco_rota;
   safe('wasa-local-mapa', el => el.href =

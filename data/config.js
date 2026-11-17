@@ -16,7 +16,7 @@ const CONFIG = {
     // Endereço em campos próprios: a exibição é montada por concatenação,
     // nunca por substituição de texto sobre uma linha única.
     local_logradouro: "Rua Sérgio Buarque de Holanda, 651",
-    local_bairro:     "Cidade Universitária Zeferino Vaz",
+    local_bairro:     "Cidade Universitária 'Zeferino Vaz'",
     local_cidade:     "Campinas",
     local_estado:     "SP",
     local_cep:        "13083-859",
