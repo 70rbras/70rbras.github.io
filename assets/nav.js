@@ -65,6 +65,7 @@
         <ul class="nav-dropdown-menu">
           <li><a href="${root}logistica.html#local">Local e Como Chegar</a></li>
           <li><a href="${root}logistica.html#hospedagem">Hospedagem</a></li>
+          <li><a href="${root}logistica.html#restaurantes">Restaurantes</a></li>
           <li class="nav-dropdown-label" role="presentation">Para Apresentadores</li>
           <li><a href="${root}apresentadores.html#poster">Pôster</a></li>
           <li><a href="${root}apresentadores.html#oral">Apresentação Oral</a></li>

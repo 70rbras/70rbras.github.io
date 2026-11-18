@@ -38,6 +38,7 @@
         <ul>
           <li><a href="${root}logistica.html#local">Local e Como Chegar</a></li>
           <li><a href="${root}logistica.html#hospedagem">Hospedagem</a></li>
+          <li><a href="${root}logistica.html#restaurantes">Restaurantes</a></li>
           <li><a href="${root}apresentadores.html">Para Apresentadores</a></li>
           <li><a href="${root}logistica.html#graficas">Onde imprimir o pôster</a></li>
         </ul>

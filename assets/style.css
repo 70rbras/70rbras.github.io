@@ -1898,3 +1898,62 @@ a.proxima-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba
   .app-convite-inner { flex-direction: column; text-align: center; gap: 1rem; }
   .app-convite-secao .section-body { margin-inline: auto; }
 }
+
+/* ─── Restaurantes (logistica.html#restaurantes, data/restaurantes.js) ──── */
+.rest-faixa + .rest-faixa { margin-top: 3rem; }
+.rest-faixa-cab { margin-bottom: 1.2rem; }
+.rest-faixa-cab h3 { font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+.rest-faixa-cab p { font-size: .9rem; color: var(--text-mid); margin-top: .2rem; }
+.rest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem; }
+.rest-card {
+  background: var(--white); border: 1px solid rgba(26,56,112,.1); border-radius: 14px;
+  padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .3rem;
+  box-shadow: 0 2px 12px rgba(26,56,112,.05);
+}
+.rest-topo { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; }
+.rest-topo h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+.rest-selo {
+  flex-shrink: 0; font-size: .62rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--teal); background: rgba(42,144,128,.1); border-radius: 999px; padding: .25em .7em;
+}
+.rest-esp { font-size: .86rem; color: var(--text-mid); line-height: 1.45; }
+.rest-end { font-size: .8rem; color: var(--text-mid); }
+.rest-dist { font-size: .84rem; color: var(--navy); margin-top: .2rem; display: flex; flex-wrap: wrap; gap: .2rem .8rem; align-items: baseline; }
+.rest-aprox { font-size: .75rem; color: var(--text-mid); }
+.rest-links { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: auto; padding-top: .5rem; font-size: .82rem; }
+.rest-links a { color: var(--teal); font-weight: 600; }
+.rest-card--longe { background: var(--off-white); }
+
+/* ─── Previsão do tempo (assets/clima.js) ────────────────────────── */
+.hero-clima[hidden], .clima-previsao[hidden] { display: none; }
+.hero-clima { margin-bottom: 1.75rem; width: 100%; max-width: 560px; }
+.hero-clima-rotulo {
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: .5rem;
+}
+.hero-clima-dias { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: .6rem; }
+.hero-clima-dia {
+  display: grid; justify-items: center; gap: .15rem; text-align: center;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+  border-radius: 12px; padding: .6rem .5rem; color: rgba(255,255,255,.85); font-size: .82rem;
+}
+.hero-clima-dia.is-hoje { border-color: var(--gold); background: rgba(214,168,24,.15); }
+.hero-clima-data { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: rgba(255,255,255,.7); }
+.hero-clima-dia.is-hoje .hero-clima-data { color: var(--gold-light); }
+.hero-clima-icone { font-size: 1.6rem; line-height: 1.2; }
+.hero-clima-temp strong { color: var(--white); }
+.hero-clima-chuva { font-size: .76rem; color: rgba(255,255,255,.7); }
+.hero-clima-fonte { margin-top: .45rem; font-size: .7rem; color: rgba(255,255,255,.55); }
+.hero-clima-fonte a { color: rgba(255,255,255,.75); text-decoration: underline; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.clima-previsao ul { list-style: none; display: grid; gap: .5rem; margin-top: .4rem; }
+.clima-previsao li {
+  display: grid; grid-template-columns: 5.2rem 1.8rem 1fr; align-items: center; gap: .2rem .4rem;
+  font-size: .9rem; padding-bottom: .45rem; border-bottom: 1px solid rgba(26,56,112,.07);
+}
+.clima-dia { font-weight: 700; color: var(--text-dark); font-size: .82rem; }
+.clima-icone { font-size: 1.3rem; }
+.clima-texto { grid-column: 3; font-size: .78rem; color: var(--text-mid); }
+.clima-fonte { margin-top: .7rem; font-size: .78rem; color: var(--text-mid); }
+.clima-fonte a { color: var(--teal); font-weight: 600; }

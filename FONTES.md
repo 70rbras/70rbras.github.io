@@ -20,6 +20,8 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Valores de inscrição | `data/inscricoes.js` | `inscricoes.html` |
 | Links dos modelos de pôster e de apresentação oral | `data/config.js`, campos `link_modelos_poster` e `link_modelos_oral` | `apresentadores.html` |
 | Instruções de pôster e de apresentação oral | `data/apresentadores.js` | `apresentadores.html` |
+| Ponto da previsão do tempo (dias vêm do prazo `evento`) | `data/config.js`, campo `clima` | Hero da Home, `logistica.html` (quadro Clima) |
+| Restaurantes próximos, distâncias a pé até CDC e IMECC, limites "a pé" e "Uber" | `data/restaurantes.js` | `logistica.html#restaurantes` |
 | Convidados além das palestras | Planilha: aba `convidados` diz quem é convidado (tipo, ordem); título e resumo vêm da atividade dele nas abas `atividades` e `resumos` (via `data/programacao.json`), com `tema`/`resumo` da aba `convidados` só como reserva; gera `data/speakers.js` | `palestrantes.html`, home |
 | Pessoas: ficha única de cada uma | Planilha, aba `pessoas_cadastro`; gera `data/pessoas.js` | `comissoes.html`, `palestrantes.html`, `premios.html`, `programacao.html` |
 | Comissões | Planilha, aba `comissoes`; gera `data/committee.js` | `comissoes.html`, `premios.html` |

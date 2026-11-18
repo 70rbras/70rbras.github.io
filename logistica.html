@@ -51,6 +51,7 @@
     <nav class="page-header-links" aria-label="Seções desta página">
       <a href="#local">📍 Local e Como Chegar</a>
       <a href="#hospedagem">🏨 Hospedagem</a>
+      <a href="#restaurantes">🍽️ Restaurantes</a>
       <a href="apresentadores.html">🎤 Para Apresentadores</a>
       <a href="#graficas">🖨️ Gráficas</a>
     </nav>
@@ -119,8 +120,10 @@
 
       <div class="inscricoes-info-box">
         <div class="info-box-icon">🌡️</div>
-        <h4>Clima em Novembro</h4>
-        <p>Novembro marca o início do verão em Campinas - espere temperaturas entre <strong>20 °C e 30 °C</strong> com possibilidade de chuvas à tarde. Recomendamos roupas leves e guarda-chuva.</p>
+        <h4 id="clima-titulo">Clima em Novembro</h4>
+        <!-- Previsão real (assets/clima.js); o texto abaixo fica como reserva. -->
+        <div class="clima-previsao" id="clima-previsao" hidden></div>
+        <p id="clima-reserva">Novembro marca o início do verão em Campinas - espere temperaturas entre <strong>20 °C e 30 °C</strong> com possibilidade de chuvas à tarde. Recomendamos roupas leves e guarda-chuva.</p>
       </div>
 
     </div>
@@ -138,8 +141,20 @@
   </div>
 </section>
 
+<!-- ─── RESTAURANTES (data/restaurantes.js) ────────────── -->
+<section id="restaurantes" style="padding:4rem 0 6rem;background:var(--white)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="tag tag--blue">Alimentação</span>
+      <h2 class="section-title" style="margin-top:1rem">Restaurantes <span>próximos</span></h2>
+      <p class="section-body" style="margin-top:1rem">Restaurantes em ordem de distância a pé até o prédio mais próximo do evento. Confirme horários diretamente com cada estabelecimento.</p>
+    </div>
+    <div id="restaurantes-lista" style="margin-top:2.5rem"></div>
+  </div>
+</section>
+
 <!-- ─── GRÁFICAS ───────────────────────────────────── -->
-<section id="graficas" style="padding:4rem 0 6rem;background:var(--white)">
+<section id="graficas" style="padding:4rem 0 6rem;background:var(--off-white)">
   <div class="container">
     <div class="section-header reveal">
       <span class="tag tag--blue">Impressão de Pôsteres</span>
@@ -170,6 +185,8 @@
 <script src="data/dates.js"></script>
 <script src="data/hotels.js"></script>
 <script src="data/graficas.js"></script>
+<script src="data/restaurantes.js"></script>
+<script src="assets/clima.js"></script>
 <script src="assets/footer.js"></script>
 
 <script>
@@ -402,6 +419,83 @@ function renderHotels() {
   }).join('');
 }
 
+/* ─── RESTAURANTES (data/restaurantes.js) ───────────────
+   Ordem pela menor distância a pé entre os prédios; três faixas pelos
+   limites de RESTAURANTES_CONFIG. Os textos vêm de arquivo editado à mão,
+   mas são escapados mesmo assim. */
+function renderRestaurantes() {
+  const sec = document.getElementById('restaurantes');
+  const box = document.getElementById('restaurantes-lista');
+  if (!box) return;
+  if (typeof RESTAURANTES === 'undefined' || !RESTAURANTES.length) { if (sec) sec.hidden = true; return; }
+  const cfg = (typeof RESTAURANTES_CONFIG !== 'undefined' && RESTAURANTES_CONFIG) || {};
+  const aPeAte = cfg.a_pe_ate_m || 800, uberDe = cfg.uber_a_partir_m || 1500, ritmo = cfg.metros_por_minuto || 80;
+  const e = Agenda.escapar;
+  const menor = r => Math.min(...Object.values(r.distancia || {}));
+  const km = m => m < 1000 ? m + ' m' : (m / 1000).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' km';
+  const minutos = m => Math.max(1, Math.round(m / ritmo)) + ' min';
+  const ordem = Object.keys(CONFIG.predios || {}).sort((a, b) => (CONFIG.predios[a].ordem || 0) - (CONFIG.predios[b].ordem || 0));
+
+  const cartao = r => {
+    const d = menor(r);
+    const longe = d > uberDe;
+    const busca = `${r.nome}, ${r.endereco}, Campinas - SP`;
+    const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(busca)}`;
+    const uber = 'https://m.uber.com/ul/?action=setPickup&pickup=my_location' +
+      `&dropoff[latitude]=${r.lat}&dropoff[longitude]=${r.lon}` +
+      `&dropoff[nickname]=${encodeURIComponent(r.nome)}&dropoff[formatted_address]=${encodeURIComponent(r.endereco + ', Campinas - SP')}`;
+    const dist = ordem.filter(s => r.distancia && r.distancia[s] != null)
+      .map(s => `<span><strong>${e(s)}</strong> ${km(r.distancia[s])}${longe ? '' : ` · ${minutos(r.distancia[s])}`}</span>`).join('');
+    return `<article class="rest-card${longe ? ' rest-card--longe' : ''}">
+      <div class="rest-topo">
+        <h3>${e(r.nome)}</h3>
+        ${r.campus ? '<span class="rest-selo">No campus</span>' : ''}
+      </div>
+      <p class="rest-esp">${e(r.especialidade)}</p>
+      <p class="rest-end">${e(r.endereco)}</p>
+      <p class="rest-dist">${longe ? '🚗' : '🚶'} ${dist}${r.aproximado ? ' <span class="rest-aprox">(aprox.)</span>' : ''}</p>
+      <p class="rest-links">
+        <a href="${maps}" target="_blank" rel="noopener noreferrer">Ver no Google Maps e avaliações ↗</a>
+        ${longe ? `<a href="${uber}" target="_blank" rel="noopener noreferrer">Chamar Uber ↗</a>` : ''}
+      </p>
+    </article>`;
+  };
+
+  const lista = RESTAURANTES.slice().sort((a, b) => menor(a) - menor(b));
+  const faixas = [
+    { titulo: '🚶 A pé', nota: `Até ${km(aPeAte)}, cerca de ${minutos(aPeAte)} de caminhada.`, itens: lista.filter(r => menor(r) <= aPeAte) },
+    { titulo: '🚶 Caminhada mais longa', nota: `De ${km(aPeAte)} a ${km(uberDe)}, de ${minutos(aPeAte)} a ${minutos(uberDe)} a pé.`, itens: lista.filter(r => menor(r) > aPeAte && menor(r) <= uberDe) },
+    { titulo: '🚗 De carro ou Uber', nota: `Acima de ${km(uberDe)}: no centro de Barão Geraldo. Recomendamos ir de carro ou de Uber, sobretudo no intervalo do almoço.`, itens: lista.filter(r => menor(r) > uberDe) }
+  ].filter(f => f.itens.length);
+
+  box.innerHTML = faixas.map(f => `
+    <div class="rest-faixa reveal">
+      <div class="rest-faixa-cab"><h3>${f.titulo}</h3><p>${e(f.nota)}</p></div>
+      <div class="rest-grid">${f.itens.map(cartao).join('')}</div>
+    </div>`).join('');
+}
+
+/* Quadro Clima: com previsão disponível, mostra os dias do evento e encolhe o
+   texto genérico de novembro para uma linha de rodapé. */
+function renderClima() {
+  if (typeof Clima === 'undefined') return;
+  Clima.previsao().then(dias => {
+    if (!dias.length) return;
+    const e = Agenda.escapar;
+    document.getElementById('clima-previsao').innerHTML = `<ul>${dias.map(d => {
+      const [icone, texto] = Clima.tempo(d.codigo);
+      return `<li><span class="clima-dia">${e(Clima.rotuloDia(d.data))}</span>
+        <span class="clima-icone" title="${e(texto)}">${icone}</span>
+        <span>${d.min}° a <strong>${d.max}°</strong>${d.chuva != null ? ` · 💧 ${d.chuva}%` : ''}</span>
+        <span class="clima-texto">${e(texto)}</span></li>`;
+    }).join('')}</ul>
+    <p class="clima-fonte">Previsão: ${Clima.CREDITO}, atualizada a cada hora.${dias.some(d => d.chuva >= 50) ? ' <strong>Leve guarda-chuva.</strong>' : ''}</p>`;
+    document.getElementById('clima-titulo').textContent = 'Previsão do tempo';
+    document.getElementById('clima-previsao').hidden = false;
+    document.getElementById('clima-reserva').hidden = true;
+  });
+}
+
 function renderGraficas() {
   const section = document.getElementById('graficas');
   const container = document.getElementById('graficas-list');
@@ -458,6 +552,8 @@ applyConfig();
 renderPredios();
 renderOrigens();
 renderHotels();
+renderClima();
+renderRestaurantes();
 renderGraficas();
 revealAll();
 </script>

@@ -231,6 +231,7 @@ Grade única, sem tiers visíveis; `quebraAntes: true` força nova linha.
 
 - **Hospedagem:** Hotel Matiz Barão Geraldo Express, Unibarão Hotel, Casa do Professor Visitante, Casa Pirâmide de Vidro (Airbnb)
 - **Gráficas:** Connect Print (selo "Parceira", preços promocionais no tamanho A0 desde nov/2026: sulfite 120g R$ 54,90, gloss paper 180g R$ 75,40, lona R$ 86,00, todos com canaleta e cordinha; arquivos preferencialmente via WhatsApp) e Cromarte Gráfica Digital (selo "Parceira", 2 WhatsApp, pôster 0,90×1,20 m em 5 materiais de R$ 35,90 a R$ 239,90, prazo 1 a 2 dias úteis; não trabalha com lona, oferece papéis promocionais recicláveis)
+- **Restaurantes próximos** (`data/restaurantes.js`, `logistica.html#restaurantes`, 18/11/2026): 31 restaurantes (lista de partida do WVC 2026/Congresso do IMECC), em ordem da menor distância a pé até CDC ou IMECC, em três faixas (`a_pe_ate_m` 800, `uber_a_partir_m` 1500); acima do limite, link do Uber com destino preenchido; todos com link do Google Maps (avaliações ficam lá, sem copiar nota). Distâncias calculadas por OSRM a pé sobre posições do OpenStreetMap; item novo exige medir de novo.
 - Pôster oficial: A0 retrato (841×1189 mm); a Connect Print passou a oferecer o próprio A0 (e-mail da gráfica, nov/2026), no lugar dos banners 0,80 e 0,90 × 1,20 m
 - Links para `#graficas`: menu Logística, rodapé, botão "Onde imprimir" em `cientifico.html`, FAQ "Onde posso imprimir meu pôster?"
 
@@ -332,6 +333,9 @@ Arquivos em `assets/documentos/`: `modelos-poster-70rbras.zip`, `manual-poster-7
 
 ### Modo evento (Home e Programação)
 De 23 a 25/11 o contador da Home dá lugar ao bloco "Agora / A seguir", lido de `data/programacao.json`; a programação realça o cartão em andamento e rola até ele. O relógio é sempre o de Brasília (`Agenda.agora()` em `assets/nav.js`). Para conferir um momento, acrescente `?agora=2026-11-23T14:10` ao endereço de qualquer página. Depois do fim do 3º Lote, os convites à inscrição saem da Home.
+
+### Previsão do tempo
+`assets/clima.js` busca no Open-Meteo (gratuito, sem chave, licença CC BY 4.0 que exige o crédito exibido) a previsão diária dos dias do prazo `evento` de `data/dates.js`, no ponto `CONFIG.clima` (CDC). Aparece no Hero da Home (faixa `#hero-clima`, dia corrente realçado) e no quadro Clima de `logistica.html` (o texto de novembro fica como reserva). Só existe até 16 dias à frente e some depois do evento; resposta guardada no aparelho por 1 h, e sem rede vale a última guardada (18/11/2026).
 
 ### Jantar de Confraternização
 Tudo em `data/config.js` → `jantar`. **Para ocultar tudo (seção, aviso, card de datas, link na programação): `visivel: false`.** As instruções de pagamento somem sozinhas depois do prazo `jantar-adesao` de `data/dates.js`; no último dia do prazo a seção mostra o chip vermelho "Último dia" e um alerta acima de "Como aderir" (prazo estendido para 18/11 em 18/11/2026); a seção some depois do dia do jantar. Agência e conta bancária ficam de fora de propósito (decisão de 16/11/2026): só chave Pix além de favorecido.

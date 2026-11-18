@@ -96,6 +96,8 @@
         <!-- Modo evento: durante os dias do congresso, toma o lugar do contador.
              Preenchido a partir de data/programacao.json (ver renderAgora). -->
         <div class="hero-agora" id="hero-agora" aria-live="polite" hidden></div>
+        <!-- Previsão do tempo dos dias do evento (assets/clima.js); oculta sem previsão. -->
+        <div class="hero-clima" id="hero-clima" hidden></div>
         <div class="hero-actions reveal reveal-delay-4">
           <a href="programacao.html" class="btn btn--primary" id="hero-btn-programacao">Ver Programação</a>
           <a href="programacao.html#busca" class="btn btn--outline">Encontre seu trabalho</a>
@@ -318,6 +320,7 @@
 <script src="assets/pessoas.js"></script>
 <script src="data/wasa.js"></script>
 <script src="assets/footer.js"></script>
+<script src="assets/clima.js"></script>
 
 <script>
 /* ═══════════════════════════════════════════════
@@ -421,6 +424,31 @@ function startCountdown(target) {
    Para conferir um momento: index.html?agora=2026-11-23T14:10
 ════════════════════════════════════════════════ */
 let agoraTimer = null;
+/* Previsão do tempo no Hero: um chip por dia do evento ainda previsto, com o
+   dia de hoje realçado durante o congresso. */
+function renderClima() {
+  const box = document.getElementById('hero-clima');
+  if (!box || typeof Clima === 'undefined') return;
+  Clima.previsao().then(dias => {
+    if (!dias.length) return;
+    const hoje = Agenda.agora().data;
+    const e = Agenda.escapar;
+    box.innerHTML = `<div class="hero-clima-rotulo">Previsão do tempo em Campinas</div>
+      <div class="hero-clima-dias">${dias.map(d => {
+        const [icone, texto] = Clima.tempo(d.codigo);
+        return `<div class="hero-clima-dia${d.data === hoje ? ' is-hoje' : ''}" title="${e(texto)}">
+          <span class="hero-clima-data">${d.data === hoje ? 'Hoje' : e(Clima.rotuloDia(d.data))}</span>
+          <span class="hero-clima-icone" aria-hidden="true">${icone}</span>
+          <span class="hero-clima-temp">${d.min}° / <strong>${d.max}°</strong></span>
+          ${d.chuva != null ? `<span class="hero-clima-chuva">💧 ${d.chuva}%</span>` : ''}
+          <span class="sr-only">${e(texto)}</span>
+        </div>`;
+      }).join('')}</div>
+      <div class="hero-clima-fonte">Fonte: ${Clima.CREDITO} · atualizada a cada hora</div>`;
+    box.hidden = false;
+  });
+}
+
 function renderAgora() {
   const cd  = document.getElementById('countdown');
   const box = document.getElementById('hero-agora');
@@ -755,6 +783,7 @@ renderSponsors();
 renderPremiosHome();
 renderProximasDatas();
 renderJantar();
+renderClima();
 revealAll();
 </script>
 </body>

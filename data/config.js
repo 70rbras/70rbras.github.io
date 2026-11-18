@@ -72,6 +72,10 @@ const CONFIG = {
   },
   trajeto: { de: "CDC", para: "IMECC", minutos: 10, metros: 700 },
 
+  // Ponto da previsão do tempo (assets/clima.js, via Open-Meteo): o CDC.
+  // Os dias vêm do prazo "evento" de data/dates.js.
+  clima: { lat: -22.8148, lon: -47.0714 },
+
   // ─── JANTAR DE CONFRATERNIZAÇÃO (70 anos da RBras) ────────────────────────
   // Seção index.html#jantar, aviso no topo, card em "Próximas datas" e link no
   // cartão da programação. Para OCULTAR tudo de uma vez: visivel: false.
