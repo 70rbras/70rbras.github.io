@@ -42,6 +42,8 @@ const CONFIG = {
   //   endereco  → campos do endereço; ausente = usa o endereço de `evento`
   //   rota      → texto usado no Google Maps; ausente = evento.endereco_rota
   //   imagem    → (opcional) foto do prédio
+  //   estacionamento → (opcional) como é o estacionamento; aparece no quadro
+  //               "De carro" de logistica.html#como-chegar
   //   ordem     → posição do cartão na página
   // `trajeto` descreve a caminhada entre os dois prédios.
   predios: {
@@ -56,11 +58,13 @@ const CONFIG = {
         estado:     "SP",
         cep:        "13083-851"
       },
-      rota:     "Centro de Convenções da Unicamp, Avenida Érico Veríssimo, 500, Campinas - SP, 13083-851"
+      rota:     "Centro de Convenções da Unicamp, Avenida Érico Veríssimo, 500, Campinas - SP, 13083-851",
+      estacionamento: "próprio e gratuito"
     },
     IMECC: {
       nome:     "Instituto de Matemática, Estatística e Computação Científica",
-      ordem:    2
+      ordem:    2,
+      estacionamento: "próprio e gratuito"
     }
   },
   trajeto: { de: "CDC", para: "IMECC", minutos: 10, metros: 700 },
