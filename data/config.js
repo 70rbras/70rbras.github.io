@@ -142,6 +142,15 @@ const CONFIG = {
       atividade_id: "INSCRICOES"
     },
     {
+      // O item "Apresentadores" saiu do menu principal e virou subgrupo de
+      // Logística; este aviso orienta quem procura por ele até o fim do evento.
+      id:         "para-apresentadores-2026",
+      texto:      "🎤 <strong>Vai apresentar?</strong> Modelos, instruções e horários agora ficam em Logística → Para Apresentadores.",
+      link:       "apresentadores.html",
+      link_texto: "Abrir",
+      fim_id:     "evento"
+    },
+    {
       id:         "programacao-hoje-2026",
       texto:      "📅 <strong>Programação de hoje</strong>: horários, salas e busca de trabalhos.",
       link:       "programacao.html",

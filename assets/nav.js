@@ -20,8 +20,10 @@
     return isPage(name) ? ' class="active"' : '';
   }
 
-  function dropdownActiveClass(...names) {
-    return names.some(n => isPage(n)) ? ' class="active"' : '';
+  /* Classe extra para o botão de um dropdown: vai dentro do class="..." já
+     existente, pois um segundo atributo class seria ignorado pelo navegador. */
+  function dropdownActive(...names) {
+    return names.some(n => isPage(n)) ? ' active' : '';
   }
 
   /* ── Prefixo de caminho (para subpastas futuras) */
@@ -41,7 +43,7 @@
 
       <!-- Evento (dropdown) -->
       <li class="nav-dropdown">
-        <a href="${root}index.html#sobre" class="nav-dropdown-toggle"${dropdownActiveClass('index.html', 'palestrantes.html', 'comissoes.html', 'premios.html')}>Evento ${chev}</a>
+        <a href="${root}index.html#sobre" class="nav-dropdown-toggle${dropdownActive('palestrantes.html', 'comissoes.html', 'premios.html')}">Evento ${chev}</a>
         <ul class="nav-dropdown-menu">
           <li><a href="${root}index.html#sobre">Sobre</a></li>
           <li><a href="${root}palestrantes.html"${activeClass('palestrantes.html')}>Convidados</a></li>
@@ -54,27 +56,19 @@
       <!-- Programação: item próprio, pois é a página mais usada durante o evento -->
       <li><a href="${root}programacao.html"${activeClass('programacao.html')}>Programação</a></li>
 
-      <!-- Apresentadores (dropdown) -->
-      <li class="nav-dropdown">
-        <a href="${root}apresentadores.html" class="nav-dropdown-toggle"${dropdownActiveClass('apresentadores.html')}>Apresentadores ${chev}</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="${root}apresentadores.html#poster">Pôster</a></li>
-          <li><a href="${root}apresentadores.html#oral">Comunicação Oral</a></li>
-          <li><a href="${root}logistica.html#graficas">Onde imprimir</a></li>
-        </ul>
-      </li>
-
       <!-- Inscrições -->
       <li><a href="${root}inscricoes.html"${activeClass('inscricoes.html')}>Inscrições</a></li>
 
-      <!-- Logística (dropdown) -->
+      <!-- Logística (dropdown), com o subgrupo Para Apresentadores -->
       <li class="nav-dropdown">
-        <a href="${root}logistica.html" class="nav-dropdown-toggle"${dropdownActiveClass('logistica.html')}>Logística ${chev}</a>
+        <a href="${root}logistica.html" class="nav-dropdown-toggle${dropdownActive('logistica.html', 'apresentadores.html')}">Logística ${chev}</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="${root}logistica.html#local">Local do Evento</a></li>
-          <li><a href="${root}logistica.html#como-chegar">Como Chegar</a></li>
+          <li><a href="${root}logistica.html#local">Local e Como Chegar</a></li>
           <li><a href="${root}logistica.html#hospedagem">Hospedagem</a></li>
-          <li><a href="${root}logistica.html#graficas">Gráficas</a></li>
+          <li class="nav-dropdown-label" role="presentation">Para Apresentadores</li>
+          <li><a href="${root}apresentadores.html#poster">Pôster</a></li>
+          <li><a href="${root}apresentadores.html#oral">Apresentação Oral</a></li>
+          <li><a href="${root}logistica.html#graficas">Onde imprimir o pôster</a></li>
         </ul>
       </li>
 
@@ -86,7 +80,7 @@
 
       <!-- WASA (evento satélite, dropdown) -->
       <li class="nav-dropdown">
-        <a href="${root}wasa.html" class="nav-dropdown-toggle"${activeClass('wasa.html')}>WASA <span class="nav-satellite-badge">Sat&#233;lite</span> ${chev}</a>
+        <a href="${root}wasa.html" class="nav-dropdown-toggle${dropdownActive('wasa.html')}">WASA <span class="nav-satellite-badge">Sat&#233;lite</span> ${chev}</a>
         <ul class="nav-dropdown-menu">
           <li><a href="${root}wasa.html#sobre-wasa">Sobre</a></li>
           <li><a href="${root}wasa.html#local-wasa">Local</a></li>

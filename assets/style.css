@@ -275,6 +275,15 @@ section { position: relative; }
 .nav-dropdown-menu li a::after { display: none !important; }
 .nav-dropdown-menu li a:hover { background: rgba(255,255,255,.1); color: var(--gold); }
 .nav-dropdown-menu li a.active { background: rgba(255,255,255,.08); color: var(--gold); }
+/* Rótulo de grupo dentro do dropdown (não clicável), ex.: "Para Apresentadores" em Logística */
+.nav-dropdown-menu .nav-dropdown-label {
+  margin: .45rem .4rem .15rem; padding: .55rem .6rem .25rem;
+  border-top: 1px solid rgba(255,255,255,.12);
+  color: var(--gold-light); font-size: .68rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+  cursor: default;
+}
+.nav-dropdown-menu .nav-dropdown-label ~ li a { padding-left: 1.5rem; }
 .nav-dropdown-menu::before {
   content: ''; position: absolute;
   bottom: 100%; left: 0; right: 0; height: .8rem;
@@ -424,6 +433,13 @@ body.has-announce .page-header { padding-top: calc(7.5rem + var(--announce-h, 0p
   margin-inline: auto;
   line-height: 1.7;
 }
+/* Trilha acima do título (ex.: "Logística › Para Apresentadores") */
+.page-header-trilha {
+  color: rgba(255,255,255,.6); font-size: .8rem; letter-spacing: .04em;
+  margin-bottom: .9rem;
+}
+.page-header-trilha a { color: rgba(255,255,255,.85); text-decoration: underline; text-underline-offset: 3px; }
+.page-header-trilha a:hover { color: var(--gold-light); }
 /* Atalhos para seções da página (ex.: logistica.html) */
 .page-header-links {
   display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem;
@@ -1237,6 +1253,8 @@ body.nav-open .nav-dropdown-menu {
   min-width: unset;
 }
 body.nav-open .nav-dropdown-menu li a { font-size: 1rem; color: rgba(255,255,255,.7); padding: .5rem .85rem; }
+body.nav-open .nav-dropdown-menu .nav-dropdown-label { font-size: .75rem; padding: .7rem .85rem .2rem; }
+body.nav-open .nav-dropdown-menu .nav-dropdown-label ~ li a { padding-left: .85rem; }
 body.nav-open .nav-dropdown-toggle .chev { display: none; }
 body.nav-open .hamburger { background: rgba(255,255,255,.12); }
 body.nav-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }

@@ -60,7 +60,7 @@ const FAQ = [
       {
         id: "tempo-apresentacao-oral",
         pergunta: "Quanto tempo terei para a minha apresentação oral?",
-        resposta: "O tempo depende da modalidade e está na tabela da seção <a href=\"apresentadores.html#oral\">Apresentadores → Apresentações Orais</a>. Em todas as modalidades, a apresentação é seguida de 5 minutos para perguntas."
+        resposta: "O tempo depende da modalidade e está na tabela da seção <a href=\"apresentadores.html#oral\">Logística → Para Apresentadores → Apresentação Oral</a>. Em todas as modalidades, a apresentação é seguida de 5 minutos para perguntas."
       },
       {
         id: "entrega-apresentacao-oral",

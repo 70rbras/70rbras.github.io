@@ -139,9 +139,11 @@ site-rbras-claude/
 9. **Inscrições (CTA)** — Chamada para inscrição
 10. **Footer** — Links, redes sociais, copyright
 
-**Menu principal (ordem, nov/2026):** Evento (Sobre, Convidados, Comissões, 🏆 Prêmios RBras, Apoiadores) · Programação (item próprio desde 16/11/2026) · Apresentadores (Pôster, Comunicação Oral, Onde imprimir) · Inscrições · Logística (Local do Evento, Como Chegar, Hospedagem, Gráficas) · FAQ · botão Área do Inscrito · WASA. "Apoio" saiu do menu principal em 21/10/2026 (virou "Apoiadores" dentro de Evento e no rodapé; seção #patrocinadores segue na Home). O menu "Científico" foi aposentado em 21/10/2026 (datas e submissões vencidas). Fundo de Financiamento fica fora do menu: link no rodapé (coluna Participar) e em inscricoes.html; quando houver resultado, pôr bloco "Resultado" no topo de fundo-estudante.html e item temporário com selo "Novo" no Evento.
+**Menu principal (ordem, nov/2026):** Evento (Sobre, Convidados, Comissões, 🏆 Prêmios RBras, Apoiadores) · Programação (item próprio desde 16/11/2026) · Inscrições · Logística (Local e Como Chegar, Hospedagem, e o subgrupo "Para Apresentadores": Pôster, Apresentação Oral, Onde imprimir o pôster) · FAQ · botão Área do Inscrito · WASA. "Apoio" saiu do menu principal em 21/10/2026 (virou "Apoiadores" dentro de Evento e no rodapé; seção #patrocinadores segue na Home). O menu "Científico" foi aposentado em 21/10/2026 (datas e submissões vencidas). Fundo de Financiamento fica fora do menu: link no rodapé (coluna Participar) e em inscricoes.html; quando houver resultado, pôr bloco "Resultado" no topo de fundo-estudante.html e item temporário com selo "Novo" no Evento.
 
-**Rodapé:** Evento (inclui Apoiadores) · Participar (Inscrições, Apresentadores, Fundo) · Logística · Contato.
+**Rodapé:** Evento (inclui Apoiadores) · Participar (Inscrições, Fundo) · Logística (Local e Como Chegar, Hospedagem, Para Apresentadores, Onde imprimir o pôster) · Contato.
+
+**Para Apresentadores (18/11/2026):** o item "Apresentadores" saiu do menu principal e virou subgrupo de Logística (rótulo não clicável `.nav-dropdown-label`); `apresentadores.html` continua página própria, com trilha "Logística › Para Apresentadores". No menu, a parte oral se chama "Apresentação Oral" (vale para todas as modalidades); "Comunicação Oral" segue apenas como nome de modalidade (tempos, programação, submissões). Em `logistica.html`, Local e Como Chegar são uma seção só (`#local`); `#como-chegar` continua como âncora do sub-bloco "Chegando a Campinas". O botão de um dropdown recebe a classe `active` por `dropdownActive()` em `assets/nav.js`.
 
 ---
 

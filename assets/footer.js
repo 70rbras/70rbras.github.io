@@ -30,18 +30,16 @@
         <h4>Participar</h4>
         <ul>
           <li><a href="${root}inscricoes.html">Inscrições</a></li>
-          <li><a href="${root}apresentadores.html#poster">Apresentadores: Pôster</a></li>
-          <li><a href="${root}apresentadores.html#oral">Apresentadores: Comunicação Oral</a></li>
           <li><a href="${root}fundo-estudante.html">Fundo de Financiamento</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Logística</h4>
         <ul>
-          <li><a href="${root}logistica.html#local">Local do Evento</a></li>
-          <li><a href="${root}logistica.html#como-chegar">Como Chegar</a></li>
+          <li><a href="${root}logistica.html#local">Local e Como Chegar</a></li>
           <li><a href="${root}logistica.html#hospedagem">Hospedagem</a></li>
-          <li><a href="${root}logistica.html#graficas">Gráficas</a></li>
+          <li><a href="${root}apresentadores.html">Para Apresentadores</a></li>
+          <li><a href="${root}logistica.html#graficas">Onde imprimir o pôster</a></li>
         </ul>
       </div>
       <div class="footer-col">
