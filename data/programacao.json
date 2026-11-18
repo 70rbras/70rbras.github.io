@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-18T11:12:31-0300",
- "gerado_em_texto": "18/11/2026 às 11:12",
- "versao_dados": 202611181112,
+ "gerado_em": "2026-11-18T11:50:43-0300",
+ "gerado_em_texto": "18/11/2026 às 11:50",
+ "versao_dados": 202611181150,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -425,7 +425,7 @@
    "id": "P1",
    "data": "2026-11-23",
    "inicio": "16:30",
-   "fim": "18:30",
+   "fim": "18:00",
    "tipo": "Pôster",
    "tipo_slug": "poster",
    "titulo": "Sessão de pôsteres 1",
@@ -753,7 +753,7 @@
   {
    "id": "P2",
    "data": "2026-11-24",
-   "inicio": "14:30",
+   "inicio": "15:00",
    "fim": "16:30",
    "tipo": "Pôster",
    "tipo_slug": "poster",
