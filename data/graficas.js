@@ -43,10 +43,13 @@ const GRAFICAS = [
     email:      "atendimento@connectprint.com.br",
     site:       "https://connectprint.com.br/",
     envio:      "Envie o arquivo do seu pôster preferencialmente pelo WhatsApp; também é possível enviar por e-mail.",
-    observacao: "Informe que é participante da 70ª Reunião Anual da RBras.",
+    // Preços promocionais para o evento, no tamanho oficial A0, enviados pela
+    // gráfica por e-mail em nov/2026 (substituem os banners 0,80 e 0,90 × 1,20 m).
+    observacao: "Preços promocionais para o evento: informe que é participante da 70ª Reunião Anual da RBras.",
     precos: [
-      { item: "Banner 0,80 × 1,20 m", valor: 85.00 },
-      { item: "Banner 0,90 × 1,20 m", valor: 87.50 }
+      { item: "Banner A0 (841 × 1189 mm) · Papel sulfite 120g", valor: 54.90, detalhe: "Com canaleta e cordinha" },
+      { item: "Banner A0 (841 × 1189 mm) · Gloss paper 180g (fotográfico brilhante)", valor: 75.40, detalhe: "Com canaleta e cordinha" },
+      { item: "Banner A0 (841 × 1189 mm) · Lona", valor: 86.00, detalhe: "Com canaleta e cordinha" }
     ]
   },
   {

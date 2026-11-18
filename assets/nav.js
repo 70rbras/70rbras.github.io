@@ -219,10 +219,15 @@
     const curta = iso => (typeof dataCurta === 'function' ? dataCurta(String(iso).slice(0, 10)) : '');
     const dentro = p => (!p.inicio || instante >= data(p.inicio)) && (!p.fim || instante <= data(p.fim));
 
+    /* Aviso com texto_ultimo_dia: no último dia do período, troca de texto e
+       ganha chave própria, para reaparecer a quem fechou a versão anterior. */
+    const ultimoDia = a => !!a.texto_ultimo_dia && String(periodo(a, null).fim).slice(0, 10) === relogio.data;
+    const chave = a => 'rbras-aviso-' + a.id + (ultimoDia(a) ? '-ultimo-dia' : '');
+
     let aviso = null;
     let dadosAtiv = null;
     for (const a of CONFIG.avisos) {
-      if (storageGet('rbras-aviso-' + a.id)) continue;
+      if (storageGet(chave(a))) continue;
       if (a.requer && CONFIG[a.requer] && CONFIG[a.requer].visivel === false) continue;
       /* Prazo referenciado que não existe em data/dates.js: melhor calar do
          que mostrar um aviso sem data e sem fim. */
@@ -245,7 +250,8 @@
     if (!aviso) return;
 
     const ativ = aviso.ativ;
-    const textoAviso = String(aviso.texto || '')
+    const urgente = ultimoDia(aviso);
+    const textoAviso = String((urgente ? aviso.texto_ultimo_dia : aviso.texto) || '')
       .replace(/\{inicio\}/g, curta(aviso.periodo.inicio))
       .replace(/\{fim\}/g, curta(aviso.periodo.fim))
       .replace(/\{dia\}/g, ativ ? Agenda.escapar(Agenda.dia(dadosAtiv, ativ.data)) : '')
@@ -255,7 +261,7 @@
 
     const linkHTML = destino ? `<a href="${root}${destino}">${aviso.link_texto || 'Saiba mais'} &rarr;</a>` : '';
     document.body.insertAdjacentHTML('afterbegin', `
-<div id="announce-bar">
+<div id="announce-bar"${urgente ? ' class="announce-urgente"' : ''}>
   <span>${textoAviso}</span>
   ${linkHTML}
   <button class="announce-close" id="announce-close" aria-label="Fechar aviso">&#x2715;</button>
@@ -271,7 +277,7 @@
     document.body.classList.add('has-announce');
 
     document.getElementById('announce-close').addEventListener('click', () => {
-      try { localStorage.setItem('rbras-aviso-' + aviso.id, '1'); } catch (e) {}
+      try { localStorage.setItem(chave(aviso), '1'); } catch (e) {}
       document.getElementById('announce-bar').remove();
       document.body.classList.remove('has-announce');
       document.documentElement.style.setProperty('--announce-h', '0px');

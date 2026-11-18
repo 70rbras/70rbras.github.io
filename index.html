@@ -683,12 +683,14 @@ function renderJantar() {
     if (a && hoje > a.data) return;                      // jantar já aconteceu
     const prazo = (typeof dataPorId === 'function') ? dataPorId(j.prazo_id) : null;
     const aberto = !prazo || hoje <= prazo.fim;
+    const ultimoDia = aberto && prazo && hoje === prazo.fim;
     const mapa = a && a.local && /^https:\/\//.test(a.local.mapa_url || '') ? a.local.mapa_url : '';
     const quando = a ? Agenda.dia(dados, a.data) + ', ' + Agenda.faixa(a) : '';
 
     const pix = j.pix || {};
     const adesao = aberto ? `
       <div class="jantar-adesao">
+        ${ultimoDia ? `<p class="jantar-ultimo-dia">⏰ <strong>Hoje é o último dia para aderir.</strong> O formulário e o comprovante do Pix precisam ser enviados até as 23h59 de ${e(dataCurta(prazo.fim))}.</p>` : ''}
         <h3>Como aderir</h3>
         <ol>
           <li><strong>Pague via Pix</strong> com a chave ${e(pix.tipo || '')}:
@@ -715,7 +717,9 @@ function renderJantar() {
         ${quando ? `<span class="jantar-chip">📅 <strong>${e(quando)}</strong></span>` : ''}
         <span class="jantar-chip">📍 <strong>${e(j.local_nome || (a ? Agenda.local(a) : ''))}</strong>
           · ${e(j.endereco || '')}${mapa ? ` · <a href="${e(mapa)}" target="_blank" rel="noopener noreferrer">mapa ↗</a>` : ''}</span>
-        ${aberto && prazo ? `<span class="jantar-chip jantar-chip--prazo">⏳ Adesões até <strong>${e(dataCurta(prazo.fim))}</strong></span>` : ''}
+        ${aberto && prazo ? (ultimoDia
+          ? `<span class="jantar-chip jantar-chip--urgente">⏰ <strong>Último dia:</strong> adesões só até hoje, <strong>${e(dataCurta(prazo.fim))}</strong>, às 23h59</span>`
+          : `<span class="jantar-chip jantar-chip--prazo">⏳ Adesões até <strong>${e(dataCurta(prazo.fim))}</strong></span>`) : ''}
       </div>
       <div class="jantar-grid">
         <div>

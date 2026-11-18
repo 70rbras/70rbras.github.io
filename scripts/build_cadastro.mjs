@@ -5,6 +5,13 @@
  *   data/committee.js  ← aba comissoes    (vínculo pessoa × comissão)
  *   data/speakers.js   ← aba convidados   (vínculo pessoa × palestra)
  *
+ * Título além de resumo da palestra vêm da programação (data/programacao.json,
+ * gerado antes pelo build_programacao.py a partir das abas atividades e
+ * resumos): a atividade de Conferência, Mini-Conferência ou Palestra em que o
+ * convidado aparece. As colunas tema e resumo da aba convidados ficam como
+ * reserva, usadas só quando a programação não traz o texto. Assim o mesmo
+ * título não precisa ser mantido em duas abas.
+ *
  * A ficha responde quem a pessoa é. O papel dela pertence ao vínculo, nunca à
  * ficha, pois a mesma pessoa aparece em comissão, em convidados além da
  * programação ao mesmo tempo.
@@ -140,13 +147,47 @@ function montarComissoes(linhas, pessoas) {
   });
 }
 
-function montarConvidados(linhas, pessoas) {
+/* Atividades da programação que são a fala de um convidado. */
+const TIPOS_PALESTRA = ['Conferência', 'Mini-Conferência', 'Palestra'];
+const PROGRAMACAO = 'data/programacao.json';
+
+function carregarProgramacao() {
+  if (!fs.existsSync(PROGRAMACAO)) {
+    avisos.push(`${PROGRAMACAO} ausente: título e resumo dos convidados vêm só da aba convidados`);
+    return [];
+  }
+  try { return JSON.parse(fs.readFileSync(PROGRAMACAO, 'utf8')).atividades || []; }
+  catch (e) { avisos.push(`${PROGRAMACAO} ilegível: título e resumo vêm só da aba convidados`); return []; }
+}
+
+/* "Conferência 1 - Título" vira "Título": a numeração serve à grade da
+   programação, não ao cartão do convidado. */
+function semPrefixo(a) {
+  const tipo = String(a.tipo || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return String(a.titulo || '').replace(new RegExp('^\\s*' + tipo + '\\s*\\d+\\s*[-–:]\\s*', 'i'), '').trim();
+}
+
+function montarConvidados(linhas, pessoas, atividades) {
   const out = [];
   for (const r of linhas) {
     const pid = (r.pessoa_id || '').trim();
     if (!pessoas[pid]) { erros.push(`convidado inexistente no cadastro: ${pid}`); continue; }
+    const falas = atividades.filter((a) => TIPOS_PALESTRA.includes(a.tipo) &&
+      (a.pessoas || []).some((p) => p.id === pid));
+    let tema = r.tema || '', resumo = r.resumo || '';
+    if (falas.length === 1) {
+      const a = falas[0];
+      if (semPrefixo(a)) tema = semPrefixo(a);
+      else avisos.push(`convidado ${pid}: atividade ${a.id} sem título; usado o tema da aba convidados`);
+      if ((a.resumo || '').trim()) resumo = a.resumo.trim();
+      else avisos.push(`convidado ${pid}: atividade ${a.id} sem resumo; usado o resumo da aba convidados`);
+    } else if (falas.length > 1) {
+      avisos.push(`convidado ${pid} aparece em ${falas.length} atividades (${falas.map((a) => a.id).join(', ')}); usados tema e resumo da aba convidados`);
+    } else if (atividades.length) {
+      avisos.push(`convidado ${pid} sem atividade de ${TIPOS_PALESTRA.join('/')} na programação; usados tema e resumo da aba convidados`);
+    }
     out.push({ ordem: Number(r.ordem) || 0,
-               v: { pessoa: pid, tipo: r.tipo || '', tema: r.tema || '', resumo: r.resumo || '' } });
+               v: { pessoa: pid, tipo: r.tipo || '', tema, resumo } });
   }
   out.sort((a, b) => a.ordem - b.ordem);
   return out.map((x) => x.v);
@@ -294,7 +335,7 @@ if (!args.dir && !args.fontes) args.fontes = 'scripts/fontes.json';
 const dados = await carregar(args);
 const pessoas = montarPessoas(dados.pessoas);
 const comissoes = montarComissoes(dados.comissoes, pessoas);
-const convidados = montarConvidados(dados.convidados, pessoas);
+const convidados = montarConvidados(dados.convidados, pessoas, carregarProgramacao());
 
 const usados = new Set();
 comissoes.forEach((c) => c.membros.forEach((m) => usados.add(m.pessoa)));

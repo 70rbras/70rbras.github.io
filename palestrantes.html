@@ -57,9 +57,9 @@
 <!-- ─── PALESTRANTES ──────────────────────────────── -->
 <section id="palestrantes" style="padding:5rem 0 7rem;background:var(--white)">
   <div class="container">
-    <div class="speakers-grid" id="speakers-grid">
-      <!-- preenchido via JS -->
-    </div>
+    <!-- Preenchido via JS: blocos por dia, lidos de data/programacao.json; sem
+         a programação, uma grade única na ordem da aba convidados. -->
+    <div id="speakers-grid"></div>
   </div>
 </section>
 
@@ -79,6 +79,7 @@
     <div class="modal-body">
       <h3>Palestra</h3>
       <div class="modal-topic" id="modal-topic"></div>
+      <div class="modal-quando" id="modal-quando" hidden></div>
       <h3>Resumo</h3>
       <div class="modal-abstract" id="modal-abstract"></div>
     </div>
@@ -148,21 +149,84 @@ function applyConfig() {
    foto e instituição ao lado do conteúdo da palestra. */
 const PALESTRAS = SPEAKERS.map(resolverPessoa).filter(Boolean);
 
-function renderSpeakers() {
-  const grid = document.getElementById('speakers-grid');
-  if (!grid) return;
-  grid.innerHTML = PALESTRAS.map((s,i) => {
-    const delay = i>0&&i<4?` reveal-delay-${i}`:'';
-    const foto  = s.foto?`<img src="${escAtributo(s.foto)}" alt="${escAtributo(s.nome)}" loading="lazy">`:'👤';
-    return `<div class="speaker-card reveal${delay}" data-index="${i}" role="button" tabindex="0" aria-label="Ver resumo de ${escAtributo(s.nome)}">
+/* Atividade da programação que é a fala de cada convidado: a mesma regra de
+   scripts/build_cadastro.mjs, que dali tira título e resumo. */
+const TIPOS_PALESTRA = ['Conferência', 'Mini-Conferência', 'Palestra'];
+
+function cartao(s, i, extra) {
+  const foto = s.foto?`<img src="${escAtributo(s.foto)}" alt="${escAtributo(s.nome)}" loading="lazy">`:'👤';
+  const a = s.ativ;
+  const quando = a ? `<div class="speaker-quando">🕒 ${escTexto(Agenda.hora(a.inicio))}${a.local && a.local.nome ? ' · ' + escTexto(a.local.nome) : ''}</div>` : '';
+  const simult = s.simultanea ? '<span class="speaker-selo">Simultânea</span>' : '';
+  return `<div class="speaker-card reveal${extra || ''}" data-index="${i}" role="button" tabindex="0" aria-label="Ver resumo de ${escAtributo(s.nome)}">
       <div class="speaker-photo">${foto}</div>
       <div class="speaker-name">${escTexto(s.nome)}</div>
       <div class="speaker-role">${escTexto(s.tipo)}</div>
       <div class="speaker-org">${escTexto(s.instituicao)}</div>
+      ${quando}${simult}
       <div class="speaker-topic">${escTexto(s.tema)}</div>
       <div class="speaker-hint">↗ clique para ver o resumo</div>
     </div>`;
-  }).join('');
+}
+
+/* Sem a programação: grade única, na ordem da aba convidados. */
+function renderPlano(lista) {
+  lista.innerHTML = '<div class="speakers-grid">' +
+    PALESTRAS.map((s,i) => cartao(s, i, i>0&&i<4?` reveal-delay-${i}`:'')).join('') + '</div>';
+}
+
+/* Com a programação: um bloco por dia, cartões em ordem de horário. Falas que
+   se sobrepõem no mesmo dia ganham o selo "Simultânea"; durante o evento, o
+   dia corrente leva o selo "Hoje" e a fala que já terminou fica esmaecida. */
+let DADOS = null;
+function renderPorDia(lista, dados) {
+  DADOS = dados;
+  const min = Agenda.minutos;
+  PALESTRAS.forEach(s => {
+    const falas = (dados.atividades || []).filter(a => TIPOS_PALESTRA.includes(a.tipo) &&
+      (a.pessoas || []).some(p => p.id === s.pessoa));
+    s.ativ = falas.length === 1 ? falas[0] : null;
+  });
+  PALESTRAS.forEach(s => {
+    s.simultanea = !!s.ativ && PALESTRAS.some(o => o !== s && o.ativ && o.ativ.data === s.ativ.data &&
+      min(o.ativ.inicio) < min(s.ativ.fim || s.ativ.inicio) && min(s.ativ.inicio) < min(o.ativ.fim || o.ativ.inicio));
+  });
+  const comDia = PALESTRAS.map((s, i) => ({ s, i })).filter(x => x.s.ativ);
+  if (!comDia.length) return renderPlano(lista);
+  comDia.sort((x, y) => x.s.ativ.data.localeCompare(y.s.ativ.data) ||
+    min(x.s.ativ.inicio) - min(y.s.ativ.inicio) || x.i - y.i);
+
+  const agora = Agenda.agora();
+  const passou = a => a.data < agora.data || (a.data === agora.data && min(a.fim || a.inicio) <= agora.min);
+  const dias = [...new Set(comDia.map(x => x.s.ativ.data))];
+  const rotulo = iso => {
+    const d = (dados.dias || []).filter(x => x.data === iso)[0];
+    const r = d && d.rotulo ? d.rotulo.replace(/ de \d{4}$/, '') : Agenda.dia(dados, iso);
+    return r.charAt(0).toUpperCase() + r.slice(1);
+  };
+  const semDia = PALESTRAS.map((s, i) => ({ s, i })).filter(x => !x.s.ativ);
+
+  lista.innerHTML = dias.map(iso => `
+    <div class="speakers-dia${iso < agora.data ? ' speakers-dia--passou' : ''}">
+      <h2 class="speakers-dia-titulo">${escTexto(rotulo(iso))}${iso === agora.data ? ' <span class="speakers-hoje">Hoje</span>' : ''}</h2>
+      <div class="speakers-grid speakers-grid--dia">
+        ${comDia.filter(x => x.s.ativ.data === iso)
+          .map(x => cartao(x.s, x.i, passou(x.s.ativ) ? ' speaker-card--passou' : '')).join('')}
+      </div>
+    </div>`).join('') + (semDia.length ? `
+    <div class="speakers-dia">
+      <h2 class="speakers-dia-titulo">Outros convidados</h2>
+      <div class="speakers-grid speakers-grid--dia">${semDia.map(x => cartao(x.s, x.i)).join('')}</div>
+    </div>` : '');
+}
+
+function renderSpeakers() {
+  const grid = document.getElementById('speakers-grid');
+  if (!grid) return;
+  renderPlano(grid);
+  Agenda.carregar()
+    .then(dados => { renderPorDia(grid, dados); revealAll(); })
+    .catch(() => { /* fica a grade única */ });
 
   grid.addEventListener('click', e => {
     const card = e.target.closest('.speaker-card');
@@ -182,12 +246,22 @@ function openModal(s) {
   document.getElementById('modal-role').textContent=s.tipo;
   document.getElementById('modal-org').textContent=s.instituicao;
   document.getElementById('modal-topic').textContent=s.tema;
+  /* Dia, horário e sala da fala, com atalho para a atividade na programação. */
+  const quando=document.getElementById('modal-quando');
+  const a=s.ativ;
+  if(a){
+    const local=Agenda.local(a);
+    quando.innerHTML=`<p>📅 <strong>${escTexto(capitalizar(Agenda.dia(DADOS,a.data) || a.data))}</strong>, ${escTexto(Agenda.faixa(a))}${local?`<br>📍 ${escTexto(local)}`:''}</p>
+      <a class="btn btn--ghost" href="programacao.html#${encodeURIComponent(a.id)}">Ver na programação →</a>`;
+    quando.hidden=false;
+  } else quando.hidden=true;
   /* O resumo vem da planilha: parágrafo por linha em branco, quebra simples
      vira <br>, com o texto escapado antes de qualquer marcação ser montada. */
   document.getElementById('modal-abstract').innerHTML=s.resumo.split(/\n\s*\n/).map(p=>`<p>${escTexto(p.trim()).replace(/\n/g,'<br>')}</p>`).join('');
   modal.classList.add('open');
   document.body.style.overflow='hidden';
 }
+function capitalizar(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
 function closeModal() {
   document.getElementById('speaker-modal').classList.remove('open');
   document.body.style.overflow='';

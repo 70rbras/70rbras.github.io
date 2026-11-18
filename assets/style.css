@@ -53,7 +53,9 @@ section { position: relative; }
 .tag--teal  { background: var(--teal-light);  color: var(--white); }
 .tag--blue  { background: var(--blue);         color: var(--white); }
 .btn {
-  display: inline-flex; align-items: center; gap: .5em;
+  /* justify-content e text-align centralizam o rótulo quando o botão estica
+     (coluna de ações, largura total no celular) */
+  display: inline-flex; align-items: center; justify-content: center; text-align: center; gap: .5em;
   padding: .85em 2em; border-radius: 999px;
   font-weight: 600; font-size: .95rem;
   cursor: pointer; border: 2px solid transparent;
@@ -204,6 +206,11 @@ section { position: relative; }
   padding: .3rem;
 }
 .announce-close:hover { opacity: 1; }
+/* Último dia de um prazo (aviso com texto_ultimo_dia): faixa vermelha */
+#announce-bar.announce-urgente { background: #B3261E; color: var(--white); }
+#announce-bar.announce-urgente a { color: var(--white); }
+#announce-bar.announce-urgente a:hover { color: var(--gold-light); }
+#announce-bar.announce-urgente .announce-close { color: var(--white); opacity: .8; }
 #navbar.scrolled {
   background: rgba(27,78,121,.96);
   backdrop-filter: blur(10px);
@@ -716,6 +723,32 @@ body.has-announce .page-header { padding-top: calc(7.5rem + var(--announce-h, 0p
 .speaker-hint { margin-top: .6rem; font-size: .75rem; color: var(--teal); font-weight: 600; opacity: 0; transition: opacity var(--transition); }
 .speaker-card:hover .speaker-hint { opacity: 1; }
 
+/* palestrantes.html: convidados agrupados por dia (lidos da programação) */
+.speakers-dia + .speakers-dia { margin-top: 4rem; }
+.speakers-dia-titulo {
+  display: flex; align-items: center; justify-content: center; gap: .7rem; flex-wrap: wrap;
+  font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy);
+  text-align: center; margin-bottom: 2rem; padding-bottom: .8rem;
+  border-bottom: 2px solid rgba(42,144,128,.25);
+}
+.speakers-hoje {
+  font-family: 'Montserrat', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; background: var(--gold); color: var(--navy);
+  border-radius: 999px; padding: .3em .8em;
+}
+.speakers-grid--dia { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+.speakers-grid--dia > .speaker-card { flex: 0 1 250px; }
+.speaker-quando { margin-top: .5rem; font-size: .82rem; font-weight: 600; color: var(--navy); }
+.speaker-selo {
+  display: inline-block; margin-top: .35rem; font-size: .66rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--teal); background: rgba(42,144,128,.1);
+  border-radius: 999px; padding: .25em .7em;
+}
+.speaker-card--passou { opacity: .55; }
+.speaker-card--passou:hover { opacity: .85; }
+.modal-quando { margin: 1rem 0 1.4rem; padding: .9rem 1rem; background: var(--off-white); border-radius: 10px; font-size: .92rem; line-height: 1.6; }
+.modal-quando .btn { margin-top: .7rem; font-size: .85rem; padding: .55em 1.3em; }
+
 /* Teaser da Home (cards simplificados, sem tópico) */
 .speaker-card--mini .speaker-topic { display: none; }
 .speaker-card--mini .speaker-hint  { display: none; }
@@ -1138,7 +1171,50 @@ table.tabela-precos { width: 100%; border-collapse: collapse; background: var(--
 .tabela-precos td.preco.l1 { background: rgba(214,168,24,.09); font-weight: 700; color: var(--blue); }
 .tabela-precos thead .th-encerrado { background: #7c8798; }
 .tabela-precos thead .th-encerrado .th-lote-periodo::after { content: " · encerrado"; }
-.tabela-precos td.preco.encerrado { color: var(--text-mid); opacity: .55; text-decoration: line-through; font-weight: 500; }
+.tabela-precos td.preco.encerrado { color: var(--text-mid); opacity: .55; font-weight: 500; }
+.tabela-precos td.preco.encerrado > span { text-decoration: line-through; }
+
+/* Tabelas no celular: nada de rolagem lateral, que escondia todas as colunas
+   menos a primeira. Tabela de duas colunas só perde a largura mínima; a de
+   várias colunas (classe tabela-empilha) vira um cartão por linha, com o
+   rótulo da coluna (atributo data-label da célula) ao lado de cada valor. */
+@media (max-width: 600px) {
+  table.tabela-precos { min-width: 0; font-size: .88rem; }
+  .tabela-precos thead th, .tabela-precos td { padding: .75rem .9rem; }
+  .tabela-precos thead .th-cat { width: auto; }
+  .tabela-precos .grupo-row td { padding: .55rem .9rem; }
+
+  .tabela-empilha thead { display: none; }
+  .tabela-empilha, .tabela-empilha tbody, .tabela-empilha tr, .tabela-empilha td { display: block; width: 100%; }
+  .tabela-empilha tbody tr { padding: .35rem 0 .55rem; }
+  .tabela-empilha td:first-child { padding-bottom: .35rem; font-weight: 700; color: var(--text-dark); }
+  .tabela-empilha td.preco {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    padding: .3rem .9rem; text-align: right;
+  }
+  .tabela-empilha td.preco::before {
+    content: attr(data-label); font-weight: 500; font-size: .82rem; color: var(--text-mid); text-align: left;
+  }
+  .tabela-empilha td.sem-preco { display: none; }
+  .tabela-empilha td.preco.encerrado::before { content: attr(data-label) " · encerrado"; }
+  .tabela-empilha td.preco.l1::before { color: var(--text-dark); font-weight: 700; }
+}
+
+/* Tabela de tempos de apresentação (apresentadores.html#oral) */
+.tabela-tempos { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.tabela-tempos th {
+  padding: .4rem .6rem .6rem; text-align: left;
+  color: var(--text-mid); font-size: .8rem; text-transform: uppercase; letter-spacing: .05em;
+}
+.tabela-tempos td { padding: .6rem; border-top: 1px solid rgba(26,56,112,.07); white-space: nowrap; }
+.tabela-tempos th:first-child, .tabela-tempos td:first-child { padding-left: 0; }
+.tabela-tempos th:last-child, .tabela-tempos td:last-child { padding-right: 0; }
+.tabela-tempos td:first-child { font-weight: 600; color: var(--text-dark); white-space: normal; }
+@media (max-width: 600px) {
+  .tabela-tempos { font-size: .86rem; }
+  .tabela-tempos th { font-size: .66rem; letter-spacing: 0; padding-left: .4rem; padding-right: .4rem; }
+  .tabela-tempos td { padding-left: .4rem; padding-right: .4rem; }
+}
 .td-cat { display: flex; align-items: center; gap: .55rem; }
 .inscricoes-cta-btn { margin-top: 3rem; text-align: center; }
 .socio-tag {
@@ -1729,6 +1805,12 @@ a.proxima-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba
 }
 .jantar-chip a { color: var(--teal); font-weight: 600; }
 .jantar-chip--prazo { background: var(--gold-light); border-color: var(--gold); }
+.jantar-chip--urgente { background: #B3261E; border-color: #B3261E; color: var(--white); }
+.jantar-ultimo-dia {
+  margin: 0 0 1.1rem; padding: .8rem 1rem; border-radius: 10px;
+  background: rgba(179,38,30,.08); border-left: 4px solid #B3261E;
+  color: #7A1A14; font-size: .93rem; line-height: 1.5;
+}
 .jantar-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: start; }
 .jantar-tabela { background: var(--white); border-radius: var(--radius); padding: 1.2rem 1.4rem; margin-bottom: 1rem; box-shadow: 0 4px 16px rgba(26,56,112,.06); }
 .jantar-tabela h3, .jantar-adesao h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: .7rem; }

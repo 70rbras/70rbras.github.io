@@ -126,7 +126,7 @@ const DATES = [
     id:        "jantar-adesao",
     titulo:    "Adesão ao Jantar dos 70 anos",
     inicio:    "2026-11-16",
-    fim:       "2026-11-17",
+    fim:       "2026-11-18",
     descricao: "Jantar de Confraternização, por adesão",
     icone:     "🍽️",
     link:      "index.html#jantar",

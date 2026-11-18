@@ -385,7 +385,7 @@
     .contato-card p { font-size: .9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: .6rem; }
     .contato-card a { color: var(--teal); font-weight: 600; }
     .contato-pdf-btn {
-      display: inline-flex; align-items: center; gap: .5rem;
+      display: inline-flex; align-items: center; justify-content: center; text-align: center; gap: .5rem;
       margin-top: 1rem;
       background: var(--white);
       border: 1.5px solid rgba(26,56,112,.15);
@@ -469,6 +469,10 @@
     @media (max-width: 600px) {
       .fundo-status-banner { flex-direction: column; align-items: flex-start; gap: .75rem; }
       .fundo-card-destaque { padding: 2rem 1.6rem; }
+      .avaliacao-wrap { padding: 1.2rem; }
+      table.tabela-avaliacao { min-width: 0; font-size: .88rem; }
+      .tabela-avaliacao thead th, .tabela-avaliacao tbody td { padding: .75rem .6rem; }
+      .tabela-avaliacao td:last-child { white-space: normal; }
     }
   </style>
 </head>

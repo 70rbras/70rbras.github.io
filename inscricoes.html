@@ -66,7 +66,7 @@
     <!-- Tabela de preços -->
     <div class="inscricoes-tabela reveal">
       <div class="tabela-wrapper">
-        <table class="tabela-precos">
+        <table class="tabela-precos tabela-empilha">
           <thead>
             <tr>
               <th class="th-cat">Categoria</th>
@@ -204,10 +204,14 @@ function renderValores() {
   const reais = v => 'R$ ' + Number(v).toLocaleString('pt-BR',
     { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 
+  // Rótulo de cada coluna (1º Lote...), lido do cabeçalho: no celular a tabela
+  // vira cartões e o rótulo aparece ao lado de cada valor.
+  const rotulos = [...document.querySelectorAll('.tabela-precos thead th:not(.th-cat) .th-lote-num')]
+    .map(el => el.textContent.trim());
   corpo.innerHTML = (INSCRICOES.grupos || []).map(g => {
     const linhas = (g.categorias || []).map(c => {
       const nota = c.elegibilidade ? `<small>${esc(c.elegibilidade)}</small>` : '';
-      const celulas = (c.valores || []).map(v => `<td class="preco">${reais(v)}</td>`).join('');
+      const celulas = (c.valores || []).map((v, i) => `<td class="preco" data-label="${esc(rotulos[i] || '')}"><span>${reais(v)}</span></td>`).join('');
       return `<tr><td><div class="td-cat">${esc(c.rotulo)}${nota}</div></td>${celulas}</tr>`;
     }).join('');
     return `<tr class="grupo-row"><td colspan="4">${esc(g.titulo)}</td></tr>` + linhas;

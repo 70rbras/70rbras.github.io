@@ -134,6 +134,9 @@ const CONFIG = {
     {
       id:         "jantar-adesao-2026",
       texto:      "🍽️ <strong>Jantar dos 70 anos da RBras</strong>: adesões até {fim}.",
+      // No dia em que o prazo termina, a faixa troca de texto e volta a
+      // aparecer mesmo para quem fechou o aviso anterior.
+      texto_ultimo_dia: "⏰ <strong>Último dia!</strong> Adesões ao <strong>Jantar dos 70 anos da RBras</strong> só até hoje, {fim}, às 23h59.",
       link:       "index.html#jantar",
       link_texto: "Valores e adesão",
       fim_id:     "jantar-adesao",

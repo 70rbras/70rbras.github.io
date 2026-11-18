@@ -258,13 +258,12 @@ function renderInstrucoes(id, m) {
 function renderTempos(id, lista) {
   const el = document.getElementById(id);
   if (!el || !lista || !lista.length) return;
-  el.innerHTML = '<table style="width:100%;border-collapse:collapse;font-size:.92rem">' +
-    '<thead><tr style="text-align:left;color:var(--text-mid);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em">' +
-    '<th style="padding:.4rem .6rem .6rem 0">Modalidade</th><th style="padding:.4rem .6rem .6rem">Apresentação</th><th style="padding:.4rem 0 .6rem .6rem">Perguntas</th></tr></thead><tbody>' +
-    lista.map(t => '<tr style="border-top:1px solid rgba(26,56,112,.07)">' +
-      '<td style="padding:.6rem .6rem .6rem 0;font-weight:600;color:var(--text-dark)">' + esc(t.modalidade) + '</td>' +
-      '<td style="padding:.6rem">' + esc(t.apresentacao) + ' min</td>' +
-      '<td style="padding:.6rem 0 .6rem .6rem">' + esc(t.perguntas) + ' min</td></tr>').join('') +
+  el.innerHTML = '<table class="tabela-tempos">' +
+    '<thead><tr><th>Modalidade</th><th>Apresentação</th><th>Perguntas</th></tr></thead><tbody>' +
+    lista.map(t => '<tr>' +
+      '<td>' + esc(t.modalidade) + '</td>' +
+      '<td>' + esc(t.apresentacao) + ' min</td>' +
+      '<td>' + esc(t.perguntas) + ' min</td></tr>').join('') +
     '</tbody></table>';
 }
 

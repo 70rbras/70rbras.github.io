@@ -316,7 +316,9 @@ function renderHotels() {
 
     const linhas = tarifas.map(t => {
       const celulas = colunas.map(n =>
-        `<td class="preco">${t.precos[n] !== undefined ? formatBRL(t.precos[n]) : '—'}</td>`
+        t.precos[n] !== undefined
+          ? `<td class="preco" data-label="${n} pessoa${n > 1 ? 's' : ''}">${formatBRL(t.precos[n])}</td>`
+          : `<td class="preco sem-preco">—</td>`
       ).join('');
       return `<tr><td><div class="td-cat">${t.tipo} · cama de ${t.cama.toLowerCase()}</div></td>${celulas}</tr>`;
     }).join('');
@@ -352,7 +354,7 @@ function renderHotels() {
         ${contatos}
         ${hotel.observacao ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:1.5rem"><strong>Atenção:</strong> ${hotel.observacao}</p>` : ''}
         ${tarifas.length ? `<div class="tabela-wrapper">
-          <table class="tabela-precos">
+          <table class="tabela-precos tabela-empilha">
             <thead><tr><th class="th-cat">Tipo de quarto</th>${thead}</tr></thead>
             <tbody>${linhas}</tbody>
           </table>

@@ -165,7 +165,9 @@ Prazos já encerrados (submissões, concurso, aceites, Fundo) seguem no arquivo,
 
 ## 7. Convidados (planilha → data/speakers.js)
 
-Os convidados vêm da aba `convidados` da planilha, que guarda o identificador da pessoa, o tipo, o tema além do resumo da palestra. O `scripts/build_cadastro.mjs` gera `data/speakers.js` a partir dela, enquanto nome, instituição, foto além do Lattes vêm da ficha em `data/pessoas.js`, gerada da aba `pessoas_cadastro`. Nenhum dos dois se edita à mão: a próxima geração desfaz a alteração.
+Os convidados vêm da aba `convidados` da planilha, que guarda o identificador da pessoa, o tipo e a ordem. Título e resumo da palestra vêm da programação (desde 18/11/2026): `scripts/build_cadastro.mjs` procura em `data/programacao.json` a única atividade de Conferência, Mini-Conferência ou Palestra com a pessoa em `pessoas_ids`, tira o prefixo "Conferência N - " do título e usa o resumo da aba `resumos`. As colunas `tema` e `resumo` da aba `convidados` ficam só como reserva (sem atividade, com mais de uma, ou atividade sem texto), com aviso no log. O `scripts/build_cadastro.mjs` gera `data/speakers.js` a partir dela, enquanto nome, instituição, foto além do Lattes vêm da ficha em `data/pessoas.js`, gerada da aba `pessoas_cadastro`. Nenhum dos dois se edita à mão: a próxima geração desfaz a alteração.
+
+`palestrantes.html` agrupa os convidados por dia (desde 18/11/2026), em ordem de horário, lendo dia, horário e sala da mesma atividade em `data/programacao.json`: cartão com horário e sala, selo "Simultânea" para falas sobrepostas no mesmo dia, selo "Hoje" no dia corrente, fala já encerrada esmaecida, diálogo com dia, sala e botão "Ver na programação". Sem a programação, a página cai na grade única na ordem da aba `convidados`. A faixa de convidados da Home não mudou.
 
 A lista de quem é convidado não é repetida aqui de propósito, pois ela muda na planilha. Para saber quem está publicado, abra `palestrantes.html` ou leia `data/speakers.js`.
 
@@ -228,8 +230,8 @@ Grade única, sem tiers visíveis; `quebraAntes: true` força nova linha.
 ## 11b. Logística (data/hotels.js, data/graficas.js)
 
 - **Hospedagem:** Hotel Matiz Barão Geraldo Express, Unibarão Hotel, Casa do Professor Visitante, Casa Pirâmide de Vidro (Airbnb)
-- **Gráficas:** Connect Print (selo "Parceira", banner 0,80×1,20 m R$ 85,00 e 0,90×1,20 m R$ 87,50; arquivos preferencialmente via WhatsApp) e Cromarte Gráfica Digital (selo "Parceira", 2 WhatsApp, pôster 0,90×1,20 m em 5 materiais de R$ 35,90 a R$ 239,90, prazo 1 a 2 dias úteis; não trabalha com lona, oferece papéis promocionais recicláveis)
-- Pôster oficial: A0 retrato (841×1189 mm); as duas opções de banner da Connect Print foram mantidas por decisão da organização
+- **Gráficas:** Connect Print (selo "Parceira", preços promocionais no tamanho A0 desde nov/2026: sulfite 120g R$ 54,90, gloss paper 180g R$ 75,40, lona R$ 86,00, todos com canaleta e cordinha; arquivos preferencialmente via WhatsApp) e Cromarte Gráfica Digital (selo "Parceira", 2 WhatsApp, pôster 0,90×1,20 m em 5 materiais de R$ 35,90 a R$ 239,90, prazo 1 a 2 dias úteis; não trabalha com lona, oferece papéis promocionais recicláveis)
+- Pôster oficial: A0 retrato (841×1189 mm); a Connect Print passou a oferecer o próprio A0 (e-mail da gráfica, nov/2026), no lugar dos banners 0,80 e 0,90 × 1,20 m
 - Links para `#graficas`: menu Logística, rodapé, botão "Onde imprimir" em `cientifico.html`, FAQ "Onde posso imprimir meu pôster?"
 
 ---
@@ -331,13 +333,13 @@ Arquivos em `assets/documentos/`: `modelos-poster-70rbras.zip`, `manual-poster-7
 De 23 a 25/11 o contador da Home dá lugar ao bloco "Agora / A seguir", lido de `data/programacao.json`; a programação realça o cartão em andamento e rola até ele. O relógio é sempre o de Brasília (`Agenda.agora()` em `assets/nav.js`). Para conferir um momento, acrescente `?agora=2026-11-23T14:10` ao endereço de qualquer página. Depois do fim do 3º Lote, os convites à inscrição saem da Home.
 
 ### Jantar de Confraternização
-Tudo em `data/config.js` → `jantar`. **Para ocultar tudo (seção, aviso, card de datas, link na programação): `visivel: false`.** As instruções de pagamento somem sozinhas depois do prazo `jantar-adesao` de `data/dates.js`; a seção some depois do dia do jantar. Agência e conta bancária ficam de fora de propósito (decisão de 16/11/2026): só chave Pix além de favorecido.
+Tudo em `data/config.js` → `jantar`. **Para ocultar tudo (seção, aviso, card de datas, link na programação): `visivel: false`.** As instruções de pagamento somem sozinhas depois do prazo `jantar-adesao` de `data/dates.js`; no último dia do prazo a seção mostra o chip vermelho "Último dia" e um alerta acima de "Como aderir" (prazo estendido para 18/11 em 18/11/2026); a seção some depois do dia do jantar. Agência e conta bancária ficam de fora de propósito (decisão de 16/11/2026): só chave Pix além de favorecido.
 
 ### Mudar links de inscrição/submissão
 Editar `data/config.js`, campos `link_inscricoes`, `link_submissao` e `link_area_inscrito`.
 
 ### Faixa de aviso no topo do site
-Editar `data/config.js` → `avisos` (id, texto, link, link_texto, inicio, fim em horário de Brasília; ou `inicio_id`/`fim_id` de dates.js; ou `atividade_id` da programação, com `{dia}`, `{horario}`, `{local}` no texto; `requer: "jantar"` some com `CONFIG.jantar.visivel: false`). Quem fecha um aviso passa a ver o seguinte da lista. Aparece o primeiro aviso dentro do período; some sozinho após `fim`; quem fecha não vê de novo (localStorage por `id`). Renderizada por `assets/nav.js` no DOMContentLoaded (nav.js carrega antes de config.js).
+Editar `data/config.js` → `avisos` (id, texto, link, link_texto, inicio, fim em horário de Brasília; ou `inicio_id`/`fim_id` de dates.js; ou `atividade_id` da programação, com `{dia}`, `{horario}`, `{local}` no texto; `requer: "jantar"` some com `CONFIG.jantar.visivel: false`). Com `texto_ultimo_dia`, no último dia do período a faixa fica vermelha, usa esse texto e reaparece para quem fechou a versão anterior (chave própria no localStorage). Quem fecha um aviso passa a ver o seguinte da lista. Aparece o primeiro aviso dentro do período; some sozinho após `fim`; quem fecha não vê de novo (localStorage por `id`). Renderizada por `assets/nav.js` no DOMContentLoaded (nav.js carrega antes de config.js).
 
 ---
 

@@ -12,8 +12,8 @@ const SPEAKERS = [
   {
     pessoa:  "maria-gabriela-cendoya",
     tipo:    "Conferencista",
-    tema:    "Título a ser divulgado em breve",
-    resumo:  "María Gabriela Cendoya é Professora de Estatística na Facultad de Ciencias Agrarias da Universidad Nacional de Mar del Plata, Argentina, e Presidente da International Biometric Society (IBS) no biênio 2026-2027.\nO resumo da conferência será divulgado em breve.",
+    tema:    "Prediction Accuracy Depends on Training Population Connectivity: A Case Study in Genomic Prediction of Sunflower Hybrids",
+    resumo:  "Population growth is driving the need for substantial increases in food production worldwide. In this context, genetic improvement has become a key tool for sustainably increasing agricultural productivity. Agronomic traits of interest are typically controlled by a large number of genes with small effects, and genomic selection has emerged as a powerful approach for predicting the genetic value of individuals using genome-wide molecular information through models such as GBLUP. The accuracy of genomic prediction depends on several factors, including the genetic variability of the germplasm, the density and distribution of molecular markers, trait heritability, the prediction model employed, and the design of the training population used to develop the predictive model. The objective of this lecture is to demonstrate how the design of the training population influences the accuracy of genomic predictions and how this effect is associated with the level of connectivity that the training population establishes among parental lines.",
   },
   {
     pessoa:  "amanda-merian-freitas-mendes",
