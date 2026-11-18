@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-18T07:58:46-0300",
- "gerado_em_texto": "18/11/2026 às 07:58",
- "versao_dados": 202611180758,
+ "gerado_em": "2026-11-18T11:05:32-0300",
+ "gerado_em_texto": "18/11/2026 às 11:05",
+ "versao_dados": 202611181105,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -11,7 +11,7 @@
   "evento_satelite": "VIII WASA, 26 de novembro de 2026",
   "local_principal": "IMECC/Unicamp, Campinas/SP",
   "aviso_programacao": "Programação preliminar, sujeita a alterações.",
-  "mostrar_aviso": "SIM",
+  "mostrar_aviso": "NAO",
   "fuso_horario": "America/Sao_Paulo",
   "site_url": "https://70rbras.org",
   "contato_programacao": "70rbras@unicamp.br"
@@ -753,8 +753,8 @@
   {
    "id": "P2",
    "data": "2026-11-24",
-   "inicio": "14:00",
-   "fim": "17:00",
+   "inicio": "14:30",
+   "fim": "16:30",
    "tipo": "Pôster",
    "tipo_slug": "poster",
    "titulo": "Sessão de pôsteres 2",
@@ -776,7 +776,7 @@
   {
    "id": "CAFE-24B",
    "data": "2026-11-24",
-   "inicio": "14:00",
+   "inicio": "16:00",
    "fim": "17:00",
    "tipo": "Intervalo",
    "tipo_slug": "intervalo",
@@ -799,8 +799,8 @@
   {
    "id": "REUNIAO-RBRAS",
    "data": "2026-11-24",
-   "inicio": "17:30",
-   "fim": "19:00",
+   "inicio": "17:00",
+   "fim": "18:30",
    "tipo": "Institucional",
    "tipo_slug": "institucional",
    "titulo": "Assembleia Geral Ordinária da RBras e Prêmio Destaque RBras",
