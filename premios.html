@@ -221,8 +221,8 @@
     }
     .fin-cat-cab h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 2.4vw, 1.65rem); color: var(--blue); margin: 0; }
     .fin-cat-icone { font-size: 1.8rem; }
+    .fin-cat-ordem { margin-left: auto; font-size: .78rem; color: var(--text-mid); font-style: italic; }
     .fin-cat-sala {
-      margin-left: auto;
       font-size: .8rem; font-weight: 600; color: var(--text-mid);
       background: var(--white); border: 1px solid rgba(26,56,112,.15);
       padding: .35em .9em; border-radius: 999px; text-decoration: none;
@@ -241,14 +241,7 @@
       scroll-margin-top: 110px;
     }
     .fin-card:hover { box-shadow: 0 14px 36px rgba(26,56,112,.13); transform: translateY(-2px); }
-    .fin-ordem {
-      position: absolute; top: 1.2rem; right: 1.2rem;
-      width: 30px; height: 30px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .8rem; font-weight: 700; color: var(--blue);
-      background: rgba(214,168,24,.16);
-    }
-    .fin-nome { font-family: 'Playfair Display', serif; font-size: 1.22rem; font-weight: 700; color: var(--blue); line-height: 1.25; padding-right: 2.2rem; }
+    .fin-nome { font-family: 'Playfair Display', serif; font-size: 1.22rem; font-weight: 700; color: var(--blue); line-height: 1.25; }
     .fin-inst { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); margin-top: .35rem; }
     .fin-titulo { font-style: italic; color: var(--text-dark); font-size: .93rem; line-height: 1.55; margin: .9rem 0 0; }
     .fin-resumo { margin-top: 1rem; border-top: 1px solid rgba(26,56,112,.1); padding-top: .8rem; }
@@ -365,7 +358,7 @@
       .fin-convite { grid-template-columns: 1fr; text-align: center; padding: 1.8rem 1.4rem; }
       .fin-convite-data { justify-self: center; }
       .fin-convite-acoes { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-      .fin-cat-sala { margin-left: 0; }
+      .fin-cat-ordem { margin-left: 0; flex-basis: 100%; }
       .premio-intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
     @media (max-width: 600px) {
@@ -604,7 +597,7 @@ function renderCategorias(finalistas) {
       ? linhaPremiado(w)
       : lista && lista.length
         ? `<span class="pc-finalistas-selo">✦ ${lista.length} finalistas</span>
-           <ul class="pc-finalistas">${lista.map(t => `<li>${e(t.autor)}<span>${e(t.instituicao)}</span></li>`).join('')}</ul>
+           <ul class="pc-finalistas">${lista.slice().sort((x, y) => String(x.autor).localeCompare(String(y.autor), 'pt-BR')).map(t => `<li>${e(t.autor)}<span>${e(t.instituicao)}</span></li>`).join('')}</ul>
            <a class="pc-link" href="#finalistas-${p.id}">Conheça os trabalhos &#8595;</a>`
         : `<p class="pc-desc">${p.descricao}</p><span class="pc-pendente">⏳ A anunciar</span>`;
     const mencoes = (p.mencoes && p.mencoes.length)
@@ -714,7 +707,6 @@ function cardFinalista(t) {
     : `<div class="fin-sem-resumo">Resumo em breve</div>`;
   return `
     <article class="fin-card" id="finalista-${e(t.id)}">
-      ${t.ordem ? `<span class="fin-ordem" title="Ordem de apresentação">${e(t.ordem)}º</span>` : ''}
       <div class="fin-nome">${e(t.autor)}</div>
       ${t.instituicao ? `<div class="fin-inst">${e(t.instituicao)}</div>` : ''}
       <p class="fin-titulo">${e(t.titulo)}</p>
@@ -749,6 +741,7 @@ function cardFinalista(t) {
           <div class="fin-cat-cab">
             <span class="fin-cat-icone" aria-hidden="true">${p.icone}</span>
             <h3>${e(p.titulo)}</h3>
+            <span class="fin-cat-ordem">Em ordem de apresentação na sessão</span>
             <a class="fin-cat-sala" href="programacao.html#${encodeURIComponent(a.id)}">📍 ${e(sala)} · ${e(Agenda.hora(a.inicio))}</a>
           </div>
           <div class="fin-grid${lista.length === 4 ? ' fin-grid--4' : ''}">${lista.map(cardFinalista).join('')}</div>

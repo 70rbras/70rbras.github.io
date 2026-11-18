@@ -289,7 +289,7 @@ Entrega do Destaque: dia, horário além de local lidos da atividade `REUNIAO-RB
 - ✅ Regra R11 no verificador: arquivo do casco do service worker alterado sem somar um a `VERSAO` em `sw.js` recusa a publicação; o fluxo horário da programação usa `--sem-casco` e ignora os arquivos gerados (16/11/2026)
 - ✅ `data/resumos-trabalhos.json` no casco do service worker, com `VERSAO` em 3, além de duas validações novas no build (09/11/2026, tarefa P17)
 - ✅ Dois prédios em `logistica.html#local` (CDC e IMECC, endereço, o que acontece em cada um lido da programação, rota a pé, credenciamento), Hero e metadados citam os dois (16/11/2026)
-- ✅ Finalistas dos concursos de Tese, Dissertação e IC publicados em `premios.html#finalistas` (cartões com instituição, título e resumo, convite para as sessões), vitrine e faixa da Home com chamada; `VERSAO` em 9 (17/11/2026)
+- ✅ Finalistas dos concursos de Tese, Dissertação e IC publicados em `premios.html#finalistas` (cartões com instituição, título e resumo, convite para as sessões), vitrine e faixa da Home com chamada; sem número de ordem nos cartões, para não sugerir colocação; `VERSAO` em 10 (17/11/2026)
 - ✅ Modo evento na Home (Agora / A seguir), Programação como item próprio do menu, botões "Encontre seu trabalho" e "Como chegar" no Hero, realce do "agora" na programação com correção de fuso, avisos ligados a atividades, entrega do Destaque lida da programação, seção do Jantar; `VERSAO` em 5 (16/11/2026)
 ---
 

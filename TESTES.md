@@ -301,5 +301,6 @@ Seção `premios.html#finalistas` lida de `data/programacao.json` (sessões indi
 | Home | faixa de prêmios com chamada para `premios.html#finalistas` | conforme |
 | Desktop (1400 px) e estreito (500 px) | grade 3 colunas (IC 2×2) e 1 coluna, sem rolagem lateral | conforme |
 | Hifenização | `hyphens: auto` quebrava errado o resumo em inglês sob `lang="pt-BR"`; removido | corrigido |
-| Service worker | `VERSAO` de 8 para 9 (`assets/style.css`, `index.html`, `data/premios.js`) | conforme |
+| Ordem sugerindo colocação | selo "1º, 2º, 3º" nos cartões podia ser lido como classificação (apontado pela organização); removido, bloco ganhou a legenda "Em ordem de apresentação na sessão" e a vitrine passou a listar em ordem alfabética | corrigido |
+| Service worker | `VERSAO` de 8 para 10 (`assets/style.css`, `index.html`, `premios.html`, `data/premios.js`) | conforme |
 
