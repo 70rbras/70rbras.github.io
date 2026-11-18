@@ -49,7 +49,7 @@
   <div class="container">
     <span class="tag tag--teal">Agenda</span>
     <h1 class="page-header-title">Programação Científica</h1>
-    <p class="page-header-sub">Três dias de conferências, sessões temáticas, minicursos, pôsteres e atividades sociais. Programação preliminar - sujeita a alterações.</p>
+    <p class="page-header-sub">Três dias de conferências, sessões temáticas, minicursos, pôsteres e atividades sociais.</p>
   </div>
   <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
     <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="var(--off-white)"/>
@@ -60,9 +60,13 @@
 <section class="pg" id="programacao">
   <div class="container">
     <div class="pg-topo">
-      <p class="pg-aviso" id="pgAviso">Programação preliminar, sujeita a alterações.</p>
+      <!-- Aviso controlado pela planilha (aba config: mostrar_aviso, aviso_programacao). -->
+      <p class="pg-aviso" id="pgAviso" hidden></p>
       <p class="pg-atualizado" id="pgAtualizado"></p>
     </div>
+
+    <!-- Convite para instalar o aplicativo (montado por assets/nav.js) -->
+    <div class="app-convite-faixa" data-app-convite="compacto" hidden></div>
 
     <div class="pg-modos" role="tablist" aria-label="Formas de ver a programação">
       <button class="pg-modo" type="button" role="tab" data-modo="geral" aria-selected="true"

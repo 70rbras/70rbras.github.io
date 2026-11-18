@@ -69,6 +69,8 @@
   margin-bottom: 1.5rem;
 }
 
+.pg-aviso[hidden] { display: none; }
+
 .pg-aviso {
   display: inline-flex;
   align-items: center;
@@ -872,3 +874,6 @@ a.pg-sala:focus-visible {
     border-radius: 0;
   }
 }
+
+/* Painel do pôster (número do trabalho), destacado no resultado da busca */
+.pg-cod.pg-painel { font-weight: 700; color: var(--pg-azul); }

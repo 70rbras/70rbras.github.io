@@ -169,6 +169,13 @@
   /* Uma apresentacao da lista. O resumo fica recolhido num details, pois quatro
      resumos abertos de uma vez nao cabem na tela do telefone, enquanto o titulo
      com quem apresenta e o que o visitante percorre para escolher. */
+  /* Painel do pôster: o da planilha; sem ele, o identificador recebido na
+     submissão, que a organização usa para numerar os painéis. */
+  function painelDe(t) {
+    if (t.painel) return t.painel;
+    return semAcento(t.modalidade) === 'poster' ? t.id : '';
+  }
+
   function apresentacaoHtml(t) {
     var cabeca = [];
     if (t.id) cabeca.push('#' + t.id);
@@ -211,9 +218,10 @@
     var d = s ? (dados.dias || []).filter(function (x) { return x.data === s.data; })[0] : null;
     var corT = semAcento(t.modalidade) === 'poster' ? CORES['poster'] : CORES['comunicacao-oral'];
     var onde = [];
-    if (t.id) onde.push('#' + t.id);
+    var painelT = painelDe(t);
+    if (painelT) onde.push('Painel ' + painelT);
+    else if (t.id) onde.push('#' + t.id);
     if (t.sessao) onde.push(t.sessao);
-    if (t.painel) onde.push('painel ' + t.painel);
     if (s) {
       if (d) onde.push(d.rotulo);
       onde.push(faixa(s));
@@ -438,7 +446,8 @@
     else sala = l.sala;
 
     var mapa = temPredio ? urlSegura(l.mapa_url) : '';
-    var comoChegar = temPredio && l.como_chegar ? l.como_chegar : '';
+    var comoChegar = !temPredio ? ''
+      : (window.Agenda && window.Agenda.comoChegar ? window.Agenda.comoChegar(l) : (l.como_chegar || ''));
 
     return '<div class="pg-onde">' +
       (temPredio ? '<span class="pg-predio" data-predio="' + atributo(l.predio) + '">' +
@@ -832,10 +841,12 @@
       var corTrab = t.modalidade === 'Pôster' ? CORES['poster'] : CORES['comunicacao-oral'];
       return '<article class="pg-resultado" style="--cor:' + corTrab + '">' +
         '<div class="pg-resultado-topo">' +
-        '<span class="pg-cod">#' + texto(t.id) + '</span>' +
+        (painelDe(t)
+          ? '<span class="pg-cod pg-painel">Painel ' + texto(painelDe(t)) + '</span>'
+          : '<span class="pg-cod">#' + texto(t.id) + '</span>') +
         '<span class="pg-tipo" style="color:' + corTrab + '">' + texto(t.modalidade) + '</span>' +
         (t.sessao ? '<span class="pg-cod">' + texto(t.sessao) + '</span>' : '') +
-        (t.painel ? '<span class="pg-cod">painel ' + texto(t.painel) + '</span>' : '') +
+
         '</div>' +
         '<h4>' + texto(t.titulo) + '</h4>' +
         '<p class="pg-resultado-quando">' + quando + '</p>' +

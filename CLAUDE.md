@@ -114,7 +114,7 @@ site-rbras-claude/
 
 | Variável         | Valor     | Uso                        |
 |-----------------|-----------|----------------------------|
-| `--navy`        | #1A3870   | Cor primária escura        |
+| `--blue` (alias `--navy`) | #1A3870   | Cor primária escura |
 | `--blue-mid`    | #2560AC   | Azul médio                 |
 | `--teal`        | #2A9080   | Accent principal           |
 | `--teal-light`  | #38AAAA   | Accent claro               |
@@ -247,9 +247,9 @@ Todos os prêmios centralizados em `premios.html` (decisão out/2026). `premiado
 | Melhor Dissertação de Mestrado | a anunciar |
 | Melhor Trabalho de IC | a anunciar |
 
-Página organizada em dois blocos desde 18/11/2026: `#destaque` (caixa do premiado, sobre o prêmio, linha do tempo com a entrega) e `#concurso` (convite, uma categoria por prêmio com finalistas e comissão avaliadora no pé). Âncoras antigas (`#premiados`, `#finalistas`, `#finalistas-tese`, `#premiado-tese`...) são redirecionadas por script na própria página. Finalistas lidos das sessões `CONC-TESE`, `CONC-DISS` e `CONC-IC` da programação (campo `sessao_finalistas` em `data/premios.js`); nome, instituição, título e resumo se corrigem na planilha (abas `trabalhos` e `resumos`, `ref` = id do trabalho, ex.: `CONC-TESE-1`). Texto do convite em `FINALISTAS_CONVITE`; o convite some depois da sessão. Ao anunciar o vencedor, preencher `premiado` (nome obrigatório; `trabalho_id` opcional puxa título, instituição e resumo da programação): a categoria passa a mostrar só o vencedor.
+Página organizada em dois blocos desde 18/11/2026: `#destaque` (caixa do premiado, sobre o prêmio, linha do tempo do processo, sem a entrega) e `#concurso` (convite, uma categoria por prêmio com finalistas e comissão avaliadora no pé). Âncoras antigas (`#premiados`, `#finalistas`, `#finalistas-tese`, `#premiado-tese`...) são redirecionadas por script na própria página. Finalistas lidos das sessões `CONC-TESE`, `CONC-DISS` e `CONC-IC` da programação (campo `sessao_finalistas` em `data/premios.js`); nome, instituição, título e resumo se corrigem na planilha (abas `trabalhos` e `resumos`, `ref` = id do trabalho, ex.: `CONC-TESE-1`). Texto do convite em `FINALISTAS_CONVITE`; o convite some depois da sessão. Ao anunciar o vencedor, preencher `premiado` (nome obrigatório; `trabalho_id` opcional puxa título, instituição e resumo da programação): a categoria passa a mostrar só o vencedor.
 
-Entrega do Destaque: dia, horário além de local lidos da atividade `REUNIAO-RBRAS` da programação (campo `entrega_atividade` em `data/premios.js`). Menu: "🏆 Prêmios RBras", sem selo "Novo" desde 16/11/2026.
+Entrega dos prêmios: por decisão da organização (18/11/2026), o site não informa quando os prêmios são entregues. Menu: "🏆 Prêmios RBras", sem selo "Novo".
 
 ---
 
@@ -290,6 +290,7 @@ Entrega do Destaque: dia, horário além de local lidos da atividade `REUNIAO-RB
 - ✅ Coluna `ordem` define a sequência de fala além de `pessoa_id` resolver o apresentador pela ficha (09/11/2026, tarefa P13)
 - ✅ Busca com filtro por sessão, botão de resumo no resultado além de carga sob demanda do segundo arquivo (09/11/2026, tarefa P16)
 - ✅ Modelos de apresentação oral (PowerPoint e Beamer) e manual publicados em `apresentadores.html#modelos-oral`, com instruções, FAQ e CTA da Home atualizados (16/11/2026)
+- ✅ Service worker: `data/*.js` passaram a rede primeiro (limite de 3 s, cache como reserva) e a versão nova assume ao instalar (`skipWaiting`), depois que o cache serviu a visitantes antigos o prazo do jantar vencido; `VERSAO` em 17 (18/11/2026)
 - ✅ Regra R11 no verificador: arquivo do casco do service worker alterado sem somar um a `VERSAO` em `sw.js` recusa a publicação; o fluxo horário da programação usa `--sem-casco` e ignora os arquivos gerados (16/11/2026)
 - ✅ `data/resumos-trabalhos.json` no casco do service worker, com `VERSAO` em 3, além de duas validações novas no build (09/11/2026, tarefa P17)
 - ✅ Dois prédios em `logistica.html#local` (CDC e IMECC, endereço, o que acontece em cada um lido da programação, rota a pé, credenciamento), Hero e metadados citam os dois (16/11/2026)

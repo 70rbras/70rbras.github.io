@@ -97,19 +97,14 @@
       <div class="inscricoes-info-box">
         <div class="info-box-icon">✈️</div>
         <h4>Acesso Aéreo</h4>
-        <ul class="airport-list" style="margin-top:.8rem">
-          <li><a href="https://www.google.com/maps/dir/Aeroporto+Internacional+de+Viracopos,+Campinas,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link"><strong>VCP</strong> - Viracopos · Campinas · ~20 km</a></li>
-          <li><a href="https://www.google.com/maps/dir/Aeroporto+de+Congonhas,+S%C3%A3o+Paulo,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link"><strong>CGH</strong> - Congonhas · São Paulo · ~100 km</a></li>
-          <li><a href="https://www.google.com/maps/dir/Aeroporto+Internacional+de+Guarulhos,+Guarulhos,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link"><strong>GRU</strong> - Guarulhos · São Paulo · ~90 km</a></li>
-        </ul>
+        <!-- Origens em ORIGENS (script abaixo); destinos: os prédios de data/config.js -->
+        <ul class="airport-list rotas-origem" data-grupo="aereo" style="margin-top:.8rem"></ul>
       </div>
 
       <div class="inscricoes-info-box">
         <div class="info-box-icon">🚌</div>
         <h4>De ônibus</h4>
-        <ul class="airport-list" style="margin-top:.8rem">
-          <li><a href="https://www.google.com/maps/dir/Rodoviária+de+Campinas,+Campinas,+SP/IMECC+Unicamp,+Rua+S%C3%A9rgio+Buarque+de+Holanda,+651,+Campinas,+SP" target="_blank" rel="noopener noreferrer" class="airport-link"><strong>Rodoviária de Campinas</strong> · ~8 km</a></li>
-        </ul>
+        <ul class="airport-list rotas-origem" data-grupo="onibus" style="margin-top:.8rem"></ul>
         <p style="margin-top:1rem;font-size:.9rem;color:var(--text-mid)">Diversas empresas de ônibus conectam Campinas a cidades do interior e da capital paulista.</p>
       </div>
 
@@ -252,6 +247,7 @@ function renderPredios() {
         <span class="predio-sigla">${e(sigla)}</span>
         <h3>${e(p.nome)}</h3>
         <p class="predio-end">${e(end.logradouro)}<br>${e(end.bairro)}<br>${e(end.cidade)}, ${e(end.estado)} · CEP ${e(end.cep)}</p>
+        ${p.como_chegar ? `<p class="predio-end">🧭 ${e(p.como_chegar)}</p>` : ''}
         ${oQue && oQue.length ? `<p class="predio-rotulo">O que acontece aqui</p>
           <ul class="predio-oque">${oQue.map(t => `<li>${e(t)}</li>`).join('')}</ul>` : ''}
         <div class="predio-acoes">
@@ -301,6 +297,48 @@ function renderPredios() {
   }
 }
 
+/* ── Rotas até os dois prédios ──────────────────────
+   Cada origem (aeroporto, rodoviária, hotel) leva a uma rota até cada prédio
+   de CONFIG.predios, pois o evento acontece nos dois. */
+const ORIGENS = {
+  aereo: [
+    { sigla: 'VCP', nome: 'Viracopos · Campinas · ~20 km', busca: 'Aeroporto Internacional de Viracopos, Campinas, SP' },
+    { sigla: 'CGH', nome: 'Congonhas · São Paulo · ~100 km', busca: 'Aeroporto de Congonhas, São Paulo, SP' },
+    { sigla: 'GRU', nome: 'Guarulhos · São Paulo · ~90 km', busca: 'Aeroporto Internacional de Guarulhos, Guarulhos, SP' }
+  ],
+  onibus: [
+    { sigla: 'Rodoviária de Campinas', nome: '~8 km', busca: 'Rodoviária de Campinas, Campinas, SP' }
+  ]
+};
+
+function siglasPredios() {
+  const predios = CONFIG.predios || {};
+  return Object.keys(predios).sort((a, b) => (predios[a].ordem || 0) - (predios[b].ordem || 0));
+}
+
+function urlRota(origem, sigla, modo) {
+  const p = (CONFIG.predios || {})[sigla] || {};
+  const destino = p.rota || CONFIG.evento.endereco_rota;
+  return 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(origem) +
+    '&destination=' + encodeURIComponent(destino) + '&travelmode=' + (modo || 'driving');
+}
+
+/* "Rota até: CDC ↗ · IMECC ↗" */
+function linksRota(origem, modo) {
+  return siglasPredios().map(s =>
+    `<a href="${urlRota(origem, s, modo)}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">${Agenda.escapar(s)} ↗</a>`
+  ).join(' · ');
+}
+
+function renderOrigens() {
+  document.querySelectorAll('.rotas-origem').forEach(ul => {
+    ul.innerHTML = (ORIGENS[ul.dataset.grupo] || []).map(o =>
+      `<li class="rota-origem"><strong>${o.sigla}</strong>${o.nome ? ' - ' + o.nome : ''}
+        <span class="rota-destinos">Rota até: ${linksRota(o.busca, 'driving')}</span></li>`
+    ).join('');
+  });
+}
+
 function formatBRL(valor) {
   return 'R$ ' + valor.toFixed(2).replace('.', ',');
 }
@@ -328,9 +366,7 @@ function renderHotels() {
     const beneficios = (hotel.beneficios || [])
       .map(b => `<span class="socio-tag">${b}</span>`).join(' ');
 
-    const IMECC_DEST = CONFIG.evento.endereco_rota;
     const aPe = hotel.rotaModo === 'walking';
-    const rotaUrl = hotel.rotaUrl || `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(hotel.endereco)}&destination=${encodeURIComponent(IMECC_DEST)}&travelmode=${aPe ? 'walking' : 'driving'}`;
 
     const contatos = [
       hotel.telefone  ? `📞 ${hotel.telefone}` : '',
@@ -349,7 +385,7 @@ function renderHotels() {
         </p>
         ${hotel.distancia ? `<p class="section-body" style="margin-bottom:.3rem;color:var(--text-mid)">📍 ${hotel.distancia} do IMECC</p>` : ''}
         <p class="section-body" style="margin-bottom:.3rem">
-          ${aPe ? '🚶' : '🚗'} <a href="${rotaUrl}" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-weight:600">Ver rota até o IMECC ${aPe ? 'a pé' : 'de carro'}</a>
+          ${aPe ? '🚶' : '🚗'} Rota ${aPe ? 'a pé' : 'de carro'} até: ${linksRota(hotel.endereco, aPe ? 'walking' : 'driving')}
         </p>
         ${contatos}
         ${hotel.observacao ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:1.5rem"><strong>Atenção:</strong> ${hotel.observacao}</p>` : ''}
@@ -372,14 +408,12 @@ function renderGraficas() {
   if (!container) return;
   if (typeof GRAFICAS === 'undefined' || !GRAFICAS.length) { if (section) section.hidden = true; return; }
 
-  const IMECC_DEST = CONFIG.evento.endereco_rota;
   const link = (href, texto, externo) =>
     `<a href="${href}"${externo ? ' target="_blank" rel="noopener noreferrer"' : ''} style="color:var(--teal);font-weight:600">${texto}</a>`;
 
   container.innerHTML = GRAFICAS.map(g => {
     const mapaUrl = g.mapaUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(g.endereco)}`;
     const aPe = g.rotaModo === 'walking';
-    const rotaUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(g.endereco)}&destination=${encodeURIComponent(IMECC_DEST)}&travelmode=${aPe ? 'walking' : 'driving'}`;
     const whatsapps = [].concat(g.whatsapp || []);
 
     const contatos = [
@@ -402,7 +436,7 @@ function renderGraficas() {
         <p class="section-body" style="margin-bottom:.3rem">${link(mapaUrl, g.endereco, true)}</p>
         ${g.distancia ? `<p class="section-body" style="margin-bottom:.3rem;color:var(--text-mid)">📍 ${g.distancia} do IMECC</p>` : ''}
         <p class="section-body" style="margin-bottom:.3rem">
-          ${aPe ? '🚶' : '🚗'} ${link(rotaUrl, `Ver rota até o IMECC ${aPe ? 'a pé' : 'de carro'}`, true)}
+          ${aPe ? '🚶' : '🚗'} Rota ${aPe ? 'a pé' : 'de carro'} até: ${linksRota(g.endereco, aPe ? 'walking' : 'driving')}
         </p>
         ${contatos}
         ${g.prazo ? `<p style="font-size:.9rem;color:var(--text-mid);margin-bottom:.5rem"><strong>Prazo:</strong> ${g.prazo}</p>` : ''}
@@ -422,6 +456,7 @@ function renderGraficas() {
 
 applyConfig();
 renderPredios();
+renderOrigens();
 renderHotels();
 renderGraficas();
 revealAll();

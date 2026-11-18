@@ -185,12 +185,21 @@
       return extenso ? l.nome + ' (' + extenso + ')' : l.nome;
     }
 
+    /* Orientação de como chegar à sala: a da planilha; sem ela, a do prédio
+       (CONFIG.predios[sigla].como_chegar). */
+    function comoChegar(l) {
+      if (!l) return '';
+      if (l.como_chegar) return l.como_chegar;
+      const p = (typeof CONFIG !== 'undefined' && CONFIG.predios) ? CONFIG.predios[l.predio] : null;
+      return p && typeof p === 'object' && p.como_chegar ? p.como_chegar : '';
+    }
+
     function escapar(s) {
       return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
         .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    return { agora, minutos, carregar, atividade, hora, faixa, dia, local, escapar };
+    return { agora, minutos, carregar, atividade, hora, faixa, dia, local, comoChegar, escapar };
   })();
   window.Agenda = Agenda;
 
@@ -306,7 +315,78 @@
     });
   }
 
+  /* ── Convite para instalar o aplicativo ─────────────
+     Todo elemento com data-app-convite recebe o convite: "completo" (seção da
+     Home) ou "compacto" (faixa na programação, que o visitante pode fechar).
+     Some quando o site já está aberto como aplicativo. No Android/Chrome usa o
+     pedido de instalação do navegador; no iPhone e nos demais casos mostra o
+     caminho pelo menu. O evento beforeinstallprompt não é cancelado, para não
+     tirar do visitante o convite nativo do navegador. */
+  let pedidoInstalacao = null;
+  window.addEventListener('beforeinstallprompt', ev => {
+    pedidoInstalacao = ev;
+    montarConvitesApp();
+  });
+  window.addEventListener('appinstalled', () => {
+    pedidoInstalacao = null;
+    document.querySelectorAll('[data-app-convite]').forEach(el => { el.hidden = true; });
+  });
+
+  function montarConvitesApp() {
+    const alvos = document.querySelectorAll('[data-app-convite]');
+    if (!alvos.length) return;
+    const instalado = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) ||
+      navigator.standalone === true;
+    const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const fechado = (() => { try { return localStorage.getItem('rbras-app-convite') === '1'; } catch (e) { return false; } })();
+
+    const como = pedidoInstalacao
+      ? '<button type="button" class="btn btn--primary app-instalar">📲 Instalar aplicativo</button>'
+      : ios
+        ? '<p class="app-como">No <strong>Safari</strong>, toque em <strong>Compartilhar</strong> ' +
+          '<span aria-hidden="true">(□↑)</span> e depois em <strong>Adicionar à Tela de Início</strong>.</p>'
+        : '<p class="app-como">No <strong>Chrome</strong> ou no <strong>Edge</strong>, abra o menu ' +
+          '<span aria-hidden="true">(⋮)</span> e escolha <strong>Instalar aplicativo</strong> ou ' +
+          '<strong>Adicionar à tela inicial</strong>.</p>';
+
+    alvos.forEach(el => {
+      const compacto = el.dataset.appConvite === 'compacto';
+      if (instalado || (compacto && fechado)) { el.hidden = true; return; }
+      el.innerHTML = compacto
+        ? '<p class="app-convite-texto"><strong>Programação no celular</strong>, mesmo sem internet no campus.</p>' +
+          '<div class="app-convite-acao">' + como + '</div>' +
+          '<button type="button" class="app-convite-fechar" aria-label="Fechar convite">✕</button>'
+        : '<div class="container app-convite-inner">' +
+            '<div class="app-convite-icone" aria-hidden="true">📲</div>' +
+            '<div class="app-convite-corpo">' +
+              '<h2 class="section-title">Leve a programação <span>no celular</span></h2>' +
+              '<p class="section-body">Instale o site como aplicativo: ele abre direto na programação, ' +
+              'mostra o que acontece agora e continua funcionando sem internet no campus, ' +
+              'depois da primeira visita.</p>' +
+              '<div class="app-convite-acao">' + como + '</div>' +
+            '</div>' +
+          '</div>';
+      el.hidden = false;
+      /* Seção que nasce oculta não recebe a rolagem da âncora; o atraso
+         espera as seções de cima (ex.: jantar) terminarem de aparecer. */
+      if (el.id && location.hash === '#' + el.id) setTimeout(() => el.scrollIntoView(), 600);
+      const botao = el.querySelector('.app-instalar');
+      if (botao) botao.addEventListener('click', () => {
+        if (!pedidoInstalacao) return;
+        pedidoInstalacao.prompt();
+        pedidoInstalacao.userChoice.finally(() => { pedidoInstalacao = null; montarConvitesApp(); });
+      });
+      const fechar = el.querySelector('.app-convite-fechar');
+      if (fechar) fechar.addEventListener('click', () => {
+        try { localStorage.setItem('rbras-app-convite', '1'); } catch (e) { /* sem armazenamento */ }
+        el.hidden = true;
+      });
+    });
+  }
+
   function aplicarConfig() {
+    montarConvitesApp();
     aplicarAviso().catch(e => { if (window.console) console.error('aviso:', e); });
     aplicarLigacoes();
   }

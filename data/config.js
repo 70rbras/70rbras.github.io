@@ -42,6 +42,8 @@ const CONFIG = {
   //   endereco  → campos do endereço; ausente = usa o endereço de `evento`
   //   rota      → texto usado no Google Maps; ausente = evento.endereco_rota
   //   imagem    → (opcional) foto do prédio
+  //   como_chegar → (opcional) orientação do prédio, usada nas salas que não
+  //               têm `como_chegar` próprio na aba `locais` da planilha
   //   estacionamento → (opcional) como é o estacionamento; aparece no quadro
   //               "De carro" de logistica.html#como-chegar
   //   ordem     → posição do cartão na página
@@ -59,6 +61,7 @@ const CONFIG = {
         cep:        "13083-851"
       },
       rota:     "Centro de Convenções da Unicamp, Avenida Érico Veríssimo, 500, Campinas - SP, 13083-851",
+      como_chegar: "Siga as indicações na recepção do CDC.",
       estacionamento: "próprio e gratuito"
     },
     IMECC: {

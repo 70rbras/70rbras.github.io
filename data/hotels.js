@@ -9,7 +9,7 @@
 //   endereco   → endereço completo (texto exibido)
 //   mapaUrl    → link do Google Maps (endereco fica clicável)
 //   distancia  → (opcional) distância/tempo até o IMECC (ex.: "3 km · ~8 min de carro")
-//   rotaUrl    → (opcional) link de rota até o IMECC; se omitido, é gerado
+//   (as rotas até o CDC e até o IMECC são geradas a partir do endereço)
 //                automaticamente a partir de "endereco"
 //   rotaModo   → (opcional) "walking" para rota a pé; padrão é de carro
 //   telefone   → (opcional) telefone/WhatsApp para reservas (texto livre, ex.: "(19) 3749-8500")

@@ -356,7 +356,8 @@
 
 <!-- ─── BLOCO 1: PRÊMIO DESTAQUE ──────────────────
      Quem recebe (data/premios.js), o que é o prêmio e como foi o processo.
-     A entrega lê dia, horário além de local da programação. -->
+     Por decisão da organização, o site não informa quando os
+     prêmios são entregues. -->
 <section id="destaque" style="padding:4.5rem 0 5.5rem;background:var(--white)">
   <div class="container">
     <div class="section-header reveal">
@@ -397,12 +398,6 @@
             <span class="step-badge">Outubro</span>
             <h4>Anúncio</h4>
             <p>A Diretoria da RBras comunicou oficialmente o resultado.</p>
-          </div>
-          <div class="processo-step">
-            <!-- Dia, horário e local vêm de data/programacao.json (entrega_atividade em data/premios.js). -->
-            <span class="step-badge" id="destaque-entrega-dia">Novembro</span>
-            <h4>Entrega do prêmio</h4>
-            <p id="destaque-entrega">Durante a 70ª RBras.</p>
           </div>
         </div>
       </div>
@@ -521,22 +516,6 @@ function renderDestaque() {
   const indic = typeof dataPorId === 'function' ? dataPorId('premio-destaque') : null;
   const badge = document.getElementById('prazo-indicacoes');
   if (indic && badge) badge.textContent = dataCurta(indic.inicio) + ' a ' + dataCurta(indic.fim);
-}
-
-/* Entrega: dia, horário e local da atividade indicada em entrega_atividade. */
-function renderEntregaDestaque(dados) {
-  const p = PREMIOS.find(x => x.id === 'destaque');
-  const alvo = document.getElementById('destaque-entrega');
-  const selo = document.getElementById('destaque-entrega-dia');
-  if (!dados || !p || !p.entrega_atividade || !alvo) return;
-  const a = Agenda.atividade(dados, p.entrega_atividade);
-  if (!a) return;
-  const d = (dados.dias || []).find(x => x.data === a.data);
-  if (selo && d && d.rotulo_curto) selo.textContent = d.rotulo_curto;
-  const onde = Agenda.local(a);
-  alvo.innerHTML = 'Na ' + esc(a.titulo) + ': ' + esc(Agenda.dia(dados, a.data)) +
-    ', às ' + esc(Agenda.hora(a.inicio)) + (onde ? ', ' + esc(onde) : '') + '. ' +
-    '<a href="programacao.html#' + encodeURIComponent(a.id) + '" style="color:var(--teal);font-weight:600">Ver na programação &rarr;</a>';
 }
 
 /* ── Bloco 2: Concurso ──────────────────────────────
@@ -687,7 +666,6 @@ function renderConvite(dados) {
 renderDestaque();
 renderConcurso(null);
 Agenda.carregar().then(dados => {
-  renderEntregaDestaque(dados);
   renderConcurso(dados);
   if (/^concurso-|^finalista-/.test(location.hash.slice(1))) rolarParaAncora();
 }).catch(() => { /* ficam a descrição e as comissões */ });

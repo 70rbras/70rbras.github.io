@@ -156,6 +156,7 @@
         <a href="#" class="btn btn--primary" id="modelos-poster-btn" download style="font-size:.95rem;padding:.8em 2em">⬇ Baixar modelos (.zip, 5 MB)</a>
         <a href="assets/documentos/manual-poster-70rbras.pdf" class="btn btn--ghost" target="_blank" rel="noopener noreferrer" style="font-size:.95rem;padding:.8em 2em">Ver manual (PDF) ↗</a>
         <a href="logistica.html#graficas" class="btn btn--ghost" style="font-size:.95rem;padding:.8em 2em">🖨️ Onde imprimir</a>
+        <a href="programacao.html#busca" class="btn btn--ghost" style="font-size:.95rem;padding:.8em 2em">🔎 Encontre seu trabalho</a>
       </div>
     </div>
 
@@ -312,8 +313,9 @@ function renderSessoes(id, dados, slug) {
           ? '<a href="' + esc(mapa) + '" target="_blank" rel="noopener noreferrer">' + esc(local.nome) + '</a>'
           : esc(local.nome))
       : '';
-    const como = local.como_chegar
-      ? '<div class="sessao-local">' + esc(local.como_chegar) + '</div>'
+    const textoComo = (window.Agenda && Agenda.comoChegar) ? Agenda.comoChegar(local) : local.como_chegar;
+    const como = textoComo
+      ? '<div class="sessao-local">' + esc(textoComo) + '</div>'
       : '';
     return cab + '<div class="sessao-item">' +
       '<div class="sessao-quando">' + esc(rotulo[a.data] || a.data) +

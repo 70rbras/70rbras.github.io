@@ -8,26 +8,18 @@ Legenda de quem destrava: **Organização** (precisa de informação ou decisão
 
 ## Urgente: antes de 23/11
 
-### 3. "Como chegar" das salas do CDC
-- **Quem:** Planilha (aba `locais`)
-- Os locais `CDC-A1`, `CDC-A2`, `CDC-A3`, `CDC-RECEPCAO` e `CDC-GERAL` têm `como_chegar` vazio. As salas do IMECC já têm.
-- Uma frase por sala (ex.: onde fica a Recepção, em que andar fica cada auditório) aparece nos cartões da programação.
+### 4. Desligar o aviso "Programação preliminar" na planilha
+- **Quem:** Planilha (aba `config`)
+- O site já não escreve o aviso à mão; ele agora vem só da planilha. Falta pôr `mostrar_aviso` = `NÃO` (hoje está `SIM`), e o aviso some no ciclo seguinte do fluxo.
+- Fora do escopo, sem pedido: `wasa.html` também diz "Programação preliminar" na programação do WASA.
 
-### 4. Retirar o aviso "Programação preliminar"
-- **Quem:** Organização decide; Planilha + Site executam
-- Se a programação estiver fechada:
-  - Planilha, aba `config`: `mostrar_aviso` = `NÃO`.
-  - Site: o cabeçalho de `programacao.html` tem o texto escrito à mão ("Programação preliminar - sujeita a alterações"); deveria vir do JSON ou sair junto.
-
-### 5. Pôsteres: painel e regras
-- **Quem:** Organização + Planilha + Site
-- O que é o painel: a coluna `painel` da aba `trabalhos` guarda a identificação do suporte físico onde cada pôster fica pendurado no Saguão do IMECC (ex.: 1 a 136 na sessão P1, ou A-12 se os suportes forem por fileira). Serve para o autor saber onde montar e para o visitante achar o pôster numa sessão com mais de cem. Só faz sentido se a organização numerar os suportes no local; se não houver numeração, o item cai.
-- Nenhum dos 425 trabalhos tem `painel` preenchido; as sessões têm 110 a 136 pôsteres cada. A busca já mostra o painel quando ele existe.
+### 5. Pôsteres: regras de montagem
+- **Quem:** Organização (conteúdo) + Site
+- O painel de cada pôster é o número do trabalho (identificador da submissão); o site já mostra "Painel N" na busca e explica isso nas instruções.
 - Faltam nas instruções (`data/apresentadores.js` → `poster.instrucoes`):
   - horário de montagem e de retirada;
   - material de fixação (quem fornece);
   - se o autor precisa estar presente durante a sessão.
-- Site: botão "Encontre seu trabalho" (`programacao.html#busca`) em `apresentadores.html`. Na Home já existe.
 
 ### 6. Seção "Durante o evento" e FAQ do evento presencial
 - **Quem:** Organização (conteúdo) + Site
@@ -39,15 +31,10 @@ Legenda de quem destrava: **Organização** (precisa de informação ou decisão
 
 ## Decisões em aberto
 
-### 7. Destino das rotas de aeroporto e de hotéis
-- **Quem:** Organização
-- Hoje as rotas de aeroportos, rodoviária, hotéis e gráficas apontam para o IMECC (`CONFIG.evento.endereco_rota`).
-- Gráficas: IMECC faz sentido (pôsteres ficam lá).
-- Aeroportos e hotéis: o primeiro dia começa no CDC (credenciamento e abertura). Trocar para o CDC é mudar o destino em `logistica.html` para `CONFIG.predios.CDC.rota`.
-
-### 8. Entrega dos prêmios de Tese, Dissertação e IC
-- **Quem:** Organização
-- Só o Prêmio Destaque tem momento definido (Assembleia, 24/11). Quando os demais forem definidos, ligar cada prêmio a uma atividade da programação com `entrega_atividade` em `data/premios.js`, como o Destaque.
+### 8b. Título da Assembleia na planilha cita o Prêmio Destaque
+- **Quem:** Organização decide; Planilha executa
+- Decisão de 18/11: o site não informa quando os prêmios são entregues. Mas a atividade `REUNIAO-RBRAS` se chama "Assembleia Geral Ordinária da RBras e Prêmio Destaque RBras", e esse título aparece na programação e em `logistica.html#local`.
+- Se a decisão vale também para o Destaque, renomear na planilha para "Assembleia Geral Ordinária da RBras".
 
 ### 9. Ocultar o jantar
 - **Quem:** Organização pede; Site executa
@@ -57,12 +44,6 @@ Legenda de quem destrava: **Organização** (precisa de informação ou decisão
 ---
 
 ## Melhorias menores
-
-### 10. Frase sobre 4:3 em apresentações orais
-- `data/apresentadores.js` diz que, em 4:3, "o conteúdo é cortado nas laterais". Na prática o slide aparece com faixas pretas nas laterais. Revisar a redação.
-
-### 11. Divulgar o aplicativo instalável
-- O site já funciona offline (service worker) e abre na programação quando instalado. Um aviso "Adicione à tela inicial" ajudaria no campus com rede ruim.
 
 ### 13. Nomes da organização do WASA escritos à mão
 - **Quem:** Site (+ Planilha, se as pessoas ganharem ficha)
@@ -77,6 +58,14 @@ Legenda de quem destrava: **Organização** (precisa de informação ou decisão
 
 ## Concluído
 
+- 18/11/2026: CDC sem "como chegar" por sala: orientação padrão do prédio ("Siga as indicações na recepção do CDC.") em `CONFIG.predios.CDC.como_chegar`, usada na programação, em `apresentadores.html` e no cartão do prédio.
+- 18/11/2026: Texto "Programação preliminar" retirado do HTML de `programacao.html`; corrigido o CSS que impedia `mostrar_aviso = NÃO` de esconder o aviso.
+- 18/11/2026: Painel do pôster = número do trabalho: "Painel N" na busca e no diálogo, instrução "Onde fixar" e botão "Encontre seu trabalho" em `apresentadores.html`.
+- 18/11/2026: Rotas até o CDC e até o IMECC para aeroportos, rodoviária, hotéis e gráficas.
+- 18/11/2026: Momento de entrega dos prêmios retirado do site (etapa "Entrega do prêmio" e campo `entrega_atividade`).
+- 18/11/2026: Frase sobre 4:3 retirada das instruções de apresentação oral.
+- 18/11/2026: Convite para instalar o aplicativo: seção na Home (`#app-convite`), faixa na programação (pode ser fechada) e pergunta no FAQ.
+- 18/11/2026: Token `--navy` definido como alias de `--blue` em `assets/style.css`: várias regras antigas o usavam sem que existisse.
 - 17/11/2026: Endereço do WASA visível: seção Local logo após Sobre (sala, endereço completo, mapa embutido, "Ver no mapa" e "Rota até aqui", foto do IMECC sem o logo da RBras), caixa "Local" de Sobre e selo do hero levando a `#local-wasa`, chip da Home apontando para `wasa.html#local-wasa`. Sala em `data/wasa.js` (`wasaInfo.sala`).
 
 - 16/11/2026: Tempos de Mini-Conferência (25 + 5 min) e Conferência (55 + 5 min) na tabela de `apresentadores.html#oral`.
@@ -85,6 +74,6 @@ Legenda de quem destrava: **Organização** (precisa de informação ou decisão
 - 16/11/2026: Programação como item próprio do menu; botões do Hero ("Ver Programação", "Encontre seu trabalho", "Como chegar"); inscrição rebaixada e oculta após o 3º Lote.
 - 16/11/2026: Modo evento na Home ("Agora / A seguir") e realce do "agora" na programação, com correção do fuso. Conferir um momento com `?agora=2026-11-23T14:10` no endereço.
 - 16/11/2026: Avisos encadeados (jantar, credenciamento, programação de hoje, WASA), com `atividade_id` lendo dia, horário e local da planilha.
-- 16/11/2026: Entrega do Prêmio Destaque lida da programação; selo "Novo" retirado do menu.
+- 16/11/2026: Selo "Novo" retirado do menu de Prêmios.
 - 16/11/2026: Seção do Jantar (`index.html#jantar`), com interruptor `CONFIG.jantar.visivel`.
 - 16/11/2026: Dois prédios (CDC e IMECC) em `logistica.html#local`, com endereço, o que acontece em cada um, rota a pé e credenciamento; Hero e metadados atualizados.

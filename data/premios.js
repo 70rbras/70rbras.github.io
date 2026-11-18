@@ -19,9 +19,6 @@
 //                     ex.: "CONC-TESE-2". O que não for preenchido acima (título,
 //                     instituição) vem dali, junto com o resumo.
 //   mencoes   → (opcional) array de menções honrosas, com os mesmos campos de `premiado`
-//   entrega_atividade → (opcional) id da atividade de data/programacao.json em que o
-//               prêmio é entregue. premios.html lê dali dia, horário e local, de
-//               modo que a planilha da programação continua a fonte única.
 //   sessao_finalistas → (opcional) id da sessão de data/programacao.json em que os
 //               finalistas apresentam (ex.: "CONC-TESE"). premios.html lê dali nome,
 //               instituição, título além do resumo de cada finalista, em ordem de fala.
@@ -48,7 +45,6 @@ const PREMIOS = [
     id:        "destaque",
     titulo:    "Prêmio Destaque RBras",
     icone:     "🏆",
-    entrega_atividade: "REUNIAO-RBRAS",
     descricao: "Homenagem a quem dedicou a carreira ao ensino, à pesquisa e à orientação em Estatística e Biometria no Brasil.",
     premiado:  {
       nome:        "Prof. Dr. Dalton Francisco de Andrade",

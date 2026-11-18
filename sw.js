@@ -8,7 +8,14 @@
  *   navegação em HTML      rede primeiro, com tempo limite; cai no cache,
  *                          depois em offline.html
  *   data/programacao.json  rede primeiro, com tempo limite; cai no cache
+ *   data/*.js              rede primeiro, com tempo limite; cai no cache.
+ *                          Prazos, preços e avisos não podem chegar velhos:
+ *                          em 18/11/2026 o cache serviu o prazo antigo do
+ *                          jantar a quem já tinha visitado o site.
  *   demais arquivos nossos cache primeiro, revalidando em segundo plano
+ *
+ * A versão nova assume assim que termina de instalar (skipWaiting), em vez
+ * de esperar o visitante fechar todas as abas do site.
  *
  * Pedido para outro domínio, como as fontes do Google, passa direto para a
  * rede, sem cache. Sem internet ele falha, então o navegador cai nas fontes do
@@ -21,7 +28,7 @@
  * Plano: claude/plano-app-70rbras.md, tarefa T2.1.
  */
 
-const VERSAO = 16;
+const VERSAO = 17;
 const CACHE = 'rbras70-casco-v' + VERSAO;
 const SEM_REDE = 'offline.html';
 const LIMITE_MS = 3000;
@@ -99,7 +106,7 @@ self.addEventListener('install', function (evento) {
           console.warn('sw: não foi possível guardar', caminho, erro && erro.message);
         });
       }));
-    })
+    }).then(function () { return self.skipWaiting(); })
   );
 });
 
@@ -196,7 +203,7 @@ self.addEventListener('fetch', function (evento) {
     return;
   }
 
-  if (url.pathname.indexOf(PROGRAMACAO) >= 0) {
+  if (url.pathname.indexOf(PROGRAMACAO) >= 0 || /\/data\/[^/]+\.js$/.test(url.pathname)) {
     evento.respondWith(redePrimeiro(pedido, null));
     return;
   }

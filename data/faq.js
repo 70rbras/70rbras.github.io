@@ -80,6 +80,18 @@ const FAQ = [
     ]
   },
   {
+    categoria: "app",
+    categoriaLabel: "Site no celular",
+    icone: "📲",
+    perguntas: [
+      {
+        id: "aplicativo",
+        pergunta: "Existe um aplicativo do evento?",
+        resposta: "Sim: o próprio site pode ser instalado como aplicativo. Ele abre direto na programação, mostra o que acontece agora e continua funcionando sem internet no campus, depois da primeira visita. No <strong>Android</strong> (Chrome), abra o menu (⋮) e escolha <strong>Instalar aplicativo</strong> ou <strong>Adicionar à tela inicial</strong>. No <strong>iPhone</strong> (Safari), toque em <strong>Compartilhar</strong> e depois em <strong>Adicionar à Tela de Início</strong>. Veja também o <a href=\"index.html#app-convite\">convite na página inicial</a>."
+      }
+    ]
+  },
+  {
     categoria: "wasa",
     categoriaLabel: "WASA (Evento Satélite)",
     icone: "🛰️",
