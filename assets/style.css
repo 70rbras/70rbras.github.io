@@ -1899,30 +1899,63 @@ a.proxima-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba
   .app-convite-secao .section-body { margin-inline: auto; }
 }
 
-/* ─── Restaurantes (logistica.html#restaurantes, data/restaurantes.js) ──── */
-.rest-faixa + .rest-faixa { margin-top: 3rem; }
-.rest-faixa-cab { margin-bottom: 1.2rem; }
-.rest-faixa-cab h3 { font-size: 1.15rem; font-weight: 700; color: var(--navy); }
-.rest-faixa-cab p { font-size: .9rem; color: var(--text-mid); margin-top: .2rem; }
-.rest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem; }
+/* ─── Restaurantes (logistica.html#restaurantes, data/restaurantes.js) ── */
+.rest-faixa + .rest-faixa { margin-top: 3.2rem; }
+.rest-faixa-cab { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.3rem; }
+.rest-faixa-icone {
+  flex-shrink: 0; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  display: grid; place-items: center; font-size: 1.25rem; background: rgba(42,144,128,.12);
+}
+.rest-faixa-cab h3 { font-size: 1.15rem; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.rest-conta { font-size: .72rem; font-weight: 700; color: var(--teal); background: rgba(42,144,128,.12); border-radius: 999px; padding: .15em .65em; }
+.rest-faixa-cab p { font-size: .88rem; color: var(--text-mid); margin-top: .15rem; }
+
+.rest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.2rem; }
+.rest-grid[hidden] { display: none; }
+.rest-grid + .rest-grid { margin-top: 1.2rem; }
 .rest-card {
-  background: var(--white); border: 1px solid rgba(26,56,112,.1); border-radius: 14px;
-  padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .3rem;
-  box-shadow: 0 2px 12px rgba(26,56,112,.05);
+  position: relative; display: flex; flex-direction: column;
+  background: var(--white); border: 1px solid rgba(26,56,112,.08); border-top: 4px solid var(--teal);
+  border-radius: 14px; padding: 1.15rem 1.25rem 1.1rem;
+  box-shadow: 0 6px 22px rgba(26,56,112,.07);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
-.rest-topo { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; }
-.rest-topo h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+.rest-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(26,56,112,.12); }
+.rest-card--longe { border-top-color: var(--gold); }
 .rest-selo {
-  flex-shrink: 0; font-size: .62rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-  color: var(--teal); background: rgba(42,144,128,.1); border-radius: 999px; padding: .25em .7em;
+  align-self: flex-start; margin-bottom: .45rem;
+  font-size: .6rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--teal); background: rgba(42,144,128,.1); border-radius: 999px; padding: .3em .75em;
 }
-.rest-esp { font-size: .86rem; color: var(--text-mid); line-height: 1.45; }
-.rest-end { font-size: .8rem; color: var(--text-mid); }
-.rest-dist { font-size: .84rem; color: var(--navy); margin-top: .2rem; display: flex; flex-wrap: wrap; gap: .2rem .8rem; align-items: baseline; }
-.rest-aprox { font-size: .75rem; color: var(--text-mid); }
-.rest-links { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: auto; padding-top: .5rem; font-size: .82rem; }
-.rest-links a { color: var(--teal); font-weight: 600; }
-.rest-card--longe { background: var(--off-white); }
+.rest-card h3 { font-family: 'Playfair Display', serif; font-size: 1.12rem; font-weight: 700; color: var(--navy); line-height: 1.25; }
+.rest-esp { font-size: .86rem; color: var(--text-mid); line-height: 1.5; margin-top: .35rem; }
+.rest-dists { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-top: .85rem; font-size: .95rem; }
+.rest-dist {
+  font-size: .78rem; color: var(--text-mid); border: 1px solid rgba(26,56,112,.15);
+  border-radius: 999px; padding: .2em .7em; white-space: nowrap;
+}
+.rest-dist b { font-weight: 700; color: var(--navy); margin-right: .15em; }
+.rest-dist--perto { background: var(--teal); border-color: var(--teal); color: var(--white); font-weight: 600; }
+.rest-dist--perto b { color: var(--white); }
+.rest-card--longe .rest-dist--perto { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+.rest-card--longe .rest-dist--perto b { color: var(--navy); }
+.rest-aprox { font-size: .8rem; color: var(--text-mid); cursor: help; }
+.rest-end { font-size: .78rem; color: var(--text-mid); margin-top: .7rem; }
+.rest-acoes { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; padding-top: 1rem; }
+.rest-btn {
+  font-size: .78rem; font-weight: 600; color: var(--teal);
+  border: 1.5px solid rgba(42,144,128,.35); border-radius: 999px; padding: .35em .95em;
+  transition: background var(--transition), color var(--transition);
+}
+.rest-btn:hover { background: var(--teal); color: var(--white); }
+.rest-btn--uber { color: var(--white); background: #111; border-color: #111; }
+.rest-btn--uber:hover { background: #333; color: var(--white); }
+.rest-mais {
+  display: block; margin: 1.6rem auto 0; cursor: pointer;
+  font: inherit; font-size: .9rem; font-weight: 600; color: var(--navy);
+  background: var(--white); border: 1.5px solid rgba(26,56,112,.2); border-radius: 999px; padding: .7em 1.8em;
+}
+.rest-mais:hover { border-color: var(--navy); }
 
 /* ─── Previsão do tempo (assets/clima.js) ────────────────────────── */
 .hero-clima[hidden], .clima-previsao[hidden] { display: none; }

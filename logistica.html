@@ -444,35 +444,53 @@ function renderRestaurantes() {
     const uber = 'https://m.uber.com/ul/?action=setPickup&pickup=my_location' +
       `&dropoff[latitude]=${r.lat}&dropoff[longitude]=${r.lon}` +
       `&dropoff[nickname]=${encodeURIComponent(r.nome)}&dropoff[formatted_address]=${encodeURIComponent(r.endereco + ', Campinas - SP')}`;
-    const dist = ordem.filter(s => r.distancia && r.distancia[s] != null)
-      .map(s => `<span><strong>${e(s)}</strong> ${km(r.distancia[s])}${longe ? '' : ` · ${minutos(r.distancia[s])}`}</span>`).join('');
+    /* Uma etiqueta por prédio; a do mais próximo vem preenchida. A pé mostra
+       minutos; longe, quilômetros, pois ninguém vai caminhar. */
+    const etiquetas = ordem.filter(s => r.distancia && r.distancia[s] != null).map(s => {
+      const m = r.distancia[s];
+      return `<span class="rest-dist${m === d ? ' rest-dist--perto' : ''}" title="${km(m)} a pé até o ${e(s)}">
+        <b>${e(s)}</b> ${longe ? km(m) : minutos(m)}</span>`;
+    }).join('');
     return `<article class="rest-card${longe ? ' rest-card--longe' : ''}">
-      <div class="rest-topo">
-        <h3>${e(r.nome)}</h3>
-        ${r.campus ? '<span class="rest-selo">No campus</span>' : ''}
-      </div>
+      ${r.campus ? '<span class="rest-selo">No campus</span>' : ''}
+      <h3>${e(r.nome)}</h3>
       <p class="rest-esp">${e(r.especialidade)}</p>
-      <p class="rest-end">${e(r.endereco)}</p>
-      <p class="rest-dist">${longe ? '🚗' : '🚶'} ${dist}${r.aproximado ? ' <span class="rest-aprox">(aprox.)</span>' : ''}</p>
-      <p class="rest-links">
-        <a href="${maps}" target="_blank" rel="noopener noreferrer">Ver no Google Maps e avaliações ↗</a>
-        ${longe ? `<a href="${uber}" target="_blank" rel="noopener noreferrer">Chamar Uber ↗</a>` : ''}
-      </p>
+      <div class="rest-dists">${longe ? '🚗' : '🚶'} ${etiquetas}${r.aproximado ? '<span class="rest-aprox" title="Posição aproximada">≈</span>' : ''}</div>
+      <p class="rest-end">📍 ${e(r.endereco)}</p>
+      <div class="rest-acoes">
+        <a class="rest-btn" href="${maps}" target="_blank" rel="noopener noreferrer">Mapa e avaliações ↗</a>
+        ${longe ? `<a class="rest-btn rest-btn--uber" href="${uber}" target="_blank" rel="noopener noreferrer">Uber ↗</a>` : ''}
+      </div>
     </article>`;
   };
 
   const lista = RESTAURANTES.slice().sort((a, b) => menor(a) - menor(b));
+  const VISIVEIS = 8;   // na faixa longa, o resto fica atrás do botão "Ver mais"
   const faixas = [
-    { titulo: '🚶 A pé', nota: `Até ${km(aPeAte)}, cerca de ${minutos(aPeAte)} de caminhada.`, itens: lista.filter(r => menor(r) <= aPeAte) },
-    { titulo: '🚶 Caminhada mais longa', nota: `De ${km(aPeAte)} a ${km(uberDe)}, de ${minutos(aPeAte)} a ${minutos(uberDe)} a pé.`, itens: lista.filter(r => menor(r) > aPeAte && menor(r) <= uberDe) },
-    { titulo: '🚗 De carro ou Uber', nota: `Acima de ${km(uberDe)}: no centro de Barão Geraldo. Recomendamos ir de carro ou de Uber, sobretudo no intervalo do almoço.`, itens: lista.filter(r => menor(r) > uberDe) }
+    { titulo: 'A pé, até 10 minutos', icone: '🚶', nota: `Até ${km(aPeAte)} do prédio mais próximo.`, itens: lista.filter(r => menor(r) <= aPeAte) },
+    { titulo: 'A pé, de 10 a 20 minutos', icone: '🚶', nota: `De ${km(aPeAte)} a ${km(uberDe)}.`, itens: lista.filter(r => menor(r) > aPeAte && menor(r) <= uberDe) },
+    { titulo: 'Centro de Barão Geraldo: vá de carro ou Uber', icone: '🚗', nota: `Acima de ${km(uberDe)}. Melhor ir de carro ou de Uber, sobretudo no intervalo do almoço.`, itens: lista.filter(r => menor(r) > uberDe), recolher: true }
   ].filter(f => f.itens.length);
 
-  box.innerHTML = faixas.map(f => `
-    <div class="rest-faixa reveal">
-      <div class="rest-faixa-cab"><h3>${f.titulo}</h3><p>${e(f.nota)}</p></div>
-      <div class="rest-grid">${f.itens.map(cartao).join('')}</div>
-    </div>`).join('');
+  box.innerHTML = faixas.map((f, n) => {
+    const extra = f.recolher && f.itens.length > VISIVEIS + 2;
+    const mostra = extra ? f.itens.slice(0, VISIVEIS) : f.itens;
+    const resto = extra ? f.itens.slice(VISIVEIS) : [];
+    return `<div class="rest-faixa reveal">
+      <div class="rest-faixa-cab">
+        <span class="rest-faixa-icone" aria-hidden="true">${f.icone}</span>
+        <div><h3>${e(f.titulo)} <span class="rest-conta">${f.itens.length}</span></h3><p>${e(f.nota)}</p></div>
+      </div>
+      <div class="rest-grid">${mostra.map(cartao).join('')}</div>
+      ${extra ? `<div class="rest-grid" id="rest-resto-${n}" hidden>${resto.map(cartao).join('')}</div>
+        <button type="button" class="rest-mais" data-alvo="rest-resto-${n}" aria-expanded="false">Ver mais ${resto.length} restaurantes</button>` : ''}
+    </div>`;
+  }).join('');
+
+  box.querySelectorAll('.rest-mais').forEach(b => b.addEventListener('click', () => {
+    document.getElementById(b.dataset.alvo).hidden = false;
+    b.remove();
+  }));
 }
 
 /* Quadro Clima: com previsão disponível, mostra os dias do evento e encolhe o
