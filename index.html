@@ -424,8 +424,9 @@ function startCountdown(target) {
    Para conferir um momento: index.html?agora=2026-11-23T14:10
 ════════════════════════════════════════════════ */
 let agoraTimer = null;
-/* Previsão do tempo no Hero: um chip por dia do evento ainda previsto, com o
-   dia de hoje realçado durante o congresso. */
+/* Previsão do tempo no Hero: um cartão por dia do evento ainda previsto, com o
+   dia de hoje realçado durante o congresso. Tocar num dia abre as horas do
+   evento; no dia corrente, a linha "Próximas horas" vem antes dos cartões. */
 function renderClima() {
   const box = document.getElementById('hero-clima');
   if (!box || typeof Clima === 'undefined') return;
@@ -433,18 +434,23 @@ function renderClima() {
     if (!dias.length) return;
     const hoje = Agenda.agora().data;
     const e = Agenda.escapar;
+    const proximas = Clima.proximas(dias, 6);
     box.innerHTML = `<div class="hero-clima-rotulo">Previsão do tempo em Campinas</div>
+      ${proximas ? `<div class="hero-clima-sub">Próximas horas</div>${proximas}<div class="hero-clima-sub">Dias do evento</div>` : ''}
       <div class="hero-clima-dias">${dias.map(d => {
         const [icone, texto] = Clima.tempo(d.codigo);
-        return `<div class="hero-clima-dia${d.data === hoje ? ' is-hoje' : ''}" title="${e(texto)}">
+        return `<button type="button" class="hero-clima-dia${d.data === hoje ? ' is-hoje' : ''}" data-clima-dia="${e(d.data)}"
+            aria-expanded="false" aria-controls="hero-clima-horas" title="${e(texto)}: toque para ver hora a hora">
           <span class="hero-clima-data">${d.data === hoje ? 'Hoje' : e(Clima.rotuloDia(d.data))}</span>
           <span class="hero-clima-icone" aria-hidden="true">${icone}</span>
           <span class="hero-clima-temp">${d.min}° / <strong>${d.max}°</strong></span>
           ${d.chuva != null ? `<span class="hero-clima-chuva">💧 ${d.chuva}%</span>` : ''}
           <span class="sr-only">${e(texto)}</span>
-        </div>`;
+        </button>`;
       }).join('')}</div>
-      <div class="hero-clima-fonte">Fonte: ${Clima.CREDITO} · atualizada a cada hora</div>`;
+      <div class="clima-painel" id="hero-clima-horas" hidden></div>
+      <div class="hero-clima-fonte">Toque em um dia para ver hora a hora · Fonte: ${Clima.CREDITO}, atualizada a cada hora</div>`;
+    Clima.ligarDias(box, dias, () => document.getElementById('hero-clima-horas'));
     box.hidden = false;
   });
 }

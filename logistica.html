@@ -494,22 +494,29 @@ function renderRestaurantes() {
 }
 
 /* Quadro Clima: com previsão disponível, mostra os dias do evento e encolhe o
-   texto genérico de novembro para uma linha de rodapé. */
+   texto genérico de novembro para uma linha de rodapé. Cada dia abre, logo
+   abaixo dele, as horas do evento. */
 function renderClima() {
   if (typeof Clima === 'undefined') return;
   Clima.previsao().then(dias => {
     if (!dias.length) return;
     const e = Agenda.escapar;
-    document.getElementById('clima-previsao').innerHTML = `<ul>${dias.map(d => {
+    const box = document.getElementById('clima-previsao');
+    box.innerHTML = `<ul>${dias.map(d => {
       const [icone, texto] = Clima.tempo(d.codigo);
-      return `<li><span class="clima-dia">${e(Clima.rotuloDia(d.data))}</span>
-        <span class="clima-icone" title="${e(texto)}">${icone}</span>
-        <span>${d.min}° a <strong>${d.max}°</strong>${d.chuva != null ? ` · 💧 ${d.chuva}%` : ''}</span>
-        <span class="clima-texto">${e(texto)}</span></li>`;
+      return `<li><button type="button" class="clima-linha" data-clima-dia="${e(d.data)}" aria-expanded="false"
+            aria-controls="clima-horas-${e(d.data)}">
+          <span class="clima-dia">${e(Clima.rotuloDia(d.data))}</span>
+          <span class="clima-icone" title="${e(texto)}">${icone}</span>
+          <span>${d.min}° a <strong>${d.max}°</strong>${d.chuva != null ? ` · 💧 ${d.chuva}%` : ''}</span>
+          <span class="clima-texto">${e(texto)} <span class="clima-abrir">· hora a hora ▾</span></span>
+        </button>
+        <div class="clima-painel clima-painel--claro" id="clima-horas-${e(d.data)}" hidden></div></li>`;
     }).join('')}</ul>
     <p class="clima-fonte">Previsão: ${Clima.CREDITO}, atualizada a cada hora.${dias.some(d => d.chuva >= 50) ? ' <strong>Leve guarda-chuva.</strong>' : ''}</p>`;
+    Clima.ligarDias(box, dias, b => document.getElementById(b.getAttribute('aria-controls')));
     document.getElementById('clima-titulo').textContent = 'Previsão do tempo';
-    document.getElementById('clima-previsao').hidden = false;
+    box.hidden = false;
     document.getElementById('clima-reserva').hidden = true;
   });
 }

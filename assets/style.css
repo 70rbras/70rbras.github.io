@@ -1981,12 +1981,46 @@ a.proxima-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .clima-previsao ul { list-style: none; display: grid; gap: .5rem; margin-top: .4rem; }
-.clima-previsao li {
+.clima-previsao li { padding-bottom: .45rem; border-bottom: 1px solid rgba(26,56,112,.07); }
+.clima-linha {
   display: grid; grid-template-columns: 5.2rem 1.8rem 1fr; align-items: center; gap: .2rem .4rem;
-  font-size: .9rem; padding-bottom: .45rem; border-bottom: 1px solid rgba(26,56,112,.07);
+  width: 100%; font: inherit; font-size: .9rem; color: inherit; text-align: left;
+  background: none; border: 0; padding: .2rem; border-radius: 8px; cursor: pointer;
 }
+.clima-linha:hover { background: rgba(26,56,112,.04); }
+.clima-abrir { color: var(--teal); font-weight: 600; white-space: nowrap; }
+.clima-linha[aria-expanded="true"] .clima-abrir { color: var(--navy); }
 .clima-dia { font-weight: 700; color: var(--text-dark); font-size: .82rem; }
 .clima-icone { font-size: 1.3rem; }
 .clima-texto { grid-column: 3; font-size: .78rem; color: var(--text-mid); }
 .clima-fonte { margin-top: .7rem; font-size: .78rem; color: var(--text-mid); }
 .clima-fonte a { color: var(--teal); font-weight: 600; }
+
+/* Hora a hora (assets/clima.js): painel aberto ao tocar num dia e linha
+   "Próximas horas" no Hero durante o evento. Grade que quebra linha, sem
+   rolagem lateral. */
+button.hero-clima-dia { font: inherit; cursor: pointer; transition: border-color var(--transition), background var(--transition); }
+button.hero-clima-dia:hover { border-color: rgba(255,255,255,.4); }
+button.hero-clima-dia[aria-expanded="true"] { border-color: var(--gold-light); background: rgba(255,255,255,.16); }
+.hero-clima-sub { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.6); margin: .2rem 0 .4rem; }
+.hero-clima .clima-horas--linha { margin-bottom: .8rem; }
+.clima-painel[hidden] { display: none; }
+.clima-painel { margin-top: .7rem; }
+.clima-horas-cab { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .45rem; color: var(--gold-light); }
+.clima-horas { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: .4rem; }
+.clima-hora {
+  display: grid; justify-items: center; gap: .05rem; padding: .4rem .2rem; border-radius: 10px;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.88); font-size: .76rem; text-align: center;
+}
+.clima-hora.is-agora { border-color: var(--gold); background: rgba(214,168,24,.18); }
+.clima-hora-h { font-weight: 700; font-size: .7rem; color: rgba(255,255,255,.7); }
+.clima-hora-i { font-size: 1.15rem; line-height: 1.25; }
+.clima-hora-t { font-weight: 700; color: var(--white); }
+.clima-hora-c { font-size: .66rem; color: rgba(255,255,255,.7); min-height: 1em; }
+/* Variante clara, no quadro de logistica.html */
+.clima-painel--claro { margin: .4rem 0 .3rem; }
+.clima-painel--claro .clima-horas-cab { color: var(--teal); }
+.clima-painel--claro .clima-hora { background: var(--off-white); border-color: rgba(26,56,112,.08); color: var(--text-dark); }
+.clima-painel--claro .clima-hora-h, .clima-painel--claro .clima-hora-c { color: var(--text-mid); }
+.clima-painel--claro .clima-hora-t { color: var(--navy); }
