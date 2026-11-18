@@ -19,6 +19,10 @@
 //   entrega_atividade → (opcional) id da atividade de data/programacao.json em que o
 //               prêmio é entregue. premios.html lê dali dia, horário e local, de
 //               modo que a planilha da programação continua a fonte única.
+//   sessao_finalistas → (opcional) id da sessão de data/programacao.json em que os
+//               finalistas apresentam (ex.: "CONC-TESE"). premios.html lê dali nome,
+//               instituição, título além do resumo de cada finalista, em ordem de fala.
+//               Nada disso se escreve aqui: corrige-se na planilha (abas trabalhos e resumos).
 //
 // Assim que o primeiro `premiado` for preenchido, a faixa dourada aparece
 // automaticamente na Home e o card correspondente em premios.html é revelado.
@@ -28,6 +32,15 @@
 // no momento de escrever o texto, do mesmo modo que data/submissions.js faz com
 // os prazos. Nenhuma data é escrita neste arquivo.
 const PREMIOS_ENTREGA = "Os prêmios serão entregues durante a {edicao}, de {datas}, na Unicamp.";
+
+// Convite para as sessões dos finalistas, exibido em premios.html#finalistas.
+// {dia}, {horario} além de {predio} vêm da primeira sessão de finalistas na
+// programação, portanto nenhuma data é escrita aqui.
+const FINALISTAS_CONVITE = {
+  titulo: "Venha prestigiar os finalistas!",
+  texto:  "As apresentações dos finalistas acontecem na {dia}, das {horario}, no {predio}. Cada concurso tem sua própria sala, todas no mesmo horário: escolha a sua e venha torcer pela próxima geração da Estatística e da Biometria.",
+  home:   "Conheça os finalistas dos concursos de Tese, Dissertação e Iniciação Científica"
+};
 
 const PREMIOS = [
   {
@@ -49,6 +62,7 @@ const PREMIOS = [
   },
   {
     id:        "tese",
+    sessao_finalistas: "CONC-TESE",
     titulo:    "Melhor Tese de Doutorado",
     icone:     "🎓",
     descricao: "Concurso Tese/Dissertação/IC: categoria Doutorado.",
@@ -57,6 +71,7 @@ const PREMIOS = [
   },
   {
     id:        "dissertacao",
+    sessao_finalistas: "CONC-DISS",
     titulo:    "Melhor Dissertação de Mestrado",
     icone:     "📘",
     descricao: "Concurso Tese/Dissertação/IC: categoria Mestrado.",
@@ -65,6 +80,7 @@ const PREMIOS = [
   },
   {
     id:        "ic",
+    sessao_finalistas: "CONC-IC",
     titulo:    "Melhor Trabalho de Iniciação Científica",
     icone:     "🔍",
     descricao: "Concurso Tese/Dissertação/IC: categoria Iniciação Científica.",

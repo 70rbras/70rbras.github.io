@@ -596,6 +596,9 @@ function renderPremiosHome() {
     : iniciaisDaPessoa(w.nome);
   const outros = anunciados.filter(p => p !== main)
     .map(p => `<strong>${p.titulo}:</strong> ${p.premiado.nome}`).join(' · ');
+  /* Finalistas definidos e ainda sem vencedor: convite para conhecê-los. */
+  const finalistas = (typeof FINALISTAS_CONVITE !== 'undefined' && PREMIOS.some(p => p.sessao_finalistas && !p.premiado))
+    ? FINALISTAS_CONVITE.home : '';
 
   el.innerHTML = `
     <div class="premios-home-foto">${foto}</div>
@@ -604,6 +607,7 @@ function renderPremiosHome() {
       <div class="premios-home-nome">${w.nome}</div>
       ${w.instituicao ? `<div class="premios-home-inst">${w.instituicao}</div>` : ''}
       ${outros ? `<div class="premios-home-outros">${outros}</div>` : ''}
+      ${finalistas ? `<a class="premios-home-finalistas" href="premios.html#finalistas">🎓 ${finalistas} &#8594;</a>` : ''}
     </div>
     <a href="premios.html#premiados" class="btn btn--gold">Conheça os Prêmios RBras &#8594;</a>`;
   sec.hidden = false;

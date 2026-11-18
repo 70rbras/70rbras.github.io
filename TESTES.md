@@ -286,3 +286,20 @@ Queixa de usuários: o endereço do WASA não era encontrado. A seção Local fi
 | Mapa embutido | iframe carrega com "Open in Maps"; os blocos do mapa não carregam no modo headless, efeito do ambiente | conforme, conferir no navegador |
 | Service worker | `VERSAO` de 6 para 7 (casco: `wasa.html`, `index.html`, `data/wasa.js`, `assets/style.css`) | conforme |
 
+## 7. Finalistas dos concursos (17/11/2026)
+
+Seção `premios.html#finalistas` lida de `data/programacao.json` (sessões indicadas em `sessao_finalistas` de `data/premios.js`). Resumos colados pela organização na aba `resumos`, com `ref` CONC-*.
+
+| Conferência | O que se verificou | Resultado |
+|---|---|---|
+| Build | `build_programacao.py`: os 10 trabalhos CONC-* com `tem_resumo: true`, resumo dentro do JSON principal | conforme |
+| Fontes | `checar_fontes.mjs` sem violação; `gerar_meta.mjs --verificar` em dia | conforme |
+| Seção | 10 cartões em ordem de fala, 10 resumos em `<details>`, chip de sala por categoria, link `programacao.html#T-<id>` | conforme |
+| Convite | dia, horário e prédio montados da programação: "segunda-feira, 23 nov, das 15h30 às 16h30, no Centro de Convenções da Unicamp (CDC)" | conforme |
+| Vitrine | cards com selo "N finalistas", nomes e instituições; link para cada categoria | conforme |
+| Seção Concurso | frase de estado passa a citar os finalistas | conforme |
+| Home | faixa de prêmios com chamada para `premios.html#finalistas` | conforme |
+| Desktop (1400 px) e estreito (500 px) | grade 3 colunas (IC 2×2) e 1 coluna, sem rolagem lateral | conforme |
+| Hifenização | `hyphens: auto` quebrava errado o resumo em inglês sob `lang="pt-BR"`; removido | corrigido |
+| Service worker | `VERSAO` de 8 para 9 (`assets/style.css`, `index.html`, `data/premios.js`) | conforme |
+

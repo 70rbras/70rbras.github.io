@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-17T19:58:06-0300",
- "gerado_em_texto": "17/11/2026 às 19:58",
- "versao_dados": 202611171958,
+ "gerado_em": "2026-11-17T23:39:49-0300",
+ "gerado_em_texto": "17/11/2026 às 23:39",
+ "versao_dados": 202611172339,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -6669,8 +6669,8 @@
    "ordem": 1,
    "titulo": "Generalized linear models and extensions for analyzing height-diameter, taper, and biomass data in managed forest stands",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "The use of wood in industrial sectors such as furniture, steel, and pulp and paper has grown continuously. In Brazil, species of the genera Eucalyptus and Pinus stand out among the most planted, covering approximately 9.17 million hectares, according to the Brazilian Tree Industry report. In this context, estimating wood volume is essential and is usually performed through equations based on variables such as total height and diameter at breast height (DBH). Although DBH is relatively easy to measure, obtaining total tree height with hypsometers can be costly, time-consuming, and susceptible to human error. Therefore, hypsometric equations are widely used to estimate tree height from dendrometric variables such as DBH, age, and dominant height, offering a low-cost alternative with high explanatory power. Taper equations, in turn, are used to estimate total tree volume or the volume of specific sections of the stem. This study aims to contribute to the forestry field by proposing statistical models capable of adequately representing hypsometric and taper relationships, considering commonly observed effects in forest data. Initially, a literature review on hypsometric models was conducted, emphasizing historical aspects related to their formulation and use in the scientific context. Subsequently, hypsometry and stem taper were modeled using mixed-effects models applied to observational data from Eucalyptus grandis × Eucalyptus urophylla and Pinus taeda trees, respectively. For model diagnostics, least confounded residuals were considered, together with a simulation study to evaluate model adequacy. It is expected that the results will demonstrate that mixed-effects models represent a robust and flexible alternative to traditional models commonly adopted in forestry literature",
+   "tem_resumo": true
   },
   {
    "id": "CONC-TESE-2",
@@ -6682,8 +6682,8 @@
    "ordem": 2,
    "titulo": "Beta regression models and diagnostics for sensory data analysis with multivariate structure",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "As an alternative to classical approaches for the analysis of hedonic scale data, particularly cumulative logit models, this thesis proposes beta regression models with random effects for sensory data analysis. The thesis is organized into four studies. The first study evaluates the performance of the mixed beta regression model compared with the proportional odds cumulative logit model. Simulation results showed concordance rates above 87% in formulation ranking and selection, supporting the use of the beta model as a flexible and computationally efficient alternative. The second study introduces a unified beta regression model for the simultaneous analysis of multiple sensory attributes through a stacked data structure and attribute indicator variables. The proposed approach achieved performance comparable to separate models while providing a single model and an integrated interpretation of the results. The third study presents a Bayesian hierarchical extension incorporating multivariate structures to explicitly model correlations among sensory attributes. Inference was performed using Markov chain Monte Carlo (MCMC) methods, allowing uncertainty quantification and interpretation of posterior correlations. The fourth study develops diagnostic procedures for the unified mixed beta model based on quantile residuals and Euclidean distances, reducing the multivariate residual structure to a single measure for each panelist and facilitating graphical diagnostic assessment. All proposed methods were evaluated through simulation studies and applied to a sensory acceptance experiment of grape juice conducted under a balanced incomplete block design. Overall, the results demonstrate that mixed beta regression models constitute a flexible, interpretable, and computationally feasible framework for the analysis of sensory data with multivariate structure.",
+   "tem_resumo": true
   },
   {
    "id": "CONC-TESE-3",
@@ -6695,8 +6695,8 @@
    "ordem": 3,
    "titulo": "Statistical modeling as an aid to academic research and control of citrus greening and citrus canker diseases in orange cultivation",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "This thesis presents statistical solutions to several problems related to agriculture. One of them proposes a platform for generating sampling plans grounded in statistical theory, supported by computational methods and incorporating knowledge from the agricultural sciences. The platform was developed to automatically generate sampling plans aimed at improving the efficiency of estimating the proportion of greening disease in orange orchards. For this first problem, the modeling framework was structured using sampling techniques through hierarchical models involving count and proportion distributions, specifically the Beta-Binomial and FlexShape-Binomial distributions. The second problem addressed in this thesis concerns a requirement that, in recent years, has been adopted by many scientific journals in the agricultural sciences: the performance of two identical trials at different times as a prerequisite for manuscript submission. Thus, using two datasets that nearly satisfy this requirement, that is, experiments conducted under almost identical conditions, a statistical approach was proposed to demonstrate the equivalence between the two experiments by using Bayesian modeling to compare informative prior and posterior distributions. The differences between the two datasets arose during the data collection process. To address this problem, a nonlinear regression model based on the Gamma probability distribution was proposed, associated with the Logistic, Gompertz, Weibull, and Hill growth curves. In the third problem, the thesis analyzes an experimental dataset aimed at identifying the best combinations of orange rootstocks capable of conferring resistance to citrus canker in new plants. At this stage, the modeling was carried out using a Bayesian longitudinal zero-inflated Beta distribution. The three main problems addressed in the thesis were successfully solved, and, in addition, new varieties resistant to citrus canker were identified.",
+   "tem_resumo": true
   },
   {
    "id": "CONC-DISS-1",
@@ -6708,8 +6708,8 @@
    "ordem": 1,
    "titulo": "Inferência causal em dados funcionais via transformadas de ondaletas: do pré-processamento à estimação em tempo real",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "Este trabalho propõe uma metodologia para a inferência causal em dados funcionais, com foco na estimação de efeitos causais médios em trajetórias temporais.\nA literatura de inferência causal funcional recorre tradicionalmente a métodos de suavização globais, como B-splines, que impõem suposições estritas de regularidade, dificultam o processamento sequencial de trajetórias e costumam ferir a direcionalidade temporal dos eventos. Como alternativa, propomos o uso de transformadas de ondaletas, implementadas via lifting scheme, como etapa de pré-processamento. Além de melhores estimativas em um escopo mais amplo de funções, esta dissertação contribui ao viabilizar a estimação do Efeito Médio de Tratamento Funcional (FATE) em tempo real e ao propor o Efeito Médio de Tratamento Funcional Acumulado (CFATE) como medida do efeito causal ao longo do tempo. Desenvolvemos o pacote rLifting, disponível no CRAN, em R com arquitetura unificada em C++, com suporte a janelas móveis para atualizações sequenciais eficientes. A metodologia foi avaliada via simulações de Monte Carlo, comparando estimadores baseados em ondaletas (offline e online) a abordagens baseadas em splines. Em cenários com descontinuidades e alta irregularidade temporal, as ondaletas superam os métodos clássicos, com menor viés de reconstrução e coberturas simultâneas nominais via bootstrap. O estimador também se mostrou robusto à irregularidade da malha de amostragem, e a modalidade online apresentou latência computacional na ordem de microssegundos por atualização. Aplicamos a metodologia ao experimento Low Carbon London, estimando que a tarifa dinâmica induziu uma redução acumulada de -372 kWh/hh ao longo de 2013 [IC 95%: -534; -209], com heterogeneidade marcada por perfil socioeconômico.\nConcluímos que a abordagem proposta é uma solução rápida, robusta e preservadora da causalidade para a inferência em fluxos contínuos de dados funcionais.",
+   "tem_resumo": true
   },
   {
    "id": "CONC-DISS-2",
@@ -6721,8 +6721,8 @@
    "ordem": 2,
    "titulo": "Modelagem Bayesiana Bivariada de Gols em Partidas de Futebol via Distribuição Weibull Discreta",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "O futebol é um dos esportes mais populares do mundo e tem grande relevância social, econômica e cultural, especialmente no Brasil. Além de seu caráter esportivo, o futebol tem se consolidado como um campo fértil para aplicações estatísticas, impulsionado pelo avanço das técnicas de modelagem e pelo crescente interesse em previsões, seja para fins analíticos, esportivos ou de mercado de apostas. Neste contexto, o objetivo deste trabalho é desenvolver e comparar modelos estatísticos Bayesianos para a previsão de resultados de partidas de futebol, com foco no Campeonato Brasileiro da Série A. A pesquisa explora a utilização da distribuição Weibull discreta como alternativa à distribuição de Poisson tradicional, buscando maior flexibilidade na modelagem da contagem de gols. São investigadas extensões capazes de lidar com características recorrentes em dados de futebol, tais como inflação de zeros, dependência entre os gols das equipes mandante e visitante por meio de cópulas e estruturas dinâmicas para capturar a evolução temporal das forças de ataque e defesa ao longo da competição. A inferência é conduzida sob a abordagem Bayesiana, permitindo a incorporação de distribuições a priori e a obtenção de distribuições preditivas a posteriori. Modelos univariados e bivariados são ajustados, incluindo versões dinâmicas e com inflação de zeros, sendo a estimação Bayesiana realizada por meio de métodos de simulação MCMC implementados no pacote Stan do software R. A avaliação do desempenho preditivo é realizada com base em métricas como o número de acertos, a medida de De Finetti e critérios derivados de validação cruzada do tipo leave-one-out. Dessa forma, o trabalho contribui para a literatura de modelagem estatística aplicada ao futebol, oferecendo uma abordagem flexível e robusta para a previsão de resultados e a análise de desempenho em competições esportivas.",
+   "tem_resumo": true
   },
   {
    "id": "CONC-DISS-3",
@@ -6734,8 +6734,8 @@
    "ordem": 3,
    "titulo": "Aplicação de Processos Autorregressivos Sazonais com Valores Inteiros (SINAR(1)) em Dados de Qualidade do Ar: Uma Abordagem Robusta",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "Approximately 99% of the global population is exposed to air pollution levels exceeding recommended air quality standards, according to the World Health Organization (WHO). Air pollution is commonly assessed through composite indicators such as the Air Quality Index (AQI), which maps continuous pollutant concentrations onto an integer-valued scale. Among air pollutants, Particulate Matter (PM) is of particular concern due to its physical complexity and severe health impacts. Due to its microscopic size, PM 2.5 can penetrate deep into the respiratory tract and enter the bloodstream, being associated with cardiovascular, respiratory, and neurological diseases.\n\nCount time series arise in several scientific fields, motivating the development of discrete-valued models that account for their integer nature. The Integer-Valued Autoregressive (INAR) model and its seasonal extension, the Seasonal INAR(1) (SINAR(1)) model, are widely used to describe serial dependence and seasonal patterns in count data. However, additive outliers can distort the autocorrelation structure, inflate variance, and bias parameter estimates.\n\nTo address this issue, we employ the robust SINAR(1) estimation approach based on M-regression with the Huber loss function. Through Monte Carlo simulations, we extend previous validation by considering severe contamination levels of up to 10% and a broad range of temporal dependence. The Conditional Maximum Likelihood (CML) estimator is used as an efficiency benchmark. Results show that, although CML performs efficiently under ideal conditions, Huber’s M-estimators provide greater robustness under contamination. Finally, coherent forecasting techniques are employed to preserve the discrete nature of AQI counts. Forecast accuracy is evaluated using PRMSE, PMAE, and PTP metrics.",
+   "tem_resumo": true
   },
   {
    "id": "CONC-IC-1",
@@ -6747,8 +6747,8 @@
    "ordem": 1,
    "titulo": "Aprendizado de máquina multimodal: uma aplicação para auxílio no diagnóstico de pacientes em estado mental de risco",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "O ARMS (At-Risk Mental States) ou \"Estados Mentais de Alto Risco\" é um conceito na psiquiatria que se refere a um conjunto de critérios clínicos e sintomas psicopatológicos que indicam uma probabilidade aumentada de desenvolver um transtorno psicótico, como esquizofrenia, em um futuro próximo. Esses critérios foram desenvolvidos para identificar indivíduos que estão em um estágio prévio ao desenvolvimento completo da psicose, permitindo intervenções precoces e preventivas para evitar ou mitigar o surgimento do transtorno. Com o intuito de contribuir para a detecção precoce de ARMS, este trabalho propõe a utilização de aprendizado de máquina multimodal com uma abordagem baseada em ensemble learning, combinando diferentes features provenientes de vídeos gravados da consulta de cada paciente. Um modelo realiza a análise de landmarks faciais, extraindo informações não verbais a partir de expressões e microexpressões faciais. Outro modelo foca na análise da fala, a partir das transcrições dos áudios das entrevistas, utilizando LSA (Latent Semantic Analisys), análise de sentimento e classes gramaticais. Essa abordagem multimodal permite uma avaliação mais abrangente dos sinais verbais e não verbais associados ao risco de transtornos mentais, com o objetivo de automatizar o diagnóstico, aprimorar o diagnóstico precoce e a eficácia das intervenções.",
+   "tem_resumo": true
   },
   {
    "id": "CONC-IC-2",
@@ -6760,8 +6760,8 @@
    "ordem": 2,
    "titulo": "Acelerando o treinamento das Máquinas Aleatórias para classificação",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "Máquinas Aleatórias é um modelo de ensemble baseado em Support Vector Machines (SVM) que combina escolha aleatória de funções kernel com agregação ponderada por desempenho, alcançando alta capacidade preditiva, porém com custo computacional elevado em bases de grande porte. Esta monografia investiga estratégias para acelerar o treinamento desse modelo por meio de operadores de redução do conjunto de treinamento aplicados antes da geração das amostras bootstrap. São estudadas três abordagens: amostragem localizada, detecção de fronteiras por inimigo mais próximo e seleção de observações com o uso de SVMs fracas. A comparação entre os modelos leva em conta simultaneamente medidas de desempenho preditivo e o tempo de treinamento. Os resultados indicam que as estratégias podem reduzir substancialmente o custo computacional mantendo desempenho semelhante ao do modelo original. Em conjunto, os achados sugerem que técnicas de redução de dados tornam o modelo de Máquinas Aleatórias mais viável para aplicações em larga escala sem perda relevante de performance preditiva.",
+   "tem_resumo": true
   },
   {
    "id": "CONC-IC-3",
@@ -6773,8 +6773,8 @@
    "ordem": 3,
    "titulo": "Incorporação de Cópulas Paramétricas ao Escore de Anomalia de Autocodificadores Variacionais: Modelagem de Dependência Residual em Dados Tabulares",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "A detecção de anomalias em dados tabulares é um problema central em aplicações como segurança de redes e diagnóstico clínico. Autocodificadores variacionais (AVs) abordam essa tarefa em regime semi-supervisionado ao aprender, a partir de dados normais, uma representação latente regularizada cuja qualidade de reconstrução serve como escore de anomalia. Contudo, o erro de reconstrução captura apenas divergências marginais entre a entrada e sua reconstrução, descartando a estrutura de dependência conjunta dos resíduos, informação que pode discriminar anomalias multivariadas cujas características individuais não são extremas.\n\nEste trabalho investiga se a modelagem explícita dessa dependência residual, via cópulas paramétricas ajustadas sobre os resíduos de reconstrução do AV, acrescenta capacidade discriminativa ao detector. São avaliadas quatro famílias de cópulas (gaussiana, t-Student, skew-normal e skew-t), cuja log-densidade negativa é combinada ao erro de reconstrução normalizado por meio de um mecanismo de portão sigmoide adaptativo. Os hiperparâmetros são otimizados em dois estágios via Optuna, com separação estrita entre conjuntos de otimização e teste. O método é avaliado em seis conjuntos tabulares de referência (UNSW-NB15 Backdoor, Statlog Satellite, Arrhythmia, KDDCup99, Annthyroid e Cardiotocography), com 20 sementes de reajuste e significância aferida pelo teste de Wilcoxon pareado com correção de Holm-Bonferroni.\n\nOs resultados indicam que o efeito é condicional à família e ao conjunto de dados: dos 24 pares testados sob a precisão média, 5 apresentam ganho significativo, 11 degradação e 8 não diferem do AV puro. A correlação de Pearson entre os escores normalizados de reconstrução e de cópula atua como indicador da complementaridade entre os componentes, orientando a seleção da família de cópula sem necessidade de rótulos.",
+   "tem_resumo": true
   },
   {
    "id": "CONC-IC-4",
@@ -6786,8 +6786,8 @@
    "ordem": 4,
    "titulo": "Quantificando a Relação de Ensino Professor-Aluno via Comunicação Cerebral: Desenvolvendo um Método Bayesiano de Aprendizado de Estrutura Causal",
    "area": "",
-   "resumo": "",
-   "tem_resumo": false
+   "resumo": "O processo de aprendizagem envolve a formação de conexões cerebrais entre professor e aluno. Diversas técnicas de mensuração da atividade cerebral e modelos estatísticos existem para detectar as conexões funcionais (ligação) e efetivas (direção) intra e entre cérebros nas diversas regiões do cérebro. Este trabalho avaliou a capacidade de um desses métodos - o Multiregression Dynamic Model (MDM) - em detectar as conexões efetivas em diferentes cenários de variabilidade e complexidade da rede de nós (variáveis). Os resultados da simulação indicaram que tanto uma rede muito dinâmica quanto uma muito estática dificultaram a capacidade do modelo em detectar a conexão efetiva. Um grande entrave à estimação das conexões foi o tempo computacional para um elevado número de nós, devido a utilização do algoritmo de busca exata Integer Programming Algorithm (IPA). Alternativas ao IPA foram propostas, e o algoritmo Hill Climbing foi o que mais se aproximou da qualidade do aprendizado da rede do IPA, com um tempo computacional menor. Assim, o MDM-Hill Climbing se torna uma alternativa competitiva ao tradicional MDM-IPA. Por fim, o MDM-Hill Climbing foi utilizado para detectar as conexões efetivas em um estudo hyperscanning fNIRS para duplas de professor e aluno. Os resultados com esses dados reais indicaram a influência que o córtex pré-frontal direito tem sobre o esquerdo para regiões dentro do mesmo cérebro, e a influência do córtex pre-frontal tem sobre a junção temporo-parietal direita entre os cérebros. Portanto, além dos resultados estarem de acordo com a literatura sobre a influência entre as regiões do cérebro em um momento de cooperação (aprendizagem) entre dois indivíduos, a abordagem utilizada permitiu analisar as nuances das conexões intra e entre as regiões do cérebro, sendo possível analisar as conexões possíveis entres todos os nós analisados, sem agregar pelas regiões de interesse (ROIs)",
+   "tem_resumo": true
   }
  ],
  "locais": [
