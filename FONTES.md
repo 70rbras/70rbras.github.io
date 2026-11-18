@@ -33,7 +33,7 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Prédios do evento (nome, endereço, sigla explicada) além do trajeto entre eles | `data/config.js`, campos `predios` e `trajeto`; o que acontece em cada prédio vem da planilha | `logistica.html#local`, faixa de aviso, Home (Agora / A seguir), `premios.html` |
 | Jantar de Confraternização: valores, Pix, formulário, interruptor `visivel` | `data/config.js`, campo `jantar`; prazo de adesão em `data/dates.js` (`jantar-adesao`); dia, horário além de mapa na atividade `PREMIACAO` da planilha | `index.html#jantar`, faixa de aviso, Próximas datas, cartão da programação |
 | Dia, horário além de local da entrega do Prêmio Destaque | planilha, atividade indicada em `entrega_atividade` de `data/premios.js` | `premios.html` |
-| Finalistas dos concursos (nome, instituição, título, ordem de fala, resumo) | planilha, abas `trabalhos` e `resumos`, sessão indicada em `sessao_finalistas` de `data/premios.js` | `premios.html#finalistas`, vitrine de `premios.html`, faixa da home |
+| Finalistas dos concursos (nome, instituição, título, ordem de fala, resumo) | planilha, abas `trabalhos` e `resumos`, sessão indicada em `sessao_finalistas` de `data/premios.js` | `premios.html#concurso`, faixa da home |
 | Metadados de prévia de link | `scripts/gerar_meta.mjs`, mapa `PAGINAS`; os fatos vêm de `data/` | bloco `meta:inicio` do `<head>` de cada página |
 | Manifesto do aplicativo instalável | `scripts/gerar_meta.mjs`, objeto `APLICATIVO`; nome, nome curto além da descrição vêm de `data/config.js` | `manifest.webmanifest`, mais as três linhas do bloco `meta:inicio` |
 

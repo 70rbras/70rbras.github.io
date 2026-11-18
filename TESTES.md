@@ -304,3 +304,23 @@ Seção `premios.html#finalistas` lida de `data/programacao.json` (sessões indi
 | Ordem sugerindo colocação | selo "1º, 2º, 3º" nos cartões podia ser lido como classificação (apontado pela organização); removido, bloco ganhou a legenda "Em ordem de apresentação na sessão" e a vitrine passou a listar em ordem alfabética | corrigido |
 | Service worker | `VERSAO` de 8 para 10 (`assets/style.css`, `index.html`, `premios.html`, `data/premios.js`) | conforme |
 
+## 8. Reorganização de `premios.html` (18/11/2026)
+
+Queixa da organização: a página alternava Destaque, Concurso, Destaque, Concurso. Passou a ter dois blocos, `#destaque` e `#concurso`, sem a vitrine `#premiados` nem a caixa "Documentação exigida".
+
+| Conferência | O que se verificou | Resultado |
+|---|---|---|
+| Fontes | `checar_fontes.mjs` sem violação; `gerar_meta.mjs --verificar` em dia | conforme |
+| Ordem | cabeçalho, `#destaque`, `#concurso`; nenhum assunto volta | conforme |
+| Destaque | caixa do premiado, sobre o prêmio, linha do tempo com prazo de `dates.js` e entrega lida da programação | conforme |
+| Concurso | 3 categorias (3, 3 e 4 finalistas), cada uma com comissão avaliadora no pé | conforme |
+| Âncora `#premiados` | redirecionada para `#destaque`, página rola até o bloco | conforme |
+| Âncora `#finalistas-ic` | redirecionada para `#concurso-ic`, rola depois de desenhar | conforme |
+| Convite com `?agora=2026-11-23T16:40` | oculto depois da sessão | conforme |
+| Vencedor simulado no navegador (`trabalho_id: CONC-DISS-2`) | só o cartão do vencedor, título e resumo vindos da programação, comissão mantida; nada gravado | conforme |
+| Estreito (606 px) | 1 coluna, legenda e chip empilhados, sem rolagem lateral | conforme |
+| Console | sem erro | conforme |
+| Home | botão da faixa aponta para `premios.html`, chamada dos finalistas para `#concurso` | conforme |
+| Um vencedor por modalidade | texto de abertura, situação e selo do cartão do vencedor ("Vencedor(a) 2026 · Melhor Tese de Doutorado") deixam claro que cada modalidade tem o seu | conforme |
+| Service worker | `VERSAO` de 10 para 12 | conforme |
+

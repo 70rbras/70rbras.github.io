@@ -55,9 +55,7 @@
       filter: drop-shadow(0 8px 24px rgba(214,168,24,.5));
     }
 
-    /* ── Vitrine "Premiados 2026" ── */
-    #premiados { padding: 5rem 0 5.5rem; background: var(--white); }
-
+    /* ── Caixa do premiado (Prêmio Destaque) ── */
     .premiado-hero {
       display: grid;
       grid-template-columns: 240px 1fr;
@@ -127,66 +125,8 @@
     .premiado-texto strong { color: var(--white); }
     .premiado-acoes { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.6rem; }
 
-    /* Cards das demais categorias */
-    .premiados-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .premiado-card {
-      background: var(--off-white);
-      border-radius: 18px;
-      padding: 1.8rem 1.6rem;
-      border: 1px solid rgba(26,56,112,.1);
-      border-top: 4px solid var(--gold);
-      display: flex; flex-direction: column;
-      scroll-margin-top: 110px;
-    }
-    .premiado-card .pc-icon { font-size: 1.8rem; margin-bottom: .7rem; }
-    .premiado-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: .9rem; }
-    .premiado-card .pc-nome { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--blue); line-height: 1.25; }
-    .premiado-card .pc-trabalho { font-style: italic; color: var(--text-mid); font-size: .9rem; line-height: 1.5; margin-top: .5rem; }
-    .premiado-card .pc-meta { font-size: .84rem; color: var(--text-mid); margin-top: .5rem; line-height: 1.5; }
-    .premiado-card .pc-desc { font-size: .88rem; color: var(--text-mid); line-height: 1.55; }
-    .pc-pendente {
-      display: inline-flex; align-items: center; gap: .45rem;
-      margin-top: auto;
-      padding-top: 1.1rem;
-      font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      color: var(--gold);
-    }
-    .premiado-card--anunciado { background: var(--white); box-shadow: 0 10px 30px rgba(26,56,112,.1); }
-    .pc-mencoes { margin-top: .9rem; font-size: .82rem; color: var(--text-mid); line-height: 1.5; }
-    .pc-mencoes strong { color: var(--teal); }
-
-    .premios-entrega {
-      margin-top: 2.2rem;
-      text-align: center;
-      font-size: .95rem;
-      color: var(--text-mid);
-    }
-
-    /* Selo "Finalistas definidos" e nomes no card da vitrine */
-    .pc-finalistas-selo {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--teal); background: rgba(42,144,128,.1);
-      padding: .3em .8em; border-radius: 999px; align-self: flex-start;
-    }
-    .pc-finalistas { list-style: none; margin: .9rem 0 0; padding: 0; }
-    .pc-finalistas li {
-      font-size: .88rem; color: var(--text-dark); line-height: 1.4;
-      padding: .45rem 0; border-bottom: 1px dashed rgba(26,56,112,.12);
-    }
-    .pc-finalistas li:last-child { border-bottom: 0; }
-    .pc-finalistas li span { display: block; font-size: .78rem; color: var(--text-mid); }
-    .pc-link { margin-top: auto; padding-top: 1.1rem; font-size: .84rem; font-weight: 700; color: var(--teal); text-decoration: none; }
-    .pc-link:hover { text-decoration: underline; }
-
-    /* ── Seção "Finalistas" ── */
-    #finalistas { padding: 5rem 0 5.5rem; background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%); }
-    #finalistas[hidden] { display: none; }
-    #atalho-finalistas[hidden] { display: none; }
+    /* ── Bloco "Concurso": convite, categorias, finalistas, vencedor ── */
+    .fin-convite[hidden] { display: none; }
     .fin-convite {
       display: grid; grid-template-columns: auto 1fr auto; gap: 1.6rem; align-items: center;
       background: linear-gradient(135deg, var(--blue) 0%, #0d2654 100%);
@@ -263,6 +203,7 @@
 
     /* ── Seção "Prêmio Destaque" ── */
     .premio-intro-grid {
+      margin-top: 3.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
@@ -309,44 +250,53 @@
       margin-bottom: .45rem;
     }
 
-    /* ── Seção "Concurso" ── */
-    .concurso-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+    .fin-pendente { font-size: .92rem; color: var(--text-mid); line-height: 1.6; }
+    .fin-pendente strong { color: var(--gold); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .78rem; margin-left: .4rem; }
+
+    /* Vencedor da categoria: substitui a grade de finalistas */
+    .fin-vencedor {
+      background: linear-gradient(145deg, var(--blue) 0%, #0d2654 100%);
+      color: var(--white);
+      border-radius: 20px; padding: 2rem 2.2rem;
+      box-shadow: 0 18px 48px rgba(26,56,112,.28), 0 0 0 1px rgba(214,168,24,.35);
+      position: relative; overflow: hidden;
     }
-    .concurso-card {
-      background: var(--white);
-      border-radius: 18px;
-      padding: 1.8rem 1.6rem;
-      border: 1px solid rgba(26,56,112,.1);
+    .fin-vencedor::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 90% 12%, rgba(214,168,24,.22) 0%, transparent 55%);
     }
-    .concurso-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin: .6rem 0 .9rem; }
-    .concurso-card .cc-label { font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); margin-bottom: .4rem; }
-    .concurso-card ul { list-style: none; }
-    .concurso-card li { font-size: .88rem; color: var(--text-mid); padding: .2rem 0; line-height: 1.45; }
-    .concurso-card li span { color: var(--text-mid); opacity: .75; font-size: .8rem; }
+    .fin-vencedor > * { position: relative; }
+    .fin-vencedor .premiado-eyebrow { margin-bottom: .5rem; }
+    .fin-vencedor .fin-nome { color: var(--white); font-size: clamp(1.4rem, 2.6vw, 1.9rem); }
+    .fin-vencedor .fin-inst { color: var(--gold-light); }
+    .fin-vencedor .fin-titulo { color: rgba(255,255,255,.9); font-size: 1rem; }
+    .fin-vencedor .fin-meta { color: rgba(255,255,255,.75); font-size: .88rem; margin-top: .5rem; }
+    .fin-vencedor .fin-resumo { border-top-color: rgba(255,255,255,.18); }
+    .fin-vencedor .fin-resumo summary { color: var(--gold-light); }
+    .fin-vencedor .fin-resumo-texto p { color: rgba(255,255,255,.82); }
+    .fin-vencedor .fin-prog { color: rgba(255,255,255,.75); }
+    .fin-vencedor .fin-mencoes { margin-top: 1rem; font-size: .86rem; color: rgba(255,255,255,.8); }
+    .fin-vencedor .fin-mencoes strong { color: var(--gold-light); }
+
+    /* Comissão avaliadora no pé de cada categoria */
+    .fin-comissao {
+      margin-top: 1.3rem; padding: .9rem 1.1rem;
+      background: var(--white); border-radius: 12px;
+      border-left: 3px solid var(--teal);
+      font-size: .84rem; color: var(--text-mid); line-height: 1.6;
+    }
+    .fin-comissao strong { color: var(--text-dark); font-weight: 700; margin-right: .3rem; }
+    .fin-comissao span { white-space: nowrap; }
+    .fin-comissao span + span::before { content: ' · '; color: var(--teal); white-space: normal; }
+
     .concurso-info {
       max-width: 760px;
-      margin: 2.5rem auto 0;
+      margin: 2.8rem auto 0;
       text-align: center;
       font-size: .93rem;
       color: var(--text-mid);
       line-height: 1.7;
     }
-
-    .concurso-regras {
-      max-width: 760px;
-      margin: 1.8rem auto 0;
-      background: var(--off-white);
-      border-radius: 16px;
-      padding: 1.6rem 1.8rem;
-      border-left: 3px solid var(--teal);
-    }
-    .concurso-regras h3 { font-size: .95rem; font-weight: 700; color: var(--text-dark); margin-bottom: .8rem; }
-    .concurso-regras ul { list-style: none; }
-    .concurso-regras li { position: relative; padding: .3rem 0 .3rem 1.2rem; font-size: .88rem; color: var(--text-mid); line-height: 1.55; }
-    .concurso-regras li::before { content: '-'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
 
     /* ── Responsivo ── */
     @media (max-width: 900px) {
@@ -354,7 +304,8 @@
       .premiado-hero .card-linha { margin-inline: auto; }
       .premiado-acoes { justify-content: center; }
       .premiado-texto { text-align: left; }
-      .premiados-grid, .concurso-grid, .fin-grid, .fin-grid--4 { grid-template-columns: 1fr; }
+      .fin-grid, .fin-grid--4 { grid-template-columns: 1fr; }
+      .fin-vencedor { padding: 1.7rem 1.4rem; }
       .fin-convite { grid-template-columns: 1fr; text-align: center; padding: 1.8rem 1.4rem; }
       .fin-convite-data { justify-self: center; }
       .fin-convite-acoes { flex-direction: row; flex-wrap: wrap; justify-content: center; }
@@ -393,10 +344,8 @@
       A RBras reconhece trajetórias e trabalhos que fazem avançar a Estatística e a Biometria no Brasil. Aqui você encontra todos os prêmios da 70ª RBras e quem os recebe.
     </p>
     <nav aria-label="Seções desta página" style="margin-top:1.75rem;display:flex;gap:.85rem;flex-wrap:wrap;justify-content:center">
-      <a href="#premiados" class="btn btn--gold"    style="font-size:.83rem;padding:.5em 1.3em">🏅 Premiados 2026</a>
-      <a href="#finalistas" class="btn btn--outline" id="atalho-finalistas" style="font-size:.83rem;padding:.5em 1.3em" hidden>🎓 Finalistas</a>
-      <a href="#destaque"  class="btn btn--outline" style="font-size:.83rem;padding:.5em 1.3em">🏆 Prêmio Destaque</a>
-      <a href="#concurso"  class="btn btn--outline" style="font-size:.83rem;padding:.5em 1.3em">🎓 Tese, Dissertação e IC</a>
+      <a href="#destaque" class="btn btn--gold"    style="font-size:.83rem;padding:.5em 1.3em">🏆 Prêmio Destaque</a>
+      <a href="#concurso" class="btn btn--outline" style="font-size:.83rem;padding:.5em 1.3em">🎓 Concurso Tese, Dissertação e IC</a>
     </nav>
   </div>
   <svg class="page-header-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
@@ -405,47 +354,20 @@
 </section>
 
 
-<!-- ─── PREMIADOS 2026 (gerado via data/premios.js) ── -->
-<section id="premiados">
+<!-- ─── BLOCO 1: PRÊMIO DESTAQUE ──────────────────
+     Quem recebe (data/premios.js), o que é o prêmio e como foi o processo.
+     A entrega lê dia, horário além de local da programação. -->
+<section id="destaque" style="padding:4.5rem 0 5.5rem;background:var(--white)">
   <div class="container">
     <div class="section-header reveal">
-      <span class="tag tag--gold">Premiados 2026</span>
-      <h2 class="section-title" style="margin-top:1rem">Quem a RBras <span>homenageia</span> em 2026</h2>
+      <span class="tag tag--gold">Prêmio Destaque RBras</span>
+      <h2 class="section-title" style="margin-top:1rem">Reconhecendo quem <span>fez a diferença</span></h2>
     </div>
     <div id="premiado-destaque" class="reveal"></div>
-    <div id="premiados-grid" class="premiados-grid"></div>
-    <p class="premios-entrega" id="premios-entrega"></p>
-  </div>
-</section>
 
-
-<!-- ─── FINALISTAS DOS CONCURSOS ────────────────────
-     Gerado a partir de data/programacao.json: cada prêmio de data/premios.js
-     com sessao_finalistas aponta a sessão; nomes, títulos além de resumos vêm
-     da planilha. Sem a programação, a seção fica oculta. -->
-<section id="finalistas" hidden>
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="tag tag--gold">Finalistas 2026</span>
-      <h2 class="section-title" style="margin-top:1rem">Quem disputa os <span>prêmios do concurso</span></h2>
-      <p class="section-body">Os trabalhos finalistas de Tese, Dissertação e Iniciação Científica são apresentados durante o evento, diante das comissões avaliadoras. O resultado será publicado nesta página.</p>
-    </div>
-    <div id="finalistas-convite" class="fin-convite reveal"></div>
-    <div id="finalistas-categorias"></div>
-  </div>
-</section>
-
-
-<!-- ─── PRÊMIO DESTAQUE ─────────────────────────── -->
-<section id="destaque" style="padding:5rem 0 5.5rem;background:var(--off-white)">
-  <div class="container">
     <div class="premio-intro-grid">
-
       <div class="premio-intro-text reveal">
-        <span class="tag tag--gold" style="margin-bottom:1.1rem">Sobre o Prêmio Destaque</span>
-        <h2 class="section-title" style="margin-bottom:1.5rem">
-          Reconhecendo quem<br><span>fez a diferença</span>
-        </h2>
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:1.2rem">Sobre o prêmio</h3>
         <div class="accent-bar"></div>
         <p>
           O <strong>Prêmio Destaque RBras</strong> é uma das mais importantes formas de reconhecimento da Região Brasileira da Sociedade Internacional de Biometria. Ele homenageia pesquisadoras e pesquisadores que, ao longo de suas carreiras no Brasil, dedicaram-se com excelência ao <strong>ensino, à pesquisa e à orientação</strong> no campo da Estatística e da Biometria.
@@ -484,28 +406,28 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 
-<!-- ─── CONCURSO TESE / DISSERTAÇÃO / IC ────────── -->
-<section id="concurso" style="padding:5rem 0 5.5rem;background:var(--white)">
+<!-- ─── BLOCO 2: CONCURSO TESE / DISSERTAÇÃO / IC ───
+     Uma categoria por prêmio de data/premios.js com sessao_finalistas. Os
+     finalistas (nome, instituição, título, resumo) vêm de data/programacao.json;
+     a comissão avaliadora, de data/committee.js. Com `premiado` preenchido, a
+     categoria mostra só quem venceu. -->
+<section id="concurso" style="padding:5rem 0 5.5rem;background:var(--off-white)">
   <div class="container">
     <div class="section-header reveal">
       <span class="tag tag--teal">Concurso</span>
       <h2 class="section-title" style="margin-top:1rem">Tese, Dissertação e <span>Iniciação Científica</span></h2>
       <p class="section-body" id="concurso-elegibilidade">
-        Premiação dos melhores trabalhos de pós-graduação e graduação em Estatística e Biometria.
+        Premiação dos melhores trabalhos de pós-graduação e graduação em Estatística e Biometria, com um vencedor em cada modalidade.
       </p>
     </div>
-    <div class="concurso-grid" id="concurso-grid"></div>
-    <p class="concurso-info reveal" id="concurso-estado"></p>
-    <div class="concurso-regras reveal" id="concurso-regras" hidden>
-      <h3>📎 Documentação exigida na inscrição</h3>
-      <ul id="concurso-docs"></ul>
-    </div>
+    <div id="concurso-convite" class="fin-convite" hidden></div>
+    <div id="concurso-categorias"></div>
+    <p class="concurso-info" id="concurso-estado"></p>
   </div>
 </section>
 
@@ -524,14 +446,40 @@
 <script src="assets/footer.js"></script>
 
 <script>
+/* ── Endereços antigos ──────────────────────────────
+   A página já teve as seções #premiados e #finalistas, além de âncoras por
+   categoria. Quem chega por um desses endereços cai no bloco equivalente. */
+(function () {
+  const h = decodeURIComponent(location.hash.slice(1));
+  let novo = { premiados: 'destaque', finalistas: 'concurso' }[h] || null;
+  const m = /^(?:finalistas|premiado)-(tese|dissertacao|ic)$/.exec(h);
+  if (m) novo = 'concurso-' + m[1];
+  if (novo) history.replaceState(null, '', '#' + novo);
+})();
+
 /* ── Helpers ────────────────────────────────────── */
-/* iniciaisDaPessoa vive em assets/pessoas.js. */
+/* iniciaisDaPessoa e escTexto vivem em assets/pessoas.js; Agenda, em assets/nav.js. */
+const esc = s => Agenda.escapar(s);
 function paragrafos(texto) {
   if (!texto) return '';
   return (Array.isArray(texto) ? texto : [texto]).map(p => `<p>${p}</p>`).join('');
 }
+function resumoEmParagrafos(texto) {
+  return String(texto || '').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean)
+    .map(p => `<p>${esc(p).replace(/\n/g, '<br>')}</p>`).join('');
+}
+function blocoResumo(texto) {
+  return texto
+    ? `<details class="fin-resumo"><summary>Ler resumo</summary><div class="fin-resumo-texto">${resumoEmParagrafos(texto)}</div></details>`
+    : '';
+}
+function rolarParaAncora() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const alvo = id && document.getElementById(id);
+  if (alvo) alvo.scrollIntoView();
+}
 
-/* ── Vitrine: Prêmio Destaque ───────────────────── */
+/* ── Bloco 1: Prêmio Destaque ───────────────────── */
 function renderDestaque() {
   const el = document.getElementById('premiado-destaque');
   const p = PREMIOS.find(x => x.id === 'destaque');
@@ -554,7 +502,7 @@ function renderDestaque() {
     ? `<img src="${w.foto}" alt="${w.nome}">`
     : `<span class="iniciais">${iniciaisDaPessoa(w.nome)}</span>`;
   const lattes = w.lattes
-    ? `<a href="${w.lattes}" class="btn btn--gold" target="_blank" rel="noopener noreferrer" style="font-size:.85rem">Currículo Lattes &#8599;</a>`
+    ? `<div class="premiado-acoes"><a href="${w.lattes}" class="btn btn--gold" target="_blank" rel="noopener noreferrer" style="font-size:.85rem">Currículo Lattes &#8599;</a></div>`
     : '';
   el.innerHTML = `
     <article class="premiado-hero" aria-label="${p.titulo} 2026">
@@ -565,229 +513,184 @@ function renderDestaque() {
         ${w.instituicao ? `<div class="premiado-inst">${w.instituicao}</div>` : ''}
         <span class="card-linha"></span>
         <div class="premiado-texto">${paragrafos(w.texto)}</div>
-        <div class="premiado-acoes">
-          ${lattes}
-          <a href="#destaque" class="btn btn--outline" style="font-size:.85rem">Sobre o Prêmio Destaque &#8595;</a>
-        </div>
+        ${lattes}
       </div>
     </article>`;
-}
 
-/* ── Vitrine: demais categorias ─────────────────── */
-function linhaPremiado(w) {
-  return `
-    <div class="pc-nome">${w.nome}</div>
-    ${w.trabalho ? `<div class="pc-trabalho">"${w.trabalho}"</div>` : ''}
-    <div class="pc-meta">
-      ${w.orientador ? `Orientação: ${w.orientador}<br>` : ''}
-      ${w.instituicao || ''}
-    </div>`;
-}
-/* finalistas: mapa id do prêmio → lista de trabalhos da programação. Chamada
-   de novo depois que data/programacao.json chega; como os cards já foram
-   revelados pelo scroll, a segunda passada entra com a classe visible. */
-function renderCategorias(finalistas) {
-  const el = document.getElementById('premiados-grid');
-  if (!el) return;
-  const e = (typeof Agenda !== 'undefined') ? Agenda.escapar : (x => x);
-  el.innerHTML = PREMIOS.filter(p => p.id !== 'destaque').map((p, i) => {
-    const w = p.premiado;
-    const lista = finalistas && finalistas[p.id];
-    const corpo = w
-      ? linhaPremiado(w)
-      : lista && lista.length
-        ? `<span class="pc-finalistas-selo">✦ ${lista.length} finalistas</span>
-           <ul class="pc-finalistas">${lista.slice().sort((x, y) => String(x.autor).localeCompare(String(y.autor), 'pt-BR')).map(t => `<li>${e(t.autor)}<span>${e(t.instituicao)}</span></li>`).join('')}</ul>
-           <a class="pc-link" href="#finalistas-${p.id}">Conheça os trabalhos &#8595;</a>`
-        : `<p class="pc-desc">${p.descricao}</p><span class="pc-pendente">⏳ A anunciar</span>`;
-    const mencoes = (p.mencoes && p.mencoes.length)
-      ? `<div class="pc-mencoes"><strong>Menção honrosa:</strong> ${p.mencoes.map(m => m.nome).join('; ')}</div>`
-      : '';
-    return `
-      <div class="premiado-card${w ? ' premiado-card--anunciado' : ''} reveal${i ? ' reveal-delay-' + i : ''}${finalistas ? ' visible' : ''}" id="premiado-${p.id}">
-        <span class="pc-icon">${p.icone}</span>
-        <h3>${p.titulo}</h3>
-        ${corpo}
-        ${mencoes}
-      </div>`;
-  }).join('');
-}
-
-/* ── Concurso: comissões avaliadoras ────────────── */
-function renderConcurso() {
-  const el = document.getElementById('concurso-grid');
-  if (!el) return;
-  el.innerHTML = PREMIOS.filter(p => p.comissao).map((p, i) => {
-    const c = (typeof COMMITTEE !== 'undefined') ? COMMITTEE.find(x => x.secao === p.comissao) : null;
-    const membros = c
-      ? `<div class="cc-label">Comissão avaliadora</div><ul>${c.membros.map(m => (typeof PESSOAS !== 'undefined' && PESSOAS[m.pessoa]) || null).filter(Boolean).map(p => `<li>${escTexto(p.nome)} <span>(${escTexto(p.instituicao)})</span></li>`).join('')}</ul>`
-      : '';
-    return `
-      <div class="concurso-card reveal${i ? ' reveal-delay-' + i : ''}">
-        <span style="font-size:1.6rem">${p.icone}</span>
-        <h3>${p.titulo}</h3>
-        ${membros}
-      </div>`;
-  }).join('');
-
-  /* Prazos lidos de data/dates.js: nem a linha do tempo nem o estado do
-     concurso trazem data escrita à mão nesta página. */
-  const temDatas = typeof dataPorId === 'function';
-  const indic = temDatas ? dataPorId('premio-destaque') : null;
+  /* Prazo das indicações lido de data/dates.js. */
+  const indic = typeof dataPorId === 'function' ? dataPorId('premio-destaque') : null;
   const badge = document.getElementById('prazo-indicacoes');
   if (indic && badge) badge.textContent = dataCurta(indic.inicio) + ' a ' + dataCurta(indic.fim);
-
-  const prazoConcurso = temDatas ? dataPorId('concurso-tdi') : null;
-  const estado = document.getElementById('concurso-estado');
-  if (prazoConcurso && estado) {
-    const encerrado = new Date() > new Date(prazoConcurso.fim + 'T23:59:59');
-    estado.textContent = encerrado
-      ? 'As inscrições no concurso estão encerradas e os trabalhos estão em avaliação pelas comissões acima. Os resultados serão publicados nesta página.'
-      : 'As inscrições no concurso estão abertas até ' + dataPorExtenso(prazoConcurso.fim) + '. Os resultados serão publicados nesta página.';
-  }
-
-  const concurso = (typeof SUBMISSION_MODALITIES !== 'undefined') ? SUBMISSION_MODALITIES.find(s => s.id === 'concurso') : null;
-  const eleg = document.getElementById('concurso-elegibilidade');
-  if (concurso && eleg) eleg.innerHTML = 'Premiação dos melhores trabalhos de pós-graduação e graduação. ' + concurso.elegibilidade;
-  if (concurso && concurso.pdf) {
-    document.getElementById('concurso-docs').innerHTML = concurso.pdf.itens.map(i => `<li>${i}</li>`).join('');
-    document.getElementById('concurso-regras').hidden = false;
-  }
 }
 
-renderDestaque();
-renderCategorias();
-renderConcurso();
-/* A frase da entrega vem de data/premios.js com marcadores: a edição além das
-   datas são lidas de data/config.js, nunca escritas aqui nem lá. */
-const entrega = document.getElementById('premios-entrega');
-if (entrega && typeof PREMIOS_ENTREGA === 'string') {
-  const ev = (typeof CONFIG !== 'undefined' && CONFIG.evento) ? CONFIG.evento : {};
-  entrega.textContent = PREMIOS_ENTREGA
-    .replace('{edicao}', ev.edicao || '')
-    .replace('{datas}', ev.datas_exibicao || '');
-}
-
-/* ── Entrega do Prêmio Destaque ─────────────────────
-   Dia, horário e local da cerimônia saem da atividade indicada em
-   data/premios.js (entrega_atividade), lida de data/programacao.json. Sem a
-   programação, fica o texto genérico escrito no HTML. */
-(function () {
+/* Entrega: dia, horário e local da atividade indicada em entrega_atividade. */
+function renderEntregaDestaque(dados) {
   const p = PREMIOS.find(x => x.id === 'destaque');
   const alvo = document.getElementById('destaque-entrega');
   const selo = document.getElementById('destaque-entrega-dia');
-  if (!p || !p.entrega_atividade || !alvo || typeof Agenda === 'undefined') return;
-  Agenda.carregar().then(dados => {
-    const a = Agenda.atividade(dados, p.entrega_atividade);
-    if (!a) return;
-    const e = Agenda.escapar;
-    const d = (dados.dias || []).find(x => x.data === a.data);
-    if (selo && d && d.rotulo_curto) selo.textContent = d.rotulo_curto;
-    const onde = Agenda.local(a);
-    alvo.innerHTML = 'Na ' + e(a.titulo) + ': ' + e(Agenda.dia(dados, a.data)) +
-      ', às ' + e(Agenda.hora(a.inicio)) + (onde ? ', ' + e(onde) : '') + '. ' +
-      '<a href="programacao.html#' + encodeURIComponent(a.id) + '" style="color:var(--teal);font-weight:600">Ver na programação &rarr;</a>';
-  }).catch(() => { /* fica o texto genérico */ });
-})();
-
-/* ── Finalistas dos concursos ───────────────────────
-   Cada prêmio com sessao_finalistas (data/premios.js) aponta uma sessão de
-   data/programacao.json. Nome, instituição, título, ordem de fala além do
-   resumo saem dali: a planilha segue a fonte única. Sem a programação, a
-   seção fica oculta e os cards da vitrine mantêm a descrição. */
-function resumoEmParagrafos(texto) {
-  const e = Agenda.escapar;
-  return String(texto || '').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean)
-    .map(p => `<p>${e(p).replace(/\n/g, '<br>')}</p>`).join('');
+  if (!dados || !p || !p.entrega_atividade || !alvo) return;
+  const a = Agenda.atividade(dados, p.entrega_atividade);
+  if (!a) return;
+  const d = (dados.dias || []).find(x => x.data === a.data);
+  if (selo && d && d.rotulo_curto) selo.textContent = d.rotulo_curto;
+  const onde = Agenda.local(a);
+  alvo.innerHTML = 'Na ' + esc(a.titulo) + ': ' + esc(Agenda.dia(dados, a.data)) +
+    ', às ' + esc(Agenda.hora(a.inicio)) + (onde ? ', ' + esc(onde) : '') + '. ' +
+    '<a href="programacao.html#' + encodeURIComponent(a.id) + '" style="color:var(--teal);font-weight:600">Ver na programação &rarr;</a>';
 }
+
+/* ── Bloco 2: Concurso ──────────────────────────────
+   Cada prêmio com `comissao` vira uma categoria. Sem a programação (offline),
+   a categoria mostra a descrição além da comissão; com ela, os finalistas.
+   Com `premiado` preenchido, só o vencedor. */
+const CATEGORIAS = PREMIOS.filter(p => p.comissao);
+
+function finalistasDe(dados, p) {
+  if (!dados || !p.sessao_finalistas) return [];
+  return (dados.trabalhos || []).filter(t => t.sessao === p.sessao_finalistas)
+    .sort((x, y) => (x.ordem || 99) - (y.ordem || 99) || String(x.id).localeCompare(String(y.id)));
+}
+
 function cardFinalista(t) {
-  const e = Agenda.escapar;
-  const resumo = t.resumo
-    ? `<details class="fin-resumo"><summary>Ler resumo</summary><div class="fin-resumo-texto">${resumoEmParagrafos(t.resumo)}</div></details>`
-    : `<div class="fin-sem-resumo">Resumo em breve</div>`;
   return `
-    <article class="fin-card" id="finalista-${e(t.id)}">
-      <div class="fin-nome">${e(t.autor)}</div>
-      ${t.instituicao ? `<div class="fin-inst">${e(t.instituicao)}</div>` : ''}
-      <p class="fin-titulo">${e(t.titulo)}</p>
-      ${resumo}
+    <article class="fin-card" id="finalista-${esc(t.id)}">
+      <div class="fin-nome">${esc(t.autor)}</div>
+      ${t.instituicao ? `<div class="fin-inst">${esc(t.instituicao)}</div>` : ''}
+      <p class="fin-titulo">${esc(t.titulo)}</p>
+      ${blocoResumo(t.resumo) || '<div class="fin-sem-resumo">Resumo em breve</div>'}
       <a class="fin-prog" href="programacao.html#T-${encodeURIComponent(t.id)}">Ver na programação &rarr;</a>
     </article>`;
 }
+
+/* Vencedor: campos de `premiado` em data/premios.js. Com `trabalho_id`, o que
+   faltar (título, instituição, resumo) vem do trabalho na programação. */
+function cardVencedor(p, w, dados) {
+  const t = (w.trabalho_id && dados) ? (dados.trabalhos || []).find(x => x.id === w.trabalho_id) : null;
+  const nome = w.nome || (t && t.autor) || '';
+  const inst = w.instituicao || (t && t.instituicao) || '';
+  const titulo = w.trabalho || (t && t.titulo) || '';
+  const mencoes = (p.mencoes && p.mencoes.length)
+    ? `<div class="fin-mencoes"><strong>Menção honrosa:</strong> ${p.mencoes.map(m => esc(m.nome)).join('; ')}</div>`
+    : '';
+  return `
+    <article class="fin-vencedor" aria-label="Vencedor: ${esc(p.titulo)}">
+      <span class="premiado-eyebrow">🏅 Vencedor(a) 2026 · ${esc(p.titulo)}</span>
+      <div class="fin-nome">${esc(nome)}</div>
+      ${inst ? `<div class="fin-inst">${esc(inst)}</div>` : ''}
+      ${titulo ? `<p class="fin-titulo">${esc(titulo)}</p>` : ''}
+      ${w.orientador ? `<div class="fin-meta">Orientação: ${esc(w.orientador)}</div>` : ''}
+      ${blocoResumo(t && t.resumo)}
+      ${t ? `<a class="fin-prog" href="programacao.html#T-${encodeURIComponent(t.id)}">Ver na programação &rarr;</a>` : ''}
+      ${mencoes}
+    </article>`;
+}
+
+function comissaoDe(p) {
+  const c = (typeof COMMITTEE !== 'undefined') ? COMMITTEE.find(x => x.secao === p.comissao) : null;
+  if (!c || typeof PESSOAS === 'undefined') return '';
+  const nomes = c.membros.map(m => PESSOAS[m.pessoa]).filter(Boolean)
+    .map(x => `<span>${escTexto(x.nome)} (${escTexto(x.instituicao)})</span>`).join('');
+  return nomes ? `<div class="fin-comissao"><strong>Comissão avaliadora:</strong>${nomes}</div>` : '';
+}
+
+function renderConcurso(dados) {
+  const el = document.getElementById('concurso-categorias');
+  if (!el) return;
+  let comFinalistas = 0, comVencedor = 0;
+  el.innerHTML = CATEGORIAS.map(p => {
+    const a = (dados && p.sessao_finalistas) ? Agenda.atividade(dados, p.sessao_finalistas) : null;
+    const lista = finalistasDe(dados, p);
+    let corpo, legenda = '';
+    if (p.premiado) {
+      comVencedor++;
+      corpo = cardVencedor(p, p.premiado, dados);
+    } else if (lista.length) {
+      comFinalistas++;
+      legenda = '<span class="fin-cat-ordem">Finalistas em ordem de apresentação na sessão</span>';
+      corpo = `<div class="fin-grid${lista.length === 4 ? ' fin-grid--4' : ''}">${lista.map(cardFinalista).join('')}</div>`;
+    } else {
+      corpo = `<p class="fin-pendente">${p.descricao}<strong>⏳ Finalistas a anunciar</strong></p>`;
+    }
+    const sala = a && !p.premiado
+      ? `<a class="fin-cat-sala" href="programacao.html#${encodeURIComponent(a.id)}">📍 ${esc(a.local && a.local.sala ? a.local.sala : Agenda.local(a))} · ${esc(Agenda.hora(a.inicio))}</a>`
+      : '';
+    return `
+      <div class="fin-categoria" id="concurso-${esc(p.id)}">
+        <div class="fin-cat-cab">
+          <span class="fin-cat-icone" aria-hidden="true">${p.icone}</span>
+          <h3>${esc(p.titulo)}</h3>
+          ${legenda}${sala}
+        </div>
+        ${corpo}
+        ${comissaoDe(p)}
+      </div>`;
+  }).join('');
+
+  /* Situação do concurso, do mais avançado ao mais antigo. */
+  const estado = document.getElementById('concurso-estado');
+  if (estado) {
+    const prazo = typeof dataPorId === 'function' ? dataPorId('concurso-tdi') : null;
+    const inscricoesAbertas = prazo && new Date() <= new Date(prazo.fim + 'T23:59:59');
+    estado.textContent = comVencedor === CATEGORIAS.length
+      ? 'Parabéns a todas e todos os finalistas e às pessoas premiadas em cada modalidade.'
+      : comFinalistas || comVencedor
+        ? 'As comissões avaliadoras definiram os finalistas de cada modalidade. Haverá um vencedor por modalidade (Tese, Dissertação e Iniciação Científica), e cada resultado será publicado nesta página.'
+        : inscricoesAbertas
+          ? 'As inscrições no concurso estão abertas até ' + dataPorExtenso(prazo.fim) + '. Os resultados serão publicados nesta página.'
+          : 'As inscrições no concurso estão encerradas e os trabalhos estão em avaliação pelas comissões. Os resultados serão publicados nesta página.';
+  }
+
+  renderConvite(dados);
+}
+
+/* Convite para as sessões: só enquanto houver categoria com finalistas, sem
+   vencedor, cuja sessão ainda não terminou (relógio de Brasília). */
+function renderConvite(dados) {
+  const convite = document.getElementById('concurso-convite');
+  const conv = (typeof FINALISTAS_CONVITE !== 'undefined') ? FINALISTAS_CONVITE : null;
+  if (!convite || !conv || !dados) return;
+  const agora = Agenda.agora();
+  const sessoes = CATEGORIAS.filter(p => !p.premiado && finalistasDe(dados, p).length)
+    .map(p => Agenda.atividade(dados, p.sessao_finalistas)).filter(Boolean)
+    .filter(a => a.data > agora.data || (a.data === agora.data && agora.min < Agenda.minutos(a.fim || a.inicio)));
+  if (!sessoes.length) { convite.hidden = true; return; }
+  const a0 = sessoes[0];
+  if (!sessoes.every(a => a.data === a0.data && a.inicio === a0.inicio)) { convite.hidden = true; return; }
+  const predios = (typeof CONFIG !== 'undefined' && CONFIG.predios) || {};
+  const pr = a0.local && predios[a0.local.predio];
+  const predio = pr && pr.nome ? pr.nome + ' (' + a0.local.predio + ')' : ((a0.local && a0.local.predio) || '');
+  const [, mes, num] = a0.data.split('-').map(Number);
+  const MESES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const texto = conv.texto
+    .replace('{dia}', Agenda.dia(dados, a0.data))
+    .replace('{horario}', Agenda.faixa(a0))
+    .replace('{predio}', predio);
+  convite.innerHTML = `
+    <div class="fin-convite-data" aria-hidden="true"><b>${num}</b><span>${MESES[mes - 1]} · ${esc(Agenda.hora(a0.inicio))}</span></div>
+    <div><h3>${esc(conv.titulo)}</h3><p>${esc(texto)}</p></div>
+    <div class="fin-convite-acoes">
+      <a class="btn btn--gold" href="programacao.html#${encodeURIComponent(a0.id)}">Ver na programação</a>
+      <a class="btn btn--outline" href="logistica.html#local">Como chegar</a>
+    </div>`;
+  convite.hidden = false;
+}
+
+/* Elegibilidade lida de data/submissions.js. */
 (function () {
-  const sec = document.getElementById('finalistas');
-  const premios = PREMIOS.filter(p => p.sessao_finalistas && !p.premiado);
-  if (!sec || !premios.length || typeof Agenda === 'undefined') return;
-  Agenda.carregar().then(dados => {
-    const e = Agenda.escapar;
-    const porPremio = {};
-    const sessoes = [];
-    premios.forEach(p => {
-      const a = Agenda.atividade(dados, p.sessao_finalistas);
-      const lista = (dados.trabalhos || []).filter(t => t.sessao === p.sessao_finalistas)
-        .sort((x, y) => (x.ordem || 99) - (y.ordem || 99) || String(x.id).localeCompare(String(y.id)));
-      if (!a || !lista.length) return;
-      porPremio[p.id] = lista;
-      sessoes.push({ p, a, lista });
-    });
-    if (!sessoes.length) return;
-
-    renderCategorias(porPremio);
-
-    document.getElementById('finalistas-categorias').innerHTML = sessoes.map(({ p, a, lista }) => {
-      const sala = a.local && a.local.sala ? a.local.sala : Agenda.local(a);
-      return `
-        <div class="fin-categoria" id="finalistas-${e(p.id)}">
-          <div class="fin-cat-cab">
-            <span class="fin-cat-icone" aria-hidden="true">${p.icone}</span>
-            <h3>${e(p.titulo)}</h3>
-            <span class="fin-cat-ordem">Em ordem de apresentação na sessão</span>
-            <a class="fin-cat-sala" href="programacao.html#${encodeURIComponent(a.id)}">📍 ${e(sala)} · ${e(Agenda.hora(a.inicio))}</a>
-          </div>
-          <div class="fin-grid${lista.length === 4 ? ' fin-grid--4' : ''}">${lista.map(cardFinalista).join('')}</div>
-        </div>`;
-    }).join('');
-
-    /* Convite: dia, horário além de prédio da primeira sessão. Quando as
-       sessões caem em momentos diferentes, cada chip de sala já diz o seu. */
-    const a0 = sessoes[0].a;
-    const mesmoHorario = sessoes.every(s => s.a.data === a0.data && s.a.inicio === a0.inicio);
-    const conv = (typeof FINALISTAS_CONVITE !== 'undefined') ? FINALISTAS_CONVITE : null;
-    const predios = (typeof CONFIG !== 'undefined' && CONFIG.predios) || {};
-    const pr = a0.local && predios[a0.local.predio];
-    const predio = pr && pr.nome ? pr.nome + ' (' + a0.local.predio + ')' : ((a0.local && a0.local.predio) || '');
-    const convite = document.getElementById('finalistas-convite');
-    if (conv && mesmoHorario && convite) {
-      const [, mes, num] = a0.data.split('-').map(Number);
-      const MESES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-      const texto = conv.texto
-        .replace('{dia}', Agenda.dia(dados, a0.data))
-        .replace('{horario}', Agenda.faixa(a0))
-        .replace('{predio}', predio);
-      convite.innerHTML = `
-        <div class="fin-convite-data" aria-hidden="true"><b>${num}</b><span>${MESES[mes - 1]} · ${e(Agenda.hora(a0.inicio))}</span></div>
-        <div><h3>${e(conv.titulo)}</h3><p>${e(texto)}</p></div>
-        <div class="fin-convite-acoes">
-          <a class="btn btn--gold" href="programacao.html#${encodeURIComponent(a0.id)}">Ver na programação</a>
-          <a class="btn btn--outline" href="logistica.html#local">Como chegar</a>
-        </div>`;
-    } else if (convite) {
-      convite.remove();
-    }
-
-    sec.hidden = false;
-    const atalho = document.getElementById('atalho-finalistas');
-    if (atalho) atalho.hidden = false;
-    const estado = document.getElementById('concurso-estado');
-    if (estado) estado.innerHTML = 'As comissões acima definiram os finalistas de cada categoria. <a href="#finalistas" style="color:var(--teal);font-weight:600">Conheça os trabalhos &uarr;</a> O resultado será publicado nesta página.';
-
-    /* Endereço com âncora de seção gerada agora: rola depois de desenhar. */
-    if (/^#finalista/.test(location.hash)) {
-      const alvo = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-      if (alvo) alvo.scrollIntoView();
-    }
-  }).catch(() => { /* fica a vitrine com a descrição */ });
+  const concurso = (typeof SUBMISSION_MODALITIES !== 'undefined') ? SUBMISSION_MODALITIES.find(s => s.id === 'concurso') : null;
+  const eleg = document.getElementById('concurso-elegibilidade');
+  if (concurso && eleg) eleg.innerHTML = 'Premiação dos melhores trabalhos de pós-graduação e graduação, com um vencedor em cada modalidade. ' + concurso.elegibilidade;
 })();
+
+/* ── Montagem ───────────────────────────────────────
+   Primeiro sem a programação (a página nunca fica vazia), depois com ela. */
+renderDestaque();
+renderConcurso(null);
+Agenda.carregar().then(dados => {
+  renderEntregaDestaque(dados);
+  renderConcurso(dados);
+  if (/^concurso-|^finalista-/.test(location.hash.slice(1))) rolarParaAncora();
+}).catch(() => { /* ficam a descrição e as comissões */ });
 
 /* ── Scroll Reveal ──────────────────────────────── */
 const revealObs = new IntersectionObserver((entries) => {

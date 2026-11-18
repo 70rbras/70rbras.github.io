@@ -243,7 +243,7 @@ Todos os prêmios centralizados em `premios.html` (decisão out/2026). `premiado
 | Melhor Dissertação de Mestrado | a anunciar |
 | Melhor Trabalho de IC | a anunciar |
 
-Finalistas dos concursos (17/11/2026): seção `premios.html#finalistas`, lida das sessões `CONC-TESE`, `CONC-DISS` e `CONC-IC` da programação (campo `sessao_finalistas` em `data/premios.js`); nome, instituição, título e resumo se corrigem na planilha (abas `trabalhos` e `resumos`, `ref` = id do trabalho, ex.: `CONC-TESE-1`). Texto do convite em `FINALISTAS_CONVITE`. Ao anunciar o vencedor, preencher `premiado`: a seção some para aquela categoria e o card vira revelado.
+Página organizada em dois blocos desde 18/11/2026: `#destaque` (caixa do premiado, sobre o prêmio, linha do tempo com a entrega) e `#concurso` (convite, uma categoria por prêmio com finalistas e comissão avaliadora no pé). Âncoras antigas (`#premiados`, `#finalistas`, `#finalistas-tese`, `#premiado-tese`...) são redirecionadas por script na própria página. Finalistas lidos das sessões `CONC-TESE`, `CONC-DISS` e `CONC-IC` da programação (campo `sessao_finalistas` em `data/premios.js`); nome, instituição, título e resumo se corrigem na planilha (abas `trabalhos` e `resumos`, `ref` = id do trabalho, ex.: `CONC-TESE-1`). Texto do convite em `FINALISTAS_CONVITE`; o convite some depois da sessão. Ao anunciar o vencedor, preencher `premiado` (nome obrigatório; `trabalho_id` opcional puxa título, instituição e resumo da programação): a categoria passa a mostrar só o vencedor.
 
 Entrega do Destaque: dia, horário além de local lidos da atividade `REUNIAO-RBRAS` da programação (campo `entrega_atividade` em `data/premios.js`). Menu: "🏆 Prêmios RBras", sem selo "Novo" desde 16/11/2026.
 
@@ -290,6 +290,7 @@ Entrega do Destaque: dia, horário além de local lidos da atividade `REUNIAO-RB
 - ✅ `data/resumos-trabalhos.json` no casco do service worker, com `VERSAO` em 3, além de duas validações novas no build (09/11/2026, tarefa P17)
 - ✅ Dois prédios em `logistica.html#local` (CDC e IMECC, endereço, o que acontece em cada um lido da programação, rota a pé, credenciamento), Hero e metadados citam os dois (16/11/2026)
 - ✅ Finalistas dos concursos de Tese, Dissertação e IC publicados em `premios.html#finalistas` (cartões com instituição, título e resumo, convite para as sessões), vitrine e faixa da Home com chamada; sem número de ordem nos cartões, para não sugerir colocação; `VERSAO` em 10 (17/11/2026)
+- ✅ `premios.html` reorganizada em dois blocos (Destaque e Concurso), sem a vitrine "Premiados 2026" nem a caixa de documentação exigida; comissão avaliadora no pé de cada categoria; um vencedor por modalidade, que substitui os finalistas daquela categoria; `VERSAO` em 12 (18/11/2026)
 - ✅ Modo evento na Home (Agora / A seguir), Programação como item próprio do menu, botões "Encontre seu trabalho" e "Como chegar" no Hero, realce do "agora" na programação com correção de fuso, avisos ligados a atividades, entrega do Destaque lida da programação, seção do Jantar; `VERSAO` em 5 (16/11/2026)
 ---
 

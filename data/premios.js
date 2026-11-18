@@ -1,5 +1,5 @@
 // ─── PRÊMIOS RBRAS 2026 ──────────────────────────────────────────────────────
-// Alimenta premios.html (vitrine "Premiados 2026") e a faixa de anúncio da Home.
+// Alimenta premios.html (bloco #destaque e bloco #concurso) e a faixa de anúncio da Home.
 //
 // Campos por prêmio:
 //   id        → âncora em premios.html (ex.: premios.html#destaque)
@@ -15,6 +15,9 @@
 //       texto       → (Destaque) 1 ou 2 parágrafos sobre a trajetória; use um array para vários parágrafos
 //       trabalho    → (Tese/Dissertação/IC) título do trabalho premiado
 //       orientador  → (Tese/Dissertação/IC) nome do(a) orientador(a)
+//       trabalho_id → (Tese/Dissertação/IC, opcional) id do trabalho na programação,
+//                     ex.: "CONC-TESE-2". O que não for preenchido acima (título,
+//                     instituição) vem dali, junto com o resumo.
 //   mencoes   → (opcional) array de menções honrosas, com os mesmos campos de `premiado`
 //   entrega_atividade → (opcional) id da atividade de data/programacao.json em que o
 //               prêmio é entregue. premios.html lê dali dia, horário e local, de
@@ -25,15 +28,13 @@
 //               Nada disso se escreve aqui: corrige-se na planilha (abas trabalhos e resumos).
 //
 // Assim que o primeiro `premiado` for preenchido, a faixa dourada aparece
-// automaticamente na Home e o card correspondente em premios.html é revelado.
+// automaticamente na Home. Nas categorias do concurso, preencher `premiado`
+// troca a grade de finalistas pelo cartão de quem venceu (só o vencedor).
+// Há um vencedor por modalidade: cada categoria tem o seu `premiado`, anunciado
+// de forma independente das outras.
 
-// A frase cita a edição além das datas do evento, que vivem em data/config.js.
-// Aqui ficam apenas os marcadores {edicao} e {datas}, trocados em premios.html
-// no momento de escrever o texto, do mesmo modo que data/submissions.js faz com
-// os prazos. Nenhuma data é escrita neste arquivo.
-const PREMIOS_ENTREGA = "Os prêmios serão entregues durante a {edicao}, de {datas}, na Unicamp.";
-
-// Convite para as sessões dos finalistas, exibido em premios.html#finalistas.
+// Convite para as sessões dos finalistas, exibido em premios.html#concurso
+// enquanto a sessão não terminou.
 // {dia}, {horario} além de {predio} vêm da primeira sessão de finalistas na
 // programação, portanto nenhuma data é escrita aqui.
 const FINALISTAS_CONVITE = {
