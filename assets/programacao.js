@@ -1010,27 +1010,38 @@
     selo.textContent = origem === 'cache' ? 'cópia guardada neste aparelho' : 'direto da rede';
     el.atualizado.appendChild(selo);
 
-    if (origem !== 'cache') return;
-
+    /* O botão fica sempre visível, com ou sem rede. O aplicativo instalado no
+       iPhone abre sem a barra do Safari, portanto sem botão de recarregar nem
+       gesto de puxar a tela: este botão é o único caminho do participante para
+       buscar a versão mais recente. Tarefa P20. */
     var botao = document.createElement('button');
     botao.type = 'button';
     botao.className = 'app-botao-linha';
-    botao.textContent = 'Tentar atualizar';
+    botao.textContent = 'Atualizar';
     botao.addEventListener('click', function () {
       botao.disabled = true;
       botao.textContent = 'Procurando...';
       procurarVersaoNova(true).then(function (resultado) {
-        if (resultado === 'nova') return;            // o aviso já apareceu
+        /* Foi o participante quem tocou, portanto recarregar agora não
+           interrompe leitura alguma. A função de registrar-sw.js também troca
+           o service worker quando há versão nova esperando. */
+        if (resultado === 'nova') {
+          if (typeof window.aplicarAtualizacao === 'function') window.aplicarAtualizacao();
+          else location.reload();
+          return;
+        }
         botao.disabled = false;
         botao.textContent = resultado === 'em-dia' ? 'Já está em dia' : 'Sem rede agora';
-        setTimeout(function () { botao.textContent = 'Tentar atualizar'; }, 4000);
+        setTimeout(function () { botao.textContent = 'Atualizar'; }, 4000);
       });
     });
     el.atualizado.appendChild(botao);
   }
 
   /* Busca o JSON ignorando qualquer cópia guardada. Devolve 'nova', 'em-dia'
-     ou 'sem-rede'. Mostrar o aviso é efeito, não resposta. */
+     ou 'sem-rede'. Quando a busca parte da própria página, a novidade vira o
+     aviso com o botão Recarregar; quando parte do botão Atualizar, quem
+     recarrega é o botão, então o aviso não aparece. */
   function procurarVersaoNova(pedidoDoVisitante) {
     return fetch('data/programacao.json', { cache: 'no-store' })
       .then(function (r) {
@@ -1048,7 +1059,7 @@
         var mudou = (antes && agora) ? (agora !== antes)
                                      : (novo.gerado_em !== (dados && dados.gerado_em));
         if (!mudou) return 'em-dia';
-        mostrarAviso();
+        if (!pedidoDoVisitante) mostrarAviso();
         return 'nova';
       })
       .catch(function () {
