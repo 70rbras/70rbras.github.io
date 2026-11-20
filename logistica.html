@@ -218,6 +218,7 @@ function renderPredios() {
   const { evento } = CONFIG;
   const predios = CONFIG.predios || {};
   const trajeto = CONFIG.trajeto || null;
+  const trajetoMin = trajeto ? Math.max(1, Math.round(trajeto.metros / (CONFIG.caminhada_m_por_min || 60))) : 0;
   const e = Agenda.escapar;
   const siglas = Object.keys(predios).sort((a, b) => (predios[a].ordem || 0) - (predios[b].ordem || 0));
   if (!siglas.length) return;
@@ -239,7 +240,7 @@ function renderPredios() {
   safe('local-titulo', el => el.innerHTML = siglas.length === 2 ? 'Dois <span>prédios</span>' : 'Os <span>prédios</span>');
   safe('local-intro', el => el.textContent = 'A ' + evento.edicao + ' acontece em ' +
     (siglas.length === 2 ? 'dois prédios' : siglas.length + ' prédios') + ' da ' + evento.local_instituicao +
-    (trajeto ? ', a ' + trajeto.metros + ' m um do outro (cerca de ' + trajeto.minutos + ' minutos a pé)' : '') +
+    (trajeto ? ', a ' + trajeto.metros + ' m um do outro (cerca de ' + trajetoMin + ' minutos a pé)' : '') +
     '. Antes de cada sessão, confira na programação em qual prédio ela acontece.');
 
   /* Quadro "De carro": uma rota por prédio e o estacionamento de cada um */
@@ -307,7 +308,7 @@ function renderPredios() {
     safe('trajeto-iframe', el => el.src = 'https://maps.google.com/maps?saddr=' + encodeURIComponent(de) +
       '&daddr=' + encodeURIComponent(para) + '&dirflg=w&output=embed');
     safe('trajeto-titulo', el => el.textContent = trajeto.de + ' ↔ ' + trajeto.para + ': ' +
-      trajeto.minutos + ' min a pé');
+      trajetoMin + ' min a pé');
     safe('trajeto-desc', el => el.textContent = 'Cerca de ' + trajeto.metros + ' m dentro do campus. ' +
       'A programação avisa quando duas atividades seguidas mudam de prédio: reserve esse tempo nas trocas.');
     safe('trajeto-link', el => el.href = mapsRota(de, para, 'walking'));
@@ -429,7 +430,10 @@ function renderRestaurantes() {
   if (!box) return;
   if (typeof RESTAURANTES === 'undefined' || !RESTAURANTES.length) { if (sec) sec.hidden = true; return; }
   const cfg = (typeof RESTAURANTES_CONFIG !== 'undefined' && RESTAURANTES_CONFIG) || {};
-  const aPeAte = cfg.a_pe_ate_m || 800, uberDe = cfg.uber_a_partir_m || 1500, ritmo = cfg.metros_por_minuto || 80;
+  const ritmo = CONFIG.caminhada_m_por_min || 60;
+  const minAPe = cfg.a_pe_ate_min || 10, minUber = cfg.uber_a_partir_min || 20;
+  /* Faixas comparadas em minutos arredondados, os mesmos exibidos no cartão. */
+  const aPeAte = minAPe * ritmo + ritmo / 2 - 1, uberDe = minUber * ritmo + ritmo / 2 - 1;
   const e = Agenda.escapar;
   const menor = r => Math.min(...Object.values(r.distancia || {}));
   const km = m => m < 1000 ? m + ' m' : (m / 1000).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' km';
@@ -467,9 +471,9 @@ function renderRestaurantes() {
   const lista = RESTAURANTES.slice().sort((a, b) => menor(a) - menor(b));
   const VISIVEIS = 8;   // na faixa longa, o resto fica atrás do botão "Ver mais"
   const faixas = [
-    { titulo: 'A pé, até 10 minutos', icone: '🚶', nota: `Até ${km(aPeAte)} do prédio mais próximo.`, itens: lista.filter(r => menor(r) <= aPeAte) },
-    { titulo: 'A pé, de 10 a 20 minutos', icone: '🚶', nota: `De ${km(aPeAte)} a ${km(uberDe)}.`, itens: lista.filter(r => menor(r) > aPeAte && menor(r) <= uberDe) },
-    { titulo: 'Centro de Barão Geraldo: vá de carro ou Uber', icone: '🚗', nota: `Acima de ${km(uberDe)}. Melhor ir de carro ou de Uber, sobretudo no intervalo do almoço.`, itens: lista.filter(r => menor(r) > uberDe), recolher: true }
+    { titulo: `A pé, até ${minAPe} minutos`, icone: '🚶', nota: `Até cerca de ${km(minAPe * ritmo)} do prédio mais próximo.`, itens: lista.filter(r => menor(r) <= aPeAte) },
+    { titulo: `A pé, de ${minAPe} a ${minUber} minutos`, icone: '🚶', nota: `De ${km(minAPe * ritmo)} a ${km(minUber * ritmo)}, aproximadamente.`, itens: lista.filter(r => menor(r) > aPeAte && menor(r) <= uberDe) },
+    { titulo: 'Centro de Barão Geraldo: vá de carro ou Uber', icone: '🚗', nota: `Mais de ${minUber} minutos a pé. Melhor ir de carro ou de Uber, sobretudo no intervalo do almoço.`, itens: lista.filter(r => menor(r) > uberDe), recolher: true }
   ].filter(f => f.itens.length);
 
   box.innerHTML = faixas.map((f, n) => {

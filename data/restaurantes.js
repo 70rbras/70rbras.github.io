@@ -1,7 +1,8 @@
 // ─── RESTAURANTES ────────────────────────────────────────────────────────────
 // Restaurantes perto do evento. A página logistica.html#restaurantes exibe a
 // lista em ordem de distância (o menor valor entre os prédios), em três faixas
-// definidas em RESTAURANTES_CONFIG; acima de `uber_a_partir_m` o cartão
+// definidas em RESTAURANTES_CONFIG, em minutos de caminhada (ritmo de
+// CONFIG.caminhada_m_por_min); acima de `uber_a_partir_min` o cartão
 // recomenda carro ou Uber e oferece o link do Uber com o destino preenchido.
 //
 // Campos:
@@ -23,9 +24,8 @@
 // funcionamento devem ser confirmados com cada estabelecimento.
 
 const RESTAURANTES_CONFIG = {
-  a_pe_ate_m:      800,    // até aqui: "A pé" (cerca de 10 minutos)
-  uber_a_partir_m: 1500,   // acima daqui: recomenda carro ou Uber
-  metros_por_minuto: 80    // ritmo de caminhada usado para estimar o tempo
+  a_pe_ate_min:      10,   // até aqui: "A pé, até 10 minutos"
+  uber_a_partir_min: 20    // acima daqui: recomenda carro ou Uber
 };
 
 const RESTAURANTES = [

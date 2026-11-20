@@ -47,7 +47,8 @@ const CONFIG = {
   //   estacionamento → (opcional) como é o estacionamento; aparece no quadro
   //               "De carro" de logistica.html#como-chegar
   //   ordem     → posição do cartão na página
-  // `trajeto` descreve a caminhada entre os dois prédios.
+  // `trajeto` descreve a caminhada entre os dois prédios; os minutos saem de
+  // `metros` dividido por `caminhada_m_por_min`.
   predios: {
     CDC: {
       nome:     "Centro de Convenções da Unicamp",
@@ -70,7 +71,10 @@ const CONFIG = {
       estacionamento: "próprio e gratuito"
     }
   },
-  trajeto: { de: "CDC", para: "IMECC", minutos: 10, metros: 700 },
+  trajeto: { de: "CDC", para: "IMECC", metros: 700 },
+  // Ritmo de caminhada usado em todo tempo "a pé" do site (trajeto entre os
+  // prédios e restaurantes). Os mapas supõem passo mais rápido que o real.
+  caminhada_m_por_min: 60,
 
   // Ponto da previsão do tempo (assets/clima.js, via Open-Meteo): o CDC.
   // Os dias vêm do prazo "evento" de data/dates.js.

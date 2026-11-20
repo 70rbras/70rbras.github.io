@@ -771,6 +771,23 @@
         busca: semAcento(t.id + ' ' + t.autor + ' ' + t.titulo + ' ' + t.area + ' ' + t.sessao)
       };
     });
+    /* Quem percorre uma sessao de posteres anda pelo corredor na ordem dos
+       paineis, portanto a lista segue o numero do painel dentro de cada sessao.
+       Trabalho sem painel numerico vem antes, na ordem em que chegou do JSON. */
+    var posicao = indice.map(function (r, i) {
+      var n = Number(r.t.painel);
+      return { r: r, i: i, painel: r.t.painel && isFinite(n) ? n : null };
+    });
+    posicao.sort(function (x, y) {
+      if (x.painel === null || y.painel === null) {
+        if (x.painel === null && y.painel === null) return x.i - y.i;
+        return x.painel === null ? -1 : 1;
+      }
+      var sx = x.r.t.sessao || '', sy = y.r.t.sessao || '';
+      if (sx !== sy) return sx < sy ? -1 : 1;
+      return x.painel - y.painel || x.i - y.i;
+    });
+    indice = posicao.map(function (p) { return p.r; });
   }
 
   /* Tarja da sessao em exibicao, com o caminho de volta a busca inteira. */

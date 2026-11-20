@@ -10,7 +10,7 @@ Site oficial da **70ª Reunião Anual da Região Brasileira da Sociedade Interna
 
 - **Tema:** "Dados que revelam vida: Estatística e Ciência de Dados na Biometria"
 - **Data do evento:** 23–25 de novembro de 2026 (segunda a quarta)
-- **Local:** dois prédios da Unicamp, Campinas, SP, a 700 m um do outro (10 min a pé)
+- **Local:** dois prédios da Unicamp, Campinas, SP, a 700 m um do outro (12 min a pé)
   - **CDC**, Centro de Convenções da Unicamp: Avenida Érico Veríssimo, 500 · Cidade Universitária Zeferino Vaz - Barão Geraldo · CEP 13083-851 (credenciamento, abertura, conferências, sessões temáticas, concursos, encerramento)
   - **IMECC**, Instituto de Matemática, Estatística e Computação Científica: Rua Sérgio Buarque de Holanda, 651 — Cidade Universitária Zeferino Vaz, Campinas, SP · CEP 13083-859 (minicursos, pôsteres, parte das comunicações orais, assembleia; também o WASA)
   - Fonte: `data/config.js` (`evento.local_*` é o IMECC; `predios` e `trajeto` descrevem os dois prédios)
@@ -231,7 +231,7 @@ Grade única, sem tiers visíveis; `quebraAntes: true` força nova linha.
 
 - **Hospedagem:** Hotel Matiz Barão Geraldo Express, Unibarão Hotel, Casa do Professor Visitante, Casa Pirâmide de Vidro (Airbnb)
 - **Gráficas:** Connect Print (selo "Parceira", preços promocionais no tamanho A0 desde nov/2026: sulfite 120g R$ 54,90, gloss paper 180g R$ 75,40, lona R$ 86,00, todos com canaleta e cordinha; arquivos preferencialmente via WhatsApp) e Cromarte Gráfica Digital (selo "Parceira", 2 WhatsApp, pôster 0,90×1,20 m em 5 materiais de R$ 35,90 a R$ 239,90, prazo 1 a 2 dias úteis; não trabalha com lona, oferece papéis promocionais recicláveis)
-- **Restaurantes próximos** (`data/restaurantes.js`, `logistica.html#restaurantes`, 18/11/2026): 31 restaurantes (lista de partida do WVC 2026/Congresso do IMECC), em ordem da menor distância a pé até CDC ou IMECC, em três faixas (`a_pe_ate_m` 800, `uber_a_partir_m` 1500); acima do limite, link do Uber com destino preenchido; todos com link do Google Maps (avaliações ficam lá, sem copiar nota). Distâncias calculadas por OSRM a pé sobre posições do OpenStreetMap; item novo exige medir de novo.
+- **Restaurantes próximos** (`data/restaurantes.js`, `logistica.html#restaurantes`, 18/11/2026): 31 restaurantes (lista de partida do WVC 2026/Congresso do IMECC), em ordem da menor distância a pé até CDC ou IMECC, em três faixas por minutos de caminhada (`a_pe_ate_min` 10, `uber_a_partir_min` 20, ao ritmo de `CONFIG.caminhada_m_por_min` = 60 m/min, que também dá o tempo do trajeto CDC ↔ IMECC; os mapas supõem passo mais rápido); acima do limite, link do Uber com destino preenchido; todos com link do Google Maps (avaliações ficam lá, sem copiar nota). Distâncias calculadas por OSRM a pé sobre posições do OpenStreetMap; item novo exige medir de novo.
 - Pôster oficial: A0 retrato (841×1189 mm); a Connect Print passou a oferecer o próprio A0 (e-mail da gráfica, nov/2026), no lugar dos banners 0,80 e 0,90 × 1,20 m
 - Links para `#graficas`: menu Logística, rodapé, botão "Onde imprimir" em `cientifico.html`, FAQ "Onde posso imprimir meu pôster?"
 
