@@ -875,5 +875,22 @@ a.pg-sala:focus-visible {
   }
 }
 
-/* Painel do pôster (número do trabalho), destacado no resultado da busca */
+/* Painel do pôster, destacado no resultado da busca */
 .pg-cod.pg-painel { font-weight: 700; color: var(--pg-azul); }
+
+/* ID da submissao, em linha menor abaixo do painel: e o numero que o
+   participante conhecia antes da divulgacao dos paineis */
+.pg-resultado-id {
+  font-size: .78rem;
+  color: var(--pg-texto-fraco);
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 .25rem;
+}
+
+/* Aviso de que painel e ID da submissao sao numeros diferentes, na faixa do
+   filtro de sessao. Ocupa a linha inteira, abaixo do nome da sessao. */
+.pg-filtro-aviso {
+  flex-basis: 100%;
+  font-size: .82rem;
+  color: var(--pg-texto);
+}

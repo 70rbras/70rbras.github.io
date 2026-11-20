@@ -169,16 +169,23 @@
   /* Uma apresentacao da lista. O resumo fica recolhido num details, pois quatro
      resumos abertos de uma vez nao cabem na tela do telefone, enquanto o titulo
      com quem apresenta e o que o visitante percorre para escolher. */
-  /* Painel do pôster: o da planilha; sem ele, o identificador recebido na
-     submissão, que a organização usa para numerar os painéis. */
+  /* Painel do pôster: so o da planilha. Desde 19/11/2026 o painel tem numeracao
+     propria, diferente do identificador de submissao, portanto exibir o
+     identificador no lugar do painel levaria o participante ao painel errado. */
   function painelDe(t) {
-    if (t.painel) return t.painel;
-    return semAcento(t.modalidade) === 'poster' ? t.id : '';
+    return t.painel || '';
+  }
+
+  /* Rotulo do identificador de submissao. So o identificador numerico veio do
+     sistema de submissao; os demais, como ST-4-1, seguem com o "#" de antes. */
+  function idSubmissao(t) {
+    if (!t.id) return '';
+    return /^\d+$/.test(t.id) ? 'ID da submissão #' + t.id : '#' + t.id;
   }
 
   function apresentacaoHtml(t) {
     var cabeca = [];
-    if (t.id) cabeca.push('#' + t.id);
+    if (t.id) cabeca.push(idSubmissao(t));
     if (t.area) cabeca.push(t.area);
     return '<li class="pg-apres-item" id="T-' + atributo(t.id) + '">' +
       (cabeca.length ? '<p class="pg-apres-cod">' + texto(cabeca.join(' \u00b7 ')) + '</p>' : '') +
@@ -220,7 +227,6 @@
     var onde = [];
     var painelT = painelDe(t);
     if (painelT) onde.push('Painel ' + painelT);
-    else if (t.id) onde.push('#' + t.id);
     if (t.sessao) onde.push(t.sessao);
     if (s) {
       if (d) onde.push(d.rotulo);
@@ -233,6 +239,10 @@
       '<h2 class="pg-dialogo-titulo" id="pgDialogoTitulo">' + texto(t.titulo) + '</h2>' +
       (t.autor ? '<p class="pg-quem">' + texto(quem) + '</p>' : '') +
       '<p class="pg-dialogo-quando">' + texto(onde.join(' \u00b7 ')) + '</p>' +
+      (t.id
+        ? '<p class="pg-dialogo-quando">' +
+          texto(/^\d+$/.test(t.id) ? 'ID da submiss\u00e3o: #' + t.id : '#' + t.id) + '</p>'
+        : '') +
       (t.area ? '<p class="pg-dialogo-quando">' + texto(t.area) + '</p>' : '') +
       '<div class="pg-dialogo-resumo" id="pgResumoTrabalho">' +
       (t.resumo ? paragrafos(t.resumo)
@@ -806,7 +816,25 @@
       '<span class="pg-filtro-conta">' + quantos +
       (quantos === 1 ? ' trabalho' : ' trabalhos') + '</span>' +
       '<button type="button" class="pg-filtro-limpar" aria-label="Limpar o filtro de sess\u00e3o">' +
-      'Ver todos \u2715</button>';
+      'Ver todos \u2715</button>' +
+      ((apresentacoes[sessaoFiltro] || []).some(function (t) { return t.painel; })
+        ? '<span class="pg-filtro-aviso">O n\u00famero do painel n\u00e3o \u00e9 o ID da ' +
+          'submiss\u00e3o. No local, procure o p\u00f4ster pelo n\u00famero do painel.</span>'
+        : '');
+  }
+
+  /* Numero digitado sozinho e comparado inteiro, nao como trecho de texto: a
+     busca por trecho traria 112 e 120 para quem digitou 12. Sem prefixo ele vale
+     tanto para o painel quanto para o ID da submissao; "#33" vale so para o ID,
+     enquanto "painel 12" vale so para o painel. */
+  function consultaNumerica(q) {
+    var m = q.match(/^#\s*(\d+)$/);
+    if (m) return { id: m[1] };
+    m = q.match(/^painel\s*(\d+)$/);
+    if (m) return { painel: m[1] };
+    m = q.match(/^(\d+)$/);
+    if (m) return { id: m[1], painel: m[1] };
+    return null;
   }
 
   /* Leva a busca ja restrita a uma sessao. E o caminho das sessoes de poster,
@@ -829,13 +857,19 @@
       ? indice.filter(function (r) { return r.t.sessao === sessaoFiltro; })
       : indice;
 
-    if (!sessaoFiltro && q.length < 2) {
+    var num = consultaNumerica(q);
+    if (!sessaoFiltro && q.length < 2 && !num) {
       el.resultados.innerHTML = '<p class="pg-vazio">Digite ao menos duas letras, ' +
-        'o número do trabalho ou o nome de quem apresenta.</p>';
+        'o número do painel, o ID da submissão ou o nome de quem apresenta.</p>';
       return;
     }
     var achados = base;
-    if (q.length >= 2) {
+    if (num) {
+      achados = base.filter(function (r) {
+        return (num.id && r.t.id === num.id) ||
+               (num.painel && String(r.t.painel || '') === num.painel);
+      });
+    } else if (q.length >= 2) {
       var termos = q.split(/\s+/);
       achados = base.filter(function (r) {
         return termos.every(function (t) { return r.busca.indexOf(t) >= 0; });
@@ -860,11 +894,16 @@
         '<div class="pg-resultado-topo">' +
         (painelDe(t)
           ? '<span class="pg-cod pg-painel">Painel ' + texto(painelDe(t)) + '</span>'
-          : '<span class="pg-cod">#' + texto(t.id) + '</span>') +
+          : '<span class="pg-cod">' + texto(idSubmissao(t)) + '</span>') +
         '<span class="pg-tipo" style="color:' + corTrab + '">' + texto(t.modalidade) + '</span>' +
         (t.sessao ? '<span class="pg-cod">' + texto(t.sessao) + '</span>' : '') +
 
         '</div>' +
+        /* Com painel no destaque, o ID da submissao desce para a linha menor,
+           pois e o numero que o participante recebeu antes de 19/11/2026. */
+        (painelDe(t) && t.id
+          ? '<p class="pg-resultado-id">' + texto(idSubmissao(t)) + '</p>'
+          : '') +
         '<h4>' + texto(t.titulo) + '</h4>' +
         '<p class="pg-resultado-quando">' + quando + '</p>' +
         '<p class="pg-resultado-meta">' +
