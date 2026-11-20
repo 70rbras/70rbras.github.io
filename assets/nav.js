@@ -41,13 +41,16 @@
     </a>
     <ul class="nav-links" id="navLinks">
 
-      <!-- Evento (dropdown) -->
+      <!-- Evento (dropdown). Inscrições mora aqui desde a tarefa P20: as
+           inscrições seguem abertas no local, porém durante o evento o
+           primeiro nível do menu fica para o que o participante consulta. -->
       <li class="nav-dropdown">
-        <a href="${root}index.html#sobre" class="nav-dropdown-toggle${dropdownActive('palestrantes.html', 'comissoes.html', 'premios.html')}">Evento ${chev}</a>
+        <a href="${root}index.html#sobre" class="nav-dropdown-toggle${dropdownActive('palestrantes.html', 'comissoes.html', 'inscricoes.html', 'premios.html')}">Evento ${chev}</a>
         <ul class="nav-dropdown-menu">
           <li><a href="${root}index.html#sobre">Sobre</a></li>
           <li><a href="${root}palestrantes.html"${activeClass('palestrantes.html')}>Convidados</a></li>
           <li><a href="${root}comissoes.html"${activeClass('comissoes.html')}>Comissões</a></li>
+          <li><a href="${root}inscricoes.html"${activeClass('inscricoes.html')}>Inscrições</a></li>
           <li><a href="${root}premios.html"${activeClass('premios.html')} style="color:var(--gold-light)">🏆 Prêmios RBras</a></li>
           <li><a href="${root}index.html#patrocinadores">Apoiadores</a></li>
         </ul>
@@ -55,9 +58,6 @@
 
       <!-- Programação: item próprio, pois é a página mais usada durante o evento -->
       <li><a href="${root}programacao.html"${activeClass('programacao.html')}>Programação</a></li>
-
-      <!-- Inscrições -->
-      <li><a href="${root}inscricoes.html"${activeClass('inscricoes.html')}>Inscrições</a></li>
 
       <!-- Logística (dropdown), com o subgrupo Para Apresentadores -->
       <li class="nav-dropdown">
