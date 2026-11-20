@@ -169,9 +169,9 @@
   /* Uma apresentacao da lista. O resumo fica recolhido num details, pois quatro
      resumos abertos de uma vez nao cabem na tela do telefone, enquanto o titulo
      com quem apresenta e o que o visitante percorre para escolher. */
-  /* Painel do pôster: so o da planilha. Desde 19/11/2026 o painel tem numeracao
-     propria, diferente do identificador de submissao, portanto exibir o
-     identificador no lugar do painel levaria o participante ao painel errado. */
+  /* Painel do pôster: so o da planilha. O painel tem numeracao propria,
+     diferente do identificador de submissao, portanto exibir o identificador
+     no lugar do painel levaria o participante ao painel errado. */
   function painelDe(t) {
     return t.painel || '';
   }
@@ -900,7 +900,7 @@
 
         '</div>' +
         /* Com painel no destaque, o ID da submissao desce para a linha menor,
-           pois e o numero que o participante recebeu antes de 19/11/2026. */
+           pois e o numero que o participante recebeu antes dos paineis. */
         (painelDe(t) && t.id
           ? '<p class="pg-resultado-id">' + texto(idSubmissao(t)) + '</p>'
           : '') +
