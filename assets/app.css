@@ -51,6 +51,20 @@
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
+  position: relative;
+}
+
+/* Área de toque de 44 pixels de altura sem mudar a aparência: o botão tem
+   cerca de 16 pixels de altura, então uma camada invisível estende a área
+   tocável para cima e para baixo. Tarefa P20b. */
+.app-botao-linha::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 44px;
+  transform: translateY(-50%);
 }
 
 .app-botao-linha:disabled {
