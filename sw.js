@@ -28,7 +28,7 @@
  * Plano: claude/plano-app-70rbras.md, tarefa T2.1.
  */
 
-const VERSAO = 26;
+const VERSAO = 27;
 const CACHE = 'rbras70-casco-v' + VERSAO;
 const SEM_REDE = 'offline.html';
 const LIMITE_MS = 3000;
@@ -80,6 +80,7 @@ const CASCO = [
   'data/graficas.js',
   'data/wasa.js',
   'data/restaurantes.js',
+  'data/cidade.js',
   'data/programacao.json',
   /* O resumo dos posteres vive aqui, fora do programacao.json, para nao pesar
      no pedido que abre a programacao. Entra no casco porque o cenario do
