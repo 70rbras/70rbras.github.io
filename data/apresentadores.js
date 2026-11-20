@@ -16,9 +16,9 @@ const APRESENTADORES = {
   poster: {
     aviso: "",
     instrucoes: [
-      "<strong>Onde fixar:</strong> cada pôster tem um painel com o <strong>número do trabalho</strong>, o identificador recebido na submissão. Confira o seu na <a href=\"programacao.html#busca\">busca de trabalhos</a>.",
+      "<strong>Onde fixar:</strong> cada pôster tem um <strong>número de painel</strong>, que não é o ID da submissão. Confira o seu na <a href=\"programacao.html#busca\">busca de trabalhos</a>.",
       "Formato do arquivo final: PDF em <strong>A0 retrato (841 × 1189 mm)</strong>.",
-      "Use um dos <strong>modelos oficiais</strong>, em PowerPoint ou LaTeX. Os dois produzem o mesmo resultado.",
+      "Os <strong>modelos oficiais</strong>, em PowerPoint ou LaTeX, produzem o mesmo resultado. O uso deles é opcional.",
       "O <strong>manual de uso</strong> traz as regras de conteúdo e a identidade visual do evento.",
       "Para imprimir, veja as <a href=\"logistica.html#graficas\">gráficas parceiras</a> em Campinas."
     ]
