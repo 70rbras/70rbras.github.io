@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-20T10:05:47-0300",
- "gerado_em_texto": "20/11/2026 às 10:05",
- "versao_dados": 202611201005,
+ "gerado_em": "2026-11-20T13:53:27-0300",
+ "gerado_em_texto": "20/11/2026 às 13:53",
+ "versao_dados": 202611201353,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -1201,33 +1201,10 @@
    "destaque": true
   },
   {
-   "id": "CAFE-25B",
-   "data": "2026-11-25",
-   "inicio": "15:00",
-   "fim": "15:30",
-   "tipo": "Intervalo",
-   "tipo_slug": "intervalo",
-   "titulo": "Café",
-   "subtitulo": "",
-   "local": {
-    "id": "CDC-GERAL",
-    "predio": "CDC",
-    "sala": "A confirmar",
-    "nome": "CDC",
-    "como_chegar": "",
-    "mapa_url": "https://maps.app.goo.gl/NeDNbho1LjMFLdB86"
-   },
-   "pessoas": [],
-   "grupo": "",
-   "descricao": "",
-   "resumo": "",
-   "destaque": false
-  },
-  {
    "id": "C-5",
    "data": "2026-11-25",
-   "inicio": "15:30",
-   "fim": "16:30",
+   "inicio": "15:00",
+   "fim": "16:00",
    "tipo": "Conferência",
    "tipo_slug": "conferencia",
    "titulo": "Conferência 5 - Beyond Univariate Models: Statistical Challenges and Opportunities in Multi-Trait Analysis",
@@ -1255,8 +1232,8 @@
   {
    "id": "ENCERRAMENTO",
    "data": "2026-11-25",
-   "inicio": "16:30",
-   "fim": "17:00",
+   "inicio": "16:00",
+   "fim": "17:30",
    "tipo": "Institucional",
    "tipo_slug": "institucional",
    "titulo": "Encerramento",
