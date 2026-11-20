@@ -59,18 +59,21 @@
       <!-- Programação: item próprio, pois é a página mais usada durante o evento -->
       <li><a href="${root}programacao.html"${activeClass('programacao.html')}>Programação</a></li>
 
-      <!-- Logística (dropdown), com o subgrupo Para Apresentadores -->
+      <!-- Logística (dropdown), em três subgrupos: Para Apresentadores primeiro,
+           depois Local, por fim Sua estadia. Ordem da tarefa P22. -->
       <li class="nav-dropdown">
         <a href="${root}logistica.html" class="nav-dropdown-toggle${dropdownActive('logistica.html', 'apresentadores.html')}">Logística ${chev}</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="${root}logistica.html#local">Local e Como Chegar</a></li>
-          <li><a href="${root}logistica.html#hospedagem">Hospedagem</a></li>
-          <li><a href="${root}logistica.html#restaurantes">Restaurantes</a></li>
-          <li><a href="${root}logistica.html#aproveite-campinas">Aproveite Campinas</a></li>
           <li class="nav-dropdown-label" role="presentation">Para Apresentadores</li>
           <li><a href="${root}apresentadores.html#poster">Pôster</a></li>
           <li><a href="${root}apresentadores.html#oral">Apresentação Oral</a></li>
           <li><a href="${root}logistica.html#graficas">Onde imprimir o pôster</a></li>
+          <li class="nav-dropdown-label" role="presentation">Local</li>
+          <li><a href="${root}logistica.html#local">Local e Como Chegar</a></li>
+          <li class="nav-dropdown-label" role="presentation">Sua estadia</li>
+          <li><a href="${root}logistica.html#hospedagem">Hospedagem</a></li>
+          <li><a href="${root}logistica.html#restaurantes">Restaurantes</a></li>
+          <li><a href="${root}logistica.html#aproveite-campinas">Aproveite Campinas</a></li>
         </ul>
       </li>
 
