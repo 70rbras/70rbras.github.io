@@ -2300,6 +2300,12 @@ const PESSOAS = {
     instituicao:        "Universidade Estadual de Campinas",
     instituicao_curta:  "UNICAMP",
   },
+  "nikolai-valtchev-kolev": {
+    nome:               "Nikolai Valtchev Kolev",
+    instituicao:        "Universidade de São Paulo",
+    instituicao_curta:  "USP",
+    tratamento:         "Prof.",
+  },
   "nixon-jerez": {
     nome:               "Nixon Jerez",
     instituicao:        "Universidad Técnica Federico Santa María",
@@ -2444,8 +2450,8 @@ const PESSOAS = {
   },
   "pedro-luiz-ramos": {
     nome:               "Pedro Luiz Ramos",
-    instituicao:        "CeMEAI - USP",
-    instituicao_curta:  "CeMEAI - USP",
+    instituicao:        "Pontificia Universidad Católica de Chile",
+    instituicao_curta:  "PUC - Chile",
     tratamento:         "Prof.",
   },
   "pedro-rafael-diniz-marinho": {
@@ -2491,6 +2497,7 @@ const PESSOAS = {
   "rafael-de-andrade-moral": {
     nome:               "Rafael de Andrade Moral",
     instituicao:        "Maynooth University",
+    instituicao_curta:  "Maynooth University",
     foto:               "assets/fotos/rafaelmoral-400.png",
     lattes:             "http://lattes.cnpq.br/8041441890541410",
     website:            "https://rafamoral.github.io/index.html",
