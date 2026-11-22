@@ -423,8 +423,9 @@
       font-weight: 700;
       color: var(--teal);
     }
-    .wasa-sc-ver::before { content: 'Ver resumo \25BE'; }
-    details[open] .wasa-sc-ver::before { content: 'Fechar resumo \25B4'; }
+    /* A palavra vem de data-rotulo: resumo por padrão, biografia quando o slot pede. */
+    .wasa-sc-ver::before { content: 'Ver ' attr(data-rotulo) ' \25BE'; }
+    details[open] .wasa-sc-ver::before { content: 'Fechar ' attr(data-rotulo) ' \25B4'; }
     .wasa-sc-resumo {
       margin: .6rem 0 .1rem calc(2.8rem + .65rem);
       font-size: .8rem;
@@ -934,13 +935,14 @@
     const showBadge = slot.tipo !== 'intervalo' && label !== slot.titulo && slot.selo !== false;
     const quem = quemApresenta(slot.pessoa);
     const temResumo = !!(slot.resumo && String(slot.resumo).trim());
+    const rotulo = slot.resumo_rotulo || 'resumo';
     const linha = `
         <span class="wasa-sc-time">${escTexto(slot.inicio)}</span>
         <div>
           ${showBadge ? `<span class="wasa-sc-badge" style="${BADGE_STYLE[slot.tipo] || ''}">${escTexto(label)}</span>` : ''}
           <p class="wasa-sc-titulo">${escTexto(slot.titulo)}</p>
           ${quem ? `<p class="wasa-sc-palestrante">${quem}</p>` : ''}
-          ${temResumo ? '<span class="wasa-sc-ver" aria-hidden="true"></span>' : ''}
+          ${temResumo ? `<span class="wasa-sc-ver" data-rotulo="${escAtributo(rotulo)}" aria-hidden="true"></span>` : ''}
         </div>`;
     if (!temResumo) {
       return `
@@ -948,7 +950,7 @@
     }
     return `
     <details class="wasa-sc t-${escAtributo(slot.tipo)}">
-      <summary class="wasa-sc-linha" aria-label="${escAtributo(slot.titulo)}: ver resumo">${linha}</summary>
+      <summary class="wasa-sc-linha" aria-label="${escAtributo(slot.titulo)}: ver ${escAtributo(rotulo)}">${linha}</summary>
       <div class="wasa-sc-resumo">${resumoHTML(slot.resumo)}</div>
     </details>`;
   }
