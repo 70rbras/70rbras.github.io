@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-22T05:06:07-0300",
- "gerado_em_texto": "22/11/2026 às 05:06",
- "versao_dados": 202611220506,
+ "gerado_em": "2026-11-22T13:22:29-0300",
+ "gerado_em_texto": "22/11/2026 às 13:22",
+ "versao_dados": 202611221322,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -758,7 +758,7 @@
    "tipo": "Pôster",
    "tipo_slug": "poster",
    "titulo": "Sessão de pôsteres 2",
-   "subtitulo": "110 trabalhos",
+   "subtitulo": "111 trabalhos",
    "local": {
     "id": "IMECC-POSTERES",
     "predio": "IMECC",
@@ -1000,7 +1000,7 @@
    "tipo": "Pôster",
    "tipo_slug": "poster",
    "titulo": "Sessão de pôsteres 3",
-   "subtitulo": "135 trabalhos",
+   "subtitulo": "134 trabalhos",
    "local": {
     "id": "IMECC-POSTERES",
     "predio": "IMECC",
@@ -1192,7 +1192,7 @@
     {
      "id": "rosemeire-l-fiaccone",
      "nome": "Rosemeire L. Fiaccone",
-     "instituicao": "Universidade Federal da Bahia (UFBA)"
+     "instituicao": "UFBA"
     }
    ],
    "grupo": "Conferências",
@@ -3766,8 +3766,8 @@
   {
    "id": "237",
    "modalidade": "Pôster",
-   "sessao": "P3",
-   "painel": "71",
+   "sessao": "P2",
+   "painel": "111",
    "autor": "Bruna Marianne Viana dos Santos",
    "instituicao": "UFRPE",
    "ordem": 0,

@@ -2625,7 +2625,7 @@ const PESSOAS = {
   "rosemeire-l-fiaccone": {
     nome:               "Rosemeire L. Fiaccone",
     instituicao:        "Universidade Federal da Bahia (UFBA)",
-    instituicao_curta:  "Universidade Federal da Bahia (UFBA)",
+    instituicao_curta:  "UFBA",
     foto:               "assets/fotos/rosemeire-400.png",
   },
   "ruan-gabriel-da-cruz-cerqueira": {
@@ -2804,7 +2804,7 @@ const PESSOAS = {
   },
   "thiago-roberto-alves": {
     nome:               "Thiago Roberto Alves",
-    instituicao:        "UFPR",
+    instituicao:        "Universidade Federal do Paraná",
     instituicao_curta:  "UFPR",
   },
   "thiago-rodrigo-ramos": {
