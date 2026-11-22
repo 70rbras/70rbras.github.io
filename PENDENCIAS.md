@@ -23,10 +23,10 @@ Legenda de quem destrava: **Organização** (precisa de informação ou decisão
 
 ### 6. Seção "Durante o evento" e FAQ do evento presencial
 - **Quem:** Organização (conteúdo) + Site
-- Nenhuma página fala de: Wi-Fi/eduroam (o minicurso M3 pede laptop com rede sem fio), crachá, certificado (como e quando sai), contato no local.
+- Nenhuma página fala de: crachá, certificado (como e quando sai), contato no local.
+- Resolvido em 22/11/2026 (P24): Wi-Fi em `logistica.html#wifi`, com eduroam, Unicamp-Visitante além de IMECC-EVENTOS lidos de `data/wifi.js`; item no menu Logística, categoria "Durante o evento" em `data/faq.js` além do aviso `wifi-2026` em `CONFIG.avisos`, visível nos dias do evento.
 - Resolvido em 18/11/2026: restaurantes próximos (`logistica.html#restaurantes`) e estacionamento gratuito do CDC e do IMECC (quadro "De carro" em `logistica.html#como-chegar`). Falta a programação apontar o "Intervalo Livre" para os restaurantes, se a organização quiser.
-- Proposta: `data/guia.js` exibido em `logistica.html#no-evento`, item no menu Logística e categoria "Durante o evento" em `data/faq.js` (credenciamento, certificado, Wi-Fi, "onde é minha sessão", "perdi o e-mail de envio dos slides").
-- Quando houver Wi-Fi, vale um aviso em `CONFIG.avisos` para os dias do evento.
+- Proposta: `data/guia.js` exibido em `logistica.html#no-evento`, item no menu Logística e categoria "Durante o evento" em `data/faq.js`, já criada com o Wi-Fi (credenciamento, certificado, "onde é minha sessão", "perdi o e-mail de envio dos slides").
 
 ---
 
