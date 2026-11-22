@@ -404,14 +404,37 @@
       border-radius: 9px;
       padding: .7rem .95rem;
       box-shadow: 0 1px 8px rgba(26,56,112,.07);
+      border-left: 3px solid transparent;
+    }
+    .wasa-sc-linha {
       display: grid;
       grid-template-columns: 2.8rem 1fr;
       gap: 0 .65rem;
       align-items: start;
-      border-left: 3px solid transparent;
     }
+    /* Palestra com resumo: o cartão inteiro abre e fecha o texto. */
+    summary.wasa-sc-linha { cursor: pointer; list-style: none; }
+    summary.wasa-sc-linha::-webkit-details-marker { display: none; }
+    summary.wasa-sc-linha:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; border-radius: 4px; }
+    .wasa-sc-ver {
+      display: inline-block;
+      margin-top: .35rem;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--teal);
+    }
+    .wasa-sc-ver::before { content: 'Ver resumo \25BE'; }
+    details[open] .wasa-sc-ver::before { content: 'Fechar resumo \25B4'; }
+    .wasa-sc-resumo {
+      margin: .6rem 0 .1rem calc(2.8rem + .65rem);
+      font-size: .8rem;
+      line-height: 1.55;
+      color: var(--text-dark);
+    }
+    .wasa-sc-resumo p + p { margin-top: .55rem; }
     .wasa-sc.t-palestra     { border-left-color: var(--gold); }
     .wasa-sc.t-homenagem    { border-left-color: var(--blue-mid); }
+    .wasa-sc.t-credenciamento,
     .wasa-sc.t-abertura,
     .wasa-sc.t-encerramento { border-left-color: var(--olive); }
     .wasa-sc.t-intervalo    { background: rgba(26,56,112,.03); box-shadow: none; border-left-color: #ddd; }
@@ -445,6 +468,7 @@
       .wasa-sched-divider { flex-direction: row; padding: .8rem 0; gap: .7rem; }
       .wasa-sched-divider::before,
       .wasa-sched-divider::after { width: auto; height: 1px; flex: 1; background: rgba(26,56,112,.12); }
+      .wasa-sc-resumo { margin-left: 0; }
     }
 
     .wasa-local-nota {
@@ -649,7 +673,7 @@
     <div class="section-header reveal">
       <span class="tag tag--gold">26 nov 2026</span>
       <h2 class="section-title">Programação</h2>
-      <p class="section-body">Programação preliminar, sujeita a alterações. Os títulos das palestras serão divulgados em breve.</p>
+      <p class="section-body">Clique em cada palestra para ler o resumo.</p>
     </div>
 
     <div class="reveal" id="wasa-sched-container">
@@ -662,16 +686,18 @@
       <div style="display:flex;flex-wrap:wrap;gap:.6rem">
         <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--gold);flex-shrink:0"></span>Palestra</span>
         <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--blue-mid);flex-shrink:0"></span>Homenagem</span>
-        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--olive);flex-shrink:0"></span>Abertura / Encerramento</span>
+        <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:var(--olive);flex-shrink:0"></span>Credenciamento / Abertura / Encerramento</span>
         <span style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text-mid)"><span style="width:12px;height:12px;border-radius:2px;background:#bbb;flex-shrink:0"></span>Intervalo</span>
       </div>
     </div>
 
-    <!-- Banner da programação -->
-    <div class="wasa-cartaz reveal" style="margin-top:3rem">
+    <!-- Banner da programação. Escondido pelo atributo hidden enquanto a imagem
+         mostra a grade antiga; para exibir a versão nova, trocar o arquivo e
+         retirar o hidden. O loading="lazy" evita baixar a imagem escondida. -->
+    <div class="wasa-cartaz reveal" style="margin-top:3rem" hidden>
       <a class="wasa-cartaz-link" href="#wasa-lightbox-prog" aria-label="Ampliar programação do WASA"
          style="box-shadow:0 8px 32px rgba(26,56,112,.15)">
-        <img src="assets/imagens/banner-programacao-wasa.png"
+        <img src="assets/imagens/banner-programacao-wasa.png" loading="lazy"
              alt="Programação do VIII WASA"
              style="width:520px;max-width:92vw">
       </a>
@@ -721,7 +747,7 @@
 <!-- LIGHTBOX DA PROGRAMAÇÃO -->
 <div id="wasa-lightbox-prog" class="wasa-lightbox" role="dialog" aria-modal="true" aria-label="Programação do WASA ampliada">
   <a href="#" class="wasa-lightbox-close" aria-label="Fechar">×</a>
-  <img src="assets/imagens/banner-programacao-wasa.png" alt="Programação do VIII WASA - Workshop em Análise de Sobrevivência e Aplicações">
+  <img src="assets/imagens/banner-programacao-wasa.png" loading="lazy" alt="Programação do VIII WASA - Workshop em Análise de Sobrevivência e Aplicações">
 </div>
 
 <!-- Footer injetado por assets/footer.js -->
@@ -869,51 +895,77 @@
   if (!container) return;
 
   const BADGE_STYLE = {
-    palestra:     'background:rgba(214,168,24,.15);color:#a07c00',
-    homenagem:    'background:rgba(37,96,172,.12);color:var(--blue-mid)',
-    abertura:     'background:rgba(90,156,40,.12);color:var(--olive)',
-    encerramento: 'background:rgba(90,156,40,.12);color:var(--olive)',
-    intervalo:    '',
+    palestra:       'background:rgba(214,168,24,.15);color:#a07c00',
+    homenagem:      'background:rgba(37,96,172,.12);color:var(--blue-mid)',
+    credenciamento: 'background:rgba(90,156,40,.12);color:var(--olive)',
+    abertura:       'background:rgba(90,156,40,.12);color:var(--olive)',
+    encerramento:   'background:rgba(90,156,40,.12);color:var(--olive)',
+    intervalo:      '',
   };
   const LABEL = {
-    palestra:     'Palestra',
-    homenagem:    'Homenagem',
-    abertura:     'Abertura',
-    encerramento: 'Encerramento',
-    intervalo:    'Intervalo',
+    palestra:       'Palestra',
+    homenagem:      'Homenagem',
+    credenciamento: 'Credenciamento',
+    abertura:       'Abertura',
+    encerramento:   'Encerramento',
+    intervalo:      'Intervalo',
   };
 
+  /* Nome com tratamento seguido da instituição curta, ambos da ficha. */
+  function quemApresenta(id) {
+    const nome = nomeDaPessoa(id);
+    if (!nome) return '';
+    const p = PESSOAS[id] || {};
+    const inst = p.instituicao_curta || p.instituicao || '';
+    return escTexto(nome) + (inst ? ' · ' + escTexto(inst) : '');
+  }
+
+  /* Parágrafos separados por linha em branco; quebra simples vira <br>. */
+  function resumoHTML(texto) {
+    return String(texto).trim().split(/\n\s*\n/)
+      .map(par => '<p>' + escTexto(par.trim()).replace(/\n/g, '<br>') + '</p>')
+      .join('');
+  }
+
   function cardHTML(slot) {
-    const inicio = slot.horario.split(' - ')[0];
-    const badge = BADGE_STYLE[slot.tipo] || '';
     const label = LABEL[slot.tipo] || slot.tipo;
-    const showBadge = slot.tipo !== 'intervalo';
+    /* Sem selo no intervalo, quando o selo repetiria o título, nem quando o
+       slot pede selo: false. */
+    const showBadge = slot.tipo !== 'intervalo' && label !== slot.titulo && slot.selo !== false;
+    const quem = quemApresenta(slot.pessoa);
+    const temResumo = !!(slot.resumo && String(slot.resumo).trim());
+    const linha = `
+        <span class="wasa-sc-time">${escTexto(slot.inicio)}</span>
+        <div>
+          ${showBadge ? `<span class="wasa-sc-badge" style="${BADGE_STYLE[slot.tipo] || ''}">${escTexto(label)}</span>` : ''}
+          <p class="wasa-sc-titulo">${escTexto(slot.titulo)}</p>
+          ${quem ? `<p class="wasa-sc-palestrante">${quem}</p>` : ''}
+          ${temResumo ? '<span class="wasa-sc-ver" aria-hidden="true"></span>' : ''}
+        </div>`;
+    if (!temResumo) {
+      return `
+    <div class="wasa-sc t-${escAtributo(slot.tipo)}"><div class="wasa-sc-linha">${linha}</div></div>`;
+    }
     return `
-    <div class="wasa-sc t-${slot.tipo}">
-      <span class="wasa-sc-time">${inicio}</span>
-      <div>
-        ${showBadge ? `<span class="wasa-sc-badge" style="${badge}">${label}</span>` : ''}
-        <p class="wasa-sc-titulo">${slot.titulo}</p>
-        ${nomeDaPessoa(slot.pessoa) ? `<p class="wasa-sc-palestrante">${nomeDaPessoa(slot.pessoa)}</p>` : ''}
-      </div>
-    </div>`;
+    <details class="wasa-sc t-${escAtributo(slot.tipo)}">
+      <summary class="wasa-sc-linha" aria-label="${escAtributo(slot.titulo)}: ver resumo">${linha}</summary>
+      <div class="wasa-sc-resumo">${resumoHTML(slot.resumo)}</div>
+    </details>`;
   }
 
   const manha = wasaProgramacao[0].slots;
-  const almoco = wasaProgramacao[1].slots[0];
-  const tarde  = wasaProgramacao[2].slots;
+  const tarde = wasaProgramacao[1].slots;
 
+  /* O intervalo do almoço fica em branco: só a linha que separa os períodos. */
   container.innerHTML = `
   <div class="wasa-sched-wrap">
     <div class="wasa-sched-periodo">
-      <div class="wasa-sched-periodo-header">&#9728; Manhã</div>
+      <div class="wasa-sched-periodo-header">&#9728; ${escTexto(wasaProgramacao[0].periodo)}</div>
       ${manha.map(cardHTML).join('')}
     </div>
-    <div class="wasa-sched-divider">
-      <span>&#127860;</span><span>Almoço</span><span>${almoco.horario}</span>
-    </div>
+    <div class="wasa-sched-divider" aria-hidden="true"></div>
     <div class="wasa-sched-periodo">
-      <div class="wasa-sched-periodo-header">&#9729; Tarde</div>
+      <div class="wasa-sched-periodo-header">&#9729; ${escTexto(wasaProgramacao[1].periodo)}</div>
       ${tarde.map(cardHTML).join('')}
     </div>
   </div>`;

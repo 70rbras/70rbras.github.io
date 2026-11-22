@@ -54,34 +54,54 @@ const wasaInscricao = {
 };
 
 // Cada slot referencia quem apresenta pelo identificador em data/pessoas.js,
-// no campo `pessoa`. O nome com tratamento é montado na página.
+// no campo `pessoa`; nome, tratamento além da instituição curta vêm da ficha.
+// Só o horário de início é registrado, pois a organização não divulgou o de
+// término. O intervalo do almoço fica em branco por decisão da organização,
+// portanto não há slot para ele: a página desenha apenas a separação entre os
+// dois períodos.
+//
+// O campo `resumo` é texto comum, sem marcação: parágrafos separados por linha
+// em branco, quebra simples vira <br>. Resumo vazio não mostra o botão.
+//
+// `selo: false` esconde o selo do tipo no cartão, mantendo a cor da borda.
 const wasaProgramacao = [
   {
     periodo: 'Manhã',
     slots: [
-      { horario: '09:00 - 09:20', tipo: 'abertura',   titulo: 'Abertura do evento',                          descricao: '' },
-      { horario: '09:20 - 10:20', tipo: 'homenagem',  titulo: 'Homenagem ao Professor Francisco Louzada',    descricao: '' },
-      { horario: '10:20 - 10:50', tipo: 'palestra',   titulo: 'Palestra 1',                                  pessoa: 'francisco-louzada-neto', tituloTalks: 'A definir' },
-      { horario: '10:50 - 11:10', tipo: 'intervalo',  titulo: 'Coffee Break',                                descricao: '' },
-      { horario: '11:10 - 11:40', tipo: 'palestra',   titulo: 'Palestra 2',                                  pessoa: 'gleici-da-silva-castro-perdona', tituloTalks: 'A definir' },
-      { horario: '11:40 - 12:10', tipo: 'palestra',   titulo: 'Palestra 3',                                  pessoa: 'vinicius-calsavara', tituloTalks: 'A definir' },
-    ]
-  },
-  {
-    periodo: 'Intervalo',
-    slots: [
-      { horario: '12:10 - 14:00', tipo: 'intervalo',  titulo: 'Almoço', descricao: '' },
+      { inicio: '08:00', tipo: 'credenciamento', titulo: 'Credenciamento' },
+      { inicio: '09:00', tipo: 'abertura',       titulo: 'Abertura' },
+      { inicio: '09:20', tipo: 'palestra',       pessoa: 'vinicius-calsavara',
+        titulo: 'A defective nested frailty model for hierarchical survival data under non-proportional hazards',
+        resumo: '' },
+      { inicio: '09:50', tipo: 'homenagem',      titulo: 'Homenagem ao Professor Francisco Louzada' },
+      { inicio: '10:50', tipo: 'intervalo',      titulo: 'Coffee Break' },
+      { inicio: '11:10', tipo: 'palestra',       pessoa: 'adriane-caroline-teixeira-portela',
+        titulo: 'Confiabilidade de Sistemas: Modelos de Degradação com Reparos Imperfeitos',
+        resumo: '' },
+      { inicio: '11:40', tipo: 'palestra',       pessoa: 'nikolai-valtchev-kolev',
+        titulo: 'Reliability applications of line integral',
+        resumo: '' },
     ]
   },
   {
     periodo: 'Tarde',
     slots: [
-      { horario: '14:00 - 14:30', tipo: 'palestra',   titulo: 'Palestra 4',   pessoa: 'adriane-caroline-teixeira-portela', tituloTalks: 'A definir' },
-      { horario: '14:30 - 15:00', tipo: 'palestra',   titulo: 'Palestra 5',   pessoa: 'pedro-luiz-ramos', tituloTalks: 'A definir' },
-      { horario: '15:00 - 15:30', tipo: 'palestra',   titulo: 'Palestra 6',   pessoa: 'fernanda-lang-schumacher', tituloTalks: 'A definir' },
-      { horario: '15:30 - 16:00', tipo: 'intervalo',  titulo: 'Coffee Break', descricao: '' },
-      { horario: '16:00 - 16:30', tipo: 'palestra',   titulo: 'Palestra 7',   pessoa: 'mario-de-castro-andrade-filho', tituloTalks: 'A definir' },
-      { horario: '16:30 - 17:00', tipo: 'encerramento', titulo: 'Encerramento', pessoa: 'vera-lucia-damasceno-tomazella', descricao: '' },
+      { inicio: '14:00', tipo: 'palestra',       pessoa: 'fernanda-lang-schumacher',
+        titulo: 'When Skewed Outcomes Meet Censored Events: Robust Bayesian Joint Models for Longitudinal and Time-to-Event Data, with an Application to Multiple Sclerosis',
+        resumo: '' },
+      { inicio: '14:30', tipo: 'palestra',       pessoa: 'pedro-luiz-ramos',
+        titulo: 'Cure-Fraction Survival Trees and Random Forests for Long-Term Survival Data',
+        resumo: '' },
+      { inicio: '15:00', tipo: 'palestra',       pessoa: 'gleici-da-silva-castro-perdona',
+        titulo: 'Modelo Generalizado para Estudo de Tempo de Parto na Presença de Causas Competitivas: Cesariana e Parto Vaginal',
+        resumo: '' },
+      { inicio: '15:30', tipo: 'intervalo',      titulo: 'Coffee Break' },
+      { inicio: '16:00', tipo: 'palestra',       pessoa: 'mario-de-castro-andrade-filho',
+        titulo: 'A Bayesian multi-risks survival model',
+        resumo: '' },
+      { inicio: '16:30', tipo: 'encerramento',   pessoa: 'vera-lucia-damasceno-tomazella', selo: false,
+        titulo: 'VIII WASA: Reflexões, Conexões e Perspectivas',
+        resumo: '' },
     ]
   },
 ];
