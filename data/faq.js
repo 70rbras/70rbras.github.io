@@ -80,6 +80,18 @@ const FAQ = [
     ]
   },
   {
+    categoria: "evento",
+    categoriaLabel: "Durante o evento",
+    icone: "📶",
+    perguntas: [
+      {
+        id: "wifi",
+        pergunta: "Como acesso o Wi-Fi durante o evento?",
+        resposta: "As redes disponíveis e as instruções de acesso estão em <a href=\"logistica.html#wifi\">Logística → Wi-Fi</a>."
+      }
+    ]
+  },
+  {
     categoria: "app",
     categoriaLabel: "Site no celular",
     icone: "📲",

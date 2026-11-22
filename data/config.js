@@ -160,6 +160,15 @@ const CONFIG = {
       atividade_id: "INSCRICOES"
     },
     {
+      // Nome das redes além das instruções ficam só em data/wifi.js.
+      id:         "wifi-2026",
+      texto:      "📶 <strong>Wi-Fi no evento</strong>: redes e instruções de acesso.",
+      link:       "logistica.html#wifi",
+      link_texto: "Ver",
+      inicio_id:  "evento",
+      fim_id:     "evento"
+    },
+    {
       // O item "Apresentadores" saiu do menu principal e virou subgrupo de
       // Logística; este aviso orienta quem procura por ele até o fim do evento.
       id:         "para-apresentadores-2026",

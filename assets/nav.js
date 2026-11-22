@@ -70,6 +70,7 @@
           <li><a href="${root}logistica.html#graficas">Onde imprimir o pôster</a></li>
           <li class="nav-dropdown-label" role="presentation">Local</li>
           <li><a href="${root}logistica.html#local">Local e Como Chegar</a></li>
+          <li><a href="${root}logistica.html#wifi">Wi-Fi</a></li>
           <li class="nav-dropdown-label" role="presentation">Sua estadia</li>
           <li><a href="${root}logistica.html#hospedagem">Hospedagem</a></li>
           <li><a href="${root}logistica.html#restaurantes">Restaurantes</a></li>

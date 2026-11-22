@@ -22,6 +22,7 @@ Quem mantém o site deve ler as seções 1 e 2. Quem apenas edita conteúdo dura
 | Instruções de pôster e de apresentação oral | `data/apresentadores.js` | `apresentadores.html` |
 | Ponto da previsão do tempo (dias vêm do prazo `evento`) | `data/config.js`, campo `clima` | Hero da Home, `logistica.html` (quadro Clima) |
 | Restaurantes próximos, distâncias a pé até CDC e IMECC, limites "a pé" e "Uber" | `data/restaurantes.js` | `logistica.html#restaurantes` |
+| Wi-Fi no evento: nome das redes, instruções de acesso além do contato da DETIC; a FAQ além da faixa de aviso só remetem à seção | `data/wifi.js` | `logistica.html#wifi` |
 | Aproveite Campinas: bares, cafés, shoppings além de parques; quem já está em Restaurantes é citado pelo nome | `data/cidade.js`, lendo `data/restaurantes.js` | `logistica.html#aproveite-campinas` |
 | Convidados além das palestras | Planilha: aba `convidados` diz quem é convidado (tipo, ordem); título e resumo vêm da atividade dele nas abas `atividades` e `resumos` (via `data/programacao.json`), com `tema`/`resumo` da aba `convidados` só como reserva; gera `data/speakers.js` | `palestrantes.html`, home |
 | Pessoas: ficha única de cada uma | Planilha, aba `pessoas_cadastro`; gera `data/pessoas.js` | `comissoes.html`, `palestrantes.html`, `premios.html`, `programacao.html` |
