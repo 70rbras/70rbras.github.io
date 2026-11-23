@@ -28,7 +28,7 @@
  * Plano: claude/plano-app-70rbras.md, tarefa T2.1.
  */
 
-const VERSAO = 32;
+const VERSAO = 33;
 const CACHE = 'rbras70-casco-v' + VERSAO;
 const SEM_REDE = 'offline.html';
 const LIMITE_MS = 3000;
