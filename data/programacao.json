@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-23T11:51:05-0300",
- "gerado_em_texto": "23/11/2026 às 11:51",
- "versao_dados": 202611231151,
+ "gerado_em": "2026-11-23T17:30:24-0300",
+ "gerado_em_texto": "23/11/2026 às 17:30",
+ "versao_dados": 202611231730,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -797,13 +797,36 @@
    "destaque": false
   },
   {
+   "id": "PREMIO-DESTAQUE",
+   "data": "2026-11-24",
+   "inicio": "17:00",
+   "fim": "17:30",
+   "tipo": "Institucional",
+   "tipo_slug": "institucional",
+   "titulo": "Prêmio Destaque RBras",
+   "subtitulo": "",
+   "local": {
+    "id": "IMECC-AUD",
+    "predio": "IMECC",
+    "sala": "Auditório",
+    "nome": "IMECC - Auditório",
+    "como_chegar": "Ao acessar o IMECC pela entrada principal, o auditório está ao lado direito.",
+    "mapa_url": "https://maps.app.goo.gl/nEr4DxwMe1Za6U778"
+   },
+   "pessoas": [],
+   "grupo": "",
+   "descricao": "Apresentação do Prêmio Destaque RBras: Prof. Dr. Dalton Francisco de Andrade",
+   "resumo": "",
+   "destaque": true
+  },
+  {
    "id": "REUNIAO-RBRAS",
    "data": "2026-11-24",
    "inicio": "17:30",
    "fim": "18:30",
    "tipo": "Institucional",
    "tipo_slug": "institucional",
-   "titulo": "Assembleia Geral Ordinária da RBras e Prêmio Destaque RBras",
+   "titulo": "Assembleia Geral Ordinária da RBras",
    "subtitulo": "",
    "local": {
     "id": "IMECC-AUD",
