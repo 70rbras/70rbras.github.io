@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-24T10:53:59-0300",
- "gerado_em_texto": "24/11/2026 às 10:53",
- "versao_dados": 202611241053,
+ "gerado_em": "2026-11-24T20:41:04-0300",
+ "gerado_em_texto": "24/11/2026 às 20:41",
+ "versao_dados": 202611242041,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -875,11 +875,11 @@
    "titulo": "Modelagem de quantis condicionais em dados eletrocardiográficos: uma aplicação da regressão quantílica",
    "subtitulo": "",
    "local": {
-    "id": "IMECC-253",
+    "id": "IMECC-AUD",
     "predio": "IMECC",
-    "sala": "Sala 253",
-    "nome": "IMECC - Sala 253",
-    "como_chegar": "Segundo andar do IMECC, próximo ao elevador.",
+    "sala": "Auditório",
+    "nome": "IMECC - Auditório",
+    "como_chegar": "Ao acessar o IMECC pela entrada principal, o auditório está ao lado direito.",
     "mapa_url": "https://maps.app.goo.gl/nEr4DxwMe1Za6U778"
    },
    "pessoas": [
@@ -904,11 +904,11 @@
    "titulo": "Métodos de Newton Funcionais para Aprendizado de Operadores",
    "subtitulo": "",
    "local": {
-    "id": "IMECC-253",
+    "id": "IMECC-AUD",
     "predio": "IMECC",
-    "sala": "Sala 253",
-    "nome": "IMECC - Sala 253",
-    "como_chegar": "Segundo andar do IMECC, próximo ao elevador.",
+    "sala": "Auditório",
+    "nome": "IMECC - Auditório",
+    "como_chegar": "Ao acessar o IMECC pela entrada principal, o auditório está ao lado direito.",
     "mapa_url": "https://maps.app.goo.gl/nEr4DxwMe1Za6U778"
    },
    "pessoas": [
