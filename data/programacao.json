@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-11-23T17:30:24-0300",
- "gerado_em_texto": "23/11/2026 às 17:30",
- "versao_dados": 202611231730,
+ "gerado_em": "2026-11-23T23:18:28-0300",
+ "gerado_em_texto": "23/11/2026 às 23:18",
+ "versao_dados": 202611232318,
  "config": {
   "evento_nome": "70ª Reunião Anual da Região Brasileira da Sociedade Internacional de Biometria",
   "evento_nome_curto": "70ª RBras",
@@ -758,7 +758,7 @@
    "tipo": "Pôster",
    "tipo_slug": "poster",
    "titulo": "Sessão de pôsteres 2",
-   "subtitulo": "111 trabalhos",
+   "subtitulo": "110 trabalhos",
    "local": {
     "id": "IMECC-POSTERES",
     "predio": "IMECC",
@@ -1023,7 +1023,7 @@
    "tipo": "Pôster",
    "tipo_slug": "poster",
    "titulo": "Sessão de pôsteres 3",
-   "subtitulo": "134 trabalhos",
+   "subtitulo": "135 trabalhos",
    "local": {
     "id": "IMECC-POSTERES",
     "predio": "IMECC",
@@ -2645,8 +2645,8 @@
   {
    "id": "130",
    "modalidade": "Pôster",
-   "sessao": "P2",
-   "painel": "101",
+   "sessao": "P3",
+   "painel": "137",
    "autor": "Caio Gomes Alves",
    "instituicao": "UNICAMP",
    "ordem": 0,
