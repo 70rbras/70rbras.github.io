@@ -81,8 +81,8 @@ const wasaProgramacao = [
         titulo: 'Confiabilidade de Sistemas: Modelos de Degradação com Reparos Imperfeitos',
         resumo: "A análise de confiabilidade busca compreender a evolução dos sistemas ao longo do tempo, contribuindo para o planejamento de ações de manutenção e a redução de custos operacionais. Em sistemas reparáveis, a degradação acumulada pode ser parcialmente reduzida por intervenções de manutenção, cujos efeitos nem sempre são constantes ao longo do tempo. Neste trabalho, propõe-se um modelo de degradação baseado no processo Gaussiano inverso e no modelo de Redução Aritmética da Degradação de ordem 1 (ARD1), incorporando efeitos variáveis de manutenção imperfeita. A abordagem considera observações dos níveis de degradação entre as intervenções e imediatamente antes e após cada manutenção. O desempenho do modelo é avaliado por meio de estudos de simulação e de uma aplicação adaptada a dados reais, explorando sua capacidade de representar diferentes cenários de manutenção. Os resultados contribuem para o desenvolvimento de métodos estatísticos mais flexíveis para a modelagem da degradação e a análise da confiabilidade de sistemas reparáveis." },
       { inicio: '11:40', tipo: 'palestra',       pessoa: 'nikolai-valtchev-kolev',
-        titulo: 'Construction of well-known and new bivariate models using the exponential representation of the joint survival function through the line integral of the corresponding gradient vector',
-        resumo: '' },
+        titulo: 'Reliability applications of line integral',
+        resumo: 'Construction of well-known and new bivariate models using the exponential representation of the joint survival function through the line integral of the corresponding gradient vector' },
     ]
   },
   {
