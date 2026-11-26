@@ -469,8 +469,17 @@ function renderAgora() {
     const btn = document.getElementById('hero-btn-programacao');
 
     if (ag.data > evento.fim) {
+      /* No dia do WASA, data do prazo "wasa" de data/dates.js, a mensagem de
+         encerramento ganha o convite para o workshop, com link para a página. */
+      const wasa = (typeof dataPorId === 'function') ? dataPorId('wasa') : null;
+      const hojeWasa = wasa && typeof wasaInfo !== 'undefined' && ag.data >= wasa.inicio && ag.data <= wasa.fim;
       box.innerHTML = '<p class="hero-agora-fim">A ' + Agenda.escapar(evento.edicao) +
-        ' foi encerrada. Obrigado pela participação!</p>';
+        ' foi encerrada. Obrigado pela participação!</p>' +
+        (hojeWasa ? '<p class="hero-agora-wasa">Hoje tem o ' +
+          Agenda.escapar(wasaInfo.edicao + ' ' + wasaInfo.sigla) +
+          (wasaInfo.sala ? ', no ' + Agenda.escapar(wasaInfo.sala) : '') + '. ' +
+          '<a href="wasa.html#programacao-wasa">Ver a programação do ' +
+          Agenda.escapar(wasaInfo.sigla) + ' &#8594;</a></p>' : '');
       if (btn) btn.textContent = 'Ver Programação';
       return;
     }

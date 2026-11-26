@@ -357,6 +357,23 @@
       color: var(--text-dark);
     }
 
+    /* Previsão do tempo do dia, acima da grade */
+    .wasa-clima {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.4rem 1rem;
+      box-shadow: 0 2px 14px rgba(26,56,112,.07);
+    }
+    .wasa-clima[hidden] { display: none; }
+    .wasa-clima-rotulo {
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--text-mid); margin-bottom: .55rem;
+    }
+    .wasa-clima-sub { font-size: .74rem; font-weight: 700; color: var(--teal); margin: .2rem 0 .35rem; }
+    .wasa-clima .clima-painel--claro { margin: 0 0 .6rem; }
+
     /* Programação em duas colunas */
     .wasa-sched-wrap {
       max-width: 860px;
@@ -677,6 +694,9 @@
       <p class="section-body">Clique em cada palestra para ler o resumo.</p>
     </div>
 
+    <!-- Previsão do tempo do dia do WASA (assets/clima.js); some fora do prazo. -->
+    <div class="wasa-clima" id="wasa-clima" hidden></div>
+
     <div class="reveal" id="wasa-sched-container">
       <!-- preenchido via JS -->
     </div>
@@ -760,6 +780,7 @@
 <script src="assets/pessoas.js"></script>
 <script src="data/wasa.js"></script>
 <script src="assets/footer.js"></script>
+<script src="assets/clima.js"></script>
 <script>
 /* nomeDaPessoa vive em assets/pessoas.js. */
 /* ── Identidade do WASA: data, local, organização e homenagem ── */
@@ -810,6 +831,37 @@
         (wasaHomenagem.paragrafos || []).map(t => `<p>${esc(t)}</p>`).join(''));
     }
   }
+})();
+
+/* ── Previsão do tempo do dia do WASA ──
+   Os dias vêm do prazo "wasa" de data/dates.js; o ponto, de CONFIG.clima.
+   No próprio dia aparecem antes as próximas horas; tocar no dia abre as
+   horas do evento. Fora do alcance da previsão o quadro fica escondido. */
+(function () {
+  const box = document.getElementById('wasa-clima');
+  if (!box || typeof Clima === 'undefined' || typeof Agenda === 'undefined') return;
+  Clima.previsao('wasa').then(dias => {
+    if (!dias.length) return;
+    const e = Agenda.escapar;
+    const hoje = Agenda.agora().data;
+    const proximas = Clima.proximas(dias, 6);
+    box.innerHTML = `<div class="wasa-clima-rotulo">Previsão do tempo em Campinas</div>
+      ${proximas ? `<div class="wasa-clima-sub">Próximas horas</div><div class="clima-painel--claro">${proximas}</div>` : ''}
+      <div class="clima-previsao"><ul>${dias.map(d => {
+        const [icone, texto] = Clima.tempo(d.codigo);
+        return `<li><button type="button" class="clima-linha" data-clima-dia="${e(d.data)}" aria-expanded="false"
+              aria-controls="wasa-clima-horas-${e(d.data)}">
+            <span class="clima-dia">${d.data === hoje ? 'Hoje' : e(Clima.rotuloDia(d.data))}</span>
+            <span class="clima-icone" title="${e(texto)}">${icone}</span>
+            <span>${d.min}° a <strong>${d.max}°</strong>${d.chuva != null ? ` · 💧 ${d.chuva}%` : ''}</span>
+            <span class="clima-texto">${e(texto)} <span class="clima-abrir">· hora a hora ▾</span></span>
+          </button>
+          <div class="clima-painel clima-painel--claro" id="wasa-clima-horas-${e(d.data)}" hidden></div></li>`;
+      }).join('')}</ul></div>
+      <p class="clima-fonte">Previsão: ${Clima.CREDITO}, atualizada a cada hora.${dias.some(d => d.chuva >= 50) ? ' <strong>Leve guarda-chuva.</strong>' : ''}</p>`;
+    Clima.ligarDias(box, dias, b => document.getElementById(b.getAttribute('aria-controls')));
+    box.hidden = false;
+  });
 })();
 
 /* ── Inscrição no WASA, a partir de data/wasa.js ── */

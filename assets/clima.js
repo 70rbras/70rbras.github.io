@@ -13,7 +13,8 @@
    A previsão só existe até 16 dias à frente, portanto antes disso, ou depois
    do evento, nada é exibido e a página mantém o texto de reserva. A resposta
    fica guardada no aparelho por uma hora; sem rede, vale a última guardada.
-   Usado por index.html (faixa do Hero) e logistica.html (quadro Clima).
+   Usado por index.html (faixa do Hero), logistica.html (quadro Clima) além de
+   wasa.html, que pede o prazo "wasa" em vez de "evento".
 ════════════════════════════════════════════════ */
 (function () {
   const CHAVE = 'rbras-clima';
@@ -35,9 +36,6 @@
     if (c >= 95) return ['⛈️', 'Tempestade'];
     return ['🌥️', 'Tempo instável'];
   }
-
-  const ler = () => { try { return JSON.parse(localStorage.getItem(CHAVE) || 'null'); } catch (e) { return null; } };
-  const gravar = v => { try { localStorage.setItem(CHAVE, JSON.stringify(v)); } catch (e) { /* sem armazenamento */ } };
 
   function dias(resposta) {
     const d = resposta && resposta.daily, h = resposta && resposta.hourly;
@@ -62,9 +60,15 @@
     })).filter(x => Number.isFinite(x.max) && Number.isFinite(x.min));
   }
 
-  /* Promessa com a lista de dias do evento que ainda têm previsão. */
-  function previsao() {
-    const ev = typeof dataPorId === 'function' ? dataPorId('evento') : null;
+  /* Promessa com a lista de dias do prazo (padrão: "evento") que ainda têm
+     previsão. Cada prazo guarda a sua resposta, para as páginas não
+     apagarem a cópia uma da outra. */
+  function previsao(prazoId) {
+    const id = prazoId || 'evento';
+    const chave = id === 'evento' ? CHAVE : CHAVE + '-' + id;
+    const ler = () => { try { return JSON.parse(localStorage.getItem(chave) || 'null'); } catch (e) { return null; } };
+    const gravar = v => { try { localStorage.setItem(chave, JSON.stringify(v)); } catch (e) { /* sem armazenamento */ } };
+    const ev = typeof dataPorId === 'function' ? dataPorId(id) : null;
     const cfg = typeof CONFIG !== 'undefined' ? CONFIG.clima : null;
     if (!ev || !cfg || typeof Agenda === 'undefined') return Promise.resolve([]);
     const hoje = Agenda.agora().data;

@@ -406,6 +406,8 @@ section { position: relative; }
 .hero-agora-local { font-size: .78rem; color: rgba(255,255,255,.65); }
 .hero-agora-mais { display: inline-block; margin-top: .4rem; font-size: .8rem; color: var(--gold-light); font-weight: 600; }
 .hero-agora-fim { color: var(--gold-light); font-weight: 700; font-size: 1.1rem; }
+.hero-agora-wasa { margin-top: .6rem; color: var(--white); font-size: 1rem; line-height: 1.5; }
+.hero-agora-wasa a { color: var(--gold-light); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 @media (max-width: 960px) { .hero-agora { align-self: center; } }
 @media (max-width: 600px) {
   .hero-agora li a { grid-template-columns: 1fr; }
